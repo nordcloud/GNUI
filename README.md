@@ -14,7 +14,7 @@ The library should be installed in your npm based project as a package directly 
 
 ## Storybook deployment
 
-Storybook allows you to preview this GNUI components. It deploys automatically triggered by changes on branch `master`.
+Storybook allows you to preview GNUI components. It deploys automatically using Amplify Console, triggered by changes on branch `master`. Pipeline steps can be found in `amplify.yml`.
 
 When you create PR against `master` branch, Amplify will create new deployment automatically - the environment will be attached to PR at Github. Reviewers can preview changes using this deployment - after the PR gets merged or rejected, the environment is destroyed automatically by Amplify Console.
 
