@@ -1,12 +1,38 @@
-import React from "react";
+import { boolean, text, color, withKnobs } from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/react';
+import * as React from 'react';
+import { wInfo } from '../utils/wInfo';
+import { Button } from '../components/button';
 
-import { Button } from "../components";
+const stories = storiesOf('Components/Button', module);
+stories.addDecorator(withKnobs);
 
-export default {
-  title: "Button",
-  component: Button
-};
+stories.add(
+  'default',
+  wInfo()(() => (
+    <Button>
+      {text('Label', 'Default')}
+    </Button>
+  )),
+);
 
-export const Normal = () => <Button>Hello Button</Button>;
+stories.add(
+  'outline',
+  wInfo()(() => (
+    <Button outline>
+      {text('Label', 'Default')}
+    </Button>
+  )),
+);
 
-export const Primary = () => <Button primary>Hello Button</Button>;
+stories.add(
+  'select',
+  wInfo()(() => (
+    <Button
+      className={boolean('Active', false) ? 'active' : ''}
+      color={color('Color', 'rgba(126,211,33,1)')}
+      select>
+        {text('Label', 'Default')}
+    </Button>
+  )),
+);
