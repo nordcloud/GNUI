@@ -9,7 +9,7 @@ This repo contains Nordcloud PAT Design System - a collection of reusable react 
 
 ## Usage
 
-The Design System should be installed in your npm project as a package directly from github.
+The library should be installed in your npm based project as a package directly from github.
 (ex. https://medium.com/@jonchurch/use-github-branch-as-dependency-in-package-json-5eb609c81f1a)
 
 ## Storybook deployment
