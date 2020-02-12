@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 import theme from "../../theme";
 
@@ -5,7 +6,7 @@ interface BoxProps {
   children: string;
 }
 
-export const Box = styled.div<BoxProps>`
+const StyledBox = styled.div<BoxProps>`
   background-color: ${theme.colors.light};
   border: none;
   padding: 1.25rem;
@@ -17,3 +18,5 @@ export const Box = styled.div<BoxProps>`
   box-shadow: 0px 0.125rem 0.25rem rgba(31, 30, 47, 0.099);
   border-radius: 0.375rem;
 `;
+
+export const Box = (props: BoxProps) => <StyledBox {...props} />;
