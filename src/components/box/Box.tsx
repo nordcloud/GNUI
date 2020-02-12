@@ -1,12 +1,8 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import styled from "styled-components";
 import theme from "../../theme";
 
-interface BoxProps {
-  children: string;
-}
-
-const StyledBox = styled.div<BoxProps>`
+const StyledBox = styled.div`
   background-color: ${theme.colors.light};
   border: none;
   padding: 1.25rem;
@@ -19,4 +15,6 @@ const StyledBox = styled.div<BoxProps>`
   border-radius: 0.375rem;
 `;
 
-export const Box = (props: BoxProps) => <StyledBox {...props} />;
+export const Box: FunctionComponent = ({ children }) => (
+  <StyledBox>{children}</StyledBox>
+);
