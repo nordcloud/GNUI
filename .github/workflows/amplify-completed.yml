@@ -1,0 +1,14 @@
+name: Amplify Preview Bot
+
+on:
+  check_run:
+    types: 
+      - completed
+
+jobs:
+  bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment on PR
+        run: |
+          cat $GITHUB_EVENT_PATH
