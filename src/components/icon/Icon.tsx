@@ -9,11 +9,13 @@ interface IconProps {
   inline: boolean;
 }
 
+const svgToMiniDataURI = require('mini-svg-data-uri');
+
 const StyledIcon = styled.div<IconProps>`
   display: ${props => (props.inline ? "inline-block" : "ś")};
   width: ${props => props.width};
   height: ${props => props.height};
-  background-image: url("${props => icons[props.image]}");
+  background-image: url("${props => svgToMiniDataURI(icons[props.image])}");
   background-size: cover;
   background-repeat: no-repeat;
 `;
