@@ -2,14 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import { icons } from "../../utils/icons";
 
+const svgToMiniDataURI = require('mini-svg-data-uri');
+
 interface IconProps {
   image: string;
   width: string;
   height: string;
   inline: boolean;
 }
-
-const svgToMiniDataURI = require('mini-svg-data-uri');
 
 const StyledIcon = styled.div<IconProps>`
   display: ${props => (props.inline ? "inline-block" : "ś")};
