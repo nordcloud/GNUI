@@ -11,19 +11,19 @@ interface InputProps {
 }
 
 const StyledInput = styled.input<InputProps>`
-  border: 1px solid ${theme.colors.gray};
+  border: 0.075rem solid ${theme.colors.gray};
   padding: 0.7rem 1rem;
-  border-radius: 5px;
+  border-radius: 0.25rem;
   font-size: 0.8rem;
   color: ${props =>
     props.disabled ? theme.colors.darkGray : theme.colors.primary};
   background-color: ${props =>
     props.disabled ? theme.colors.gray : theme.colors.light};
-  transition: all 0.4s ease;
+  transition: ${theme.transition};
 
   &:focus {
     outline: 0;
-    border: 1px solid ${theme.colors.dark};
+    border: 0.075rem solid ${theme.colors.dark};
   }
 `;
 
