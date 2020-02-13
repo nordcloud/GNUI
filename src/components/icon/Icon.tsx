@@ -10,7 +10,7 @@ interface IconProps {
 }
 
 const StyledIcon = styled.div<IconProps>`
-  display: ${props => (props.inline ? "inline-block" : "")};
+  display: ${props => (props.inline ? "inline-block" : "ś")};
   width: ${props => props.width};
   height: ${props => props.height};
   background-image: url("${props => icons[props.image]}");
