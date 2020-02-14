@@ -12,7 +12,7 @@ interface IconProps {
 }
 
 const StyledIcon = styled.div<IconProps>`
-  display: ${props => (props.inline ? "inline-block" : "ś")};
+  display: ${props => (props.inline ? "inline-block" : "")};
   width: ${props => props.width};
   height: ${props => props.height};
   background-image: url("${props => svgToMiniDataURI(icons[props.image])}");
