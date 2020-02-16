@@ -6,9 +6,15 @@ interface FontWeights {
   [propName: string]: number;
 }
 
+interface FontFamily {
+  [propName: string]: string;
+}
+
 export interface ThemeInterface {
   colors: Colors;
   fontWeights: FontWeights;
+  fontFamily: FontFamily;
+  transition: string;
 }
 
 const theme: ThemeInterface = {
@@ -32,12 +38,20 @@ const theme: ThemeInterface = {
     light100: "#fcfcfd",
     light: "#fcfcfd"
   },
+
   fontWeights: {
     regular: 400,
     medium: 500,
     bold: 600,
     bolder: 700
-  }
+  },
+
+  fontFamily: {
+    regular: "Roboto, sans-serif",
+    headers: "Montserrat, sans-serif"
+  },
+
+  transition: "all 0.1s linear"
 };
 
 export default theme;
