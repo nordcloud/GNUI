@@ -9,7 +9,7 @@ export const SetGlobalStyle = createGlobalStyle`
   body {
      font-family: ${theme.fontFamily.regular};
      background: ${theme.colors.light};
-     font-weight: ${theme.fontWeights.regular};
+     font-weight: ${theme.fontWeights.regular};letter-spacing: 0.1rem;
      line-height: 1.5rem;
   }
   h1, h2, h3, h4, h5, h6 {
