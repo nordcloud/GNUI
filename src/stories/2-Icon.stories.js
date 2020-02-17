@@ -1,18 +1,21 @@
 import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import { Icon } from "../components/icon";
-import { Center } from "../components/center";
 
 const stories = storiesOf("Components/Icon", module);
 
 stories.add("status - enabled", () => (
-  <Center>
-    <Icon width="24px" height="22px" image="STATUS_ENABLED"></Icon>
-  </Center>
+  <Icon width="24px" height="22px" image="STATUS_ENABLED"></Icon>
 ));
 
 stories.add("status - disabled", () => (
-  <Center>
-    <Icon width="24px" height="22px" image="STATUS_DISABLED"></Icon>
-  </Center>
+  <Icon width="24px" height="22px" image="STATUS_DISABLED"></Icon>
+));
+
+stories.add("cloud providers", () => (
+  <>
+    <Icon width="24px" height="24px" image="GCP"></Icon>
+    <Icon width="24px" height="24px" image="AWS"></Icon>
+    <Icon width="24px" height="24px" image="AZURE"></Icon>
+  </>
 ));
