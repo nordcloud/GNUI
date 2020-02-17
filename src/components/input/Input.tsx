@@ -8,6 +8,7 @@ interface InputProps {
   type?: string;
   disabled?: boolean;
   value?: string;
+  onChange(e: any): void;
 }
 
 const StyledInput = styled.input<InputProps>`
