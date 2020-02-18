@@ -17,7 +17,7 @@ interface InputProps {
 
 const Wrapper = styled.div`
   width: auto;
-  max-width: 100%;
+  width: 100%;
 `;
 
 const Label = styled.label`
