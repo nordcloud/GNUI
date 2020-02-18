@@ -1,21 +1,39 @@
-import { wInfo } from "../utils/wInfo";
-import { storiesOf } from "@storybook/react";
 import * as React from "react";
+import { storiesOf } from "@storybook/react";
+import { text, boolean, select, withKnobs } from "@storybook/addon-knobs";
 import { Input } from "../components/input";
 
 const stories = storiesOf("Components/Input", module);
-
-stories.add(
-  "simple",
-  wInfo()(() => <Input />)
-);
-
-stories.add(
-  "typed",
-  wInfo()(() => <Input type="number" placeholder={100} />)
-);
-
-stories.add(
-  "disabled",
-  wInfo()(() => <Input disabled />)
-);
+stories.addDecorator(withKnobs).add("simple", () => {
+  const inputTypes = [
+    "button",
+    "checkbox",
+    "color",
+    "date",
+    "email",
+    "file",
+    "image",
+    "number",
+    "password",
+    "radio",
+    "range",
+    "search",
+    "tel",
+    "text",
+    "time",
+    "url",
+    "submit"
+  ];
+  return (
+    <Input
+      disabled={boolean("Disabled", false)}
+      name={text("Name", "Input name")}
+      type={select("Type", inputTypes, "text")}
+      placeholder={text("Placeholder", "Placeholder")}
+      note={text(
+        "Note",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      )}
+    />
+  );
+});
