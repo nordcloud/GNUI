@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.27",
+    "@fortawesome/free-solid-svg-icons": "^5.12.1",
+    "@fortawesome/react-fontawesome": "^0.1.8",
     "@storybook/addon-info": "^5.3.12",
     "@storybook/addon-knobs": "^5.3.12",
     "@testing-library/jest-dom": "^4.2.4",
