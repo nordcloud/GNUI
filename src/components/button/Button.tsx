@@ -1,76 +1,167 @@
 import React from "react";
-import styled, {css} from "styled-components";
-import theme from "../../theme"
+import styled, { css } from "styled-components";
+import theme from "../../theme";
+import { setColor, changeHue } from "../../utils/colorFunctions";
 
 interface ButtonProps {
-    children: string;
-    onClick?: () => void;
-    color?: string;
-    select?: boolean;
-    outline?: boolean;
-    className?: string;
+  children: string;
+  onClick?: () => void;
+  severity?: string;
+  priority?: string;
+  size?: string;
+  color?: string;
+  select?: boolean;
+  secondary?: boolean;
+  disabled?: boolean;
+  className?: string;
 }
 
-const setColor = (color?: string) => (color ? color : theme.colors.primary);
-
-const StyledButton = styled.button<ButtonProps>`  
-    background-color: ${theme.colors.primary};
-    border: 1px solid ${theme.colors.primary};
-    color: ${theme.colors.light};
-    padding: 0.5rem 1.75rem;
-    border-radius: 0.25rem;
-    margin-bottom: .5rem;
-    font-weight: bold;
-    font-size: 1rem;
-    transition: all .1s linear;
-    
-    &:focus {
-      outline: 0;
+const StyledButton = styled.button<ButtonProps>`
+  background-color: ${props => setColor(props.color) || theme.colors.primary};
+  font-family: ${theme.fontFamily.regular};
+  color: ${theme.colors.light};
+  border: 0.0625rem solid ${props =>
+    setColor(props.color) || theme.colors.primary};
+  font-weight: ${theme.fontWeights.medium};
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  transition: ${theme.transition};
+  &:focus {
+    outline: 0;
+  }
+  &:hover {
+    cursor: pointer;
+    color: ${theme.colors.light500};
+  }
+  &:active {
+    color: ${theme.colors.dark100};
+  }
+  &:disabled {
+    background-color: ${theme.colors.light400};
+    border: 0.0625rem solid ${theme.colors.light400};
+    color: ${theme.colors.dark100};
+    &:hover {
+      color: ${theme.colors.dark100};
+      cursor: not-allowed;
     }
+  }
 
-    &:hover,
-    .active {
-        cursor: pointer;
-        box-shadow: 0 1px 4px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.2);
-    }
-    
-    ${({outline}) => outline && css`
-        background-color: ${theme.colors.light};
-        border: 1px solid ${theme.colors.primary};
-        color: ${theme.colors.primary};
-      
-        &:hover,
-        &.active {
-          cursor: pointer;
-        }
-    `} 
-    
-    ${({select, color}) => select && css`
-      background-color: #e1e1e5;
-      border: 1px solid #bababa;
-      color: #777777;
-      padding: 0.5rem 1.5rem;
-      border-radius: 0.25rem;
-      font-weight: regular;
-      font-size: .75rem;
-    
+  ${({ secondary }) =>
+    secondary &&
+    css`
+      background-color: transparent;
+      border: 0.0625rem solid ${theme.colors.light500};
+      color: ${theme.colors.primary};
       &:hover {
-        border: 1px solid ${setColor(color)};
+        background-color: ${theme.colors.light300};
+        border: 0.0625rem solid ${theme.colors.light500};
+        color: ${theme.colors.primary};
       }
-    
-      &.active {
-        cursor: pointer;
+      &:active {
+        background-color: ${theme.colors.light400};
+        border: 0.0625rem solid ${theme.colors.light500};
+        color: ${theme.colors.primary};
+      }
+      &:disabled {
+        background-color: transparent;
+        border: 0.0625rem solid ${theme.colors.light500};
+        color: ${theme.colors.light500};
+        cursor: not-allowed;
+        &:hover {
+          background-color: transparent;
+          color: ${theme.colors.light500};
+        }
+      }
+    `}
+
+  ${({ severity }) =>
+    severity === "medium" &&
+    css`
+      background-color: transparent;
+      border: 0.0625rem solid ${theme.colors.light500};
+      color: ${theme.colors.primary};
+      &:hover {
+        background-color: ${theme.colors.light300};
+        border: 0.0625rem solid ${theme.colors.light500};
+
+        color: ${theme.colors.primary};
+      }
+      &:active {
+        background-color: ${theme.colors.light400};
+        border: 0.0625rem solid ${theme.colors.light500};
+        color: ${theme.colors.primary};
+      }
+      &:disabled {
+        background-color: transparent;
+        border: 0.0625rem solid ${theme.colors.light500};
+        color: ${theme.colors.light500};
+        cursor: not-allowed;
+        &:hover {
+          background-color: transparent;
+          color: ${theme.colors.light500};
+        }
+      }
+    `}
+
+  ${({ severity }) =>
+    severity === "low" &&
+    css`
+      background-color: transparent;
+      border: 0.0625rem solid transparent;
+      color: ${theme.colors.primary};
+      &:hover {
+        background-color: transparent;
+        border: 0.0625rem solid transparent;
+        color: ${theme.colors.primary};
+      }
+      &:active {
+        background-color: ${theme.colors.light400};
+        border: 0.0625rem solid transparent;
+        color: ${theme.colors.primary};
+      }
+      &:disabled {
+        background-color: transparent;
+        border: 0.0625rem solid transparent;
+        color: ${theme.colors.light500};
+        &:hover {
+          color: ${theme.colors.light500};
+        }
+      }
+    `}
+
+  ${({ color }) =>
+    color &&
+    css`
+      color: ${theme.colors.light};
+      background-color: ${setColor(color)};
+      &:hover {
         color: ${theme.colors.light};
-        background-color: ${setColor(color)};
-        border: 1px solid ${setColor(color)};
+        background-color: ${changeHue(color, 15)};
       }
-  `} 
+      &:active {
+        color: ${theme.colors.light};
+        background-color: ${changeHue(color, 30)};
+      }
+      &:disabled {
+        color: ${theme.colors.light};
+        background-color: ${changeHue(color, 50)};
+        &:hover {
+          color: ${theme.colors.light};
+        }
+      }
+    `}
 `;
 
-export const Button: React.FC<ButtonProps> = (props) => {
-    return (
-        <StyledButton onClick={props.onClick} color={setColor(props.color)} {...props}>
-            {props.children}
-        </StyledButton>
-    );
+export const Button: React.FC<ButtonProps> = props => {
+  return (
+    <StyledButton
+      severity={props.severity || "high"}
+      onClick={props.onClick}
+      {...props}
+    >
+      {props.children}
+    </StyledButton>
+  );
 };
