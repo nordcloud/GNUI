@@ -6,14 +6,13 @@ import { Icon } from "../components/icon";
 const stories = storiesOf("Components/Icon", module);
 
 stories.add(
-  "status - enabled",
-  wInfo()(() => <Icon width="24px" height="22px" image="STATUS_ENABLED"></Icon>)
-);
-
-stories.add(
-  "status - disabled",
+  "statuses",
   wInfo()(() => (
-    <Icon width="24px" height="22px" image="STATUS_DISABLED"></Icon>
+    <>
+      <Icon width="24px" height="22px" image="STATUS_ENABLED"></Icon>
+      <Icon width="24px" height="22px" image="STATUS_DISABLED"></Icon>
+      <Icon width="24px" height="22px" image="STATUS_WARNING"></Icon>
+    </>
   ))
 );
 
