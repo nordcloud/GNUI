@@ -19,3 +19,10 @@ stories.add("cloud providers", () => (
     <Icon width="24px" height="24px" image="AZURE"></Icon>
   </>
 ));
+
+stories.add("operating systems", () => (
+  <>
+    <Icon width="24px" height="24px" image="WINDOWS"></Icon>
+    <Icon width="24px" height="24px" image="LINUX"></Icon>
+  </>
+));
