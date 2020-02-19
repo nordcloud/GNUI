@@ -5,23 +5,23 @@ import { setColor, changeHue } from "../../utils/colorFunctions";
 
 interface ButtonProps {
   children: string;
-  onClick?: () => void;
+  onClick?: (e: any) => void;
   severity?: string;
   priority?: string;
   size?: string;
   color?: string;
   select?: boolean;
   secondary?: boolean;
+  outline?: boolean;
   disabled?: boolean;
   className?: string;
 }
 
 const StyledButton = styled.button<ButtonProps>`
-  background-color: ${props => setColor(props.color) || theme.colors.primary};
+  background-color: ${theme.colors.primary};
   font-family: ${theme.fontFamily.regular};
   color: ${theme.colors.light};
-  border: 0.0625rem solid ${props =>
-    setColor(props.color) || theme.colors.primary};
+  border: 0.0625rem solid ${theme.colors.primary};
   font-weight: ${theme.fontWeights.medium};
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
@@ -48,8 +48,59 @@ const StyledButton = styled.button<ButtonProps>`
     }
   }
 
+  ${({ color }) =>
+    color &&
+    css`
+      color: ${theme.colors.light};
+      background-color: ${setColor(color)};
+      border: 0.0625rem solid ${setColor(color)};
+      &:hover {
+        color: ${theme.colors.light};
+        background-color: ${changeHue(color, 15)};
+      }
+      &:active {
+        color: ${theme.colors.light};
+        background-color: ${changeHue(color, 30)};
+      }
+      &:disabled {
+        color: ${theme.colors.light};
+        background-color: ${changeHue(color, 50)};
+        &:hover {
+          color: ${theme.colors.light};
+        }
+      }
+    `}
+
   ${({ secondary }) =>
     secondary &&
+    css`
+      background-color: transparent;
+      border: 0.0625rem solid ${theme.colors.light500};
+      color: ${theme.colors.primary};
+      &:hover {
+        background-color: ${theme.colors.light300};
+        border: 0.0625rem solid ${theme.colors.light500};
+        color: ${theme.colors.primary};
+      }
+      &:active {
+        background-color: ${theme.colors.light400};
+        border: 0.0625rem solid ${theme.colors.light500};
+        color: ${theme.colors.primary};
+      }
+      &:disabled {
+        background-color: transparent;
+        border: 0.0625rem solid ${theme.colors.light500};
+        color: ${theme.colors.light500};
+        cursor: not-allowed;
+        &:hover {
+          background-color: transparent;
+          color: ${theme.colors.light500};
+        }
+      }
+    `}
+
+  ${({ outline }) =>
+    outline &&
     css`
       background-color: transparent;
       border: 0.0625rem solid ${theme.colors.light500};
@@ -127,28 +178,6 @@ const StyledButton = styled.button<ButtonProps>`
         color: ${theme.colors.light500};
         &:hover {
           color: ${theme.colors.light500};
-        }
-      }
-    `}
-
-  ${({ color }) =>
-    color &&
-    css`
-      color: ${theme.colors.light};
-      background-color: ${setColor(color)};
-      &:hover {
-        color: ${theme.colors.light};
-        background-color: ${changeHue(color, 15)};
-      }
-      &:active {
-        color: ${theme.colors.light};
-        background-color: ${changeHue(color, 30)};
-      }
-      &:disabled {
-        color: ${theme.colors.light};
-        background-color: ${changeHue(color, 50)};
-        &:hover {
-          color: ${theme.colors.light};
         }
       }
     `}

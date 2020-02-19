@@ -1,6 +1,7 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import theme from "../../theme";
+import { Container, Flex } from "../container";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
@@ -15,18 +16,20 @@ interface InputProps {
   onChange(e: any): void;
 }
 
-const Wrapper = styled.div`
-  width: auto;
+const StyledLabel = styled(Container)`
   width: 100%;
+  margin: 0.5rem 0;
 `;
 
-const Label = styled.label`
-  margin-bottom: 0.5rem;
-  color: ${theme.colors.primary};
-`;
+export const Label = (props: any) => (
+  <StyledLabel>
+    <label htmlFor={props.name} {...props}>
+      {props.name}
+    </label>
+  </StyledLabel>
+);
 
-const InputGroup = styled.div`
-  display: flex;
+const InputGroup = styled(Flex)`
   align-items: center;
   border: 0.0625rem solid ${theme.colors.light400};
   padding: 0.5rem 0.75rem;
@@ -54,7 +57,6 @@ const StyledInput = styled.input`
   font-size: 1rem;
   width: 100%;
   background-color: ${theme.colors.light100};
-  margin-left: ${props => props.type === "search" && "0.5rem"};
   transition: ${theme.transition};
   &::placeholder {
     color: ${theme.colors.dark100};
@@ -70,21 +72,33 @@ const StyledInput = styled.input`
     border: 0;
     cursor: not-allowed;
   }
+
+  ${({ type }) =>
+    type === "search" &&
+    css`
+      margin-left: 0.5rem;
+    `}
 `;
 
-const Note = styled.p`
-  color: ${theme.colors.dark200};
-  margin-top: 0.25rem;
+const StyledDescription = styled(Container)`
   font-size: 0.75rem;
+  margin: 0.25rem 0;
+  color: ${theme.colors.dark200};
+  width: 100%;
 `;
+
+export const Description = (props: any) => (
+  <StyledDescription>{props.children}</StyledDescription>
+);
 
 export const Input: React.FC<InputProps> = props => (
-  <Wrapper>
-    <Label htmlFor={props.name}>{props.name}</Label>
-    <InputGroup>
-      {props.type === "search" && <FontAwesomeIcon icon={faSearch} />}
-      <StyledInput type={props.type || "text"} id={props.name} {...props} />
-    </InputGroup>
-    <Note>{props.note}</Note>
-  </Wrapper>
+  <InputGroup>
+    {props.type === "search" && <FontAwesomeIcon icon={faSearch} />}
+    <StyledInput
+      as="input"
+      type={props.type || "text"}
+      id={props.name}
+      {...props}
+    />
+  </InputGroup>
 );
