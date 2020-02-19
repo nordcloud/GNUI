@@ -26,3 +26,15 @@ stories.add("operating systems", () => (
     <Icon width="24px" height="24px" image="LINUX"></Icon>
   </>
 ));
+
+stories.add("cloud services", () => (
+  <>
+    <Icon width="24px" height="24px" image="AWS_ASG"></Icon>
+    <Icon width="24px" height="24px" image="AWS_EC2"></Icon>
+    <Icon width="24px" height="24px" image="AWS_RDS"></Icon>
+    <Icon width="24px" height="24px" image="AZURE_VM"></Icon>
+    <Icon width="24px" height="24px" image="AZURE_VM_SCALE_SETS"></Icon>
+    <Icon width="24px" height="24px" image="AZURE_SQL_SERVER"></Icon>
+    <Icon width="24px" height="24px" image="AZURE_SQL_DATABASE"></Icon>
+  </>
+));
