@@ -11,7 +11,7 @@ interface IconProps {
   image: string;
   width: string;
   height: string;
-  inline: boolean;
+  inline?: boolean;
 }
 
 const StyledIcon = styled.div<IconProps>`
