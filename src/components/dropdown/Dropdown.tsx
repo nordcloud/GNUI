@@ -8,8 +8,8 @@ interface DropdownProps {
   children: string;
   isOpen: boolean;
   name?: string;
-  select?: string;
-  onClick: (e: React.MouseEvent) => void;
+  items?: any;
+  onClick: () => void;
 }
 
 const Wrapper = styled(Container)`
@@ -50,19 +50,10 @@ const DropdownButton = styled(Flex)`
   }
 `;
 
-const StyledItem = styled.li`
-  list-style: none;
-  padding: 0.5rem 0;
-  &:hover {
-    cursor: pointer;
-    background: ${theme.colors.light300};
-  }
-`;
-
-const DropdownMenu = styled(Flex)`
+const DropdownMenu = styled(Flex)<DropdownProps>`
   align-items: center;
   text-align: center;
-  display: ${isOpen ? "block" : "none"};
+  display: ${props => (props.isOpen ? "inline-block" : "none")};
   position: absolute;
   border: 0.0625rem solid ${theme.colors.light500};
   color: ${theme.colors.primary};
@@ -70,33 +61,25 @@ const DropdownMenu = styled(Flex)`
   border-radius: 0.25rem;
   background: ${theme.colors.light};
   z-index: 1;
+  & > li {
+    list-style: none;
+    padding: 0.5rem 0;
+    &:hover {
+      cursor: pointer;
+      background: ${theme.colors.light300};
+    }
+  }
 `;
 
-const DropdownItem = props => (
-  <StyledItem
-    onClick={e => {
-      e.preventDefault();
-      setIsSelect(props.name);
-    }}
-  >
-    {props.name}
-  </StyledItem>
-);
-
-export const Dropdown: React.FC<DropdownProps> = props => {
+export const Dropdown: React.FC<DropdownProps> = ({ name, items }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSelect, setIsSelect] = useState("");
 
   return (
     <Wrapper>
-      <DropdownButton
-        onClick={e => {
-          e.preventDefault();
-          setIsOpen(!isOpen);
-        }}
-      >
+      <DropdownButton onClick={() => setIsOpen(!isOpen)}>
         <span style={{ marginRight: "0.5rem" }}>
-          {props.name ? props.name : isSelect}
+          {isSelect ? isSelect : name}
         </span>
         <Icon
           width="0.75rem"
@@ -104,10 +87,17 @@ export const Dropdown: React.FC<DropdownProps> = props => {
           image={isOpen ? "ARROW_BOTTOM" : "ARROW_TOP"}
         />
       </DropdownButton>
-      <DropdownMenu isOpen={isOpen}>
-        <DropdownItem name="something">something</DropdownItem>
-        <DropdownItem name="something">something</DropdownItem>
-        <DropdownItem name="something">something</DropdownItem>
+      <DropdownMenu
+        isOpen={isOpen}
+        onClick={() => setIsOpen(!isOpen)}
+        onMouseLeave={() => setIsOpen(false)}
+      >
+        {items &&
+          items.map((item: string) => (
+            <li key={item} onClick={() => setIsSelect(item)}>
+              {item}
+            </li>
+          ))}
       </DropdownMenu>
     </Wrapper>
   );
