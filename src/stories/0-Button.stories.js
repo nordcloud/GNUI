@@ -22,6 +22,15 @@ stories
       Outline Button
     </Button>
   ))
+  .add("size", () => (
+    <Button
+      onClick={action("clicked")}
+      disabled={boolean("Disabled", false)}
+      size={select("Size", ["large", "regular", "small"], "regular")}
+    >
+      {title(select("Size", ["large", "regular", "small"], "regular"))} Button
+    </Button>
+  ))
   .add("color (actions)", () => {
     const colorOptions = [
       "accent",
