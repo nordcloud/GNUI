@@ -36,6 +36,17 @@ stories
       />
     );
   })
+  .add("search input", () => {
+    return (
+      <Input
+        name={text("Name", "Input name")}
+        type={select("Type", inputTypes, "text")}
+        placeholder={text("Placeholder", "Placeholder")}
+        disabled={boolean("Disabled", false)}
+        search
+      />
+    );
+  })
   .add("with label and description", () => {
     return (
       <>
