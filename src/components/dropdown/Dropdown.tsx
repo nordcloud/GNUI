@@ -12,20 +12,21 @@ interface DropdownProps {
   onClick: () => void;
 }
 
-const Wrapper = styled(Container)`
+const DropdownWrapper = styled(Container)`
   width: max-content;
   position: relative;
 `;
 
 const DropdownButton = styled(Flex)`
   align-items: center;
+  justify-content: space-between;
   background-color: transparent;
   border: 0.0625rem solid ${theme.colors.light500};
   color: ${theme.colors.primary};
   padding: 0.5rem 0.75rem;
   font-weight: ${theme.fontWeights.regular};
   border-radius: 0.25rem;
-  width: max-content;
+  min-width: 7rem;
   cursor: pointer;
   transition: ${theme.transition};
   &:hover {
@@ -50,10 +51,8 @@ const DropdownButton = styled(Flex)`
   }
 `;
 
-const DropdownMenu = styled(Flex)<DropdownProps>`
-  align-items: center;
+const DropdownMenu = styled(Container)`
   text-align: center;
-  display: ${props => (props.isOpen ? "inline-block" : "none")};
   position: absolute;
   border: 0.0625rem solid ${theme.colors.light500};
   color: ${theme.colors.primary};
@@ -61,44 +60,46 @@ const DropdownMenu = styled(Flex)<DropdownProps>`
   border-radius: 0.25rem;
   background: ${theme.colors.light};
   z-index: 1;
-  & > li {
-    list-style: none;
-    padding: 0.5rem 0;
-    &:hover {
-      cursor: pointer;
-      background: ${theme.colors.light300};
-    }
+`;
+
+const DropdownItem = styled.li`
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.5rem 0;
+  list-style: none;
+  &:hover {
+    cursor: pointer;
+    background: ${theme.colors.light300};
   }
 `;
 
 export const Dropdown: React.FC<DropdownProps> = ({ name, items }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isSelect, setIsSelect] = useState("");
+  const [value, setValue] = useState("");
 
   return (
-    <Wrapper>
+    <DropdownWrapper>
       <DropdownButton onClick={() => setIsOpen(!isOpen)}>
-        <span style={{ marginRight: "0.5rem" }}>
-          {isSelect ? isSelect : name}
-        </span>
+        <span style={{ marginRight: "0.5rem" }}>{value ? value : name}</span>
         <Icon
           width="0.75rem"
           height="0.75rem"
           image={isOpen ? "ARROW_BOTTOM" : "ARROW_TOP"}
         />
       </DropdownButton>
-      <DropdownMenu
-        isOpen={isOpen}
-        onClick={() => setIsOpen(!isOpen)}
-        onMouseLeave={() => setIsOpen(false)}
-      >
-        {items &&
-          items.map((item: string) => (
-            <li key={item} onClick={() => setIsSelect(item)}>
-              {item}
-            </li>
-          ))}
-      </DropdownMenu>
-    </Wrapper>
+      {isOpen && (
+        <DropdownMenu
+          onClick={() => setIsOpen(!isOpen)}
+          onMouseLeave={() => setIsOpen(false)}
+        >
+          {items &&
+            items.map((item: string) => (
+              <DropdownItem key={item} onClick={() => setValue(item)}>
+                {item}
+              </DropdownItem>
+            ))}
+        </DropdownMenu>
+      )}
+    </DropdownWrapper>
   );
 };
