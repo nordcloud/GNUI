@@ -75,8 +75,8 @@ const StyledInput = styled.input<InputProps>`
     cursor: not-allowed;
   }
 
-  ${({ search }) =>
-    search &&
+  ${({ type }) =>
+    type === "search" &&
     css`
       margin-left: 0.5rem;
     `}
@@ -95,12 +95,9 @@ export const Description = (props: any) => (
 
 export const Input: React.FC<InputProps> = props => (
   <InputGroup>
-    {props.search && <Icon image={"SEARCH"} width="24px" height="24px" />}
-    <StyledInput
-      as="input"
-      type={props.type || "text"}
-      id={props.name}
-      {...props}
-    />
+    {props.type === "search" && (
+      <Icon image="SEARCH" width="1.2rem" height="1.2rem" />
+    )}
+    <StyledInput type={props.type || "text"} id={props.name} {...props} />
   </InputGroup>
 );

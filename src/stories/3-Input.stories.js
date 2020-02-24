@@ -40,10 +40,9 @@ stories
     return (
       <Input
         name={text("Name", "Input name")}
-        type={select("Type", inputTypes, "text")}
+        type={select("Type", inputTypes, "search")}
         placeholder={text("Placeholder", "Placeholder")}
         disabled={boolean("Disabled", false)}
-        search
       />
     );
   })
