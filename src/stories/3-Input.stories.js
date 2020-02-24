@@ -40,10 +40,20 @@ stories
     return (
       <Input
         name={text("Name", "Input name")}
+        type={select("Type", inputTypes, "search")}
+        placeholder={text("Placeholder", "Placeholder")}
+        disabled={boolean("Disabled", false)}
+      />
+    );
+  })
+  .add("invalid input", () => {
+    return (
+      <Input
+        name={text("Name", "Input name")}
         type={select("Type", inputTypes, "text")}
         placeholder={text("Placeholder", "Placeholder")}
         disabled={boolean("Disabled", false)}
-        search
+        valid={boolean("Valid", false)}
       />
     );
   })

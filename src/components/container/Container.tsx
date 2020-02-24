@@ -1,14 +1,31 @@
-import styled from "styled-components";
+import React, { FunctionComponent } from "react";
+import styled, { css } from "styled-components";
 import theme from "../../theme";
 
-export const Container = styled.div`
+type ContainerProps = {
+  width?: string;
+  children?: string;
+  [propName: string]: string | any;
+};
+
+const StyledContainer = styled.div<ContainerProps>`
   box-sizing: border-box;
-  width: 100%;
-  font-family: ${theme.fontFamily.regular};
+  font-family: ${theme.fonts.body};
   font-weight: ${theme.fontWeights.regular};
-  font-size: 1rem;
-  line-height: 1.5rem;
+  font-size: ${theme.fontSizes.regular};
+  line-height: ${theme.lineHeight};
+  border-radius: ${theme.borderRadius};
+  ${({ width }) =>
+    width &&
+    css`
+      width: ${width || "100%"};
+    `}
 `;
+
+export const Container: FunctionComponent<ContainerProps> = ({
+  children,
+  ...props
+}) => <StyledContainer {...props}>{children}</StyledContainer>;
 
 export const Flex = styled(Container)`
   display: flex;

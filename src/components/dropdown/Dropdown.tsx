@@ -1,97 +1,134 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, { FunctionComponent, useState } from "react";
+import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { Icon } from "../icon";
 import { Container, Flex } from "../container";
+import { IconProps } from "../icon";
 
 interface DropdownProps {
-  children: string;
-  isOpen: boolean;
-  name?: string;
-  items?: any;
-  onClick: () => void;
+  name: string;
+  items: Array<string>;
+  isOpen?: boolean;
+  width?: string;
+  disabled?: boolean;
+  children?: React.ReactNode;
+  onClick: (e: React.MouseEvent) => void;
+  onMouseLeave: (e: React.MouseEvent) => void;
+  onChange: (e: React.MouseEvent) => void;
+}
+
+interface DropdownIconProps extends IconProps {
+  animate?: boolean;
 }
 
 const DropdownWrapper = styled(Container)`
-  width: max-content;
   position: relative;
 `;
 
 const DropdownButton = styled(Flex)`
   align-items: center;
   justify-content: space-between;
-  background-color: transparent;
-  border: 0.0625rem solid ${theme.colors.light500};
+  background: transparent;
+  border: 0.0625rem solid ${theme.colors.lights[4]};
   color: ${theme.colors.primary};
-  padding: 0.5rem 0.75rem;
-  font-weight: ${theme.fontWeights.regular};
-  border-radius: 0.25rem;
-  min-width: 7rem;
+  padding: 0.5rem;
   cursor: pointer;
   transition: ${theme.transition};
   &:hover {
-    background: ${theme.colors.light300};
-    border: 0.0625rem solid ${theme.colors.light500};
+    background: ${theme.colors.lights[1]};
+    border: 0.0625rem solid ${theme.colors.lights[4]};
     color: ${theme.colors.primary};
   }
   &:active {
-    background: ${theme.colors.light400};
-    border: 0.0625rem solid ${theme.colors.light500};
+    background: ${theme.colors.lights[2]};
+    border: 0.0625rem solid ${theme.colors.lights[4]};
     color: ${theme.colors.primary};
   }
-  &:disabled {
-    background: transparent;
-    border: 0.0625rem solid ${theme.colors.light500};
-    color: ${theme.colors.light500};
-    cursor: not-allowed;
-    &:hover {
+  ${({ disabled }) =>
+    disabled &&
+    css`
       background: transparent;
-      color: ${theme.colors.light500};
-    }
-  }
+      border: 0.0625rem solid ${theme.colors.lights[4]};
+      color: ${theme.colors.lights[4]};
+      cursor: not-allowed;
+      &:hover {
+        background: transparent;
+        color: ${theme.colors.lights[4]};
+      }
+    `}
+`;
+
+const DropdownIcon = styled(Icon)<DropdownIconProps>`
+  width: 0.75rem;
+  height: 0.75rem;
+  transition: ${theme.transition};
+  ${({ animate }) =>
+    animate &&
+    css`
+      transform: rotate(180deg);
+      transition: ${theme.transition};
+    `}
 `;
 
 const DropdownMenu = styled(Container)`
-  text-align: center;
+  text-align: left;
+  width: 100%;
+  box-sizing: border-box;
   position: absolute;
-  border: 0.0625rem solid ${theme.colors.light500};
+  border: 0.0625rem solid ${theme.colors.lights[4]};
   color: ${theme.colors.primary};
   font-weight: ${theme.fontWeights.regular};
-  border-radius: 0.25rem;
-  background: ${theme.colors.light};
+  border-radius: 0 0 ${theme.borderRadius} ${theme.borderRadius};
+  background: ${theme.colors.lights[0]};
   z-index: 1;
+  transition: ${theme.transition};
 `;
 
 const DropdownItem = styled.li`
-  width: 100%;
-  box-sizing: border-box;
-  padding: 0.5rem 0;
+  padding: 0.5rem 0 0.5rem 0.5rem;
   list-style: none;
+  transition: ${theme.transition};
   &:hover {
     cursor: pointer;
-    background: ${theme.colors.light300};
+    background: ${theme.colors.lights[3]};
+  }
+  &:first-of-type {
+    color: ${theme.colors.lights[2]};
+    background: ${theme.colors.darks[4]};
+    cursor: not-allowed;
   }
 `;
 
-export const Dropdown: React.FC<DropdownProps> = ({ name, items }) => {
+export const Dropdown: FunctionComponent<DropdownProps> = ({
+  name,
+  items,
+  disabled = false,
+  ...props
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [value, setValue] = useState("");
 
   return (
-    <DropdownWrapper>
-      <DropdownButton onClick={() => setIsOpen(!isOpen)}>
-        <span style={{ marginRight: "0.5rem" }}>{value ? value : name}</span>
-        <Icon
-          width="0.75rem"
-          height="0.75rem"
-          image={isOpen ? "ARROW_BOTTOM" : "ARROW_TOP"}
+    <DropdownWrapper {...props}>
+      <DropdownButton
+        onClick={() => !disabled && setIsOpen(!isOpen)}
+        disabled={disabled && disabled}
+      >
+        <span>{value || name}</span>
+        <DropdownIcon
+          width="1.2rem"
+          height="1.2rem"
+          image="ARROW_BOTTOM"
+          animate={isOpen && true}
         />
       </DropdownButton>
-      {isOpen && (
+      {isOpen && !disabled && (
         <DropdownMenu
           onClick={() => setIsOpen(!isOpen)}
           onMouseLeave={() => setIsOpen(false)}
+          onChange={() => console.log(isOpen)}
         >
+          <DropdownItem key="dropdown-title">{name}</DropdownItem>
           {items &&
             items.map((item: string) => (
               <DropdownItem key={item} onClick={() => setValue(item)}>

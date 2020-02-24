@@ -1,20 +1,26 @@
-interface Colors {
-  [propName: string]: string;
-}
+type Colors = {
+  darks: Array<string>;
+  lights: Array<string>;
+  [color: string]: string | any;
+};
 
-interface FontWeights {
-  [propName: string]: number;
-}
+type Typography = {
+  fontWeights: Array<number>;
+  fontSizes: Array<string>;
+  fonts: { [font: string]: string };
+  lineHeight: string;
+};
 
-interface FontFamily {
-  [propName: string]: string;
-}
+type Borders = { [key: string]: string | number | null };
+
+type Transition = string | { transition: string };
 
 export interface ThemeInterface {
   colors: Colors;
-  fontWeights: FontWeights;
-  fontFamily: FontFamily;
-  transition: string;
+  typography: Typography;
+  borders: Borders;
+  transition: Transition;
+  [aliases: string]: any;
 }
 
 const theme: ThemeInterface = {
@@ -26,32 +32,56 @@ const theme: ThemeInterface = {
     warning: "#f39c12",
     notification: "#3498db",
     dark: "#212129",
-    dark500: "#212129",
-    dark400: "#32323f",
-    dark300: "#444454",
-    dark200: "#5e5e75",
-    dark100: "#7a7a94",
-    light500: "#bbbbc9",
-    light400: "#d1d1da",
-    light300: "#e7e7eb",
-    light200: "#f1f1f4",
-    light100: "#fcfcfd",
-    light: "#fcfcfd"
+    light: "#fcfcfd",
+    actions: ["#FF2837", "#e74c3c", "#27ae60", "#f39c12", "#3498db"],
+    darks: ["#212129", "#32323f", "#444454", "#5e5e75", "#7a7a94"],
+    lights: ["#fcfcfd", "#f1f1f4", "#e7e7eb", "#d1d1da", "#bbbbc9"]
   },
 
-  fontWeights: {
-    regular: 400,
-    medium: 500,
-    bold: 600,
-    bolder: 700
+  typography: {
+    fontWeights: [200, 400, 500, 600, 700],
+    fontSizes: ["0.75rem", "1rem", "1.3rem", "1.5rem"],
+    fonts: {
+      body: "Roboto, sans-serif",
+      headers: "Montserrat, sans-serif",
+      monospace: "Fira Code, monospace"
+    },
+    lineHeight: "1.5rem"
   },
 
-  fontFamily: {
-    regular: "Roboto, sans-serif",
-    headers: "Montserrat, sans-serif"
+  borders: {
+    color: null,
+    width: "0.0625rem",
+    style: "solid",
+    radius: "0.25rem"
   },
 
-  transition: "all 0.1s linear"
+  transition: "all 0.2s linear"
 };
+
+/** ALIASES */
+theme.fontWeights = theme.typography.fontWeights;
+theme.fontSizes = theme.typography.fontSizes;
+theme.fonts = theme.typography.fonts;
+theme.lineHeight = theme.typography.lineHeight;
+
+/** Font-weight */
+theme.fontWeights.light = theme.fontWeights[0];
+theme.fontWeights.regular = theme.fontWeights[1];
+theme.fontWeights.medium = theme.fontWeights[2];
+theme.fontWeights.bold = theme.fontWeights[3];
+theme.fontWeights.bolder = theme.fontWeights[4];
+
+// Font-sizes
+theme.fontSizes.small = theme.fontSizes[0];
+theme.fontSizes.regular = theme.fontSizes[1];
+theme.fontSizes.big = theme.fontSizes[2];
+theme.fontSizes.heading = theme.fontSizes[3];
+
+// Borders
+theme.borders.color = theme.colors.lights[4];
+theme.borderColor = theme.borders.color;
+theme.borderStyle = theme.borders.style;
+theme.borderRadius = theme.borders.radius;
 
 export default theme;

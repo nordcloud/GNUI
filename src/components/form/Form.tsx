@@ -1,11 +1,7 @@
-import * as React from "react";
-import styled from "styled-components";
-import { Flex } from "../container";
+import React, { FunctionComponent } from "react";
+import { Container } from "../container";
+import { InputProps } from "../input";
 
-const StyledForm = styled(Flex)`
-  flex-wrap: wrap;
-`;
-
-export const Form: React.FC = props => (
-  <StyledForm {...props}>{props.children}</StyledForm>
+export const Form: FunctionComponent<InputProps> = ({ children }) => (
+  <Container>{children}</Container>
 );

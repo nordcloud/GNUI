@@ -1,67 +1,73 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { Container, Flex } from "../container";
 import { Icon } from "../icon";
 
-interface InputProps {
-  className: string;
+export interface InputProps {
   name: string;
-  type?: string;
-  note?: string;
+  type: string;
+  className?: string;
   placeholder?: string;
-  disabled?: boolean;
   value?: string;
-  search?: string;
-  onChange(e: any): void;
+  id?: string;
+  disabled?: boolean;
+  required?: boolean;
+  valid?: boolean;
+  children?: string | number | any;
+  onClick?: (e: React.MouseEvent) => void;
+  onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
 }
 
-const StyledLabel = styled(Container)`
-  width: 100%;
-  margin: 0.5rem 0;
-`;
-
-export const Label = (props: any) => (
-  <StyledLabel>
-    <label htmlFor={props.name} {...props}>
-      {props.name}
-    </label>
-  </StyledLabel>
+export const Label: FunctionComponent<{ name: string }> = ({
+  name = "Label"
+}) => (
+  <Flex style={{ margin: "0.5rem 0" }}>
+    <label htmlFor={name}>{name}</label>
+  </Flex>
 );
 
-const InputGroup = styled(Flex)`
+const InputGroup = styled(Flex)<InputProps>`
   align-items: center;
-  border: 0.0625rem solid ${theme.colors.light400};
+  border: 0.0625rem solid ${theme.colors.lights[3]};
   padding: 0.5rem 0.75rem;
-  border-radius: 0.25rem;
+  border-radius: ${theme.borderRadius};
   color: ${theme.colors.primary};
-  box-sizing: border-box;
-  background-color: ${theme.colors.light100};
+  background: ${theme.colors.lights[0]};
   transition: ${theme.transition};
   &:hover {
-    border: 0.0625rem solid ${theme.colors.light500};
+    border: 0.0625rem solid ${theme.colors.lights[4]};
   }
   &:focus {
     outline: 0;
-    border: 0.0625rem solid ${theme.colors.dark100};
+    border: 0.0625rem solid ${theme.colors.darks[0]};
   }
   &:disabled {
-    color: ${theme.colors.light500};
-    background-color: ${theme.colors.light};
-    border: 0.0625rem solid ${theme.colors.light400};
+    color: ${theme.colors.lights[4]};
+    background: ${theme.colors.lights[0]};
+    border: 0.0625rem solid ${theme.colors.lights[3]};
     cursor: not-allowed;
   }
+
+  ${({ valid }) =>
+    valid === false &&
+    css`
+      border: 0.0625rem solid ${theme.colors.danger};
+      &:hover {
+        border: 0.0625rem solid ${theme.colors.danger};
+      }
+    `}
 `;
 
-const StyledInput = styled.input<InputProps>`
+const StyledInput = styled.input`
   border: 0;
-  font-size: 1rem;
   width: 100%;
-  background-color: ${theme.colors.light100};
   box-sizing: border-box;
+  background: transparent;
+  font-size: ${theme.fontSizes.regular};
   transition: ${theme.transition};
-  &::placeholder {
-    color: ${theme.colors.dark100};
+  &:placeholder {
+    color: ${theme.colors.darks[4]};
   }
   &:hover,
   &:focus {
@@ -69,38 +75,38 @@ const StyledInput = styled.input<InputProps>`
     border: 0;
   }
   &:disabled {
-    color: ${theme.colors.light500};
-    background-color: ${theme.colors.light};
+    color: ${theme.colors.lights[4]};
+    background-color: ${theme.colors.lights[0]};
     border: 0;
     cursor: not-allowed;
   }
 
-  ${({ search }) =>
-    search &&
+  ${({ type }) =>
+    type === "search" &&
     css`
       margin-left: 0.5rem;
     `}
 `;
 
-const StyledDescription = styled(Container)`
-  font-size: 0.75rem;
-  margin: 0.25rem 0;
-  color: ${theme.colors.dark200};
-  width: 100%;
-`;
+export const Description: FunctionComponent = ({ children }) => {
+  const StyledDescription = styled(Container)`
+    font-size: ${theme.fontSizes.small};
+    color: ${theme.colors.darks[3]};
+    margin: 0.25rem 0;
+    width: 100%;
+  `;
+  return <StyledDescription>{children}</StyledDescription>;
+};
 
-export const Description = (props: any) => (
-  <StyledDescription>{props.children}</StyledDescription>
-);
-
-export const Input: React.FC<InputProps> = props => (
-  <InputGroup>
-    {props.search && <Icon image={"SEARCH"} width="24px" height="24px" />}
-    <StyledInput
-      as="input"
-      type={props.type || "text"}
-      id={props.name}
-      {...props}
-    />
+export const Input: FunctionComponent<InputProps> = ({
+  type = "text",
+  name,
+  ...props
+}) => (
+  <InputGroup {...props}>
+    {type === "search" && (
+      <Icon image="SEARCH" width="1.2rem" height="1.2rem" />
+    )}
+    <StyledInput type={type} id={name} {...props} />
   </InputGroup>
 );
