@@ -12,7 +12,7 @@ interface InputProps {
   placeholder?: string;
   disabled?: boolean;
   value?: string;
-  search?: string;
+  search?: boolean;
   onChange(e: any): void;
 }
 
