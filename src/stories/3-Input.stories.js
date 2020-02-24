@@ -46,17 +46,6 @@ stories
       />
     );
   })
-  .add("invalid input", () => {
-    return (
-      <Input
-        name={text("Name", "Input name")}
-        type={select("Type", inputTypes, "text")}
-        placeholder={text("Placeholder", "Placeholder")}
-        disabled={boolean("Disabled", false)}
-        valid={boolean("Valid", false)}
-      />
-    );
-  })
   .add("with label and description", () => {
     return (
       <>
