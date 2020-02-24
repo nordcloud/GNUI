@@ -181,6 +181,20 @@ const StyledButton = styled.button<ButtonProps>`
         }
       }
     `}
+
+  ${({ size }) =>
+    size === "large" &&
+    css`
+      padding: 0.75rem 1.25rem;
+    `}
+
+  ${({ size }) =>
+    size === "small" &&
+    css`
+      font-size: 0.75rem;
+      line-height: 0.9rem;
+      padding: 0.55rem 0.75rem;
+    `}
 `;
 
 export const Button: React.FC<ButtonProps> = props => {
