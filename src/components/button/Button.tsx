@@ -208,7 +208,7 @@ const StyledButton = styled.button<ButtonProps>`
 `;
 
 export const Button: FunctionComponent<ButtonProps> = ({
-  severity = "high",
+  severity,
   children,
   ...props
 }) => {
