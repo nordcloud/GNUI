@@ -31,8 +31,8 @@ const theme: ThemeInterface = {
     success: "#27ae60",
     warning: "#f39c12",
     notification: "#3498db",
-    dark: "#212129",
-    light: "#fcfcfd",
+    black: "#212129",
+    white: "#fcfcfd",
     actions: ["#FF2837", "#e74c3c", "#27ae60", "#f39c12", "#3498db"],
     darks: ["#212129", "#32323f", "#444454", "#5e5e75", "#7a7a94"],
     lights: ["#fcfcfd", "#f1f1f4", "#e7e7eb", "#d1d1da", "#bbbbc9"]
@@ -40,7 +40,7 @@ const theme: ThemeInterface = {
 
   typography: {
     fontWeights: [200, 400, 500, 600, 700],
-    fontSizes: ["0.75rem", "1rem", "1.3rem", "1.5rem"],
+    fontSizes: ["0.8rem", "1rem", "1.3rem", "1.5rem"],
     fonts: {
       body: "Roboto, sans-serif",
       headers: "Montserrat, sans-serif",

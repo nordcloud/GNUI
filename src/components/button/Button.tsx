@@ -26,7 +26,7 @@ const setColor = (color: string) => {
 const StyledButton = styled.button<ButtonProps>`
   background: ${theme.colors.primary};
   font-family: ${theme.fonts.body};
-  color: ${theme.colors.lights[0]};
+  color: ${theme.colors.white};
   border: 0.0625rem solid ${theme.colors.primary};
   font-weight: ${theme.fontWeights.regular};
   padding: 0.5rem 1rem;
@@ -58,25 +58,25 @@ const StyledButton = styled.button<ButtonProps>`
   ${({ color }) =>
     color &&
     css`
-      color: ${theme.colors.lights[0]};
+      color: ${theme.colors.white};
       background: ${setColor(color)};
       border: 0.0625rem solid ${setColor(color)};
       &:hover,
       &:active,
       &:disabled,
       &:disabled:hover {
-        color: ${theme.colors.lights[0]};
+        color: ${theme.colors.white};
       }
       &:hover {
-        border: 0.0625rem solid ${lighten(0.1, theme.colors[color] || color)};
+        border: 0.0625rem solid ${lighten(0.1, setColor(color))};
         background: ${lighten(0.1, theme.colors[color] || color)};
       }
       &:active {
-        border: 0.0625rem solid ${lighten(0.2, theme.colors[color] || color)};
+        border: 0.0625rem solid ${lighten(0.2, setColor(color))};
         background: ${lighten(0.2, theme.colors[color] || color)};
       }
       &:disabled {
-        border: 0.0625rem solid ${lighten(0.3, theme.colors[color] || color)};
+        border: 0.0625rem solid ${lighten(0.3, setColor(color))};
         background: ${lighten(0.3, theme.colors[color] || color)};
       }
     `}
