@@ -1,18 +1,21 @@
+import React, { FunctionComponent } from "react";
 import styled from "styled-components";
-import { Container } from "../container";
 import theme from "../../theme";
-import { darken } from "polished";
+import { Container } from "../container";
 
-export const Text = styled(Container)`
-  color: palevioletred;
-  transition: ${theme.transition};
-  line-height: ${theme.lineHeight};
-  &:hover {
-    color: ${darken(0.2, "palevioletred")};
-  }
+const StyledText = styled(Container)`
+  font-family: ${theme.fonts.body};
+  font-size: ${props => props.size || theme.fontSizes.regular};
 `;
 
-export const Code = styled(Text)`
-  /** Container? */
+const StyledCode = styled(StyledText)`
   font-family: ${theme.fonts.monospace};
 `;
+
+export const Text: FunctionComponent = ({ children, ...props }) => (
+  <StyledText {...props}>{children}</StyledText>
+);
+
+export const Code: FunctionComponent = ({ children, ...props }) => (
+  <StyledCode {...props}>{children}</StyledCode>
+);
