@@ -1,10 +1,11 @@
 import React, { FunctionComponent } from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import theme from "../../theme";
 
 type ContainerProps = {
   width?: string;
   children?: string;
+  margin?: string;
   [propName: string]: string | any;
 };
 
@@ -15,11 +16,7 @@ const StyledContainer = styled.div<ContainerProps>`
   font-size: ${theme.fontSizes.regular};
   line-height: ${theme.lineHeight};
   border-radius: ${theme.borderRadius};
-  ${({ width }) =>
-    width &&
-    css`
-      width: ${width || "100%"};
-    `}
+  width: ${props => props.width || "100%"};
 `;
 
 export const Container: FunctionComponent<ContainerProps> = ({
@@ -29,4 +26,5 @@ export const Container: FunctionComponent<ContainerProps> = ({
 
 export const Flex = styled(Container)`
   display: flex;
+  margin: ${props => props.margin};
 `;

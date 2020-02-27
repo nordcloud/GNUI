@@ -22,7 +22,7 @@ export interface InputProps {
 export const Label: FunctionComponent<{ name: string }> = ({
   name = "Label"
 }) => (
-  <Flex style={{ margin: "0.5rem 0" }}>
+  <Flex margin="0.5rem 0">
     <label htmlFor={name}>{name}</label>
   </Flex>
 );
@@ -33,18 +33,18 @@ const InputGroup = styled(Flex)<InputProps>`
   padding: 0.5rem 0.75rem;
   border-radius: ${theme.borderRadius};
   color: ${theme.colors.primary};
-  background: ${theme.colors.lights[0]};
+  background: ${theme.colors.white};
   transition: ${theme.transition};
   &:hover {
     border: 0.0625rem solid ${theme.colors.lights[4]};
   }
   &:focus {
     outline: 0;
-    border: 0.0625rem solid ${theme.colors.darks[0]};
+    border: 0.0625rem solid ${theme.colors.black};
   }
   &:disabled {
     color: ${theme.colors.lights[4]};
-    background: ${theme.colors.lights[0]};
+    background: ${theme.colors.white};
     border: 0.0625rem solid ${theme.colors.lights[3]};
     cursor: not-allowed;
   }
@@ -76,7 +76,7 @@ const StyledInput = styled.input`
   }
   &:disabled {
     color: ${theme.colors.lights[4]};
-    background-color: ${theme.colors.lights[0]};
+    background-color: ${theme.colors.white};
     border: 0;
     cursor: not-allowed;
   }
