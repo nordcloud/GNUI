@@ -25,6 +25,7 @@
     "reset": "^0.1.0",
     "styled": "^1.0.0",
     "styled-components": "^5.0.1",
+    "styled-css-grid": "^1.2.1",
     "styled-reset": "^4.1.0",
     "title": "^3.4.1",
     "typescript": "~3.7.2"
