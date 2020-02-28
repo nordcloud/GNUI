@@ -5,11 +5,11 @@ import { Dropdown } from "../components/dropdown";
 
 const stories = storiesOf("Components/Dropdown", module);
 stories.addDecorator(withKnobs).add("simple dropdown", () => {
-  const items = ["pink", "blue", "green", "...different"];
+  const options = ["Option 1", "Option 2", "Option 3", "Option 4"];
   return (
     <Dropdown
-      name={text("Name", "Pick your favorite color")}
-      items={items}
+      name={text("Name", "Select an option")}
+      options={options}
       width="15rem"
       disabled={boolean("Disabled", false)}
     />

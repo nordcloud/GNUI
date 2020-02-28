@@ -65,7 +65,7 @@ theme.fontSizes = theme.typography.fontSizes;
 theme.fonts = theme.typography.fonts;
 theme.lineHeight = theme.typography.lineHeight;
 
-/** Font-weight */
+/** Font-weights */
 theme.fontWeights.light = theme.fontWeights[0];
 theme.fontWeights.regular = theme.fontWeights[1];
 theme.fontWeights.medium = theme.fontWeights[2];

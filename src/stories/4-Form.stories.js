@@ -3,7 +3,7 @@ import { storiesOf } from "@storybook/react";
 import { Form } from "../components/form";
 import { Label, Input, Description } from "../components/input";
 
-const stories = storiesOf("Components/Form", module);
+const stories = storiesOf("Form/Form", module);
 stories.add("form", () => (
   <Form>
     <h1>Personal information</h1>

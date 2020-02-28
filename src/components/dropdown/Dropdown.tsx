@@ -7,14 +7,15 @@ import { IconProps } from "../icon";
 
 interface DropdownProps {
   name: string;
-  items: Array<string>;
-  isOpen?: boolean;
+  options: Array<string>;
   width?: string;
+  value?: string;
+  isOpen?: boolean;
   disabled?: boolean;
   children?: React.ReactNode;
   onClick: (e: React.MouseEvent) => void;
   onMouseLeave: (e: React.MouseEvent) => void;
-  onChange: (e: React.MouseEvent) => void;
+  onChange?: (e: React.ChangeEvent) => void;
 }
 
 interface DropdownIconProps extends IconProps {
@@ -59,8 +60,6 @@ const DropdownButton = styled(Flex)`
 `;
 
 const DropdownIcon = styled(Icon)<DropdownIconProps>`
-  width: 0.75rem;
-  height: 0.75rem;
   transition: ${theme.transition};
   ${({ animate }) =>
     animate &&
@@ -79,13 +78,19 @@ const DropdownMenu = styled(Container)`
   color: ${theme.colors.primary};
   font-weight: ${theme.fontWeights.regular};
   border-radius: 0 0 ${theme.borderRadius} ${theme.borderRadius};
-  background: ${theme.colors.lights[0]};
+  background: ${theme.colors.white};
   z-index: 1;
   transition: ${theme.transition};
 `;
 
-const DropdownItem = styled.li`
-  padding: 0.5rem 0 0.5rem 0.5rem;
+const DropdownItem = styled.option`
+  border: 0;
+  width: 100%;
+  box-sizing: border-box;
+  background: transparent;
+  font-size: ${theme.fontSizes.regular};
+  transition: ${theme.transition};
+  padding: 0.25rem 0 0.25rem 0.5rem;
   list-style: none;
   transition: ${theme.transition};
   &:hover {
@@ -100,24 +105,27 @@ const DropdownItem = styled.li`
 `;
 
 export const Dropdown: FunctionComponent<DropdownProps> = ({
+  value = "",
   name,
-  items,
+  options,
   disabled = false,
+  onChange,
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [value, setValue] = useState("");
+  const [selectedValue, setSelectedValue] = useState(value);
 
   return (
-    <DropdownWrapper {...props}>
+    <DropdownWrapper value={selectedValue} {...props}>
       <DropdownButton
+        name={name}
         onClick={() => !disabled && setIsOpen(!isOpen)}
         disabled={disabled && disabled}
       >
-        <span>{value || name}</span>
+        {selectedValue || name}
         <DropdownIcon
-          width="1.2rem"
-          height="1.2rem"
+          width="0.75rem"
+          height="0.75rem"
           image="ARROW_BOTTOM"
           animate={isOpen && true}
         />
@@ -126,13 +134,16 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
         <DropdownMenu
           onClick={() => setIsOpen(!isOpen)}
           onMouseLeave={() => setIsOpen(false)}
-          onChange={() => console.log(isOpen)}
         >
           <DropdownItem key="dropdown-title">{name}</DropdownItem>
-          {items &&
-            items.map((item: string) => (
-              <DropdownItem key={item} onClick={() => setValue(item)}>
-                {item}
+          {options &&
+            options.map((option: string) => (
+              <DropdownItem
+                value={option}
+                key={option}
+                onClick={() => setSelectedValue(option)}
+              >
+                {option}
               </DropdownItem>
             ))}
         </DropdownMenu>

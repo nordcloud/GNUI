@@ -37,7 +37,11 @@ stories
     return (
       <Flex>
         {colors.map(color => (
-          <Button color={color} disabled={boolean("Disabled", false)}>
+          <Button
+            key={color}
+            color={color}
+            disabled={boolean("Disabled", false)}
+          >
             {title(color)} Button
           </Button>
         ))}
