@@ -15,7 +15,7 @@ interface DropdownProps {
   children?: React.ReactNode;
   onClick: (e: React.MouseEvent) => void;
   onMouseLeave: (e: React.MouseEvent) => void;
-  onChange?: (e: React.ChangeEvent) => void;
+  onChange?: (e: any) => void;
 }
 
 interface DropdownIconProps extends IconProps {
@@ -83,7 +83,7 @@ const DropdownMenu = styled(Container)`
   transition: ${theme.transition};
 `;
 
-const DropdownItem = styled.option`
+const DropdownItem = styled.li`
   border: 0;
   width: 100%;
   box-sizing: border-box;
@@ -113,16 +113,19 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState(value);
 
   return (
-    <DropdownWrapper value={selectedValue} {...props}>
+    <DropdownWrapper
+      onMouseLeave={() => isOpen && setIsOpen(false)}
+      value={value}
+      {...props}
+    >
       <DropdownButton
         name={name}
         onClick={() => !disabled && setIsOpen(!isOpen)}
         disabled={disabled && disabled}
       >
-        {selectedValue || name}
+        {value || name}
         <DropdownIcon
           width="0.75rem"
           height="0.75rem"
@@ -131,17 +134,14 @@ export const Dropdown: FunctionComponent<DropdownProps> = ({
         />
       </DropdownButton>
       {isOpen && !disabled && (
-        <DropdownMenu
-          onClick={() => setIsOpen(!isOpen)}
-          onMouseLeave={() => setIsOpen(false)}
-        >
+        <DropdownMenu onClick={() => setIsOpen(!isOpen)}>
           <DropdownItem key="dropdown-title">{name}</DropdownItem>
           {options &&
             options.map((option: string) => (
               <DropdownItem
                 value={option}
                 key={option}
-                onClick={() => setSelectedValue(option)}
+                onClick={() => onChange && onChange(option)}
               >
                 {option}
               </DropdownItem>
