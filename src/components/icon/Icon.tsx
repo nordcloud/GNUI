@@ -7,7 +7,7 @@ const svgToMiniDataURI = require("mini-svg-data-uri");
 const getIcon = (icon: string) =>
   icons[icon] ? svgToMiniDataURI(icons[icon]) : "";
 
-interface IconProps {
+export interface IconProps {
   image: string;
   width: string;
   height: string;
