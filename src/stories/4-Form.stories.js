@@ -1,6 +1,11 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
-import { Form } from "../components/form";
+import {
+  Form,
+  FormButtons,
+  SubmitButton,
+  CancelButton
+} from "../components/form";
 import { Label, Input, Description } from "../components/input";
 
 const stories = storiesOf("Form/Form", module);
@@ -16,5 +21,19 @@ stories.add("form", () => (
     <Label name="Password" />
     <Input name="Password" type="password" placeholder="Password" />
     <Description>Lorem ipsum solor domet</Description>
+    <FormButtons>
+      <CancelButton
+        onClick={e => {
+          e.preventDefault();
+          window.history.back();
+        }}
+      />
+      <SubmitButton
+        onClick={e => {
+          e.preventDefault();
+          window.alert("Clicked!");
+        }}
+      />
+    </FormButtons>
   </Form>
 ));

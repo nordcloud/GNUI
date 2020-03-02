@@ -27,5 +27,6 @@ export const Container: FunctionComponent<ContainerProps> = ({
 export const Flex = styled(Container)`
   display: flex;
   align-items: ${props => props.alignItems || "center"};
+  justify-content: ${props => props.justifyContent || "flex-start"};
   margin: ${props => props.margin};
 `;
