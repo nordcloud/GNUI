@@ -75,7 +75,7 @@ export const Heading: FunctionComponent<HeadingProps> = ({
   level,
   ...props
 }) => (
-  <StyledHeading as={level ? `h${level}` : "h1"} level={level} {...props}>
+  <StyledHeading as={level ? `h${level}` : "h1"} level={level || 1} {...props}>
     {children}
   </StyledHeading>
 );

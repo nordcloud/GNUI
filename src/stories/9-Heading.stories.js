@@ -9,7 +9,7 @@ stories
   .add("simple", () => <Heading>This is heading.</Heading>)
   .add("level", () => (
     <Heading level={select("level", ["1", "2", "3", "4", "5", "6"], "2")}>
-      This is {select("level", ["1", "2", "3", "4", "5", "6"], "2")} heading.
+      This is h{select("level", ["1", "2", "3", "4", "5", "6"], "2")} heading.
     </Heading>
   ))
   .add("color", () => (
