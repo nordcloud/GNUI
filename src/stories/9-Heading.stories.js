@@ -7,9 +7,9 @@ const stories = storiesOf("Typography/Heading", module);
 stories
   .addDecorator(withKnobs)
   .add("simple", () => <Heading>This is heading.</Heading>)
-  .add("as", () => (
-    <Heading level={select("as", ["1", "2", "3", "4", "5", "6"], "2")}>
-      This is {select("as", ["1", "2", "3", "4", "5", "6"], "2")} heading.
+  .add("level", () => (
+    <Heading level={select("level", ["1", "2", "3", "4", "5", "6"], "2")}>
+      This is {select("level", ["1", "2", "3", "4", "5", "6"], "2")} heading.
     </Heading>
   ))
   .add("color", () => (
