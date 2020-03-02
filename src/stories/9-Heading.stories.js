@@ -8,8 +8,8 @@ stories
   .addDecorator(withKnobs)
   .add("simple", () => <Heading>This is heading.</Heading>)
   .add("as", () => (
-    <Heading as={select("as", ["h1", "h2", "h3", "h4", "h5", "h6"], "h2")}>
-      This is h2 heading.
+    <Heading level={select("as", ["1", "2", "3", "4", "5", "6"], "2")}>
+      This is {select("as", ["1", "2", "3", "4", "5", "6"], "2")} heading.
     </Heading>
   ))
   .add("color", () => (

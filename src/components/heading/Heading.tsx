@@ -3,52 +3,79 @@ import styled, { css } from "styled-components";
 import theme from "../../theme";
 
 interface HeadingProps {
+  level: number;
   color?: string;
-  as?: string;
+  as?: any;
 }
 
-const headingSizes: any = {
-  h1: "2.5rem",
-  h2: "2rem",
-  h3: "1.5rem",
-  h4: "1.25rem",
-  h5: "1rem",
-  h6: "0.8rem"
+type AttributesProps = { [name: number]: string | number };
+
+const headingSizes: AttributesProps = {
+  [1]: "2.5rem",
+  [2]: "2rem",
+  [3]: "1.5rem",
+  [4]: "1.25rem",
+  [5]: "1rem",
+  [6]: "0.8rem"
 };
 
-const headingsWeights: any = {
-  h1: theme.fontWeights.medium,
-  h2: theme.fontWeights.medium,
-  h3: theme.fontWeights.bold,
-  h4: theme.fontWeights.bold,
-  h5: theme.fontWeights.bold,
-  h6: theme.fontWeights.bold
+const headingsWeights: AttributesProps = {
+  [1]: theme.fontWeights.medium,
+  [2]: theme.fontWeights.medium,
+  [3]: theme.fontWeights.bold,
+  [4]: theme.fontWeights.bold,
+  [5]: theme.fontWeights.bold,
+  [6]: theme.fontWeights.bold
 };
 
-const changeAttrs = (size: string) => css`
-  font-size: ${headingSizes[size]};
-  font-weight: ${headingsWeights[size]};
-  line-height: ${size === "h1" || size === "h2" || size === "h3"
-    ? "1.2rem"
-    : "1.4rem"};
+const headingHeights: AttributesProps = {
+  [1]: "1.2rem",
+  [2]: "1.2rem",
+  [3]: "1.2rem",
+  [4]: "1.4rem",
+  [5]: "1.4rem",
+  [6]: "1.4rem"
+};
+
+const headingMargins: AttributesProps = {
+  [1]: "1.5rem 0",
+  [2]: "1.5rem 0",
+  [3]: "1.25rem 0",
+  [4]: "1rem 0",
+  [5]: "1rem 0",
+  [6]: "0.75rem 0"
+};
+
+const changeAttrs = (level: number) => css`
+  font-size: ${headingSizes[level]};
+  font-weight: ${headingsWeights[level]};
+  line-height: ${headingHeights[level]};
+  margin: ${headingMargins[level]};
 `;
 
 const StyledHeading = styled.h1<HeadingProps>`
+  color: ${theme.colors.primary};
   font-family: ${theme.fontFamily.headers};
-  font-weight: ${headingsWeights["h1"]};
-  font-size: ${headingSizes["h1"]};
+  font-weight: ${headingsWeights[1]};
+  font-size: ${headingSizes[1]};
   ${({ color }) =>
     color &&
     css`
       color: ${color};
     `}
-  ${({ as }) =>
-    as &&
+  ${({ level }) =>
+    level &&
     css`
-      ${changeAttrs(as)};
+      ${changeAttrs(level)};
     `}
 `;
 
-export const Heading: FunctionComponent = ({ children, ...props }) => (
-  <StyledHeading {...props}>{children}</StyledHeading>
+export const Heading: FunctionComponent<HeadingProps> = ({
+  children,
+  level,
+  ...props
+}) => (
+  <StyledHeading as={level ? `h${level}` : "h1"} level={level} {...props}>
+    {children}
+  </StyledHeading>
 );
