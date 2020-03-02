@@ -19,7 +19,7 @@ const headingSizes: AttributesProps = {
   [6]: "0.8rem"
 };
 
-const headingsWeights: AttributesProps = {
+const headingWeights: AttributesProps = {
   [1]: theme.fontWeights.medium,
   [2]: theme.fontWeights.medium,
   [3]: theme.fontWeights.bold,
@@ -48,15 +48,15 @@ const headingMargins: AttributesProps = {
 
 const changeAttrs = (level: number) => css`
   font-size: ${headingSizes[level]};
-  font-weight: ${headingsWeights[level]};
+  font-weight: ${headingWeights[level]};
   line-height: ${headingHeights[level]};
   margin: ${headingMargins[level]};
 `;
 
 const StyledHeading = styled.h1<HeadingProps>`
   color: ${theme.colors.primary};
-  font-family: ${theme.fontFamily.headers};
-  font-weight: ${headingsWeights[1]};
+  font-family: ${theme.fonts.headers};
+  font-weight: ${headingWeights[1]};
   font-size: ${headingSizes[1]};
   ${({ color }) =>
     color &&
