@@ -1,29 +1,66 @@
 import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
-import { Container } from "../container";
 
-const StyledText = styled(Container)`
+interface TextProps {
+  size?: string;
+  fontWeight?: string;
+  fontSize?: number;
+  color?: string;
+  small?: boolean;
+  caption?: boolean;
+}
+
+const changeWeight = (weight: string) => css`
+  font-weight: ${theme.fontWeights[weight]};
+`;
+
+const changeSize = (size: number) => css`
+  font-size: ${theme.fontSizes[size] ? theme.fontSizes[size] : "1rem"};
+`;
+
+const basicStyles = css<TextProps>`
   font-family: ${theme.fonts.body};
   line-height: ${theme.lineHeight};
   font-weight: ${theme.fontWeights.regular};
   font-size: ${props => props.size || theme.fontSizes.regular};
   color: ${props => props.color || theme.colors.primary};
-  margin: 0;
+`;
+
+const StyledText = styled.p<TextProps>`
+  ${basicStyles};
+  margin: 1rem 0;
+
   ${({ fontWeight }) =>
-    fontWeight === "bold" &&
+    fontWeight &&
     css`
-      font-weight: ${theme.fontWeights.bold};
+      ${changeWeight(fontWeight)}
     `}
-  ${({ fontWeight }) =>
-    fontWeight === "light" &&
+
+  ${({ fontSize }) =>
+    fontSize &&
     css`
-      font-weight: ${theme.fontWeights.light};
+      ${changeSize(fontSize)};
     `}
+
+  ${({ small }) =>
+    small &&
+    css`
+      margin: 0.5rem 0;
+      font-size: ${theme.fontSizes.small};
+    `}
+
+    ${({ caption }) =>
+      caption &&
+      css`
+        font-size: 0.875rem;
+      `}
 `;
 
 const StyledCode = styled.code`
+  ${basicStyles};
   font-family: ${theme.fonts.monospace};
+  font-size: inherit;
 `;
 
 export const Text: FunctionComponent = ({ children, ...props }) => (
