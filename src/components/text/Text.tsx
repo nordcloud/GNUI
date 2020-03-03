@@ -3,27 +3,24 @@ import styled, { css } from "styled-components";
 import theme from "../../theme";
 
 interface TextProps {
-  size?: string;
-  fontWeight?: string;
   fontSize?: number;
+  display?: string;
   color?: string;
+  bold?: boolean;
+  italic?: boolean;
   small?: boolean;
   caption?: boolean;
 }
 
-const changeWeight = (weight: string) => css`
-  font-weight: ${theme.fontWeights[weight]};
-`;
-
 const changeSize = (size: number) => css`
-  font-size: ${theme.fontSizes[size] ? theme.fontSizes[size] : "1rem"};
+  font-size: ${theme.fontSizes[size]};
 `;
 
 const basicStyles = css<TextProps>`
   font-family: ${theme.fonts.body};
   line-height: ${theme.lineHeight};
   font-weight: ${theme.fontWeights.regular};
-  font-size: ${props => props.size || theme.fontSizes.regular};
+  font-size: ${theme.fontSizes.regular};
   color: ${props => props.color || theme.colors.primary};
 `;
 
@@ -31,10 +28,10 @@ const StyledText = styled.p<TextProps>`
   ${basicStyles};
   margin: 1rem 0;
 
-  ${({ fontWeight }) =>
-    fontWeight &&
+  ${({ bold }) =>
+    bold &&
     css`
-      ${changeWeight(fontWeight)}
+      font-weight: ${theme.fontWeights.bold};
     `}
 
   ${({ fontSize }) =>
@@ -50,11 +47,23 @@ const StyledText = styled.p<TextProps>`
       font-size: ${theme.fontSizes.small};
     `}
 
-    ${({ caption }) =>
-      caption &&
-      css`
-        font-size: 0.875rem;
-      `}
+  ${({ caption }) =>
+    caption &&
+    css`
+      font-size: 0.875rem;
+    `}
+
+  ${({ italic }) =>
+    italic &&
+    css`
+      font-style: italic;
+    `}
+
+  ${({ display }) =>
+    display &&
+    css`
+      display: ${display};
+    `}
 `;
 
 const StyledCode = styled.code`

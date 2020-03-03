@@ -4,8 +4,7 @@ import { select, withKnobs } from "@storybook/addon-knobs";
 import { Text } from "../components/text";
 
 const stories = storiesOf("Typography/Text", module);
-const fontWeights = ["regular", "medium", "bold", "bolder"];
-const fontSizes = ["small", "regular", "big", "heading"];
+const fontSizes = ["small", "regular", "big", "large"];
 
 stories
   .addDecorator(withKnobs)
@@ -18,19 +17,10 @@ stories
       </Text>
     </Text>
   ))
-  .add("font weights", () => (
+  .add("bold", () => <Text bold>Bold text.</Text>)
+  .add("italic", () => <Text italic>Italic (cursive) text.</Text>)
+  .add("size", () => (
     <Text>
-      Font weights gets properties from theme: regular (400), medium (500), bold
-      (600), bolder (700).
-      <Text fontWeight={select("font weight", fontWeights, "bold")}>
-        Lorem ipsum.
-      </Text>
-    </Text>
-  ))
-  .add("font sizes", () => (
-    <Text>
-      Font sizes gets properties from theme: small (0.75rem), regular (1rem),
-      big (1.3rem), heading (1.5rem).
       <Text fontSize={select("font size", fontSizes, "regular")}>
         Lorem ipsum.
       </Text>

@@ -75,7 +75,7 @@ theme.fontWeights.bolder = theme.fontWeights[3];
 theme.fontSizes.small = theme.fontSizes[0];
 theme.fontSizes.regular = theme.fontSizes[1];
 theme.fontSizes.big = theme.fontSizes[2];
-theme.fontSizes.heading = theme.fontSizes[3];
+theme.fontSizes.large = theme.fontSizes[3];
 
 // Borders
 theme.borders.color = theme.colors.lights[4];
