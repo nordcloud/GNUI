@@ -23,7 +23,7 @@ const inputTypes = [
   "submit"
 ];
 
-const stories = storiesOf("Components/Form", module);
+const stories = storiesOf("Form/Input", module);
 stories
   .addDecorator(withKnobs)
   .add("simple input", () => {
@@ -40,7 +40,7 @@ stories
     return (
       <Input
         name={text("Name", "Input name")}
-        type={select("Type", inputTypes, "search")}
+        type="search"
         placeholder={text("Placeholder", "Placeholder")}
         disabled={boolean("Disabled", false)}
       />

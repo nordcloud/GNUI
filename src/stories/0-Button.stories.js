@@ -3,6 +3,7 @@ import { storiesOf } from "@storybook/react";
 import { text, boolean, select, withKnobs } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 import { Button } from "../components/button";
+import { Flex } from "../components/container";
 import title from "title";
 
 const stories = storiesOf("Components/Button", module);
@@ -32,21 +33,19 @@ stories
     </Button>
   ))
   .add("color (actions)", () => {
-    const colorOptions = [
-      "accent",
-      "danger",
-      "success",
-      "warning",
-      "notification"
-    ];
+    const colors = ["accent", "danger", "success", "warning", "notification"];
     return (
-      <Button
-        onClick={action("clicked")}
-        disabled={boolean("Disabled", false)}
-        color={select("Color", colorOptions, "danger")}
-      >
-        {title(select("Color", colorOptions, "danger"))} Button
-      </Button>
+      <Flex>
+        {colors.map(color => (
+          <Button
+            key={color}
+            color={color}
+            disabled={boolean("Disabled", false)}
+          >
+            {title(color)} Button
+          </Button>
+        ))}
+      </Flex>
     );
   })
   .add("color (HEX)", () => (
