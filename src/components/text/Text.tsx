@@ -6,6 +6,8 @@ interface TextProps {
   fontSize?: number;
   display?: string;
   color?: string;
+  tag?: string;
+  as?: any;
   bold?: boolean;
   italic?: boolean;
   small?: boolean;
@@ -72,8 +74,14 @@ const StyledCode = styled.code`
   font-size: inherit;
 `;
 
-export const Text: FunctionComponent = ({ children, ...props }) => (
-  <StyledText {...props}>{children}</StyledText>
+export const Text: FunctionComponent<TextProps> = ({
+  tag,
+  children,
+  ...props
+}) => (
+  <StyledText as={tag || "p"} tag={tag} {...props}>
+    {children}
+  </StyledText>
 );
 
 export const Code: FunctionComponent = ({ children, ...props }) => (

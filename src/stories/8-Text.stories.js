@@ -1,7 +1,7 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 import { select, withKnobs } from "@storybook/addon-knobs";
-import { Text } from "../components/text";
+import { Text, Code } from "../components/text";
 
 const stories = storiesOf("Typography/Text", module);
 const fontSizes = ["small", "regular", "big", "large"];
@@ -9,11 +9,13 @@ const fontSizes = ["small", "regular", "big", "large"];
 stories
   .addDecorator(withKnobs)
   .add("default", () => <Text>Default paragraph.</Text>)
-  .add("as", () => (
+  .add("tag", () => (
     <Text>
-      This is paragraph.{" "}
-      <Text as="span" color="palevioletred">
-        But this is colored span inside paragraph.
+      This is default paragraph, but thanks to <Code>tag</Code> prop which uses{" "}
+      <Code>as</Code> from styled-components under the hood you can define as
+      which tag it should be rendered.{" "}
+      <Text tag="span" color="palevioletred">
+        For example this is colored span inside paragraph.
       </Text>
     </Text>
   ))
