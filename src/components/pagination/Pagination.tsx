@@ -142,7 +142,7 @@ const StyledPaginationBox = styled.nav`
     cursor: pointer;
     &.current {
       background-color: ${theme.colors.primary};
-      color: ${theme.colors.light100};
+      color: ${theme.colors.white};
     }
   }
   .pagination {

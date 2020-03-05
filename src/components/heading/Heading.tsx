@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
+import PropTypes from "prop-types";
 
 interface HeadingProps {
   level: number;
@@ -49,7 +50,7 @@ const headingMargins: AttributesProps = {
 const changeAttrs = (level: number) => css`
   font-size: ${headingSizes[level]};
   font-weight: ${headingWeights[level]};
-  line-height: ${headingHeights[level]};
+  /* line-height: ${headingHeights[level]}; */
   margin: ${headingMargins[level]};
 `;
 
