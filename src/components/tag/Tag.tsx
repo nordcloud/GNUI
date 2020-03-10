@@ -9,13 +9,14 @@ interface TagProps {
   
   export const StyledTag = styled.div`
     display: inline-block;
-    text-transform: uppercase;
+    text-transform: capitalize;
     text-align: center;
     font-family: ${theme.typography.fonts.headers};
     font-size: 0.75rem;
-    padding: 0.75em;
+    line-height: 1.125rem;
+    padding: 0 0.75rem;
     margin: 0.25rem;
-    border-radius: 0.25rem;
+    border-radius: 1rem;
     color: ${theme.colors.lights[0]};
     background-color: ${theme.colors.lights[3]};
     &.success {
@@ -29,6 +30,9 @@ interface TagProps {
     }
     &.info {
       background-color: ${theme.colors.notification};
+    }
+    &.default {
+        background-color: ${theme.colors.primary};
     }
   `;
   

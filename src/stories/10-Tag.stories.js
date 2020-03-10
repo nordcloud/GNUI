@@ -11,5 +11,6 @@ stories.add("statuses", () => (
     <Tag className="danger" text="failed"/>
     <Tag className="info" text="starting"/>
     <Tag className="" text="no data"/>
+    <Tag className="default" text="default"/>
   </>
 ));
