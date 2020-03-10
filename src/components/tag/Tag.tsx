@@ -6,7 +6,9 @@ interface TagProps {
     color?: string;
     text?: string;
   }
-  
+  const changeTagColor = (color: string) => css`
+  background-color: ${theme.colors[color]};
+`
   export const StyledTag = styled.div`
     display: inline-block;
     text-transform: capitalize;
@@ -19,31 +21,13 @@ interface TagProps {
     border-radius: 1rem;
     color: ${theme.colors.lights[0]};
     background-color: ${theme.colors.lights[3]};
+
+    
     
     ${({ color }) =>
-    color === "success" &&
+    color &&
     css`
-      background-color: ${theme.colors.success};
-    `}
-    ${({ color }) =>
-    color === "warning" &&
-    css`
-      background-color: ${theme.colors.warning};
-    `}
-    ${({ color }) =>
-    color === "danger" &&
-    css`
-      background-color: ${theme.colors.danger};
-    `}
-    ${({ color }) =>
-    color === "info" &&
-    css`
-      background-color: ${theme.colors.notification};
-    `}
-    ${({ color }) =>
-    color === "default" &&
-    css`
-      background-color: ${theme.colors.primary};
+      ${changeTagColor(color)}
     `}
   `;
   

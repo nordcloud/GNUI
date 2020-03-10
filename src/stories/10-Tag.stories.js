@@ -9,8 +9,8 @@ stories.add("statuses", () => (
     <Tag color="success" text="success"/>
     <Tag color="warning" text="in progress"/>
     <Tag color="danger" text="failed"/>
-    <Tag color="info" text="starting"/>
-    <Tag color="default" text="default"/>
+    <Tag color="notification" text="starting"/>
+    <Tag color="primary" text="default"/>
     <Tag color="" text=""/>
   </>
 ));
