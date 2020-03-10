@@ -50,3 +50,4 @@ interface TagProps {
   export const Tag: React.FC<TagProps> = ({ color, text }) => {
     return <StyledTag color={color}>{text || "No data"}</StyledTag>;
   };
+  
