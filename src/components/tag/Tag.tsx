@@ -21,8 +21,6 @@ interface TagProps {
     border-radius: 1rem;
     color: ${theme.colors.lights[0]};
     background-color: ${theme.colors.lights[3]};
-
-    
     
     ${({ color }) =>
     color &&
