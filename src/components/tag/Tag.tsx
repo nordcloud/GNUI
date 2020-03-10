@@ -3,8 +3,8 @@ import styled from "styled-components";
 import theme from "../../theme";
 
 interface TagProps {
-    className: string;
-    text: string;
+    className?: string;
+    text?: string;
   }
   
   export const StyledTag = styled.div`
@@ -37,5 +37,5 @@ interface TagProps {
   `;
   
   export const Tag: React.FC<TagProps> = ({ className, text }) => {
-    return <StyledTag className={`tag ${className}`}>{text}</StyledTag>;
+    return <StyledTag className={`tag ${className}`}>{text || "No data"}</StyledTag>;
   };
