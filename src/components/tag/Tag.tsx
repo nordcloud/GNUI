@@ -1,9 +1,9 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import theme from "../../theme";
 
 interface TagProps {
-    className?: string;
+    color?: string;
     text?: string;
   }
   
@@ -19,23 +19,34 @@ interface TagProps {
     border-radius: 1rem;
     color: ${theme.colors.lights[0]};
     background-color: ${theme.colors.lights[3]};
-    &.success {
+    
+    ${({ color }) =>
+    color === "success" &&
+    css`
       background-color: ${theme.colors.success};
-    }
-    &.warning {
+    `}
+    ${({ color }) =>
+    color === "warning" &&
+    css`
       background-color: ${theme.colors.warning};
-    }
-    &.danger {
+    `}
+    ${({ color }) =>
+    color === "danger" &&
+    css`
       background-color: ${theme.colors.danger};
-    }
-    &.info {
+    `}
+    ${({ color }) =>
+    color === "info" &&
+    css`
       background-color: ${theme.colors.notification};
-    }
-    &.default {
-        background-color: ${theme.colors.primary};
-    }
+    `}
+    ${({ color }) =>
+    color === "default" &&
+    css`
+      background-color: ${theme.colors.primary};
+    `}
   `;
   
-  export const Tag: React.FC<TagProps> = ({ className, text }) => {
-    return <StyledTag className={`tag ${className}`}>{text || "No data"}</StyledTag>;
+  export const Tag: React.FC<TagProps> = ({ color, text }) => {
+    return <StyledTag color={color}>{text || "No data"}</StyledTag>;
   };

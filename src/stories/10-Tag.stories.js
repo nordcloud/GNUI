@@ -6,11 +6,11 @@ const stories = storiesOf("Components/Tag", module);
 
 stories.add("statuses", () => (
   <>
-    <Tag className="success" text="success"/>
-    <Tag className="warning" text="in progress"/>
-    <Tag className="danger" text="failed"/>
-    <Tag className="info" text="starting"/>
-    <Tag className="default" text="default"/>
-    <Tag className="" text=""/>
+    <Tag color="success" text="success"/>
+    <Tag color="warning" text="in progress"/>
+    <Tag color="danger" text="failed"/>
+    <Tag color="info" text="starting"/>
+    <Tag color="default" text="default"/>
+    <Tag color="" text=""/>
   </>
 ));
