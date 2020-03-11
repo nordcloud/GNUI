@@ -39,8 +39,8 @@ const theme: ThemeInterface = {
   },
 
   typography: {
-    fontWeights: [200, 400, 500, 600, 700],
-    fontSizes: ["0.8rem", "1rem", "1.3rem", "1.5rem"],
+    fontWeights: [400, 500, 600, 700],
+    fontSizes: ["0.75rem", "1rem", "1.3rem", "1.5rem"],
     fonts: {
       body: "Roboto, sans-serif",
       headers: "Montserrat, sans-serif",
@@ -66,17 +66,16 @@ theme.fonts = theme.typography.fonts;
 theme.lineHeight = theme.typography.lineHeight;
 
 /** Font-weights */
-theme.fontWeights.light = theme.fontWeights[0];
-theme.fontWeights.regular = theme.fontWeights[1];
-theme.fontWeights.medium = theme.fontWeights[2];
-theme.fontWeights.bold = theme.fontWeights[3];
-theme.fontWeights.bolder = theme.fontWeights[4];
+theme.fontWeights.regular = theme.fontWeights[0];
+theme.fontWeights.medium = theme.fontWeights[1];
+theme.fontWeights.bold = theme.fontWeights[2];
+theme.fontWeights.bolder = theme.fontWeights[3];
 
 // Font-sizes
 theme.fontSizes.small = theme.fontSizes[0];
 theme.fontSizes.regular = theme.fontSizes[1];
 theme.fontSizes.big = theme.fontSizes[2];
-theme.fontSizes.heading = theme.fontSizes[3];
+theme.fontSizes.large = theme.fontSizes[3];
 
 // Borders
 theme.borders.color = theme.colors.lights[4];
