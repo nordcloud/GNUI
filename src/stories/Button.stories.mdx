@@ -1,0 +1,88 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Button } from "../components/button";
+import { Container } from "../components/container";
+
+<Meta title="Components/Button" component={Button} />
+
+# Button
+
+> Primary button is default as well.
+
+<Preview>
+  <Story name="primary/default">
+    <Button>Primary button</Button>
+  </Story>
+</Preview>
+
+## Props
+
+- `outline`: `boolean` — _optional_
+- `size`: `string` — _optional_
+- `color`: `string` — _optional_
+- `severity`: `string` — _optional_
+- `disabled`: `boolean` — _optional_
+
+### outline
+
+> `outline`: `boolean`
+
+<Preview>
+  <Story name="outline/secondary">
+    <Button outline>Primary button</Button>
+  </Story>
+</Preview>
+
+### color
+
+> `color`: `string` — can be used in two ways: as an action colors build with `theme` (`accent`, `danger`, `success`, `warning`, `notification`) or just in HEX/named color formats according to [X11 Colors](https://en.wikipedia.org/wiki/X11_color_names)
+
+<Preview>
+  <Story name="color">
+    <Container>
+      <Button color="accent">Accent color</Button>
+      <Button color="danger">Danger color</Button>
+      <Button color="success">Success color</Button>
+      <Button color="warning">Warning color</Button>
+      <Button color="notification">Notification color</Button>
+      <Button color="#FF1493">HEX color</Button>
+    </Container>
+  </Story>
+</Preview>
+
+### severity
+
+> `severity`: `string` — [`high`, `medium`, `low`]
+
+<Preview>
+  <Story name="severity">
+    <Container>
+      <Button severity="high">High severity</Button>
+      <Button severity="medium">Medium severity</Button>
+      <Button severity="low">Low severity</Button>
+    </Container>
+  </Story>
+</Preview>
+
+### disabled
+
+> `disabled`: `boolean`
+
+<Preview>
+  <Story name="disabled">
+    <Container>
+      <Button disabled>Disabled button</Button>
+      <Button outline disabled>
+        Disabled button
+      </Button>
+      <Button severity="low" disabled>
+        Disabled button
+      </Button>
+      <Button color="warning" disabled>
+        Disabled button
+      </Button>
+      <Button color="#FF1493" disabled>
+        Disabled button
+      </Button>
+    </Container>
+  </Story>
+</Preview>

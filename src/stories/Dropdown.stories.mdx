@@ -1,0 +1,45 @@
+import { useState } from "react";
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Dropdown } from "../components/dropdown";
+import { Box } from "../components/box";
+import { Text } from "../components/text";
+
+<Meta title="Components/Dropdown" component={Dropdown} />
+
+# Dropdown
+
+> Please take a look at props to understand correctly how `Dropdown` actually works. It was build to specifically work with [React Hooks](https://reactjs.org/docs/hooks-intro.html).
+
+## Props
+
+- `name`: `string` — **required**
+- `options`: `Array<any>` — **required**
+- `width`: `string` — _optional_, default: `100%`
+- `value`: `string | number` — taken from Reacts `useState()`
+- `onChange`: `() => string | number` — taken from Reacts `useState()`
+
+<Preview>
+  <Story name="dropdown">
+    {() => {
+      const options = ["Option 1", "Option 2", "Option 3", "Option 4"];
+      const [value, setValue] = useState();
+      return (
+        <Box minHeight="15rem">
+          <Dropdown
+            name="Select an option"
+            options={options}
+            value={value}
+            width="15rem"
+            onChange={setValue}
+          />
+          <Text>
+            You choose:{" "}
+            <Text tag="span" bold>
+              {!value ? "nothing" : value}
+            </Text>
+          </Text>
+        </Box>
+      );
+    }}
+  </Story>
+</Preview>

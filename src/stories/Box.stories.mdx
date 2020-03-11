@@ -1,0 +1,37 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Box } from "../components/box";
+
+<Meta title="Components/Box" component={Box} />
+
+# Box
+
+<Preview>
+  <Story name="box">
+    <Box>Default box</Box>
+  </Story>
+</Preview>
+
+## Props
+
+- `dark`: `boolean` — _optional_
+- `minHeight`: `string` — _optional_
+
+### dark
+
+> This exists only to properly display `Snow` component and should be rewritten with `theme`.
+
+<Preview>
+  <Story name="dark">
+    <Box dark>Dark box</Box>
+  </Story>
+</Preview>
+
+### minHeight
+
+> In some cases you may need your `Box` to have defined minimum height.
+
+<Preview>
+  <Story name="minHeight">
+    <Box minHeight="15vh">Box with minHeight prop</Box>
+  </Story>
+</Preview>

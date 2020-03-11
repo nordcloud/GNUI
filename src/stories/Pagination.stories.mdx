@@ -1,0 +1,20 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { PaginationBox } from "../components/pagination";
+
+<Meta title="Components/Pagination" component={PaginationBox} />
+
+# Pagination
+
+## Props
+
+- `size`: `number` — **required**
+- `count`: `number` — **required**
+- `from`: `number` — **required**
+- `setPage`: `number` — **required**
+- `setSize`: `number` — **required**
+
+<Preview>
+  <Story name="default">
+    <PaginationBox count={50} from={0} size={20} setPage={0} setSize={20} />
+  </Story>
+</Preview>
