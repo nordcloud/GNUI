@@ -1,0 +1,94 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Text } from "../components/text";
+import { Container } from "../components/container";
+import title from "title";
+
+<Meta title="Typography/Text" component={Text} />
+
+# Text
+
+> Simple `Text` is styled `p` paragraph.
+
+<Preview>
+  <Story name="simple">
+    <Text>Default paragraph.</Text>
+  </Story>
+</Preview>
+
+## Props
+
+- `tag`: `string` — _optional_
+- `size`: `string` — _optional_
+- `bold`: `boolean` — _optional_
+- `italic`: `boolean` — _optional_
+- `small`: `boolean` — _optional_
+- `caption`: `boolean` — _optional_
+
+### tag
+
+> `tag`: `string` — `Text` can can be rendered as any other HTML tag instead of `p` (i.e. can be rendered as a `span`). Check this in your dev-tools (<kbd>CTRL</kbd> + <kbd>C</kbd> in Chrome). Uses `as` prop from `styled-components` under the hood.
+
+<Preview>
+  <Story name="tag">
+    <Container>
+      <Text tag="div">
+        This is div. <Text tag="span">This is span.</Text>
+      </Text>
+    </Container>
+  </Story>
+</Preview>
+
+### bold
+
+> `bold`: `boolean`
+
+<Preview>
+  <Story name="bold">
+    <Text bold>Lorem ipsum solor domet.</Text>
+  </Story>
+</Preview>
+
+### italic
+
+> `italic`: `boolean`
+
+<Preview>
+  <Story name="italic">
+    <Text italic>Lorem ipsum solor domet.</Text>
+  </Story>
+</Preview>
+
+### size
+
+> `size`: `string` — [`small`, `regular`, `big`, `large`]
+
+<Preview>
+  <Story name="size">
+    <Container>
+      <Text size="small">Small size</Text>
+      <Text size="regular">Regular size</Text>
+      <Text size="big">Big size</Text>
+      <Text size="large">Large size</Text>
+    </Container>
+  </Story>
+</Preview>
+
+### small
+
+> `small`: `boolean`
+
+<Preview>
+  <Story name="small">
+    <Text small>Lorem ipsum solor domet.</Text>
+  </Story>
+</Preview>
+
+### caption
+
+> `caption`: `boolean`
+
+<Preview>
+  <Story name="caption">
+    <Text caption>Lorem ipsum solor domet.</Text>
+  </Story>
+</Preview>

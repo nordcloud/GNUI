@@ -6,7 +6,6 @@ import "./global.css";
 addDecorator(
   withInfo({
     header: true,
-    inline: true,
     styles: {}
   })
 );

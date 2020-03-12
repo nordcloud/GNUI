@@ -1,0 +1,33 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Tag } from "../components/tag";
+import { Container } from "../components/container";
+
+<Meta title="Components/Tag" component={Tag} />
+
+# Tag
+
+<Preview>
+  <Story name="tag">
+    <Tag>Default tag</Tag>
+  </Story>
+</Preview>
+
+## Props
+
+- `color`: `string` – _optional_, default: `#d1d1da`
+- `text`: `string` — _optional_, default: `No data`
+
+> `color` props can be used in two ways: as an action colors build with `theme` (`accent`, `danger`, `success`, `warning`, `notification`, `primary`) or just in HEX/named color formats according to [X11 Colors](https://en.wikipedia.org/wiki/X11_color_names)
+
+<Preview>
+  <Story name="with props">
+    <Container>
+      <Tag color="success" text="success" />
+      <Tag color="warning" text="in progress" />
+      <Tag color="danger" text="failed" />
+      <Tag color="notification" text="starting" />
+      <Tag color="primary" text="primary" />
+      <Tag text="No data" />
+    </Container>
+  </Story>
+</Preview>

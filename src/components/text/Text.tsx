@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import theme from "../../theme";
 
 interface TextProps {
-  fontSize?: number;
+  size?: number;
   display?: string;
   color?: string;
   tag?: string;
@@ -34,10 +34,10 @@ const StyledText = styled.p<TextProps>`
     css`
       font-weight: ${theme.fontWeights.bold};
     `}
-  ${({ fontSize }) =>
-    fontSize &&
+  ${({ size }) =>
+    size &&
     css`
-      ${changeSize(fontSize)};
+      ${changeSize(size)};
     `}
   ${({ small }) =>
     small &&
