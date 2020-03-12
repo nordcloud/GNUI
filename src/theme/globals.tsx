@@ -9,7 +9,8 @@ export const SetGlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Fira+Code:400,500,700&display=swap');
   body {
      font-family: ${theme.fontFamily.regular};
-     background: ${theme.colors.lights[0]};
+     background: ${theme.colors.white};
+     color: ${theme.colors.primary};
      font-weight: ${theme.fontWeights.regular};
      letter-spacing: 0.1rem;
      line-height: 1.5rem;

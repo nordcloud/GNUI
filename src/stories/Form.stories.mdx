@@ -1,0 +1,44 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import {
+  Form,
+  FormButtons,
+  SubmitButton,
+  CancelButton
+} from "../components/form";
+import { Input, Label, Description } from "../components/input";
+import { Heading } from "../components/heading";
+
+<Meta title="Form/Form" component={Form} />
+
+# Form
+
+<Preview>
+  <Story name="form">
+    <Form>
+      <Heading level="3">Personal informations</Heading>
+      <Label name="Name" />
+      <Input name="Name" placeholder="Name" />
+      <Description>Enter your full name.</Description>
+      <Label name="Email" />
+      <Input name="Email" type="email" placeholder="json@example.com" />
+      <Description>Enter your email.</Description>
+      <Label name="Password" />
+      <Input name="Password" type="password" placeholder="Password" />
+      <Description>Enter your password.</Description>
+      <FormButtons>
+        <CancelButton
+          onClick={e => {
+            e.preventDefault();
+            window.history.back();
+          }}
+        />
+        <SubmitButton
+          onClick={e => {
+            e.preventDefault();
+            window.alert("Clicked!");
+          }}
+        />
+      </FormButtons>
+    </Form>
+  </Story>
+</Preview>
