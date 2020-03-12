@@ -56,7 +56,8 @@ const theme: ThemeInterface = {
     radius: "0.25rem"
   },
 
-  transition: "all 0.2s linear"
+  transition: "all 0.2s linear",
+  opacity: 0.7
 };
 
 /** ALIASES */
