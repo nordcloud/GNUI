@@ -5,7 +5,6 @@ import theme from "../../theme";
 interface BreadcrumbsList {
   label: string;
   uri: string;
-  current?: boolean
 }
 
 interface BreadcrumbsListProps {
