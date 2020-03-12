@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { Container } from "../container";
@@ -30,6 +30,6 @@ const StyledBox = styled(Container)<BoxProps>`
     `}
 `;
 
-export const Box = ({ children, ...props }) => (
+export const Box: FunctionComponent = ({ children, ...props }) => (
   <StyledBox {...props}>{children}</StyledBox>
 );
