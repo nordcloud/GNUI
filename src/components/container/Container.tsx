@@ -16,7 +16,7 @@ const StyledContainer = styled.div<ContainerProps>`
   font-size: ${theme.fontSizes.regular};
   line-height: ${theme.lineHeight};
   border-radius: ${theme.borderRadius};
-  width: ${props => props.width || "100%"};
+  max-width: ${props => props.width || "100%"};
 `;
 
 export const Container: FunctionComponent<ContainerProps> = ({

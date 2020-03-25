@@ -19,6 +19,7 @@ const changeSize = (size: number) => css`
 `;
 
 const basicStyles = css<TextProps>`
+  text-rendering: optimizeLegibility;
   font-family: ${theme.fonts.body};
   line-height: ${theme.lineHeight};
   font-weight: ${theme.fontWeights.regular};

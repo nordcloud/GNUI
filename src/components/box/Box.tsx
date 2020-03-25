@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { Container } from "../container";
@@ -7,6 +7,7 @@ import { lighten } from "polished";
 type BoxProps = {
   dark?: boolean;
   minHeight?: string;
+  minWidth?: string;
 };
 
 const StyledBox = styled(Container)<BoxProps>`
@@ -28,8 +29,13 @@ const StyledBox = styled(Container)<BoxProps>`
     css`
       min-height: ${minHeight};
     `}
+  ${({ minWidth }) =>
+    minWidth &&
+    css`
+      min-width: ${minWidth};
+    `}
 `;
 
-export const Box = ({ children, ...props }) => (
+export const Box: FunctionComponent = ({ children, ...props }) => (
   <StyledBox {...props}>{children}</StyledBox>
 );

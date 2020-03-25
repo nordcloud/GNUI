@@ -1,0 +1,101 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Grid, Row, Column } from "../components/grid";
+import { Text } from "../components/text";
+import theme from "../theme";
+
+<Meta title="Layout/Grid" component={Grid} />
+
+# Grid
+
+> Grid includes three components: `Grid`, `Row`, `Column`.
+
+<Preview>
+  <Story name="Grid">
+    {() => {
+      const numberedColumns = {
+        background: theme.colors.notification,
+        color: theme.colors.white,
+        padding: 5,
+        margin: "0.2rem",
+        borderRadius: 5,
+        justifyContent: "center"
+      };
+      const autoColumns = {
+        background: theme.colors.warning,
+        color: theme.colors.white,
+        padding: 5,
+        margin: "0.2rem",
+        borderRadius: 5,
+        justifyContent: "center"
+      };
+      return (
+        <Grid>
+          <Row>
+            <Column cols={3} style={numberedColumns}>
+              <Text small color={theme.colors.white}>
+                3/12
+              </Text>
+            </Column>
+            <Column cols={6} style={numberedColumns}>
+              <Text small color={theme.colors.white}>
+                6/12
+              </Text>
+            </Column>
+            <Column style={autoColumns}>
+              <Text small color={theme.colors.white}>
+                Auto-flex
+              </Text>
+            </Column>
+          </Row>
+          <Row>
+            <Column cols={10} order={1} style={numberedColumns}>
+              <Text small color={theme.colors.white}>
+                10/12
+              </Text>
+            </Column>
+            <Column style={autoColumns}>
+              <Text small color={theme.colors.white}>
+                Auto-flex
+              </Text>
+            </Column>
+          </Row>
+          <Row>
+            <Column cols={4} style={numberedColumns}>
+              <Text small color={theme.colors.white}>
+                4/12
+              </Text>
+            </Column>
+            <Column style={autoColumns}>
+              <Text small color={theme.colors.white}>
+                Auto-flex
+              </Text>
+            </Column>
+          </Row>
+          <Row>
+            <Column style={autoColumns}>
+              <Text small color={theme.colors.white}>
+                Auto-flex
+              </Text>
+            </Column>
+            <Column cols={4} style={numberedColumns}>
+              <Text small color={theme.colors.white}>
+                4/12
+              </Text>
+            </Column>
+            <Column style={autoColumns}>
+              <Text small color={theme.colors.white}>
+                Auto-flex
+              </Text>
+            </Column>
+          </Row>
+        </Grid>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Props for `Column`
+
+— `cols`: `number` - _optional_ (1-12)
+
+Columns without `cols` takes available space.

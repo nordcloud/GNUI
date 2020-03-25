@@ -58,6 +58,7 @@ const StyledHeading = styled.h1<HeadingProps>`
   font-family: ${theme.fonts.headers};
   font-weight: ${headingWeights[1]};
   font-size: ${headingSizes[1]};
+  text-rendering: optimizeLegibility;
   ${({ color }) =>
     color &&
     css`
@@ -67,7 +68,7 @@ const StyledHeading = styled.h1<HeadingProps>`
     level &&
     css`
       ${changeAttrs(level)};
-    `}
+    `};
 `;
 
 export const Heading: FunctionComponent<HeadingProps> = ({

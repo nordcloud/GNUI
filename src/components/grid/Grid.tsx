@@ -1,45 +1,117 @@
-import styled from "styled-components";
-import { Container } from "../container";
+import React, { FunctionComponent } from "react";
+import styled, { css } from "styled-components";
+import theme from "../../theme";
 
-interface GridProps {
-  className: string;
-  columns: string | number;
-  gap: string;
-  columnGap: string;
-  rowGap: string;
-  height: string;
-  minRowHeight: string;
-  flow: string;
-  rows: string | number;
-  areas: Array<string>;
-  justifyContent: string;
-  alignContent: string;
+interface FlexProps {
+  children?: any;
+  className?: string;
+  display?: "block" | "flex";
+  /****** Container Props ********/
+  flexDirection?: "row" | "column";
+  justifyContent?:
+    | "flex-start"
+    | "flex-end"
+    | "center"
+    | "space-between"
+    | "space-around"
+    | "initial"
+    | "inherit";
+  flexWrap?: "wrap" | "nowrap" | "wrap-reverse";
+  alignItems?:
+    | "stretch"
+    | "center"
+    | "flex-start"
+    | "flex-end"
+    | "baseline"
+    | "initial"
+    | "inherit";
+  alignContent?:
+    | "flex-start"
+    | "flex-end"
+    | "center"
+    | "space-between"
+    | "space-around"
+    | "initial"
+    | "inherit";
+  /****** Child Props ********/
+  flexGrow?: number;
+  flexShrink?: number;
+  flexBasis?: number;
+  flex?: string;
+  /****** Common Layout Props ********/
+  padding?: string;
+  margin?: string;
+  cols?: number;
+  height?: string;
+  maxWidth?: string;
+  maxHeight?: string;
+  span?: number;
+  order?: number;
 }
 
-const autoRows = ({ minRowHeight = "20px" }) => `minmax(${minRowHeight}, auto)`;
+const basicFlexStyles = (props: { color?: string }) => css`
+  color: ${props.color || theme.colors.primary};
+  letter-spacing: 0.0525rem;
+`;
 
-const frGetter = (value: number | string) =>
-  typeof value === "number" ? `repeat(${value}, 1fr)` : value;
+const StyledFlex = styled.div<FlexProps>`
+  ${basicFlexStyles};
+  ${props =>
+    props &&
+    css`
+      display: ${props.display || "flex"};
+      justify-content: ${props.justifyContent || "space-between"};
+      flex-direction: ${props.flexDirection || "row"};
+      flex-grow: ${props.flexGrow || 0};
+      flex-basis: ${props.flexBasis || "auto"};
+      flex-shrink: ${props.flexShrink || 1};
+      flex-wrap: ${props.flexWrap || "wrap"};
+      flex: ${props.flex || "0 1 auto"};
+      align-items: ${props.alignItems || "stretch"};
+      align-content: ${props.alignContent || "center"};
+      margin: ${props.margin || 0};
+      padding: ${props.padding || "0"};
+      width: ${props.cols || "100%"};
+      height: ${props.height || "auto"};
+      max-width: ${props.maxWidth || "none"};
+      order: ${props.order && props.order};
+    `}
+`;
 
-const gap = ({ gap = "8px" }) => gap;
+export const Grid: FunctionComponent = ({ children, ...props }) => (
+  <StyledFlex {...props}>{children}</StyledFlex>
+);
 
-const flow = ({ flow = "row" }) => flow;
+export const Row = styled(StyledFlex)`
+  ${({ flexGrow }) =>
+    flexGrow &&
+    css`
+      & > * {
+        flex-grow: ${flexGrow};
+      }
+    `}
+`;
 
-const formatAreas = (areas: Array<string>) =>
-  areas.map(area => `"${area}"`).join(" ");
+export const Column = styled(StyledFlex)`
+  @media (min-width: 768px) {
+    flex-grow: 1;
+    width: min-content;
+  }
+  @media (max-width: 768px) {
+    flex-basis: 100%;
+    width: 100%;
+  }
 
-export const Grid = styled(Container)<GridProps>`
-  display: grid;
-  height: ${({ height = "auto" }) => height};
-  grid-auto-flow: ${flow};
-  grid-auto-rows: ${autoRows};
-  ${({ rows }) => rows && `grid-template-rows: ${frGetter(rows)}`};
-  grid-template-columns: ${({ columns = 12 }) => frGetter(columns)};
-  grid-gap: ${gap};
-  ${({ columnGap }) => columnGap && `column-gap: ${columnGap}`};
-  ${({ rowGap }) => rowGap && `row-gap: ${rowGap}`};
-  ${({ areas }) => areas && `grid-template-areas: ${formatAreas(areas)}`};
-  ${({ justifyContent }) =>
-    justifyContent && `justify-content: ${justifyContent}`};
-  ${({ alignContent }) => alignContent && `align-content: ${alignContent}`};
+  ${({ cols }) =>
+    cols &&
+    css`
+      @media (max-width: 768px) {
+        flex-basis: 100%;
+        max-width: 100%;
+      }
+      @media (min-width: 768px) {
+        flex-basis: calc(8.3% * ${cols});
+        max-width: calc(8.3% * ${cols});
+      }
+    `};
 `;
