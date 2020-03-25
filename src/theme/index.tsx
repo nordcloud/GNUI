@@ -65,29 +65,6 @@ const theme: ThemeInterface = {
   },
 
   transition: "all 0.2s linear",
-
-  breakpoints: {
-    xs: {
-      media: 640,
-      gap: 0
-    },
-    x: {
-      media: 768,
-      gap: 0
-    },
-    md: {
-      media: 1024,
-      gap: 0
-    },
-    lg: {
-      media: 1200,
-      gap: 0
-    },
-    xl: {
-      media: 1600,
-      gap: 0
-    }
-  }
 };
 
 /** ALIASES */
