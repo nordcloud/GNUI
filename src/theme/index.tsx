@@ -42,7 +42,7 @@ const theme: ThemeInterface = {
     fontWeights: [400, 500, 600, 700],
     fontSizes: ["0.75rem", "1rem", "1.3rem", "1.5rem"],
     fonts: {
-      body: "Roboto, sans-serif",
+      body: "Rubik, sans-serif",
       headers: "Montserrat, sans-serif",
       monospace: "Fira Code, monospace"
     },
