@@ -15,19 +15,11 @@ type Borders = { [key: string]: string | number | null };
 
 type Transition = string | { transition: string };
 
-type Breakpoints = {
-  [bpName: string]: {
-    media: number;
-    gap: number;
-  };
-};
-
 export interface ThemeInterface {
   colors: Colors;
   typography: Typography;
   borders: Borders;
   transition: Transition;
-  breakpoints: Breakpoints;
   [aliases: string]: any;
 }
 
@@ -64,30 +56,7 @@ const theme: ThemeInterface = {
     radius: "0.25rem"
   },
 
-  transition: "all 0.2s linear",
-
-  breakpoints: {
-    xs: {
-      media: 640,
-      gap: 0
-    },
-    x: {
-      media: 768,
-      gap: 0
-    },
-    md: {
-      media: 1024,
-      gap: 0
-    },
-    lg: {
-      media: 1200,
-      gap: 0
-    },
-    xl: {
-      media: 1600,
-      gap: 0
-    }
-  }
+  transition: "all 0.2s linear"
 };
 
 /** ALIASES */
@@ -113,8 +82,5 @@ theme.borders.color = theme.colors.lights[4];
 theme.borderColor = theme.borders.color;
 theme.borderStyle = theme.borders.style;
 theme.borderRadius = theme.borders.radius;
-
-// Breakpoints
-theme.bp = theme.breakpoints;
 
 export default theme;

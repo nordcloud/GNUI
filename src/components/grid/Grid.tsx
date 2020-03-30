@@ -6,7 +6,6 @@ interface FlexProps {
   children?: any;
   className?: string;
   display?: "block" | "flex";
-  /****** Container Props ********/
   flexDirection?: "row" | "column";
   justifyContent?:
     | "flex-start"
@@ -33,12 +32,10 @@ interface FlexProps {
     | "space-around"
     | "initial"
     | "inherit";
-  /****** Child Props ********/
   flexGrow?: number;
   flexShrink?: number;
   flexBasis?: number;
   flex?: string;
-  /****** Common Layout Props ********/
   padding?: string;
   margin?: string;
   cols?: number;
