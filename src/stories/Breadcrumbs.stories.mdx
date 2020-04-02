@@ -1,0 +1,29 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Breadcrumbs } from "../components/breadcrumbs";
+
+<Meta title="Components/Breadcrumbs" component={Breadcrumbs} />
+
+# Breadcrumbs
+
+## Props
+
+- `list`: `Array<BreadcrumbsList>;` - **required**
+
+### list
+
+Element of the array consists of two properties:
+
+- `label`: `string` - **required**
+- `uri`: `string` - **required**
+
+<Preview>
+  <Story name="default">
+    <Breadcrumbs
+      list={[
+        { label: "Home", uri: `#` },
+        { label: "Hosts", uri: `#` },
+        { label: "Host Details", uri: `#` }
+      ]}
+    />
+  </Story>
+</Preview>
