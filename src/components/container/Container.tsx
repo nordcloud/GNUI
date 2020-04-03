@@ -14,7 +14,6 @@ const StyledContainer = styled.div<ContainerProps>`
   font-family: ${theme.fonts.body};
   font-weight: ${theme.fontWeights.regular};
   font-size: ${theme.fontSizes.regular};
-  line-height: ${theme.lineHeight};
   border-radius: ${theme.borderRadius};
   width: ${props => props.width || "100%"};
 `;
