@@ -14,78 +14,50 @@ import theme from "../theme";
     {() => {
       const numberedColumns = {
         background: theme.colors.notification,
-        color: theme.colors.white,
-        padding: 5,
-        margin: "0.2rem",
-        borderRadius: 5,
-        justifyContent: "center"
+        textAlign: "center"
       };
       const autoColumns = {
         background: theme.colors.warning,
-        color: theme.colors.white,
-        padding: 5,
-        margin: "0.2rem",
-        borderRadius: 5,
-        justifyContent: "center"
+        textAlign: "center"
       };
       return (
         <Grid>
           <Row>
-            <Column cols={3} style={numberedColumns}>
-              <Text small color={theme.colors.white}>
-                3/12
-              </Text>
+            <Column size={3} style={numberedColumns}>
+              <Text>3/12</Text>
             </Column>
-            <Column cols={6} style={numberedColumns}>
-              <Text small color={theme.colors.white}>
-                6/12
-              </Text>
+            <Column size={6} style={numberedColumns}>
+              <Text>6/12</Text>
             </Column>
             <Column style={autoColumns}>
-              <Text small color={theme.colors.white}>
-                Auto-flex
-              </Text>
+              <Text>Auto-flex</Text>
             </Column>
           </Row>
           <Row>
-            <Column cols={10} order={1} style={numberedColumns}>
-              <Text small color={theme.colors.white}>
-                10/12
-              </Text>
+            <Column size={10} order={1} style={numberedColumns}>
+              <Text>10/12</Text>
             </Column>
             <Column style={autoColumns}>
-              <Text small color={theme.colors.white}>
-                Auto-flex
-              </Text>
+              <Text>Auto-flex</Text>
             </Column>
           </Row>
           <Row>
-            <Column cols={4} style={numberedColumns}>
-              <Text small color={theme.colors.white}>
-                4/12
-              </Text>
+            <Column size={4} style={numberedColumns}>
+              <Text>4/12</Text>
             </Column>
             <Column style={autoColumns}>
-              <Text small color={theme.colors.white}>
-                Auto-flex
-              </Text>
+              <Text>Auto-flex</Text>
             </Column>
           </Row>
           <Row>
             <Column style={autoColumns}>
-              <Text small color={theme.colors.white}>
-                Auto-flex
-              </Text>
+              <Text>Auto-flex</Text>
             </Column>
-            <Column cols={4} style={numberedColumns}>
-              <Text small color={theme.colors.white}>
-                4/12
-              </Text>
+            <Column size={4} style={numberedColumns}>
+              <Text>4/12</Text>
             </Column>
             <Column style={autoColumns}>
-              <Text small color={theme.colors.white}>
-                Auto-flex
-              </Text>
+              <Text>Auto-flex</Text>
             </Column>
           </Row>
         </Grid>
@@ -96,6 +68,82 @@ import theme from "../theme";
 
 ## Props for `Column`
 
-— `cols`: `number` - _optional_ (1-12)
+— `size`: `number` - _optional_ (1-12)
 
-Columns without `cols` takes available space.
+### With gaps
+
+<Preview>
+  <Story name="with margins">
+    {() => {
+      const withMargins = {
+        background: theme.colors.notification,
+        color: theme.colors.white,
+        textAlign: "center",
+        borderRadius: theme.borderRadius,
+      };
+      return (
+        <Grid>
+          <Row>
+            <Column size={{sm: 8}} style={withMargins}>
+              <Text>Always 8/12</Text>
+            </Column>
+            <Column style={withMargins}>
+              <Text>Auto</Text>
+            </Column>
+          </Row>
+          <Row>
+            <Column size={{lg: 2, md: 8}} style={withMargins}>
+              <Text>md: 8, lg: 2</Text>
+            </Column>
+            <Column size={4} style={withMargins}>
+              <Text>4</Text>
+            </Column>
+            <Column size={{lg: 6, md: 12}} style={withMargins}>
+              <Text>md: 12, lg: 6</Text>
+            </Column>
+          </Row>
+          <Row>
+            <Column size={{lg: 1, md: 3, sm: 6}} style={withMargins}>
+              <Text>Col</Text>
+            </Column>
+            <Column size={{lg: 1, md: 3, sm: 6}} style={withMargins}>
+              <Text>Col</Text>
+            </Column>
+            <Column size={{lg: 1, md: 3, sm: 6}} style={withMargins}>
+              <Text>Col</Text>
+            </Column>
+            <Column size={{lg: 1, md: 3, sm: 6}} style={withMargins}>
+              <Text>Col</Text>
+            </Column>
+            <Column size={{lg: 1, md: 3, sm: 6}} style={withMargins}>
+              <Text>Col</Text>
+            </Column>
+            <Column size={{lg: 1, md: 3, sm: 6}} style={withMargins}>
+              <Text>Col</Text>
+            </Column>
+            <Column size={{lg: 1, md: 3, sm: 6}} style={withMargins}>
+              <Text>Col</Text>
+            </Column>
+            <Column size={{lg: 1, md: 3, sm: 6}} style={withMargins}>
+              <Text>Col</Text>
+            </Column>
+            <Column size={{lg: 1, md: 3, sm: 6}} style={withMargins}>
+              <Text>Col</Text>
+            </Column>
+            <Column size={{lg: 1, md: 3, sm: 6}} style={withMargins}>
+              <Text>Col</Text>
+            </Column>
+            <Column size={{lg: 1, md: 3, sm: 6}} style={withMargins}>
+              <Text>Col</Text>
+            </Column>
+            <Column size={{lg: 1, md: 3, sm: 6}} style={withMargins}>
+              <Text>Col</Text>
+            </Column>
+          </Row>
+        </Grid>
+      );
+    }}
+  </Story>
+</Preview>
+
+Columns without `size` takes available space.

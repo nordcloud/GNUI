@@ -1,6 +1,12 @@
 import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
+import { createBreakpoint, createMap } from "styled-components-breakpoint";
 import theme from "../../theme";
+
+const { breakpoints } = theme;
+
+const bp = createBreakpoint(breakpoints);
+const map = createMap(breakpoints);
 
 interface FlexProps {
   children?: any;
@@ -34,16 +40,8 @@ interface FlexProps {
     | "inherit";
   flexGrow?: number;
   flexShrink?: number;
-  flexBasis?: number;
+  flexBasis?: number | string;
   flex?: string;
-  padding?: string;
-  margin?: string;
-  cols?: number;
-  height?: string;
-  maxWidth?: string;
-  maxHeight?: string;
-  span?: number;
-  order?: number;
 }
 
 const basicFlexStyles = (props: { color?: string }) => css`
@@ -51,7 +49,7 @@ const basicFlexStyles = (props: { color?: string }) => css`
   letter-spacing: 0.0525rem;
 `;
 
-const StyledFlex = styled.div<FlexProps>`
+const FlexItem = styled.div<FlexProps>`
   ${basicFlexStyles};
   ${props =>
     props &&
@@ -66,49 +64,33 @@ const StyledFlex = styled.div<FlexProps>`
       flex: ${props.flex || "0 1 auto"};
       align-items: ${props.alignItems || "stretch"};
       align-content: ${props.alignContent || "center"};
-      margin: ${props.margin || 0};
-      padding: ${props.padding || "0"};
-      width: ${props.cols || "100%"};
-      height: ${props.height || "auto"};
-      max-width: ${props.maxWidth || "none"};
-      order: ${props.order && props.order};
     `}
 `;
 
 export const Grid: FunctionComponent = ({ children, ...props }) => (
-  <StyledFlex {...props}>{children}</StyledFlex>
+  <FlexItem {...props}>{children}</FlexItem>
 );
 
-export const Row = styled(StyledFlex)`
-  ${({ flexGrow }) =>
-    flexGrow &&
-    css`
-      & > * {
-        flex-grow: ${flexGrow};
-      }
-    `}
+export const Row = styled(FlexItem)<{ cols: number }>`
+  flex-basis: 100%;
 `;
 
-export const Column = styled(StyledFlex)`
-  @media (min-width: 768px) {
-    flex-grow: 1;
-    width: min-content;
-  }
-  @media (max-width: 768px) {
-    flex-basis: 100%;
-    width: 100%;
-  }
+const flexBasisQuery = (size: number): any =>
+  map(
+    size,
+    val =>
+      `flex-basis: calc(8.3% * ${val} - 0.2rem); max-width: calc(8.3% * ${val} - 0.2rem)`
+  );
 
-  ${({ cols }) =>
-    cols &&
+export const Column = styled.div<{ size: number; order: number }>`
+  margin: 0.1rem;
+  flex-grow: 1;
+
+  ${({ size }) => flexBasisQuery(size)};
+
+  ${({ order }) =>
+    order &&
     css`
-      @media (max-width: 768px) {
-        flex-basis: 100%;
-        max-width: 100%;
-      }
-      @media (min-width: 768px) {
-        flex-basis: calc(8.3% * ${cols});
-        max-width: calc(8.3% * ${cols});
-      }
-    `};
+      order: ${order};
+    `}
 `;

@@ -15,11 +15,16 @@ type Borders = { [key: string]: string | number | null };
 
 type Transition = string | { transition: string };
 
+type Breakpoints = {
+  [bp: string]: number;
+};
+
 export interface ThemeInterface {
   colors: Colors;
   typography: Typography;
   borders: Borders;
   transition: Transition;
+  breakpoints: Breakpoints;
   [aliases: string]: any;
 }
 
@@ -56,7 +61,14 @@ const theme: ThemeInterface = {
     radius: "0.25rem"
   },
 
-  transition: "all 0.2s linear"
+  transition: "all 0.2s linear",
+
+  breakpoints: {
+    sm: 0,
+    md: 750,
+    lg: 1000,
+    xl: 1200
+  }
 };
 
 /** ALIASES */
