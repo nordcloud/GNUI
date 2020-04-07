@@ -1,6 +1,6 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Grid, Row, Column } from "../components/grid";
-import { Text } from "../components/text";
+import { Text, Code } from "../components/text";
 import theme from "../theme";
 
 <Meta title="Layout/Grid" component={Grid} />
@@ -10,15 +10,17 @@ import theme from "../theme";
 > Grid includes three components: `Grid`, `Row`, `Column`.
 
 <Preview>
-  <Story name="Grid">
+  <Story name="basic flexbox">
     {() => {
       const numberedColumns = {
         background: theme.colors.notification,
-        textAlign: "center"
+        textAlign: "center",
+        borderRadius: theme.borderRadius,
       };
       const autoColumns = {
         background: theme.colors.warning,
-        textAlign: "center"
+        textAlign: "center",
+        borderRadius: theme.borderRadius,
       };
       return (
         <Grid>
@@ -26,19 +28,19 @@ import theme from "../theme";
             <Column size={3} style={numberedColumns}>
               <Text>3/12</Text>
             </Column>
-            <Column size={6} style={numberedColumns}>
-              <Text>6/12</Text>
+            <Column size={5} style={numberedColumns}>
+              <Text>5/12</Text>
             </Column>
             <Column style={autoColumns}>
-              <Text>Auto-flex</Text>
+              <Text>auto</Text>
             </Column>
           </Row>
           <Row>
-            <Column size={10} order={1} style={numberedColumns}>
-              <Text>10/12</Text>
-            </Column>
             <Column style={autoColumns}>
-              <Text>Auto-flex</Text>
+              <Text>auto</Text>
+            </Column>
+            <Column size={7} style={numberedColumns}>
+              <Text>7/12</Text>
             </Column>
           </Row>
           <Row>
@@ -46,18 +48,21 @@ import theme from "../theme";
               <Text>4/12</Text>
             </Column>
             <Column style={autoColumns}>
-              <Text>Auto-flex</Text>
+              <Text>auto</Text>
+            </Column>
+            <Column size={2} style={numberedColumns}>
+              <Text>2/12</Text>
             </Column>
           </Row>
           <Row>
             <Column style={autoColumns}>
-              <Text>Auto-flex</Text>
+              <Text>auto</Text>
             </Column>
             <Column size={4} style={numberedColumns}>
               <Text>4/12</Text>
             </Column>
             <Column style={autoColumns}>
-              <Text>Auto-flex</Text>
+              <Text>auto</Text>
             </Column>
           </Row>
         </Grid>
@@ -73,71 +78,102 @@ import theme from "../theme";
 ### With gaps
 
 <Preview>
-  <Story name="with margins">
+  <Story name="with object">
     {() => {
       const withMargins = {
         background: theme.colors.notification,
-        color: theme.colors.white,
         textAlign: "center",
         borderRadius: theme.borderRadius,
       };
       return (
-        <Grid>
+        <Grid color={theme.colors.white}>
           <Row>
-            <Column size={{sm: 8}} style={withMargins}>
-              <Text>Always 8/12</Text>
+            <Column size={{ md: 7, lg: 8 }} style={withMargins}>
+              <Text>md: 7, lg: 8</Text>
             </Column>
-            <Column style={withMargins}>
-              <Text>Auto</Text>
+            <Column size={{ md: 5, lg: 4 }} style={withMargins}>
+              <Text>md: 5, lg: 4</Text>
+            </Column>
+          </Row>
+          <Row m={'sm'}>
+            <Column size={{ sm: 3, md: 3, lg: 2 }} style={withMargins}>
+              <Text>3 / 3 / 4</Text>
+            </Column>
+            <Column size={{ sm: 3, md: 3, lg: 4 }} style={withMargins}>
+              <Text>3 / 3 / 4</Text>
+            </Column>
+            <Column size={6} style={withMargins}>
+              <Text>6</Text>
+            </Column>
+          </Row>
+          <Row m={'sm'}>
+            <Column size={{ md: 4, lg: 6 }} style={withMargins}>
+              <Text>md: 4, lg: 6</Text>
+            </Column>
+            <Column size={{ md: 8, lg: 6 }} style={withMargins}>
+              <Text>md: 8, lg: 6</Text>
+            </Column>
+          </Row>
+          <Row m={'md'}>
+            <Column size={{ md: 4, lg: 6 }} style={withMargins}>
+              <Text>md: 4, lg: 6</Text>
+            </Column>
+            <Column size={{ md: 8, lg: 6 }} style={withMargins}>
+              <Text>md: 8, lg: 6</Text>
+            </Column>
+          </Row>
+          <Row m={'lg'}>
+            <Column size={{ md: 4, lg: 6 }} style={withMargins}>
+              <Text>md: 4, lg: 6</Text>
+            </Column>
+            <Column size={{ md: 8, lg: 6 }} style={withMargins}>
+              <Text>md: 8, lg: 6</Text>
+            </Column>
+          </Row>
+          <Row m={'xl'}>
+            <Column size={{ md: 4, lg: 6 }} style={withMargins}>
+              <Text>md: 4, lg: 6</Text>
+            </Column>
+            <Column size={{ md: 8, lg: 6 }} style={withMargins}>
+              <Text>md: 8, lg: 6</Text>
             </Column>
           </Row>
           <Row>
-            <Column size={{lg: 2, md: 8}} style={withMargins}>
-              <Text>md: 8, lg: 2</Text>
+            <Column size={{ sm: 3, md: 2, lg: 1 }} style={withMargins}>
+              <Text>col</Text>
             </Column>
-            <Column size={4} style={withMargins}>
-              <Text>4</Text>
+            <Column size={{ sm: 3, md: 2, lg: 1 }} style={withMargins}>
+              <Text>col</Text>
             </Column>
-            <Column size={{lg: 6, md: 12}} style={withMargins}>
-              <Text>md: 12, lg: 6</Text>
+            <Column size={{ sm: 3, md: 2, lg: 1 }} style={withMargins}>
+              <Text>col</Text>
             </Column>
-          </Row>
-          <Row>
-            <Column size={{lg: 1, md: 3, sm: 6}} style={withMargins}>
-              <Text>Col</Text>
+            <Column size={{ sm: 3, md: 2, lg: 1 }} style={withMargins}>
+              <Text>col</Text>
             </Column>
-            <Column size={{lg: 1, md: 3, sm: 6}} style={withMargins}>
-              <Text>Col</Text>
+            <Column size={{ sm: 3, md: 2, lg: 1 }} style={withMargins}>
+              <Text>col</Text>
             </Column>
-            <Column size={{lg: 1, md: 3, sm: 6}} style={withMargins}>
-              <Text>Col</Text>
+            <Column size={{ sm: 3, md: 2, lg: 1 }} style={withMargins}>
+              <Text>col</Text>
             </Column>
-            <Column size={{lg: 1, md: 3, sm: 6}} style={withMargins}>
-              <Text>Col</Text>
+            <Column size={{ sm: 3, md: 2, lg: 1 }} style={withMargins}>
+              <Text>col</Text>
             </Column>
-            <Column size={{lg: 1, md: 3, sm: 6}} style={withMargins}>
-              <Text>Col</Text>
+            <Column size={{ sm: 3, md: 2, lg: 1 }} style={withMargins}>
+              <Text>col</Text>
             </Column>
-            <Column size={{lg: 1, md: 3, sm: 6}} style={withMargins}>
-              <Text>Col</Text>
+            <Column size={{ sm: 3, md: 2, lg: 1 }} style={withMargins}>
+              <Text>col</Text>
             </Column>
-            <Column size={{lg: 1, md: 3, sm: 6}} style={withMargins}>
-              <Text>Col</Text>
+            <Column size={{ sm: 3, md: 2, lg: 1 }} style={withMargins}>
+              <Text>col</Text>
             </Column>
-            <Column size={{lg: 1, md: 3, sm: 6}} style={withMargins}>
-              <Text>Col</Text>
+            <Column size={{ sm: 3, md: 2, lg: 1 }} style={withMargins}>
+              <Text>col</Text>
             </Column>
-            <Column size={{lg: 1, md: 3, sm: 6}} style={withMargins}>
-              <Text>Col</Text>
-            </Column>
-            <Column size={{lg: 1, md: 3, sm: 6}} style={withMargins}>
-              <Text>Col</Text>
-            </Column>
-            <Column size={{lg: 1, md: 3, sm: 6}} style={withMargins}>
-              <Text>Col</Text>
-            </Column>
-            <Column size={{lg: 1, md: 3, sm: 6}} style={withMargins}>
-              <Text>Col</Text>
+            <Column size={{ sm: 3, md: 2, lg: 1 }} style={withMargins}>
+              <Text>col</Text>
             </Column>
           </Row>
         </Grid>
