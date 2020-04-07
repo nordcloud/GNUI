@@ -1,3 +1,5 @@
+import { createBreakpoint, createMap } from "styled-components-breakpoint";
+
 type Colors = {
   darks: Array<string>;
   lights: Array<string>;
@@ -19,12 +21,19 @@ type Breakpoints = {
   [bp: string]: number;
 };
 
+type Gutter = number;
+
+type Spacings = Array<{ [name: string]: number }>;
+
 export interface ThemeInterface {
   colors: Colors;
   typography: Typography;
   borders: Borders;
   transition: Transition;
   breakpoints: Breakpoints;
+  margin: Gutter;
+  padding: Gutter;
+  spacings: Spacings;
   [aliases: string]: any;
 }
 
@@ -40,7 +49,7 @@ const theme: ThemeInterface = {
     white: "#fcfcfd",
     actions: ["#FF2837", "#e74c3c", "#27ae60", "#f39c12", "#3498db"],
     darks: ["#212129", "#32323f", "#444454", "#5e5e75", "#7a7a94"],
-    lights: ["#fcfcfd", "#f1f1f4", "#e7e7eb", "#d1d1da", "#bbbbc9"]
+    lights: ["#fcfcfd", "#f1f1f4", "#e7e7eb", "#d1d1da", "#bbbbc9"],
   },
 
   typography: {
@@ -49,26 +58,31 @@ const theme: ThemeInterface = {
     fonts: {
       body: "Rubik, sans-serif",
       headers: "Montserrat, sans-serif",
-      monospace: "Fira Code, monospace"
+      monospace: "Fira Code, monospace",
     },
-    lineHeight: "1.5rem"
+    lineHeight: "1.5rem",
   },
 
   borders: {
     color: null,
     width: "0.0625rem",
     style: "solid",
-    radius: "0.25rem"
+    radius: "0.25rem",
   },
 
   transition: "all 0.2s linear",
 
   breakpoints: {
-    sm: 0,
-    md: 750,
-    lg: 1000,
-    xl: 1200
-  }
+    xs: 0,
+    sm: 576,
+    md: 768,
+    lg: 992,
+    xl: 1200,
+  },
+
+  defaultMargin: 0.25,
+  defaultPadding: 0.25,
+  spacings: [{ xs: 0 }, { sm: 0.25 }, { md: 0.75 }, { lg: 1.5 }, { xl: 2.5 }],
 };
 
 /** ALIASES */
@@ -94,5 +108,9 @@ theme.borders.color = theme.colors.lights[4];
 theme.borderColor = theme.borders.color;
 theme.borderStyle = theme.borders.style;
 theme.borderRadius = theme.borders.radius;
+
+export const { breakpoints, defaultMargin, defaultPadding, spacings } = theme;
+export const bp = createBreakpoint(breakpoints);
+export const map = createMap(breakpoints);
 
 export default theme;
