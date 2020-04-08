@@ -47,7 +47,7 @@ const Fill = styled.div`
   transform: translate(-50%, -50%);
   transition: width 0.2s ease-in, height 0.2s ease-in;
   pointer-events: none;
-  z-index: 1;
+  z-index: ${theme.zindex.masked};
 
   &::before {
     content: "";
@@ -64,7 +64,7 @@ const Fill = styled.div`
 
 const RadioInput = styled.input`
   opacity: 0;
-  z-index: 2;
+  z-index: ${theme.zindex.sticky};
   position: absolute;
   top: 0;
   left:0;
@@ -107,7 +107,7 @@ const RadioContainer = styled.div`
     top: 0;
     box-sizing: border-box;
     pointer-events: none;
-    z-index: 0;
+    z-index: ${theme.zindex.zero};
   }
 `;
 
