@@ -6,8 +6,8 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
     "@fortawesome/free-solid-svg-icons": "^5.12.1",
     "@fortawesome/react-fontawesome": "^0.1.8",
-    "@storybook/addon-info": "^5.3.14",
-    "@storybook/addon-knobs": "^5.3.14",
+    "@storybook/addon-info": "5.3.18",
+    "@storybook/addon-knobs": "5.3.18",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -25,6 +25,7 @@
     "react-scripts": "3.3.1",
     "react-snowstorm": "^0.0.3",
     "reset": "^0.1.0",
+    "storybook": "5.3.18",
     "styled": "^1.0.0",
     "styled-components": "^5.0.1",
     "styled-reset": "^4.1.0",
@@ -55,11 +56,12 @@
     ]
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^5.3.14",
-    "@storybook/addon-docs": "^5.3.14",
-    "@storybook/addon-links": "^5.3.14",
-    "@storybook/addons": "^5.3.14",
+    "@storybook/addon-actions": "^5.3.18",
+    "@storybook/addon-docs": "^5.3.18",
+    "@storybook/addon-links": "^5.3.18",
+    "@storybook/addons": "^5.3.18",
     "@storybook/preset-create-react-app": "^2.0.0",
-    "@storybook/react": "^5.3.14"
+    "@storybook/react": "^5.3.18",
+    "prettier": "2.0.2"
   }
 }

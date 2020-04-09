@@ -1,0 +1,91 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Table } from "../components/table";
+
+<Meta title="Components/Table" component={Table} />
+
+# Table
+
+#### Props
+
+- `name`: `string` — _optional_
+- `headings`: `array` — **required** - array of strings, table headings
+- `rows`: `array` — **required** - array of arrays of strings, table rows
+- `striped`: `boolean` — _optional_ - table rows will be striped
+- `hoverline`: `boolean` — _optional_ - table rows will be highlighted on hover
+- `small`: `boolean` — _optional_ - table rows will have smaller paddings
+
+### Simple Table
+
+<Preview>
+  <Story name="simple">
+    {() => {
+      const headings = ["Name", "Position", "Office", "Age", "Start Date", "Salary"];
+      const rows = [
+        ['Tiger Nixon', 'System Architect', 'Edinburgh', '40', '2011/04/25', '$1320,000'], 
+        ['Garrett Winters', 'Accountant', 'Tokyo', '42', '2011/04/25', '$320,000'],
+        ['Ashton Cox', 'Junior Technical Author', 'San Francisco', '32', '2011/03/25', '$120,000'],
+        ['Cedric Kelly', 'Senior Javascript Developer', 'Edinburgh', '26', '2011/04/28', '$520,000']
+        ];
+      return (
+        <Table headings={headings} rows={rows} />
+        );
+    }}
+  </Story>
+</Preview>
+
+### Striped Table
+
+<Preview>
+  <Story name="striped">
+    {() => {
+      const headings = ["Name", "Position", "Office", "Age", "Start Date", "Salary"];
+      const rows = [
+        ['Tiger Nixon', 'System Architect', 'Edinburgh', '40', '2011/04/25', '$1320,000'], 
+        ['Garrett Winters', 'Accountant', 'Tokyo', '42', '2011/04/25', '$320,000'],
+        ['Ashton Cox', 'Junior Technical Author', 'San Francisco', '32', '2011/03/25', '$120,000'],
+        ['Cedric Kelly', 'Senior Javascript Developer', 'Edinburgh', '26', '2011/04/28', '$520,000']
+        ];
+      return (
+        <Table headings={headings} rows={rows} striped />
+        );
+    }}
+  </Story>
+</Preview>
+
+### Table with Hovered Rows
+
+<Preview>
+  <Story name="hover">
+    {() => {
+      const headings = ["Name", "Position", "Office", "Age", "Start Date", "Salary"];
+      const rows = [
+        ['Tiger Nixon', 'System Architect', 'Edinburgh', '40', '2011/04/25', '$1320,000'], 
+        ['Garrett Winters', 'Accountant', 'Tokyo', '42', '2011/04/25', '$320,000'],
+        ['Ashton Cox', 'Junior Technical Author', 'San Francisco', '32', '2011/03/25', '$120,000'],
+        ['Cedric Kelly', 'Senior Javascript Developer', 'Edinburgh', '26', '2011/04/28', '$520,000']
+        ];
+      return (
+        <Table headings={headings} rows={rows} hoverline />
+        );
+    }}
+  </Story>
+</Preview>
+
+### Small Table
+
+<Preview>
+  <Story name="small">
+    {() => {
+      const headings = ["Name", "Position", "Office", "Age", "Start Date", "Salary"];
+      const rows = [
+        ['Tiger Nixon', 'System Architect', 'Edinburgh', '40', '2011/04/25', '$1320,000'], 
+        ['Garrett Winters', 'Accountant', 'Tokyo', '42', '2011/04/25', '$320,000'],
+        ['Ashton Cox', 'Junior Technical Author', 'San Francisco', '32', '2011/03/25', '$120,000'],
+        ['Cedric Kelly', 'Senior Javascript Developer', 'Edinburgh', '26', '2011/04/28', '$520,000']
+        ];
+      return (
+        <Table headings={headings} rows={rows} small />
+        );
+    }}
+  </Story>
+</Preview>

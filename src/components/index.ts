@@ -9,3 +9,6 @@ export * from "./dropdown";
 export * from "./pagination";
 export * from "./tag";
 export * from "./breadcrumbs";
+export * from "./table";
+export * from "./radiobutton";
+export * from './checkbox';
