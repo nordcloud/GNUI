@@ -5,8 +5,8 @@ import { Container, Flex } from "../container";
 
 export interface CheckboxProps {
   name: string;
-  type: string;
-  labelText: string;
+  type?: string;
+  labelText?: string;
   className?: string;
   value?: string;
   id?: string;

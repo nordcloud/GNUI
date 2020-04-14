@@ -1,6 +1,8 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import styled from "styled-components";
 import theme from "../../theme";
+import { Checkbox } from "../checkbox";
+import { Button } from "../button";
 
 export interface CellProps {
     id?: string;
@@ -14,12 +16,17 @@ export interface CellProps {
 export interface HeadingRowProps {
     name?: string;
     headings: Array<string>;
+    isCheckable?:boolean;
     children?: React.ReactNode;
 }
 
 export interface RowProps {
+    id: number;
     name?: string;
     row: Array<string>;
+    isCheckable?:boolean;
+    isSelected?:boolean;
+    handleTableCheckbox?: (row:any, event: React.FormEvent<HTMLInputElement>) => void;
     children?: React.ReactNode;
 }
 
@@ -27,6 +34,8 @@ export interface TableProps {
     name?: string;
     headings: Array<string>;
     rows: Array<Array<string>>;
+    checkboxes?:boolean;
+    getSelectedRows?:(rows:any) => void;
     children?: React.ReactNode;
 }
 
@@ -79,26 +88,41 @@ export const Cell: FunctionComponent<CellProps> = ({
 }
 
 export const HeadingRow: FunctionComponent<HeadingRowProps> = ({ 
-    headings
+    headings,
+    isCheckable,
+    children
 }) => (
     <tr>
-        {
-            headings && headings.map((heading : string) => (
-                <Cell key={heading} header={true}>{heading}</Cell>
-            ))
-        }
+        <React.Fragment>
+            {isCheckable && <Cell header>{children}</Cell>}
+            {
+                headings && headings.map((heading : string) => (
+                    <Cell key={heading} header>{heading}</Cell>
+                ))
+            }
+        </React.Fragment>
     </tr>
 );
 
 export const Row: FunctionComponent<RowProps> = ({ 
-    row
+    id,
+    row,
+    isCheckable,
+    handleTableCheckbox,
+    isSelected
 }) => (
-    <tr>
-        {
-            row && row.map((tablerow) => (
-                <Cell key={tablerow}>{tablerow}</Cell>
-            ))
-        }
+    <tr key={id}>
+        <React.Fragment>
+            {isCheckable && 
+            <Cell>
+                <Checkbox name={" "} checked={isSelected} onChange={handleTableCheckbox ? (e) => handleTableCheckbox({row, id}, e.target.checked) : undefined}/>
+            </Cell>}
+            {
+                row && row.map((tablerow) => (
+                    <Cell key={tablerow}>{tablerow}</Cell>
+                ))
+            }
+        </React.Fragment>
     </tr>
 );
 
@@ -106,20 +130,47 @@ export const Table: FunctionComponent<TableProps> = ({
     name,
     headings,
     rows,
+    getSelectedRows,
+    checkboxes,
     ...props
 }) => {
+    interface SelectedRow {
+        id: number;
+        row: any;
+    };
+
+    const [selectedRows, setSelectedRows] = useState<SelectedRow | []>([]);
+    const handleTableCheckbox = (selectedRow: SelectedRow, checked: boolean) => {
+        const newSelectedRows = [...selectedRows, selectedRow];
+        if (checked) {
+            setSelectedRows(newSelectedRows);
+        } else {
+            newSelectedRows.splice(selectedRow.id);
+            setSelectedRows(newSelectedRows);
+        }
+        console.log(newSelectedRows);
+    };
+     
     return(
-        <TableWrapper {...props}>
-            <table className={name}>
-                <thead><HeadingRow headings={headings}/></thead>
-                <tbody>
-                    {
-                        rows && rows.map((row) => (
-                            <Row row={row}/>
-                        ))
-                    }
-                </tbody>
-            </table>
-        </TableWrapper>
+        <React.Fragment>
+            <TableWrapper {...props}>
+                <table className={name}>
+                    <thead><HeadingRow headings={headings} isCheckable={checkboxes} /></thead>
+                    <tbody>
+                        {
+                            rows && rows.map((row, index) => {
+                                const isSelected = selectedRows.some(selectedRow => selectedRow.id === index)
+                                return(
+                                    <Row isSelected={isSelected} row={row} id={index} isCheckable={checkboxes} handleTableCheckbox={handleTableCheckbox}/>
+                                )
+                            })
+                        }
+                    </tbody>
+                </table>
+            </TableWrapper>
+            {
+                getSelectedRows && <Button children={"string"} onClick={() => getSelectedRows(selectedRows)} />
+            }
+        </React.Fragment>
     )
 }
