@@ -6,7 +6,7 @@ export interface CellProps {
     id?: string;
     className?: string;
     header?:boolean;
-    children?: string | number | any;
+    children?: React.ReactNode;
     onClick?: (e: React.MouseEvent) => void;
     onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
 }
@@ -14,20 +14,20 @@ export interface CellProps {
 export interface HeadingRowProps {
     name?: string;
     headings: Array<string>;
-    children?: string | number | any;
+    children?: React.ReactNode;
 }
 
 export interface RowProps {
     name?: string;
     row: Array<string>;
-    children?: string | number | any;
+    children?: React.ReactNode;
 }
 
 export interface TableProps {
     name?: string;
     headings: Array<string>;
     rows: Array<Array<string>>;
-    children?: string | number | any;
+    children?: React.ReactNode;
 }
 
 const TableWrapper = styled.div`
