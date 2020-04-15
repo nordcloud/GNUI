@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from "react";
-import styled, { css } from "styled-components";
+import styled, { css, FlattenSimpleInterpolation } from "styled-components";
 import theme, {
-  defaultMargin,
-  defaultPadding,
+  margin as defaultMargin,
+  padding as defaultPadding,
   spacings,
   map,
 } from "../../theme";
@@ -43,10 +43,12 @@ interface FlexProps {
   flex?: string;
 }
 
+type Spacing = Array<string | number> | string | number | any;
+type Size = { [sizeBreakpoint: string]: string } | number;
 interface ColumnProps {
-  size: number | any;
-  margin: number | any;
-  padding: number | any;
+  size: Size;
+  margin: Spacing;
+  padding: Spacing;
 }
 
 const basicFlexStyles = (props: { color?: string }) => css`
@@ -78,28 +80,83 @@ export const Grid: FunctionComponent = ({ children, ...props }) => (
   <FlexItem {...props}>{children}</FlexItem>
 );
 
-const setMargins = (marginValue: number | string | any): any => {
-  const cache = (value: any, rem: boolean = true): any =>
-    css`
-      margin-left: ${rem ? `${value}rem` : `${value}`};
-      margin-right: ${rem ? `${value}rem` : `${value}`};
-    `;
+const setMargins = (marginValue: Spacing, isColumn: boolean = false): any => {
+  const cache = (
+    value: Spacing,
+    isRem: boolean = true
+  ): FlattenSimpleInterpolation => {
+    if (Array.isArray(marginValue)) {
+      return css`
+        margin-top: ${isRem ? `${value[0]}rem` : `${value[0]}`};
+        margin-right: ${isRem ? `${value[1]}rem` : `${value[1]}`};
+        margin-bottom: ${isRem ? `${value[2]}rem` : `${value[2]}`};
+        margin-left: ${isRem ? `${value[3]}rem` : `${value[3]}`};
+      `;
+    }
 
-  if (typeof marginValue === "number") {
-    return cache(marginValue, true);
+    if (!Array.isArray(marginValue) && isColumn) {
+      return css`
+        margin-top: ${isRem ? `${value}rem` : `${value}`};
+        margin-right: ${isRem ? `${value}rem` : `${value}`};
+        margin-bottom: ${isRem ? `${value}rem` : `${value}`};
+        margin-left: ${isRem ? `${value}rem` : `${value}`};
+      `;
+    }
+
+    return css`
+      margin-left: ${isRem ? `${value}rem` : `${value}`};
+      margin-right: ${isRem ? `${value}rem` : `${value}`};
+    `;
+  };
+
+  if (isNaN(parseFloat(marginValue))) {
+    return cache(marginValue);
   }
 
-  for (const obj of spacings) {
-    const [key, value] = Object.entries(obj).flat();
+  for (const option of spacings) {
+    const [key, value] = Object.entries(option).flat();
     if (key === marginValue) {
-      return cache(value, true);
+      return cache(value);
     }
   }
 
   return cache(marginValue, false);
 };
 
-export const Row = styled(FlexItem)<{ margin: number }>`
+const setPaddings = (paddingValue: Spacing) => {
+  const cache = (
+    value: Spacing,
+    isRem: boolean = true
+  ): FlattenSimpleInterpolation => {
+    if (Array.isArray(paddingValue)) {
+      return css`
+        padding-top: ${isRem ? `${value[0]}rem` : `${value[0]}`};
+        padding-right: ${isRem ? `${value[1]}rem` : `${value[1]}`};
+        padding-bottom: ${isRem ? `${value[2]}rem` : `${value[2]}`};
+        padding-left: ${isRem ? `${value[3]}rem` : `${value[3]}`};
+      `;
+    }
+    return css`
+      padding: ${value}rem;
+    `;
+  };
+
+  if (isNaN(parseFloat(paddingValue))) {
+    return cache(paddingValue);
+  }
+
+  for (const option of spacings) {
+    const [key, value] = Object.entries(option).flat();
+    if (key === paddingValue) {
+      return cache(value);
+    }
+  }
+
+  return cache(paddingValue, false);
+};
+
+export const Row = styled.div<{ margin: number }>`
+  display: flex;
   flex-basis: 100%;
   max-width: 100%;
   & > * {
@@ -109,17 +166,15 @@ export const Row = styled(FlexItem)<{ margin: number }>`
   ${({ margin }) => margin && setMargins(margin)}
 `;
 
-const setColumnSize = (size: any, margin = defaultMargin) => {
-  const widthValue = `calc(8.3% * ${size} - 2 * ${margin}rem)`;
-
-  const cache = (widthValue: any) => css`
-    flex-basis: ${widthValue};
-    max-width: ${widthValue};
+const setColumnSize = (size: Size, margin: Spacing = defaultMargin) => {
+  const cache = (size: Size, margin: Spacing = defaultMargin) => css`
+    flex-basis: calc(8.3% * ${size} - 2 * ${margin}rem);
+    max-width: calc(8.3% * ${size} - 2 * ${margin}rem);
     ${margin && `margin: ${margin}rem;`}
   `;
 
   if (typeof size === "number") {
-    return cache(widthValue);
+    return cache(size);
   }
 
   if (typeof size !== "undefined" && typeof size !== "number") {
@@ -138,26 +193,6 @@ const setColumnSize = (size: any, margin = defaultMargin) => {
   `;
 };
 
-const setColumnMargins = (marginValue: number | string | any): any => {
-  const cache = (value: any, rem: boolean = true): any =>
-    css`
-      margin: ${rem ? `${value}rem` : `${value}`}rem;
-    `;
-
-  if (typeof marginValue === "number") {
-    return cache(marginValue, true);
-  }
-
-  for (const obj of spacings) {
-    const [key, value] = Object.entries(obj).flat();
-    if (key === marginValue) {
-      return cache(value, true);
-    }
-  }
-
-  return cache(marginValue, false);
-};
-
 export const Column = styled.div<ColumnProps>`
   box-sizing: border-box;
   flex-grow: 1;
@@ -165,15 +200,8 @@ export const Column = styled.div<ColumnProps>`
   padding-right: ${defaultPadding}rem;
   margin: ${defaultMargin}rem;
 
-  ${({ margin }) => margin && setColumnMargins(margin)}
-
-  ${({ padding }) =>
-    padding &&
-    css`
-      padding-left: ${padding}rem;
-      padding-right: ${padding}rem;
-    `}
-
+  ${({ margin }) => margin && setMargins(margin)}
+  ${({ padding }) => padding && setPaddings(padding)};
   ${({ size, margin }) =>
     ((size && margin) || size) && setColumnSize(size, margin)}
 `;

@@ -80,9 +80,10 @@ const theme: ThemeInterface = {
     xl: 1200,
   },
 
-  defaultMargin: 0.25,
-  defaultPadding: 0.25,
+  margin: 0.25,
+  padding: 0.25,
   spacings: [{ xs: 0 }, { sm: 0.25 }, { md: 0.75 }, { lg: 1.5 }, { xl: 2.5 }],
+  paddings: [0, 0.25, 0.75, 1.5, 2.5],
 };
 
 /** ALIASES */
@@ -109,7 +110,7 @@ theme.borderColor = theme.borders.color;
 theme.borderStyle = theme.borders.style;
 theme.borderRadius = theme.borders.radius;
 
-export const { breakpoints, defaultMargin, defaultPadding, spacings } = theme;
+export const { breakpoints, margin, padding, spacings, paddings } = theme;
 export const bp = createBreakpoint(breakpoints);
 export const map = createMap(breakpoints);
 

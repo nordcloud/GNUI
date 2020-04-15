@@ -1,6 +1,7 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Heading } from "../components/heading";
 import { Container } from "../components/container";
+import { Text } from "../components/text";
 
 <Meta title="Typography/Heading" component={Heading} />
 
@@ -43,11 +44,22 @@ Simple heading is styled `h1` tag and looks like below.
 <Preview>
   <Story name="colors">
     <Container>
-      <Heading color="palevioletred">Colorful heading</Heading>
-      <Heading color="#6495ED">Colorful heading</Heading>
-      <Heading color="mediumturquoise">Colorful heading</Heading>
+      <Heading color="palevioletred">Named color</Heading>
+      <Heading color="#6495ED">HEX color</Heading>
     </Container>
   </Story>
+</Preview>
+
+> You can also use accent colors from `theme`.
+
+<Preview>
+  <Container>
+    <Heading color="accent">Accent color</Heading>
+    <Heading color="danger">Danger color</Heading>
+    <Heading color="success">Success color</Heading>
+    <Heading color="warning">Warning color</Heading>
+    <Heading color="notification">Notification color</Heading>
+  </Container>
 </Preview>
 
 ### mixed

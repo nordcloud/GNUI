@@ -39,7 +39,7 @@ import theme from "../theme";
             <Column style={autoColumns}>
               <Text>auto</Text>
             </Column>
-            <Column size={7} style={numberedColumns}>
+            <Column size={8} style={numberedColumns}>
               <Text>7/12</Text>
             </Column>
           </Row>
@@ -71,9 +71,11 @@ import theme from "../theme";
   </Story>
 </Preview>
 
-## Props for `Column`
+## Props
 
-— `size`: `number` - _optional_ (1-12)
+- `size`: `{xs?: number, sm?: number, md?: number, lg?: number, xl?: number}` | `number` - _optional_
+- `padding`: `Array<string>` | `number`
+- `margin`: `Array<string>` | `number`
 
 ### With gaps
 
@@ -86,7 +88,7 @@ import theme from "../theme";
         borderRadius: theme.borderRadius,
       };
       return (
-        <Grid color={theme.colors.white}>
+        <Grid>
           <Row>
             <Column size={{ md: 7, lg: 8 }} style={withMargins}>
               <Text>md: 7, lg: 8</Text>
@@ -139,19 +141,19 @@ import theme from "../theme";
             </Column>
           </Row>
           <Row>
-            <Column size={{ sm: 3, md: 2, lg: 1 }} style={withMargins}>
+            <Column padding={1} size={{ sm: 3, md: 2, lg: 1 }} style={withMargins}>
               <Text>col</Text>
             </Column>
-            <Column size={{ sm: 3, md: 2, lg: 1 }} style={withMargins}>
+            <Column padding={2} size={{ sm: 3, md: 2, lg: 1 }} style={withMargins}>
               <Text>col</Text>
             </Column>
-            <Column size={{ sm: 3, md: 2, lg: 1 }} style={withMargins}>
+            <Column padding={3} size={{ sm: 3, md: 2, lg: 1 }} style={withMargins}>
               <Text>col</Text>
             </Column>
-            <Column size={{ sm: 3, md: 2, lg: 1 }} style={withMargins}>
+            <Column padding={4} size={{ sm: 3, md: 2, lg: 1 }} style={withMargins}>
               <Text>col</Text>
             </Column>
-            <Column size={{ sm: 3, md: 2, lg: 1 }} style={withMargins}>
+            <Column padding={["rem 0.75rem"]} size={{ sm: 3, md: 2, lg: 1 }} style={withMargins}>
               <Text>col</Text>
             </Column>
             <Column size={{ sm: 3, md: 2, lg: 1 }} style={withMargins}>
@@ -183,3 +185,4 @@ import theme from "../theme";
 </Preview>
 
 Columns without `size` takes available space.
+```

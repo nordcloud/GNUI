@@ -16,7 +16,7 @@ const headingSizes: AttributesProps = {
   [3]: "1.5rem",
   [4]: "1.25rem",
   [5]: "1rem",
-  [6]: "0.8rem"
+  [6]: "0.8rem",
 };
 
 const headingWeights: AttributesProps = {
@@ -25,16 +25,7 @@ const headingWeights: AttributesProps = {
   [3]: theme.fontWeights.bold,
   [4]: theme.fontWeights.bold,
   [5]: theme.fontWeights.bold,
-  [6]: theme.fontWeights.bold
-};
-
-const headingHeights: AttributesProps = {
-  [1]: "1.2rem",
-  [2]: "1.2rem",
-  [3]: "1.2rem",
-  [4]: "1.4rem",
-  [5]: "1.4rem",
-  [6]: "1.4rem"
+  [6]: theme.fontWeights.bold,
 };
 
 const headingMargins: AttributesProps = {
@@ -43,13 +34,12 @@ const headingMargins: AttributesProps = {
   [3]: "1.25rem 0",
   [4]: "1rem 0",
   [5]: "1rem 0",
-  [6]: "0.75rem 0"
+  [6]: "0.75rem 0",
 };
 
 const changeAttrs = (level: number) => css`
   font-size: ${headingSizes[level]};
   font-weight: ${headingWeights[level]};
-  line-height: ${headingHeights[level]};
   margin: ${headingMargins[level]};
 `;
 
@@ -58,11 +48,12 @@ const StyledHeading = styled.h1<HeadingProps>`
   font-family: ${theme.fonts.headers};
   font-weight: ${headingWeights[1]};
   font-size: ${headingSizes[1]};
+  margin: ${headingMargins[1]};
   text-rendering: optimizeLegibility;
   ${({ color }) =>
     color &&
     css`
-      color: ${color};
+      color: ${theme.colors[color] || color};
     `}
   ${({ level }) =>
     level &&
