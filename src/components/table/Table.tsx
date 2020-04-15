@@ -26,7 +26,7 @@ export interface RowProps {
     row: Array<string>;
     isCheckable?:boolean;
     isSelected?:boolean;
-    handleTableCheckbox?: (row:any, event: React.FormEvent<HTMLInputElement>) => void;
+    handleTableCheckbox?: (row: any, event: React.FormEvent<HTMLInputElement>) => void;
     children?: React.ReactNode;
 }
 
@@ -113,10 +113,12 @@ export const Row: FunctionComponent<RowProps> = ({
 }) => (
     <tr key={id}>
         <React.Fragment>
-            {isCheckable && 
-            <Cell>
-                <Checkbox name={" "} checked={isSelected} onChange={handleTableCheckbox ? (e) => handleTableCheckbox({row, id}, e.target.checked) : undefined}/>
-            </Cell>}
+            {
+                isCheckable && 
+                <Cell>
+                    <Checkbox name={"checkbox-"+ id} checked={isSelected} onChange={handleTableCheckbox ? (e) => handleTableCheckbox({row, id}, e.target.checked) : undefined}/>
+                </Cell>
+            }
             {
                 row && row.map((tablerow) => (
                     <Cell key={tablerow}>{tablerow}</Cell>
@@ -134,18 +136,18 @@ export const Table: FunctionComponent<TableProps> = ({
     checkboxes,
     ...props
 }) => {
+
     interface SelectedRow {
         id: number;
         row: any;
     };
-
     const [selectedRows, setSelectedRows] = useState<SelectedRow | []>([]);
     const handleTableCheckbox = (selectedRow: SelectedRow, checked: boolean) => {
         const newSelectedRows = [...selectedRows, selectedRow];
         if (checked) {
             setSelectedRows(newSelectedRows);
         } else {
-            newSelectedRows.splice(selectedRow.id);
+            newSelectedRows.splice(selectedRow.id, 1, {});
             setSelectedRows(newSelectedRows);
         }
         console.log(newSelectedRows);
@@ -159,7 +161,7 @@ export const Table: FunctionComponent<TableProps> = ({
                     <tbody>
                         {
                             rows && rows.map((row, index) => {
-                                const isSelected = selectedRows.some(selectedRow => selectedRow.id === index)
+                                const isSelected = selectedRows.some(selectedRow => selectedRow.id === index);
                                 return(
                                     <Row isSelected={isSelected} row={row} id={index} isCheckable={checkboxes} handleTableCheckbox={handleTableCheckbox}/>
                                 )
@@ -167,10 +169,10 @@ export const Table: FunctionComponent<TableProps> = ({
                         }
                     </tbody>
                 </table>
+                {
+                    checkboxes && <Button children={"Get Selected"} onClick={() => getSelectedRows(selectedRows)} />
+                }
             </TableWrapper>
-            {
-                getSelectedRows && <Button children={"string"} onClick={() => getSelectedRows(selectedRows)} />
-            }
         </React.Fragment>
     )
 }

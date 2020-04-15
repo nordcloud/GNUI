@@ -24,11 +24,8 @@ export interface CheckboxGroupProps {
   children?: string | number | any;
 }
 
-const CheckboxWrapper = styled(Container)`
-  position: relative;
-`;
 const SingleCheckWrapper = styled(Flex) `
-  margin-bottom: 1rem;
+  margin-bottom: 0;
 `;
 
 const CheckboxLabel = styled.label`
@@ -101,6 +98,13 @@ const CheckboxInput = styled.input`
       transition: opacity 1s ease;
     }
     }
+  }
+`;
+
+const CheckboxWrapper = styled(Container)`
+  position: relative;
+  ${SingleCheckWrapper} {
+    margin-bottom: 1rem;
   }
 `;
 
