@@ -24,6 +24,9 @@ type Breakpoints = {
 type Gutter = number;
 
 type Spacings = Array<{ bp: string; value: number }>;
+type ZIndex = {
+  [zIndex: string]: number | any;
+};
 
 export interface ThemeInterface {
   colors: Colors;
@@ -34,6 +37,7 @@ export interface ThemeInterface {
   margin: Gutter;
   padding: Gutter;
   spacings: Spacings;
+  zindex: ZIndex;
   [aliases: string]: any;
 }
 
@@ -68,6 +72,19 @@ const theme: ThemeInterface = {
     width: "0.0625rem",
     style: "solid",
     radius: "0.25rem",
+  },
+
+  zindex: {
+    topoftheworld: 9999,
+    popup: 9000,
+    modal: 8000,
+    overlay: 7000,
+    dropdown: 6000,
+    sticky: 2000,
+    masked: 1000,
+    default: 1,
+    zero: 0,
+    deep: -9999,
   },
 
   transition: "all 0.2s linear",
