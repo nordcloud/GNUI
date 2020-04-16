@@ -23,7 +23,7 @@ type Breakpoints = {
 
 type Gutter = number;
 
-type Spacings = Array<{ [name: string]: number }>;
+type Spacings = Array<{ bp: string; value: number }>;
 
 export interface ThemeInterface {
   colors: Colors;
@@ -82,8 +82,13 @@ const theme: ThemeInterface = {
 
   margin: 0.25,
   padding: 0.25,
-  spacings: [{ xs: 0 }, { sm: 0.25 }, { md: 0.75 }, { lg: 1.5 }, { xl: 2.5 }],
-  paddings: [0, 0.25, 0.75, 1.5, 2.5],
+  spacings: [
+    { bp: "xs", value: 0 },
+    { bp: "sm", value: 0.25 },
+    { bp: "md", value: 0.75 },
+    { bp: "lg", value: 1.5 },
+    { bp: "xl", value: 2.25 },
+  ],
 };
 
 /** ALIASES */

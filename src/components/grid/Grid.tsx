@@ -5,6 +5,7 @@ import theme, {
   padding as defaultPadding,
   spacings,
   map,
+  bp,
 } from "../../theme";
 
 interface FlexProps {
@@ -86,6 +87,7 @@ const setMargins = (marginValue: Spacing, isColumn: boolean = false): any => {
     isRem: boolean = true
   ): FlattenSimpleInterpolation => {
     if (Array.isArray(marginValue)) {
+      // i.e. margin={[1, 5, 5, 1]}
       return css`
         margin-top: ${isRem ? `${value[0]}rem` : `${value[0]}`};
         margin-right: ${isRem ? `${value[1]}rem` : `${value[1]}`};
@@ -95,6 +97,7 @@ const setMargins = (marginValue: Spacing, isColumn: boolean = false): any => {
     }
 
     if (!Array.isArray(marginValue) && isColumn) {
+      // i.e. margin={5}
       return css`
         margin-top: ${isRem ? `${value}rem` : `${value}`};
         margin-right: ${isRem ? `${value}rem` : `${value}`};
@@ -109,21 +112,25 @@ const setMargins = (marginValue: Spacing, isColumn: boolean = false): any => {
     `;
   };
 
-  if (isNaN(parseFloat(marginValue))) {
+  if (isNaN(marginValue)) {
+    for (const option of spacings) {
+      const [key, value] = Object.values(option).flat();
+      console.log({ key, value });
+      if (key === marginValue) {
+        return cache(value, true);
+      }
+    }
     return cache(marginValue);
   }
 
-  for (const option of spacings) {
-    const [key, value] = Object.entries(option).flat();
-    if (key === marginValue) {
-      return cache(value);
-    }
+  if (typeof marginValue === "number") {
+    return cache(marginValue, true);
   }
 
-  return cache(marginValue, false);
+  return cache(marginValue, true);
 };
 
-const setPaddings = (paddingValue: Spacing) => {
+const setPaddings = (paddingValue: Spacing, isColumn: boolean = false) => {
   const cache = (
     value: Spacing,
     isRem: boolean = true
@@ -141,18 +148,22 @@ const setPaddings = (paddingValue: Spacing) => {
     `;
   };
 
-  if (isNaN(parseFloat(paddingValue))) {
+  if (isNaN(paddingValue)) {
+    for (const option of spacings) {
+      const [key, value] = Object.values(option).flat();
+      console.log({ key, value });
+      if (key === paddingValue) {
+        return cache(value, true);
+      }
+    }
     return cache(paddingValue);
   }
 
-  for (const option of spacings) {
-    const [key, value] = Object.entries(option).flat();
-    if (key === paddingValue) {
-      return cache(value);
-    }
+  if (typeof paddingValue === "number") {
+    return cache(paddingValue, true);
   }
 
-  return cache(paddingValue, false);
+  return cache(paddingValue, true);
 };
 
 export const Row = styled.div<{ margin: number }>`
@@ -160,7 +171,7 @@ export const Row = styled.div<{ margin: number }>`
   flex-basis: 100%;
   max-width: 100%;
   & > * {
-    overflow: hidden;
+    overflow: scroll;
   }
 
   ${({ margin }) => margin && setMargins(margin)}
@@ -200,8 +211,8 @@ export const Column = styled.div<ColumnProps>`
   padding-right: ${defaultPadding}rem;
   margin: ${defaultMargin}rem;
 
-  ${({ margin }) => margin && setMargins(margin)}
-  ${({ padding }) => padding && setPaddings(padding)};
+  ${({ margin }) => margin && setMargins(margin, true)}
+  ${({ padding }) => padding && setPaddings(padding, true)};
   ${({ size, margin }) =>
     ((size && margin) || size) && setColumnSize(size, margin)}
 `;
