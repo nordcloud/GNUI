@@ -119,8 +119,8 @@ const StyledPaginationBox = styled.nav`
   justify-content: space-between;
   align-items: center;
   .nav-title {
-    font-weight: 400;
-    font-size: 0.875rem;
+    font-weight: ${theme.fontWeights.regular};
+    font-size: ${theme.fontSizes.regular};
   }
   .pagination-per-page {
     display: flex;
@@ -132,13 +132,13 @@ const StyledPaginationBox = styled.nav`
     padding-left: 0;
   }
   button {
-    padding: 0.4375rem 0.75rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    line-height: 1.125rem;
-    border: 0.0625rem solid ${theme.colors.primary};
-    border-radius: 0.25rem;
-    margin-left: 0.25rem;
+    padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
+    font-size: ${theme.fontSizes.regular};
+    font-weight: ${theme.fontWeights.medium};
+    line-height: 1.5em;
+    border: ${theme.borderDefault};
+    border-radius: ${theme.radiusDefault};
+    margin-left: ${theme.spacing.spacing01};
     cursor: pointer;
     &.current {
       background-color: ${theme.colors.primary};
@@ -150,12 +150,12 @@ const StyledPaginationBox = styled.nav`
       border-radius: 0;
       margin-left: -0.0625rem;
       &.pagination-first {
-        border-top-left-radius: 0.25rem;
-        border-bottom-left-radius: 0.25rem;
+        border-top-left-radius: ${theme.radiusDefault};
+        border-bottom-left-radius: ${theme.radiusDefault};
       }
       &.pagination-last {
-        border-top-right-radius: 0.25rem;
-        border-bottom-right-radius: 0.25rem;
+        border-top-right-radius: ${theme.radiusDefault};
+        border-bottom-right-radius: ${theme.radiusDefault};
       }
     }
   }

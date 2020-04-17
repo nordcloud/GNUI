@@ -10,8 +10,7 @@ type BoxProps = {
 };
 
 const StyledBox = styled(Container)<BoxProps>`
-  padding: 1.25rem;
-  margin: 0.25rem;
+  padding: ${theme.spacing.spacing05};
   color: ${theme.colors.primary};
   background: ${theme.colors.white};
   font-weight: ${theme.fontWeights.medium};

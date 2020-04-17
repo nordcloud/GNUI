@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
-import { lighten } from "polished";
+import { darken } from "polished";
 
 interface ButtonProps {
   children: string;
@@ -27,13 +27,12 @@ const StyledButton = styled.button<ButtonProps>`
   background: ${theme.colors.primary};
   font-family: ${theme.fonts.body};
   color: ${theme.colors.white};
-  border: 0.0625rem solid ${theme.colors.primary};
+  border: ${theme.borderDefault}; 
   font-weight: ${theme.fontWeights.regular};
-  padding: 0.5rem 1rem;
-  border-radius: ${theme.borderRadius};
+  padding: ${theme.spacing.spacing02} ${theme.spacing.spacing04};
+  border-radius: ${theme.radiusDefault};
   font-size: ${theme.fontSizes.regular};
   line-height: ${theme.lineHeight};
-  margin: 0rem 0.5rem;
   transition: ${theme.transition};
   &:focus {
     outline: 0;
@@ -47,7 +46,7 @@ const StyledButton = styled.button<ButtonProps>`
   }
   &:disabled {
     background: ${theme.colors.lights[3]};
-    border: 0.0625rem solid ${theme.colors.lights[3]};
+    border: ${theme.borders.borderGrey};
     color: ${theme.colors.darks[4]};
     &:hover {
       color: ${theme.colors.darks[4]};
@@ -60,7 +59,7 @@ const StyledButton = styled.button<ButtonProps>`
     css`
       color: ${theme.colors.white};
       background: ${setColor(color)};
-      border: 0.0625rem solid ${setColor(color)};
+      border: 1px solid ${setColor(color)};
       &:hover,
       &:active,
       &:disabled,
@@ -68,16 +67,16 @@ const StyledButton = styled.button<ButtonProps>`
         color: ${theme.colors.white};
       }
       &:hover {
-        border: 0.0625rem solid ${lighten(0.1, setColor(color))};
-        background: ${lighten(0.1, theme.colors[color] || color)};
+        border-color: ${darken(0.1, setColor(color))};
+        background: ${darken(0.1, theme.colors[color] || color)};
       }
       &:active {
-        border: 0.0625rem solid ${lighten(0.2, setColor(color))};
-        background: ${lighten(0.2, theme.colors[color] || color)};
+        border-color: ${darken(0.2, setColor(color))};
+        background: ${darken(0.2, theme.colors[color] || color)};
       }
       &:disabled {
-        border: 0.0625rem solid ${lighten(0.3, setColor(color))};
-        background: ${lighten(0.3, theme.colors[color] || color)};
+        border-color: ${darken(0.3, setColor(color))};
+        background: ${darken(0.3, theme.colors[color] || color)};
       }
     `}
 
@@ -85,21 +84,18 @@ const StyledButton = styled.button<ButtonProps>`
     secondary &&
     css`
       background: ${theme.colors.lights[1]};
-      border: 0.0625rem solid ${theme.colors.lights[4]};
+      border: ${theme.borderDefault};
       color: ${theme.colors.primary};
       &:hover {
         background: ${theme.colors.lights[1]};
-        border: 0.0625rem solid ${theme.colors.lights[4]};
         color: ${theme.colors.primary};
       }
       &:active {
         background: ${theme.colors.lights[2]};
-        border: 0.0625rem solid ${theme.colors.lights[4]};
         color: ${theme.colors.primary};
       }
       &:disabled {
         background: transparent;
-        border: 0.0625rem solid ${theme.colors.lights[4]};
         color: ${theme.colors.lights[4]};
         cursor: not-allowed;
         &:hover {
@@ -113,21 +109,18 @@ const StyledButton = styled.button<ButtonProps>`
     outline &&
     css`
       background: transparent;
-      border: 0.0625rem solid ${theme.colors.lights[4]};
+      border: ${theme.borderDefault};
       color: ${theme.colors.primary};
       &:hover {
         background: ${theme.colors.lights[1]};
-        border: 0.0625rem solid ${theme.colors.lights[4]};
         color: ${theme.colors.primary};
       }
       &:active {
         background: ${theme.colors.lights[2]};
-        border: 0.0625rem solid ${theme.colors.lights[4]};
         color: ${theme.colors.primary};
       }
       &:disabled {
         background: transparent;
-        border: 0.0625rem solid ${theme.colors.lights[4]};
         color: ${theme.colors.lights[4]};
         cursor: not-allowed;
         &:hover {
@@ -141,21 +134,18 @@ const StyledButton = styled.button<ButtonProps>`
     severity === "medium" &&
     css`
       background: transparent;
-      border: 0.0625rem solid ${theme.colors.lights[4]};
+      border: ${theme.borderDefault};
       color: ${theme.colors.primary};
       &:hover {
         background: ${theme.colors.lights[1]};
-        border: 0.0625rem solid ${theme.colors.lights[4]};
         color: ${theme.colors.primary};
       }
       &:active {
         background: ${theme.colors.lights[2]};
-        border: 0.0625rem solid ${theme.colors.lights[4]};
         color: ${theme.colors.primary};
       }
       &:disabled {
         background: transparent;
-        border: 0.0625rem solid ${theme.colors.lights[4]};
         color: ${theme.colors.lights[4]};
         cursor: not-allowed;
         &:hover {
@@ -169,21 +159,21 @@ const StyledButton = styled.button<ButtonProps>`
     severity === "low" &&
     css`
       background: transparent;
-      border: 0.0625rem solid transparent;
+      border: ${theme.borders.borderTransparent};
       color: ${theme.colors.primary};
       &:hover {
-        background: transparent;
-        border: 0.0625rem solid transparent;
+        background: ${theme.colors.lights[1]};
+        border: ${theme.borders.borderTransparent};
         color: ${theme.colors.primary};
       }
       &:active {
-        background: ${theme.colors.lights[1]};
-        border: 0.0625rem solid transparent;
+        background: ${theme.colors.lights[2]};
+        border: ${theme.borders.borderTransparent};
         color: ${theme.colors.primary};
       }
       &:disabled {
         background: transparent;
-        border: 0.0625rem solid transparent;
+        border: ${theme.borders.borderTransparent};
         color: ${theme.colors.lights[4]};
         &:hover {
           color: ${theme.colors.lights[4]};
@@ -194,7 +184,7 @@ const StyledButton = styled.button<ButtonProps>`
   ${({ size }) =>
     size === "large" &&
     css`
-      padding: 0.75rem 1.25rem;
+      padding: ${theme.spacing.spacing03} ${theme.spacing.spacing05};
     `}
 
   ${({ size }) =>
@@ -202,7 +192,7 @@ const StyledButton = styled.button<ButtonProps>`
     css`
       font-size: ${theme.fontSizes.small};
       line-height: ${theme.lineHeight};
-      padding: 0.5rem 0.7rem;
+      padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
       letter-spacing: 0.025rem;
     `}
 `;

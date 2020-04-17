@@ -9,13 +9,13 @@ const StyledSubmit = styled.input`
   background: ${theme.colors.primary};
   font-family: ${theme.fonts.body};
   color: ${theme.colors.white};
-  border: 0.0625rem solid ${theme.colors.primary};
+  border: ${theme.borderDefault};
   font-weight: ${theme.fontWeights.regular};
-  padding: 0.5rem 1rem;
-  border-radius: ${theme.borderRadius};
+  padding: ${theme.spacing.spacing02} ${theme.spacing.spacing04};
+  border-radius: ${theme.radiusDefault};
   font-size: ${theme.fontSizes.regular};
   line-height: ${theme.lineHeight};
-  margin: 0rem 0.5rem;
+  margin: 0 ${theme.spacing.spacing02};
   transition: ${theme.transition};
   &:focus {
     outline: 0;
@@ -29,7 +29,7 @@ const StyledSubmit = styled.input`
   }
   &:disabled {
     background: ${theme.colors.lights[3]};
-    border: 0.0625rem solid ${theme.colors.lights[3]};
+    border: ${theme.borders.borderDisabled};
     color: ${theme.colors.darks[4]};
     &:hover {
       color: ${theme.colors.darks[4]};

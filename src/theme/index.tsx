@@ -9,9 +9,12 @@ type Typography = {
   fontSizes: Array<string>;
   fonts: { [font: string]: string };
   lineHeight: string;
+  [spacing: string]: string | any;
 };
 
-type Borders = { [key: string]: string | number | null };
+type Radius = { [key: string]: string };
+
+type Borders = { [key: string]: string };
 
 type Transition = string | { transition: string };
 
@@ -19,6 +22,7 @@ export interface ThemeInterface {
   colors: Colors;
   typography: Typography;
   borders: Borders;
+  radius: Radius;
   transition: Transition;
   [aliases: string]: any;
 }
@@ -46,17 +50,42 @@ const theme: ThemeInterface = {
       headers: "Montserrat, sans-serif",
       monospace: "Fira Code, monospace"
     },
-    lineHeight: "1.5rem"
+    lineHeight: "1.5em"
   },
 
   borders: {
-    color: null,
-    width: "0.0625rem",
-    style: "solid",
-    radius: "0.25rem"
+    borderDefault: "1px solid #161632",
+    borderMedium: "2px solid #161632",
+    borderBold: "4px solid #161632",
+    borderGrey: "1px solid #e7e7eb",
+    borderDisabled: "1px solid #d1d1da",
+    borderDarkenGrey: "1px solid #bbbbc9",
+    borderDark: "1px solid #32323f",
+    borderSuccess: "1px solid #27ae60",
+    borderDanger: "1px solid #e74c3c",
+    borderWarning: "1px solid #f39c12",
+    borderNotification: "1px solid #3498db",
+    borderTransparent: "1px solid transparent"
   },
 
-  transition: "all 0.2s linear",
+  radius: {
+    radiusSmall: "2px",
+    radiusDefault: "4px",
+    radiusLarge: "6px"
+  },
+
+  spacing: {
+    spacing01: "0.25rem",
+    spacing02: "0.5rem",
+    spacing03: "0.75rem",
+    spacing04: "1rem",
+    spacing05: "1.25rem",
+    spacing06: "1.5rem",
+    spacing07: "2rem",
+    spacing08: "2.5rem"
+  },
+
+  transition: "all 0.2s ease-in-out",
   opacity: 0.7
 };
 
@@ -78,10 +107,9 @@ theme.fontSizes.regular = theme.fontSizes[1];
 theme.fontSizes.big = theme.fontSizes[2];
 theme.fontSizes.large = theme.fontSizes[3];
 
-// Borders
-theme.borders.color = theme.colors.lights[4];
-theme.borderColor = theme.borders.color;
-theme.borderStyle = theme.borders.style;
-theme.borderRadius = theme.borders.radius;
+// Borders & Radius
+theme.borderDefault = theme.borders.borderDefault;
+theme.borderInput = theme.borders.borderDarkenGrey;
+theme.radiusDefault = theme.radius.radiusDefault;
 
 export default theme;
