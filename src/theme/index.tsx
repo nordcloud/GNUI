@@ -24,6 +24,7 @@ type ZIndex = {
   [zIndex: string]: number | any;
 }
 
+
 export interface ThemeInterface {
   colors: Colors;
   typography: Typography;
@@ -107,7 +108,7 @@ const theme: ThemeInterface = {
   zindex: {
     topoftheworld: 9999,
     popup: 9000,
-    modal: 8000, 
+    modal: 8000,
     overlay: 7000,
     dropdown: 6000,
     sticky: 2000,
