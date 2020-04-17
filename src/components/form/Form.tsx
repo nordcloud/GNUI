@@ -29,7 +29,7 @@ const StyledSubmit = styled.input`
   }
   &:disabled {
     background: ${theme.colors.lights[3]};
-    border: ${theme.borders.borderDisabled};
+    border: ${theme.borders.disabled};
     color: ${theme.colors.darks[4]};
     &:hover {
       color: ${theme.colors.darks[4]};

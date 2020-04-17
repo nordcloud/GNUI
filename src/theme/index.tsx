@@ -59,24 +59,24 @@ const theme: ThemeInterface = {
   },
 
   borders: {
-    borderDefault: "1px solid #161632",
-    borderMedium: "2px solid #161632",
-    borderBold: "4px solid #161632",
-    borderGrey: "1px solid #e7e7eb",
-    borderDisabled: "1px solid #d1d1da",
-    borderDarkenGrey: "1px solid #bbbbc9",
-    borderDark: "1px solid #32323f",
-    borderSuccess: "1px solid #27ae60",
-    borderDanger: "1px solid #e74c3c",
-    borderWarning: "1px solid #f39c12",
-    borderNotification: "1px solid #3498db",
-    borderTransparent: "1px solid transparent"
+    default: "1px solid #161632",
+    medium: "2px solid #161632",
+    bold: "4px solid #161632",
+    grey: "1px solid #e7e7eb",
+    disabled: "1px solid #d1d1da",
+    darkenGrey: "1px solid #bbbbc9",
+    dark: "1px solid #32323f",
+    success: "1px solid #27ae60",
+    danger: "1px solid #e74c3c",
+    warning: "1px solid #f39c12",
+    notification: "1px solid #3498db",
+    transparent: "1px solid transparent"
   },
 
   radius: {
-    radiusSmall: "2px",
-    radiusDefault: "4px",
-    radiusLarge: "6px"
+    small: "2px",
+    default: "4px",
+    large: "6px"
   },
 
   spacing: {
@@ -126,8 +126,8 @@ theme.fontSizes.big = theme.fontSizes[2];
 theme.fontSizes.large = theme.fontSizes[3];
 
 // Borders & Radius
-theme.borderDefault = theme.borders.borderDefault;
-theme.borderInput = theme.borders.borderDarkenGrey;
-theme.radiusDefault = theme.radius.radiusDefault;
+theme.borderDefault = theme.borders.default;
+theme.borderInput = theme.borders.darkenGrey;
+theme.radiusDefault = theme.radius.default;
 
 export default theme;

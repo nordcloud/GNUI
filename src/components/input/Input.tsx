@@ -52,9 +52,9 @@ const InputGroup = styled(Flex)<InputProps>`
   ${({ valid }) =>
     valid === false &&
     css`
-      border: ${theme.borders.borderDanger};
+      border: ${theme.borders.danger};
       &:hover {
-        border: ${theme.borders.borderDanger};
+        border: ${theme.borders.danger};
       }
     `}
 `;

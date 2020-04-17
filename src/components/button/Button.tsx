@@ -46,7 +46,7 @@ const StyledButton = styled.button<ButtonProps>`
   }
   &:disabled {
     background: ${theme.colors.lights[3]};
-    border: ${theme.borders.borderGrey};
+    border: ${theme.borders.grey};
     color: ${theme.colors.darks[4]};
     &:hover {
       color: ${theme.colors.darks[4]};
@@ -159,21 +159,21 @@ const StyledButton = styled.button<ButtonProps>`
     severity === "low" &&
     css`
       background: transparent;
-      border: ${theme.borders.borderTransparent};
+      border: ${theme.borders.transparent};
       color: ${theme.colors.primary};
       &:hover {
         background: ${theme.colors.lights[1]};
-        border: ${theme.borders.borderTransparent};
+        border: ${theme.borders.transparent};
         color: ${theme.colors.primary};
       }
       &:active {
         background: ${theme.colors.lights[2]};
-        border: ${theme.borders.borderTransparent};
+        border: ${theme.borders.transparent};
         color: ${theme.colors.primary};
       }
       &:disabled {
         background: transparent;
-        border: ${theme.borders.borderTransparent};
+        border: ${theme.borders.transparent};
         color: ${theme.colors.lights[4]};
         &:hover {
           color: ${theme.colors.lights[4]};
