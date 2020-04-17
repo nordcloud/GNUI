@@ -18,12 +18,17 @@ type Borders = { [key: string]: string };
 
 type Transition = string | { transition: string };
 
+type ZIndex = {
+  [zIndex: string]: number | any;
+}
+
 export interface ThemeInterface {
   colors: Colors;
   typography: Typography;
   borders: Borders;
   radius: Radius;
   transition: Transition;
+  zindex: ZIndex;
   [aliases: string]: any;
 }
 
@@ -85,7 +90,20 @@ const theme: ThemeInterface = {
     spacing08: "2.5rem"
   },
 
-  transition: "all 0.2s ease-in-out",
+  zindex: {
+    topoftheworld: 9999,
+    popup: 9000,
+    modal: 8000, 
+    overlay: 7000,
+    dropdown: 6000,
+    sticky: 2000,
+    masked: 1000,
+    default: 1,
+    zero: 0,
+    deep: -9999
+  },
+
+  transition: "all 0.2s linear",
   opacity: 0.7
 };
 
