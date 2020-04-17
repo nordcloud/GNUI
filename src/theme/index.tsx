@@ -31,6 +31,7 @@ type ZIndex = {
   [zIndex: string]: number | any;
 };
 
+
 export interface ThemeInterface {
   colors: Colors;
   typography: Typography;

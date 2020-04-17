@@ -22,6 +22,7 @@ import { Container } from "../components/container";
 - `type`: `string` — _optional_, default: `text`
 - `placeholder`: `string` – _optional_
 - `disabled`: `boolean` — _optional_
+- `status`: `string` - _optional_ [ `success` or `error` ]
 
 **Label**:
 
@@ -62,6 +63,27 @@ Nothing more to add, just text placeholder which works exactly like in default H
 <Preview>
   <Story name="disabled">
     <Input name="disabled-input" placeholder="Disabled input" disabled />
+  </Story>
+</Preview>
+
+### status
+
+> `status`: `string`
+
+<Preview>
+  <Story name="status">
+    <Container>
+      <p>
+        <Input
+          name="status-input"
+          placeholder="Success input"
+          status="success"
+        />
+      </p>
+      <p>
+        <Input name="status-input" placeholder="Error input" status="error" />
+      </p>
+    </Container>
   </Story>
 </Preview>
 

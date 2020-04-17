@@ -13,49 +13,58 @@ export interface InputProps {
   id?: string;
   disabled?: boolean;
   required?: boolean;
-  valid?: boolean;
+  status?: string;
   children?: string | number | any;
   onClick?: (e: React.MouseEvent) => void;
   onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
 }
 
 export const Label: FunctionComponent<{ name: string }> = ({
-  name = "Label"
+  name = "Label",
 }) => (
   <Flex margin="0.5rem 0">
     <label htmlFor={name}>{name}</label>
   </Flex>
 );
 
+const setStatusColors = (status: string) => {
+  if (status === "error") {
+    return css`
+      border: ${theme.borders.danger};
+    `;
+  } else if (status === "success") {
+    return css`
+      border: ${theme.borders.success};
+    `;
+  }
+};
+
 const InputGroup = styled(Flex)<InputProps>`
   align-items: center;
-  border: 1px solid ${theme.colors.lights[3]};
+  border: ${theme.borders.grey};
   padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
   border-radius: ${theme.radiusDefault};
   color: ${theme.colors.primary};
   background: ${theme.colors.white};
   transition: ${theme.transition};
   &:hover {
-    border: 1px solid ${theme.colors.lights[4]};
+    border: ${theme.borders.darkenGray};
   }
   &:focus {
     outline: 0;
     border: 1px solid ${theme.colors.darks[0]};
   }
   &:disabled {
-    color: ${theme.colors.lights[4]};
+    color: ${theme.borders.disabled};
     background: ${theme.colors.white};
-    border: 1px solid ${theme.colors.lights[2]};
+    border: ${theme.borders.grey};
     cursor: not-allowed;
   }
 
-  ${({ valid }) =>
-    valid === false &&
+  ${({ status }) =>
+    status &&
     css`
-      border: ${theme.borders.danger};
-      &:hover {
-        border: ${theme.borders.danger};
-      }
+      ${setStatusColors(status)}
     `}
 `;
 
