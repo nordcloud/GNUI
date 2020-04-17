@@ -20,14 +20,14 @@ export interface InputProps {
 }
 
 export const Label: FunctionComponent<{ name: string }> = ({
-  name = "Label"
+  name = "Label",
 }) => (
   <Flex margin="0.5rem 0">
     <label htmlFor={name}>{name}</label>
   </Flex>
 );
 
-const InputGroup = styled(Flex)<InputProps>`
+const InputGroup = styled(Flex)`
   align-items: center;
   border: 0.0625rem solid ${theme.colors.lights[3]};
   padding: 0.5rem 0.75rem;
@@ -59,7 +59,7 @@ const InputGroup = styled(Flex)<InputProps>`
     `}
 `;
 
-const StyledInput = styled.input`
+const StyledInput = styled.input<InputProps>`
   border: 0;
   width: 100%;
   box-sizing: border-box;
@@ -92,7 +92,7 @@ export const Description: FunctionComponent = ({ children }) => {
   const StyledDescription = styled(Container)`
     font-size: ${theme.fontSizes.small};
     color: ${theme.colors.darks[3]};
-    margin: 0.25rem 0;
+    margin: 0.5rem 0;
     width: 100%;
   `;
   return <StyledDescription>{children}</StyledDescription>;
@@ -103,10 +103,10 @@ export const Input: FunctionComponent<InputProps> = ({
   name,
   ...props
 }) => (
-  <InputGroup {...props}>
+  <InputGroup>
     {type === "search" && (
       <Icon image="SEARCH" width="1.2rem" height="1.2rem" />
     )}
-    <StyledInput type={type} id={name} {...props} />
+    <StyledInput name={name} type={type} id={name} {...props} />
   </InputGroup>
 );
