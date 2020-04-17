@@ -8,47 +8,32 @@ interface HeadingProps {
   as?: any;
 }
 
-type AttributesProps = { [name: number]: string | number };
+const changeAttrs = (level: number) => {
+  const setMargins = () => {
+    if (level === 6) {
+      return theme.headings.margins[3];
+    } else if (level === 4 || level === 5) {
+      return theme.headings.margins[2];
+    } else if (level === 3) {
+      return theme.headings.margins[1];
+    } else {
+      return theme.headings.margins[0];
+    }
+  };
 
-const headingSizes: AttributesProps = {
-  [1]: "2.5rem",
-  [2]: "2rem",
-  [3]: "1.5rem",
-  [4]: "1.25rem",
-  [5]: "1rem",
-  [6]: "0.8rem"
+  return css`
+    font-size: ${theme.headings.sizes[level - 1]}rem;
+    font-weight: ${theme.headings.weights[level > 2 ? 1 : 0]};
+    margin: ${setMargins()};
+  `;
 };
-
-const headingWeights: AttributesProps = {
-  [1]: theme.fontWeights.medium,
-  [2]: theme.fontWeights.medium,
-  [3]: theme.fontWeights.bold,
-  [4]: theme.fontWeights.bold,
-  [5]: theme.fontWeights.bold,
-  [6]: theme.fontWeights.bold
-};
-
-const headingMargins: AttributesProps = {
-  [1]: "1.5rem 0",
-  [2]: "1.5rem 0",
-  [3]: "1.25rem 0",
-  [4]: "1rem 0",
-  [5]: "1rem 0",
-  [6]: "0.75rem 0"
-};
-
-const changeAttrs = (level: number) => css`
-  font-size: ${headingSizes[level]};
-  font-weight: ${headingWeights[level]};
-  margin: ${headingMargins[level]};
-`;
 
 const StyledHeading = styled.h1<HeadingProps>`
   color: ${theme.colors.primary};
   font-family: ${theme.fonts.headers};
-  font-weight: ${headingWeights[1]};
-  font-size: ${headingSizes[1]};
-  margin: ${headingMargins[1]};
+  font-weight: ${theme.headings.weights[0]};
+  font-size: ${theme.headings.sizes[0]};
+  margin: ${theme.headings.margins[0]};
   text-rendering: optimizeLegibility;
   ${({ color }) =>
     color &&
