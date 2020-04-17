@@ -29,32 +29,32 @@ export const Label: FunctionComponent<{ name: string }> = ({
 
 const InputGroup = styled(Flex)<InputProps>`
   align-items: center;
-  border: 0.0625rem solid ${theme.colors.lights[3]};
-  padding: 0.5rem 0.75rem;
-  border-radius: ${theme.borderRadius};
+  border: 1px solid ${theme.colors.lights[3]};
+  padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
+  border-radius: ${theme.radiusDefault};
   color: ${theme.colors.primary};
   background: ${theme.colors.white};
   transition: ${theme.transition};
   &:hover {
-    border: 0.0625rem solid ${theme.colors.lights[4]};
+    border: 1px solid ${theme.colors.lights[4]};
   }
   &:focus {
     outline: 0;
-    border: 0.0625rem solid ${theme.colors.black};
+    border: 1px solid ${theme.colors.darks[0]};
   }
   &:disabled {
     color: ${theme.colors.lights[4]};
     background: ${theme.colors.white};
-    border: 0.0625rem solid ${theme.colors.lights[3]};
+    border: 1px solid ${theme.colors.lights[2]};
     cursor: not-allowed;
   }
 
   ${({ valid }) =>
     valid === false &&
     css`
-      border: 0.0625rem solid ${theme.colors.danger};
+      border: ${theme.borders.danger};
       &:hover {
-        border: 0.0625rem solid ${theme.colors.danger};
+        border: ${theme.borders.danger};
       }
     `}
 `;
@@ -84,7 +84,7 @@ const StyledInput = styled.input`
   ${({ type }) =>
     type === "search" &&
     css`
-      margin-left: 0.5rem;
+      margin-left: ${theme.spacing.spacing02};
     `}
 `;
 
@@ -92,7 +92,7 @@ export const Description: FunctionComponent = ({ children }) => {
   const StyledDescription = styled(Container)`
     font-size: ${theme.fontSizes.small};
     color: ${theme.colors.darks[3]};
-    margin: 0.25rem 0;
+    margin: ${theme.spacing.spacing01} 0;
     width: 100%;
   `;
   return <StyledDescription>{children}</StyledDescription>;
