@@ -14,6 +14,8 @@ type Typography = {
 
 type Radius = { [key: string]: string };
 
+type Shadow = { [key: string]: string };
+
 type Borders = { [key: string]: string };
 
 type Transition = string | { transition: string };
@@ -27,6 +29,7 @@ export interface ThemeInterface {
   typography: Typography;
   borders: Borders;
   radius: Radius;
+  shadow: Shadow;
   transition: Transition;
   zindex: ZIndex;
   [aliases: string]: any;
@@ -77,6 +80,13 @@ const theme: ThemeInterface = {
     small: "2px",
     default: "4px",
     large: "6px"
+  },
+
+  shadow: {
+    shadow01: "0 1px 3px rgba(31, 30, 47, 0.1)",
+    shadow02: "0 3px 6px rgba(31, 30, 47, 0.1)",
+    shadow03: "0 8px 20px rgba(31, 30, 47, 0.12)",
+    shadow04: "0 12px 22px rgba(31, 30, 47, 0.18)"
   },
 
   spacing: {
