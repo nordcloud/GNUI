@@ -169,40 +169,38 @@ export const Table: FunctionComponent<TableProps> = ({
   const getSelectedRows = (rows: Array<SelectedRow>) => console.log(rows);
 
   return (
-    <React.Fragment>
-      <TableWrapper {...props}>
-        <table className={name}>
-          <thead>
-            <HeadingRow headings={headings} isCheckable={checkboxes} />
-          </thead>
-          <tbody>
-            {rows &&
-              rows.map((row, index) => {
-                const isChecked = selectedRows.some(
-                  (selectedRow) => selectedRow.id === index
-                );
-                return (
-                  <Row
-                    key={index}
-                    isChecked={isChecked}
-                    row={row}
-                    id={index}
-                    isCheckable={checkboxes}
-                    handleTableCheckbox={handleTableCheckbox}
-                  />
-                );
-              })}
-          </tbody>
-        </table>
-        {checkboxes && (
-          <Button
-            children={"Get Selected"}
-            onClick={() =>
-              getSelectedRows ? getSelectedRows(selectedRows) : null
-            }
-          />
-        )}
-      </TableWrapper>
-    </React.Fragment>
+    <TableWrapper {...props}>
+      <table className={name}>
+        <thead>
+          <HeadingRow headings={headings} isCheckable={checkboxes} />
+        </thead>
+        <tbody>
+          {rows &&
+            rows.map((row, index) => {
+              const isChecked = selectedRows.some(
+                (selectedRow) => selectedRow.id === index
+              );
+              return (
+                <Row
+                  key={index}
+                  isChecked={isChecked}
+                  row={row}
+                  id={index}
+                  isCheckable={checkboxes}
+                  handleTableCheckbox={handleTableCheckbox}
+                />
+              );
+            })}
+        </tbody>
+      </table>
+      {checkboxes && (
+        <Button
+          children={"Get Selected"}
+          onClick={() =>
+            getSelectedRows ? getSelectedRows(selectedRows) : null
+          }
+        />
+      )}
+    </TableWrapper>
   );
 };
