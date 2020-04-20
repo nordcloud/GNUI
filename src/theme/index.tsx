@@ -47,12 +47,16 @@ const theme: ThemeInterface = {
     white: "#fcfcfd",
     actions: ["#FF2837", "#e74c3c", "#27ae60", "#f39c12", "#3498db"],
     darks: ["#212129", "#32323f", "#444454", "#5e5e75", "#7a7a94"],
-    lights: ["#fcfcfd", "#f1f1f4", "#e7e7eb", "#d1d1da", "#bbbbc9"]
+    lights: ["#fcfcfd", "#f1f1f4", "#e7e7eb", "#d1d1da", "#bbbbc9"],
+    statusDanger: ["#F5B7B1", "#E74C3C", "#B03A2E", "#943126"],
+    statusSuccess: ["#A9DFBF", "#27AE60", "#1E8449", "#196F3D"],
+    statusWarning: ["#FAD7A0", "#F39C12", "#B9770E", "#9C640C"],
+    statusNotification: ["#AED6F1", "#3498DB", "#2874A6", "#21618C"]
   },
 
   typography: {
     fontWeights: [400, 500, 600, 700],
-    fontSizes: ["0.75rem", "1rem", "1.3rem", "1.5rem"],
+    fontSizes: ["0.625rem", "0.75rem", "1rem", "1.3rem", "1.5rem", "2rem"],
     fonts: {
       body: "Rubik, sans-serif",
       headers: "Montserrat, sans-serif",
@@ -130,10 +134,12 @@ theme.fontWeights.bold = theme.fontWeights[2];
 theme.fontWeights.bolder = theme.fontWeights[3];
 
 // Font-sizes
-theme.fontSizes.small = theme.fontSizes[0];
-theme.fontSizes.regular = theme.fontSizes[1];
-theme.fontSizes.big = theme.fontSizes[2];
-theme.fontSizes.large = theme.fontSizes[3];
+theme.fontSizes.extrasmall = theme.fontSizes[0];
+theme.fontSizes.small = theme.fontSizes[1];
+theme.fontSizes.regular = theme.fontSizes[2];
+theme.fontSizes.big = theme.fontSizes[3];
+theme.fontSizes.large = theme.fontSizes[4];
+theme.fontSizes.extralarge = theme.fontSizes[5];
 
 // Borders & Radius
 theme.borderDefault = theme.borders.default;
