@@ -28,7 +28,7 @@ const basicStyles = css<TextProps>`
 
 const StyledText = styled.p<TextProps>`
   ${basicStyles};
-  margin: 1rem 0;
+  margin: ${theme.spacing.spacing04} 0;
   ${({ bold }) =>
     bold &&
     css`
@@ -42,13 +42,13 @@ const StyledText = styled.p<TextProps>`
   ${({ small }) =>
     small &&
     css`
-      margin: 0.5rem 0;
+      margin: ${theme.spacing.spacing02} 0;
       font-size: ${theme.fontSizes.small};
     `}
   ${({ caption }) =>
     caption &&
     css`
-      font-size: 0.875rem;
+      font-size: ${theme.fontSizes.small};
     `}
   ${({ italic }) =>
     italic &&

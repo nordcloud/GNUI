@@ -30,26 +30,25 @@ const DropdownButton = styled(Flex)`
   align-items: center;
   justify-content: space-between;
   background: transparent;
-  border: 0.0625rem solid ${theme.colors.lights[4]};
+  border: ${theme.borderInput};
+  border-radius: ${theme.radiusDefault};
   color: ${theme.colors.primary};
-  padding: 0.5rem;
+  padding: ${theme.spacing.spacing02};
   cursor: pointer;
   transition: ${theme.transition};
   &:hover {
     background: ${theme.colors.lights[1]};
-    border: 0.0625rem solid ${theme.colors.lights[4]};
     color: ${theme.colors.primary};
   }
   &:active {
     background: ${theme.colors.lights[2]};
-    border: 0.0625rem solid ${theme.colors.lights[4]};
     color: ${theme.colors.primary};
   }
   ${({ disabled }) =>
     disabled &&
     css`
       background: transparent;
-      border: 0.0625rem solid ${theme.colors.lights[4]};
+      border: ${theme.borderInput};
       color: ${theme.colors.lights[4]};
       cursor: not-allowed;
       &:hover {
@@ -74,10 +73,10 @@ const DropdownMenu = styled(Container)`
   width: 100%;
   box-sizing: border-box;
   position: absolute;
-  border: 0.0625rem solid ${theme.colors.lights[4]};
+  border:${theme.borderInput};
   color: ${theme.colors.primary};
   font-weight: ${theme.fontWeights.regular};
-  border-radius: 0 0 ${theme.borderRadius} ${theme.borderRadius};
+  border-radius: ${theme.radiusDefault};
   background: ${theme.colors.white};
   z-index: 1;
   transition: ${theme.transition};
@@ -90,7 +89,7 @@ const DropdownItem = styled.li`
   background: transparent;
   font-size: ${theme.fontSizes.regular};
   transition: ${theme.transition};
-  padding: 0.25rem 0 0.25rem 0.5rem;
+  padding: ${theme.spacing.spacing01} 0 ${theme.spacing.spacing01} ${theme.spacing.spacing01};
   list-style: none;
   transition: ${theme.transition};
   &:hover {
