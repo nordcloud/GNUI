@@ -5,8 +5,8 @@ import { Container, Flex } from "../container";
 
 export interface CheckboxProps {
   name: string;
-  type?: string;
-  labelText?: string;
+  type: string;
+  labelText: string;
   className?: string;
   value?: string;
   id?: string;
@@ -24,8 +24,11 @@ export interface CheckboxGroupProps {
   children?: string | number | any;
 }
 
+const CheckboxWrapper = styled(Container)`
+  position: relative;
+`;
 const SingleCheckWrapper = styled(Flex) `
-  margin-bottom: 0;
+  margin-bottom: ${theme.spacing.spacing04};
 `;
 
 const CheckboxLabel = styled.label`
@@ -98,13 +101,6 @@ const CheckboxInput = styled.input`
       transition: opacity 1s ease;
     }
     }
-  }
-`;
-
-const CheckboxWrapper = styled(Container)`
-  position: relative;
-  ${SingleCheckWrapper} {
-    margin-bottom: ${theme.spacing.spacing04};
   }
 `;
 
