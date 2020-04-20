@@ -31,8 +31,7 @@ const RadioFlexWrapper = styled(Flex)`
   margin-bottom: 1rem;
   label {
     cursor: pointer;
-    margin-left: 0.5rem;
-    font-weight: ${theme.typography.fontWeights[1]};
+    font-weight: ${theme.typography.fontWeights[0]};
   }
 `;
 
