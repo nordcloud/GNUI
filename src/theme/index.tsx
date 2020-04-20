@@ -16,9 +16,14 @@ type Typography = {
     weights: Array<number>;
     margins: Array<string>;
   };
+  [spacing: string]: string | any;
 };
 
-type Borders = { [key: string]: string | number | null };
+type Radius = { [key: string]: string };
+
+type Shadow = { [key: string]: string };
+
+type Borders = { [key: string]: string };
 
 type Transition = string | { transition: string };
 
@@ -30,6 +35,8 @@ export interface ThemeInterface {
   colors: Colors;
   typography: Typography;
   borders: Borders;
+  radius: Radius;
+  shadow: Shadow;
   transition: Transition;
   zindex: ZIndex;
   [aliases: string]: any;
@@ -67,10 +74,42 @@ const theme: ThemeInterface = {
   },
 
   borders: {
-    color: null,
-    width: "0.0625rem",
-    style: "solid",
-    radius: "0.25rem",
+    default: "1px solid #161632",
+    medium: "2px solid #161632",
+    bold: "4px solid #161632",
+    grey: "1px solid #e7e7eb",
+    disabled: "1px solid #d1d1da",
+    darkenGrey: "1px solid #bbbbc9",
+    dark: "1px solid #32323f",
+    success: "1px solid #27ae60",
+    danger: "1px solid #e74c3c",
+    warning: "1px solid #f39c12",
+    notification: "1px solid #3498db",
+    transparent: "1px solid transparent",
+  },
+
+  radius: {
+    small: "2px",
+    default: "4px",
+    large: "6px",
+  },
+
+  shadow: {
+    shadow01: "0 1px 3px rgba(31, 30, 47, 0.1)",
+    shadow02: "0 3px 6px rgba(31, 30, 47, 0.1)",
+    shadow03: "0 8px 20px rgba(31, 30, 47, 0.12)",
+    shadow04: "0 12px 22px rgba(31, 30, 47, 0.18)",
+  },
+
+  spacing: {
+    spacing01: "0.25rem",
+    spacing02: "0.5rem",
+    spacing03: "0.75rem",
+    spacing04: "1rem",
+    spacing05: "1.25rem",
+    spacing06: "1.5rem",
+    spacing07: "2rem",
+    spacing08: "2.5rem",
   },
 
   zindex: {
@@ -108,11 +147,10 @@ theme.fontSizes.regular = theme.fontSizes[1];
 theme.fontSizes.big = theme.fontSizes[2];
 theme.fontSizes.large = theme.fontSizes[3];
 
-// Borders
-theme.borders.color = theme.colors.lights[4];
-theme.borderColor = theme.borders.color;
-theme.borderStyle = theme.borders.style;
-theme.borderRadius = theme.borders.radius;
+// Borders & Radius
+theme.borderDefault = theme.borders.default;
+theme.borderInput = theme.borders.darkenGrey;
+theme.radiusDefault = theme.radius.default;
 
 // Headings
 theme.headings = theme.typography.headings;

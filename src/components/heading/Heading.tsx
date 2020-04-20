@@ -9,22 +9,26 @@ interface HeadingProps {
 }
 
 const changeAttrs = (level: number) => {
-  const setMargins = () => {
-    if (level === 6) {
-      return theme.headings.margins[3];
-    } else if (level === 4 || level === 5) {
-      return theme.headings.margins[2];
-    } else if (level === 3) {
-      return theme.headings.margins[1];
-    } else {
-      return theme.headings.margins[0];
-    }
-  };
+  let margin: string;
+  switch (level) {
+    case 6:
+      margin = theme.spacing.spacing03;
+      break;
+    case 5:
+    case 4:
+      margin = theme.spacing.spacing04;
+      break;
+    case 3:
+      margin = theme.spacing.spacing05;
+      break;
+    default:
+      margin = theme.spacing.spacing06;
+  }
 
   return css`
     font-size: ${theme.headings.sizes[level - 1]}rem;
     font-weight: ${theme.headings.weights[level > 2 ? 1 : 0]};
-    margin: ${setMargins()};
+    margin: ${margin} 0;
   `;
 };
 
@@ -32,7 +36,7 @@ const StyledHeading = styled.h1<HeadingProps>`
   color: ${theme.colors.primary};
   font-family: ${theme.fonts.headers};
   font-weight: ${theme.headings.weights[0]};
-  font-size: ${theme.headings.sizes[0]};
+  font-size: ${theme.headings.sizes[0]}rem;
   margin: ${theme.headings.margins[0]};
   text-rendering: optimizeLegibility;
   ${({ color }) =>
