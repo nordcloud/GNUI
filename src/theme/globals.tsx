@@ -13,7 +13,7 @@ export const SetGlobalStyle = createGlobalStyle`
      color: ${theme.colors.primary};
      font-weight: ${theme.fontWeights.regular};
      letter-spacing: 0.1rem;
-     line-height: 1.5rem;
+     line-height: ${theme.lineHeight};
   }
   code {
     font-family: ${theme.fontFamily.monospace};
