@@ -183,6 +183,7 @@ export const Table: FunctionComponent<TableProps> = ({
                 );
                 return (
                   <Row
+                    key={index}
                     isChecked={isChecked}
                     row={row}
                     id={index}
