@@ -84,7 +84,7 @@ const TableWrapper = styled.div<TableWrapperProps>`
     }
     td,
     th {
-      padding: ${({ small }) => (small ? "0.5rem 0.75rem" : "0.75rem")};
+      padding: ${({ small }) => (small ? `${theme.spacing.spacing02} ${theme.spacing.spacing03}` : `${theme.spacing.spacing03}`)};
     }
   }
 `;
