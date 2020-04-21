@@ -4,11 +4,18 @@ type Colors = {
   [color: string]: string | any;
 };
 
+type HeadingsAttributes = {};
+
 type Typography = {
   fontWeights: Array<number>;
   fontSizes: Array<string>;
   fonts: { [font: string]: string };
   lineHeight: string;
+  headings: {
+    sizes: Array<number>;
+    weights: Array<number>;
+    margins: Array<string>;
+  };
   [spacing: string]: string | any;
 };
 
@@ -22,7 +29,7 @@ type Transition = string | { transition: string };
 
 type ZIndex = {
   [zIndex: string]: number | any;
-}
+};
 
 export interface ThemeInterface {
   colors: Colors;
@@ -60,9 +67,14 @@ const theme: ThemeInterface = {
     fonts: {
       body: "Rubik, sans-serif",
       headers: "Montserrat, sans-serif",
-      monospace: "Fira Code, monospace"
+      monospace: "Fira Code, monospace",
     },
-    lineHeight: "1.5em"
+    lineHeight: "1.5rem",
+    headings: {
+      sizes: [2.5, 2, 1.5, 1.25, 1, 0.8],
+      weights: [500, 600],
+      margins: ["1.5rem, 0", "1.25rem, 0", "1rem, 0", ".75rem 0"],
+    },
   },
 
   borders: {
@@ -77,20 +89,20 @@ const theme: ThemeInterface = {
     danger: "1px solid #e74c3c",
     warning: "1px solid #f39c12",
     notification: "1px solid #3498db",
-    transparent: "1px solid transparent"
+    transparent: "1px solid transparent",
   },
 
   radius: {
     small: "2px",
     default: "4px",
-    large: "6px"
+    large: "6px",
   },
 
   shadow: {
     shadow01: "0 1px 3px rgba(31, 30, 47, 0.1)",
     shadow02: "0 3px 6px rgba(31, 30, 47, 0.1)",
     shadow03: "0 8px 20px rgba(31, 30, 47, 0.12)",
-    shadow04: "0 12px 22px rgba(31, 30, 47, 0.18)"
+    shadow04: "0 12px 22px rgba(31, 30, 47, 0.18)",
   },
 
   spacing: {
@@ -101,24 +113,24 @@ const theme: ThemeInterface = {
     spacing05: "1.25rem",
     spacing06: "1.5rem",
     spacing07: "2rem",
-    spacing08: "2.5rem"
+    spacing08: "2.5rem",
   },
 
   zindex: {
     topoftheworld: 9999,
     popup: 9000,
-    modal: 8000, 
+    modal: 8000,
     overlay: 7000,
     dropdown: 6000,
     sticky: 2000,
     masked: 1000,
     default: 1,
     zero: 0,
-    deep: -9999
+    deep: -9999,
   },
 
   transition: "all 0.2s linear",
-  opacity: 0.7
+  opacity: 0.7,
 };
 
 /** ALIASES */
@@ -145,5 +157,8 @@ theme.fontSizes.extralarge = theme.fontSizes[5];
 theme.borderDefault = theme.borders.default;
 theme.borderInput = theme.borders.darkenGrey;
 theme.radiusDefault = theme.radius.default;
+
+// Headings
+theme.headings = theme.typography.headings;
 
 export default theme;
