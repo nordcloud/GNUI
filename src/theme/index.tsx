@@ -67,7 +67,6 @@ const theme: ThemeInterface = {
     fontSizes: ["0.625rem", "0.75rem", "1rem", "1.3rem", "1.5rem", "2rem"],
     fonts: {
       body: "Rubik, sans-serif",
-      headers: "Montserrat, sans-serif",
       monospace: "Fira Code, monospace",
     },
     lineHeight: "1.5rem",
