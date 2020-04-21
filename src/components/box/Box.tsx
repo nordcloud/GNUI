@@ -6,6 +6,10 @@ import { Container } from "../container";
 type BoxProps = {
   dark?: boolean;
   minHeight?: string;
+  radius?:string;
+  padding?:string;
+  spacing?:string;
+  shadow?:string;
 };
 
 const changeRadius = (radius: string) => css`
