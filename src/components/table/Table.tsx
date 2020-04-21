@@ -79,7 +79,7 @@ const TableWrapper = styled.div<TableWrapperProps>`
       }
     }
     th {
-      border-bottom: 1px solid ${theme.colors.lights[2]};
+      border-bottom: 2px solid ${theme.colors.lights[2]};
       font-weight: ${theme.fontWeights.medium};
       font-size: ${theme.fontSizes.small};
       text-transform: uppercase;
