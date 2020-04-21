@@ -47,7 +47,9 @@ export interface TableWrapperProps {
   hoverline?: boolean;
   striped?: boolean;
   small?: boolean;
+  checkboxes?:boolean;
 }
+
 
 const TableWrapper = styled.div<TableWrapperProps>`
   table {
@@ -57,19 +59,22 @@ const TableWrapper = styled.div<TableWrapperProps>`
     font-weight: ${theme.fontWeights.regular};
     font-family: ${theme.typography.fonts.body};
     font-size: ${theme.fontSizes.regular};
+    line-height: 1.5em;
     color: ${theme.colors.primary};
-
-    tr {
-      &:hover {
-        background-color: ${({ hoverline }) =>
-          hoverline ? theme.colors.lights[1] : "none"};
-      }
-      &:nth-child(even) {
-        background-color: ${({ striped }) =>
-          striped ? theme.colors.lights[0] : "none"};
+    
+    tbody {
+      tr {
         &:hover {
           background-color: ${({ hoverline }) =>
             hoverline ? theme.colors.lights[1] : "none"};
+        }
+        &:nth-child(odd) {
+          background-color: ${({ striped }) =>
+            striped ? theme.colors.lights[0] : "none"};
+          &:hover {
+            background-color: ${({ hoverline }) =>
+              hoverline ? theme.colors.lights[1] : "none"};
+          }
         }
       }
     }
@@ -78,13 +83,22 @@ const TableWrapper = styled.div<TableWrapperProps>`
       font-weight: ${theme.fontWeights.medium};
       font-size: ${theme.fontSizes.small};
       text-transform: uppercase;
+      &:hover {
+        background:auto;
+      }
     }
     td {
       border-top: 1px solid ${theme.colors.lights[2]};
+      label {
+        margin-left:0;
+      }
     }
     td,
     th {
       padding: ${({ small }) => (small ? "0.5rem 0.75rem" : "0.75rem")};
+    }
+    input[checkbox] {
+      margin-bottom:0;
     }
   }
 `;
@@ -97,7 +111,7 @@ export const Cell: FunctionComponent<CellProps> = ({ header, children }) => {
 export const HeadingRow: FunctionComponent<HeadingRowProps> = ({
   headings,
   isCheckable,
-  children,
+  children
 }) => (
   <tr>
     <React.Fragment>
@@ -116,7 +130,7 @@ export const Row: FunctionComponent<RowProps> = ({
   id,
   row,
   isCheckable,
-  handleTableCheckbox,
+  handleTableCheckbox
 }) => {
   const [isChecked, setIsChecked] = useState(false);
 
