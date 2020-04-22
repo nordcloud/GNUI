@@ -1,0 +1,95 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { useState } from "react";
+import { Modal } from "../components/modal";
+import { Button } from "../components/button";
+
+<Meta title="Components/Modal" component={Modal} />
+
+# Modal
+> Please take a look at props to understand correctly how `Modal` works.
+
+
+### Props
+
+- `onClose`: (event: `React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>`) => void - **required**
+- `actions`: Array<{ 
+  * `order`: number - **required** from left to right
+  * `onAction`: (event: `React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>`) => void; - **required**
+  * `severity`: "low" | "medium" | "high" - **required**
+  * `disabled`: boolean - _optional_
+  
+  }> — _optional_
+- `appId`: string - _optional_
+- `contentMaxHeight`: string - _optional_, default `25rem`
+- `modalMinWidth`: string - _optional_, default `18.75rem`
+
+### Basic modal
+
+<Preview>
+  <Story name="basic modal">
+    {() => {
+      const [isOpen, setOpen] = useState(false)
+      const update = () => setOpen(!isOpen);
+      
+      return (
+        <>
+          <Button onClick={update}>Open modal</Button>
+          <Modal 
+            isOpen={isOpen}
+            onAfterOpen={() => {}}
+            onClose={update}
+            contentLabel={"Modal title"}
+            appId="#root"
+          >
+            This is modal content
+            <br />          
+            Another line of content
+          </Modal>
+        </>
+      );
+    }}
+  </Story>
+</Preview>
+
+### Modal with actions
+
+<Preview>
+  <Story name="modal with actions">
+    {() => {
+      const [isOpen, setOpen] = useState(false)
+      const update = () => setOpen(!isOpen);
+      
+      return (
+        <>
+          <Button onClick={update}>Open modal</Button>
+          <Modal 
+            isOpen={isOpen}
+            onAfterOpen={() => {}}
+            onClose={update}
+            contentLabel={"Modal title"}
+            appId="#root"
+            actions={[
+              {
+                order: 0,
+                onAction: update,
+                label: "Second action",
+                severity: "low",
+              },
+              {
+                order: 1,
+                onAction: update,
+                label: "Primary action",
+                severity: "high",
+              }
+            ]}
+          >
+            This is modal content
+            <br />          
+            Another line of content
+          </Modal>
+        </>
+      );
+    }}
+  </Story>
+</Preview>
+

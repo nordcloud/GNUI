@@ -4,7 +4,7 @@ import theme from "../../theme";
 import { darken } from "polished";
 
 interface ButtonProps {
-  children: string;
+  children: string | React.ReactNode;
   severity?: string;
   priority?: string;
   size?: string;
@@ -25,6 +25,7 @@ const setColor = (color: string) => {
 
 const StyledButton = styled.button<ButtonProps>`
   background: ${theme.colors.primary};
+  white-space: nowrap;
   font-family: ${theme.fonts.body};
   color: ${theme.colors.white};
   border: ${theme.borderDefault}; 
