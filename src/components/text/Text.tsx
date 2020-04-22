@@ -23,7 +23,6 @@ const basicStyles = css<TextProps>`
   line-height: ${theme.lineHeight};
   font-weight: ${theme.fontWeights.regular};
   font-size: ${theme.fontSizes.regular};
-  line-height: ${theme.typography.lineHeight};
   color: ${(props) => props.color || theme.colors.primary};
 `;
 
