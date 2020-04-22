@@ -12,5 +12,7 @@ export * from "./grid";
 export * from "./breadcrumbs";
 export * from "./table";
 export * from "./radiobutton";
-export * from "./checkbox";
 export * from "./navigation";
+export * from "./checkbox";
+export * from "./list";
+export * from "./modal";
