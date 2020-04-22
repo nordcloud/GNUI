@@ -12,30 +12,33 @@ interface BreadcrumbsListProps {
 }
 
 const StyledBreadcrumbs = styled.nav`
-  li {
-    display: inline-block;
-    margin-right: 0.5rem;
-    &:after {
-      content: "/";
-      font-size: 0.875rem;
-      margin-left: 0.5rem;
-    }
-    &:last-child {
+  ul {
+    padding:0;
+    li {
+      display: inline-block;
+      margin-right: ${theme.spacing.spacing02};
       &:after {
-        display: none;
+        content: "/";
+        font-size: ${theme.fontSizes.small};
+        margin-left: ${theme.spacing.spacing02};
       }
-    }
-    a {
-      font-size: 0.875rem;
-      font-weight: ${theme.fontWeights.regular};
-      font-family: ${theme.typography.fonts.body};
-      color: ${theme.colors.primary};
-      text-decoration: none;
-      transition: ${theme.transition};
-      &:hover,
-      &:focus,
-      &:active {
-        opacity: ${theme.opacity};
+      &:last-child {
+        &:after {
+          display: none;
+        }
+      }
+      a {
+        font-size: ${theme.fontSizes.small};
+        font-weight: ${theme.fontWeights.regular};
+        font-family: ${theme.typography.fonts.body};
+        color: ${theme.colors.primary};
+        text-decoration: none;
+        transition: ${theme.transition};
+        &:hover,
+        &:focus,
+        &:active {
+          opacity: ${theme.opacity};
+        }
       }
     }
   }

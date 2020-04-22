@@ -28,11 +28,11 @@ const RadioWrapper = styled(Container)`
 `;
 
 const RadioFlexWrapper = styled(Flex)`
-  margin-bottom: 1rem;
+  margin-bottom: ${theme.spacing.spacing04};
   label {
     cursor: pointer;
-    margin-left: 0.5rem;
-    font-weight: ${theme.typography.fontWeights[1]};
+    margin-left: ${theme.spacing.spacing02};
+    font-weight: ${theme.typography.fontWeights[0]};
   }
 `;
 

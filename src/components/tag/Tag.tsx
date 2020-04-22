@@ -14,10 +14,10 @@ export const StyledTag = styled.div`
   text-transform: capitalize;
   text-align: center;
   font-family: ${theme.typography.fonts.headers};
-  font-size: 0.75rem;
-  line-height: 1.125rem;
-  padding: 0 0.75rem;
-  margin: 0.25rem;
+  font-size: ${theme.fontSizes.small};
+  line-height: ${theme.lineHeight};
+  padding: 0 ${theme.spacing.spacing03};
+  margin: ${theme.spacing.spacing01};
   border-radius: 1rem;
   color: ${theme.colors.lights[0]};
   background-color: ${theme.colors.lights[3]};

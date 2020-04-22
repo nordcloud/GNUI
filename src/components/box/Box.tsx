@@ -2,27 +2,66 @@ import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { Container } from "../container";
-import { lighten } from "polished";
 
 type BoxProps = {
   dark?: boolean;
   minHeight?: string;
   minWidth?: string;
+  radius?: string;
+  padding?: string;
+  spacing?: string;
+  shadow?: string;
 };
 
+const changeRadius = (radius: string) => css`
+  border-radius: ${theme.radius[radius]};
+`;
+
+const changePadding = (padding: string) => css`
+  padding: ${theme.spacing[padding]};
+`;
+
+const changeMargin = (spacing: string) => css`
+  margin-bottom: ${theme.spacing[spacing]};
+`;
+
+const changeShadow = (shadow: string) => css`
+  box-shadow: ${theme.shadow[shadow]};
+`;
+
 const StyledBox = styled(Container)<BoxProps>`
-  padding: 1.25rem;
-  margin: 0.25rem;
+  padding: ${theme.spacing.spacing05};
+  border-radius: ${theme.radius.default};
   color: ${theme.colors.primary};
   background: ${theme.colors.white};
   font-weight: ${theme.fontWeights.medium};
-  box-shadow: 0 0.05rem 0.25rem ${lighten(0.7, theme.colors.darks[1])};
+  box-shadow: ${theme.shadow.shadow02};
   transition: ${theme.transition};
   ${({ dark }) =>
     dark &&
     css`
       background: ${theme.colors.primary};
       color: ${theme.colors.white};
+    `}
+  ${({ radius }) =>
+    radius &&
+    css`
+      ${changeRadius(radius)};
+    `}
+  ${({ padding }) =>
+    padding &&
+    css`
+      ${changePadding(padding)};
+    `}
+  ${({ shadow }) =>
+    shadow &&
+    css`
+      ${changeShadow(shadow)};
+    `}
+  ${({ margin }) =>
+    margin &&
+    css`
+      ${changeMargin(margin)};
     `}
   ${({ minHeight }) =>
     minHeight &&

@@ -16,7 +16,7 @@ Grid includes three components: `Grid`, `Row`, `Column`.
       const styledCol = {
         background: theme.colors.warning,
         textAlign: "center",
-        borderRadius: theme.borderRadius,
+        borderRadius: theme.radius.default,
       };
       return (
         <Grid>
@@ -47,7 +47,7 @@ Grid includes three components: `Grid`, `Row`, `Column`.
 
 `Column`s takes `size` as a prop. Size can be described in few ways:
 * `number`:  between 1-12
-* `Array<{[breakpoint: string]: number}>`: `{xs?: number, sm?: number, md?: numder, lg?: number, xl?: number}`. If any of breakpoints will be avoided—`Column` will take available space.
+* `Array<{[breakpoint: string]: number}>`: `{xs?: number, sm?: number, md?: numder, lg?: number, xl?: number, xxl?: number}`
 
 > `number`
 
@@ -57,12 +57,12 @@ Grid includes three components: `Grid`, `Row`, `Column`.
       const numberedColumns = {
         background: theme.colors.notification,
         textAlign: "center",
-        borderRadius: theme.borderRadius,
+        borderRadius: theme.radius.default,
       };
       const autoColumns = {
         background: theme.colors.warning,
         textAlign: "center",
-        borderRadius: theme.borderRadius,
+        borderRadius: theme.radius.default,
       };
       return (
         <Grid>
@@ -110,7 +110,7 @@ Grid includes three components: `Grid`, `Row`, `Column`.
       const breakpointsCols = {
         background: theme.colors.notification,
         textAlign: "center",
-        borderRadius: theme.borderRadius,
+        borderRadius: theme.radius.default,
       };
       return (
         <Grid color={theme.colors.white}>
@@ -123,10 +123,10 @@ Grid includes three components: `Grid`, `Row`, `Column`.
             </Column>
           </Row>
           <Row>
-            <Column size={{ sm: 4, lg: 2 }} style={breakpointsCols}>
+            <Column size={{ sm: 3, lg: 2 }} style={breakpointsCols}>
               <Text>sm: 4 • lg:  2</Text>
             </Column>
-            <Column size={{ sm: 4, lg: 4 }} style={breakpointsCols}>
+            <Column size={{ sm: 3, lg: 4 }} style={breakpointsCols}>
               <Text>sm: 4 • lg:  4</Text>
             </Column>
             <Column size={6} style={breakpointsCols}>
@@ -141,10 +141,9 @@ Grid includes three components: `Grid`, `Row`, `Column`.
 
 ### `PADDING`
 
-* `number`
-* `bp` breakpoint from `theme.spacings`
-* `string` is parsed to `rem` properies by `parseFloat()`
-* `Array<number>`
+* `string`: `xs | sm | md | lg | xl | xxl`
+* `number`: parsed to `rem` values
+* `Array<number>`: parsed to `rem` values
 
 <Preview>
   <Story name="paddings">
@@ -152,7 +151,7 @@ Grid includes three components: `Grid`, `Row`, `Column`.
       const withPaddings = {
         background: theme.colors.notification,
         textAlign: "center",
-        borderRadius: theme.borderRadius,
+        borderRadius: theme.radius.default,
       };
       return (
         <Grid>
@@ -181,10 +180,9 @@ Grid includes three components: `Grid`, `Row`, `Column`.
 
 ### `MARGIN`
 
-* `number`
-* `bp` breakpoint from `theme.spacings`
-* `string` is parsed to `rem` properies by `parseFloat()`
-* `Array<number>`
+* `string`: `xs | sm | md | lg | xl | xxl`
+* `number`: parsed to `rem` values
+* `Array<number>`: parsed to `rem` values
 
 > Margins set as a breakpoints from `theme`.
 
@@ -194,7 +192,7 @@ Grid includes three components: `Grid`, `Row`, `Column`.
       const withMargins= {
         background: theme.colors.notification,
         textAlign: "center",
-        borderRadius: theme.borderRadius,
+        borderRadius: theme.radius.default,
       };
       return (
         <Grid>
@@ -221,7 +219,7 @@ Grid includes three components: `Grid`, `Row`, `Column`.
   </Story>
 </Preview>
 
-> Margins set as an `array`.
+> Margins set as an `array`: `[1, 0.75, 0.75, 1]`.
 
 <Preview>
   <Story name="array">
@@ -229,19 +227,19 @@ Grid includes three components: `Grid`, `Row`, `Column`.
       const withMargins= {
         background: theme.colors.notification,
         textAlign: "center",
-        borderRadius: theme.borderRadius,
+        borderRadius: theme.radius.default,
       };
       return (
         <Grid>
           <Row>
             <Column margin={[1, .75, .75, 1]} style={withMargins}>
-              <Text>[1, 0.75, 0.75, 1]</Text>
+              <Text>Column</Text>
             </Column>
             <Column margin={[1, .75, .75, 1]} style={withMargins}>
-              <Text>[1, 0.75, 0.75, 1]</Text>
+              <Text>Column</Text>
             </Column>
             <Column margin={[1, .75, .75, 1]} style={withMargins}>
-              <Text>[1, 0.75, 0.75, 1]</Text>
+              <Text>Column</Text>
             </Column>
           </Row>
         </Grid>

@@ -1,0 +1,86 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { List } from "../components/list";
+
+<Meta title="Components/List" component={List} />
+
+# List
+> Please take a look at props to understand correctly how `List` works.
+
+
+### Props
+
+- `horizontal`: `boolean` — _optional_ , default `false`
+- `unsorted`: `boolean` — _optional_ , default `false`
+- `hasDescription`: `boolean` - _optional_, default `false`
+- `items`: `array<{ 
+  title: string, 
+  description: string, 
+  rowChildren?: array
+}>  | string | number` — **required**
+- `spacing`: string - _optional_ used for custom spacing for list items
+
+### Unstyled list
+> Basic unstyled list. Takes a string or number array
+
+<Preview>
+  <Story name="unstyled list">
+    <List items={[
+      "List item",
+      "Second list item"
+    ]} />
+  </Story>
+</Preview>
+
+### Unstyled list with custom spacing
+>  Unstyled list with custom spacing
+
+<Preview>
+  <Story name="unstyled list spacing">
+    <List 
+      spacing="0 0 1.15rem 0"
+      items={[
+        "List item",
+        "Second list item"
+      ]}
+    />
+  </Story>
+</Preview>
+
+### Horizontal
+> Horizontal list. Takes a string or number array
+
+<Preview>
+  <Story name="horizontal list">
+    <List horizontal items={[
+      "List item",
+      "Second list item"
+    ]} />
+  </Story>
+</Preview>
+
+### Unordered
+
+<Preview>
+  <Story name="unordered list">
+    <List unordered items={[
+      { title: "List item", rowChildren: [
+        { title: "List item sub row"}
+      ] },
+      { title: "Second list item" },
+    ]} />
+  </Story>
+</Preview>
+
+### List with description
+
+<Preview>
+  <Story name="description">
+    <List hasDescription items={[
+      { title: "List item", description: "List item description" },
+      { title: "Second list item", description: "Second list item description"},
+    ]} />
+  </Story>
+</Preview>
+
+
+
