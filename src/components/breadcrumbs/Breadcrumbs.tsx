@@ -14,7 +14,9 @@ interface BreadcrumbsListProps {
 const StyledBreadcrumbs = styled.nav`
   ul {
     padding:0;
+    margin:0;
     li {
+      line-height: 1.5em;
       display: inline-block;
       margin-right: ${theme.spacing.spacing02};
       &:after {
@@ -23,8 +25,12 @@ const StyledBreadcrumbs = styled.nav`
         margin-left: ${theme.spacing.spacing02};
       }
       &:last-child {
+        margin-right:0;
         &:after {
           display: none;
+        }
+        a {
+          color: ${theme.colors.darks[4]};
         }
       }
       a {
@@ -38,6 +44,9 @@ const StyledBreadcrumbs = styled.nav`
         &:focus,
         &:active {
           opacity: ${theme.opacity};
+        }
+        &:hover {
+          text-decoration: underline;
         }
       }
     }
