@@ -6,8 +6,6 @@ type Colors = {
   [color: string]: string | any;
 };
 
-type HeadingsAttributes = {};
-
 type Typography = {
   fontWeights: Array<number>;
   fontSizes: Array<string>;
