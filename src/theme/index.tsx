@@ -33,9 +33,6 @@ type Breakpoints = {
   [bp: string]: number;
 };
 
-type Gutter = number;
-
-type Spacings = Array<{ bp: string; value: number }>;
 type ZIndex = {
   [zIndex: string]: number | any;
 };
@@ -48,9 +45,6 @@ export interface ThemeInterface {
   shadow: Shadow;
   transition: Transition;
   breakpoints: Breakpoints;
-  margin: Gutter;
-  padding: Gutter;
-  spacings: Spacings;
   zindex: ZIndex;
   [aliases: string]: any;
 }
@@ -152,15 +146,6 @@ const theme: ThemeInterface = {
     xl: 1200,
   },
 
-  margin: 0.25,
-  padding: 0.25,
-  spacings: [
-    { bp: "xs", value: 0 },
-    { bp: "sm", value: 0.25 },
-    { bp: "md", value: 0.75 },
-    { bp: "lg", value: 1.5 },
-    { bp: "xl", value: 2.25 },
-  ],
   opacity: 0.7,
 };
 
