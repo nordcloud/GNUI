@@ -14,8 +14,8 @@ const StyledContainer = styled.div<ContainerProps>`
   font-family: ${theme.fonts.body};
   font-weight: ${theme.fontWeights.regular};
   font-size: ${theme.fontSizes.regular};
-  border-radius: ${theme.borderRadius};
-  width: ${props => props.width || "100%"};
+  border-radius: ${theme.radiusDefault};
+  width: ${(props) => props.width || "100%"};
 `;
 
 export const Container: FunctionComponent<ContainerProps> = ({
@@ -25,7 +25,7 @@ export const Container: FunctionComponent<ContainerProps> = ({
 
 export const Flex = styled(Container)`
   display: flex;
-  align-items: ${props => props.alignItems || "center"};
-  justify-content: ${props => props.justifyContent || "flex-start"};
-  margin: ${props => props.margin};
+  align-items: ${(props) => props.alignItems || "center"};
+  justify-content: ${(props) => props.justifyContent || "flex-start"};
+  margin: ${(props) => props.margin};
 `;

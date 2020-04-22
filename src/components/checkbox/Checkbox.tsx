@@ -25,12 +25,15 @@ export interface CheckboxGroupProps {
 }
 
 const SingleCheckWrapper = styled(Flex) `
-  margin-bottom: 0;
+  margin-bottom: ${theme.spacing.spacing04};
+  &:last-child {
+    margin-bottom:0;
+  }
 `;
 
 const CheckboxLabel = styled.label`
   cursor: pointer;
-  margin-left: 0.5rem;
+  margin-left: ${theme.spacing.spacing02};
   font-weight: theme.typography.fontWeights[1];
 `;
 
