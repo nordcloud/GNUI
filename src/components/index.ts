@@ -11,6 +11,7 @@ export * from "./tag";
 export * from "./grid";
 export * from "./breadcrumbs";
 export * from "./table";
+export * from "./toggle";
 export * from "./radiobutton";
 export * from "./checkbox";
 export * from "./navigation";
