@@ -6,10 +6,11 @@ import { Container } from "../container";
 type BoxProps = {
   dark?: boolean;
   minHeight?: string;
-  radius?:string;
-  padding?:string;
-  spacing?:string;
-  shadow?:string;
+  minWidth?: string;
+  radius?: string;
+  padding?: string;
+  spacing?: string;
+  shadow?: string;
 };
 
 const changeRadius = (radius: string) => css`
@@ -43,29 +44,34 @@ const StyledBox = styled(Container)<BoxProps>`
       color: ${theme.colors.white};
     `}
   ${({ radius }) =>
-  radius &&
-  css`
-    ${changeRadius(radius)};
-  `} 
+    radius &&
+    css`
+      ${changeRadius(radius)};
+    `}
   ${({ padding }) =>
-  padding &&
-  css`
-    ${changePadding(padding)};
-  `} 
+    padding &&
+    css`
+      ${changePadding(padding)};
+    `}
   ${({ shadow }) =>
-  shadow &&
-  css`
-    ${changeShadow(shadow)};
-  `} 
+    shadow &&
+    css`
+      ${changeShadow(shadow)};
+    `}
   ${({ margin }) =>
-  margin &&
-  css`
-    ${changeMargin(margin)};
-  `} 
+    margin &&
+    css`
+      ${changeMargin(margin)};
+    `}
   ${({ minHeight }) =>
     minHeight &&
     css`
       min-height: ${minHeight};
+    `}
+  ${({ minWidth }) =>
+    minWidth &&
+    css`
+      min-width: ${minWidth};
     `}
 `;
 

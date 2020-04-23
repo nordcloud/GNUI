@@ -47,9 +47,8 @@ export interface TableWrapperProps {
   hoverline?: boolean;
   striped?: boolean;
   small?: boolean;
-  checkboxes?:boolean;
+  checkboxes?: boolean;
 }
-
 
 const TableWrapper = styled.div<TableWrapperProps>`
   table {
@@ -61,7 +60,7 @@ const TableWrapper = styled.div<TableWrapperProps>`
     font-size: ${theme.fontSizes.regular};
     line-height: 1.5em;
     color: ${theme.colors.primary};
-    
+
     tbody {
       tr {
         &:hover {
@@ -84,21 +83,24 @@ const TableWrapper = styled.div<TableWrapperProps>`
       font-size: ${theme.fontSizes.small};
       text-transform: uppercase;
       &:hover {
-        background:auto;
+        background: auto;
       }
     }
     td {
       border-top: 1px solid ${theme.colors.lights[2]};
       label {
-        margin-left:0;
+        margin-left: 0;
       }
     }
     td,
     th {
-      padding: ${({ small }) => (small ? `${theme.spacing.spacing02} ${theme.spacing.spacing03}` : `${theme.spacing.spacing03}`)};
+      padding: ${({ small }) =>
+        small
+          ? `${theme.spacing.spacing02} ${theme.spacing.spacing03}`
+          : `${theme.spacing.spacing03}`};
     }
     input[checkbox] {
-      margin-bottom:0;
+      margin-bottom: 0;
     }
   }
 `;
@@ -111,7 +113,7 @@ export const Cell: FunctionComponent<CellProps> = ({ header, children }) => {
 export const HeadingRow: FunctionComponent<HeadingRowProps> = ({
   headings,
   isCheckable,
-  children
+  children,
 }) => (
   <tr>
     <React.Fragment>
@@ -126,11 +128,11 @@ export const HeadingRow: FunctionComponent<HeadingRowProps> = ({
   </tr>
 );
 
-export const Row: FunctionComponent<RowProps> = ({
+const Row: FunctionComponent<RowProps> = ({
   id,
   row,
   isCheckable,
-  handleTableCheckbox
+  handleTableCheckbox,
 }) => {
   const [isChecked, setIsChecked] = useState(false);
 

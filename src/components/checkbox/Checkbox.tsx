@@ -1,4 +1,4 @@
-import React, { FunctionComponent} from "react";
+import React, { FunctionComponent } from "react";
 import styled from "styled-components";
 import theme from "../../theme";
 import { Container, Flex } from "../container";
@@ -13,7 +13,7 @@ export interface CheckboxProps {
   disabled?: boolean;
   required?: boolean;
   valid?: boolean;
-  checked?:boolean;
+  checked?: boolean;
   children?: string | number | any;
   onClick?: (e: React.MouseEvent) => void;
   onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
@@ -24,7 +24,7 @@ export interface CheckboxGroupProps {
   children?: string | number | any;
 }
 
-const SingleCheckWrapper = styled(Flex) `
+const SingleCheckWrapper = styled(Flex)`
   margin-bottom: ${theme.spacing.spacing04};
   &:last-child {
     margin-bottom:0;
@@ -34,7 +34,7 @@ const SingleCheckWrapper = styled(Flex) `
 const CheckboxLabel = styled.label`
   cursor: pointer;
   margin-left: ${theme.spacing.spacing02};
-  font-weight: theme.typography.fontWeights[1];
+  font-weight: ${theme.typography.fontWeights[1]};
 `;
 
 const CheckboxContainer = styled.div`
@@ -85,21 +85,21 @@ const CheckboxInput = styled.input`
   z-index: 2;
   position: absolute;
   top: 0;
-  left:0;
+  left: 0;
   width: 100%;
   height: 100%;
   margin: 0;
   cursor: pointer;
-  
+
   &:checked {
     & ~ ${Fill} {
-    width: 0.75rem;
-    height: 0.75rem;
-    transition: width 0.2s ease-out, height 0.2s ease-out;
-    &::before {
-      opacity: 1;
-      transition: opacity 1s ease;
-    }
+      width: 0.75rem;
+      height: 0.75rem;
+      transition: width 0.2s ease-out, height 0.2s ease-out;
+      &::before {
+        opacity: 1;
+        transition: opacity 1s ease;
+      }
     }
   }
 `;
@@ -111,28 +111,24 @@ const CheckboxWrapper = styled(Container)`
   }
 `;
 
-export const Checkbox: FunctionComponent<CheckboxProps> = ({ 
+export const Checkbox: FunctionComponent<CheckboxProps> = ({
   name,
-  type="checkbox",
+  type = "checkbox",
   labelText,
   ...props
-  }) => (
+}) => (
   <SingleCheckWrapper>
     <CheckboxContainer>
-      <CheckboxInput type={type} id={name} {...props}/>
+      <CheckboxInput type={type} id={name} {...props} />
       <Fill />
     </CheckboxContainer>
     <CheckboxLabel htmlFor={name}>{labelText}</CheckboxLabel>
   </SingleCheckWrapper>
 );
 
-export const CheckboxGroup: FunctionComponent<CheckboxGroupProps> = ({ 
+export const CheckboxGroup: FunctionComponent<CheckboxGroupProps> = ({
   name,
-  children
+  children,
 }) => {
-  return (
-    <CheckboxWrapper name={name}>
-      {children}
-    </CheckboxWrapper>
-  );
+  return <CheckboxWrapper name={name}>{children}</CheckboxWrapper>;
 };

@@ -48,7 +48,7 @@ const StyledHeading = styled.h1<HeadingProps>`
     level &&
     css`
       ${changeAttrs(level)};
-    `}
+    `};
 `;
 
 export const Heading: FunctionComponent<HeadingProps> = ({
