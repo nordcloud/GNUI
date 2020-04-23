@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Input, Label, Description } from "../components/input";
 import { Container } from "../components/container";
 import { Grid, Row, Column } from "../components/grid";
+import { Button } from "../components/button";
 
 <Meta title="Form/Input" component={Input} />
 
@@ -23,7 +25,7 @@ import { Grid, Row, Column } from "../components/grid";
 - `type`: `string` — _optional_, default: `text`
 - `placeholder`: `string` – _optional_
 - `disabled`: `boolean` — _optional_
-- `status`: `string` - _optional_ [ `success` or `error` ]
+- `status`: `success | error` - _optional_
 
 **Label**:
 
@@ -73,20 +75,31 @@ Nothing more to add, just text placeholder which works exactly like in default H
 
 <Preview>
   <Story name="status">
-    <Grid>
-      <Row>
-        <Column>
-          <Input
-            name="success-input"
-            placeholder="Success input"
-            status="success"
-          />
-        </Column>
-        <Column>
-          <Input name="error-input" placeholder="Error input" status="error" />
-        </Column>
-      </Row>
-    </Grid>
+    {() => {
+      const [status, setStatus] = useState("success");
+      return (
+        <Flex>
+          <p>
+            <Input
+              name="success-input"
+              placeholder="Success input"
+              status={status}
+            />
+          </p>
+          <p>
+            <Button
+              size="small"
+              color={status === "error" ? "danger" : "success"}
+              onClick={() =>
+                setStatus(status === "error" ? "success" : "error")
+              }
+            >
+              Change status
+            </Button>
+          </p>
+        </Flex>
+      );
+    }}
   </Story>
 </Preview>
 

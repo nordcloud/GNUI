@@ -54,6 +54,7 @@ const InputGroup = styled(Flex)<InputProps>`
   background: ${theme.colors.white};
   transition: ${theme.transition};
   line-height: ${theme.lineHeight};
+  overflow: hidden;
   &:hover {
     border: ${theme.borders.darkenGray};
   }
@@ -104,15 +105,16 @@ const StyledInput = styled.input<InputProps>`
     `}
 `;
 
-export const Description: FunctionComponent = ({ children }) => {
-  const StyledDescription = styled(Container)`
-    font-size: ${theme.fontSizes[1]};
-    color: ${theme.colors.darks[3]};
-    margin: ${theme.spacing.spacing02} 0;
-    width: 100%;
-  `;
-  return <StyledDescription>{children}</StyledDescription>;
-};
+const StyledDescription = styled(Container)`
+  font-size: ${theme.fontSizes[1]};
+  color: ${theme.colors.darks[3]};
+  margin: ${theme.spacing.spacing02} 0;
+  width: 100%;
+`;
+
+export const Description: FunctionComponent = ({ children }) => (
+  <StyledDescription>{children}</StyledDescription>
+);
 
 export const Input: FunctionComponent<InputProps> = ({
   type = "text",
@@ -125,12 +127,12 @@ export const Input: FunctionComponent<InputProps> = ({
       <Icon image="SEARCH" width="1.2rem" height="1.2rem" />
     )}
     <StyledInput name={name} type={type} id={name} {...props} />
-    {status === "success" ? (
-      <Icon image="INPUT_SUCCESS" width="1rem" height="1rem" />
-    ) : (
-      status === "error" && (
-        <Icon image="INPUT_ERROR" width="1.2rem" height="1.2rem" />
-      )
+    {status && (
+      <Icon
+        image={`INPUT_${status.toUpperCase()}`}
+        width="1.2rem"
+        height="1.2rem"
+      />
     )}
   </InputGroup>
 );
