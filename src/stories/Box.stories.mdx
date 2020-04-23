@@ -1,5 +1,6 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Box } from "../components/box";
+import { Container } from "../components/container";
 
 <Meta title="Components/Box" component={Box} />
 
@@ -15,6 +16,10 @@ import { Box } from "../components/box";
 
 - `dark`: `boolean` — _optional_
 - `minHeight`: `string` — _optional_
+- `radius`: `string` — _optional_
+- `padding`: `string` — _optional_
+- `margin`: `string` — _optional_
+- `shadow`: `string` — _optional_
 
 ### dark
 
@@ -33,5 +38,60 @@ import { Box } from "../components/box";
 <Preview>
   <Story name="minHeight">
     <Box minHeight="15vh">Box with minHeight prop</Box>
+  </Story>
+</Preview>
+
+### Border radius
+
+> `radius`: `string` — [`small`, `default`, `large`]
+
+<Preview>
+  <Story name="radius">
+    <Container>
+        <Box radius="small" margin="spacing02">Box with small border radius prop</Box>
+        <Box radius="default" margin="spacing02">Box with default border radius prop</Box>
+        <Box radius="large" margin="spacing02">Box with large border radius prop</Box>
+    </Container>
+  </Story>
+</Preview>
+
+### Padding
+
+> `padding`: `string` — [`spacing01`, `spacing02`, `spacing03`, `spacing04`, `spacing05`, `spacing06`, `spacing07`]
+
+<Preview>
+  <Story name="padding">
+    <Container>
+        <Box padding="spacing04" margin="spacing02">Box with spacing04 padding prop</Box>
+        <Box padding="spacing07">Box with spacing07 padding prop</Box>
+    </Container>
+  </Story>
+</Preview>
+
+### Margin
+
+> `margin`: `string` — [`spacing01`, `spacing02`, `spacing03`, `spacing04`, `spacing05`, `spacing06`, `spacing07`]
+
+<Preview>
+  <Story name="margin">
+    <Container>
+        <Box margin="spacing04">Box with small border radius prop</Box>
+        <Box>Box with default border radius prop</Box>
+    </Container>
+  </Story>
+</Preview>
+
+### Shadow
+
+> `shadow`: `string` — [`shadow01`, `shadow02`, `shadow03`, `shadow04`]
+
+<Preview>
+  <Story name="shadow">
+    <Container>
+        <Box shadow="shadow01" margin="spacing04">Box with shadow01 shadow prop</Box>
+        <Box shadow="shadow02" margin="spacing04">Box with shadow02 shadow prop</Box>
+        <Box shadow="shadow03" margin="spacing04">Box with shadow03 shadow prop</Box>
+        <Box shadow="shadow04">Box with shadow04 shadow prop</Box>
+    </Container>
   </Story>
 </Preview>

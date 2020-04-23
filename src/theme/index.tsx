@@ -1,10 +1,10 @@
+import { createBreakpoint, createMap } from "styled-components-breakpoint";
+
 type Colors = {
   darks: Array<string>;
   lights: Array<string>;
   [color: string]: string | any;
 };
-
-type HeadingsAttributes = {};
 
 type Typography = {
   fontWeights: Array<number>;
@@ -27,6 +27,10 @@ type Borders = { [key: string]: string };
 
 type Transition = string | { transition: string };
 
+type Breakpoints = {
+  [bp: string]: number;
+};
+
 type ZIndex = {
   [zIndex: string]: number | any;
 };
@@ -39,6 +43,7 @@ export interface ThemeInterface {
   radius: Radius;
   shadow: Shadow;
   transition: Transition;
+  breakpoints: Breakpoints;
   zindex: ZIndex;
   [aliases: string]: any;
 }
@@ -59,7 +64,7 @@ const theme: ThemeInterface = {
     statusDanger: ["#F5B7B1", "#E74C3C", "#B03A2E", "#943126"],
     statusSuccess: ["#A9DFBF", "#27AE60", "#1E8449", "#196F3D"],
     statusWarning: ["#FAD7A0", "#F39C12", "#B9770E", "#9C640C"],
-    statusNotification: ["#AED6F1", "#3498DB", "#2874A6", "#21618C"]
+    statusNotification: ["#AED6F1", "#3498DB", "#2874A6", "#21618C"],
   },
 
   typography: {
@@ -67,7 +72,6 @@ const theme: ThemeInterface = {
     fontSizes: ["0.625rem", "0.75rem", "1rem", "1.3rem", "1.5rem", "2rem"],
     fonts: {
       body: "Rubik, sans-serif",
-      headers: "Montserrat, sans-serif",
       monospace: "Fira Code, monospace",
     },
     lineHeight: "1.5rem",
@@ -131,6 +135,15 @@ const theme: ThemeInterface = {
   },
 
   transition: "all 0.2s linear",
+
+  breakpoints: {
+    xs: 0,
+    sm: 576,
+    md: 768,
+    lg: 992,
+    xl: 1200,
+  },
+
   opacity: 0.7,
 };
 
@@ -161,5 +174,9 @@ theme.radiusDefault = theme.radius.default;
 
 // Headings
 theme.headings = theme.typography.headings;
+
+export const { breakpoints, spacings, paddings } = theme;
+export const bp = createBreakpoint(breakpoints);
+export const map = createMap(breakpoints);
 
 export default theme;

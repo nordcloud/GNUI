@@ -1,0 +1,57 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { NavLink, Navigation } from "../components/navigation";
+
+<Meta title="Components/Navigation" component={NavLink} />
+
+# Navigation
+
+#### Props
+
+> By default `Navigation` is styled as primary
+
+- `name`: `string` — _optional_
+- `names`: `array` — **required** - array of strings, Navigation's items names
+- `links`: `array` — **required** - array of strings, links for Navigation's items
+- `secondary`: `boolean` — _optional_ - secondary navigation
+
+
+<Preview>
+  <Story name="single navlink">
+    <NavLink 
+      name="Menu Item"
+      link="/"
+    />
+  </Story>
+</Preview>
+
+### Primary Navigation
+
+<Preview>
+  <Story name="primary">
+      {
+          () => {
+            const names = ["Menu Item 1", "Menu Item 2", "Menu Item 3"];
+            const links = ["/", "/", "/"];
+            return (
+                <Navigation names={names} links={links} />
+            )
+          }
+      }
+  </Story>
+</Preview>
+
+### Secondary Navigation
+
+<Preview>
+  <Story name="secondary">
+      {
+          () => {
+            const names = ["Menu Item 1", "Menu Item 2", "Menu Item 3"];
+            const links = ["/", "/", "/"];
+            return (
+                <Navigation names={names} links={links} secondary />
+            )
+          }
+      }
+  </Story>
+</Preview>

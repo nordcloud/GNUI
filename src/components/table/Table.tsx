@@ -47,6 +47,7 @@ export interface TableWrapperProps {
   hoverline?: boolean;
   striped?: boolean;
   small?: boolean;
+  checkboxes?: boolean;
 }
 
 const TableWrapper = styled.div<TableWrapperProps>`
@@ -57,34 +58,49 @@ const TableWrapper = styled.div<TableWrapperProps>`
     font-weight: ${theme.fontWeights.regular};
     font-family: ${theme.typography.fonts.body};
     font-size: ${theme.fontSizes.regular};
+    line-height: 1.5em;
     color: ${theme.colors.primary};
 
-    tr {
-      &:hover {
-        background-color: ${({ hoverline }) =>
-          hoverline ? theme.colors.lights[1] : "none"};
-      }
-      &:nth-child(even) {
-        background-color: ${({ striped }) =>
-          striped ? theme.colors.lights[0] : "none"};
+    tbody {
+      tr {
         &:hover {
           background-color: ${({ hoverline }) =>
             hoverline ? theme.colors.lights[1] : "none"};
         }
+        &:nth-child(odd) {
+          background-color: ${({ striped }) =>
+            striped ? theme.colors.lights[0] : "none"};
+          &:hover {
+            background-color: ${({ hoverline }) =>
+              hoverline ? theme.colors.lights[1] : "none"};
+          }
+        }
       }
     }
     th {
-      border-bottom: 1px solid ${theme.colors.lights[2]};
+      border-bottom: 2px solid ${theme.colors.lights[2]};
       font-weight: ${theme.fontWeights.medium};
       font-size: ${theme.fontSizes.small};
       text-transform: uppercase;
+      &:hover {
+        background: auto;
+      }
     }
     td {
       border-top: 1px solid ${theme.colors.lights[2]};
+      label {
+        margin-left: 0;
+      }
     }
     td,
     th {
-      padding: ${({ small }) => (small ? "0.5rem 0.75rem" : "0.75rem")};
+      padding: ${({ small }) =>
+        small
+          ? `${theme.spacing.spacing02} ${theme.spacing.spacing03}`
+          : `${theme.spacing.spacing03}`};
+    }
+    input[checkbox] {
+      margin-bottom: 0;
     }
   }
 `;
@@ -112,7 +128,7 @@ export const HeadingRow: FunctionComponent<HeadingRowProps> = ({
   </tr>
 );
 
-export const Row: FunctionComponent<RowProps> = ({
+const Row: FunctionComponent<RowProps> = ({
   id,
   row,
   isCheckable,
