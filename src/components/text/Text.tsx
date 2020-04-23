@@ -19,11 +19,12 @@ const changeSize = (size: number) => css`
 `;
 
 const basicStyles = css<TextProps>`
+  text-rendering: optimizeLegibility;
   font-family: ${theme.fonts.body};
   line-height: ${theme.lineHeight};
   font-weight: ${theme.fontWeights.regular};
   font-size: ${theme.fontSizes.regular};
-  color: ${props => props.color || theme.colors.primary};
+  color: ${(props) => props.color || theme.colors.primary};
 `;
 
 const StyledText = styled.p<TextProps>`

@@ -34,7 +34,7 @@ const changeAttrs = (level: number) => {
 
 const StyledHeading = styled.h1<HeadingProps>`
   color: ${theme.colors.primary};
-  font-family: ${theme.fonts.headers};
+  font-family: ${theme.fonts.body};
   font-weight: ${theme.headings.weights[0]};
   font-size: ${theme.headings.sizes[0]}rem;
   margin: ${theme.headings.margins[0]};
@@ -48,7 +48,7 @@ const StyledHeading = styled.h1<HeadingProps>`
     level &&
     css`
       ${changeAttrs(level)};
-    `}
+    `};
 `;
 
 export const Heading: FunctionComponent<HeadingProps> = ({
@@ -56,7 +56,7 @@ export const Heading: FunctionComponent<HeadingProps> = ({
   level,
   ...props
 }) => (
-  <StyledHeading as={level ? `h${level}` : "h1"} level={level || 1} {...props}>
-    {children}
-  </StyledHeading>
-);
+    <StyledHeading as={level ? `h${level}` : "h1"} level={level || 1} {...props}>
+      {children}
+    </StyledHeading>
+  );

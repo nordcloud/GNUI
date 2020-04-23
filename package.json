@@ -1,9 +1,9 @@
 {
-  "name": "gnui",
+  "name": "@nordcloud/gnui",
   "version": "0.1.0",
-  "private": true,
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "repository": "git://github.com/nordcloud/gnui.git",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
     "@fortawesome/free-solid-svg-icons": "^5.12.1",
@@ -30,6 +30,7 @@
     "storybook": "5.3.18",
     "styled": "^1.0.0",
     "styled-components": "^5.0.1",
+    "styled-components-breakpoint": "^3.0.0-preview.20",
     "styled-reset": "^4.1.0",
     "title": "^3.4.1",
     "typescript": "~3.7.2"
