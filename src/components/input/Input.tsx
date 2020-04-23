@@ -13,22 +13,27 @@ export interface InputProps {
   id?: string;
   disabled?: boolean;
   required?: boolean;
-  status?: string;
+  status?: "success" | "error";
   children?: string | number | any;
   onClick?: (e: React.MouseEvent) => void;
   onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
 }
 
-export const Label: FunctionComponent<{ name: string }> = ({
+const StyledLabel = styled.label`
+  line-height: ${theme.lineHeight};
+  color: ${theme.colors.primary};
+  margin-bottom: ${theme.spacing.spacing02};
+`;
+
+export const Label: FunctionComponent<{ name?: string }> = ({
   name = "Label",
 }) => (
-  <Flex margin="0.5rem 0">
-    <label htmlFor={name}>{name}</label>
+  <Flex>
+    <StyledLabel htmlFor={name}>{name}</StyledLabel>
   </Flex>
 );
 
-<<<<<<< HEAD
-const setStatusColors = (status: string) => {
+const setStatusColor = (status: "success" | "error") => {
   if (status === "error") {
     return css`
       border: ${theme.borders.danger};
@@ -41,25 +46,23 @@ const setStatusColors = (status: string) => {
 };
 
 const InputGroup = styled(Flex)<InputProps>`
-=======
-const InputGroup = styled(Flex)`
->>>>>>> 62e625f328d867e7cfa53720941a2fabdff9613e
   align-items: center;
-  border: ${theme.borders.grey};
+  border: ${theme.borders.disabled};
   padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
   border-radius: ${theme.radiusDefault};
   color: ${theme.colors.primary};
   background: ${theme.colors.white};
   transition: ${theme.transition};
+  line-height: ${theme.lineHeight};
   &:hover {
     border: ${theme.borders.darkenGray};
   }
   &:focus {
     outline: 0;
-    border: 1px solid ${theme.colors.darks[0]};
+    border: 1px solid ${theme.colors.darks[4]};
   }
   &:disabled {
-    color: ${theme.borders.disabled};
+    color: ${theme.colors.lights[4]};
     background: ${theme.colors.white};
     border: ${theme.borders.grey};
     cursor: not-allowed;
@@ -68,7 +71,7 @@ const InputGroup = styled(Flex)`
   ${({ status }) =>
     status &&
     css`
-      ${setStatusColors(status)}
+      ${setStatusColor(status)}
     `}
 `;
 
@@ -89,7 +92,7 @@ const StyledInput = styled.input<InputProps>`
   }
   &:disabled {
     color: ${theme.colors.lights[4]};
-    background-color: ${theme.colors.white};
+    background: ${theme.colors.white};
     border: 0;
     cursor: not-allowed;
   }
@@ -103,9 +106,9 @@ const StyledInput = styled.input<InputProps>`
 
 export const Description: FunctionComponent = ({ children }) => {
   const StyledDescription = styled(Container)`
-    font-size: ${theme.fontSizes.small};
+    font-size: ${theme.fontSizes[1]};
     color: ${theme.colors.darks[3]};
-    margin: ${theme.spacing.spacing01} 0;
+    margin: ${theme.spacing.spacing02} 0;
     width: 100%;
   `;
   return <StyledDescription>{children}</StyledDescription>;
@@ -114,12 +117,20 @@ export const Description: FunctionComponent = ({ children }) => {
 export const Input: FunctionComponent<InputProps> = ({
   type = "text",
   name,
+  status,
   ...props
 }) => (
-  <InputGroup>
+  <InputGroup status={status} {...props}>
     {type === "search" && (
       <Icon image="SEARCH" width="1.2rem" height="1.2rem" />
     )}
     <StyledInput name={name} type={type} id={name} {...props} />
+    {status === "success" ? (
+      <Icon image="INPUT_SUCCESS" width="1rem" height="1rem" />
+    ) : (
+      status === "error" && (
+        <Icon image="INPUT_ERROR" width="1.2rem" height="1.2rem" />
+      )
+    )}
   </InputGroup>
 );
