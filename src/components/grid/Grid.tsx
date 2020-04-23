@@ -115,8 +115,8 @@ const setMargins = (marginValue: Spacing, isColumn: boolean = false): any => {
 
   if (isNaN(marginValue)) {
     for (const option of gridSpacings) {
-      const [key, value] = Object.values(option).flat();
-      if (key === marginValue) {
+      const [bp, value] = Object.values(option).flat();
+      if (bp === marginValue) {
         return cache(value, false);
       }
     }
@@ -179,8 +179,8 @@ export const Row = styled.div<{ margin: number }>`
 
 const setColumnSize = (size: Size, margin: Spacing = defaultSpacing) => {
   const cache = (size: Size, margin: Spacing = defaultSpacing) => css`
-    flex-basis: calc(8.3% * ${size} - 2 * ${margin});
-    max-width: calc(8.3% * ${size} - 2 * ${margin});
+    flex-basis: calc(8.33% * ${size} - 2 * ${margin});
+    max-width: calc(8.33% * ${size} - 2 * ${margin});
     ${margin && `margin: ${margin};`}
   `;
 
@@ -192,8 +192,8 @@ const setColumnSize = (size: Size, margin: Spacing = defaultSpacing) => {
     return map(
       size,
       (columns) => `
-      flex-basis: calc(8.3% * ${columns} - 2 * ${margin});
-      max-width: calc(8.3% * ${columns} - 2 * ${margin});
+      flex-basis: calc(8.33% * ${columns} - 2 * ${margin});
+      max-width: calc(8.33% * ${columns} - 2 * ${margin});
       `
     );
   }
