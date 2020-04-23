@@ -54,6 +54,7 @@ const InputGroup = styled(Flex)<InputProps>`
   background: ${theme.colors.white};
   transition: ${theme.transition};
   line-height: ${theme.lineHeight};
+  overflow: hidden;
   &:hover {
     border: ${theme.borders.darkenGray};
   }
@@ -104,15 +105,16 @@ const StyledInput = styled.input<InputProps>`
     `}
 `;
 
-export const Description: FunctionComponent = ({ children }) => {
-  const StyledDescription = styled(Container)`
-    font-size: ${theme.fontSizes[1]};
-    color: ${theme.colors.darks[3]};
-    margin: ${theme.spacing.spacing02} 0;
-    width: 100%;
-  `;
-  return <StyledDescription>{children}</StyledDescription>;
-};
+const StyledDescription = styled(Container)`
+  font-size: ${theme.fontSizes[1]};
+  color: ${theme.colors.darks[3]};
+  margin: ${theme.spacing.spacing02} 0;
+  width: 100%;
+`;
+
+export const Description: FunctionComponent = ({ children }) => (
+  <StyledDescription>{children}</StyledDescription>
+);
 
 export const Input: FunctionComponent<InputProps> = ({
   type = "text",

@@ -23,7 +23,7 @@ import { Grid, Row, Column } from "../components/grid";
 - `type`: `string` — _optional_, default: `text`
 - `placeholder`: `string` – _optional_
 - `disabled`: `boolean` — _optional_
-- `status`: `string` - _optional_ [ `success` or `error` ]
+- `status`: `success | error` - _optional_
 
 **Label**:
 
@@ -74,17 +74,15 @@ Nothing more to add, just text placeholder which works exactly like in default H
 <Preview>
   <Story name="status">
     <Grid>
-      <Row>
-        <Column>
-          <Input
-            name="success-input"
-            placeholder="Success input"
-            status="success"
-          />
-        </Column>
-        <Column>
-          <Input name="error-input" placeholder="Error input" status="error" />
-        </Column>
+      <Row margin={[0.5, 0]}>
+        <Input
+          name="success-input"
+          placeholder="Success input"
+          status="success"
+        />
+      </Row>
+      <Row margin={[0.5, 0]}>
+        <Input name="error-input" placeholder="Error input" status="error" />
       </Row>
     </Grid>
   </Story>
