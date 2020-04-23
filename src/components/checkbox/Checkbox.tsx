@@ -26,6 +26,9 @@ export interface CheckboxGroupProps {
 
 const SingleCheckWrapper = styled(Flex) `
   margin-bottom: ${theme.spacing.spacing04};
+  &:last-child {
+    margin-bottom:0;
+  }
 `;
 
 const CheckboxLabel = styled.label`
