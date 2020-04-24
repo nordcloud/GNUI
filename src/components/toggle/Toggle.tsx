@@ -72,15 +72,15 @@ export const Toggle: FunctionComponent<ToggleProps> = ({
   toggleValue,
   labelText
 }) => {
-  const [value, setValue] = useState("off");
-  const handleSelect = () => setValue(value === "off" ? "on" : "off");
+  const [isActive, setActive] = useState(false);
+  const handleSelect = () => setActive(!isActive);
   return (
     <StyledToggle 
       size={size}
       status={status}
       name={name}
       value={toggleValue}
-      className={ value === "off" ? "" : "active"}
+      className={isActive ? "active" : ""}
       onClick={handleSelect}>
         {labelText}
     </StyledToggle>
