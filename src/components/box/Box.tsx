@@ -35,7 +35,7 @@ const StyledBox = styled(Container) <BoxProps>`
   border-radius: ${theme.radius.default};
   color: ${theme.colors.primary};
   background: ${theme.colors.white};
-  font-weight: ${theme.fontWeights.medium};
+  font-weight: ${theme.fontWeights.regular};
   box-shadow: ${theme.shadow.shadow02};
   transition: ${theme.transition};
   ${({ dark }) =>
