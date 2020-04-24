@@ -4,84 +4,84 @@ import theme from "../../theme";
 import { darken } from "polished";
 
 export interface ToggleProps {
-    name:string;
-    toggleValue?: string;
-    labelText?: string;
-    id?: string;
-    className?: string;
-    status?:string;
-    size?: string;
-    onClick?: (e: React.MouseEvent) => void;
+  name:string;
+  toggleValue?: string;
+  labelText?: string;
+  id?: string;
+  className?: string;
+  status?:string;
+  size?: string;
+  onClick?: (e: React.MouseEvent) => void;
 }
 
 const setColor = (color: string) => {
-    return color !== undefined && theme.colors[color]
-      ? theme.colors[color]
-      : color;
+  return color !== undefined && theme.colors[color]
+    ? theme.colors[color]
+    : color;
 };
 
 const StyledToggle = styled.button<ToggleProps>`
-    border: ${theme.borderDefault}; 
-    border-radius: ${theme.radiusDefault};
-    line-height: ${theme.lineHeight};
-    outline:none;
-    cursor: pointer;
-    color: ${theme.colors.primary};
-    background: transparent;
-    padding: ${theme.spacing.spacing02} ${theme.spacing.spacing04};
-    transition: ${theme.transition};
-    font-size: ${theme.fontSizes.regular};
+  border: ${theme.borderDefault}; 
+  border-radius: ${theme.radiusDefault};
+  line-height: ${theme.lineHeight};
+  outline:none;
+  cursor: pointer;
+  color: ${theme.colors.primary};
+  background: transparent;
+  padding: ${theme.spacing.spacing02} ${theme.spacing.spacing04};
+  transition: ${theme.transition};
+  font-size: ${theme.fontSizes.regular};
 
-    &.active {
-        background: ${theme.colors.primary};
-        color: ${theme.colors.white};
-    }
+  &.active {
+    background: ${theme.colors.primary};
+    color: ${theme.colors.white};
+  }
 
-    ${({ size }) =>
-    size === "small" &&
+  ${({ size }) =>
+  size === "small" &&
+  css`
+    font-size: ${theme.fontSizes.small};
+    padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
+  `}
+
+  ${({ status }) =>
+    status &&
     css`
-        font-size: ${theme.fontSizes.small};
-        padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
-    `}
-
-    ${({ status }) =>
-        status &&
-        css`
-            color: ${setColor(status)};
-            border: 1px solid ${setColor(status)}; 
-            &.active {
-                color: ${theme.colors.white};
-                background: ${setColor(status)};
-                &:hover {
-                    background: ${darken(0.1, theme.colors[status] || status)};
-                }
-                &:active {
-                    background: ${darken(0.2, theme.colors[status] || status)};
-                }
-                &:disabled {
-                    background: ${darken(0.3, theme.colors[status] || status)};
-                }
-            }
-    `}
+      color: ${setColor(status)};
+      border: 1px solid ${setColor(status)}; 
+      &.active {
+        color: ${theme.colors.white};
+        background: ${setColor(status)};
+        &:hover {
+          background: ${darken(0.1, theme.colors[status] || status)};
+        }
+        &:active {
+          background: ${darken(0.2, theme.colors[status] || status)};
+        }
+        &:disabled {
+          background: ${darken(0.3, theme.colors[status] || status)};
+        }
+      }
+  `}
 `;
 
 export const Toggle: FunctionComponent<ToggleProps> = ({ 
-    status, 
-    size,
-    name,
-    toggleValue,
-    labelText
+  status, 
+  size,
+  name,
+  toggleValue,
+  labelText
 }) => {
-    const [value, setValue] = useState("off");
-    const handleSelect = () => setValue(value === "off" ? "on" : "off");
-    return (
-        <StyledToggle 
-            size={size}
-            status={status}
-            name={name}
-            value={toggleValue}
-            className={ value === "off" ? "" : "active"}
-            onClick={handleSelect}>
-                {labelText}
-        </StyledToggle>
+  const [value, setValue] = useState("off");
+  const handleSelect = () => setValue(value === "off" ? "on" : "off");
+  return (
+    <StyledToggle 
+      size={size}
+      status={status}
+      name={name}
+      value={toggleValue}
+      className={ value === "off" ? "" : "active"}
+      onClick={handleSelect}>
+        {labelText}
+    </StyledToggle>
 )};
