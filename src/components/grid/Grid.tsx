@@ -56,16 +56,7 @@ interface ColumnProps {
   padding: Spacing;
 }
 
-const basicFlexStyles = (props: { color?: string }) => css`
-  color: ${props.color || theme.colors.primary};
-  letter-spacing: 0.0525rem;
-  & > * {
-    color: inherit;
-  }
-`;
-
 const FlexItem = styled.div<FlexProps>`
-  ${basicFlexStyles};
   ${(props) =>
     props &&
     css`
@@ -166,7 +157,7 @@ const setPaddings = (paddingValue: Spacing) => {
   return cache(paddingValue);
 };
 
-export const Row = styled.div<{ margin: number }>`
+export const Row = styled(FlexItem)<{ margin: number }>`
   display: flex;
   flex-basis: 100%;
   max-width: 100%;
