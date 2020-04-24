@@ -16,17 +16,17 @@ import { useState } from "react";
 
 <Preview>
   <Story name="default">
-    {() => {
-      const list = [
-        { name: "button1", value: "button1", labelText: "Button 1"},
-        { name: "button2", value: "button2", labelText: "Button 2"},
-        { name: "button3", value: "button3", labelText: "Button 3"}
-      ];
-      return(
-        <MultipleSelect list={list} />
-      );
-    }
-    }
+  {() => {
+    const list = [
+    { name: "button1", value: "button1", labelText: "Button 1"},
+    { name: "button2", value: "button2", labelText: "Button 2"},
+    { name: "button3", value: "button3", labelText: "Button 3"}
+    ];
+    return(
+    <MultipleSelect list={list} />
+    );
+  }
+  }
   </Story>
 </Preview>
 
@@ -36,17 +36,17 @@ import { useState } from "react";
 
 <Preview>
   <Story name="small">
-    {() => {
-      const list = [
-        { name: "button1", value: "button1", labelText: "Button 1"},
-        { name: "button2", value: "button2", labelText: "Button 2"},
-        { name: "button3", value: "button3", labelText: "Button 3"}
-      ];
-      return(
-        <MultipleSelect size="small" list={list} />
-      );
-    }
-    }
+  {() => {
+    const list = [
+    { name: "button1", value: "button1", labelText: "Button 1"},
+    { name: "button2", value: "button2", labelText: "Button 2"},
+    { name: "button3", value: "button3", labelText: "Button 3"}
+    ];
+    return(
+    <MultipleSelect size="small" list={list} />
+    );
+  }
+  }
   </Story>
 </Preview>
 
@@ -56,25 +56,25 @@ import { useState } from "react";
 
 <Preview>
   <Story name="status">
-    {() => {
-      const list = [
-        { name: "button1", value: "button1", labelText: "Button 1"},
-        { name: "button2", value: "button2", labelText: "Button 2"},
-        { name: "button3", value: "button3", labelText: "Button 3"}
-      ];
-      return(
-        <div>
-          <p>Success</p>
-          <MultipleSelect status="success" list={list} />
-          <p>Danger</p>
-          <MultipleSelect status="danger" list={list} />
-          <p>Warning</p>
-          <MultipleSelect status="warning" list={list} />
-          <p>Notification</p>
-          <MultipleSelect status="notification" list={list} />
-        </div>
-      );
-    }
-    }
+  {() => {
+    const list = [
+    { name: "button1", value: "button1", labelText: "Button 1"},
+    { name: "button2", value: "button2", labelText: "Button 2"},
+    { name: "button3", value: "button3", labelText: "Button 3"}
+    ];
+    return(
+    <div>
+      <p>Success</p>
+      <MultipleSelect status="success" list={list} />
+      <p>Danger</p>
+      <MultipleSelect status="danger" list={list} />
+      <p>Warning</p>
+      <MultipleSelect status="warning" list={list} />
+      <p>Notification</p>
+      <MultipleSelect status="notification" list={list} />
+    </div>
+    );
+  }
+  }
   </Story>
 </Preview>
