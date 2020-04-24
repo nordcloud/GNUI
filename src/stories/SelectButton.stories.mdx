@@ -1,5 +1,6 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { MultipleSelect } from "../components/selectbutton";
+import { Text } from "../components/text";
 import { useState } from "react";
 
 <Meta title="Components/SelectButton" component={MultipleSelect} />
@@ -64,13 +65,13 @@ import { useState } from "react";
     ];
     return(
     <div>
-      <p>Success</p>
+      <Text>Success</Text>
       <MultipleSelect status="success" list={list} />
-      <p>Danger</p>
+      <Text>Danger</Text>
       <MultipleSelect status="danger" list={list} />
-      <p>Warning</p>
+      <Text>Warning</Text>
       <MultipleSelect status="warning" list={list} />
-      <p>Notification</p>
+      <Text>Notification</Text>
       <MultipleSelect status="notification" list={list} />
     </div>
     );
