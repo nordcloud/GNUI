@@ -1,0 +1,29 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Styleguide } from "../components/styleguide";
+import { Heading } from "../components/heading";
+import { Container } from "../components/container";
+import theme from "../theme";
+
+<Meta title="Foundation/Styleguide" component={Styleguide} />
+
+# Styleguide
+
+<Preview>
+  <Story name="styleguide">
+    {() => {
+      const colors = ["Primary", "Accent", "Danger", "Success", "Notification"];
+      const lights = theme.colors.lights;
+      const darks = theme.colors.darks;
+      return (
+        <Container>
+          <Heading level={2}>Main</Heading>
+          <Styleguide colors={colors} />
+          <Heading level={2}>Lights</Heading>
+          <Styleguide colors={lights} />
+          <Heading level={2}>Darks</Heading>
+          <Styleguide colors={darks} />
+        </Container>
+      );
+    }}
+  </Story>
+</Preview>
