@@ -11,7 +11,7 @@ type BoxProps = {
   padding?: string;
   spacing?: string;
   shadow?: string;
-  children?: React.ReactNode
+  children?: React.ReactNode;
 };
 
 const changeRadius = (radius: string) => css`
@@ -30,7 +30,7 @@ const changeShadow = (shadow: string) => css`
   box-shadow: ${theme.shadow[shadow]};
 `;
 
-const StyledBox = styled(Container) <BoxProps>`
+const StyledBox = styled(Container)<BoxProps>`
   padding: ${theme.spacing.spacing05};
   border-radius: ${theme.radius.default};
   color: ${theme.colors.primary};
@@ -47,23 +47,23 @@ const StyledBox = styled(Container) <BoxProps>`
   ${({ radius }) =>
     radius &&
     css`
-    ${changeRadius(radius)};
-  `} 
+      ${changeRadius(radius)};
+    `}
   ${({ padding }) =>
     padding &&
     css`
-    ${changePadding(padding)};
-  `} 
+      ${changePadding(padding)};
+    `}
   ${({ shadow }) =>
     shadow &&
     css`
-    ${changeShadow(shadow)};
-  `} 
+      ${changeShadow(shadow)};
+    `}
   ${({ margin }) =>
     margin &&
     css`
-    ${changeMargin(margin)};
-  `} 
+      ${changeMargin(margin)};
+    `}
   ${({ minHeight }) =>
     minHeight &&
     css`
