@@ -51,9 +51,9 @@ interface FlexProps {
 type Spacing = Array<string | number> | string | number | any;
 type Size = { [sizeBreakpoint: string]: string } | number;
 interface ColumnProps {
-  size: Size;
-  margin: Spacing;
-  padding: Spacing;
+  size?: Size;
+  margin?: Spacing;
+  padding?: Spacing;
 }
 
 const basicFlexStyles = (props: { color?: string }) => css`
@@ -166,7 +166,7 @@ const setPaddings = (paddingValue: Spacing) => {
   return cache(paddingValue);
 };
 
-export const Row = styled.div<{ margin: number }>`
+export const Row = styled(FlexItem)<{ margin?: number }>`
   display: flex;
   flex-basis: 100%;
   max-width: 100%;
@@ -204,7 +204,7 @@ const setColumnSize = (size: Size, margin: Spacing = defaultSpacing) => {
   `;
 };
 
-export const Column = styled.div<ColumnProps>`
+export const Column = styled(FlexItem)<ColumnProps>`
   box-sizing: border-box;
   flex-grow: 1;
   padding-left: ${defaultSpacing};
