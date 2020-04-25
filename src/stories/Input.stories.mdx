@@ -81,8 +81,8 @@ Nothing more to add, just text placeholder which works exactly like in default H
         <Flex>
           <p>
             <Input
-              name="success-input"
-              placeholder="Success input"
+              name="validation-input"
+              value={status === "success" ? "Success!" : "Error!"}
               status={status}
             />
           </p>
