@@ -1,0 +1,80 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Spacer } from "../components/spacer";
+import { Flex } from "../components/container";
+import { Text } from "../components/text";
+import theme from "../theme";
+
+<Meta title="Layout/Spacer" component={Spacer} />
+
+# Spacer
+
+<Preview>
+  <Story name="default">
+    <Flex>
+      <Container
+        style={{
+          background: theme.colors.warning,
+          textAlign: "center",
+          width: "100%",
+          borderRadius: theme.radius.default,
+        }}
+      >
+        <Text color="white">Container</Text>
+      </Container>
+      <Spacer width="2.5rem" bgColor={theme.colors.danger} />
+      <Container
+        style={{
+          background: theme.colors.warning,
+          textAlign: "center",
+          width: "100%",
+          borderRadius: theme.radius.default,
+        }}
+      >
+        <Text color="white">Container</Text>
+      </Container>
+    </Flex>
+  </Story>
+</Preview>
+
+## Props
+
+```typescript
+interface SpacerProps {
+  className?: string;
+  height?: number | string;
+  width?: number | string;
+  background?: string;
+  border?: string;
+  margin?: number | string;
+}
+```
+
+<Preview>
+  <Story name="margin">
+    <Container>
+      <Container
+        style={{
+          background: theme.colors.warning,
+          textAlign: "center",
+          width: "100%",
+          borderRadius: theme.radius.default,
+          padding: "0.25rem",
+        }}
+      >
+        <Text color="white">Container</Text>
+      </Container>
+      <Spacer height="25px" />
+      <Container
+        style={{
+          background: theme.colors.warning,
+          textAlign: "center",
+          width: "100%",
+          borderRadius: theme.radius.default,
+          padding: "0.25rem",
+        }}
+      >
+        <Text color="white">Container</Text>
+      </Container>
+    </Container>
+  </Story>
+</Preview>
