@@ -156,26 +156,58 @@ Grid includes three components: `Grid`, `Row`, `Column`.
     {() => {
       const withPaddings = {
         background: theme.colors.warning,
-        textAlign: "center",
         borderRadius: theme.radius.default,
       };
       return (
         <Grid style={{ color: theme.colors.white }}>
           <Row>
-            <Column padding="xs" style={withPaddings}>
+            <Column
+              justifyContent="flex-start"
+              alignContent="flex-start"
+              padding="xs"
+              style={withPaddings}
+            >
               <Text small>XS</Text>
             </Column>
-            <Column padding="sm" style={withPaddings}>
+            <Column
+              justifyContent="flex-start"
+              alignContent="flex-start"
+              padding="sm"
+              style={withPaddings}
+            >
               <Text small>SM</Text>
             </Column>
-            <Column padding="md" style={withPaddings}>
+            <Column
+              justifyContent="flex-start"
+              alignContent="flex-start"
+              padding="md"
+              style={withPaddings}
+            >
               <Text small>MD</Text>
             </Column>
-            <Column padding="lg" style={withPaddings}>
+            <Column
+              justifyContent="flex-start"
+              alignContent="flex-start"
+              padding="lg"
+              style={withPaddings}
+            >
               <Text small>LG</Text>
             </Column>
-            <Column padding={[1, 0.75]} style={withPaddings}>
-              <Text small>[1rem, 0.75rem]</Text>
+            <Column
+              justifyContent="flex-start"
+              alignContent="flex-start"
+              padding="xl"
+              style={withPaddings}
+            >
+              <Text small>XL</Text>
+            </Column>
+            <Column
+              justifyContent="flex-start"
+              alignContent="flex-start"
+              padding="xxl"
+              style={withPaddings}
+            >
+              <Text small>XXL</Text>
             </Column>
           </Row>
         </Grid>
