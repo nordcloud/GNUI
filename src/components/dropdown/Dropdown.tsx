@@ -58,7 +58,7 @@ const DropdownButton = styled(Flex)`
     `}
 `;
 
-const DropdownIcon = styled(Icon)<DropdownIconProps>`
+export const DropdownIcon = styled(Icon) <DropdownIconProps>`
   transition: ${theme.transition};
   ${({ animate }) =>
     animate &&
