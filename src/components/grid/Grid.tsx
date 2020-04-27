@@ -49,11 +49,11 @@ interface FlexProps {
 }
 
 type Spacing = Array<string | number> | string | number | any;
-type Size = { [sizeBreakpoint: string]: string } | number;
+type Size = { [sizeBreakpoint: string]: string | number } | number;
 interface ColumnProps {
-  size: Size;
-  margin: Spacing;
-  padding: Spacing;
+  size?: Size;
+  margin?: Spacing;
+  padding?: Spacing;
 }
 
 const basicFlexStyles = (props: { color?: string }) => css`
@@ -115,7 +115,7 @@ const setMargins = (marginValue: Spacing, isColumn: boolean = false): any => {
 
   if (isNaN(marginValue)) {
     for (const option of gridSpacings) {
-      const [bp, value] = Object.values(option).flat();
+      const [bp, value] = Object.values(option);
       if (bp === marginValue) {
         return cache(value, false);
       }
@@ -166,12 +166,12 @@ const setPaddings = (paddingValue: Spacing) => {
   return cache(paddingValue);
 };
 
-export const Row = styled.div<{ margin: number }>`
+export const Row = styled(FlexItem)<{ margin?: number }>`
   display: flex;
   flex-basis: 100%;
   max-width: 100%;
   & > * {
-    overflow: scroll;
+    overflow: auto;
   }
 
   ${({ margin }) => margin && setMargins(margin)}
@@ -204,7 +204,7 @@ const setColumnSize = (size: Size, margin: Spacing = defaultSpacing) => {
   `;
 };
 
-export const Column = styled.div<ColumnProps>`
+export const Column = styled(FlexItem)<ColumnProps>`
   box-sizing: border-box;
   flex-grow: 1;
   padding-left: ${defaultSpacing};

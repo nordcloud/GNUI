@@ -3,9 +3,10 @@ import { Grid, Row, Column } from "../components/grid";
 import { Text, Code } from "../components/text";
 import theme from "../theme";
 
-<Meta title="Layout/Grid" component={Grid} />
+<Meta title="Layout/Grid" component={Grid} subcomponents={(Row, Column)} />
 
 # Grid
+
 Grid includes three components: `Grid`, `Row`, `Column`.
 
 > By default `Row` divides available space between all columns equally.
@@ -46,8 +47,9 @@ Grid includes three components: `Grid`, `Row`, `Column`.
 ### `SIZE`
 
 `Column`s takes `size` as a prop. Size can be described in few ways:
-* `number`:  between 1-12
-* `Array<{[breakpoint: string]: number}>`: `{xs?: number, sm?: number, md?: numder, lg?: number, xl?: number, xxl?: number}`
+
+- `number`: between 1-12
+- `Array<{[breakpoint: string]: number}>`: `{xs?: number, sm?: number, md?: numder, lg?: number, xl?: number, xxl?: number}`
 
 > `number`
 
@@ -124,10 +126,10 @@ Grid includes three components: `Grid`, `Row`, `Column`.
           </Row>
           <Row>
             <Column size={{ sm: 3, lg: 2 }} style={breakpointsCols}>
-              <Text>sm: 4 • lg:  2</Text>
+              <Text>sm: 4 • lg: 2</Text>
             </Column>
             <Column size={{ sm: 3, lg: 4 }} style={breakpointsCols}>
-              <Text>sm: 4 • lg:  4</Text>
+              <Text>sm: 4 • lg: 4</Text>
             </Column>
             <Column size={6} style={breakpointsCols}>
               <Text>6</Text>
@@ -141,9 +143,9 @@ Grid includes three components: `Grid`, `Row`, `Column`.
 
 ### `PADDING`
 
-* `string`: `xs | sm | md | lg | xl | xxl`
-* `number`: parsed to `rem` values
-* `Array<number>`: parsed to `rem` values
+- `string`: `xs | sm | md | lg | xl | xxl`
+- `number`: parsed to `rem` values
+- `Array<number>`: parsed to `rem` values
 
 <Preview>
   <Story name="paddings">
@@ -156,19 +158,19 @@ Grid includes three components: `Grid`, `Row`, `Column`.
       return (
         <Grid>
           <Row>
-            <Column padding='xs' style={withPaddings}>
+            <Column padding="xs" style={withPaddings}>
               <Text>xs</Text>
             </Column>
-            <Column padding='sm' style={withPaddings}>
+            <Column padding="sm" style={withPaddings}>
               <Text>sm</Text>
             </Column>
-            <Column padding='md' style={withPaddings}>
+            <Column padding="md" style={withPaddings}>
               <Text>md</Text>
             </Column>
-            <Column padding='lg' style={withPaddings}>
+            <Column padding="lg" style={withPaddings}>
               <Text>lg</Text>
             </Column>
-            <Column padding={[1, .75, .75, 1]} style={withPaddings}>
+            <Column padding={[1, 0.75, 0.75, 1]} style={withPaddings}>
               <Text>[1rem, 0.75rem, 0.75rem, 1rem]</Text>
             </Column>
           </Row>
@@ -180,16 +182,16 @@ Grid includes three components: `Grid`, `Row`, `Column`.
 
 ### `MARGIN`
 
-* `string`: `xs | sm | md | lg | xl | xxl`
-* `number`: parsed to `rem` values
-* `Array<number>`: parsed to `rem` values
+- `string`: `xs | sm | md | lg | xl | xxl`
+- `number`: parsed to `rem` values
+- `Array<number>`: parsed to `rem` values
 
 > Margins set as a breakpoints from `theme`.
 
 <Preview>
   <Story name="breakpoints">
     {() => {
-      const withMargins= {
+      const withMargins = {
         background: theme.colors.notification,
         textAlign: "center",
         borderRadius: theme.radius.default,
@@ -197,19 +199,19 @@ Grid includes three components: `Grid`, `Row`, `Column`.
       return (
         <Grid>
           <Row>
-            <Column margin='xs' style={withMargins}>
+            <Column margin="xs" style={withMargins}>
               <Text>xs</Text>
             </Column>
-            <Column margin='sm' style={withMargins}>
+            <Column margin="sm" style={withMargins}>
               <Text>sm</Text>
             </Column>
-            <Column margin='md' style={withMargins}>
+            <Column margin="md" style={withMargins}>
               <Text>md</Text>
             </Column>
-            <Column margin='lg' style={withMargins}>
+            <Column margin="lg" style={withMargins}>
               <Text>lg</Text>
             </Column>
-            <Column margin='xl' style={withMargins}>
+            <Column margin="xl" style={withMargins}>
               <Text>xl</Text>
             </Column>
           </Row>
@@ -224,7 +226,7 @@ Grid includes three components: `Grid`, `Row`, `Column`.
 <Preview>
   <Story name="array">
     {() => {
-      const withMargins= {
+      const withMargins = {
         background: theme.colors.notification,
         textAlign: "center",
         borderRadius: theme.radius.default,
@@ -232,13 +234,13 @@ Grid includes three components: `Grid`, `Row`, `Column`.
       return (
         <Grid>
           <Row>
-            <Column margin={[1, .75, .75, 1]} style={withMargins}>
+            <Column margin={[1, 0.75, 0.75, 1]} style={withMargins}>
               <Text>Column</Text>
             </Column>
-            <Column margin={[1, .75, .75, 1]} style={withMargins}>
+            <Column margin={[1, 0.75, 0.75, 1]} style={withMargins}>
               <Text>Column</Text>
             </Column>
-            <Column margin={[1, .75, .75, 1]} style={withMargins}>
+            <Column margin={[1, 0.75, 0.75, 1]} style={withMargins}>
               <Text>Column</Text>
             </Column>
           </Row>

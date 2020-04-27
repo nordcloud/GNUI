@@ -1,0 +1,83 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Tooltip } from "../components/tooltip";
+import { Text } from "../components/text";
+import { Spacer } from "../components/spacer";
+import title from "title";
+
+<Meta title="Components/Tooltip" component={Tooltip} />
+
+# Tooltip
+
+#### Props
+
+- `name`: `string` — _optional_
+- `caption`: `string` — _optional_ - caption for the tooltip
+- `position`: `top, right, bottom, left` — _optional_ - position of the tooltip
+- `status`: `danger, warning, success, notification` — _optional_ - table rows will be striped
+- `arrowPosition`: `left, right` — _optional_ - position for the tooltip's arrow, by default arrow is _centered_
+
+### Default Tooltip
+
+<Preview>
+  <Story name="default">
+    <Tooltip name="Hello there" caption="Hello there" >
+      <Text>Tooltip test</Text>
+    </Tooltip>
+  </Story>
+</Preview>
+
+### Positions for Tooltip
+
+<Preview>
+  <Story name="position">
+    <div style={{textAlign: "center"}}>
+      <Tooltip name="Hello there" caption="Hello there" position="left">
+        <Text>Tooltip left</Text>
+      </Tooltip>
+      <Spacer height="2.5rem" />
+      <Tooltip name="Hello there" caption="Hello there" position="right">
+        <Text>Tooltip right</Text>
+      </Tooltip>
+      <Spacer height="2.5rem" />
+      <Tooltip name="Hello there" caption="Hello there" position="top">
+        <Text>Tooltip top</Text>
+      </Tooltip>
+      <Spacer height="2.5rem" />
+      <Tooltip name="Hello there" caption="Hello there" position="bottom">
+        <Text>Tooltip bottom</Text>
+      </Tooltip>
+      <Spacer height="2.5rem" />
+      <Tooltip name="Hello there" caption="Hello there" position="top" arrowPosition="left">
+        <Text>Tooltip top</Text>
+      </Tooltip>
+      <Spacer height="2.5rem" />
+      <Tooltip name="Hello there" caption="Hello there" position="bottom" arrowPosition="right">
+        <Text>Tooltip top</Text>
+      </Tooltip>
+    </div>
+  </Story>
+</Preview>
+
+### Status for Tooltip
+
+<Preview>
+  <Story name="status">
+    <div style={{textAlign: "center"}}>
+      <Tooltip name="Hello there" caption="Hello there" status="success" position="left">
+        <Text>Succes</Text>
+      </Tooltip>
+      <Spacer height="2.5rem" />
+      <Tooltip name="Hello there" caption="Hello there" status="warning" position="right">
+        <Text>Warning</Text>
+      </Tooltip>
+      <Spacer height="2.5rem" />
+      <Tooltip name="Hello there" caption="Hello there" status="danger" position="bottom">
+        <Text>Danger</Text>
+      </Tooltip>
+      <Spacer height="2.5rem" />
+      <Tooltip name="Hello there" caption="Hello there" status="notification" position="top">
+        <Text>Notification</Text>
+      </Tooltip>
+    </div>
+  </Story>
+</Preview>
