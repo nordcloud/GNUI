@@ -18,30 +18,30 @@ interface FlexProps {
   display?: "block" | "flex";
   flexDirection?: "row" | "column";
   justifyContent?:
-    | "flex-start"
-    | "flex-end"
-    | "center"
-    | "space-between"
-    | "space-around"
-    | "initial"
-    | "inherit";
+  | "flex-start"
+  | "flex-end"
+  | "center"
+  | "space-between"
+  | "space-around"
+  | "initial"
+  | "inherit";
   flexWrap?: "wrap" | "nowrap" | "wrap-reverse";
   alignItems?:
-    | "stretch"
-    | "center"
-    | "flex-start"
-    | "flex-end"
-    | "baseline"
-    | "initial"
-    | "inherit";
+  | "stretch"
+  | "center"
+  | "flex-start"
+  | "flex-end"
+  | "baseline"
+  | "initial"
+  | "inherit";
   alignContent?:
-    | "flex-start"
-    | "flex-end"
-    | "center"
-    | "space-between"
-    | "space-around"
-    | "initial"
-    | "inherit";
+  | "flex-start"
+  | "flex-end"
+  | "center"
+  | "space-between"
+  | "space-around"
+  | "initial"
+  | "inherit";
   flexGrow?: number;
   flexShrink?: number;
   flexBasis?: number | string;
@@ -49,11 +49,11 @@ interface FlexProps {
 }
 
 type Spacing = Array<string | number> | string | number | any;
-type Size = { [sizeBreakpoint: string]: string } | number;
+type Size = { [sizeBreakpoint: string]: string | number } | number;
 interface ColumnProps {
-  size: Size;
-  margin: Spacing;
-  padding: Spacing;
+  size?: Size;
+  margin?: Spacing;
+  padding?: Spacing;
 }
 
 const FlexItem = styled.div<FlexProps>`
@@ -162,7 +162,7 @@ export const Row = styled(FlexItem)<{ margin: number }>`
   flex-basis: 100%;
   max-width: 100%;
   & > * {
-    overflow: scroll;
+    overflow: auto;
   }
 
   ${({ margin }) => margin && setMargins(margin)}

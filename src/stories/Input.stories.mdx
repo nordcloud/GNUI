@@ -1,6 +1,10 @@
+import { useState } from "react";
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Input, Label, Description } from "../components/input";
 import { Container } from "../components/container";
+import { Grid, Row, Column } from "../components/grid";
+import { Button } from "../components/button";
+import { Spacer } from "../components/spacer";
 
 <Meta title="Form/Input" component={Input} />
 
@@ -22,6 +26,7 @@ import { Container } from "../components/container";
 - `type`: `string` — _optional_, default: `text`
 - `placeholder`: `string` – _optional_
 - `disabled`: `boolean` — _optional_
+- `status`: `success | error` - _optional_
 
 **Label**:
 
@@ -62,6 +67,41 @@ Nothing more to add, just text placeholder which works exactly like in default H
 <Preview>
   <Story name="disabled">
     <Input name="disabled-input" placeholder="Disabled input" disabled />
+  </Story>
+</Preview>
+
+### status
+
+> `status`: `success | error`
+
+<Preview>
+  <Story name="status">
+    {() => {
+      const [status, setStatus] = useState("success");
+      return (
+        <Container>
+          <Container>
+            <Input
+              name="success-input"
+              placeholder="Success input"
+              status={status}
+            />
+          </Container>
+          <Spacer height="2rem" />
+          <Container>
+            <Button
+              size="small"
+              color={status === "error" ? "danger" : "success"}
+              onClick={() =>
+                setStatus(status === "error" ? "success" : "error")
+              }
+            >
+              Change status
+            </Button>
+          </Container>
+        </Container>
+      );
+    }}
   </Story>
 </Preview>
 

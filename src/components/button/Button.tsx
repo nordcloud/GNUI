@@ -5,7 +5,7 @@ import { darken } from "polished";
 
 interface ButtonProps {
   children: string | React.ReactNode;
-  severity?: string;
+  severity?: "high" | "medium" | "low";
   priority?: string;
   size?: string;
   color?: string;
