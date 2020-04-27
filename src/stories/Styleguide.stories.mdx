@@ -2,6 +2,7 @@ import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Styleguide } from "../components/styleguide";
 import { Heading } from "../components/heading";
 import { Container } from "../components/container";
+import { Spacer } from "../components/spacer";
 import theme from "../theme";
 
 <Meta title="Foundation" component={Styleguide} />
@@ -20,31 +21,38 @@ import theme from "../theme";
       const statusNotification = theme.colors.statusNotification;
       return (
         <Container>
-          <Container style={{ margin: "0 0 5rem 0" }}>
+          <Container>
+            <Spacer width="5rem" />
             <Heading level={3}>Main</Heading>
             <Styleguide colors={colors} />
           </Container>
-          <Container style={{ margin: "0 0 5rem 0" }}>
+          <Container>
+            <Spacer margin="5rem" />
             <Heading level={3}>Lights</Heading>
             <Styleguide name="lights" colors={lights} />
           </Container>
-          <Container style={{ margin: "0 0 5rem 0" }}>
+          <Container>
+            <Spacer margin="5rem" />
             <Heading level={3}>Darks</Heading>
             <Styleguide name="darks" colors={darks} />
           </Container>
-          <Container style={{ margin: "0 0 5rem 0" }}>
+          <Container>
+            <Spacer margin="5rem" />
             <Heading level={3}>Danger</Heading>
             <Styleguide name="statusDanger" colors={statusDanger} />
           </Container>
-          <Container style={{ margin: "0 0 5rem 0" }}>
+          <Container>
+            <Spacer margin="5rem" />
             <Heading level={3}>Success</Heading>
             <Styleguide name="statusSuccess" colors={statusSuccess} />
           </Container>
-          <Container style={{ margin: "0 0 5rem 0" }}>
+          <Container>
+            <Spacer margin="5rem" />
             <Heading level={3}>Warning</Heading>
             <Styleguide name="statusWarning" colors={statusWarning} />
           </Container>
-          <Container style={{ margin: "0 0 5rem 0" }}>
+          <Container>
+            <Spacer margin="5rem" />
             <Heading level={3}>Notification</Heading>
             <Styleguide name="statusNotification" colors={statusNotification} />
           </Container>
