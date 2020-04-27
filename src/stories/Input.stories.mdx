@@ -4,6 +4,7 @@ import { Input, Label, Description } from "../components/input";
 import { Container } from "../components/container";
 import { Grid, Row, Column } from "../components/grid";
 import { Button } from "../components/button";
+import { Spacer } from "../components/spacer";
 
 <Meta title="Form/Input" component={Input} />
 
@@ -78,15 +79,16 @@ Nothing more to add, just text placeholder which works exactly like in default H
     {() => {
       const [status, setStatus] = useState("success");
       return (
-        <Flex>
-          <p>
+        <Container>
+          <Container>
             <Input
               name="success-input"
               placeholder="Success input"
               status={status}
             />
-          </p>
-          <p>
+          </Container>
+          <Spacer height="2rem" />
+          <Container>
             <Button
               size="small"
               color={status === "error" ? "danger" : "success"}
@@ -96,8 +98,8 @@ Nothing more to add, just text placeholder which works exactly like in default H
             >
               Change status
             </Button>
-          </p>
-        </Flex>
+          </Container>
+        </Container>
       );
     }}
   </Story>
