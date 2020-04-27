@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
-import { Text } from "../../components/text";
-import { Grid, Row, Column } from "../../components/grid";
+import { Text } from "../text";
+import { Grid, Row, Column } from "../grid";
 import theme from "../../theme";
 
 interface StyleguideProps {
