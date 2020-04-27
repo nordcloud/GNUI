@@ -49,7 +49,7 @@ interface FlexProps {
 }
 
 type Spacing = Array<string | number> | string | number | any;
-type Size = { [sizeBreakpoint: string]: string } | number;
+type Size = { [sizeBreakpoint: string]: string | number } | number;
 interface ColumnProps {
   size?: Size;
   margin?: Spacing;
@@ -171,7 +171,7 @@ export const Row = styled(FlexItem)<{ margin?: number }>`
   flex-basis: 100%;
   max-width: 100%;
   & > * {
-    overflow: scroll;
+    overflow: auto;
   }
 
   ${({ margin }) => margin && setMargins(margin)}
