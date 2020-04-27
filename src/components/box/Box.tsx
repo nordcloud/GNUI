@@ -7,10 +7,10 @@ type BoxProps = {
   dark?: boolean;
   minHeight?: string;
   minWidth?: string;
-  radius?: string;
-  padding?: string;
-  spacing?: string;
-  shadow?: string;
+  radius?: "small" | "medium" | "large";
+  padding?: "spacing01" | "spacing02" | "spacing03" | "spacing04" | "spacing05" | "spacing06" | "spacing07" | "spacing08";
+  spacing?: "spacing01" | "spacing02" | "spacing03" | "spacing04" | "spacing05" | "spacing06" | "spacing07" | "spacing08";
+  shadow?: "shadow01" | "shadow02" | "shadow03" | "shadow04";
   children?: React.ReactNode
 };
 
@@ -35,7 +35,7 @@ const StyledBox = styled(Container) <BoxProps>`
   border-radius: ${theme.radius.default};
   color: ${theme.colors.primary};
   background: ${theme.colors.white};
-  font-weight: ${theme.fontWeights.medium};
+  font-weight: ${theme.fontWeights.regular};
   box-shadow: ${theme.shadow.shadow02};
   transition: ${theme.transition};
   ${({ dark }) =>
