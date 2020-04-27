@@ -106,7 +106,7 @@ const setMargins = (marginValue: Spacing, isColumn: boolean = false): any => {
 
   if (isNaN(marginValue)) {
     for (const option of gridSpacings) {
-      const [bp, value] = Object.values(option).flat();
+      const [bp, value] = Object.values(option);
       if (bp === marginValue) {
         return cache(value, false);
       }
@@ -194,7 +194,7 @@ const setColumnSize = (size: Size, margin: Spacing = defaultSpacing) => {
   `;
 };
 
-export const Column = styled.div<ColumnProps>`
+export const Column = styled(FlexItem)<ColumnProps>`
   box-sizing: border-box;
   flex-grow: 1;
   padding-left: ${defaultSpacing};

@@ -35,7 +35,6 @@ type ZIndex = {
   [zIndex: string]: number | any;
 };
 
-
 export interface ThemeInterface {
   colors: Colors;
   typography: Typography;
@@ -68,18 +67,18 @@ const theme: ThemeInterface = {
   },
 
   typography: {
-    fontWeights: [400, 500, 600, 700],
-    fontSizes: ["0.625rem", "0.75rem", "1rem", "1.3rem", "1.5rem", "2rem"],
     fonts: {
       body: "Rubik, sans-serif",
       monospace: "Fira Code, monospace",
     },
-    lineHeight: "1.5rem",
     headings: {
       sizes: [2.5, 2, 1.5, 1.25, 1, 0.8],
       weights: [500, 600],
       margins: ["1.5rem, 0", "1.25rem, 0", "1rem, 0", ".75rem 0"],
     },
+    lineHeight: "1.25rem",
+    fontWeights: [400, 500, 600, 700],
+    fontSizes: ["0.625rem", "0.75rem", "1rem", "1.3rem", "1.5rem", "2rem"],
   },
 
   borders: {

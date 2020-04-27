@@ -3,7 +3,7 @@ import { Grid, Row, Column } from "../components/grid";
 import { Text } from "../components/text";
 import theme from "../theme";
 
-<Meta title="Layout/Grid" component={Grid} />
+<Meta title="Layout/Grid" component={Grid} subcomponents={(Row, Column)} />
 
 # Grid
 
@@ -131,7 +131,7 @@ Grid includes three components: `Grid`, `Row`, `Column`.
               <Text small>sm: 4 — lg: 2</Text>
             </Column>
             <Column size={{ sm: 3, lg: 4 }} style={breakpointsCols}>
-              <Text small>sm: 4 — lg: 4</Text>
+              <Text small>sm: 3 — lg: 4</Text>
             </Column>
             <Column size={6} style={breakpointsCols}>
               <Text small>6</Text>
@@ -256,7 +256,9 @@ Grid includes three components: `Grid`, `Row`, `Column`.
 
 ## Alignments
 
-> `justifyContent?: | "flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "initial" | "inherit";`
+```typescript
+justifyContent?: | "flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "initial" | "inherit";`
+```
 
 <Preview>
   <Story name="justifyContent">
