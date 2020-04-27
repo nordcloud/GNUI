@@ -1,0 +1,51 @@
+import { useState } from "react";
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Filter, Button, Input, Grid, Row, Column } from "../components";
+
+<Meta title="Components/Filter" component={Filter} />
+
+# Filter
+> Please take a look at props to understand correctly how `Filter` works.
+
+### Props
+- `label`: string - **required**
+- `accompanyingComponent`: JSX.Element - _optional_
+- `isFilterOpen`: boolean - _optional_
+
+<Preview>
+  <Story name="filter">
+    <Filter label="Filter">
+      <p>Some content</p>
+    </Filter>
+  </Story>
+</Preview>
+
+## Filter with component
+> Filter with a input component
+
+<Preview>
+  <Story name="filter with component">
+    <Filter
+      label="Filter"
+      isFilterOpen={false}
+      accompanyingComponent={
+        <Input name="input" type="search" placeholder="Search something" />
+      } 
+    >
+      <Grid>
+        <Row>
+          <Column><Input name="input" placeholder="filter something" /></Column>
+          <Column><Input name="input" placeholder="filter something else" /></Column>
+        </Row>
+        <Row>
+          <Column>
+            <Button>Apply settings</Button>
+          </Column>
+        </Row>
+      </Grid>
+    </Filter>
+  </Story>
+</Preview>
+
+
+
