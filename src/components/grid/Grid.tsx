@@ -115,7 +115,7 @@ const setMargins = (marginValue: Spacing, isColumn: boolean = false): any => {
 
   if (isNaN(marginValue)) {
     for (const option of gridSpacings) {
-      const [bp, value] = Object.values(option).flat();
+      const [bp, value] = Object.values(option);
       if (bp === marginValue) {
         return cache(value, false);
       }

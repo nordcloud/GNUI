@@ -7,30 +7,19 @@ type BoxProps = {
   dark?: boolean;
   minHeight?: string;
   minWidth?: string;
+  margin?: string;
+  border?: string;
+  color?: string;
   radius?: "small" | "medium" | "large";
   padding?: "spacing01" | "spacing02" | "spacing03" | "spacing04" | "spacing05" | "spacing06" | "spacing07" | "spacing08";
   spacing?: "spacing01" | "spacing02" | "spacing03" | "spacing04" | "spacing05" | "spacing06" | "spacing07" | "spacing08";
   shadow?: "shadow01" | "shadow02" | "shadow03" | "shadow04";
-  children?: React.ReactNode
+  children?: React.ReactNode;
 };
 
-const changeRadius = (radius: string) => css`
-  border-radius: ${theme.radius[radius]};
-`;
-
-const changePadding = (padding: string) => css`
-  padding: ${theme.spacing[padding]};
-`;
-
-const changeMargin = (spacing: string) => css`
-  margin-bottom: ${theme.spacing[spacing]};
-`;
-
-const changeShadow = (shadow: string) => css`
-  box-shadow: ${theme.shadow[shadow]};
-`;
-
-const StyledBox = styled(Container) <BoxProps>`
+const StyledBox = styled(Container)<BoxProps>`
+  box-sizing: border-box;
+  min-width: 0;
   padding: ${theme.spacing.spacing05};
   border-radius: ${theme.radius.default};
   color: ${theme.colors.primary};
@@ -38,6 +27,7 @@ const StyledBox = styled(Container) <BoxProps>`
   font-weight: ${theme.fontWeights.regular};
   box-shadow: ${theme.shadow.shadow02};
   transition: ${theme.transition};
+  line-height: ${theme.lineHeight};
   ${({ dark }) =>
     dark &&
     css`
@@ -47,23 +37,24 @@ const StyledBox = styled(Container) <BoxProps>`
   ${({ radius }) =>
     radius &&
     css`
-    ${changeRadius(radius)};
-  `} 
+      border-radius: ${theme.radius[radius]};
+    `}
   ${({ padding }) =>
     padding &&
     css`
-    ${changePadding(padding)};
-  `} 
+      padding: ${theme.spacing[padding]};
+    `}
   ${({ shadow }) =>
     shadow &&
     css`
-    ${changeShadow(shadow)};
-  `} 
+      box-shadow: ${theme.shadow[shadow]};
+    `}
   ${({ margin }) =>
+    // margin should be deleted ASAP after mergin Spacer
     margin &&
     css`
-    ${changeMargin(margin)};
-  `} 
+      margin-bottom: ${theme.spacing[margin]};
+    `}
   ${({ minHeight }) =>
     minHeight &&
     css`
@@ -73,6 +64,16 @@ const StyledBox = styled(Container) <BoxProps>`
     minWidth &&
     css`
       min-width: ${minWidth};
+    `}
+  ${({ border }) =>
+    border &&
+    css`
+      border: ${theme.borders[border]};
+    `}
+  ${({ color }) =>
+    color &&
+    css`
+      color: ${theme.colors[color] || color};
     `}
 `;
 
