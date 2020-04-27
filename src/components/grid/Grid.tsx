@@ -18,30 +18,30 @@ interface FlexProps {
   display?: "block" | "flex";
   flexDirection?: "row" | "column";
   justifyContent?:
-  | "flex-start"
-  | "flex-end"
-  | "center"
-  | "space-between"
-  | "space-around"
-  | "initial"
-  | "inherit";
+    | "flex-start"
+    | "flex-end"
+    | "center"
+    | "space-between"
+    | "space-around"
+    | "initial"
+    | "inherit";
   flexWrap?: "wrap" | "nowrap" | "wrap-reverse";
   alignItems?:
-  | "stretch"
-  | "center"
-  | "flex-start"
-  | "flex-end"
-  | "baseline"
-  | "initial"
-  | "inherit";
+    | "stretch"
+    | "center"
+    | "flex-start"
+    | "flex-end"
+    | "baseline"
+    | "initial"
+    | "inherit";
   alignContent?:
-  | "flex-start"
-  | "flex-end"
-  | "center"
-  | "space-between"
-  | "space-around"
-  | "initial"
-  | "inherit";
+    | "flex-start"
+    | "flex-end"
+    | "center"
+    | "space-between"
+    | "space-around"
+    | "initial"
+    | "inherit";
   flexGrow?: number;
   flexShrink?: number;
   flexBasis?: number | string;
@@ -158,7 +158,6 @@ const setPaddings = (paddingValue: Spacing) => {
 };
 
 export const Row = styled(FlexItem)<{ margin: number }>`
-  display: flex;
   flex-basis: 100%;
   max-width: 100%;
   & > * {
