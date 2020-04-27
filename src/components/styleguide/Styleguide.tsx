@@ -39,8 +39,8 @@ const ColorColumn = styled(Column)<{ darkText?: boolean }>`
 
 export const Styleguide: FunctionComponent<StyleguideProps> = ({
   colors,
-  name,
   description,
+  name,
 }) => (
   <ColorPaletteWrapper>
     {colors &&

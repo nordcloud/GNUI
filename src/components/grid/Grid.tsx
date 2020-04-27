@@ -157,7 +157,7 @@ const setPaddings = (paddingValue: Spacing) => {
   return cache(paddingValue);
 };
 
-export const Row = styled(FlexItem)<{ margin: number }>`
+export const Row = styled(FlexItem)<{ margin?: number }>`
   flex-basis: 100%;
   max-width: 100%;
   & > * {
