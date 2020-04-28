@@ -7,105 +7,138 @@ import { Table } from "../components/table";
 
 #### Props
 
-- `name`: `string` — _optional_
-- `headings`: `array` — **required** - array of strings, table headings
-- `rows`: `array` — **required** - array of arrays of strings, table rows
 - `striped`: `boolean` — _optional_ - table rows will be striped
 - `hoverline`: `boolean` — _optional_ - table rows will be highlighted on hover
 - `small`: `boolean` — _optional_ - table rows will have smaller paddings
-- `checkboxes`: `boolean` — _optional_ - table rows will have checkboxes
 
 ### Simple Table
 
 <Preview>
-  <Story name="simple">
-    {() => {
-      const headings = ["Name", "Position", "Office", "Age", "Start Date", "Salary"];
-      const rows = [
-        ['Tiger Nixon', 'System Architect', 'Edinburgh', '40', '2011/04/25', '$1320,000'], 
-        ['Garrett Winters', 'Accountant', 'Tokyo', '42', '2011/04/25', '$320,000'],
-        ['Ashton Cox', 'Junior Technical Author', 'San Francisco', '32', '2011/03/25', '$120,000'],
-        ['Cedric Kelly', 'Senior Javascript Developer', 'Edinburgh', '26', '2011/04/28', '$520,000']
-        ];
-      return (
-        <Table headings={headings} rows={rows} />
-        );
-    }}
+  <Story name="Simple">
+   <Table>
+       <Table.thead>
+         <Table.tr>
+           <Table.th>Name</Table.th>
+           <Table.th>Title</Table.th>
+           <Table.th>Phone</Table.th>
+         </Table.tr>
+       </Table.thead>
+       <Table.tbody>
+         <Table.tr>
+           <Table.td>Kathy C. Do</Table.td>
+           <Table.td>Director</Table.td>
+           <Table.td>+48 XXX-XXX-XXX</Table.td>
+         </Table.tr>
+         <Table.tr>
+           <Table.td>James D. Washington</Table.td>
+           <Table.td>Developer</Table.td>
+           <Table.td>+48 XXX-XXX-XXX</Table.td>
+         </Table.tr>
+         <Table.tr>
+           <Table.td>Elaine R. Bean</Table.td>
+           <Table.td>Product Owner</Table.td>
+           <Table.td>+48 XXX-XXX-XXX</Table.td>
+         </Table.tr>
+       </Table.tbody>
+     </Table>
   </Story>
 </Preview>
 
 ### Striped Table
 
 <Preview>
-  <Story name="striped">
-    {() => {
-      const headings = ["Name", "Position", "Office", "Age", "Start Date", "Salary"];
-      const rows = [
-        ['Tiger Nixon', 'System Architect', 'Edinburgh', '40', '2011/04/25', '$1320,000'], 
-        ['Garrett Winters', 'Accountant', 'Tokyo', '42', '2011/04/25', '$320,000'],
-        ['Ashton Cox', 'Junior Technical Author', 'San Francisco', '32', '2011/03/25', '$120,000'],
-        ['Cedric Kelly', 'Senior Javascript Developer', 'Edinburgh', '26', '2011/04/28', '$520,000']
-        ];
-      return (
-        <Table headings={headings} rows={rows} striped />
-        );
-    }}
-  </Story>
-</Preview>
-
-### Table with Hovered Rows
-
-<Preview>
-  <Story name="hover">
-    {() => {
-      const headings = ["Name", "Position", "Office", "Age", "Start Date", "Salary"];
-      const rows = [
-        ['Tiger Nixon', 'System Architect', 'Edinburgh', '40', '2011/04/25', '$1320,000'], 
-        ['Garrett Winters', 'Accountant', 'Tokyo', '42', '2011/04/25', '$320,000'],
-        ['Ashton Cox', 'Junior Technical Author', 'San Francisco', '32', '2011/03/25', '$120,000'],
-        ['Cedric Kelly', 'Senior Javascript Developer', 'Edinburgh', '26', '2011/04/28', '$520,000']
-        ];
-      return (
-        <Table headings={headings} rows={rows} hoverline />
-        );
-    }}
+  <Story name="Striped">
+   <Table striped>
+       <Table.thead>
+         <Table.tr>
+           <Table.th>Name</Table.th>
+           <Table.th>Title</Table.th>
+           <Table.th>Phone</Table.th>
+         </Table.tr>
+       </Table.thead>
+       <Table.tbody>
+         <Table.tr>
+           <Table.td>Kathy C. Do</Table.td>
+           <Table.td>Director</Table.td>
+           <Table.td>+48 XXX-XXX-XXX</Table.td>
+         </Table.tr>
+         <Table.tr>
+           <Table.td>James D. Washington</Table.td>
+           <Table.td>Developer</Table.td>
+           <Table.td>+48 XXX-XXX-XXX</Table.td>
+         </Table.tr>
+         <Table.tr>
+           <Table.td>Elaine R. Bean</Table.td>
+           <Table.td>Product Owner</Table.td>
+           <Table.td>+48 XXX-XXX-XXX</Table.td>
+         </Table.tr>
+       </Table.tbody>
+     </Table>
   </Story>
 </Preview>
 
 ### Small Table
 
 <Preview>
-  <Story name="small">
-    {() => {
-      const headings = ["Name", "Position", "Office", "Age", "Start Date", "Salary"];
-      const rows = [
-        ['Tiger Nixon', 'System Architect', 'Edinburgh', '40', '2011/04/25', '$1320,000'], 
-        ['Garrett Winters', 'Accountant', 'Tokyo', '42', '2011/04/25', '$320,000'],
-        ['Ashton Cox', 'Junior Technical Author', 'San Francisco', '32', '2011/03/25', '$120,000'],
-        ['Cedric Kelly', 'Senior Javascript Developer', 'Edinburgh', '26', '2011/04/28', '$520,000']
-        ];
-      return (
-        <Table headings={headings} rows={rows} small />
-        );
-    }}
+  <Story name="Small">
+   <Table small>
+       <Table.thead>
+         <Table.tr>
+           <Table.th>Name</Table.th>
+           <Table.th>Title</Table.th>
+           <Table.th>Phone</Table.th>
+         </Table.tr>
+       </Table.thead>
+       <Table.tbody>
+         <Table.tr>
+           <Table.td>Kathy C. Do</Table.td>
+           <Table.td>Director</Table.td>
+           <Table.td>+48 XXX-XXX-XXX</Table.td>
+         </Table.tr>
+         <Table.tr>
+           <Table.td>James D. Washington</Table.td>
+           <Table.td>Developer</Table.td>
+           <Table.td>+48 XXX-XXX-XXX</Table.td>
+         </Table.tr>
+         <Table.tr>
+           <Table.td>Elaine R. Bean</Table.td>
+           <Table.td>Product Owner</Table.td>
+           <Table.td>+48 XXX-XXX-XXX</Table.td>
+         </Table.tr>
+       </Table.tbody>
+     </Table>
   </Story>
 </Preview>
 
-### Table with checkboxes
+### Hoverline Table
 
 <Preview>
-  <Story name="checkbox">
-    {() => {
-      const headings = ["Name", "Position", "Office", "Age", "Start Date", "Salary"];
-      const rows = [
-        ['Tiger Nixon', 'System Architect', 'Edinburgh', '40', '2011/04/25', '$1320,000'], 
-        ['Garrett Winters', 'Accountant', 'Tokyo', '42', '2011/04/25', '$320,000'],
-        ['Ashton Cox', 'Junior Technical Author', 'San Francisco', '32', '2011/03/25', '$120,000'],
-        ['Cedric Kelly', 'Senior Javascript Developer', 'Edinburgh', '26', '2011/04/28', '$520,000']
-        ];
-      return (
-        <Table headings={headings} rows={rows} checkboxes />
-        );
-    }}
+  <Story name="Hoverline">
+   <Table hoverline>
+       <Table.thead>
+         <Table.tr>
+           <Table.th>Name</Table.th>
+           <Table.th>Title</Table.th>
+           <Table.th>Phone</Table.th>
+         </Table.tr>
+       </Table.thead>
+       <Table.tbody>
+         <Table.tr>
+           <Table.td>Kathy C. Do</Table.td>
+           <Table.td>Director</Table.td>
+           <Table.td>+48 XXX-XXX-XXX</Table.td>
+         </Table.tr>
+         <Table.tr>
+           <Table.td>James D. Washington</Table.td>
+           <Table.td>Developer</Table.td>
+           <Table.td>+48 XXX-XXX-XXX</Table.td>
+         </Table.tr>
+         <Table.tr>
+           <Table.td>Elaine R. Bean</Table.td>
+           <Table.td>Product Owner</Table.td>
+           <Table.td>+48 XXX-XXX-XXX</Table.td>
+         </Table.tr>
+       </Table.tbody>
+     </Table>
   </Story>
 </Preview>
