@@ -16,7 +16,6 @@ const StyledBreadcrumbs = styled.nav`
     padding:0;
     margin:0;
     li {
-      line-height: 1.5em;
       display: inline-block;
       margin-right: ${theme.spacing.spacing02};
       &:after {
@@ -34,6 +33,7 @@ const StyledBreadcrumbs = styled.nav`
         }
       }
       a {
+        line-height: 1.5em;
         font-size: ${theme.fontSizes.small};
         font-weight: ${theme.fontWeights.regular};
         font-family: ${theme.fonts.body};
