@@ -25,21 +25,16 @@ Add main header as COMPONENT_NAME and then write shortest and easiest variant of
 
 ### Props
 
-Describe all components props according to template below. You don't have to write nothing more — we'll have place for it 🕺🏼
+Copy & paste types from component file and wrap it with three backticks followed by `typescript`.
 
-> Feel free to provide links to proper props using markdown syntax.
+#### Example:
 
-```markdown
-## Props
-
-- [`PROP_NAME`: `TYPE`](#PROP_NAME) — _optional_ | **required**
-```
-
-Examples of using syntax from above is:
-
-```
-— [`disabled`: `boolean`](#disabled) - _optional_
-- [`size`: `string`](#size) - **required**
+```typescript
+interface BoxProps {
+  color: string;
+  width?: number;
+  margin?: Array<string | number>;
+}
 ```
 
 ### Describe props
@@ -49,13 +44,30 @@ Describe all props in verbose way with examples if needed.
 ```markdown
 ### prop
 
-> [`PROP_NAME`: `TYPE`](#PROP_NAME) — _optional_ | **required** — <Place for whatever User needs to know about it>
+> `prop: type` — <Provide some description if needed>
 
 <Preview>
   <Story name='default'>
-    <COMPONENT_NAME prop='PROP_NAME />
+    <COMPONENT_NAME prop='PROP_NAME' />
   </Story>
 </Preview>
 ```
 
-TBC
+#### Example:
+
+```markdown
+### color
+
+> `color?: string` — color takes value from `theme` if exists or use provided value as is.
+
+<Preview>
+  <Story name='color'>
+    <Box color='danger'>
+      This text will get color from theme.
+    </Box>
+    <Box color='crimson'>
+      As crimson doesn't exist in theme text will be #DC143C.
+    </Box>
+  </Story>
+</Preview>
+```
