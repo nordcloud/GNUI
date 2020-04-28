@@ -1,13 +1,18 @@
 import { useState } from "react";
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
-import { Filter, Button, Input, Grid, Row, Column } from "../components";
+import { Button } from "../components/button";
+import { Filter } from "../components/filter";
+import { Input } from "../components/input";
+import { Grid, Row, Column } from "../components/grid";
 
 <Meta title="Components/Filter" component={Filter} />
 
 # Filter
+
 > Please take a look at props to understand correctly how `Filter` works.
 
 ### Props
+
 - `label`: string - **required**
 - `accompanyingComponent`: JSX.Element - _optional_
 - `isFilterOpen`: boolean - _optional_
@@ -21,6 +26,7 @@ import { Filter, Button, Input, Grid, Row, Column } from "../components";
 </Preview>
 
 ## Filter with component
+
 > Filter with a input component
 
 <Preview>
@@ -30,22 +36,23 @@ import { Filter, Button, Input, Grid, Row, Column } from "../components";
       isFilterOpen={false}
       accompanyingComponent={
         <Input name="input" type="search" placeholder="Search something" />
-      } 
+      }
     >
       <Grid>
         <Row>
-          <Column><Input name="input" placeholder="filter something" /></Column>
-          <Column><Input name="input" placeholder="filter something else" /></Column>
+          <Column>
+            <Input name="input" placeholder="filter something" />
+          </Column>
+          <Column>
+            <Input name="input" placeholder="filter something else" />
+          </Column>
         </Row>
         <Row>
           <Column>
-            <Button>Apply settings</Button>
+            <Button secondary>Apply settings</Button>
           </Column>
         </Row>
       </Grid>
     </Filter>
   </Story>
 </Preview>
-
-
-
