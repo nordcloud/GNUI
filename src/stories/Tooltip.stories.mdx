@@ -10,13 +10,23 @@ import title from "title";
 
 #### Props
 
-- `name`: `string` — _optional_
-- `caption`: `string` — _optional_ - caption for the tooltip
-- `position`: `top, right, bottom, left` — _optional_ - position of the tooltip
-- `status`: `danger, warning, success, notification` — _optional_ - table rows will be striped
-- `arrowPosition`: `left, right` — _optional_ - position for the tooltip's arrow, by default arrow is _centered_
+
+```typescript
+interface TooltipProps {
+  name?: string;
+  caption?: string;
+  position?: "left" | "right" | "top" | "bottom";
+  arrowPosition?: "left" | "right";
+  status?: "danger" | "warning" | "success" | "notification";
+  id?: string;
+  className?: string;
+  children?: React.ReactNode;
+};
+```
 
 ### Default Tooltip
+
+> `caption?: string;` - caption for the tooltip
 
 <Preview>
   <Story name="default">
@@ -27,6 +37,9 @@ import title from "title";
 </Preview>
 
 ### Positions for Tooltip
+
+> - `position?: "left" | "right" | "top" | "bottom";` — position of the tooltip
+> - `arrowPosition?: "left" | "right";` — position for the tooltip's arrow, by default arrow is _centered_
 
 <Preview>
   <Story name="position">
@@ -59,6 +72,8 @@ import title from "title";
 </Preview>
 
 ### Status for Tooltip
+
+> `status?: "danger" | "warning" | "success" | "notification";` — adds color status for tooltips
 
 <Preview>
   <Story name="status">
