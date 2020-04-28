@@ -4,6 +4,7 @@ import theme from "../../theme";
 import { Breadcrumbs } from "../breadcrumbs";
 import { BreadcrumbsList } from "../breadcrumbs";
 import { Heading } from "../heading";
+import { Box } from "../box";
 
 interface PageTitleProps {
   title: string;
@@ -15,15 +16,6 @@ interface PageTitleBreadcrumbsProps {
   margin?: string;
   children?: any;
 }
-
-type SectionWrapper = {
-  margin?: string;
-}
-
-const SectionWrapper = styled.div<SectionWrapper>`
-  padding: ${theme.spacing.spacing04};
-  box-shadow: ${theme.shadow.shadow02};
-`;
 
 const PageTitleWrapper = styled.div`
   h3 {
@@ -49,8 +41,8 @@ export const PageTitleBreadcrumbs: FunctionComponent<PageTitleBreadcrumbsProps> 
   margin
 }) => {
   return (
-    <SectionWrapper margin={margin}>
+    <Box padding="spacing04" shadow="shadow02" margin={margin}>
       <PageTitle title={title} />
       <Breadcrumbs list={list} />
-    </SectionWrapper>
+    </Box>
 )};
