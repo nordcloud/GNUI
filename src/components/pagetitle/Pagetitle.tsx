@@ -14,7 +14,6 @@ interface PageTitleBreadcrumbsProps {
   title: string;
   list: Array<BreadcrumbsList>;
   margin?: string;
-  children?: any;
 }
 
 const PageTitleWrapper = styled.div`

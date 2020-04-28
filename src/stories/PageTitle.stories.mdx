@@ -8,19 +8,32 @@ import { PageTitle, PageTitleBreadcrumbs } from "../components/pagetitle";
 
 ### Page Title
 
+#### Props
+
+```typescript
+interface PageTitleProps {
+  title: string;
+}
+```
+
 <Preview>
   <Story name="pagetitle">
     <PageTitle title="Page Heading" />
   </Story>
 </Preview>
 
-## Props for Page Title with Breadcrumbs
-
-- `title`: `string` - **required** 
-- `margin`: `string` - _optional_ 
-- `list`: `Array<BreadcrumbsList>;` - **required**
-
 ### Page Title with Breadcrumbs
+
+#### Props
+
+```typescript
+interface PageTitleBreadcrumbsProps {
+  title: string;
+  list: Array<BreadcrumbsList>;
+  margin?: string;
+};
+```
+
 <Preview>
   <Story name="breadcrumbs">
     <PageTitleBreadcrumbs 
