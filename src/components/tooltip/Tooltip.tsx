@@ -179,7 +179,7 @@ export const Tooltip: FunctionComponent<TooltipProps> = ({
   children
 }) => {
   const [isHovered, setHovered] = useState(false);
-  const [resetTimer, setTimer] = useState(null);
+  const [resetTimer, setTimer] = useState(0);
 
   const toggleHover = () => {
     clearTimeout(resetTimer);
