@@ -36,7 +36,7 @@ const StyledBreadcrumbs = styled.nav`
       a {
         font-size: ${theme.fontSizes.small};
         font-weight: ${theme.fontWeights.regular};
-        font-family: ${theme.typography.fonts.body};
+        font-family: ${theme.fonts.body};
         color: ${theme.colors.primary};
         text-decoration: none;
         transition: ${theme.transition};

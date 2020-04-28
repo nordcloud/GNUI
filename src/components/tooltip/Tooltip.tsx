@@ -69,7 +69,7 @@ const TooltipLabel = styled.div<TooltipProps>`
   line-height: ${theme.lineHeight};
   font-size: ${theme.fontSizes.regular};
   font-weight: ${theme.fontWeights.regular};
-  font-family: ${theme.typography.fonts.body};
+  font-family: ${theme.fonts.body};
 `;
 
 const TooltipChildren = styled.div<TooltipProps>` 

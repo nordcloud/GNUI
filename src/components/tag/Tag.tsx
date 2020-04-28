@@ -13,7 +13,7 @@ export const StyledTag = styled.div`
   display: inline-block;
   text-transform: capitalize;
   text-align: center;
-  font-family: ${theme.typography.fonts.body};
+  font-family: ${theme.fonts.body};
   font-size: ${theme.fontSizes.small};
   line-height: ${theme.lineHeight};
   padding: 0 ${theme.spacing.spacing03};
