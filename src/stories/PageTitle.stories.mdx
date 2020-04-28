@@ -1,0 +1,49 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { PageTitle, PageTitleBreadcrumbs } from "../components/pagetitle";
+
+
+<Meta title="Layout/PageTitleBreadcrumbs" component={PageTitleBreadcrumbs} />
+
+# Page Title with Breadcrumbs
+
+### Page Title
+
+#### Props
+
+```typescript
+interface PageTitleProps {
+  title: string;
+}
+```
+
+<Preview>
+  <Story name="pagetitle">
+    <PageTitle title="Page Heading" />
+  </Story>
+</Preview>
+
+### Page Title with Breadcrumbs
+
+#### Props
+
+```typescript
+interface PageTitleBreadcrumbsProps {
+  title: string;
+  list: Array<BreadcrumbsList>;
+  margin?: string;
+};
+```
+
+<Preview>
+  <Story name="breadcrumbs">
+    <PageTitleBreadcrumbs 
+      title="Page Heading" 
+      list={[
+        { label: "Home", uri: `#` },
+        { label: "Hosts", uri: `#` },
+        { label: "Host Details", uri: `#` }
+      ]}
+      />
+  </Story>
+</Preview>
+

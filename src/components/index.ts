@@ -20,3 +20,4 @@ export * from "./modal";
 export * from "./styleguide";
 export * from "./spacer";
 export * from "./filter";
+export * from "./pagetitle";
