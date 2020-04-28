@@ -30,7 +30,7 @@ const StyledTooltip = styled.div<TooltipProps>`
   padding: ${theme.spacing.spacing01};
   transition: ${theme.transition};
   position: absolute;
-  left: calc(100% + 8px);
+  right:calc(100% + 8px);
   top: auto;
   text-align:center;
   display:none;
@@ -49,8 +49,8 @@ const StyledTooltip = styled.div<TooltipProps>`
   `}
 
   &.right {
-    right:calc(100% + 8px);
-    left: auto;
+    left: calc(100% + 8px);
+    right:auto;
   }
   &.top {
     bottom: calc(100% + 8px);
@@ -95,7 +95,7 @@ const TooltipArrow = styled.div<TooltipProps>`
   border-bottom: 8px solid transparent;
   border-right: 8px solid ${theme.colors.primary}; 
 
-  &.left {
+  &.right {
     ${({ status }) =>
     status &&
     css`
@@ -103,7 +103,7 @@ const TooltipArrow = styled.div<TooltipProps>`
   `}
   }
 
-  &.right {
+  &.left {
     border-top: 8px solid transparent;
     border-bottom: 8px solid transparent;
     border-left: 8px solid ${theme.colors.primary}; 
@@ -187,7 +187,7 @@ export const Tooltip: FunctionComponent<TooltipProps> = ({
 
     const timer = () => setTimeout(() => {
       setHovered(false)
-    }, 1500);
+    }, 1000);
 
     setTimer(timer);
   }
