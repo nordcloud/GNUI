@@ -1,15 +1,17 @@
 import React, { FunctionComponent, useState } from "react";
 import styled, { css } from "styled-components";
-import { Grid, Row, Column } from "../grid";
 import { Box } from "../box";
 import { Button } from "../button";
-import { DropdownIcon } from "../dropdown";
 import { Icon } from "../icon";
+import { DropdownIcon } from "../dropdown";
+import { Grid, Row, Column } from "../grid";
 import theme from "../../theme";
 
 const filterBackground = theme.colors.lights[2];
 
-const FilterButton = styled(Button)<{ isOpen: boolean }>`
+const FilterButton = styled((props) => <Button {...props} />)<{
+  isOpen?: boolean;
+}>`
   width: 100%;
   display: flex;
   align-items: center;
@@ -33,7 +35,7 @@ const Spacer = styled.div`
   background-color: ${filterBackground};
 `;
 
-const FilterColumn = styled(Column)`
+const FilterColumn = styled((props) => <Column {...props} />)`
   margin-bottom: 0;
   overflow: visible;
 `;
@@ -47,7 +49,9 @@ const FilterTitle = styled.div`
   }
 `;
 
-const FilterContent = styled(Box)<{ hasComponent?: boolean }>`
+const FilterContent = styled((props) => <Box {...props} />)<{
+  hasComponent?: boolean;
+}>`
   background: ${filterBackground};
   box-shadow: none;
   margin-left: ${theme.spacing.spacing02};
