@@ -2,12 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import theme from "../../theme";
 
-interface BreadcrumbsList {
+export interface BreadcrumbsList {
   label: string;
   uri: string;
 }
 
-interface BreadcrumbsListProps {
+export interface BreadcrumbsListProps {
   list: Array<BreadcrumbsList>;
 }
 
