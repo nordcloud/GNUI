@@ -1,0 +1,59 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Switch } from "../components/switch";
+import { Container } from "../components/container";
+import { Spacer } from "../components/spacer";
+import theme from "../theme";
+
+<Meta title="Components/Switch" component={Switch} />
+
+# Switch
+
+#### Props
+
+```typescript
+interface SwitchProps {
+  name?:string;
+  switchValue?: string;
+  labelText?: string;
+  severity?: "danger" | "notification" | "warning" | "success";
+  position?: "left" | "right";
+  onChange?: (e: React.MouseEvent) => void;
+}
+```
+## Default
+
+<Preview>
+  <Story name="default">
+    <Switch labelText="My Switch Button" />
+  </Story>
+</Preview>
+
+## Label Position
+
+<Preview>
+  <Story name="position">
+    <Container>
+      <Switch name="label-left" position="left" labelText="My Switch Button" />
+      <Spacer height="1rem" />
+      <Switch name="label-right" position="right" labelText="My Switch Button" />
+    </Container>
+  </Story>
+</Preview>
+
+## Switch severity
+
+> - `severity`: `string` — [`success`, `danger`, `warning`, `notification`]
+
+<Preview>
+  <Story name="severity">
+    <Container>
+      <Switch name="label1" severity="warning" labelText="My Switch Button" />
+      <Spacer height="1rem" />
+      <Switch name="label2" severity="danger" labelText="My Switch Button" />
+      <Spacer height="1rem" />
+      <Switch name="label3" severity="success" labelText="My Switch Button" />
+      <Spacer height="1rem" />
+      <Switch name="label4" severity="notification" labelText="My Switch Button" />
+    </Container>
+  </Story>
+</Preview>
