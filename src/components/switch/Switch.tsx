@@ -5,7 +5,7 @@ import { Flex } from "../container";
 
 export interface SwitchProps {
   name?:string;
-  switchValue?:string;
+  isChecked?:string;
   labelText?: string;
   severity?: "danger" | "notification" | "warning" | "success";
   position?: "left" | "right";
@@ -73,7 +73,7 @@ const Inner = styled.div`
   bottom: 0;
   -webkit-transition: .4s;
   transition: .4s;
-  border-radius: 12px;
+  border-radius: 0.75rem;
   border: ${theme.borders.disabled};
   background-color:${theme.colors.lights[0]};
 
@@ -96,7 +96,7 @@ export const Switch: FunctionComponent<SwitchProps> = ({
   severity,
   position,
   labelText,
-  switchValue
+  isChecked
 }) => {
   const [isActive, setActive] = useState(false);
   const handleSelect = () => setActive(!isActive);
@@ -108,7 +108,7 @@ export const Switch: FunctionComponent<SwitchProps> = ({
         <SwitchInput 
           type="checkbox"
           id={name}
-          switchValue={isActive.toString()}
+          isChecked={isActive.toString()}
           severity={severity}
           className={isActive ? "active" : ""}
           onChange={handleSelect}

@@ -13,7 +13,7 @@ import theme from "../theme";
 ```typescript
 interface SwitchProps {
   name?:string;
-  switchValue?: string;
+  isChecked?:string;
   labelText?: string;
   severity?: "danger" | "notification" | "warning" | "success";
   position?: "left" | "right";
@@ -42,18 +42,19 @@ interface SwitchProps {
 
 ## Switch severity
 
+> Adds color indication for severity levels
 > - `severity`: `string` — [`success`, `danger`, `warning`, `notification`]
 
 <Preview>
   <Story name="severity">
     <Container>
-      <Switch name="label1" severity="warning" labelText="My Switch Button" />
+      <Switch name="label1" severity="warning" labelText="My Switch Button Warning" />
       <Spacer height="1rem" />
-      <Switch name="label2" severity="danger" labelText="My Switch Button" />
+      <Switch name="label2" severity="danger" labelText="My Switch Button Danger" />
       <Spacer height="1rem" />
-      <Switch name="label3" severity="success" labelText="My Switch Button" />
+      <Switch name="label3" severity="success" labelText="My Switch Button Success" />
       <Spacer height="1rem" />
-      <Switch name="label4" severity="notification" labelText="My Switch Button" />
+      <Switch name="label4" severity="notification" labelText="My Switch Button Notification" />
     </Container>
   </Story>
 </Preview>
