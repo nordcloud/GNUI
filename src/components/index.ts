@@ -22,3 +22,4 @@ export * from "./styleguide";
 export * from "./spacer";
 export * from "./filter";
 export * from "./pagetitle";
+export * from "./switch";
