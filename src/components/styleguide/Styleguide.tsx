@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
-import { Text } from "../../components/text";
-import { Grid, Row, Column } from "../../components/grid";
+import { Text } from "../text";
+import { Grid, Row, Column } from "../grid";
 import theme from "../../theme";
 
 interface StyleguideProps {
@@ -10,7 +10,7 @@ interface StyleguideProps {
   name?: string;
 }
 
-const ColorPaletteWrapper = styled(Grid)`
+const ColorPaletteWrapper = styled((props) => <Grid {...props} />)`
   padding: 0;
   text-rendering: optimizelegibility;
   border: ${theme.borders.default};
@@ -18,7 +18,7 @@ const ColorPaletteWrapper = styled(Grid)`
   box-shadow: ${theme.shadow.shadow04};
 `;
 
-const ColorBox = styled(Row)<{ color: any }>`
+const ColorBox = styled((props) => <Row {...props} />)<{ color: any }>`
   align-items: center;
   justify-content: space-between;
   ${({ color }) =>
@@ -28,19 +28,25 @@ const ColorBox = styled(Row)<{ color: any }>`
     `}
 `;
 
-const ColorColumn = styled(Column)<{ darkText?: boolean }>`
+const ColorColumn = styled((props) => <Column {...props} />)<{
+  darkText?: boolean;
+}>`
   flex: 1 1 0%;
   padding: 1rem 2.5rem;
+  color: ${theme.colors.white};
   & > * {
-    color: ${(props) =>
-      props.darkText ? theme.colors.primary : theme.colors.white};
+    ${({ darkText }) =>
+      darkText &&
+      css`
+        color: ${theme.colors.primary};
+      `}
   }
 `;
 
 export const Styleguide: FunctionComponent<StyleguideProps> = ({
   colors,
-  name,
   description,
+  name,
 }) => (
   <ColorPaletteWrapper>
     {colors &&
