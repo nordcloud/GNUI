@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useState } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
-import { Flex } from "../container";
 
 export interface SwitchProps {
   name?:string;
@@ -57,11 +56,19 @@ const LabelText = styled.div<SwitchProps>`
     `}
 `;
 
-const SwitchLabel = styled.label<SwitchProps>`
+const SwitchContainer = styled.div<SwitchProps>`
   position: relative;
   display: inline-block;
   width: 3rem;
   height: 1.5rem;
+`;
+
+const SwitchLabel = styled.label`
+  display:flex;
+  align-items:center;
+  font-weight: ${theme.fontWeights.regular};
+  font-family: ${theme.fonts.body};
+  font-size: ${theme.fontSizes.regular};
 `;
 
 const Inner = styled.div`
@@ -102,9 +109,9 @@ export const Switch: FunctionComponent<SwitchProps> = ({
   const handleSelect = () => setActive(!isActive);
   
   return (
-    <Flex>
+    <SwitchLabel htmlFor={name}>
       {(position === "left") && <LabelText position={position}>{labelText}</LabelText>}
-      <SwitchLabel htmlFor={name}>
+      <SwitchContainer>
         <SwitchInput 
           type="checkbox"
           id={name}
@@ -114,7 +121,7 @@ export const Switch: FunctionComponent<SwitchProps> = ({
           onChange={handleSelect}
         />
         <Inner className="inner" />
-      </SwitchLabel>
+      </SwitchContainer>
       {(position === "right" || position === undefined) && <LabelText position={position}>{labelText}</LabelText>}
-    </Flex>
+    </SwitchLabel>
 )};
