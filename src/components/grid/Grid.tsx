@@ -13,7 +13,7 @@ const gridSpacings = [
 ];
 
 interface FlexProps {
-  children?: any;
+  children?: React.ReactNode;
   className?: string;
   display?: "block" | "flex";
   flexDirection?: "row" | "column";
@@ -50,26 +50,19 @@ interface FlexProps {
 
 type Spacing = Array<string | number> | string | number | any;
 type Size = { [sizeBreakpoint: string]: string | number } | number;
+
 interface ColumnProps {
   size?: Size;
   margin?: Spacing;
   padding?: Spacing;
 }
 
-const basicFlexStyles = (props: { color?: string }) => css`
-  color: ${props.color || theme.colors.primary};
-  letter-spacing: 0.0525rem;
-  & > * {
-    color: inherit;
-  }
-`;
-
 const FlexItem = styled.div<FlexProps>`
-  ${basicFlexStyles};
+  display: flex;
   ${(props) =>
     props &&
     css`
-      display: ${props.display || "flex"};
+      display: ${props.display};
       justify-content: ${props.justifyContent || "space-around"};
       flex-direction: ${props.flexDirection || "row"};
       flex-grow: ${props.flexGrow || 0};
@@ -91,7 +84,6 @@ const setMargins = (marginValue: Spacing, isColumn: boolean = false): any => {
     isRem: boolean = true
   ): FlattenSimpleInterpolation => {
     if (Array.isArray(marginValue)) {
-      // i.e. margin={[1, 5, 5, 1]}
       const margin = isRem
         ? marginValue.join("rem ") + "rem"
         : marginValue.join(" ");
@@ -99,14 +91,10 @@ const setMargins = (marginValue: Spacing, isColumn: boolean = false): any => {
         margin: ${margin};
       `;
     }
-
-    if (!Array.isArray(marginValue) && isColumn) {
-      // i.e. margin={5}
+    if (!Array.isArray(marginValue) && isColumn)
       return css`
         margin: ${isRem ? `${value}rem` : `${value}`};
       `;
-    }
-
     return css`
       margin-left: ${isRem ? `${value}rem` : `${value}`};
       margin-right: ${isRem ? `${value}rem` : `${value}`};
@@ -116,17 +104,12 @@ const setMargins = (marginValue: Spacing, isColumn: boolean = false): any => {
   if (isNaN(marginValue)) {
     for (const option of gridSpacings) {
       const [bp, value] = Object.values(option);
-      if (bp === marginValue) {
-        return cache(value, false);
-      }
+      if (bp === marginValue) return cache(value, false);
     }
-
     return cache(marginValue);
   }
 
-  if (typeof marginValue === "number") {
-    return cache(marginValue, true);
-  }
+  if (typeof marginValue === "number") return cache(marginValue, true);
 
   return cache(marginValue, true);
 };
@@ -151,7 +134,7 @@ const setPaddings = (paddingValue: Spacing) => {
 
   if (isNaN(paddingValue)) {
     for (const option of gridSpacings) {
-      const [key, value] = Object.values(option).flat();
+      const [key, value] = Object.values(option);
       if (key === paddingValue) {
         return cache(value);
       }
@@ -159,21 +142,17 @@ const setPaddings = (paddingValue: Spacing) => {
     return cache(paddingValue);
   }
 
-  if (typeof paddingValue === "number") {
-    return cache(paddingValue);
-  }
+  if (typeof paddingValue === "number") return cache(paddingValue);
 
   return cache(paddingValue);
 };
 
 export const Row = styled(FlexItem)<{ margin?: number }>`
-  display: flex;
   flex-basis: 100%;
   max-width: 100%;
   & > * {
     overflow: auto;
   }
-
   ${({ margin }) => margin && setMargins(margin)}
 `;
 
@@ -184,9 +163,7 @@ const setColumnSize = (size: Size, margin: Spacing = defaultSpacing) => {
     ${margin && `margin: ${margin};`}
   `;
 
-  if (typeof size === "number") {
-    return cache(size);
-  }
+  if (typeof size === "number") return cache(size);
 
   if (typeof size !== "undefined" && typeof size !== "number") {
     return map(
@@ -210,7 +187,6 @@ export const Column = styled(FlexItem)<ColumnProps>`
   padding-left: ${defaultSpacing};
   padding-right: ${defaultSpacing};
   margin: ${defaultSpacing};
-
   ${({ margin }) => margin && setMargins(margin, true)}
   ${({ padding }) => padding && setPaddings(padding)};
   ${({ size, margin }) =>
