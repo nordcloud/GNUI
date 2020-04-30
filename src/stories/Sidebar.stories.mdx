@@ -47,15 +47,7 @@ import { Text } from "../components/text";
               </Text>
             </Column>
           </Row>
-          <Sidebar isOpen={isOpen}>
-            <Sidebar.menu>
-              <Sidebar.title>Sidebar Menu</Sidebar.title>
-              <Sidebar.content>Content</Sidebar.content>
-            </Sidebar.menu>
-            <Sidebar.button onClick={() => setIsOpen(!isOpen)}>
-              {isOpen ? "Close" : "Open"}
-            </Sidebar.button>
-          </Sidebar>
+          <Sidebar title="Sidebar Title">Sidebar Content</Sidebar>
         </Grid>
       );
     }}

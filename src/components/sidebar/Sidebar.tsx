@@ -1,10 +1,11 @@
+import React, { FunctionComponent, useState } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { Container } from "../container";
 import { Text } from "../text";
 import { Button } from "../button";
 
-const Menu = styled(Container)`
+const SidebarMenu = styled(Container)`
   top: 0;
   right: 0;
   position: absolute;
@@ -15,7 +16,7 @@ const Menu = styled(Container)`
   border: ${theme.borders.disabled};
   background-color: ${theme.colors.lights[1]};
   box-shadow: 0 2px 5px ${theme.colors.darks[4]};
-  transition: all 0.4s;
+  transition: all 0.4s ease;
 `;
 
 const SidebarButton = styled(Button)<any>`
@@ -25,7 +26,7 @@ const SidebarButton = styled(Button)<any>`
   z-index: 100;
 `;
 
-const Title = styled(Text)`
+const SidebarTitle = styled(Text)`
   line-height: 1.5rem;
   font-size: ${theme.fontSizes.medium};
   font-weight: ${theme.fontWeights.bold};
@@ -33,11 +34,11 @@ const Title = styled(Text)`
   margin: 0 auto;
 `;
 
-const Content = styled(Title)`
+const SidebarContent = styled(SidebarTitle)`
   font-weight: initial;
 `;
 
-const Sidebar: any = styled(Container).attrs((props) => ({
+const Wrapper: any = styled(Container).attrs((props) => ({
   isOpen: props.isOpen,
 }))`
   bottom: 0;
@@ -49,9 +50,9 @@ const Sidebar: any = styled(Container).attrs((props) => ({
   overflow-x: hidden;
   overflow-y: scroll;
   background-color: transparent;
-  transition: all 0.4s;
+  transition: all 0.4s ease;
 
-  & ${Menu} {
+  & ${SidebarMenu} {
     width: ${(props) => (props.isOpen ? "567px" : 0)};
   }
 
@@ -63,9 +64,33 @@ const Sidebar: any = styled(Container).attrs((props) => ({
     `}
 `;
 
-Sidebar.button = SidebarButton;
-Sidebar.menu = Menu;
-Sidebar.title = Title;
-Sidebar.content = Content;
+interface SidebarProps {
+  children?: React.ReactNode;
+  title?: string;
+}
+
+const Sidebar: FunctionComponent<SidebarProps> = ({
+  children,
+  title,
+  ...props
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <Wrapper isOpen={isOpen} {...props}>
+      <Wrapper.menu>
+        <Wrapper.title>{title}</Wrapper.title>
+        <Wrapper.content>{children}</Wrapper.content>
+      </Wrapper.menu>
+      <Wrapper.button onClick={() => setIsOpen(!isOpen)}>
+        {isOpen ? "Close" : "Open"}
+      </Wrapper.button>
+    </Wrapper>
+  );
+};
+
+Wrapper.button = SidebarButton;
+Wrapper.menu = SidebarMenu;
+Wrapper.title = SidebarTitle;
+Wrapper.content = SidebarContent;
 
 export default Sidebar;
