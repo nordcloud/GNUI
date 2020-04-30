@@ -12,6 +12,7 @@ interface TextProps {
   italic?: boolean;
   small?: boolean;
   caption?: boolean;
+  align?: string;
 }
 
 const changeSize = (size: number) => css`
@@ -61,6 +62,12 @@ const StyledText = styled.p<TextProps>`
     css`
       display: ${display};
     `}
+
+    ${({ align }) =>
+      align &&
+      css`
+        text-align: ${align};
+      `}
 `;
 
 const StyledCode = styled.code`
