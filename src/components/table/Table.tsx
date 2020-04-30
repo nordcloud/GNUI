@@ -12,7 +12,7 @@ const Table: any = styled.table<TableProps>`
     text-align: left;
     border-collapse: collapse;
     font-weight: ${theme.fontWeights.regular};
-    font-family: ${theme.typography.fonts.body};
+    font-family: ${theme.fonts.body};
     font-size: ${theme.fontSizes.regular};
     line-height: 1.5em;
     color: ${theme.colors.primary};

@@ -17,6 +17,7 @@ export * from "./navigation";
 export * from "./checkbox";
 export * from "./list";
 export * from "./modal";
+export * from "./tooltip";
 export * from "./styleguide";
 export * from "./spacer";
 export * from "./filter";

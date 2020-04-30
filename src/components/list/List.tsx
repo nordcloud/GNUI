@@ -54,7 +54,7 @@ const getListSpacing = (props: StyledListProps): string => {
 }
 
 const StyledListItem = styled.li`
-  font-family: ${theme.typography.fonts.body};
+  font-family: ${theme.fonts.body};
   display: flex;
   margin: ${(props: StyledListProps) => getListSpacing(props)};
   color: ${theme.colors.primary};
