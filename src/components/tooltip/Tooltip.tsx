@@ -30,7 +30,8 @@ const StyledTooltip = styled.div<TooltipProps>`
   padding: ${theme.spacing.spacing01};
   transition: ${theme.transition};
   position: absolute;
-  right:calc(100% + 8px);
+  left:calc(100% + 8px);
+  right:auto;
   top: auto;
   text-align:center;
   display:none;
@@ -47,6 +48,11 @@ const StyledTooltip = styled.div<TooltipProps>`
       border: 1px solid ${setColor(status)}; 
       background: ${setColor(status)};
   `}
+
+  &.left {
+    right: calc(100% + 8px);
+    left:auto;
+  }
 
   &.right {
     left: calc(100% + 8px);
@@ -181,23 +187,27 @@ export const Tooltip: FunctionComponent<TooltipProps> = ({
   const [isHovered, setHovered] = useState(false);
   const [resetTimer, setTimer] = useState(0);
 
-  const toggleHover = () => {
-    clearTimeout(resetTimer);
+  const toggleOver = () => {
     setHovered(true);
+  }
+
+  const toggleOut = () => {
+    clearTimeout(resetTimer);
 
     const timer = () => setTimeout(() => {
       setHovered(false)
-    }, 1000);
+    }, 500);
 
     setTimer(timer);
   }
+
   const tooltipShow = isHovered ? 'hovered' : '';
   const classesArrow = arrowPosition ? `${position} arrow-${arrowPosition}` : `${position}`;
-  const classesTooltip = position ? `${position} ${tooltipShow}` : `left ${tooltipShow}`;
+  const classesTooltip = position ? `${position} ${tooltipShow}` : `right ${tooltipShow}`;
   return (
     <TooltipWrapper>
       <TooltipChildren 
-        onMouseOver={toggleHover}>
+        onMouseOver={toggleOver} onMouseOut={toggleOut}>
           <StyledTooltip
             status={status}
             name={name}
