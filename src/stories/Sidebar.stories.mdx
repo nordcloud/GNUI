@@ -1,55 +1,72 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import {
+  Meta,
+  Story,
+  Preview,
+  Title,
+  Description,
+} from "@storybook/addon-docs/blocks";
 import { useState } from "react";
 import { Sidebar } from "../components/sidebar";
 import { Grid, Row, Column } from "../components/grid";
 import { Text } from "../components/text";
 
-<Meta title="Components/Sidebar" component={Sidebar} />
+<Meta title="Components/Sidebar" component={Sidebar} id="sidebar" />
 
-<Preview>
-  <Story name="sidebar">
-    {() => {
-      const [isOpen, setIsOpen] = useState(false);
-      return (
-        <Grid>
-          <Row alignItems="flex-start">
-            <Column size="6">
-              <Text align="justify">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-                gravida auctor est, eu volutpat dolor gravida quis. Vestibulum
-                venenatis venenatis orci ac pellentesque. Aliquam blandit eu est
-                id feugiat. In ut tristique lacus. Aenean ornare pharetra leo,
-                eget mattis arcu rhoncus vitae. Orci varius natoque penatibus et
-                magnis dis parturient montes, nascetur ridiculus mus. Praesent
-                volutpat lacus at odio finibus, vel gravida dolor scelerisque.
-                Nullam nec nibh faucibus, egestas neque vitae, pellentesque
-                justo. Integer ultrices tincidunt lacus, in commodo ante varius
-                ornare. Proin a tempus magna.
-              </Text>
-            </Column>
-            <Column size="6">
-              <Text align="justify">
-                Fusce quis est lacus. Proin porttitor, leo vitae auctor rhoncus,
-                nunc metus ultrices ex, eu faucibus libero augue ac arcu. Sed
-                sit amet viverra felis, vel ultrices mi. Suspendisse potenti.
-                Nunc tincidunt bibendum vulputate. Nullam lacinia lacus a
-                ullamcorper imperdiet. Nam ullamcorper, dui quis porttitor
-                vestibulum, sem augue placerat sapien, nec vestibulum odio enim
-                a ligula. Integer condimentum enim vitae lorem dignissim, ut
-                fringilla lorem pellentesque. Fusce risus ipsum, venenatis porta
-                lorem et, volutpat vehicula ligula. Duis faucibus ac neque
-                facilisis pretium. Duis mauris augue, cursus eget tincidunt non,
-                scelerisque dapibus magna. Aliquam velit dui, vestibulum et
-                vehicula id, pulvinar nec magna. Nullam sed sollicitudin mi,
-                quis pharetra risus. Maecenas rhoncus nulla est, et eleifend
-                felis ultricies quis. Integer fermentum euismod nunc, at euismod
-                nulla elementum eu.
-              </Text>
-            </Column>
-          </Row>
-          <Sidebar title="Sidebar Title">Sidebar Content</Sidebar>
-        </Grid>
-      );
-    }}
-  </Story>
-</Preview>
+# Sidebar
+
+<Description>
+  Sidebars button is fixed, but can be easily styled with props (explained
+  below).
+</Description>
+
+---
+
+<Story name="default">
+  {() => {
+    const [isOpen, setIsOpen] = useState(false);
+    return (
+      <Grid>
+        <Row justifyContent="center" alignItems="flex-start">
+          <Column size="5">
+            <Text align="justify">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+              gravida auctor est, eu volutpat dolor gravida quis. Vestibulum
+              venenatis venenatis orci ac pellentesque. Aliquam blandit eu est
+              id feugiat. In ut tristique lacus. Aenean ornare pharetra leo,
+              eget mattis arcu rhoncus vitae. Orci varius natoque penatibus et
+              magnis dis parturient montes, nascetur ridiculus mus. Praesent
+              volutpat lacus at odio finibus, vel gravida dolor scelerisque.
+              Nullam nec nibh faucibus, egestas neque vitae, pellentesque justo.
+              Integer ultrices tincidunt lacus, in commodo ante varius ornare.
+              Proin a tempus magna.
+            </Text>
+          </Column>
+          <Column size="5">
+            <Text align="justify">
+              Fusce quis est lacus. Proin porttitor, leo vitae auctor rhoncus,
+              nunc metus ultrices ex, eu faucibus libero augue ac arcu. Sed sit
+              amet viverra felis, vel ultrices mi. Suspendisse potenti. Nunc
+              tincidunt bibendum vulputate. Nullam lacinia lacus a ullamcorper
+              imperdiet. Nam ullamcorper, dui quis porttitor vestibulum, sem
+              augue placerat sapien, nec vestibulum odio enim a ligula. Integer
+              condimentum enim vitae lorem dignissim, ut fringilla lorem
+              pellentesque. Fusce risus ipsum, venenatis porta lorem et,
+              volutpat vehicula ligula. Duis faucibus ac neque facilisis
+              pretium. Duis mauris augue, cursus eget tincidunt non, scelerisque
+              dapibus magna. Aliquam velit dui, vestibulum et vehicula id,
+              pulvinar nec magna. Nullam sed sollicitudin mi, quis pharetra
+              risus. Maecenas rhoncus nulla est, et eleifend felis ultricies
+              quis. Integer fermentum euismod nunc, at euismod nulla elementum
+              eu.
+            </Text>
+          </Column>
+        </Row>
+        <Sidebar title="Sidebar Title">Sidebar Content</Sidebar>
+      </Grid>
+    );
+  }}
+</Story>
+
+## Props
+
+### static

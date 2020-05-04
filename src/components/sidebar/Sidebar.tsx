@@ -1,28 +1,29 @@
 import React, { FunctionComponent, useState } from "react";
 import styled, { css } from "styled-components";
-import theme from "../../theme";
+import theme, { bp } from "../../theme";
 import { Container } from "../container";
 import { Text } from "../text";
 import { Button } from "../button";
+import { Icon } from "../icon";
 
 const SidebarMenu = styled(Container)`
   top: 0;
   right: 0;
-  position: absolute;
-  height: 100vh;
-  z-index: 100;
   border-radius: 0;
   width: 0;
-  border: ${theme.borders.disabled};
-  background-color: ${theme.colors.lights[1]};
-  box-shadow: 0 2px 5px ${theme.colors.darks[4]};
-  transition: all 0.4s ease;
+  height: 100vh;
+  z-index: 100;
+  position: absolute;
+  border-left: ${theme.borders.disabled};
+  background-color: ${theme.colors.white};
+  box-shadow: ${theme.shadow.shadow04};
+  transition: all 0.4s ease-in-out;
 `;
 
 const SidebarButton = styled(Button)<any>`
   position: fixed;
-  top: 25px;
-  right: 25px;
+  top: 1rem;
+  right: 1rem;
   z-index: 100;
 `;
 
@@ -35,12 +36,10 @@ const SidebarTitle = styled(Text)`
 `;
 
 const SidebarContent = styled(SidebarTitle)`
-  font-weight: initial;
+  font-weight: ${theme.fontWeights[0]};
 `;
 
-const Wrapper: any = styled(Container).attrs((props) => ({
-  isOpen: props.isOpen,
-}))`
+const Wrapper: any = styled(Container)<{ isOpen: boolean }>`
   bottom: 0;
   right: 0;
   position: fixed;
@@ -50,17 +49,28 @@ const Wrapper: any = styled(Container).attrs((props) => ({
   overflow-x: hidden;
   overflow-y: scroll;
   background-color: transparent;
-  transition: all 0.4s ease;
+  transition: all 0.4s ease-in-out;
 
   & ${SidebarMenu} {
-    width: ${(props) => (props.isOpen ? "567px" : 0)};
+    width: 0;
   }
 
   ${({ isOpen }) =>
     isOpen &&
     css`
-      background-color: rgba(0, 0, 0, 0.4);
-      transition: all 0.4s;
+      background-color: rgba(0, 0, 0, 0.6);
+      transition: all 0.4s ease-in-out;
+      & ${SidebarMenu} {
+        width: 100%;
+        ${bp("sm")`width: 50%`};
+        ${bp("md")`width: 40%`}
+      }
+
+      & ${SidebarButton} {
+        position: absolute;
+        right: 0.5rem;
+        transition: all 0.4s ease-in-out;
+      }
     `}
 `;
 
@@ -81,8 +91,12 @@ const Sidebar: FunctionComponent<SidebarProps> = ({
         <Wrapper.title>{title}</Wrapper.title>
         <Wrapper.content>{children}</Wrapper.content>
       </Wrapper.menu>
-      <Wrapper.button onClick={() => setIsOpen(!isOpen)}>
-        {isOpen ? "Close" : "Open"}
+      <Wrapper.button severity="low" onClick={() => setIsOpen(!isOpen)}>
+        <Icon
+          width="1.25rem"
+          height="1.25rem"
+          image={isOpen ? "CLOSE_SIDEBAR" : "OPEN_SIDEBAR"}
+        />
       </Wrapper.button>
     </Wrapper>
   );
