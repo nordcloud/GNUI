@@ -8,7 +8,7 @@ export interface NavLinkProps {
   id?: string;
   className?: string;
   value?: string;
-  onClick?: (e: React.MouseEvent) => void;
+  onClick?: (e: any) => void;
 }
 
 export interface NavProps {

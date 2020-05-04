@@ -15,7 +15,7 @@ export interface InputProps {
   required?: boolean;
   status?: "success" | "error";
   children?: string | number | any;
-  onClick?: (e: React.MouseEvent) => void;
+  onClick?: (e: any) => void;
   onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
 }
 
