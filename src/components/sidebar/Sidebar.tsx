@@ -33,24 +33,19 @@ const SidebarTitle = styled(Text)`
   font-weight: ${theme.fontWeights.bold};
   padding: ${theme.spacing.spacing06};
   margin: 0 auto;
+  border-bottom: ${theme.borders.grey};
 `;
 
-const SidebarContent = styled(SidebarTitle)`
+const SidebarContent = styled(Text)`
   font-weight: ${theme.fontWeights[0]};
+  line-height: 1.5rem;
+  font-size: ${theme.fontSizes.medium};
+  font-weight: ${theme.fontWeights.regular};
+  padding: ${theme.spacing.spacing06};
+  margin: 0 auto;
 `;
 
 const Wrapper: any = styled(Container)<{ isOpen: boolean }>`
-  bottom: 0;
-  right: 0;
-  position: fixed;
-  z-index: 1;
-  width: 100vw;
-  height: 100vh;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  background-color: transparent;
-  transition: all 0.4s ease-in-out;
-
   & ${SidebarMenu} {
     width: 0;
   }
@@ -58,8 +53,17 @@ const Wrapper: any = styled(Container)<{ isOpen: boolean }>`
   ${({ isOpen }) =>
     isOpen &&
     css`
+      bottom: 0;
+      right: 0;
+      position: fixed;
+      z-index: 1;
+      width: 100vw;
+      height: 100vh;
+      overflow-x: hidden;
+      overflow-y: scroll;
       background-color: rgba(0, 0, 0, 0.6);
       transition: all 0.4s ease-in-out;
+
       & ${SidebarMenu} {
         width: 100%;
         ${bp("sm")`width: 50%`};
