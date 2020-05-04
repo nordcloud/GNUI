@@ -58,7 +58,7 @@ const DropdownButton = styled(Flex)`
     `}
 `;
 
-export const DropdownIcon = styled(Icon) <DropdownIconProps>`
+export const DropdownIcon = styled(Icon)<DropdownIconProps>`
   transition: ${theme.transition};
   ${({ animate }) =>
     animate &&
@@ -73,7 +73,7 @@ const DropdownMenu = styled(Container)`
   width: 100%;
   box-sizing: border-box;
   position: absolute;
-  border:${theme.borderInput};
+  border: ${theme.borderInput};
   color: ${theme.colors.primary};
   font-weight: ${theme.fontWeights.regular};
   border-radius: ${theme.radiusDefault};
@@ -89,7 +89,8 @@ const DropdownItem = styled.li`
   background: transparent;
   font-size: ${theme.fontSizes.regular};
   transition: ${theme.transition};
-  padding: ${theme.spacing.spacing01} 0 ${theme.spacing.spacing01} ${theme.spacing.spacing01};
+  padding: ${theme.spacing.spacing01} 0 ${theme.spacing.spacing01}
+    ${theme.spacing.spacing01};
   list-style: none;
   transition: ${theme.transition};
   &:hover {
