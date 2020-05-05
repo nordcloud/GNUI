@@ -3,12 +3,12 @@ import styled, { css } from "styled-components";
 import theme from "../../theme";
 
 export interface SwitchProps {
-  name?:string;
-  isChecked?:string;
+  name?: string;
+  isChecked?: string;
   labelText?: string;
   severity?: "danger" | "notification" | "warning" | "success";
   position?: "left" | "right";
-  onChange?: (e: React.MouseEvent) => void;
+  onChange?: (e: any) => void;
 }
 
 const setColor = (color: string) => {
@@ -25,10 +25,10 @@ const SwitchInput = styled.input<SwitchProps>`
   &:checked + .inner {
     background-color: ${theme.colors.primary};
     ${({ severity }) =>
-    severity &&
-    css`
-      background-color: ${setColor(severity)}; 
-    `}
+      severity &&
+      css`
+        background-color: ${setColor(severity)};
+      `}
 
     &:before {
       -webkit-transform: translateX(1.45rem);
@@ -40,20 +40,19 @@ const SwitchInput = styled.input<SwitchProps>`
 `;
 
 const LabelText = styled.div<SwitchProps>`
-  display:inline-block;
+  display: inline-block;
   margin-right: ${theme.spacing.spacing02};
 
   ${({ position }) =>
-    position === "left" ?
-    css`
-      margin-right: ${theme.spacing.spacing02};
-      margin-left: 0;
-    `
-    :
-    css`
-      margin-left: ${theme.spacing.spacing02};
-      margin-right: 0;
-    `}
+    position === "left"
+      ? css`
+          margin-right: ${theme.spacing.spacing02};
+          margin-left: 0;
+        `
+      : css`
+          margin-left: ${theme.spacing.spacing02};
+          margin-right: 0;
+        `}
 `;
 
 const SwitchContainer = styled.div<SwitchProps>`
@@ -64,8 +63,8 @@ const SwitchContainer = styled.div<SwitchProps>`
 `;
 
 const SwitchLabel = styled.label`
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
   font-weight: ${theme.fontWeights.regular};
   font-family: ${theme.fonts.body};
   font-size: ${theme.fontSizes.regular};
@@ -78,11 +77,11 @@ const Inner = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
   border-radius: 0.75rem;
   border: ${theme.borders.disabled};
-  background-color:${theme.colors.lights[0]};
+  background-color: ${theme.colors.lights[0]};
 
   &:before {
     position: absolute;
@@ -90,29 +89,31 @@ const Inner = styled.div`
     height: 1.125rem;
     width: 1.125rem;
     left: 2px;
-    bottom: calc((100% - 1.125rem)/2);
+    bottom: calc((100% - 1.125rem) / 2);
     background-color: ${theme.colors.lights[3]};
-    -webkit-transition: .4s;
-    transition: .4s;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
     border-radius: 50%;
   }
 `;
 
-export const Switch: FunctionComponent<SwitchProps> = ({ 
+export const Switch: FunctionComponent<SwitchProps> = ({
   name,
   severity,
   position,
   labelText,
-  isChecked
+  isChecked,
 }) => {
   const [isActive, setActive] = useState(false);
   const handleSelect = () => setActive(!isActive);
-  
+
   return (
     <SwitchLabel htmlFor={name}>
-      {(position === "left") && <LabelText position={position}>{labelText}</LabelText>}
+      {position === "left" && (
+        <LabelText position={position}>{labelText}</LabelText>
+      )}
       <SwitchContainer>
-        <SwitchInput 
+        <SwitchInput
           type="checkbox"
           id={name}
           isChecked={isActive.toString()}
@@ -122,6 +123,9 @@ export const Switch: FunctionComponent<SwitchProps> = ({
         />
         <Inner className="inner" />
       </SwitchContainer>
-      {(position === "right" || position === undefined) && <LabelText position={position}>{labelText}</LabelText>}
+      {(position === "right" || position === undefined) && (
+        <LabelText position={position}>{labelText}</LabelText>
+      )}
     </SwitchLabel>
-)};
+  );
+};

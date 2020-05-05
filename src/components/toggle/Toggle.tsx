@@ -4,14 +4,14 @@ import theme from "../../theme";
 import { darken } from "polished";
 
 export interface ToggleProps {
-  name:string;
+  name: string;
   toggleValue?: string;
   labelText?: string;
   id?: string;
   className?: string;
-  status?:string;
+  status?: string;
   size?: string;
-  onClick?: (e: React.MouseEvent) => void;
+  onClick?: (e: any) => void;
 }
 
 const setColor = (color: string) => {
@@ -21,10 +21,10 @@ const setColor = (color: string) => {
 };
 
 const StyledToggle = styled.button<ToggleProps>`
-  border: ${theme.borderDefault}; 
+  border: ${theme.borderDefault};
   border-radius: ${theme.radiusDefault};
   line-height: ${theme.lineHeight};
-  outline:none;
+  outline: none;
   cursor: pointer;
   color: ${theme.colors.primary};
   background: transparent;
@@ -38,17 +38,17 @@ const StyledToggle = styled.button<ToggleProps>`
   }
 
   ${({ size }) =>
-  size === "small" &&
-  css`
-    font-size: ${theme.fontSizes.small};
-    padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
-  `}
+    size === "small" &&
+    css`
+      font-size: ${theme.fontSizes.small};
+      padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
+    `}
 
   ${({ status }) =>
     status &&
     css`
       color: ${setColor(status)};
-      border: 1px solid ${setColor(status)}; 
+      border: 1px solid ${setColor(status)};
       &.active {
         color: ${theme.colors.white};
         background: ${setColor(status)};
@@ -62,26 +62,28 @@ const StyledToggle = styled.button<ToggleProps>`
           background: ${darken(0.3, theme.colors[status] || status)};
         }
       }
-  `}
+    `}
 `;
 
-export const Toggle: FunctionComponent<ToggleProps> = ({ 
-  status, 
+export const Toggle: FunctionComponent<ToggleProps> = ({
+  status,
   size,
   name,
   toggleValue,
-  labelText
+  labelText,
 }) => {
   const [isActive, setActive] = useState(false);
   const handleSelect = () => setActive(!isActive);
   return (
-    <StyledToggle 
+    <StyledToggle
       size={size}
       status={status}
       name={name}
       value={toggleValue}
       className={isActive ? "active" : ""}
-      onClick={handleSelect}>
-        {labelText}
+      onClick={handleSelect}
+    >
+      {labelText}
     </StyledToggle>
-)};
+  );
+};
