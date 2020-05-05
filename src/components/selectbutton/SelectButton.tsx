@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { darken } from "polished";
@@ -16,6 +16,8 @@ export interface SelectButtonListProps {
   list: Array<SelectButtonProps>;
   status?:string;
   size?: string;
+  value?: string | number;
+  handleChange?: (e: any) => void;
 }
 
 type StyledSelectButtons = {
@@ -98,11 +100,11 @@ const StyledSelectButtons = styled.ul<StyledSelectButtons>`
 
 export const MultipleSelect: FunctionComponent<SelectButtonListProps> = ({ 
   list, 
-  status, 
+  status,
+  value = "",
+  handleChange, 
   size
 }) => {
-  const [value, setValue] = useState(list[0].value);
-  const handleSelect = (val) => setValue(value === val ? null : val);
   return (
   <StyledSelectButtons status={status} size={size}>
     {list && list.map((option, index) => {
@@ -112,7 +114,7 @@ export const MultipleSelect: FunctionComponent<SelectButtonListProps> = ({
             value={option.value} 
             name={option.name}
             className={ value === option.value ? "active" : ""}
-            onClick={() => handleSelect(option.value)}>
+            onClick={() => handleChange && handleChange(option.value)}>
               {option.labelText}
           </button>
         </li>
