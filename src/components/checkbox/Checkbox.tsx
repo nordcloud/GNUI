@@ -15,7 +15,7 @@ export interface CheckboxProps {
   valid?: boolean;
   checked?: boolean;
   children?: string | number | any;
-  onClick?: (e: React.MouseEvent) => void;
+  onClick?: (e: any) => void;
   onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
 }
 
@@ -27,7 +27,7 @@ export interface CheckboxGroupProps {
 const SingleCheckWrapper = styled(Flex)`
   margin-bottom: ${theme.spacing.spacing04};
   &:last-child {
-    margin-bottom:0;
+    margin-bottom: 0;
   }
 `;
 

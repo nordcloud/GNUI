@@ -4,26 +4,26 @@ import theme from "../../theme";
 import { darken } from "polished";
 
 export interface SelectButtonProps {
-  name:string;
+  name: string;
   value: string;
   labelText: string;
   id?: string;
   className?: string;
-  onClick?: (e: React.MouseEvent) => void;
+  onClick?: (e: any) => void;
 }
 
 export interface SelectButtonListProps {
   list: Array<SelectButtonProps>;
-  status?:string;
+  status?: string;
   size?: string;
   value?: string | number;
   handleChange?: (e: any) => void;
 }
 
 type StyledSelectButtons = {
-  status?:string;
+  status?: string;
   size?: string;
-}
+};
 
 const setColor = (color: string) => {
   return color !== undefined && theme.colors[color]
@@ -32,26 +32,26 @@ const setColor = (color: string) => {
 };
 
 const StyledSelectButtons = styled.ul<StyledSelectButtons>`
-  margin:0;
-  padding:0;
-  display:inline-flex;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
   list-style: none;
-  border: ${theme.borderDefault}; 
+  border: ${theme.borderDefault};
   border-radius: ${theme.radiusDefault};
   line-height: ${theme.lineHeight};
 
   li {
-    display:inline-block;
+    display: inline-block;
     border-right: ${theme.borderDefault};
 
     &:last-child {
       border-right: none;
     }
     button {
-      outline:none;
+      outline: none;
       cursor: pointer;
       color: ${theme.colors.primary};
-      border:none;
+      border: none;
       background: transparent;
       padding: ${theme.spacing.spacing02} ${theme.spacing.spacing04};
       transition: ${theme.transition};
@@ -63,39 +63,38 @@ const StyledSelectButtons = styled.ul<StyledSelectButtons>`
       }
 
       ${({ size }) =>
-      size === "small" &&
-      css`
-        font-size: ${theme.fontSizes.small};
-        padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
-      `}
-       
+        size === "small" &&
+        css`
+          font-size: ${theme.fontSizes.small};
+          padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
+        `}
     }
   }
 
   ${({ status }) =>
     status &&
     css`
-    border: 1px solid ${setColor(status)}; 
-    li {
-      border-right: 1px solid ${setColor(status)};
-      button {
-        color: ${setColor(status)};
-        &.active {
-          color: ${theme.colors.white};
-          background: ${setColor(status)};
-          &:hover {
-            background: ${darken(0.1, theme.colors[status] || status)};
-          }
-          &:active {
-            background: ${darken(0.2, theme.colors[status] || status)};
-          }
-          &:disabled {
-            background: ${darken(0.3, theme.colors[status] || status)};
+      border: 1px solid ${setColor(status)};
+      li {
+        border-right: 1px solid ${setColor(status)};
+        button {
+          color: ${setColor(status)};
+          &.active {
+            color: ${theme.colors.white};
+            background: ${setColor(status)};
+            &:hover {
+              background: ${darken(0.1, theme.colors[status] || status)};
+            }
+            &:active {
+              background: ${darken(0.2, theme.colors[status] || status)};
+            }
+            &:disabled {
+              background: ${darken(0.3, theme.colors[status] || status)};
+            }
           }
         }
       }
-    }
-  `}
+    `}
 `;
 
 export const MultipleSelect: FunctionComponent<SelectButtonListProps> = ({ 

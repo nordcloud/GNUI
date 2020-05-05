@@ -9,7 +9,7 @@ export interface ToggleProps {
   labelText?: string;
   id?: string;
   className?: string;
-  status?:string;
+  status?: string;
   size?: string;
   handleSelect?: (e: any) => void;
 }
@@ -21,10 +21,10 @@ const setColor = (color: string) => {
 };
 
 const StyledToggle = styled.button<ToggleProps>`
-  border: ${theme.borderDefault}; 
+  border: ${theme.borderDefault};
   border-radius: ${theme.radiusDefault};
   line-height: ${theme.lineHeight};
-  outline:none;
+  outline: none;
   cursor: pointer;
   color: ${theme.colors.primary};
   background: transparent;
@@ -38,17 +38,17 @@ const StyledToggle = styled.button<ToggleProps>`
   }
 
   ${({ size }) =>
-  size === "small" &&
-  css`
-    font-size: ${theme.fontSizes.small};
-    padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
-  `}
+    size === "small" &&
+    css`
+      font-size: ${theme.fontSizes.small};
+      padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
+    `}
 
   ${({ status }) =>
     status &&
     css`
       color: ${setColor(status)};
-      border: 1px solid ${setColor(status)}; 
+      border: 1px solid ${setColor(status)};
       &.active {
         color: ${theme.colors.white};
         background: ${setColor(status)};
@@ -62,11 +62,11 @@ const StyledToggle = styled.button<ToggleProps>`
           background: ${darken(0.3, theme.colors[status] || status)};
         }
       }
-  `}
+    `}
 `;
 
-export const Toggle: FunctionComponent<ToggleProps> = ({ 
-  status, 
+export const Toggle: FunctionComponent<ToggleProps> = ({
+  status,
   size,
   name,
   toggleValue,
@@ -74,7 +74,7 @@ export const Toggle: FunctionComponent<ToggleProps> = ({
   handleSelect
 }) => {
   return (
-    <StyledToggle 
+    <StyledToggle
       size={size}
       status={status}
       name={name}
@@ -82,4 +82,5 @@ export const Toggle: FunctionComponent<ToggleProps> = ({
       onClick={() => handleSelect && handleSelect(!toggleValue)}>
         {labelText}
     </StyledToggle>
-)};
+  );
+};

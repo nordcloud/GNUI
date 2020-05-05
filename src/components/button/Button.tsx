@@ -14,7 +14,7 @@ interface ButtonProps {
   outline?: boolean;
   disabled?: boolean;
   className?: string;
-  onClick?: (e: React.MouseEvent) => void;
+  onClick?: (e: any) => void;
 }
 
 const setColor = (color: string) => {
