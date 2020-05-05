@@ -77,7 +77,6 @@ const StyledToastContainer = styled.div<ToastProps>`
 const ToastTitle = styled.div<MessageProps>`
   display:flex;
   align-items: center;
-  margin-bottom: ${props => (props.message ? theme.spacing.spacing02 : "")};
   h5 {
     line-height: ${theme.lineHeight};
     margin:0;

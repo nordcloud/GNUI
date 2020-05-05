@@ -9,7 +9,6 @@ import { Spacer } from "../components/spacer";
 # Toast
 > Please take a look at props to understand correctly how `Toast` works.
 
-
 ### Props
 
 ```typescript
@@ -75,11 +74,11 @@ interface MessageProps {
         <>
           <Button onClick={(e) => {e.preventDefault(); displayMsgSeverity();}}>Notify!</Button>
           <Spacer height="0.5rem" />
-          <Toast margin="spacing02" />
+          <Toast />
           <Spacer height="0.5rem" />
-          <Toast severity="warning" margin="spacing02" />
+          <Toast severity="warning" />
           <Spacer height="0.5rem" />
-          <Toast severity="danger" margin="spacing02" />
+          <Toast severity="danger" />
           <Spacer height="0.5rem" />
           <Toast severity="success" />
         </>
