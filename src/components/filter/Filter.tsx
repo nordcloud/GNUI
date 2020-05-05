@@ -4,7 +4,7 @@ import { Box } from "../box";
 import { Button } from "../button";
 import { Icon } from "../icon";
 import { DropdownIcon } from "../dropdown";
-import { Grid, Row, Column } from "../grid";
+import { Container, Row, Col } from "../../index";
 import theme from "../../theme";
 
 const filterBackground = theme.colors.lights[2];
@@ -35,7 +35,7 @@ const Spacer = styled.div`
   background-color: ${filterBackground};
 `;
 
-const FilterColumn = styled((props) => <Column {...props} />)`
+const FilterColumn = styled((props) => <Col {...props} />)`
   margin-bottom: 0;
   overflow: visible;
 `;
@@ -80,12 +80,16 @@ export const Filter: FunctionComponent<IFilter> = ({
   accompanyingComponent,
 }) => {
   const [isOpen, setOpen] = useState(isFilterOpen || false);
-  const filterSize = accompanyingComponent ? { xs: 6, sm: 5, lg: 2 } : 12;
 
   return (
-    <Grid>
+    <Container>
       <Row>
-        <FilterColumn size={filterSize} style={{ textAlign: "left" }}>
+        <FilterColumn 
+          xs={accompanyingComponent ? 6 : 12} 
+          sm={accompanyingComponent ? 5 : 12} 
+          lg={accompanyingComponent ? 2 : 12} 
+          align="left"
+        >
           <FilterButton
             isOpen={isOpen}
             severity="medium"
@@ -105,7 +109,7 @@ export const Filter: FunctionComponent<IFilter> = ({
           {isOpen && <Spacer />}
         </FilterColumn>
         {accompanyingComponent && (
-          <Column size={{ sm: 8, lg: 10 }}>{accompanyingComponent}</Column>
+          <Col sm={8} lg={10}>{accompanyingComponent}</Col>
         )}
       </Row>
       {isOpen && (
@@ -119,6 +123,6 @@ export const Filter: FunctionComponent<IFilter> = ({
           </FilterContent>
         </Row>
       )}
-    </Grid>
+    </Container>
   );
 };
