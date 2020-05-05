@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import { Text } from "../text";
-import { Grid, Row, Column } from "../grid";
+import { Container, Row, Col } from "../../index";
 import theme from "../../theme";
 
 interface StyleguideProps {
@@ -10,7 +10,7 @@ interface StyleguideProps {
   name?: string;
 }
 
-const ColorPaletteWrapper = styled((props) => <Grid {...props} />)`
+const ColorPaletteWrapper = styled((props) => <Container {...props} />)`
   padding: 0;
   text-rendering: optimizelegibility;
   border: ${theme.borders.default};
@@ -28,7 +28,7 @@ const ColorBox = styled((props) => <Row {...props} />)<{ color: any }>`
     `}
 `;
 
-const ColorColumn = styled((props) => <Column {...props} />)<{
+const ColorColumn = styled((props) => <Col {...props} />)<{
   darkText?: boolean;
 }>`
   flex: 1 1 0%;
@@ -56,21 +56,21 @@ export const Styleguide: FunctionComponent<StyleguideProps> = ({
           key={`${color}$-{index}`}
         >
           <ColorColumn
-            justifyContent="flex-start"
+            justify="flex-start"
             darkText={name === "lights" && true}
           >
             <Text>{color.charAt(0) !== "#" ? color : `${name}[${index}]`}</Text>
           </ColorColumn>
           {description && (
             <ColorColumn
-              justifyContent="center"
+              justify="center"
               darkText={name === "lights" && true}
             >
               <Text>{description}</Text>
             </ColorColumn>
           )}
           <ColorColumn
-            justifyContent="flex-end"
+            justify="flex-end"
             darkText={name === "lights" && true}
           >
             <Text small>{theme.colors[color.toLowerCase()] || color}</Text>
