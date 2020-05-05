@@ -14,7 +14,7 @@ export interface RadioProps {
   required?: boolean;
   valid?: boolean;
   children?: string | number | any;
-  onClick?: (e: React.MouseEvent) => void;
+  onClick?: (e: any) => void;
   onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
 }
 

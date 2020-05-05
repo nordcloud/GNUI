@@ -13,8 +13,8 @@ interface DropdownProps {
   isOpen?: boolean;
   disabled?: boolean;
   children?: React.ReactNode;
-  onClick: (e: React.MouseEvent) => void;
-  onMouseLeave: (e: React.MouseEvent) => void;
+  onClick: (e: any) => void;
+  onMouseLeave: (e: any) => void;
   onChange?: (e: any) => void;
 }
 

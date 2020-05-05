@@ -1,333 +1,54 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
-import { Grid, Row, Column } from "../components/grid";
+import { Container, Row, Col } from "react-awesome-styled-grid";
 import { Text } from "../components/text";
 import theme from "../theme";
 
-<Meta title="Layout/Grid" component={Grid} />
+<Meta title="Layout/Grid" component={Container} />
 
-# Grid
-
----
-
-Grid includes three components: `Grid`, `Row`, `Column`.
-
-> By default `Row` divides available space between all columns equally.
-
-<Preview>
-  <Story name="basic">
-    {() => {
-      const styledCol = {
-        background: theme.colors.warning,
-        textAlign: "center",
-        borderRadius: theme.radius.default,
-      };
-      return (
-        <Grid style={{ color: theme.colors.white }}>
-          <Row>
-            <Column style={styledCol}>
-              <Text small>Auto</Text>
-            </Column>
-            <Column style={styledCol}>
-              <Text small>Auto</Text>
-            </Column>
-            <Column style={styledCol}>
-              <Text small>Auto</Text>
-            </Column>
-          </Row>
-        </Grid>
-      );
-    }}
-  </Story>
-</Preview>
-
-# Properties
-
-- `size`: `Array<{[breakpoint: string]: number}>` | `number` _optional_
-- `padding`: `Array<string>` | `number` _optional_
-- `margin`: `Array<string>` | `number` _optional_
-
-## Size
-
-`Columns` takes `size` as a prop. Size can be described in few ways:
-
-- `number`: between 1-12
-- `Array<{[breakpoint: string]: number}>`: `{xs?: number, sm?: number, md?: numder, lg?: number, xl?: number, xxl?: number}`
-
-> `number`
-
-<Preview>
-  <Story name="size/number">
-    {() => {
-      const numberedColumns = {
-        background: theme.colors.notification,
-        textAlign: "center",
-        borderRadius: theme.radius.default,
-      };
-      const autoColumns = {
-        background: theme.colors.warning,
-        textAlign: "center",
-        borderRadius: theme.radius.default,
-      };
-      return (
-        <Grid style={{ color: theme.colors.white }}>
-          <Row>
-            <Column style={autoColumns}>
-              <Text small>Auto</Text>
-            </Column>
-            <Column size={8} style={numberedColumns}>
-              <Text small>7/12</Text>
-            </Column>
-          </Row>
-          <Row>
-            <Column size={4} style={numberedColumns}>
-              <Text small>4/12</Text>
-            </Column>
-            <Column style={autoColumns}>
-              <Text small>Auto</Text>
-            </Column>
-            <Column size={2} style={numberedColumns}>
-              <Text small>2/12</Text>
-            </Column>
-          </Row>
-          <Row>
-            <Column size={3} style={numberedColumns}>
-              <Text small>3/12</Text>
-            </Column>
-            <Column size={4} style={numberedColumns}>
-              <Text small>4/12</Text>
-            </Column>
-            <Column size={5} style={numberedColumns}>
-              <Text small>5/12</Text>
-            </Column>
-          </Row>
-        </Grid>
-      );
-    }}
-  </Story>
-</Preview>
-
-> `Array<{[breakpoint: string]: number}>`
-
-<Preview>
-  <Story name="size/breakpoints">
-    {() => {
-      const breakpointsCols = {
-        background: theme.colors.notification,
-        textAlign: "center",
-        borderRadius: theme.radius.default,
-      };
-      return (
-        <Grid style={{ color: theme.colors.white }}>
-          <Row>
-            <Column size={{ sm: 7, lg: 8 }} style={breakpointsCols}>
-              <Text small>md: 7 — lg: 8</Text>
-            </Column>
-            <Column size={{ sm: 5, lg: 4 }} style={breakpointsCols}>
-              <Text small>md: 5 — lg: 4</Text>
-            </Column>
-          </Row>
-          <Row>
-            <Column size={{ sm: 3, lg: 2 }} style={breakpointsCols}>
-              <Text small>sm: 4 — lg: 2</Text>
-            </Column>
-            <Column size={{ sm: 3, lg: 4 }} style={breakpointsCols}>
-              <Text small>sm: 3 — lg: 4</Text>
-            </Column>
-            <Column size={6} style={breakpointsCols}>
-              <Text small>6</Text>
-            </Column>
-          </Row>
-        </Grid>
-      );
-    }}
-  </Story>
-</Preview>
-
-## Paddings
-
-- `string`: `xs | sm | md | lg | xl | xxl`
-- `number`: parsed to `rem` values
-- `Array<number>`: parsed to `rem` values
-
-> Paddings set as a sizes by names.
-
-<Preview>
-  <Story name="paddings">
-    {() => {
-      const withPaddings = {
-        background: theme.colors.warning,
-        borderRadius: theme.radius.default,
-      };
-      return (
-        <Grid style={{ color: theme.colors.white }}>
-          <Row>
-            <Column
-              justifyContent="flex-start"
-              alignContent="flex-start"
-              padding="xs"
-              style={withPaddings}
-            >
-              <Text small>XS</Text>
-            </Column>
-            <Column
-              justifyContent="flex-start"
-              alignContent="flex-start"
-              padding="sm"
-              style={withPaddings}
-            >
-              <Text small>SM</Text>
-            </Column>
-            <Column
-              justifyContent="flex-start"
-              alignContent="flex-start"
-              padding="md"
-              style={withPaddings}
-            >
-              <Text small>MD</Text>
-            </Column>
-            <Column
-              justifyContent="flex-start"
-              alignContent="flex-start"
-              padding="lg"
-              style={withPaddings}
-            >
-              <Text small>LG</Text>
-            </Column>
-            <Column
-              justifyContent="flex-start"
-              alignContent="flex-start"
-              padding="xl"
-              style={withPaddings}
-            >
-              <Text small>XL</Text>
-            </Column>
-            <Column
-              justifyContent="flex-start"
-              alignContent="flex-start"
-              padding="xxl"
-              style={withPaddings}
-            >
-              <Text small>XXL</Text>
-            </Column>
-          </Row>
-        </Grid>
-      );
-    }}
-  </Story>
-</Preview>
-
-## Margins
-
-- `string`: `xs | sm | md | lg | xl | xxl`
-- `number`: parsed to `rem` values
-- `Array<number>`: parsed to `rem` values
-
-> Margins set as a sizes by names.
-
-<Preview>
-  <Story name="margins">
-    {() => {
-      const withMargins = {
-        background: theme.colors.notification,
-        textAlign: "center",
-        borderRadius: theme.radius.default,
-      };
-      return (
-        <Grid style={{ color: theme.colors.white }}>
-          <Row>
-            <Column margin="xs" style={withMargins}>
-              <Text small>XS</Text>
-            </Column>
-            <Column margin="sm" style={withMargins}>
-              <Text small>SM</Text>
-            </Column>
-            <Column margin="md" style={withMargins}>
-              <Text small>MD</Text>
-            </Column>
-            <Column margin="lg" style={withMargins}>
-              <Text small>LG</Text>
-            </Column>
-            <Column margin="xl" style={withMargins}>
-              <Text small>XL</Text>
-            </Column>
-          </Row>
-        </Grid>
-      );
-    }}
-  </Story>
-</Preview>
-
-> Margins set as an `array`: `[1, 0.75, 0.75, 1]`.
-
-<Preview>
-  <Story name="array">
-    {() => {
-      const withMargins = {
-        background: theme.colors.notification,
-        textAlign: "center",
-        borderRadius: theme.radius.default,
-      };
-      return (
-        <Grid style={{ color: theme.colors.white }}>
-          <Row>
-            <Column margin={[1, 0.75, 0.75, 1]} style={withMargins}>
-              <Text small>Column</Text>
-            </Column>
-            <Column margin={[1, 0.75, 0.75, 1]} style={withMargins}>
-              <Text small>Column</Text>
-            </Column>
-            <Column margin={[1, 0.75, 0.75, 1]} style={withMargins}>
-              <Text small>Column</Text>
-            </Column>
-          </Row>
-        </Grid>
-      );
-    }}
-  </Story>
-</Preview>
-
-## Alignments
-
-```typescript
-justifyContent?: | "flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "initial" | "inherit";`
-```
+## Basic usage
 
 <Preview>
   <Story name="justifyContent">
     {() => {
-      const withJustifyContent = {
-        background: theme.colors.darks[4],
-        textAlign: "center",
-        borderRadius: theme.radius.default,
-      };
       return (
-        <Grid style={{ color: theme.colors.white }}>
-          <Row justifyContent="flex-end">
-            <Column size={2} style={withJustifyContent}>
-              <Text small>Flex-end</Text>
-            </Column>
-            <Column size={2} style={withJustifyContent}>
-              <Text small>Flex-end</Text>
-            </Column>
+        <Container>
+          <Row>
+            <Col xs={4} md={2}>
+              Col A
+            </Col>
+            <Col xs={4} md={6}>
+              Col B
+            </Col>
           </Row>
-          <Row justifyContent="center">
-            <Column size={2} style={withJustifyContent}>
-              <Text small>Center</Text>
-            </Column>
-            <Column size={2} style={withJustifyContent}>
-              <Text small>Center</Text>
-            </Column>
-          </Row>
-          <Row justifyContent="space-around">
-            <Column size={2} style={withJustifyContent}>
-              <Text small>Space-around</Text>
-            </Column>
-            <Column size={2} style={withJustifyContent}>
-              <Text small>Space-around</Text>
-            </Column>
-          </Row>
-        </Grid>
+        </Container>
       );
     }}
   </Story>
 </Preview>
+
+We use [React Awesome Styled Grid](https://awesome-styled-grid.netlify.app/usage)
+
+This grid system is based on [Google Material Design](https://material.io/design/layout/responsive-layout-grid.html).
+
+Number of columns: **xs**: 4, **sm**: 8, **md**: 8, **lg**: 12, **xl**: 12
+
+Breakpoints size: **xs**: 1rem, **sm**: 48rem, **md**: 64rem, **lg**: 90rem, **xl**: 120rem
+
+> for a custom configuration, [see this section](/custom)
+
+```js
+import { Container, Row, Col } from "react-awesome-styled-grid";
+
+const MyCoolComponent = () => (
+  <Container>
+    <Row>
+      <Col xs={4} md={2}>
+        Col A
+      </Col>
+      <Col xs={4} md={6}>
+        Col B
+      </Col>
+    </Row>
+  </Container>
+);
+```

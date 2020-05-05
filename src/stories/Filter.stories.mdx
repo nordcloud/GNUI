@@ -3,7 +3,7 @@ import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Button } from "../components/button";
 import { Filter } from "../components/filter";
 import { Input } from "../components/input";
-import { Grid, Row, Column } from "../components/grid";
+import { Container, Row, Col } from "../index";
 
 <Meta title="Components/Filter" component={Filter} />
 
@@ -38,21 +38,21 @@ import { Grid, Row, Column } from "../components/grid";
         <Input name="input" type="search" placeholder="Search something" />
       }
     >
-      <Grid>
+      <Container>
         <Row>
-          <Column>
+          <Col>
             <Input name="input" placeholder="filter something" />
-          </Column>
-          <Column>
+          </Col>
+          <Col>
             <Input name="input" placeholder="filter something else" />
-          </Column>
+          </Col>
         </Row>
         <Row>
-          <Column>
+          <Col>
             <Button secondary>Apply settings</Button>
-          </Column>
+          </Col>
         </Row>
-      </Grid>
+      </Container>
     </Filter>
   </Story>
 </Preview>
