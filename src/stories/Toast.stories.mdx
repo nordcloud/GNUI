@@ -1,0 +1,89 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Message, Toast } from "../components/toast";
+import { Button } from "../components/button";
+import { toast, Slide, Zoom, Flip, Bounce } from 'react-toastify';
+import { Spacer } from "../components/spacer";
+
+<Meta title="Components/Toast" component={Toast} />
+
+# Toast
+> Please take a look at props to understand correctly how `Toast` works.
+
+
+### Props
+
+```typescript
+interface ToastProps {
+  name?:string;
+  heading?: string;
+  severity?: "danger" | "notification" | "warning" | "success";
+  closeToast?: (e: React.MouseEvent) => void;
+}
+```
+
+```typescript
+interface MessageProps {
+  heading?: string;
+  message?: string;
+  closeToast?: (e: React.MouseEvent) => void;
+}
+```
+
+### Default Toast
+
+> `heading?: string;` - optional heading for the toast
+> `message?: string;` - optional message for the toast
+
+<Preview>
+  <Story name="default">
+    {() => {
+      const customId = "custom-id-yes";
+      const displayMsg = () => {
+        toast( 
+          <Message 
+            heading="Scanning..." 
+          />,
+          {toastId: customId}
+        );
+      }
+      return (
+        <>
+          <Button onClick={displayMsg} >Notify!</Button>
+          <Spacer height="1.5rem" />
+          <Toast />
+        </>
+      );
+    }}
+  </Story>
+</Preview>
+
+### Severity Toast
+> `severity?: "danger" | "notification" | "warning" | "success";` - by default toast has `"notification"` styling
+
+<Preview>
+  <Story name="severity">
+    {() => {
+      const displayMsgSeverity = () => {
+        toast( 
+          <Message 
+            heading="Scanning severity..." 
+            message="Please wait a bit for the severity level"
+          />
+        );
+      }
+      return (
+        <>
+          <Button onClick={(e) => {e.preventDefault(); displayMsgSeverity();}}>Notify!</Button>
+          <Spacer height="0.5rem" />
+          <Toast margin="spacing02" />
+          <Spacer height="0.5rem" />
+          <Toast severity="warning" margin="spacing02" />
+          <Spacer height="0.5rem" />
+          <Toast severity="danger" margin="spacing02" />
+          <Spacer height="0.5rem" />
+          <Toast severity="success" />
+        </>
+      );
+    }}
+  </Story>
+</Preview>
