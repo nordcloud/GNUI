@@ -1,14 +1,14 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 
 export interface SwitchProps {
   name?:string;
-  isChecked?:string;
+  isChecked?: boolean;
   labelText?: string;
   severity?: "danger" | "notification" | "warning" | "success";
   position?: "left" | "right";
-  onChange?: (e: React.MouseEvent) => void;
+  handleSelect?: (e: any) => void;
 }
 
 const setColor = (color: string) => {
@@ -103,10 +103,9 @@ export const Switch: FunctionComponent<SwitchProps> = ({
   severity,
   position,
   labelText,
-  isChecked
+  handleSelect,
+  isChecked = false
 }) => {
-  const [isActive, setActive] = useState(false);
-  const handleSelect = () => setActive(!isActive);
   
   return (
     <SwitchLabel htmlFor={name}>
@@ -115,10 +114,10 @@ export const Switch: FunctionComponent<SwitchProps> = ({
         <SwitchInput 
           type="checkbox"
           id={name}
-          isChecked={isActive.toString()}
+          isChecked={isChecked}
           severity={severity}
-          className={isActive ? "active" : ""}
-          onChange={handleSelect}
+          className={isChecked ? "active" : ""}
+          onChange={() => handleSelect && handleSelect(!isChecked)}
         />
         <Inner className="inner" />
       </SwitchContainer>
