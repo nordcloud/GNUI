@@ -8,18 +8,16 @@ import theme from "../theme";
 
 # Switch
 
+
 #### Props
 
-```typescript
-interface SwitchProps {
-  name?:string;
-  isChecked?:string;
-  labelText?: string;
-  severity?: "danger" | "notification" | "warning" | "success";
-  position?: "left" | "right";
-  onChange?: (e: React.MouseEvent) => void;
-}
-```
+- `name`: `string` — _optional_ - switch name
+- `isChecked`: `boolean` — _optional_ - switch value
+- `labelText`: `string` — _optional_ - text to display in the label
+- `severity`: `"danger" | "notification" | "warning" | "success"` — _optional_ - color indicator status for switch
+- `position`: `"left" | "right"` — _optional_ - switch position
+- `handleChange`: `() => boolean` — _optional_ - React `setState` to handle switch change
+
 ## Default
 
 <Preview>

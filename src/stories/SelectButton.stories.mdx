@@ -1,7 +1,6 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { MultipleSelect } from "../components/selectbutton";
 import { Text } from "../components/text";
-import { useState } from "react";
 
 <Meta title="Components/SelectButton" component={MultipleSelect} />
 
@@ -10,6 +9,8 @@ import { useState } from "react";
 #### Props
 
 - `list`: `array` — **required** and containes the following **required** props: `name`: `string`, `value`: `string`, `labelText`: `string` and the following _optional_: `id`, `className`
+- `handleChange`: `() => string | number` — _optional_ - React `setState` to handle select value change
+- `value`: `string | number` — _optional_ - current select value
 - `size`: `string` — _optional_ - small-sized SelectButton
 - `status`: `string` — _optional_ - color indicator status for SelectButton
 
@@ -24,7 +25,7 @@ import { useState } from "react";
     { name: "button3", value: "button3", labelText: "Button 3"}
     ];
     return(
-    <MultipleSelect list={list} />
+    <MultipleSelect list={list} value="button1" />
     );
   }
   }
@@ -44,7 +45,7 @@ import { useState } from "react";
     { name: "button3", value: "button3", labelText: "Button 3"}
     ];
     return(
-    <MultipleSelect size="small" list={list} />
+    <MultipleSelect size="small" list={list} value="button1"/>
     );
   }
   }
@@ -66,13 +67,13 @@ import { useState } from "react";
     return(
     <div>
       <Text>Success</Text>
-      <MultipleSelect status="success" list={list} />
+      <MultipleSelect status="success" list={list} value="button1" />
       <Text>Danger</Text>
-      <MultipleSelect status="danger" list={list} />
+      <MultipleSelect status="danger" list={list} value="button1" />
       <Text>Warning</Text>
-      <MultipleSelect status="warning" list={list} />
+      <MultipleSelect status="warning" list={list} value="button1" />
       <Text>Notification</Text>
-      <MultipleSelect status="notification" list={list} />
+      <MultipleSelect status="notification" list={list} value="button1" />
     </div>
     );
   }
