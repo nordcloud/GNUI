@@ -5,13 +5,13 @@ import { darken } from "polished";
 
 export interface ToggleProps {
   name:string;
-  toggleValue?: string;
+  toggleValue?: boolean;
   labelText?: string;
   id?: string;
   className?: string;
   status?:string;
   size?: string;
-  onClick?: (e: React.MouseEvent) => void;
+  handleSelect?: (e: any) => void;
 }
 
 const setColor = (color: string) => {
@@ -70,18 +70,16 @@ export const Toggle: FunctionComponent<ToggleProps> = ({
   size,
   name,
   toggleValue,
-  labelText
+  labelText,
+  handleSelect
 }) => {
-  const [isActive, setActive] = useState(false);
-  const handleSelect = () => setActive(!isActive);
   return (
     <StyledToggle 
       size={size}
       status={status}
       name={name}
-      value={toggleValue}
-      className={isActive ? "active" : ""}
-      onClick={handleSelect}>
+      className={toggleValue ? "active" : ""}
+      onClick={() => handleSelect && handleSelect(!toggleValue)}>
         {labelText}
     </StyledToggle>
 )};
