@@ -39,12 +39,24 @@ import { Container } from "../components/container";
 <Preview>
   <Story name="color">
     <Container>
-      <p><Button color="accent">Accent color</Button></p>
-      <p><Button color="danger">Danger color</Button></p>
-      <p><Button color="success">Success color</Button></p>
-      <p><Button color="warning">Warning color</Button></p>
-      <p><Button color="notification">Notification color</Button></p>
-      <p><Button color="#FF1493">HEX color</Button></p>
+      <p>
+        <Button color="accent">Accent color</Button>
+      </p>
+      <p>
+        <Button color="danger">Danger color</Button>
+      </p>
+      <p>
+        <Button color="success">Success color</Button>
+      </p>
+      <p>
+        <Button color="warning">Warning color</Button>
+      </p>
+      <p>
+        <Button color="notification">Notification color</Button>
+      </p>
+      <p>
+        <Button color="#FF1493">HEX color</Button>
+      </p>
     </Container>
   </Story>
 </Preview>
@@ -56,9 +68,15 @@ import { Container } from "../components/container";
 <Preview>
   <Story name="severity">
     <Container>
-      <p><Button severity="high">High severity</Button></p>
-      <p><Button severity="medium">Medium severity</Button></p>
-      <p><Button severity="low">Low severity</Button></p>
+      <p>
+        <Button severity="high">High severity</Button>
+      </p>
+      <p>
+        <Button severity="medium">Medium severity</Button>
+      </p>
+      <p>
+        <Button severity="low">Low severity</Button>
+      </p>
     </Container>
   </Story>
 </Preview>
@@ -70,19 +88,43 @@ import { Container } from "../components/container";
 <Preview>
   <Story name="disabled">
     <Container>
-      <p><Button disabled>Disabled button</Button></p>
-      <p><Button outline disabled>
-        Disabled button
-      </Button></p>
-      <p><Button severity="low" disabled>
-        Disabled button
-      </Button></p>
-      <p><Button color="warning" disabled>
-        Disabled button
-      </Button></p>
-      <p><Button color="#FF1493" disabled>
-        Disabled button
-      </Button></p>
+      <p>
+        <Button disabled>Disabled button</Button>
+      </p>
+      <p>
+        <Button outline disabled>
+          Disabled button
+        </Button>
+      </p>
+      <p>
+        <Button severity="low" disabled>
+          Disabled button
+        </Button>
+      </p>
+      <p>
+        <Button color="warning" disabled>
+          Disabled button
+        </Button>
+      </p>
+      <p>
+        <Button color="#FF1493" disabled>
+          Disabled button
+        </Button>
+      </p>
+    </Container>
+  </Story>
+</Preview>
+
+### custom spacing
+
+<Preview>
+  <Story name="custom-spacing">
+    <Container>
+      <p>
+        <Button ml="3rem" mb="10rem" padding="0">
+          Disabled button
+        </Button>
+      </p>
     </Container>
   </Story>
 </Preview>
