@@ -8,7 +8,7 @@ frontend:
         - npm install
     build:
       commands:
-        - npm build-storybook
+        - npm run build-storybook
   artifacts:
     baseDirectory: storybook-static
     files:
