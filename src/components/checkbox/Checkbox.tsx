@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import styled from "styled-components";
 import theme from "../../theme";
 import { Container, Flex } from "../container";
-
+import { space, SpaceProps } from "styled-system";
 export interface CheckboxProps {
   name: string;
   type?: string;
@@ -29,6 +29,7 @@ const SingleCheckWrapper = styled(Flex)`
   &:last-child {
     margin-bottom: 0;
   }
+  ${space}
 `;
 
 const CheckboxLabel = styled.label`
@@ -109,9 +110,10 @@ const CheckboxWrapper = styled(Container)`
   ${SingleCheckWrapper} {
     margin-bottom: 1rem;
   }
+  ${space}
 `;
 
-export const Checkbox: FunctionComponent<CheckboxProps> = ({
+export const Checkbox: FunctionComponent<CheckboxProps & SpaceProps> = ({
   name,
   type = "checkbox",
   labelText,
@@ -126,9 +128,8 @@ export const Checkbox: FunctionComponent<CheckboxProps> = ({
   </SingleCheckWrapper>
 );
 
-export const CheckboxGroup: FunctionComponent<CheckboxGroupProps> = ({
-  name,
-  children,
-}) => {
+export const CheckboxGroup: FunctionComponent<
+  CheckboxGroupProps & SpaceProps
+> = ({ name, children }) => {
   return <CheckboxWrapper name={name}>{children}</CheckboxWrapper>;
 };

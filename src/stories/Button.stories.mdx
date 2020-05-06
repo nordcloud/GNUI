@@ -81,19 +81,6 @@ import { Container } from "../components/container";
   </Story>
 </Preview>
 
-<Preview>
-  <Story name="size">
-    <Container>
-      <p>
-        <Button size="small">Small</Button>
-      </p>
-      <p>
-        <Button size="large">Large</Button>
-      </p>
-    </Container>
-  </Story>
-</Preview>
-
 ### disabled
 
 > `disabled`: `boolean`
@@ -121,6 +108,20 @@ import { Container } from "../components/container";
       </p>
       <p>
         <Button color="#FF1493" disabled>
+          Disabled button
+        </Button>
+      </p>
+    </Container>
+  </Story>
+</Preview>
+
+### custom spacing
+
+<Preview>
+  <Story name="custom-spacing">
+    <Container>
+      <p>
+        <Button ml="3rem" mb="10rem" padding="0">
           Disabled button
         </Button>
       </p>

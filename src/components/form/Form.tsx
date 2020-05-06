@@ -38,8 +38,8 @@ const StyledSubmit = styled.input`
   }
 `;
 
-export const FormButtons: FunctionComponent = ({ children }) => (
-  <Flex margin="1rem 0" justifyContent="flex-end">
+export const FormButtons: FunctionComponent = ({ children, ...props }) => (
+  <Flex margin="1rem 0" justifyContent="flex-end" {...props}>
     {children}
   </Flex>
 );
@@ -58,6 +58,6 @@ export const SubmitButton: FunctionComponent<InputProps> = ({
   ...props
 }) => <StyledSubmit name={name || "Submit"} type="submit" {...props} />;
 
-export const Form: FunctionComponent<InputProps> = ({ children }) => (
-  <Container>{children}</Container>
+export const Form: FunctionComponent<InputProps> = ({ children, ...props }) => (
+  <Container {...props}>{children}</Container>
 );
