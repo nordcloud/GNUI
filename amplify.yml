@@ -4,7 +4,7 @@ frontend:
     preBuild:
       commands:
         - echo >> .npmrc
-        - echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}"" >> .npmrc
+        - echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" >> .npmrc
         - npm install
     build:
       commands:
