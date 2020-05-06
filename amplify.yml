@@ -3,10 +3,12 @@ frontend:
   phases:
     preBuild:
       commands:
-        - yarn install
+        - echo >> .npmrc
+        - echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}"" >> .npmrc
+        - npm install
     build:
       commands:
-        - yarn build-storybook
+        - npm build-storybook
   artifacts:
     baseDirectory: storybook-static
     files:
