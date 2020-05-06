@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
+import { space, SpaceProps } from "styled-system";
 
 interface HeadingProps {
   level: number;
@@ -49,14 +50,16 @@ const StyledHeading = styled.h1<HeadingProps>`
     css`
       ${changeAttrs(level)};
     `};
+
+  ${space}
 `;
 
-export const Heading: FunctionComponent<HeadingProps> = ({
+export const Heading: FunctionComponent<HeadingProps & SpaceProps> = ({
   children,
   level,
   ...props
 }) => (
-    <StyledHeading as={level ? `h${level}` : "h1"} level={level || 1} {...props}>
-      {children}
-    </StyledHeading>
-  );
+  <StyledHeading as={level ? `h${level}` : "h1"} level={level || 1} {...props}>
+    {children}
+  </StyledHeading>
+);

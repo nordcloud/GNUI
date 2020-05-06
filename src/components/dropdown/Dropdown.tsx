@@ -4,7 +4,7 @@ import theme from "../../theme";
 import { Icon } from "../icon";
 import { Container, Flex } from "../container";
 import { IconProps } from "../icon";
-
+import { space, SpaceProps } from "styled-system";
 interface DropdownProps {
   name: string;
   options: Array<string>;
@@ -24,6 +24,7 @@ interface DropdownIconProps extends IconProps {
 
 const DropdownWrapper = styled(Container)`
   position: relative;
+  ${space}
 `;
 
 const DropdownButton = styled(Flex)`
@@ -104,7 +105,7 @@ const DropdownItem = styled.li`
   }
 `;
 
-export const Dropdown: FunctionComponent<DropdownProps> = ({
+export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
   value = "",
   name,
   options,
