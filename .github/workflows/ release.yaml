@@ -11,9 +11,7 @@ jobs:
         with:
           node-version: "12.x"
       - run: echo "registry=https://registry.npmjs.org/" > .npmrc
-      - run: echo >> .npmrc
       - run: echo "@nordcloud:registry=https://npm.pkg.github.com/" >> .npmrc
-      - run: echo >> .npmrc
       - run: echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" >> .npmrc
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_KEY }}
