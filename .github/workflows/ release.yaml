@@ -17,6 +17,7 @@ jobs:
       - run: echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" >> .npmrc
       - run: npm install
       - run: tsc
+      - run: echo "$NODE_AUTH_TOKEN"
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_KEY }}
