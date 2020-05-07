@@ -8,10 +8,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
-        with:
           node-version: "12.x"
-          registry-url: "https://npm.pkg.github.com"
-          scope: "@nordcloud"
+      - run: echo "registry=https://registry.npmjs.org/" > .npmrc
+      - run: echo >> .npmrc
+      - run: echo "@nordcloud:registry=https://npm.pkg.github.com/" >> .npmrc
       - run: echo >> .npmrc
       - run: echo "//npm.pkg.github.com/:_authToken=${NPM_KEY}" >> .npmrc
       - run: npm install
