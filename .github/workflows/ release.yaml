@@ -12,6 +12,8 @@ jobs:
           node-version: "12.x"
           registry-url: "https://npm.pkg.github.com"
           scope: "@nordcloud"
+      - run: echo >> .npmrc
+      - run: echo "//npm.pkg.github.com/:_authToken=${NPM_KEY}" >> .npmrc
       - run: npm install
       - run: tsc
       - run: npm publish
