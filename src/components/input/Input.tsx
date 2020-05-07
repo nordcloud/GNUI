@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { Container, Flex } from "../container";
 import { Icon } from "../icon";
+import { space, SpaceProps } from "styled-system";
 
 export interface InputProps {
   name: string;
@@ -45,7 +46,7 @@ const setStatusColor = (status: "success" | "error") => {
   }
 };
 
-const InputGroup = styled(Flex)<InputProps>`
+const InputGroup = styled(Flex)<InputProps & SpaceProps>`
   align-items: center;
   border: ${theme.borders.disabled};
   padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
@@ -74,6 +75,8 @@ const InputGroup = styled(Flex)<InputProps>`
     css`
       ${setStatusColor(status)}
     `}
+
+  ${space}
 `;
 
 const StyledInput = styled.input<InputProps>`
@@ -116,7 +119,7 @@ export const Description: FunctionComponent = ({ children }) => (
   <StyledDescription>{children}</StyledDescription>
 );
 
-export const Input: FunctionComponent<InputProps> = ({
+export const Input: FunctionComponent<InputProps & SpaceProps> = ({
   type = "text",
   name,
   status,

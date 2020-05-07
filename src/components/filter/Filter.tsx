@@ -84,10 +84,10 @@ export const Filter: FunctionComponent<IFilter> = ({
   return (
     <Container>
       <Row>
-        <FilterColumn 
-          xs={accompanyingComponent ? 6 : 12} 
-          sm={accompanyingComponent ? 5 : 12} 
-          lg={accompanyingComponent ? 2 : 12} 
+        <FilterColumn
+          xs={accompanyingComponent ? 6 : 12}
+          sm={accompanyingComponent ? 5 : 12}
+          lg={accompanyingComponent ? 2 : 12}
           align="left"
         >
           <FilterButton
@@ -109,7 +109,9 @@ export const Filter: FunctionComponent<IFilter> = ({
           {isOpen && <Spacer />}
         </FilterColumn>
         {accompanyingComponent && (
-          <Col sm={8} lg={10}>{accompanyingComponent}</Col>
+          <Col sm={8} lg={10}>
+            {accompanyingComponent}
+          </Col>
         )}
       </Row>
       {isOpen && (

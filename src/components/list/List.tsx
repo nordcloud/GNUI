@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
+import { space, SpaceProps } from "styled-system";
 
 interface StyledListProps {
   horizontal?: boolean;
@@ -23,7 +24,7 @@ interface IListProps extends StyledListProps {
 
 const StyledListItemTitle = styled.span`
   width: 11.25rem;
-  color: ${theme.colors.darks[3]}
+  color: ${theme.colors.darks[3]};
 `;
 
 const StyledListMarker = css`
@@ -39,10 +40,9 @@ const StyledList = styled.ul`
   list-style: none;
   padding-left: ${theme.spacing.spacing05};
   display: flex;
-  flex-direction: ${(props: StyledListProps) => props.horizontal
-    ? `row`
-    : `column`
-  };
+  flex-direction: ${(props: StyledListProps) =>
+    props.horizontal ? `row` : `column`};
+  ${space}
 `;
 
 const getListSpacing = (props: StyledListProps): string => {
@@ -51,7 +51,7 @@ const getListSpacing = (props: StyledListProps): string => {
   }
 
   return props.spacing ? props.spacing : `0 0 ${theme.spacing.spacing02} 0`;
-}
+};
 
 const StyledListItem = styled.li`
   font-family: ${theme.fonts.body};
@@ -60,47 +60,49 @@ const StyledListItem = styled.li`
   color: ${theme.colors.primary};
   line-height: ${theme.typography.lineHeight};
 
-  ${(props: StyledListProps) => props.unordered
-    ? css`
-      &:before {
-        ${StyledListMarker}
-      }
-    ` : ``
-  }
+  ${(props: StyledListProps) =>
+    props.unordered
+      ? css`
+          &:before {
+            ${StyledListMarker}
+          }
+        `
+      : ``}
 `;
 
 const isNested = (item: IListItem): item is INestedListItem =>
-  ((item as INestedListItem).title !== undefined)
+  (item as INestedListItem).title !== undefined;
 
-export const List: FunctionComponent<IListProps> = (props): JSX.Element => {
+export const List: FunctionComponent<IListProps & SpaceProps> = (
+  props
+): JSX.Element => {
   return (
     <StyledList {...props}>
-      {props.items && props.items.map((item, idx) => {
-        // Nested object
-        if (isNested(item)) {
-          return (
-            <React.Fragment key={`id-${idx}`}>
-              <ListItem {...props} {...item} key={idx} />
-              <List horizontal={props.horizontal}
-                unordered={props.unordered}
-                items={item.rowChildren}
-              />
-            </React.Fragment>
-          );
-        }
+      {props.items &&
+        props.items.map((item, idx) => {
+          // Nested object
+          if (isNested(item)) {
+            return (
+              <React.Fragment key={`id-${idx}`}>
+                <ListItem {...props} {...item} key={idx} />
+                <List
+                  horizontal={props.horizontal}
+                  unordered={props.unordered}
+                  items={item.rowChildren}
+                />
+              </React.Fragment>
+            );
+          }
 
-        // List of strings or numbers
-        return (
-          <StyledListItem
-            key={idx}
-            {...props}
-          >
-            {item}
-          </StyledListItem>
-        )
-      })}
+          // List of strings or numbers
+          return (
+            <StyledListItem key={idx} {...props}>
+              {item}
+            </StyledListItem>
+          );
+        })}
     </StyledList>
-  )
+  );
 };
 
 const ListItem: FunctionComponent<INestedListItem> = (props): JSX.Element => (
@@ -114,7 +116,7 @@ const ListItem: FunctionComponent<INestedListItem> = (props): JSX.Element => (
         <span>{props.description}</span>
       </>
     ) : (
-        <span>{props.title}</span>
-      )}
+      <span>{props.title}</span>
+    )}
   </StyledListItem>
 );

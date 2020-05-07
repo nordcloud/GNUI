@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { darken } from "polished";
-
+import { space, SpaceProps } from "styled-system";
 interface ButtonProps {
   children: string | React.ReactNode;
   severity?: "high" | "medium" | "low";
@@ -196,9 +196,11 @@ const StyledButton = styled.button<ButtonProps>`
       padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
       letter-spacing: 0.025rem;
     `}
+
+    ${space}
 `;
 
-export const Button: FunctionComponent<ButtonProps> = ({
+export const Button: FunctionComponent<ButtonProps & SpaceProps> = ({
   severity,
   children,
   ...props
