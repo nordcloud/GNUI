@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { darken } from "polished";
 import { space, SpaceProps } from "styled-system";
-interface ButtonProps {
+export interface ButtonProps {
   children: string | React.ReactNode;
   severity?: "high" | "medium" | "low";
   priority?: string;
@@ -28,7 +28,7 @@ const StyledButton = styled.button<ButtonProps>`
   white-space: nowrap;
   font-family: ${theme.fonts.body};
   color: ${theme.colors.white};
-  border: ${theme.borderDefault}; 
+  border: ${theme.borderDefault};
   font-weight: ${theme.fontWeights.regular};
   padding: ${theme.spacing.spacing02} ${theme.spacing.spacing04};
   border-radius: ${theme.radiusDefault};

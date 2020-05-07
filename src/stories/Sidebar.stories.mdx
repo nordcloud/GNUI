@@ -6,67 +6,103 @@ import {
   Description,
 } from "@storybook/addon-docs/blocks";
 import { useState } from "react";
-import { Sidebar } from "../components/sidebar";
-import { Grid, Row, Column } from "../components/grid";
+import { Button } from "../components/button";
+import { Sidebar, CloseButton } from "../components/sidebar";
+import { Container, Row, Col } from "react-awesome-styled-grid";
 import { Text } from "../components/text";
+import { Icon } from "../components/icon";
 
 <Meta title="Components/Sidebar" component={Sidebar} id="sidebar" />
 
 # Sidebar
 
 <Description>
-  Sidebars button is fixed, but can be easily styled with props (explained
-  below).
+  Sidebars by default will be displayed on the right side of the screen.
 </Description>
 
----
-
-<Story name="default">
-  {() => {
-    const [isOpen, setIsOpen] = useState(false);
-    return (
-      <Grid>
-        <Row justifyContent="center" alignItems="flex-start">
-          <Column size="5">
-            <Text align="justify">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-              gravida auctor est, eu volutpat dolor gravida quis. Vestibulum
-              venenatis venenatis orci ac pellentesque. Aliquam blandit eu est
-              id feugiat. In ut tristique lacus. Aenean ornare pharetra leo,
-              eget mattis arcu rhoncus vitae. Orci varius natoque penatibus et
-              magnis dis parturient montes, nascetur ridiculus mus. Praesent
-              volutpat lacus at odio finibus, vel gravida dolor scelerisque.
-              Nullam nec nibh faucibus, egestas neque vitae, pellentesque justo.
-              Integer ultrices tincidunt lacus, in commodo ante varius ornare.
-              Proin a tempus magna.
-            </Text>
-          </Column>
-          <Column size="5">
-            <Text align="justify">
-              Fusce quis est lacus. Proin porttitor, leo vitae auctor rhoncus,
-              nunc metus ultrices ex, eu faucibus libero augue ac arcu. Sed sit
-              amet viverra felis, vel ultrices mi. Suspendisse potenti. Nunc
-              tincidunt bibendum vulputate. Nullam lacinia lacus a ullamcorper
-              imperdiet. Nam ullamcorper, dui quis porttitor vestibulum, sem
-              augue placerat sapien, nec vestibulum odio enim a ligula. Integer
-              condimentum enim vitae lorem dignissim, ut fringilla lorem
-              pellentesque. Fusce risus ipsum, venenatis porta lorem et,
-              volutpat vehicula ligula. Duis faucibus ac neque facilisis
-              pretium. Duis mauris augue, cursus eget tincidunt non, scelerisque
-              dapibus magna. Aliquam velit dui, vestibulum et vehicula id,
-              pulvinar nec magna. Nullam sed sollicitudin mi, quis pharetra
-              risus. Maecenas rhoncus nulla est, et eleifend felis ultricies
-              quis. Integer fermentum euismod nunc, at euismod nulla elementum
-              eu.
-            </Text>
-          </Column>
-        </Row>
-        <Sidebar title="Sidebar Title">Sidebar Content</Sidebar>
-      </Grid>
-    );
-  }}
-</Story>
+<Preview>
+  <Story name="default">
+    {() => {
+      const [isOpen1, setIsOpen1] = useState(false);
+      return (
+        <Container>
+          <Row justify="center">
+            <Button onClick={() => setIsOpen1(!isOpen1)}>
+              Click button to open sidebar
+            </Button>
+          </Row>
+          <Sidebar
+            title="Default sidebar"
+            onRequestClose={() => setIsOpen1(!isOpen1)}
+            isOpen={isOpen1}
+          >
+            Sidebar Content
+            <CloseButton
+              position="topRight"
+              onClick={() => setIsOpen1(!isOpen1)}
+            />
+          </Sidebar>
+        </Container>
+      );
+    }}
+  </Story>
+</Preview>
 
 ## Props
 
-### static
+```typescript
+interface SidebarProps {
+  children?: React.ReactNode;
+  title?: string;
+  isOpen?: boolean;
+  side?: "right" | "left";
+  style: ReactModal.Styles;
+}
+
+interface SidebarButtonProps {
+  position?: "topLeft" | "topRight" | "bottomLeft" | "bottomRight";
+  onClick: (e: any) => void;
+}
+```
+
+### side
+
+<Preview>
+  <Story name="onModal">
+    {() => {
+      const [isOpen, setIsOpen] = useState(false);
+      const [isOpenLeft, setIsOpenLeft] = useState(false);
+      return (
+        <Container>
+          <Row justify="center">
+            <Text>Click button to open sidebar.</Text>
+          </Row>
+          <Row justify="space-around">
+            <Col xs={3} sm={2}>
+              <Button onClick={() => setIsOpenLeft(!isOpenLeft)}>
+                Left sidebar
+              </Button>
+            </Col>
+            <Col xs={3} sm={2}>
+              <Button onClick={() => setIsOpen(!isOpen)}>Right Sidebar</Button>
+            </Col>
+          </Row>
+          <Sidebar title="Default (right) sidebar" isOpen={isOpen}>
+            Sidebar Content
+            <CloseButton
+              position="topRight"
+              onClick={() => setIsOpen(!isOpen)}
+            />
+          </Sidebar>
+          <Sidebar side="onLeft" title="Left sidebar" isOpen={isOpenLeft}>
+            Sidebar Content
+            <CloseButton
+              position="topLeft"
+              onClick={() => setIsOpenLeft(!isOpenLeft)}
+            />
+          </Sidebar>
+        </Container>
+      );
+    }}
+  </Story>
+</Preview>
