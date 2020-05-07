@@ -10,8 +10,6 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: "12.x"
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_KEY }}
       - run: echo "registry=https://registry.npmjs.org/" > .npmrc
       - run: echo >> .npmrc
       - run: echo "@nordcloud:registry=https://npm.pkg.github.com/" >> .npmrc
@@ -19,5 +17,6 @@ jobs:
       - run: echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" >> .npmrc
       - run: npm install
       - run: tsc
-      - run: echo "$NODE_AUTH_TOKEN"
       - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_KEY }}
