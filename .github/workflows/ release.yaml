@@ -1,0 +1,21 @@
+name: Node.js Package
+on:
+  release:
+    types: [created]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - run: echo "registry=https://registry.npmjs.org/" > .npmrc
+      - run: echo "@nordcloud:registry=https://npm.pkg.github.com/" >> .npmrc
+      - run: echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" >> .npmrc
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_KEY }}
+      - run: npm install
+      - run: tsc
+      - run: cat .npmrc
+      - run: npm publish
