@@ -50,7 +50,7 @@ const StyledToastContainer = styled.div<ToastProps>`
       `}
   
       p {
-        margin: 0;
+        margin: ${theme.spacing.spacing03} 0 0;
         font-size: ${theme.fontSizes.small};
         font-weight: ${theme.fontWeights.regular};
       }
@@ -78,7 +78,7 @@ const ToastTitle = styled.div<MessageProps>`
   display:flex;
   align-items: center;
   h5 {
-    line-height: ${theme.lineHeight};
+    line-height: 1.5em;
     margin:0;
     font-weight: ${theme.fontWeights.medium};
   }
@@ -106,9 +106,7 @@ export const Message: FunctionComponent<MessageProps> = ({
             <Icon width="1rem" height="1rem" image="CLOSE_WHITE" />
           </Button>
         </ToastTitle>
-        <div>
-          <Text>{message}</Text>
-        </div>
+       {message && <Text>{message}</Text>}
       </>
     )
 };
