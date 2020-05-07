@@ -1,36 +1,38 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent, forwardRef } from "react";
 import styled, { css } from "styled-components";
 import theme, { bp } from "../../theme";
-import { Container } from "../container";
+import { variant } from "styled-system";
 import { Text } from "../text";
-import { Button } from "../button";
+import { Button, ButtonProps } from "../button";
 import { Icon } from "../icon";
+import ReactModal from "react-modal";
 
-const SidebarMenu = styled(Container)`
-  top: 0;
-  right: 0;
-  border-radius: 0;
-  width: 0;
-  height: 100vh;
-  z-index: ${theme.zindex.masked};
-  position: absolute;
-  border-left: ${theme.borders.disabled};
-  background-color: ${theme.colors.white};
-  box-shadow: ${theme.shadow.shadow04};
-  transition: width 0.3s ease-in-out;
-`;
+ReactModal.setAppElement("#root");
 
-const SidebarButton = styled(Button)<any>`
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: ${theme.zindex.masked};
-`;
+interface SidebarProps {
+  children?: React.ReactNode;
+  title?: string;
+  isOpen?: boolean;
+  side?: "onLeft" | "onRight";
+}
+
+interface SidebarButtonProps extends ButtonProps {
+  position: "topLeft" | "topRight" | "bottomLeft" | "bottomRight" | "none";
+}
+
+const styles = {
+  overlay: {
+    zIndex: theme.zindex.default,
+    backgroundColor: "rgba(0,0,0,0.6)",
+    willChange: "backgroundColor",
+    transition: "background-color 0.3s ease-in-out",
+  },
+};
 
 const SidebarTitle = styled(Text)`
   line-height: ${theme.lineHeight};
   font-size: ${theme.fontSizes.medium};
-  font-weight: ${theme.fontWeights.bold};
+  font-weight: ${theme.fontWeights[2]};
   padding: ${theme.spacing.spacing06};
   border-bottom: ${theme.borders.grey};
   margin: 0 auto;
@@ -40,78 +42,117 @@ const SidebarContent = styled(Text)`
   font-weight: ${theme.fontWeights[0]};
   line-height: ${theme.lineHeight};
   font-size: ${theme.fontSizes.medium};
-  font-weight: ${theme.fontWeights.regular};
   padding: ${theme.spacing.spacing06};
   margin: 0 auto;
 `;
 
-const Wrapper: any = styled(Container)<{ isOpen: boolean }>`
-  & ${SidebarMenu} {
-    width: 0;
-    transition: width 0.3s ease-in-out;
-  }
-
-  ${({ isOpen }) =>
+const Menu = styled(ReactModal)<SidebarProps>`
+  top: 0;
+  right: 0;
+  outline: 0;
+  ${bp("xs")`width: 100vw`};
+  ${bp("sm")`width: 50vw`};
+  ${bp("md")`width: 45vw`};
+  ${bp("lg")`width: 40vw`};
+  height: 100vh;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  z-index: ${theme.zindex.topoftheworld};
+  border-left: ${theme.borders.disabled};
+  background-color: ${theme.colors.white};
+  box-shadow: ${theme.shadow.shadow04};
+  transform: translateX(0);
+  will-change: transform;
+  transition: transform 0.3s ease-in-out;
+  ${({ isOpen, side }): any => {
     isOpen &&
-    css`
-      bottom: 0;
-      right: 0;
-      position: fixed;
-      z-index: ${theme.zindex.default};
-      width: 100vw;
-      height: 100vh;
-      overflow-x: hidden;
-      overflow-y: scroll;
-      background-color: rgba(0, 0, 0, 0.6);
-      transition: background-color 0.3s ease-in-out;
-
-      & ${SidebarMenu} {
-        width: 100%;
-        ${bp("sm")`width: 50%`};
-        ${bp("md")`width: 40%`};
-        transition: width 0.3s ease-in-out;
-      }
-
-      & ${SidebarButton} {
-        position: absolute;
-      }
-    `}
-  transition: background-color 0.3s ease-in-out;
+      css`
+        transform: ${side === "onLeft" ? "translateX(50%)" : "translateX(0)"};
+        transition: transform, width 0.3s ease-in-out;
+      `;
+  }}
 `;
 
-interface SidebarProps {
-  children?: React.ReactNode;
-  title?: string;
-  onChange: (e: any) => void;
-}
+const SidebarMenu = styled(Menu)(
+  variant({
+    prop: "side",
+    variants: {
+      onRight: {
+        right: 0,
+      },
+      onLeft: {
+        left: 0,
+        right: "unset",
+        textAlign: "right",
+        transition: "width 0.3s ease-in-out",
+      },
+    },
+  })
+);
 
-const Sidebar: FunctionComponent<SidebarProps> = ({
+export const SidebarCloseButton: any = styled(Button)<SidebarButtonProps>`
+  padding: 0;
+  position: fixed;
+  z-index: ${theme.zindex.topoftheworld};
+  will-change: top, left, right, bottom, display;
+  transition: transform 0.3s ease-in-out;
+  ${variant({
+    prop: "position",
+    variants: {
+      topLeft: {
+        top: "1rem",
+        left: "1rem",
+      },
+      topRight: {
+        top: "1rem",
+        right: "1rem",
+      },
+      bottomLeft: {
+        bottom: "1rem",
+        left: "1rem",
+      },
+      bottomRight: {
+        bottom: "1rem",
+        right: "1rem",
+      },
+      none: {
+        display: "none",
+      },
+    },
+  })}
+`;
+
+export const CloseButton = forwardRef(({ children, ...props }, ref) => (
+  <SidebarCloseButton severity="low" ref={ref} {...props}>
+    {children ? (
+      children
+    ) : (
+      <Icon width="1.2rem" height="1.2rem" image="CLOSE_SIDEBAR" />
+    )}
+  </SidebarCloseButton>
+));
+
+export const Sidebar: FunctionComponent<SidebarProps> = ({
   children,
+  isOpen,
   title,
-  onChange,
+  side,
   ...props
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
   return (
-    <Wrapper isOpen={isOpen} {...props}>
-      <Wrapper.menu>
-        <Wrapper.title>{title}</Wrapper.title>
-        <Wrapper.content>{children}</Wrapper.content>
-      </Wrapper.menu>
-      <Wrapper.button severity="low" onClick={() => setIsOpen(!isOpen)}>
-        <Icon
-          width="1.25rem"
-          height="1.25rem"
-          image={isOpen ? "CLOSE_SIDEBAR" : "OPEN_SIDEBAR"}
-        />
-      </Wrapper.button>
-    </Wrapper>
+    <SidebarMenu
+      isOpen={isOpen}
+      side={side}
+      style={styles}
+      shouldCloseOnOverlayClick
+      shouldCloseOnEsc
+      closeTimeoutMS={300}
+      contentLabel="modal"
+      {...props}
+    >
+      <SidebarTitle>{title}</SidebarTitle>
+      <SidebarContent>{children}</SidebarContent>
+    </SidebarMenu>
   );
 };
-
-Wrapper.button = SidebarButton;
-Wrapper.menu = SidebarMenu;
-Wrapper.title = SidebarTitle;
-Wrapper.content = SidebarContent;
-
-export default Sidebar;

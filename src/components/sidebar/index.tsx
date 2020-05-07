@@ -1,1 +1,1 @@
-export { default as Sidebar } from "./Sidebar";
+export { Sidebar, CloseButton, SidebarCloseButton } from "./Sidebar";
