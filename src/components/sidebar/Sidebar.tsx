@@ -47,11 +47,14 @@ const SidebarContent = styled(Text)`
   margin: 0 auto;
 `;
 
-const Modal: any = styled(ReactModal)<SidebarProps>`
+const Menu = styled(ReactModal)<SidebarProps>`
   top: 0;
   right: 0;
   outline: 0;
-  width: 0;
+  ${bp("xs")`width: 100vw`};
+  ${bp("sm")`width: 50vw`};
+  ${bp("md")`width: 45vw`};
+  ${bp("lg")`width: 40vw`};
   height: 100vh;
   position: fixed;
   overflow-x: hidden;
@@ -60,21 +63,19 @@ const Modal: any = styled(ReactModal)<SidebarProps>`
   border-left: ${theme.borders.disabled};
   background-color: ${theme.colors.white};
   box-shadow: ${theme.shadow.shadow04};
-  will-change: width;
-  transition: width 0.3s ease;
-  ${({ isOpen }) =>
+  transform: translateX(0);
+  will-change: transform;
+  transition: transform 0.3s ease-in-out;
+  ${({ isOpen, side }): any => {
     isOpen &&
-    css`
-      ${bp("xs")`width: 100vw`};
-      ${bp("sm")`width: 50vw`};
-      ${bp("md")`width: 45vw`};
-      ${bp("lg")`width: 40vw`};
-      will-change: width;
-      transition: width 0.3s ease;
-    `}
+      css`
+        transform: ${side === "onLeft" ? "translateX(50%)" : "translateX(0)"};
+        transition: transform, width 0.3s ease-in-out;
+      `;
+  }}
 `;
 
-const SidebarModal = styled(Modal)(
+const SidebarMenu: any = styled(Menu)(
   variant({
     prop: "side",
     variants: {
@@ -139,7 +140,7 @@ export const Sidebar: FunctionComponent<SidebarProps> = ({
   ...props
 }) => {
   return (
-    <SidebarModal
+    <SidebarMenu
       isOpen={isOpen}
       side={side}
       style={overlayStyles}
@@ -152,6 +153,6 @@ export const Sidebar: FunctionComponent<SidebarProps> = ({
     >
       <SidebarTitle>{title}</SidebarTitle>
       <SidebarContent>{children}</SidebarContent>
-    </SidebarModal>
+    </SidebarMenu>
   );
 };

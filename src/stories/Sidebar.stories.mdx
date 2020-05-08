@@ -87,14 +87,23 @@ interface SidebarButtonProps {
               <Button onClick={() => setIsOpen(!isOpen)}>Right Sidebar</Button>
             </Col>
           </Row>
-          <Sidebar title="Default (right) sidebar" isOpen={isOpen}>
+          <Sidebar
+            title="Default (right) sidebar"
+            onRequestClose={() => setIsOpen(!isOpen)}
+            isOpen={isOpen}
+          >
             Sidebar Content
             <CloseButton
               position="topRight"
               onClick={() => setIsOpen(!isOpen)}
             />
           </Sidebar>
-          <Sidebar side="onLeft" title="Left sidebar" isOpen={isOpenLeft}>
+          <Sidebar
+            side="onLeft"
+            title="Left sidebar"
+            onRequestClose={() => setIsOpenLeft(!isOpenLeft)}
+            isOpen={isOpenLeft}
+          >
             Sidebar Content
             <CloseButton
               position="topLeft"
