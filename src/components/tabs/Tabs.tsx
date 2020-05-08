@@ -1,11 +1,14 @@
 import React, { FunctionComponent, useState } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import theme from "../../theme";
 import { Heading } from "../heading";
 import { Text } from "../text";
 import { Box } from "../box";
+import { Button } from "../button";
 
 interface TabProps {
+  wizard?: boolean;
+  step?: number;
   labelText: string;
   heading?: string;
   caption?:string;
@@ -16,6 +19,7 @@ interface TabProps {
 }
 
 interface TabsProps {
+  wizard?: boolean;
   name?: string;
   caption?: string;
   children: Array<TabProps>;
@@ -27,6 +31,7 @@ const TabsContent = styled(Box)`
   border-top-left-radius:0;
   border-top-right-radius:0;
   box-shadow:none;
+  padding: ${theme.spacing.spacing07} ${theme.spacing.spacing04};
   p {
     line-height: 1.5rem;
     &:first-child {
@@ -47,6 +52,7 @@ const TabContainer = styled.li`
   cursor: pointer;
   border-bottom:${theme.borders.grey};
   border-right:${theme.borders.grey};
+  min-width: 250px;
   &:last-child {
     border-right:none;
     &.tab-active {
@@ -79,8 +85,43 @@ const TabsWrapper = styled(Box)`
   padding:0;
 `;
 
+const Step = styled(Box)`
+  padding:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:2rem;
+  height:2rem;
+  margin-bottom: ${theme.spacing.spacing04};
+`;
+
+const TabsStatusButtons = styled.div`
+  padding: ${theme.spacing.spacing04};
+  border-top: ${theme.borders.grey};
+  display:flex;
+  position:relative;
+`;
+
+const PreviousButton = styled(Button)`
+  position: absolute;
+  border:none;
+`;
+
+const NextButton = styled(Button)`
+  margin-left:auto;
+  margin-right:auto;
+`;
+
+const TabsCover = styled.div`
+  background-color: ${theme.colors.snowwhite};
+  border-bottom-left-radius: ${theme.radiusDefault};
+  border-bottom-right-radius: ${theme.radiusDefault};
+`;
+
 export const Tab: FunctionComponent<TabProps> = ({ 
   labelText,
+  wizard,
+  step,
   heading,
   caption,
   activeTab,
@@ -89,6 +130,7 @@ export const Tab: FunctionComponent<TabProps> = ({
   const className = (activeTab === labelText) ? "tab-active" : "tab";
   return (
     <TabContainer className={className} onClick={onClick} key={labelText}>
+      {wizard ? <Step dark>{step}</Step> : null}
       <Heading level={5}>{heading}</Heading>
       <Text small>{caption}</Text>
     </TabContainer>
@@ -96,15 +138,21 @@ export const Tab: FunctionComponent<TabProps> = ({
 
 export const Tabs: FunctionComponent<TabsProps> = ({ 
   name,
+  wizard,
   children
 }) => {
   const [isActive, setActive] = useState(children[0].props.labelText);
+  const [isCurrentStep, setCurrentStep] = useState(children[0].props.key);
+
   return (
     <TabsWrapper>
       <TabsList className={name}>
         {children.map((child, key) => {
+          let count = key + 1;
           return (
             <Tab
+              wizard={wizard}
+              step={count}
               activeTab={isActive}
               key={key}
               heading={child.props.heading}
@@ -115,11 +163,40 @@ export const Tabs: FunctionComponent<TabsProps> = ({
           );
         })}
       </TabsList>
-      <TabsContent>
-        {children.map((child) => {
+      <TabsCover>
+        {children.map((child, key, keys) => {
           if (child.props.labelText !== isActive) return undefined;
-          return child.props.children;
-        })}
-      </TabsContent>
+          else {
+              return (
+                <React.Fragment>
+                  <TabsContent>
+                    {child.props.children}
+                  </TabsContent>
+                  {wizard && 
+                    <TabsStatusButtons>
+                      {
+                        (keys.length - 1 === key) 
+                        ?
+                          (
+                            <React.Fragment>
+                              <PreviousButton outline>Previous</PreviousButton>
+                              <NextButton>Submit</NextButton>
+                            </React.Fragment>
+                          )
+                        :
+                        (
+                          <React.Fragment>
+                            {key !== 0 ? <PreviousButton outline>Previous</PreviousButton> : null }
+                            <NextButton>Next Step {key + 1}</NextButton>
+                          </React.Fragment>
+                        )
+                      }
+                    </TabsStatusButtons>
+                  }
+                </React.Fragment>
+              )
+            }
+          })}
+      </TabsCover>
     </TabsWrapper>
 )};
