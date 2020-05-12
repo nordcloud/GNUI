@@ -6,20 +6,69 @@ import { Text } from "../components/text";
 
 # Wizard
 
+```typescript
+interface TabProps {
+  className?:string;
+  wizard?: boolean;
+  step?: number;
+  heading?: string;
+  caption?:string;
+  activeTab: number;
+  children?: React.ReactNode;
+  onClick?: (e: any) => void;
+  props?: any;
+  styleActive?:boolean;
+  index: number;
+  disabled?: boolean;
+}
+
+interface TabsProps {
+  wizard?: boolean;
+  name?: string;
+  caption?: string;
+  previousButton?:string;
+  nextButton?:string;
+  submitButton?:string;
+  children: Array<TabProps>;
+  handleForm: () => void;
+}
+```
+
 ## Default
 
 > `caption?: string;` - caption for the tab
+> `previousButton?: string;` - label for Previous button
+> `nextButton?: string;` - label for Next button
+> `submitButton?: string;` - label for Submit button
 
 <Preview>
   <Story name="default">
     <Tabs wizard>
-      <Tab heading="Tab 1" caption="Small caption for Tab 1" labelText="tab1" >
+      <Tab heading="Tab 1" caption="Small caption for Tab 1" >
         <Text>Lorem ipsum for Tab 1. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
       </Tab>
-      <Tab heading="Tab 2" caption="Small caption for Tab 2" labelText="tab2">
+      <Tab heading="Tab 2" caption="Small caption for Tab 2" >
         <Text>Lorem ipsum for Tab 2. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
       </Tab>
-      <Tab heading="Tab 3" caption="Small caption for Tab 2" labelText="tab3">
+      <Tab heading="Tab 3" caption="Small caption for Tab 2">
+        <Text>Lorem ipsum for Tab 3. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
+      </Tab>
+    </Tabs>
+  </Story>
+</Preview>
+
+> `disabled?: boolean;` - makes the step non-clickable
+
+<Preview>
+  <Story name="disabled">
+    <Tabs wizard>
+      <Tab heading="Tab 1" caption="Small caption for Tab 1" >
+        <Text>Lorem ipsum for Tab 1. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
+      </Tab>
+      <Tab disabled heading="Tab 2" caption="Small caption for Tab 2">
+        <Text>Lorem ipsum for Tab 2. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
+      </Tab>
+      <Tab disabled heading="Tab 3" caption="Small caption for Tab 2">
         <Text>Lorem ipsum for Tab 3. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
       </Tab>
     </Tabs>

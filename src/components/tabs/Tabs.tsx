@@ -7,23 +7,37 @@ import { Box } from "../box";
 import { Button } from "../button";
 
 interface TabProps {
+  className?:string;
   wizard?: boolean;
   step?: number;
-  labelText: string;
   heading?: string;
   caption?:string;
-  activeTab: string;
+  activeTab: number;
   children?: React.ReactNode;
   onClick?: (e: any) => void;
   props?: any;
   styleActive?:boolean;
+  index: number;
+  disabled?: boolean;
 }
 
 interface TabsProps {
   wizard?: boolean;
   name?: string;
   caption?: string;
+  previousButton?:string;
+  nextButton?:string;
+  submitButton?:string;
   children: Array<TabProps>;
+  handleForm: () => void;
+}
+
+const buttonDefaults: TabsProps = {
+  previousButton: "Previous",
+  nextButton: "Next Step",
+  submitButton: "Submit",
+  children: [],
+  handleForm: () => (console.log("Submit"))
 }
 
 const TabsContent = styled(Box)`
@@ -44,13 +58,12 @@ const TabsContent = styled(Box)`
   }
 `;
 
-const TabContainer = styled.li`
+const TabContainer: any = styled.li<TabProps>`
   display: inline-block;
   list-style: none;
   margin-bottom: -1px;
   padding:${theme.spacing.spacing04};
   background-color:${theme.colors.white};
-  cursor: pointer;
   border-bottom:${theme.borders.grey};
   border-right:${theme.borders.grey};
   min-width: 250px;
@@ -60,9 +73,14 @@ const TabContainer = styled.li`
       border-right:${theme.borders.grey};
     }
   }
+
   &:hover {
-    background-color:${theme.colors.lights[1]};
+    cursor: ${({ disabled }) =>
+    disabled ? `auto` : `pointer`};
+    background-color:${({ disabled }) =>
+    disabled ? `${theme.colors.white}` : `${theme.colors.lights[1]}`};
   }
+
   h5 {
     margin:0;
     font-weight:${theme.fontWeights.medium};
@@ -93,7 +111,15 @@ const Step = styled(Box)`
   justify-content:center;
   width:2rem;
   height:2rem;
+  box-shadow:none;
   margin-bottom: ${theme.spacing.spacing04};
+  background-color: ${theme.colors.lights[2]};
+  color: ${theme.colors.darks[3]};
+
+  &.dark {
+    background:${theme.colors.primary};
+    color:${theme.colors.white};
+  }
 `;
 
 const TabsStatusButtons = styled.div`
@@ -120,18 +146,19 @@ const TabsCover = styled.div`
 `;
 
 export const Tab: FunctionComponent<TabProps> = ({ 
-  labelText,
   wizard,
   step,
   heading,
   caption,
   activeTab,
+  index,
+  disabled,
   onClick
 }) => {
-  const className = (activeTab === labelText) ? "tab-active" : "tab";
+  const className = (activeTab === index) ? "tab-active" : "tab";
   return (
-    <TabContainer className={className} onClick={onClick} key={labelText}>
-      {wizard ? <Step dark>{step}</Step> : null}
+    <TabContainer className={className} onClick={onClick} key={index} disabled={disabled}>
+      {wizard ? <Step {...(index <= activeTab && {className: "dark"})}>{step}</Step> : null}
       <Heading level={5}>{heading}</Heading>
       <Text small>{caption}</Text>
     </TabContainer>
@@ -140,9 +167,12 @@ export const Tab: FunctionComponent<TabProps> = ({
 export const Tabs: FunctionComponent<TabsProps> = ({ 
   name,
   wizard,
-  children
+  previousButton,
+  nextButton,
+  submitButton,
+  children,
+  handleForm
 }) => {
-  const [isActive, setActive] = useState(children[0].props.labelText);
   const [isCurrentStep, setCurrentStep] = useState(0);
   const nextStep = () => {
     setCurrentStep(isCurrentStep + 1);
@@ -155,25 +185,23 @@ export const Tabs: FunctionComponent<TabsProps> = ({
     <TabsWrapper>
       <TabsList className={name}>
         {children.map((child, key) => {
-          let count = key + 1;
-          console.log(isCurrentStep);
           return (
             <Tab
               wizard={wizard}
-              step={count}
-              activeTab={isActive}
-              key={key}
+              step={key + 1}
+              activeTab={isCurrentStep}
+              index={key}
               heading={child.props.heading}
-              labelText={child.props.labelText}
               caption={child.props.caption}
-              onClick={() => setActive(child.props.labelText)}
+              disabled={child.props.disabled}
+              onClick={child.props.disabled ? undefined : () => setCurrentStep(key)}
             />
           );
         })}
       </TabsList>
       <TabsCover>
         {children.map((child, key, keys) => {
-          if (child.props.labelText !== isActive) return undefined;
+          if (key !== isCurrentStep) return undefined;
           else {
               return (
                 <React.Fragment>
@@ -187,15 +215,15 @@ export const Tabs: FunctionComponent<TabsProps> = ({
                         ?
                           (
                             <React.Fragment>
-                              <PreviousButton outline onClick={() => previousStep()}>Previous</PreviousButton>
-                              <NextButton>Submit</NextButton>
+                              <PreviousButton outline onClick={() => previousStep()}>{previousButton ? previousButton : buttonDefaults.previousButton}</PreviousButton>
+                              <NextButton onClick={handleForm}>{submitButton ? submitButton : buttonDefaults.submitButton}</NextButton>
                             </React.Fragment>
                           )
                         :
                         (
                           <React.Fragment>
-                            {key !== 0 ? <PreviousButton outline onClick={() => previousStep()}>Previous</PreviousButton> : null }
-                            <NextButton onClick={() => nextStep()}>Next Step {key + 1}</NextButton>
+                            {key !== 0 ? <PreviousButton outline onClick={() => previousStep()}>{previousButton ? previousButton : buttonDefaults.previousButton}</PreviousButton> : null }
+                            <NextButton onClick={() => nextStep()}>{nextButton ? nextButton : buttonDefaults.nextButton} {key + 1}</NextButton>
                           </React.Fragment>
                         )
                       }
