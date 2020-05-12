@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import theme from "../../theme";
 import { Heading } from "../heading";
 import { Text } from "../text";
@@ -16,6 +16,7 @@ interface TabProps {
   children?: React.ReactNode;
   onClick?: (e: any) => void;
   props?: any;
+  styleActive?:boolean;
 }
 
 interface TabsProps {
@@ -142,13 +143,20 @@ export const Tabs: FunctionComponent<TabsProps> = ({
   children
 }) => {
   const [isActive, setActive] = useState(children[0].props.labelText);
-  const [isCurrentStep, setCurrentStep] = useState(children[0].props.key);
+  const [isCurrentStep, setCurrentStep] = useState(0);
+  const nextStep = () => {
+    setCurrentStep(isCurrentStep + 1);
+  };
+  const previousStep = () => {
+    setCurrentStep(isCurrentStep - 1);
+  };
 
   return (
     <TabsWrapper>
       <TabsList className={name}>
         {children.map((child, key) => {
           let count = key + 1;
+          console.log(isCurrentStep);
           return (
             <Tab
               wizard={wizard}
@@ -179,15 +187,15 @@ export const Tabs: FunctionComponent<TabsProps> = ({
                         ?
                           (
                             <React.Fragment>
-                              <PreviousButton outline>Previous</PreviousButton>
+                              <PreviousButton outline onClick={() => previousStep()}>Previous</PreviousButton>
                               <NextButton>Submit</NextButton>
                             </React.Fragment>
                           )
                         :
                         (
                           <React.Fragment>
-                            {key !== 0 ? <PreviousButton outline>Previous</PreviousButton> : null }
-                            <NextButton>Next Step {key + 1}</NextButton>
+                            {key !== 0 ? <PreviousButton outline onClick={() => previousStep()}>Previous</PreviousButton> : null }
+                            <NextButton onClick={() => nextStep()}>Next Step {key + 1}</NextButton>
                           </React.Fragment>
                         )
                       }
