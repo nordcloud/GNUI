@@ -12,9 +12,6 @@ export interface NavLinkProps {
 
 export interface NavProps {
   name?: string;
-  names: Array<string>;
-  links: Array<string>;
-  onClick: (link: string) => void;
   children?: string | number | any;
 }
 
@@ -76,15 +73,10 @@ export const NavLink: FunctionComponent<NavLinkProps> = ({
 );
 
 export const Navigation: FunctionComponent<NavProps> = ({
-  names,
-  links,
-  onClick,
+  children,
   ...props
 }) => (
   <NavWrapper {...props}>
-    {names &&
-      names.map((element, index) => (
-        <NavLink key={index} name={element} link={links[index]} onClick={() => onClick(links[index])}/>
-      ))}
+    {children}
   </NavWrapper>
 );
