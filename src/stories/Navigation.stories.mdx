@@ -35,11 +35,13 @@ import { NavLink, Navigation } from "../components/navigation";
   <Story name="primary">
       {
         () => {
-          const names = ["Menu Item 1", "Menu Item 2", "Menu Item 3"];
-          const links = ["/", "/", "/"];
           const pageChange = link => console.log(link); // returns link href
           return (
-              <Navigation names={names} links={links} onClick={pageChange}/>
+              <Navigation>
+                <NavLink name="Menu Item" link="/" onClick={() => pageChange("/")} />
+                <NavLink name="Menu Item" link="/" onClick={() => pageChange("/")} />
+                <NavLink name="Menu Item" link="/" onClick={() => pageChange("/")} />
+              </Navigation>
           )
         }
       }
@@ -52,11 +54,13 @@ import { NavLink, Navigation } from "../components/navigation";
   <Story name="secondary">
       {
         () => {
-          const names = ["Menu Item 1", "Menu Item 2", "Menu Item 3"];
-          const links = ["/", "/", "/"];
           const pageChange = link => console.log(link); // returns link href
           return (
-              <Navigation names={names} links={links} onClick={pageChange} secondary />
+              <Navigation secondary>
+                <NavLink name="Menu Item" link="/" onClick={() => pageChange("/")} />
+                <NavLink name="Menu Item" link="/" onClick={() => pageChange("/")} />
+                <NavLink name="Menu Item" link="/" onClick={() => pageChange("/")} />
+              </Navigation>
           )
         }
       }
