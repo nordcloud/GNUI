@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
+import { space } from "styled-system";
 import theme from "../../theme";
 
 interface TextProps {
@@ -13,6 +14,7 @@ interface TextProps {
   small?: boolean;
   caption?: boolean;
   align?: string;
+  [propName: string]: any;
 }
 
 const changeSize = (size: number) => css`
@@ -30,7 +32,7 @@ const basicStyles = css<TextProps>`
 
 const StyledText = styled.p<TextProps>`
   ${basicStyles};
-  margin: ${theme.spacing.spacing04} 0;
+  ${space};
   ${({ bold }) =>
     bold &&
     css`
@@ -89,3 +91,7 @@ export const Text: FunctionComponent<TextProps> = ({
 export const Code: FunctionComponent = ({ children, ...props }) => (
   <StyledCode {...props}>{children}</StyledCode>
 );
+
+Text.defaultProps = {
+  m: `${theme.spacing.spacing04} 0`,
+};

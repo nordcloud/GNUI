@@ -1,10 +1,11 @@
-import React, { FunctionComponent, forwardRef } from "react";
+import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import theme, { bp } from "../../theme";
-import { variant } from "styled-system";
+import { variant, space } from "styled-system";
 import { Text } from "../text";
 import { Button, ButtonProps } from "../button";
 import { Icon } from "../icon";
+import { Container, Row } from "react-awesome-styled-grid";
 import ReactModal from "react-modal";
 
 ReactModal.setAppElement("#root");
@@ -14,40 +15,49 @@ interface SidebarProps {
   title?: string;
   isOpen?: boolean;
   side?: "onLeft" | "onRight";
+  width?: number | string;
+  onClick?: (e: any) => void;
 }
 
 interface SidebarButtonProps extends ButtonProps {
-  position: "topLeft" | "topRight" | "bottomLeft" | "bottomRight" | "none";
+  icon?: string;
 }
 
 const overlayStyles = {
   overlay: {
     position: "fixed",
     zIndex: theme.zindex.default,
-    backgroundColor: "rgba(0, 0, 0, 0.4)",
+    backgroundColor: "rgba(0, 0, 0, 0.6)",
     willChange: "background-color",
     transition: "background-color 0.3s ease-in-out",
   },
 };
 
-const SidebarTitle = styled(Text)`
-  line-height: ${theme.lineHeight};
-  font-size: ${theme.fontSizes.medium};
-  font-weight: ${theme.fontWeights[2]};
-  padding: ${theme.spacing.spacing06};
+const TextRow = styled(Row)`
+  flex-wrap: nowrap;
+  align-items: center;
   border-bottom: ${theme.borders.grey};
+  line-height: ${theme.lineHeight};
+  padding: ${theme.spacing.spacing06};
   margin: 0 auto;
 `;
 
-const SidebarContent = styled(Text)`
+const Title = styled(Text)`
+${space}
+  font-weight: ${theme.fontWeights[2]};
+  font-size: ${theme.fontSizes.medium};
+  margin: 0;
+`;
+
+const Content = styled(Text)`
   font-weight: ${theme.fontWeights[0]};
   line-height: ${theme.lineHeight};
   font-size: ${theme.fontSizes.medium};
   padding: ${theme.spacing.spacing06};
-  margin: 0 auto;
+  margin: 0;
 `;
 
-const Menu = styled(ReactModal)<SidebarProps>`
+const MenuStyles = styled(ReactModal)<SidebarProps>`
   top: 0;
   right: 0;
   outline: 0;
@@ -60,7 +70,8 @@ const Menu = styled(ReactModal)<SidebarProps>`
   overflow-x: hidden;
   overflow-y: scroll;
   z-index: ${theme.zindex.topoftheworld};
-  border-left: ${theme.borders.disabled};
+  border-left: ${(props) => props.side !== "onLeft" && theme.borders.disabled};
+  border-right: ${(props) => props.side === "onLeft" && theme.borders.disabled};
   background-color: ${theme.colors.white};
   box-shadow: ${theme.shadow.shadow04};
   transform: translateX(0);
@@ -70,12 +81,17 @@ const Menu = styled(ReactModal)<SidebarProps>`
     isOpen &&
       css`
         transform: ${side === "onLeft" ? "translateX(50%)" : "translateX(0)"};
-        transition: transform, width 0.3s ease-in-out;
+        transition: transform 0.3s ease-in-out;
       `;
   }}
+  ${({ width }) =>
+    width &&
+    css`
+      width: ${width} !important;
+    `}
 `;
 
-const SidebarMenu: any = styled(Menu)(
+const SidebarMenu: any = styled(MenuStyles)(
   variant({
     prop: "side",
     variants: {
@@ -85,58 +101,37 @@ const SidebarMenu: any = styled(Menu)(
       onLeft: {
         left: 0,
         right: "unset",
-        textAlign: "right",
       },
     },
   })
 );
 
-const SidebarCloseButton: any = styled(Button)<SidebarButtonProps>`
+const SidebarCloseButton = styled(Button)`
   padding: 0;
-  position: fixed;
   z-index: ${theme.zindex.topoftheworld};
-  transition: all 0.3s ease-in-out;
-  ${variant({
-    prop: "position",
-    variants: {
-      topLeft: {
-        top: "1rem",
-        left: "1rem",
-      },
-      topRight: {
-        top: "1rem",
-        right: "1rem",
-      },
-      bottomLeft: {
-        bottom: "1rem",
-        left: "1rem",
-      },
-      bottomRight: {
-        bottom: "1rem",
-        right: "1rem",
-      },
-      none: {
-        display: "none",
-      },
-    },
-  })}
 `;
 
-export const CloseButton = forwardRef(({ children, ...props }, ref) => (
-  <SidebarCloseButton severity="low" ref={ref} {...props}>
+export const CloseButton = ({
+  onClick,
+  icon,
+  children,
+  ...props
+}: SidebarButtonProps) => (
+  <SidebarCloseButton severity="low" onClick={onClick} {...props}>
     {children ? (
       children
     ) : (
-      <Icon width="1.2rem" height="1.2rem" image="CLOSE_SIDEBAR" />
+      <Icon width="24px" height="24px" image={icon || "CLOSE_SIDEBAR"} />
     )}
   </SidebarCloseButton>
-));
+);
 
 export const Sidebar: FunctionComponent<SidebarProps> = ({
   children,
-  isOpen,
   title,
   side,
+  isOpen,
+  onClick,
   ...props
 }) => {
   return (
@@ -146,13 +141,25 @@ export const Sidebar: FunctionComponent<SidebarProps> = ({
       style={overlayStyles}
       shouldCloseOnOverlayClick
       shouldCloseOnEsc
-      closeTimeoutMS={300}
       contentLabel="modal"
       shouldFocusAfterRender={false}
+      onRequestClose={onClick}
       {...props}
     >
-      <SidebarTitle>{title}</SidebarTitle>
-      <SidebarContent>{children}</SidebarContent>
+      <Container>
+        <TextRow
+          reverse={side === "onLeft" && true}
+          justify={side === "onLeft" ? "flex-end" : "space-between"}
+        >
+          <Title tag="span" ml={side === "onLeft" ? [1, 2] : [0]}>
+            {title}
+          </Title>
+          <CloseButton onClick={onClick} {...props} />
+        </TextRow>
+        <Row>
+          <Content tag="span">{children}</Content>
+        </Row>
+      </Container>
     </SidebarMenu>
   );
 };

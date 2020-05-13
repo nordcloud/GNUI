@@ -4,7 +4,7 @@ import theme from "../../theme";
 import { darken } from "polished";
 import { space, SpaceProps } from "styled-system";
 export interface ButtonProps {
-  children: string | React.ReactNode;
+  children?: string | React.ReactNode;
   severity?: "high" | "medium" | "low";
   priority?: string;
   size?: string;
