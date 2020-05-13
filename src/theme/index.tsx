@@ -57,6 +57,7 @@ const theme: ThemeInterface = {
     notification: "#3498db",
     black: "#212129",
     white: "#fcfcfd",
+    snowwhite: "#ffffff",
     actions: ["#FF2837", "#e74c3c", "#27ae60", "#f39c12", "#3498db"],
     darks: ["#212129", "#32323f", "#444454", "#5e5e75", "#7a7a94"],
     lights: ["#fcfcfd", "#f1f1f4", "#e7e7eb", "#d1d1da", "#bbbbc9"],
