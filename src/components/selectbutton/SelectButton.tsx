@@ -7,17 +7,15 @@ export interface SelectButtonProps {
   name: string;
   value: string;
   labelText: string;
+  isActive?: boolean;
   id?: string;
-  className?: string;
-  onClick?: (e: any) => void;
+  onClick: (value: any) => void;
 }
 
 export interface SelectButtonListProps {
-  list: Array<SelectButtonProps>;
+  children: any;
   status?: string;
   size?: string;
-  value?: string | number;
-  handleChange?: (e: any) => void;
 }
 
 type StyledSelectButtons = {
@@ -97,27 +95,25 @@ const StyledSelectButtons = styled.ul<StyledSelectButtons>`
     `}
 `;
 
+export const SelectButton: FunctionComponent<SelectButtonProps> = ({
+  name,
+  value,
+  labelText,
+  isActive = false,
+  id = "",
+  onClick,
+  ...props
+}) => <li><button value={value} name={name} className={isActive ? "active" : ""} {...props} onClick={() => onClick(value)}>
+  {labelText}
+</button></li>;
+
 export const MultipleSelect: FunctionComponent<SelectButtonListProps> = ({ 
-  list, 
   status,
-  value = "",
-  handleChange, 
+  children,
   size
 }) => {
   return (
   <StyledSelectButtons status={status} size={size}>
-    {list && list.map((option, index) => {
-      return(
-        <li key={index}>
-          <button 
-            value={option.value} 
-            name={option.name}
-            className={ value === option.value ? "active" : ""}
-            onClick={() => handleChange && handleChange(option.value)}>
-              {option.labelText}
-          </button>
-        </li>
-      )
-    })}
+    {children}
   </StyledSelectButtons>
 )};
