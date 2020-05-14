@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent } from "react";
 import styled from "styled-components";
 import theme from "../../theme";
 import { Heading } from "../heading";
@@ -15,6 +15,7 @@ interface TabProps {
   activeTab: number;
   children?: React.ReactNode;
   onClick?: (e: any) => void;
+  onChange?: (e: any) => void;
   props?: any;
   styleActive?:boolean;
   index: number;
@@ -25,19 +26,18 @@ interface TabsProps {
   wizard?: boolean;
   name?: string;
   caption?: string;
-  previousButton?:string;
-  nextButton?:string;
-  submitButton?:string;
   children: Array<TabProps>;
-  handleForm: () => void;
+  handleTab: (e: any) => void;
+  step: number;
+  buttons?:React.ReactNode;
 }
 
-const buttonDefaults: TabsProps = {
-  previousButton: "Previous",
-  nextButton: "Next Step",
-  submitButton: "Submit",
-  children: [],
-  handleForm: () => (console.log("Submit"))
+interface ButtonPreviousProps {
+  onClick?: (e: any) => void;
+}
+
+interface ButtonNextProps {
+  onClick?: (e: any) => void;
 }
 
 const TabsContent = styled(Box)`
@@ -66,7 +66,7 @@ const TabContainer: any = styled.li<TabProps>`
   background-color:${theme.colors.white};
   border-bottom:${theme.borders.grey};
   border-right:${theme.borders.grey};
-  min-width: 250px;
+  min-width: 15.625rem;
   &:last-child {
     border-right:none;
     &.tab-active {
@@ -129,21 +129,36 @@ const TabsStatusButtons = styled.div`
   position:relative;
 `;
 
-const PreviousButton = styled(Button)`
-  position: absolute;
-  border:none;
-`;
-
-const NextButton = styled(Button)`
-  margin-left:auto;
-  margin-right:auto;
-`;
-
 const TabsCover = styled.div`
   background-color: ${theme.colors.snowwhite};
   border-bottom-left-radius: ${theme.radiusDefault};
   border-bottom-right-radius: ${theme.radiusDefault};
 `;
+
+const PreviousButton = styled(Button)`
+  position: absolute;
+  border:none;
+`;
+const NextButton = styled(Button)`
+  margin-left:auto;
+  margin-right:auto;
+`;
+
+export const ButtonPrevious: FunctionComponent<ButtonPreviousProps> = ({ 
+  onClick,
+  children
+}) => {
+  return (
+  <PreviousButton outline onClick={onClick}>{children}</PreviousButton>
+)};
+
+export const ButtonNext: FunctionComponent<ButtonNextProps> = ({ 
+  onClick,
+  children
+}) => {
+  return (
+  <NextButton onClick={onClick}>{children}</NextButton>
+)};
 
 export const Tab: FunctionComponent<TabProps> = ({ 
   wizard,
@@ -167,20 +182,11 @@ export const Tab: FunctionComponent<TabProps> = ({
 export const Tabs: FunctionComponent<TabsProps> = ({ 
   name,
   wizard,
-  previousButton,
-  nextButton,
-  submitButton,
   children,
-  handleForm
+  handleTab,
+  step,
+  buttons
 }) => {
-  const [isCurrentStep, setCurrentStep] = useState(0);
-  const nextStep = () => {
-    setCurrentStep(isCurrentStep + 1);
-  };
-  const previousStep = () => {
-    setCurrentStep(isCurrentStep - 1);
-  };
-
   return (
     <TabsWrapper>
       <TabsList className={name}>
@@ -189,50 +195,32 @@ export const Tabs: FunctionComponent<TabsProps> = ({
             <Tab
               wizard={wizard}
               step={key + 1}
-              activeTab={isCurrentStep}
+              activeTab={step}
               index={key}
               heading={child.props.heading}
               caption={child.props.caption}
               disabled={child.props.disabled}
-              onClick={child.props.disabled ? undefined : () => setCurrentStep(key)}
+              onClick={child.props.disabled ? undefined : () => handleTab(key)}
             />
           );
         })}
       </TabsList>
       <TabsCover>
-        {children.map((child, key, keys) => {
-          if (key !== isCurrentStep) return undefined;
-          else {
-              return (
-                <React.Fragment>
-                  <TabsContent>
-                    {child.props.children}
-                  </TabsContent>
-                  {wizard && 
-                    <TabsStatusButtons>
-                      {
-                        (keys.length - 1 === key) 
-                        ?
-                          (
-                            <React.Fragment>
-                              <PreviousButton outline onClick={() => previousStep()}>{previousButton ? previousButton : buttonDefaults.previousButton}</PreviousButton>
-                              <NextButton onClick={handleForm}>{submitButton ? submitButton : buttonDefaults.submitButton}</NextButton>
-                            </React.Fragment>
-                          )
-                        :
-                        (
-                          <React.Fragment>
-                            {key !== 0 ? <PreviousButton outline onClick={() => previousStep()}>{previousButton ? previousButton : buttonDefaults.previousButton}</PreviousButton> : null }
-                            <NextButton onClick={() => nextStep()}>{nextButton ? nextButton : buttonDefaults.nextButton} {key + 1}</NextButton>
-                          </React.Fragment>
-                        )
-                      }
-                    </TabsStatusButtons>
-                  }
-                </React.Fragment>
-              )
-            }
+        <React.Fragment>
+        {children.map((child, key) => {
+          if (key !== step) return undefined;
+            return (
+              <TabsContent>
+                {child.props.children}
+              </TabsContent>
+            )
           })}
+        </React.Fragment>
+          {wizard && 
+            <TabsStatusButtons>
+              {buttons}
+            </TabsStatusButtons>
+          }
       </TabsCover>
     </TabsWrapper>
 )};
