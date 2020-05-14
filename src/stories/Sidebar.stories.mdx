@@ -17,7 +17,8 @@ import { Icon } from "../components/icon";
 # Sidebar
 
 <Description>
-  Sidebars by default will be displayed on the right side of the screen.
+  Sidebars by default will be displayed on the right side of the screen. User
+  needs to provide element (button, link, etc) to open it.
 </Description>
 
 <Preview>
@@ -51,7 +52,9 @@ interface SidebarProps {
   children?: React.ReactNode;
   title?: string;
   isOpen?: boolean;
-  style: ReactModal.Styles;
+  side?: "onLeft" | "onRight";
+  width?: number | string;
+  onClick?: (e: any) => void;
 }
 ```
 
@@ -103,6 +106,8 @@ Sidebar in default is displayed on the right side, but optionally you can change
 </Preview>
 
 ### width
+
+> If you don't need default breakpoints and needs just to hardcode `width` value you can provide it with `width` prop.
 
 <Preview>
   <Story name="custom width">
