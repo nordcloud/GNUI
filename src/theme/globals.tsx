@@ -12,7 +12,6 @@ export const SetGlobalStyle = createGlobalStyle`
      background: ${theme.colors.white};
      color: ${theme.colors.primary};
      font-weight: ${theme.fontWeights.regular};
-     letter-spacing: 0.1rem;
      line-height: ${theme.lineHeight};
   }
   code {
