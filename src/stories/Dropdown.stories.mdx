@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Dropdown } from "../components/dropdown";
-import { Box } from "../components/box";
+import { Container } from "../components/container";
+import { Spacer } from "../components/spacer";
 import { Text } from "../components/text";
 
 <Meta title="Components/Dropdown" component={Dropdown} />
@@ -18,28 +19,29 @@ import { Text } from "../components/text";
 - `value`: `string | number` — taken from Reacts `useState()`
 - `onChange`: `() => string | number` — taken from Reacts `useState()`
 
-<Preview>
-  <Story name="dropdown">
-    {() => {
-      const options = ["Option 1", "Option 2", "Option 3", "Option 4"];
-      const [value, setValue] = useState();
-      return (
-        <Box minHeight="15rem">
-          <Dropdown
-            name="Select an option"
-            options={options}
-            value={value}
-            width="15rem"
-            onChange={setValue}
-          />
-          <Text>
-            You choose:{" "}
-            <Text tag="span" bold>
-              {!value ? "nothing" : value}
-            </Text>
+---
+
+<Story name="dropdown">
+  {() => {
+    const options = ["Option 1", "Option 2", "Option 3", "Option 4"];
+    const [value, setValue] = useState();
+    return (
+      <Container>
+        <Dropdown
+          name="Select an option"
+          options={options}
+          value={value}
+          width="15rem"
+          onChange={setValue}
+        />
+        <Text>
+          Your choice:{" "}
+          <Text tag="span" bold>
+            {!value ? "nothing" : value}
           </Text>
-        </Box>
-      );
-    }}
-  </Story>
-</Preview>
+        </Text>
+        <Spacer height="5rem" />
+      </Container>
+    );
+  }}
+</Story>

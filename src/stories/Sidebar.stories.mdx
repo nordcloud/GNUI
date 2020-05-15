@@ -1,0 +1,165 @@
+import {
+  Meta,
+  Story,
+  Preview,
+  Title,
+  Description,
+} from "@storybook/addon-docs/blocks";
+import { useState } from "react";
+import { Button } from "../components/button";
+import { Sidebar } from "../components/sidebar";
+import { Container, Row, Col } from "react-awesome-styled-grid";
+import { Text } from "../components/text";
+import { Icon } from "../components/icon";
+
+<Meta title="Components/Sidebar" component={Sidebar} id="sidebar" />
+
+# Sidebar
+
+<Description>
+  Sidebars by default will be displayed on the right side of the screen. User
+  needs to provide element (button, link, etc) to open it.
+</Description>
+
+<Preview>
+  <Story name="default">
+    {() => {
+      const [isOpen, setIsOpen] = useState(false);
+      return (
+        <Container>
+          <Row justify="center">
+            <Button onClick={() => setIsOpen(!isOpen)}>
+              Click button to open sidebar
+            </Button>
+          </Row>
+          <Sidebar
+            title="Default sidebar"
+            isOpen={isOpen}
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            Sidebar Content
+          </Sidebar>
+        </Container>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Props
+
+```typescript
+interface SidebarProps {
+  children?: React.ReactNode;
+  title?: string;
+  isOpen?: boolean;
+  side?: "onLeft" | "onRight";
+  width?: number | string;
+  onClick?: (e: any) => void;
+}
+```
+
+### side
+
+Sidebar in default is displayed on the right side, but optionally you can change this behaviour with simple prop `side='onLeft'`.
+
+<Preview>
+  <Story name="side">
+    {() => {
+      const [isOpen, setIsOpen] = useState(false);
+      const [isOpenLeft, setIsOpenLeft] = useState(false);
+      return (
+        <Container>
+          <Row justify="center">
+            <Text>Click button to open sidebar.</Text>
+          </Row>
+          <Row justify="space-around">
+            <Col md={2}>
+              <Button onClick={() => setIsOpenLeft(!isOpenLeft)}>
+                ← Left sidebar
+              </Button>
+            </Col>
+            <Col md={2}>
+              <Button onClick={() => setIsOpen(!isOpen)}>
+                Right Sidebar →
+              </Button>
+            </Col>
+          </Row>
+          <Sidebar
+            title="Default sidebar"
+            isOpen={isOpen}
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            Sidebar Content
+          </Sidebar>
+          <Sidebar
+            side="onLeft"
+            title="Left sidebar"
+            isOpen={isOpenLeft}
+            onClick={() => setIsOpenLeft(!isOpenLeft)}
+          >
+            Sidebar Content
+          </Sidebar>
+        </Container>
+      );
+    }}
+  </Story>
+</Preview>
+
+### width
+
+> If you don't need default breakpoints and needs just to hardcode `width` value you can provide it with `width` prop.
+
+<Preview>
+  <Story name="custom width">
+    {() => {
+      const [isOpen20, setIsOpen20] = useState(false);
+      const [isOpenRem, setIsOpenRem] = useState(false);
+      const [isOpenPx, setIsOpenPx] = useState(false);
+      return (
+        <Container>
+          <Row justify="space-around">
+            <Col md={2}>
+              <Button onClick={() => setIsOpen20(!isOpen20)}>
+                50% Sidebar
+              </Button>
+            </Col>
+            <Col md={2}>
+              <Button onClick={() => setIsOpenRem(!isOpenRem)}>
+                50rem sidebar
+              </Button>
+            </Col>
+            <Col md={2}>
+              <Button onClick={() => setIsOpenPx(!isOpenPx)}>
+                700px sidebar
+              </Button>
+            </Col>
+          </Row>
+          <Sidebar
+            title="Width: 50%"
+            width="50%"
+            isOpen={isOpen20}
+            onClick={() => setIsOpen20(!isOpen20)}
+          >
+            Sidebar Content
+          </Sidebar>
+          <Sidebar
+            title="Width: 50rem"
+            width="50rem"
+            isOpen={isOpenRem}
+            onClick={() => setIsOpenRem(!isOpenRem)}
+          >
+            Sidebar Content
+          </Sidebar>
+          <Sidebar
+            title="Width: 700px"
+            width="700px"
+            isOpen={isOpenPx}
+            onClick={() => setIsOpenPx(!isOpenPx)}
+          >
+            Sidebar Content
+          </Sidebar>
+        </Container>
+      );
+    }}
+  </Story>
+</Preview>
