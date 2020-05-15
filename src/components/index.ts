@@ -24,3 +24,4 @@ export * from "./pagetitle";
 export * from "./switch";
 export * from "./heading";
 export * from "./tabs";
+export * from "./spinner";
