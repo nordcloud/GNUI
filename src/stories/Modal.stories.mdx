@@ -39,6 +39,7 @@ import { Button } from "../components/button";
             onAfterOpen={() => {}}
             onClose={update}
             contentLabel={"Modal title"}
+            onRequestClose={update}
             appId="#root"
           >
             This is modal content
@@ -65,6 +66,7 @@ import { Button } from "../components/button";
           <Modal 
             isOpen={isOpen}
             onAfterOpen={() => {}}
+            onRequestClose={update}
             onClose={update}
             contentLabel={"Modal title"}
             appId="#root"
