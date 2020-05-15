@@ -20,6 +20,7 @@ interface TabProps {
   styleActive?:boolean;
   index: number;
   disabled?: boolean;
+  buttons?:React.ReactNode;
 }
 
 interface TabsProps {
@@ -29,7 +30,6 @@ interface TabsProps {
   children: Array<TabProps>;
   handleTab: (e: any) => void;
   step: number;
-  buttons?:React.ReactNode;
 }
 
 interface ButtonPreviousProps {
@@ -168,11 +168,12 @@ export const Tab: FunctionComponent<TabProps> = ({
   activeTab,
   index,
   disabled,
-  onClick
+  onClick,
+  buttons
 }) => {
   const className = (activeTab === index) ? "tab-active" : "tab";
   return (
-    <TabContainer className={className} onClick={onClick} key={index} disabled={disabled}>
+    <TabContainer className={className} onClick={onClick} key={index} disabled={disabled} buttons={buttons}>
       {wizard ? <Step {...(index <= activeTab && {className: "dark"})}>{step}</Step> : null}
       <Heading level={5}>{heading}</Heading>
       <Text small>{caption}</Text>
@@ -184,8 +185,7 @@ export const Tabs: FunctionComponent<TabsProps> = ({
   wizard,
   children,
   handleTab,
-  step,
-  buttons
+  step
 }) => {
   return (
     <TabsWrapper>
@@ -206,21 +206,21 @@ export const Tabs: FunctionComponent<TabsProps> = ({
         })}
       </TabsList>
       <TabsCover>
-        <React.Fragment>
         {children.map((child, key) => {
           if (key !== step) return undefined;
             return (
-              <TabsContent>
-                {child.props.children}
-              </TabsContent>
+              <React.Fragment>
+                <TabsContent>
+                  {child.props.children}
+                </TabsContent>
+                {wizard && 
+                  <TabsStatusButtons>
+                    {child.props.buttons}
+                  </TabsStatusButtons>
+                }
+              </React.Fragment>
             )
           })}
-        </React.Fragment>
-          {wizard && 
-            <TabsStatusButtons>
-              {buttons}
-            </TabsStatusButtons>
-          }
       </TabsCover>
     </TabsWrapper>
 )};
