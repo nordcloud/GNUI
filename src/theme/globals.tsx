@@ -6,7 +6,7 @@ export const SetGlobalStyle = createGlobalStyle`
   ${reset}
   @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
   @import url('https://fonts.googleapis.com/css?family=Fira+Code:400,500,700&display=swap');
-  html, body, table {
+  html, body {
 
      font-family: ${theme.typography.fonts.body};
      background: ${theme.colors.lights[2]};
