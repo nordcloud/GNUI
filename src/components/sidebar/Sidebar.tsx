@@ -156,9 +156,7 @@ export const Sidebar: FunctionComponent<SidebarProps> = ({
           </Title>
           <CloseButton onClick={onClick} {...props} />
         </TextRow>
-        <Row>
-          <Content tag="span">{children}</Content>
-        </Row>
+        <Row>{children}</Row>
       </Container>
     </SidebarMenu>
   );
