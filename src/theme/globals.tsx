@@ -9,7 +9,7 @@ export const SetGlobalStyle = createGlobalStyle`
   html, body, table {
 
      font-family: ${theme.typography.fonts.body};
-     background: ${theme.colors.white};
+     background: ${theme.colors.lights[2]};
      color: ${theme.colors.primary};
      font-weight: ${theme.fontWeights.regular};
      line-height: ${theme.lineHeight};
