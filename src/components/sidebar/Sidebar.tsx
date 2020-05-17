@@ -5,7 +5,7 @@ import { variant, space } from "styled-system";
 import { Text } from "../text";
 import { Button, ButtonProps } from "../button";
 import { Icon } from "../icon";
-import { Container, Row } from "react-awesome-styled-grid";
+import { Container, Row, Col } from "react-awesome-styled-grid";
 import ReactModal from "react-modal";
 
 ReactModal.setAppElement("#root");
@@ -33,27 +33,36 @@ const overlayStyles = {
   },
 };
 
-const TextRow = styled(Row)`
+interface HeaderProps {
+  reverse: Boolean;
+}
+
+const Header = styled.div<HeaderProps>`
+  display: flex;
+  width: 100%;
   flex-wrap: nowrap;
   align-items: center;
   border-bottom: ${theme.borders.grey};
   line-height: ${theme.lineHeight};
   padding: ${theme.spacing.spacing06};
   margin: 0 auto;
+  box-sizing: border-box;
+  justify-content: ${(props) => (props.reverse ? "flex-end" : "space-between")};
+  flex-direction: ${(props) => (props.reverse ? "row-reverse" : "row")};
 `;
 
 const Title = styled(Text)`
-${space}
   font-weight: ${theme.fontWeights[2]};
   font-size: ${theme.fontSizes.medium};
   margin: 0;
+  ${space}
 `;
 
 const Content = styled(Text)`
   font-weight: ${theme.fontWeights[0]};
   line-height: ${theme.lineHeight};
   font-size: ${theme.fontSizes.medium};
-  padding: ${theme.spacing.spacing06};
+  padding: ${theme.spacing.spacing06} 0;
   margin: 0;
 `;
 
@@ -146,17 +155,18 @@ export const Sidebar: FunctionComponent<SidebarProps> = ({
       onRequestClose={onClick}
       {...props}
     >
+      <Header reverse={side === "onLeft" && true}>
+        <Title tag="span" ml={side === "onLeft" ? [1, 2] : [0]}>
+          {title}
+        </Title>
+        <CloseButton onClick={onClick} {...props} />
+      </Header>
       <Container>
-        <TextRow
-          reverse={side === "onLeft" && true}
-          justify={side === "onLeft" ? "flex-end" : "space-between"}
-        >
-          <Title tag="span" ml={side === "onLeft" ? [1, 2] : [0]}>
-            {title}
-          </Title>
-          <CloseButton onClick={onClick} {...props} />
-        </TextRow>
-        <>{children}</>
+        <Row>
+          <Col>
+            <Content>{children}</Content>
+          </Col>
+        </Row>
       </Container>
     </SidebarMenu>
   );
