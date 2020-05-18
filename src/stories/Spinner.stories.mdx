@@ -26,15 +26,25 @@ export interface SpinnerProps {
 
 <Preview>
   <Story name="default">
-    <Spinner></Spinner>
+    <Spinner />
   </Story>
 </Preview>
 
 ## Color
 
+From `theme`:
+
 <Preview>
-  <Story name="color">
-    <Spinner color="success" size="0.5"></Spinner>
+  <Story name="color theme">
+    <Spinner color="success" size="0.5" />
+  </Story>
+</Preview>
+
+Named:
+
+<Preview>
+  <Story name="named">
+    <Spinner color="palevioletred" size="0.5" />
   </Story>
 </Preview>
 
@@ -44,7 +54,7 @@ export interface SpinnerProps {
 
 <Preview>
   <Story name="size">
-    <Spinner size="0.2"></Spinner>
+    <Spinner size="0.2" />
   </Story>
 </Preview>
 
@@ -54,7 +64,7 @@ export interface SpinnerProps {
 
 <Preview>
   <Story name="label">
-    <Spinner size="0.2" caption="Here is a spinner"></Spinner>
+    <Spinner size="0.2" caption="Here is a spinner" />
   </Story>
 </Preview>
 
@@ -62,8 +72,8 @@ export interface SpinnerProps {
 
 <Preview>
   <Story name="button">
-    <Button><Spinner size="0.2" color="white" caption="Spinner"></Spinner></Button>
+    <Button>
+      <Spinner size="0.2" color="white" caption="Spinner" />
+    </Button>
   </Story>
 </Preview>
-
-
