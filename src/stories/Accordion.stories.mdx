@@ -1,0 +1,49 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Accordion, AccordionHeader, AccordionItem } from "../components/accordion";
+
+<Meta title="Components/Accordion" component={Accordion} />
+
+# Accordion
+
+#### Props
+
+- `children`: `AccordionHeader components` — **required**
+
+<Preview>
+  <Story name="accordion">
+    <Accordion>
+        <AccordionHeader title="Header 1" description="description..." />
+        <AccordionHeader title="Header 2" description="description..." />
+    </Accordion>
+  </Story>
+</Preview>
+
+# accordion header
+
+#### Props
+
+- `title`: `string` — header title **required**
+- `description`: `string` — header description — _optional_
+- `children`: `AccordionItem components` — _optional_
+
+<Preview>
+  <Story name="accordion header">
+    <Accordion>
+        <AccordionHeader title="Header 1" description="description...">
+            <AccordionItem>1234</AccordionItem>
+            <AccordionItem>1234</AccordionItem>
+            <AccordionItem>1234</AccordionItem>
+        </AccordionHeader>
+        <AccordionHeader title="Header 2" description="description...">
+            <AccordionItem>1234</AccordionItem>
+            <AccordionItem>1234</AccordionItem>
+            <AccordionItem>1234</AccordionItem>
+        </AccordionHeader>
+        <AccordionHeader title="Header 3" description="description...">
+            <AccordionItem>1234</AccordionItem>
+            <AccordionItem>1234</AccordionItem>
+            <AccordionItem>1234</AccordionItem>
+        </AccordionHeader>
+    </Accordion>
+  </Story>
+</Preview>
