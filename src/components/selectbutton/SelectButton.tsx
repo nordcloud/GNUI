@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { darken } from "polished";
@@ -7,13 +7,13 @@ export interface SelectButtonProps {
   name: string;
   value: string;
   labelText: string;
+  isActive?: boolean;
   id?: string;
-  className?: string;
-  onClick?: (e: any) => void;
+  onClick: (value: any) => void;
 }
 
 export interface SelectButtonListProps {
-  list: Array<SelectButtonProps>;
+  children: any;
   status?: string;
   size?: string;
 }
@@ -95,30 +95,25 @@ const StyledSelectButtons = styled.ul<StyledSelectButtons>`
     `}
 `;
 
-export const MultipleSelect: FunctionComponent<SelectButtonListProps> = ({
-  list,
+export const SelectButton: FunctionComponent<SelectButtonProps> = ({
+  name,
+  value,
+  labelText,
+  isActive = false,
+  id = "",
+  onClick,
+  ...props
+}) => <li><button value={value} name={name} className={isActive ? "active" : ""} {...props} onClick={() => onClick(value)}>
+  {labelText}
+</button></li>;
+
+export const MultipleSelect: FunctionComponent<SelectButtonListProps> = ({ 
   status,
-  size,
+  children,
+  size
 }) => {
-  const [value, setValue] = useState(list[0].value);
-  const handleSelect = (val) => setValue(value === val ? null : val);
   return (
-    <StyledSelectButtons status={status} size={size}>
-      {list &&
-        list.map((option, index) => {
-          return (
-            <li key={index}>
-              <button
-                value={option.value}
-                name={option.name}
-                className={value === option.value ? "active" : ""}
-                onClick={() => handleSelect(option.value)}
-              >
-                {option.labelText}
-              </button>
-            </li>
-          );
-        })}
-    </StyledSelectButtons>
-  );
-};
+  <StyledSelectButtons status={status} size={size}>
+    {children}
+  </StyledSelectButtons>
+)};

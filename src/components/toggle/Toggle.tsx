@@ -1,17 +1,17 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { darken } from "polished";
 
 export interface ToggleProps {
-  name: string;
-  toggleValue?: string;
+  name:string;
+  toggleValue?: boolean;
   labelText?: string;
   id?: string;
   className?: string;
   status?: string;
   size?: string;
-  onClick?: (e: any) => void;
+  handleSelect?: (e: any) => void;
 }
 
 const setColor = (color: string) => {
@@ -71,19 +71,16 @@ export const Toggle: FunctionComponent<ToggleProps> = ({
   name,
   toggleValue,
   labelText,
+  handleSelect
 }) => {
-  const [isActive, setActive] = useState(false);
-  const handleSelect = () => setActive(!isActive);
   return (
     <StyledToggle
       size={size}
       status={status}
       name={name}
-      value={toggleValue}
-      className={isActive ? "active" : ""}
-      onClick={handleSelect}
-    >
-      {labelText}
+      className={toggleValue ? "active" : ""}
+      onClick={() => handleSelect && handleSelect(!toggleValue)}>
+        {labelText}
     </StyledToggle>
   );
 };

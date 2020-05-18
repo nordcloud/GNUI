@@ -56,7 +56,13 @@ export const CancelButton: FunctionComponent<InputProps> = ({
 export const SubmitButton: FunctionComponent<InputProps> = ({
   name,
   ...props
-}) => <StyledSubmit name={name || "Submit"} type="submit" {...props} />;
+}) => (
+  <StyledSubmit
+    name={name || "Submit"}
+    {...props}
+    {...(!props.type && { type: "submit" })}
+  />
+);
 
 export const Form: FunctionComponent<InputProps> = ({ children, ...props }) => (
   <Container {...props}>{children}</Container>
