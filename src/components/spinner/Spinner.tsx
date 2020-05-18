@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from "react";
+import { color } from 'styled-system';
 import styled from "styled-components";
 import theme from "../../theme";
 import { Text } from "../text";
@@ -11,12 +12,6 @@ export interface SpinnerProps {
   onClick?: (e: any) => void;
   onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
 }
-
-const setColor = (color: string) => {
-  return color !== undefined && theme.colors[color]
-    ? theme.colors[color]
-    : color;
-};
 
 const SpinnerContainer = styled.div<SpinnerProps>`
   display:flex;
@@ -43,11 +38,11 @@ const StyledRing = styled.div<SpinnerProps>`
     height: 4rem;
     margin: 0.5rem;
     border: 0.5rem solid ${({ color }) =>
-    color ? `${setColor(color)}` : `${theme.colors.primary}`};
+    color ? `${color}` : `${theme.colors.primary}`};
     border-radius: 50%;
     animation: ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     border-color: ${({ color }) =>
-    color ? `${setColor(color)}` : `${theme.colors.primary}`} transparent transparent transparent;
+    color ? `${color}` : `${theme.colors.primary}`} transparent transparent transparent;
     &:nth-child(1) {
       animation-delay: -0.45s;
     }
