@@ -13,12 +13,20 @@ import { useState } from "react";
 - `toggleValue`: `boolean` — _optional_
 - `size`: `string` — _optional_ - small-sized SelectButton
 - `status`: `string` — _optional_ - color indicator status for SelectButton
+- `handleChange`: `() => boolean` — _optional_ - React `setState` to handle toggleValue change
 
 ### Default
 
 <Preview>
   <Story name="default">
-    <Toggle labelText="Default" name="default" />
+    {
+        () => {
+          const [toggle, setToggle] = useState(false);
+          return (
+              <Toggle labelText="Default" name="default" toggleValue={toggle} handleSelect={setToggle} />
+          )
+        }
+      }
   </Story>
 </Preview>
 
@@ -28,7 +36,14 @@ import { useState } from "react";
 
 <Preview>
   <Story name="small">
-    <Toggle size="small" labelText="Small" name="small" />
+    {
+        () => {
+          const [toggle, setToggle] = useState(false);
+          return (
+              <Toggle size="small" labelText="Small" name="small" toggleValue={toggle} handleSelect={setToggle} />
+          )
+        }
+      }
   </Story>
 </Preview>
 
@@ -38,19 +53,26 @@ import { useState } from "react";
 
 <Preview>
   <Story name="status">
-  <div>
-    <p>
-    <Toggle status="success" labelText="Success!" name="success" />
-    </p>
-    <p>
-    <Toggle status="danger" labelText="Danger" name="danger" />
-    </p>
-    <p>
-    <Toggle status="warning" labelText="Warning" name="warning" />
-    </p>
-    <p>
-    <Toggle status="notification" labelText="Notification" name="notification" />
-    </p>
-  </div>
+    {
+        () => {
+          const [toggle, setToggle] = useState(false);
+          return (
+            <div>
+              <p>
+                <Toggle status="success" labelText="Success!" name="success" toggleValue={toggle} handleSelect={setToggle}/>
+              </p>
+              <p>
+                <Toggle status="danger" labelText="Danger" name="danger" toggleValue={toggle} handleSelect={setToggle}/>
+              </p>
+              <p>
+                <Toggle status="warning" labelText="Warning" name="warning" toggleValue={toggle} handleSelect={setToggle}/>
+              </p>
+              <p>
+                <Toggle status="notification" labelText="Notification" name="notification" toggleValue={toggle} handleSelect={setToggle}/>
+              </p>
+            </div>
+          )
+        }
+      }
   </Story>
 </Preview>

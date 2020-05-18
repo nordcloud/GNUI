@@ -1,5 +1,5 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
-import { MultipleSelect } from "../components/selectbutton";
+import { MultipleSelect, SelectButton } from "../components/selectbutton";
 import { Text } from "../components/text";
 import { useState } from "react";
 
@@ -10,6 +10,8 @@ import { useState } from "react";
 #### Props
 
 - `list`: `array` — **required** and containes the following **required** props: `name`: `string`, `value`: `string`, `labelText`: `string` and the following _optional_: `id`, `className`
+- `handleChange`: `() => string | number` — _optional_ - React `setState` to handle select value change
+- `value`: `string | number` — _optional_ - current select value
 - `size`: `string` — _optional_ - small-sized SelectButton
 - `status`: `string` — _optional_ - color indicator status for SelectButton
 
@@ -17,17 +19,16 @@ import { useState } from "react";
 
 <Preview>
   <Story name="default">
-  {() => {
-    const list = [
-    { name: "button1", value: "button1", labelText: "Button 1"},
-    { name: "button2", value: "button2", labelText: "Button 2"},
-    { name: "button3", value: "button3", labelText: "Button 3"}
-    ];
-    return(
-    <MultipleSelect list={list} />
-    );
-  }
-  }
+    {() => {
+      const [value, setValue] = useState();
+      return(
+        <MultipleSelect>
+          <SelectButton name="button1" value="button1" labelText="Button 1" onClick={setValue} isActive={value === "button1"} />
+            <SelectButton name="button2" value="button2" labelText="Button 2" onClick={setValue} isActive={value === "button2"} />
+            <SelectButton name="button3" value="button3" labelText="Button 3" onClick={setValue} isActive={value === "button3"} />
+        </MultipleSelect>
+      )
+    }}
   </Story>
 </Preview>
 
@@ -37,17 +38,16 @@ import { useState } from "react";
 
 <Preview>
   <Story name="small">
-  {() => {
-    const list = [
-    { name: "button1", value: "button1", labelText: "Button 1"},
-    { name: "button2", value: "button2", labelText: "Button 2"},
-    { name: "button3", value: "button3", labelText: "Button 3"}
-    ];
-    return(
-    <MultipleSelect size="small" list={list} />
-    );
-  }
-  }
+    {() => {
+      const [value, setValue] = useState();
+      return(
+        <MultipleSelect size="small">
+          <SelectButton name="button1" value="button1" labelText="Button 1" onClick={setValue} isActive={value === "button1"} />
+            <SelectButton name="button2" value="button2" labelText="Button 2" onClick={setValue} isActive={value === "button2"} />
+            <SelectButton name="button3" value="button3" labelText="Button 3" onClick={setValue} isActive={value === "button3"} />
+        </MultipleSelect>
+      )
+    }}
   </Story>
 </Preview>
 
@@ -58,24 +58,20 @@ import { useState } from "react";
 <Preview>
   <Story name="status">
   {() => {
-    const list = [
-    { name: "button1", value: "button1", labelText: "Button 1"},
-    { name: "button2", value: "button2", labelText: "Button 2"},
-    { name: "button3", value: "button3", labelText: "Button 3"}
-    ];
+    const [value, setValue] = useState();
     return(
     <div>
       <Text>Success</Text>
-      <MultipleSelect status="success" list={list} />
+      <MultipleSelect status="success">
+        <SelectButton name="button1" value="button1" labelText="Button 1" onClick={setValue} isActive={value === "button1"} />
+        <SelectButton name="button2" value="button2" labelText="Button 2" onClick={setValue} isActive={value === "button2"} />
+        <SelectButton name="button3" value="button3" labelText="Button 3" onClick={setValue} isActive={value === "button3"} />
+      </MultipleSelect>
       <Text>Danger</Text>
-      <MultipleSelect status="danger" list={list} />
       <Text>Warning</Text>
-      <MultipleSelect status="warning" list={list} />
       <Text>Notification</Text>
-      <MultipleSelect status="notification" list={list} />
     </div>
     );
-  }
-  }
+  }}
   </Story>
 </Preview>
