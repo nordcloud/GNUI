@@ -25,3 +25,4 @@ export * from "./switch";
 export * from "./heading";
 export * from "./sidebar";
 export * from "./tabs";
+export * from "./spinner";
