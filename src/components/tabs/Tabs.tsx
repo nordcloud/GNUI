@@ -12,13 +12,13 @@ interface TabProps {
   step?: number;
   heading?: string;
   caption?:string;
-  activeTab: number;
+  activeTab?: number;
   children?: React.ReactNode;
   onClick?: (e: any) => void;
   onChange?: (e: any) => void;
   props?: any;
   styleActive?:boolean;
-  index: number;
+  index?: number;
   disabled?: boolean;
   buttons?:React.ReactNode;
 }
@@ -144,7 +144,7 @@ const NextButton = styled(Button)`
   margin-right:auto;
 `;
 
-export const ButtonPrevious: FunctionComponent<ButtonPreviousProps> = ({ 
+export const ButtonPrevious: FunctionComponent<ButtonPreviousProps> = ({
   onClick,
   children
 }) => {
@@ -152,7 +152,7 @@ export const ButtonPrevious: FunctionComponent<ButtonPreviousProps> = ({
   <PreviousButton outline onClick={onClick}>{children}</PreviousButton>
 )};
 
-export const ButtonNext: FunctionComponent<ButtonNextProps> = ({ 
+export const ButtonNext: FunctionComponent<ButtonNextProps> = ({
   onClick,
   children
 }) => {
@@ -160,7 +160,7 @@ export const ButtonNext: FunctionComponent<ButtonNextProps> = ({
   <NextButton onClick={onClick}>{children}</NextButton>
 )};
 
-export const Tab: FunctionComponent<TabProps> = ({ 
+export const Tab: FunctionComponent<TabProps> = ({
   wizard,
   step,
   heading,
@@ -180,7 +180,7 @@ export const Tab: FunctionComponent<TabProps> = ({
     </TabContainer>
 )};
 
-export const Tabs: FunctionComponent<TabsProps> = ({ 
+export const Tabs: FunctionComponent<TabsProps> = ({
   name,
   wizard,
   children,
@@ -213,7 +213,7 @@ export const Tabs: FunctionComponent<TabsProps> = ({
                 <TabsContent>
                   {child.props.children}
                 </TabsContent>
-                {wizard && 
+                {wizard &&
                   <TabsStatusButtons>
                     {child.props.buttons}
                   </TabsStatusButtons>
