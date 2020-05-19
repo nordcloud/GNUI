@@ -7,20 +7,20 @@ import { Box } from "../box";
 import { Button } from "../button";
 
 interface TabProps {
-  className?: string;
+  className?:string;
   wizard?: boolean;
   step?: number;
   heading?: string;
-  caption?: string;
+  caption?:string;
   activeTab?: number;
   children?: React.ReactNode;
   onClick?: (e: any) => void;
   onChange?: (e: any) => void;
   props?: any;
-  styleActive?: boolean;
+  styleActive?:boolean;
   index?: number;
   disabled?: boolean;
-  buttons?: React.ReactNode;
+  buttons?:React.ReactNode;
 }
 
 interface TabsProps {
@@ -42,18 +42,18 @@ interface ButtonNextProps {
 
 const TabsContent = styled(Box)`
   background-color: ${theme.colors.snowwhite};
-  border-top: ${theme.borders.grey};
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  box-shadow: none;
+  border-top:${theme.borders.grey};
+  border-top-left-radius:0;
+  border-top-right-radius:0;
+  box-shadow:none;
   padding: ${theme.spacing.spacing07} ${theme.spacing.spacing04};
   p {
     line-height: 1.5rem;
     &:first-child {
-      margin-top: 0;
+      margin-top:0;
     }
     &:last-child {
-      margin-bottom: 0;
+      margin-bottom:0;
     }
   }
 `;
@@ -62,70 +62,71 @@ const TabContainer: any = styled.li<TabProps>`
   display: inline-block;
   list-style: none;
   margin-bottom: -1px;
-  padding: ${theme.spacing.spacing04};
-  background-color: ${theme.colors.white};
-  border-bottom: ${theme.borders.grey};
-  border-right: ${theme.borders.grey};
+  padding:${theme.spacing.spacing04};
+  background-color:${theme.colors.white};
+  border-bottom:${theme.borders.grey};
+  border-right:${theme.borders.grey};
   min-width: 15.625rem;
   &:last-child {
-    border-right: none;
+    border-right:none;
     &.tab-active {
-      border-right: ${theme.borders.grey};
+      border-right:${theme.borders.grey};
     }
   }
 
   &:hover {
-    cursor: ${({ disabled }) => (disabled ? `auto` : `pointer`)};
-    background-color: ${({ disabled }) =>
-      disabled ? `${theme.colors.white}` : `${theme.colors.lights[1]}`};
+    cursor: ${({ disabled }) =>
+    disabled ? `auto` : `pointer`};
+    background-color:${({ disabled }) =>
+    disabled ? `${theme.colors.white}` : `${theme.colors.lights[1]}`};
   }
 
   h5 {
-    margin: 0;
-    font-weight: ${theme.fontWeights.medium};
+    margin:0;
+    font-weight:${theme.fontWeights.medium};
     color: ${theme.colors.darks[2]};
   }
   p {
-    margin: ${theme.spacing.spacing01} 0 0;
+    margin:${theme.spacing.spacing01} 0 0;
   }
   &.tab-active {
-    background-color: ${theme.colors.snowwhite};
-    border-bottom: 1px solid transparent;
+    background-color:${theme.colors.snowwhite};
+    border-bottom:1px solid transparent;
   }
 `;
 
 const TabsList = styled.ol`
-  padding: 0;
-  margin: 0;
+  padding:0;
+  margin:0;
 `;
 
 const TabsWrapper = styled(Box)`
-  padding: 0;
+  padding:0;
 `;
 
 const Step = styled(Box)`
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  box-shadow: none;
+  padding:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:2rem;
+  height:2rem;
+  box-shadow:none;
   margin-bottom: ${theme.spacing.spacing04};
   background-color: ${theme.colors.lights[2]};
   color: ${theme.colors.darks[3]};
 
   &.dark {
-    background: ${theme.colors.primary};
-    color: ${theme.colors.white};
+    background:${theme.colors.primary};
+    color:${theme.colors.white};
   }
 `;
 
 const TabsStatusButtons = styled.div`
   padding: ${theme.spacing.spacing04};
   border-top: ${theme.borders.grey};
-  display: flex;
-  position: relative;
+  display:flex;
+  position:relative;
 `;
 
 const TabsCover = styled.div`
@@ -135,31 +136,28 @@ const TabsCover = styled.div`
 `;
 
 const PreviousButton = styled(Button)`
-  position: absolute;
-  border: none;
+  border:none;
 `;
 const NextButton = styled(Button)`
-  margin-left: auto;
-  margin-right: auto;
+  margin-left:auto;
+  margin-right:auto;
 `;
 
 export const ButtonPrevious: FunctionComponent<ButtonPreviousProps> = ({
   onClick,
-  children,
+  children
 }) => {
   return (
-    <PreviousButton outline onClick={onClick}>
-      {children}
-    </PreviousButton>
-  );
-};
+  <PreviousButton outline onClick={onClick}>{children}</PreviousButton>
+)};
 
 export const ButtonNext: FunctionComponent<ButtonNextProps> = ({
   onClick,
-  children,
+  children
 }) => {
-  return <NextButton onClick={onClick}>{children}</NextButton>;
-};
+  return (
+  <NextButton onClick={onClick}>{children}</NextButton>
+)};
 
 export const Tab: FunctionComponent<TabProps> = ({
   wizard,
@@ -170,32 +168,23 @@ export const Tab: FunctionComponent<TabProps> = ({
   index,
   disabled,
   onClick,
-  buttons,
+  buttons
 }) => {
-  const className = activeTab === index ? "tab-active" : "tab";
+  const className = (activeTab === index) ? "tab-active" : "tab";
   return (
-    <TabContainer
-      className={className}
-      onClick={onClick}
-      key={index}
-      disabled={disabled}
-      buttons={buttons}
-    >
-      {wizard ? (
-        <Step {...(index <= activeTab && { className: "dark" })}>{step}</Step>
-      ) : null}
+    <TabContainer className={className} onClick={onClick} key={index} disabled={disabled} buttons={buttons}>
+      {wizard ? <Step {...(index <= activeTab && {className: "dark"})}>{step}</Step> : null}
       <Heading level={5}>{heading}</Heading>
       <Text small>{caption}</Text>
     </TabContainer>
-  );
-};
+)};
 
 export const Tabs: FunctionComponent<TabsProps> = ({
   name,
   wizard,
   children,
   handleTab,
-  step,
+  step
 }) => {
   return (
     <TabsWrapper>
@@ -218,16 +207,19 @@ export const Tabs: FunctionComponent<TabsProps> = ({
       <TabsCover>
         {children.map((child, key) => {
           if (key !== step) return undefined;
-          return (
-            <>
-              <TabsContent>{child.props.children}</TabsContent>
-              {wizard && (
-                <TabsStatusButtons>{child.props.buttons}</TabsStatusButtons>
-              )}
-            </>
-          );
-        })}
+            return (
+              <React.Fragment>
+                <TabsContent>
+                  {child.props.children}
+                </TabsContent>
+                {wizard &&
+                  <TabsStatusButtons>
+                    {child.props.buttons}
+                  </TabsStatusButtons>
+                }
+              </React.Fragment>
+            )
+          })}
       </TabsCover>
     </TabsWrapper>
-  );
-};
+)};
