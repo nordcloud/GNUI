@@ -1,0 +1,58 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { useState } from "react";
+import { StyledSelect, MultiSelect } from "../components/multiselect";
+
+<Meta title="Components/Multiselect" component={StyledSelect} />
+
+# Multiselect
+
+#### Props
+
+```typescript
+export interface SelectProps {
+  options?:any;
+}
+```
+
+### Basic Select
+
+<Preview>
+  <Story name="basic modal">
+    {() => {
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' }
+      ];
+      return (
+        <div style={{height: '150px'}}>
+          <StyledSelect options={options}></StyledSelect>
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
+
+### Multiselect
+
+<Preview>
+  <Story name="multiselect">
+    {() => {
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' }
+      ];
+      return (
+        <div style={{height: '150px'}}>
+          <StyledSelect 
+            isMulti 
+            defaultValue={[options[1], options[2]]}
+            options={options}
+          >
+          </StyledSelect>
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
