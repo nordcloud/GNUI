@@ -180,9 +180,13 @@ export const Tab: FunctionComponent<TabProps> = ({
       disabled={disabled}
       buttons={buttons}
     >
-      {wizard && activeTab && index && (
-        <Step {...(index <= activeTab && { className: "dark" })}>{step}</Step>
-      )}
+      {wizard ? (
+        activeTab && index ? (
+          <Step {...(index <= activeTab && { className: "dark" })}>{step}</Step>
+        ) : (
+          <Step>{step}</Step>
+        )
+      ) : null}
       <Heading level={5}>{heading}</Heading>
       <Text small>{caption}</Text>
     </TabContainer>
