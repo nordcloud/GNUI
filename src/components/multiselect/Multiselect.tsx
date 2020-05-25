@@ -1,8 +1,7 @@
 import React, { FunctionComponent } from "react";
-import { color } from "styled-system";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import theme from "../../theme";
-import Select from 'react-select';
+import {default as ReactSelect} from 'react-select';
 
 export interface SelectProps {
   options?:any;
@@ -65,18 +64,18 @@ const SelectContainer = styled.div<SelectProps>`
   }
 `;
 
-export const StyledSelect: FunctionComponent<SelectProps> = ({
+export const Select: FunctionComponent<SelectProps> = ({
   options,
   ...props
 }) => {
   return (
     <SelectContainer>
-      <Select 
+      <ReactSelect 
         className="react-select-container"
         classNamePrefix="react-select"
         options={options} 
         {...props}>
-        </Select>
+        </ReactSelect>
     </SelectContainer>
   );
 };

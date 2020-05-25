@@ -1,8 +1,8 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { useState } from "react";
-import { StyledSelect, MultiSelect } from "../components/multiselect";
+import { Select } from "../components/multiselect";
 
-<Meta title="Components/Multiselect" component={StyledSelect} />
+<Meta title="Components/Select" component={Select} />
 
 # Multiselect
 
@@ -26,7 +26,7 @@ export interface SelectProps {
       ];
       return (
         <div style={{height: '150px'}}>
-          <StyledSelect options={options}></StyledSelect>
+          <Select options={options}></Select>
         </div>
       );
     }}
@@ -45,12 +45,12 @@ export interface SelectProps {
       ];
       return (
         <div style={{height: '150px'}}>
-          <StyledSelect 
+          <Select 
             isMulti 
             defaultValue={[options[1], options[2]]}
             options={options}
           >
-          </StyledSelect>
+          </Select>
         </div>
       );
     }}
