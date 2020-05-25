@@ -1,10 +1,12 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components";
 import theme from "../../theme";
+import { lighten } from "polished";
 import {default as ReactSelect} from 'react-select';
 
 export interface SelectProps {
   options?:any;
+  styles?:any;
 }
 
 const SelectContainer = styled.div<SelectProps>`
@@ -13,13 +15,11 @@ const SelectContainer = styled.div<SelectProps>`
       & > div {
         background: ${theme.colors.white};
         border: ${theme.borders.disabled};
-        box-shadow:none;
         &:hover {
-          border: ${theme.borders.darkenGrey};
+          border: ${theme.borders.lightenGrey};
         }
         &:focus {
           border: 1px solid ${theme.colors.darks[4]};
-          box-shadow: none;
         }
       }
     }
@@ -27,11 +27,35 @@ const SelectContainer = styled.div<SelectProps>`
       color: ${theme.colors.primary};
     }
     &__multi-value {
-      background: ${theme.colors.lights[3]};
+      padding: 0 0.125rem 0 ${theme.spacing.spacing02};
+      margin: ${theme.spacing.spacing01};
+      border-radius: 1rem;
+      color: ${theme.colors.lights[0]};
+      align-items:center;
+      height:1.5rem;
+      
       &__label {
-        color: ${theme.colors.primary};
-        padding-left:${theme.spacing.spacing02};
-        padding-right:${theme.colors.spacing02};
+        color: ${theme.colors.white};
+        padding-left:0;
+        padding-right: 0.375rem;
+        font-size:${theme.fontSizes.small};
+      }
+
+      &__remove {
+        width:1.125rem;
+        height:1.125rem;
+        border-radius:50%;
+        align-items:center;
+        justify-content:center;
+        background-color: rgba(255, 255, 255, 0.3);
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.5);
+        }
+        svg {
+          color:${theme.colors.white};
+          width: 0.75rem;
+          height:0.75rem;
+        }
       }
     }
     &__placeholder {
@@ -43,10 +67,7 @@ const SelectContainer = styled.div<SelectProps>`
       line-height: 1.5rem;
     }
     &__menu {
-      box-shadow: ${theme.colors.shadow04};
-      &-list {
-        
-      }
+      box-shadow: ${theme.shadow.shadow04};
     }
     &__option {
       color: ${theme.colors.primary};
@@ -66,14 +87,24 @@ const SelectContainer = styled.div<SelectProps>`
 
 export const Select: FunctionComponent<SelectProps> = ({
   options,
+  styles,
   ...props
 }) => {
+  console.log(styles);
   return (
     <SelectContainer>
       <ReactSelect 
         className="react-select-container"
         classNamePrefix="react-select"
         options={options} 
+        styles={styles}
+        theme={theme => ({
+          ...theme,
+          colors: {
+            ...theme.colors,
+            neutral10: "#161632",
+          },
+        })}
         {...props}>
         </ReactSelect>
     </SelectContainer>

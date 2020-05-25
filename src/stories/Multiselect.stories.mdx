@@ -1,6 +1,8 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { useState } from "react";
 import { Select } from "../components/multiselect";
+import theme from "../theme";
+import chroma from 'chroma-js';
 
 <Meta title="Components/Select" component={Select} />
 
@@ -46,9 +48,51 @@ export interface SelectProps {
       return (
         <div style={{height: '150px'}}>
           <Select 
+            isMulti
+            defaultValue={[options[1], options[2]]}
+            options={options}
+          >
+          </Select>
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
+
+### Multiselect: colors
+
+<Preview>
+  <Story name="colors">
+    {() => {
+      const options = [
+        { value: 'chocolate', 
+          label: 'Chocolate'
+        },
+        { value: 'strawberry', 
+          label: 'Strawberry',
+          color: `${theme.colors.notification}`
+           },
+        { value: 'vanilla', 
+          label: 'Vanilla',
+          color: `${theme.colors.danger}`
+        }
+      ];
+      const colorStyles = {
+        multiValue: (styles, { data }) => {
+        const color = data.color;
+        return {
+          ...styles,
+          backgroundColor: color ? color : theme.colors.primary,
+        };
+      },
+      };
+      return (
+        <div style={{height: '150px'}}>
+          <Select 
             isMulti 
             defaultValue={[options[1], options[2]]}
             options={options}
+            styles={colorStyles}
           >
           </Select>
         </div>
