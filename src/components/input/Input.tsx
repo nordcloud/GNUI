@@ -18,6 +18,7 @@ export interface InputProps {
   children?: string | number | any;
   onClick?: (e: any) => void;
   onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
+  onKeyPress?: (e: any) => void;
 }
 
 const StyledLabel = styled.label`

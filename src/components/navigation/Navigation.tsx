@@ -21,7 +21,7 @@ const Item = styled.div`
   text-decoration: none;
   height: 2.5rem;
   vertical-align: middle;
-
+  text-decoration: none;
   &.separator {
     font-size: ${theme.fontSizes.small};
     color: ${theme.colors.darks[4]};
