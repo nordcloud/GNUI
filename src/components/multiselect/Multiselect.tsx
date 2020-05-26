@@ -89,7 +89,6 @@ export const Select: FunctionComponent<SelectProps> = ({
   styles,
   ...props
 }) => {
-  console.log(styles);
   return (
     <SelectContainer>
       <ReactSelect 
@@ -109,4 +108,3 @@ export const Select: FunctionComponent<SelectProps> = ({
     </SelectContainer>
   );
 };
-
