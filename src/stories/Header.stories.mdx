@@ -1,0 +1,34 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Header } from "../components/header";
+import { Navigation } from "../components/navigation";
+import { Icon } from "../components/icon";
+
+<Meta title="Components/Header" component={Header} />
+
+# Header
+
+## Props
+
+- `logo`: `Icon component` — **optional** - GNUI icon component containing your logo
+- `navigation`: `Navigation component` — **optional** - GNUI navigation component
+- `children`: `string | number | any` — **optional** - any additional data you want to use, ie. customer select component
+
+<Preview>
+  <Story name="default">
+    {() => {    
+        const logo = <Icon image="LOGO_EXAMPLE" height={'2rem'} width={'194px'} />;
+        const navigation = <Navigation.Container>
+          <Navigation.Item as="a" href="http://google.com" target="_blank">
+            Google
+          </Navigation.Item>
+          <Navigation.Item as="a" href="http://google.com" target="_blank">
+            Google
+          </Navigation.Item>
+          <Navigation.Item as="a" href="http://google.com" target="_blank">
+            Google
+          </Navigation.Item>
+        </Navigation.Container>;
+        return (<Header logo={logo} navigation={navigation} />)
+    }}
+  </Story>
+</Preview>
