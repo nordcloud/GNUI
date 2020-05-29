@@ -7,9 +7,9 @@ type BoxProps = {
   dark?: boolean;
   minHeight?: string;
   minWidth?: string;
-  margin?: string;
   border?: string;
   color?: string;
+  backgroundColor?: string;
   radius?: "small" | "medium" | "large";
   padding?: "spacing01" | "spacing02" | "spacing03" | "spacing04" | "spacing05" | "spacing06" | "spacing07" | "spacing08";
   spacing?: "spacing01" | "spacing02" | "spacing03" | "spacing04" | "spacing05" | "spacing06" | "spacing07" | "spacing08";
@@ -49,12 +49,6 @@ const StyledBox = styled(Container)<BoxProps>`
     css`
       box-shadow: ${theme.shadow[shadow]};
     `}
-  ${({ margin }) =>
-    // margin should be deleted ASAP after mergin Spacer
-    margin &&
-    css`
-      margin-bottom: ${theme.spacing[margin]};
-    `}
   ${({ minHeight }) =>
     minHeight &&
     css`
@@ -68,12 +62,17 @@ const StyledBox = styled(Container)<BoxProps>`
   ${({ border }) =>
     border &&
     css`
-      border: ${theme.borders[border]};
+      border: ${theme.borders[border] || border};
     `}
   ${({ color }) =>
     color &&
     css`
       color: ${theme.colors[color] || color};
+    `}
+  ${({ backgroundColor }) =>
+    backgroundColor &&
+    css`
+      background-color: ${theme.colors[backgroundColor] || backgroundColor};
     `}
 `;
 
