@@ -8,20 +8,19 @@ import { Flex } from "../container";
 import { IconProps } from "../icon";
 
 export interface HeaderProps {
-    logo?: IconProps;
-    navigation?: NavWrapperProps;
-    children?: string | number | any;
-  }
+  logo?: IconProps;
+  navigation?: NavWrapperProps;
+  children?: string | number | any;
+}
 
+const Logo = styled.span`
+  margin-right: ${theme.spacing.spacing07};
+  color: ${theme.colors.primary};
+`;
 
-  const Logo = styled.span`
-    margin-right: ${theme.spacing.spacing07};
-    color: ${theme.colors.primary};
-  `;
-
-  const MainContainer = styled(Flex)`
-    flex-direction: row;
-  `;
+const MainContainer = styled(Flex)`
+  flex-direction: row;
+`;
 
 export const Header: FunctionComponent<HeaderProps> = ({
     logo,
@@ -29,23 +28,22 @@ export const Header: FunctionComponent<HeaderProps> = ({
     children
   }) => (
     <header>
-        <Box padding="spacing04" shadow="shadow03">
-            <>
-                <Row>
-                    <Col lg={8}>
-                        <MainContainer>
-                            <Logo>
-                                {logo}
-                            </Logo>
-
-                            {navigation}
-                        </MainContainer>
-                    </Col>
-                    <Col lg={4}>
-                        {children}
-                    </Col>
-                </Row>
-            </>
-        </Box>
+      <Box padding="spacing04" shadow="shadow03">
+        <>
+          <Row>
+            <Col lg={8}>
+              <MainContainer>
+                <Logo>
+                  {logo}
+                </Logo>
+                {navigation}
+              </MainContainer>
+            </Col>
+            <Col lg={4}>
+              {children}
+            </Col>
+          </Row>
+        </>
+      </Box>
     </header>
   );

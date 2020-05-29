@@ -16,19 +16,19 @@ import { Icon } from "../components/icon";
 <Preview>
   <Story name="default">
     {() => {    
-        const logo = <Icon image="LOGO_EXAMPLE" height={'2rem'} width={'194px'} />;
-        const navigation = <Navigation.Container>
-          <Navigation.Item as="a" href="http://google.com" target="_blank">
-            Google
-          </Navigation.Item>
-          <Navigation.Item as="a" href="http://google.com" target="_blank">
-            Google
-          </Navigation.Item>
-          <Navigation.Item as="a" href="http://google.com" target="_blank">
-            Google
-          </Navigation.Item>
-        </Navigation.Container>;
-        return (<Header logo={logo} navigation={navigation} />)
+      const logo = <Icon image="LOGO_EXAMPLE" height={'2rem'} width={'194px'} />;
+      const navigation = <Navigation.Container>
+        <Navigation.Item as="a" href="http://google.com" target="_blank">
+          Google
+        </Navigation.Item>
+        <Navigation.Item as="a" href="http://google.com" target="_blank">
+          Google
+        </Navigation.Item>
+        <Navigation.Item as="a" href="http://google.com" target="_blank">
+          Google
+        </Navigation.Item>
+      </Navigation.Container>;
+      return (<Header logo={logo} navigation={navigation} />)
     }}
   </Story>
 </Preview>
