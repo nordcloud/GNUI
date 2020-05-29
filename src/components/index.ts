@@ -26,4 +26,5 @@ export * from "./heading";
 export * from "./sidebar";
 export * from "./tabs";
 export * from "./spinner";
+export * from "./multiselect";
 export * from "./selectbutton";
