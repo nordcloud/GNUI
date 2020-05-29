@@ -40,7 +40,7 @@ export const PageTitleBreadcrumbs: FunctionComponent<PageTitleBreadcrumbsProps> 
   margin
 }) => {
   return (
-    <Box padding="spacing04" shadow="shadow02" margin={margin}>
+    <Box padding="spacing04" shadow="shadow02">
       <PageTitle title={title} />
       <Breadcrumbs list={list} />
     </Box>
