@@ -62,11 +62,13 @@ const StyledBox = styled(Container)<BoxProps>`
     css`
       padding: ${theme.spacing[padding]};
     `}
+
      ${({ spacing }) =>
        spacing &&
        css`
-         margin: ${theme.spacing[spacing]};
+         margin-top: ${theme.spacing[spacing]};
        `}
+
   ${({ shadow }) =>
     shadow &&
     css`
