@@ -20,7 +20,7 @@ type BoxProps = {
     | "spacing06"
     | "spacing07"
     | "spacing08";
-  spacing?:
+  margin?:
     | "spacing01"
     | "spacing02"
     | "spacing03"
@@ -64,7 +64,6 @@ const StyledBox = styled(Container)<BoxProps>`
     `}
 
     ${({ margin }) =>
-      // margin should be deleted ASAP after mergin Spacer
       margin &&
       css`
         margin-bottom: ${theme.spacing[margin]};
