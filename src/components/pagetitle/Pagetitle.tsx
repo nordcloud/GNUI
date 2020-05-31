@@ -18,30 +18,29 @@ interface PageTitleBreadcrumbsProps {
 
 const PageTitleWrapper = styled.div`
   h3 {
-    line-height:2rem;
+    line-height: 2rem;
     font-weight: ${theme.fontWeights.medium};
     margin: 0 0 ${theme.spacing.spacing01};
   }
 `;
 
-export const PageTitle: FunctionComponent<PageTitleProps> = ({ 
-  title
-}) => {
+export const PageTitle: FunctionComponent<PageTitleProps> = ({ title }) => {
   return (
     <PageTitleWrapper>
       <Heading level={3}>{title}</Heading>
     </PageTitleWrapper>
-)};
+  );
+};
 
-
-export const PageTitleBreadcrumbs: FunctionComponent<PageTitleBreadcrumbsProps> = ({ 
+export const PageTitleBreadcrumbs: FunctionComponent<PageTitleBreadcrumbsProps> = ({
   title,
   list,
-  margin
+  margin,
 }) => {
   return (
-    <Box padding="spacing04" shadow="shadow02">
+    <Box innerSpacing="spacing04" shadow="shadow02">
       <PageTitle title={title} />
       <Breadcrumbs list={list} />
     </Box>
-)};
+  );
+};

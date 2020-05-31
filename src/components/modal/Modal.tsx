@@ -136,7 +136,7 @@ export const Modal = ({
     <StyledModal {...props}>
       <ModalBox
         modalMinWidth={modalMinWidth}
-        padding="spacing04"
+        innerSpacing="spacing04"
         shadow="shadow04"
       >
         <ModalHeader>
