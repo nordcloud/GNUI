@@ -38,7 +38,7 @@ type BoxProps = {
   color?: string;
   backgroundColor?: string;
   radius?: string;
-  padding?: string;
+  innerSpacing?: string;
   spacing?: string;
   shadow?: string;
   children?: React.ReactNode;
@@ -60,25 +60,15 @@ type BoxProps = {
 <Preview>
   <Story name="border">
     <Container>
-      <Box border="default">
-        Default border
-      </Box>
+      <Box border="default">Default border</Box>
       <Spacer height="1rem" />
-      <Box border="disabled">
-        Bold border
-      </Box>
+      <Box border="disabled">Bold border</Box>
       <Spacer height="1rem" />
-      <Box border="danger">
-        Danger border
-      </Box>
+      <Box border="danger">Danger border</Box>
       <Spacer height="1rem" />
-      <Box border="notification">
-        Notification border
-      </Box>
+      <Box border="notification">Notification border</Box>
       <Spacer height="1rem" />
-      <Box border="1px solid violet">
-        Custom border
-      </Box>
+      <Box border="1px solid violet">Custom border</Box>
     </Container>
   </Story>
 </Preview>
@@ -107,20 +97,17 @@ type BoxProps = {
 
 ### Padding
 
-> `padding`: `string` — [`spacing01`, `spacing02`, `spacing03`, `spacing04`, `spacing05`, `spacing06`, `spacing07`]
+> `innerSpacing`: `string` — [`spacing01`, `spacing02`, `spacing03`, `spacing04`, `spacing05`, `spacing06`, `spacing07`]
 
 <Preview>
-  <Story name="padding">
+  <Story name="innerSpacing">
     <Container>
-      <Box padding="spacing04">
-        Box with spacing04 padding prop
-      </Box>
+      <Box innerSpacing="spacing04">Box with spacing04 innerSpacing prop</Box>
       <Spacer height="1rem" />
-      <Box padding="spacing07">Box with spacing07 padding prop</Box>
+      <Box innerSpacing="spacing07">Box with spacing07 innerSpacing prop</Box>
     </Container>
   </Story>
 </Preview>
-
 
 ### Shadow
 
@@ -129,17 +116,11 @@ type BoxProps = {
 <Preview>
   <Story name="shadow">
     <Container>
-      <Box shadow="shadow01">
-        Box with shadow01 shadow prop
-      </Box>
+      <Box shadow="shadow01">Box with shadow01 shadow prop</Box>
       <Spacer height="1rem" />
-      <Box shadow="shadow02">
-        Box with shadow02 shadow prop
-      </Box>
+      <Box shadow="shadow02">Box with shadow02 shadow prop</Box>
       <Spacer height="1rem" />
-      <Box shadow="shadow03">
-        Box with shadow03 shadow prop
-      </Box>
+      <Box shadow="shadow03">Box with shadow03 shadow prop</Box>
       <Spacer height="1rem" />
       <Box shadow="shadow04">Box with shadow04 shadow prop</Box>
     </Container>
@@ -153,21 +134,15 @@ type BoxProps = {
 <Preview>
   <Story name="color">
     <Container>
-      <Box color="danger">
-        Danger color (from theme)
-      </Box>
+      <Box color="danger">Danger color (from theme)</Box>
       <Spacer height="1rem" />
-      <Box color="notification">
-        Notification color (from theme)
-      </Box>
+      <Box color="notification">Notification color (from theme)</Box>
       <Spacer height="1rem" />
       <Box color="palevioletred">
         Palevioletred box (not exististing in theme)
       </Box>
       <Spacer height="1rem" />
-      <Box color="#5ead9d">
-        #5ead9d color
-      </Box>
+      <Box color="#5ead9d">#5ead9d color</Box>
     </Container>
   </Story>
 </Preview>

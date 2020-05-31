@@ -2,6 +2,7 @@ import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { Container } from "../container";
+import { space, SpaceProps } from "styled-system";
 
 type BoxProps = {
   dark?: boolean;
@@ -11,7 +12,7 @@ type BoxProps = {
   color?: string;
   backgroundColor?: string;
   radius?: "small" | "medium" | "large";
-  padding?:
+  spacing?:
     | "spacing01"
     | "spacing02"
     | "spacing03"
@@ -20,7 +21,7 @@ type BoxProps = {
     | "spacing06"
     | "spacing07"
     | "spacing08";
-  margin?:
+  innerSpacing?:
     | "spacing01"
     | "spacing02"
     | "spacing03"
@@ -29,13 +30,12 @@ type BoxProps = {
     | "spacing06"
     | "spacing07"
     | "spacing08";
-
   shadow?: "shadow01" | "shadow02" | "shadow03" | "shadow04";
 
   children?: React.ReactNode;
 };
 
-const StyledBox = styled(Container)<BoxProps>`
+const StyledBox = styled(Container)<BoxProps & SpaceProps>`
   box-sizing: border-box;
   min-width: 0;
   padding: ${theme.spacing.spacing05};
@@ -57,16 +57,17 @@ const StyledBox = styled(Container)<BoxProps>`
     css`
       border-radius: ${theme.radius[radius]};
     `}
-  ${({ padding }) =>
-    padding &&
-    css`
-      padding: ${theme.spacing[padding]};
-    `}
 
-    ${({ margin }) =>
-      margin &&
+      ${({ innerSpacing }) =>
+        innerSpacing &&
+        css`
+          padding: ${theme.spacing[innerSpacing]};
+        `}
+        
+    ${({ spacing }) =>
+      spacing &&
       css`
-        margin-bottom: ${theme.spacing[margin]};
+        margin-bottom: ${theme.spacing[spacing]};
       `}
 
   ${({ shadow }) =>
@@ -99,6 +100,7 @@ const StyledBox = styled(Container)<BoxProps>`
     css`
       background-color: ${theme.colors[backgroundColor] || backgroundColor};
     `}
+     ${space}
 `;
 
 export const Box: FunctionComponent<BoxProps> = ({ children, ...props }) => (
