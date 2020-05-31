@@ -63,7 +63,7 @@ const StyledBox = styled(Container)<BoxProps & SpaceProps>`
         css`
           padding: ${theme.spacing[innerSpacing]};
         `}
-        
+
     ${({ spacing }) =>
       spacing &&
       css`
@@ -103,6 +103,7 @@ const StyledBox = styled(Container)<BoxProps & SpaceProps>`
      ${space}
 `;
 
-export const Box: FunctionComponent<BoxProps> = ({ children, ...props }) => (
-  <StyledBox {...props}>{children}</StyledBox>
-);
+export const Box: FunctionComponent<BoxProps & SpaceProps> = ({
+  children,
+  ...props
+}) => <StyledBox {...props}>{children}</StyledBox>;
