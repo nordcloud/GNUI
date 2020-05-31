@@ -1,6 +1,6 @@
 {
   "name": "@nordcloud/gnui",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": "git://github.com/nordcloud/gnui.git",
