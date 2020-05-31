@@ -63,11 +63,12 @@ const StyledBox = styled(Container)<BoxProps>`
       padding: ${theme.spacing[padding]};
     `}
 
-     ${({ spacing }) =>
-       spacing &&
-       css`
-         margin-top: ${theme.spacing[spacing]};
-       `}
+    ${({ margin }) =>
+      // margin should be deleted ASAP after mergin Spacer
+      margin &&
+      css`
+        margin-bottom: ${theme.spacing[margin]};
+      `}
 
   ${({ shadow }) =>
     shadow &&
