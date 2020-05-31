@@ -11,9 +11,27 @@ type BoxProps = {
   color?: string;
   backgroundColor?: string;
   radius?: "small" | "medium" | "large";
-  padding?: "spacing01" | "spacing02" | "spacing03" | "spacing04" | "spacing05" | "spacing06" | "spacing07" | "spacing08";
-  spacing?: "spacing01" | "spacing02" | "spacing03" | "spacing04" | "spacing05" | "spacing06" | "spacing07" | "spacing08";
+  padding?:
+    | "spacing01"
+    | "spacing02"
+    | "spacing03"
+    | "spacing04"
+    | "spacing05"
+    | "spacing06"
+    | "spacing07"
+    | "spacing08";
+  spacing?:
+    | "spacing01"
+    | "spacing02"
+    | "spacing03"
+    | "spacing04"
+    | "spacing05"
+    | "spacing06"
+    | "spacing07"
+    | "spacing08";
+
   shadow?: "shadow01" | "shadow02" | "shadow03" | "shadow04";
+
   children?: React.ReactNode;
 };
 
@@ -44,6 +62,11 @@ const StyledBox = styled(Container)<BoxProps>`
     css`
       padding: ${theme.spacing[padding]};
     `}
+     ${({ spacing }) =>
+       spacing &&
+       css`
+         margin: ${theme.spacing[spacing]};
+       `}
   ${({ shadow }) =>
     shadow &&
     css`
