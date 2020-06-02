@@ -86,11 +86,24 @@ const TabContainer: any = styled.li<TabProps>`
     color: ${theme.colors.darks[2]};
   }
   p {
+    max-width:80%;
     margin: ${theme.spacing.spacing01} 0 0;
+  }
+  &:first-child {
+    border-top-left-radius: ${theme.radiusDefault};
   }
   &.tab-active {
     background-color: ${theme.colors.snowwhite};
     border-bottom: 1px solid transparent;
+  }
+
+  &.tab, &.tab-active {
+    &:first-child {
+      & > div {
+          background-color: ${theme.colors.primary};
+          color: ${theme.colors.white};
+      }
+    }
   }
 `;
 
@@ -116,7 +129,7 @@ const Step = styled(Box)`
   color: ${theme.colors.darks[3]};
 
   &.dark {
-    background: ${theme.colors.primary};
+    background-color: ${theme.colors.primary};
     color: ${theme.colors.white};
   }
 `;
@@ -135,6 +148,7 @@ const TabsCover = styled.div`
 `;
 
 const PreviousButton = styled(Button)`
+  position:absolute;
   border: none;
 `;
 const NextButton = styled(Button)`
