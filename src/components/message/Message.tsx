@@ -4,7 +4,7 @@ import theme from "../../theme";
 import { Icon } from "../icon";
 
 type MessageProps = {
-  image?: string;
+  image: string;
   status?: "success" | "notification" | "danger";
   children?: React.ReactNode;
 };
