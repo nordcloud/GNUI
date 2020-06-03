@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { Icon } from "../icon";
 
-type MessageProps = {
+export interface MessageProps {
   image?: string;
   status?: "success" | "notification" | "danger";
   children?: React.ReactNode;
@@ -69,10 +69,11 @@ export const Message: FunctionComponent<MessageProps> = ({
   status
 }) => 
     <MessageWrapper status={status}>
+      {image && 
       <Align>
         <IconBox status={status}>
           <Icon image={image} width="1.5rem" height="1.5rem"/>
         </IconBox>
-      </Align>
+      </Align>}
       {children}
     </MessageWrapper>;
