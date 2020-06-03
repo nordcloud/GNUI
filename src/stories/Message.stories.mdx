@@ -6,12 +6,23 @@ import { Spacer } from "../components/spacer";
 
 <Meta title="Components/Message" component={Message} />
 
+# Message
+#### Props
+
+```typescript
+type MessageProps = {
+  image?: string;
+  status?: "success" | "notification" | "danger";
+  children?: React.ReactNode;
+};
+```
+
 ## Default
 
 <Preview>
   <Story name="default">
     <>
-      <Message status="success" image="SUCCESS">Account has been added Account has been added Account has been added Account has been added Account has been added Account has been addedAccount has been added Account has been added Account has been added Account has been added Account has been added Account has been added Account has been added Account has been added Account has been added Account has been added Account has been added Account has been added</Message>
+      <Message status="success" image="SUCCESS">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</Message>
        <Spacer height="1rem" />
       <Message status="danger" image="DANGER">Account has been added</Message>
        <Spacer height="1rem" />
