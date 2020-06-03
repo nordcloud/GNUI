@@ -1,0 +1,21 @@
+import { useState } from "react";
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Message } from "../components/message";
+import { Text } from "../components/text";
+import { Spacer } from "../components/spacer";
+
+<Meta title="Components/Message" component={Message} />
+
+## Default
+
+<Preview>
+  <Story name="default">
+    <>
+      <Message status="success" image="SUCCESS">Account has been added Account has been added Account has been added Account has been added Account has been added Account has been addedAccount has been added Account has been added Account has been added Account has been added Account has been added Account has been added Account has been added Account has been added Account has been added Account has been added Account has been added Account has been added</Message>
+       <Spacer height="1rem" />
+      <Message status="danger" image="DANGER">Account has been added</Message>
+       <Spacer height="1rem" />
+      <Message status="notification" image="NOTIFY">Account has been added</Message>
+    </>
+  </Story>
+</Preview>
