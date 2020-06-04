@@ -1,0 +1,79 @@
+import styled from "styled-components";
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Spinner } from "../components/spinner";
+import { Button } from "../components/button";
+import { Spacer } from "../components/spacer";
+import theme from "../theme";
+
+<Meta title="Components/Spinner" component={Spinner} />
+
+# Spinner
+
+#### Props
+
+```typescript
+export interface SpinnerProps {
+  caption?: string;
+  className?: string;
+  size?: number;
+  color?: string;
+  onClick?: (e: any) => void;
+  onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
+}
+```
+
+## Default
+
+<Preview>
+  <Story name="default">
+    <Spinner />
+  </Story>
+</Preview>
+
+## Color
+
+From `theme`:
+
+<Preview>
+  <Story name="color theme">
+    <Spinner color="success" size="0.5" />
+  </Story>
+</Preview>
+
+Named:
+
+<Preview>
+  <Story name="named">
+    <Spinner color="palevioletred" size="0.5" />
+  </Story>
+</Preview>
+
+## Size
+
+> `size?: number;` - size is measured in percentage; 1 is original size of the spinner
+
+<Preview>
+  <Story name="size">
+    <Spinner size="0.2" />
+  </Story>
+</Preview>
+
+## Label
+
+> `caption?: string;` - caption for the spinner
+
+<Preview>
+  <Story name="label">
+    <Spinner size="0.2" caption="Here is a spinner" />
+  </Story>
+</Preview>
+
+## Button
+
+<Preview>
+  <Story name="button">
+    <Button>
+      <Spinner size="0.2" color="white" caption="Spinner" />
+    </Button>
+  </Story>
+</Preview>

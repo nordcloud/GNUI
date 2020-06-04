@@ -1,0 +1,73 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { addDays } from 'date-fns';
+import { useState } from 'react';
+import { Datepicker } from "../components/datepicker";
+import { Calendar, DateRangePicker } from 'react-date-range';
+
+<Meta title="Components/Datepicker" component={Datepicker} />
+
+# Datepicker
+
+## Props
+
+```typescript
+type DatepickerProps = {
+  children?:any;
+};
+```
+
+> Primary button is default as well.
+
+<Preview>
+  <Story name="datepicker">
+    {() => {
+      const handleSelect = (date) => {
+        console.log(date); 
+      }
+      return (
+        <>
+           <Datepicker>
+             <Calendar
+                date={new Date()}
+                onChange={handleSelect}
+              />
+           </Datepicker>
+        </>
+      );
+    }}
+   
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="daterangepicker">
+    {() => {
+      const handleSelect = (ranges) => {
+        console.log(ranges); 
+      }
+      const [state, setState] = useState([
+        {
+          startDate: new Date(),
+          endDate: addDays(new Date(), 7),
+          key: 'selection'
+        }
+      ]);
+      return (
+        <>
+           <Datepicker>
+             <DateRangePicker
+              onChange={item => setState([item.selection])}
+              showSelectionPreview={true}
+              moveRangeOnFirstSelection={false}
+              months={2}
+              ranges={state}
+              direction="horizontal"
+            />
+           </Datepicker>
+        </>
+      );
+    }}
+   
+  </Story>
+</Preview>
+

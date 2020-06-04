@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { space, SpaceProps } from "styled-system";
 
@@ -27,8 +27,10 @@ export const Container: FunctionComponent<ContainerProps & SpaceProps> = ({
 
 export const Flex = styled(Container)`
   display: flex;
-  align-items: ${(props) => props.alignItems || "center"};
-  justify-content: ${(props) => props.justifyContent || "flex-start"};
-  margin: ${(props) => props.margin};
+  ${(props) => css`
+    align-items: ${props.alignItems || "center"};
+    justify-content: ${props.justifyContent || "flex-start"};
+    margin: ${props.margin};
+  `}
   ${space}
 `;

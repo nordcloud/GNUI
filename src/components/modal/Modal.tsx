@@ -24,12 +24,12 @@ const StyledModal = styled(ReactModal)`
   position: absolute;
 
   &:focus {
-    outline:0;
+    outline: 0;
   }
 `;
 
-const ModalBox = styled(Box) <IModalBox>`
-  min-width: ${({ modalMinWidth }) => modalMinWidth || '18.75rem'};
+const ModalBox = styled(Box)<IModalBox>`
+  min-width: ${({ modalMinWidth }) => modalMinWidth || "18.75rem"};
   overflow: hidden;
   font-family: ${theme.fonts.body};
   line-height: ${theme.lineHeight};
@@ -43,8 +43,8 @@ const ModalAction = styled(Button)`
   margin-left: ${theme.spacing.spacing04};
 
   &:first-child {
-   margin-left: auto;
- }
+    margin-left: auto;
+  }
 `;
 
 const ModalActions = styled.div`
@@ -65,7 +65,7 @@ const ModalActions = styled.div`
 `;
 
 const ModalContent = styled.div<IModalContent>`
-  max-height: ${({ contentMaxHeight }) => contentMaxHeight || '25rem'};
+  max-height: ${({ contentMaxHeight }) => contentMaxHeight || "25rem"};
   overflow-y: auto;
   ${whenIE11(`
     padding-bottom: ${MODAL_ACTION_HEIGHT};
@@ -73,7 +73,7 @@ const ModalContent = styled.div<IModalContent>`
 `;
 
 const ModalHeading = styled(Heading)`
- margin: 0;
+  margin: 0;
 `;
 
 const ModalHeader = styled.div`
@@ -96,7 +96,9 @@ interface IModalContent {
 }
 
 interface IModalAction {
-  onAction: (event: React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>) => void;
+  onAction: (
+    event: React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>
+  ) => void;
   label: string;
   disabled: boolean;
   severity: "low" | "medium" | "high";
@@ -106,12 +108,14 @@ interface IModalAction {
 interface IModal {
   isOpen: boolean;
   onAfterOpen?: () => void;
-  onClose?: (event: React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>) => void;
+  onClose?: (
+    event: React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>
+  ) => void;
   actions: IModalAction[];
   contentLabel: string;
-  children: React.ReactNode
+  children: React.ReactNode;
   appId?: string;
-  customStyles?: { [key: string]: string }
+  customStyles?: { [key: string]: string };
 }
 
 type IModalProps = IModal & IModalBox & IModalContent;
@@ -130,13 +134,15 @@ export const Modal = ({
 
   return (
     <StyledModal {...props}>
-      <ModalBox modalMinWidth={modalMinWidth} padding="spacing04" shadow="shadow04">
+      <ModalBox
+        modalMinWidth={modalMinWidth}
+        innerSpacing="spacing04"
+        shadow="shadow04"
+      >
         <ModalHeader>
-          <ModalHeading level={5}>
-            {contentLabel}
-          </ModalHeading>
+          <ModalHeading level={5}>{contentLabel}</ModalHeading>
           <ModalCloseButton severity="low" onClick={props.onClose}>
-            <Icon width="1rem" height="1rem" image="CLOSE" />
+            <Icon width="1rem" height="1rem" image="CLOSE_SIDEBAR" />
           </ModalCloseButton>
         </ModalHeader>
 
@@ -146,19 +152,21 @@ export const Modal = ({
 
         {actions?.length > 0 && (
           <ModalActions>
-            {actions.sort((a, b) => a.order || 0 - b.order || 0).map((action, idx) => (
-              <ModalAction
-                key={`modal-action-${idx}`}
-                severity={action.severity}
-                onClick={action.onAction}
-                disabled={action.disabled}
-              >
-                {action.label}
-              </ModalAction>
-            ))}
+            {actions
+              .sort((a, b) => a.order || 0 - b.order || 0)
+              .map((action, idx) => (
+                <ModalAction
+                  key={`modal-action-${idx}`}
+                  severity={action.severity}
+                  onClick={action.onAction}
+                  disabled={action.disabled}
+                >
+                  {action.label}
+                </ModalAction>
+              ))}
           </ModalActions>
         )}
       </ModalBox>
     </StyledModal>
   );
-}
+};

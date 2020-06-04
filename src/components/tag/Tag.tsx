@@ -1,14 +1,12 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import theme from "../../theme";
 
 interface TagProps {
   color?: string;
   text?: string;
 }
-const changeTagColor = (color: string) => css`
-  background-color: ${theme.colors[color]};
-`;
+
 export const StyledTag = styled.div`
   display: inline-block;
   text-transform: capitalize;
@@ -20,13 +18,8 @@ export const StyledTag = styled.div`
   margin: ${theme.spacing.spacing01};
   border-radius: 1rem;
   color: ${theme.colors.lights[0]};
-  background-color: ${theme.colors.lights[3]};
-
-  ${({ color }) =>
-    color &&
-    css`
-      ${changeTagColor(color)}
-    `}
+  background-color: ${({ color }) =>
+    color ? theme.colors[color] || color : theme.colors.lights[3]};
 `;
 
 export const Tag: React.FC<TagProps> = ({ color, text }) => {

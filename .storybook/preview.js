@@ -1,20 +1,21 @@
 import React from "react";
-import { addDecorator } from "@storybook/react";
-import { addParameters } from "@storybook/react";
-import { withInfo } from "@storybook/addon-info";
+import { addDecorator, addParameters } from "@storybook/react";
+import { DocsPage, DocsContainer } from "@storybook/addon-docs/blocks";
+import { Container } from "../src/components/container";
 import "./global.css";
-
-addDecorator(
-  withInfo({
-    header: true,
-    styles: {},
-  })
-);
 
 addParameters({
   options: {
     showRoots: true,
+    storySort: {
+      sort: ["Foundation", "Layout", "Typography", "Components", "Form"],
+    },
+  },
+  viewMode: "docs",
+  docs: {
+    container: DocsContainer,
+    page: DocsPage,
   },
 });
 
-addDecorator((storyFn) => <>{storyFn()}</>);
+addDecorator((storyFn) => <Container>{storyFn()}</Container>);

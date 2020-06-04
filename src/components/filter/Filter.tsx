@@ -119,7 +119,7 @@ export const Filter: FunctionComponent<IFilter> = ({
           <FilterContent
             hasComponent={!!accompanyingComponent}
             spacing="spacing01"
-            padding="spacing04"
+            innerSpacing="spacing04"
           >
             {children}
           </FilterContent>

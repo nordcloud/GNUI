@@ -1,38 +1,35 @@
-import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
-
-export interface NavLinkProps {
-  name: string;
-  link: string;
-  id?: string;
-  className?: string;
-  value?: string;
-  onClick?: (e: any) => void;
-}
-
-export interface NavProps {
-  name?: string;
-  names: Array<string>;
-  links: Array<string>;
-  children?: string | number | any;
-}
 
 export interface NavWrapperProps {
   secondary?: boolean;
 }
 
-const MenuLink = styled.li`
+const Item = styled.div`
   list-style: none;
-  a {
-    line-height: ${theme.lineHeight};
-    font-family: ${theme.fonts.body};
-    font-size: ${theme.fontSizes.regular};
-    border-radius: ${theme.radius.default};
-    padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
-    color: ${theme.colors.primary};
-    text-decoration: none;
-
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+  line-height: ${theme.lineHeight};
+  font-family: ${theme.fonts.body};
+  font-size: ${theme.fontSizes.regular};
+  border-radius: ${theme.radius.default};
+  padding: 0 ${theme.spacing.spacing03};
+  color: ${theme.colors.primary};
+  text-decoration: none;
+  height: 2.5rem;
+  vertical-align: middle;
+  text-decoration: none;
+  &.separator {
+    font-size: ${theme.fontSizes.small};
+    color: ${theme.colors.darks[4]};
+    margin-bottom: 0;
+  }
+  & + .separator {
+    margin-top: -${theme.spacing.spacing02};
+  }
+  &:not(.separator) {
     &:hover {
       background-color: ${theme.colors.lights[2]};
     }
@@ -40,14 +37,47 @@ const MenuLink = styled.li`
     &:focus {
       background-color: ${theme.colors.lights[3]};
     }
+    &.active {
+      background: ${theme.colors.primary};
+      color: #fff;
+      * {
+        fill: #fff;
+      }
+    }
+  }
+  &.hasBg {
+    background: ${theme.colors.lights[2]};
+    &:active,
+    &:focus {
+      background-color: ${theme.colors.lights[4]};
+    }
+    &.active {
+      background: ${theme.colors.lights[4]};
+      color: inherit;
+    }
+  }
+  * {
+    margin-right: 0.8125rem;
   }
 `;
 
-const NavWrapper = styled.ul<NavWrapperProps>`
+const Info = styled.span`
+  width: 1rem;
+  height: 1rem;
+  background: ${theme.colors.danger};
+  display: block;
+  color: #fff;
+  text-align: center;
+  margin-left: auto;
+  font-size: ${theme.typography.fontSizes[1]};
+  line-height: 1rem;
+`;
+
+const Container = styled.div<NavWrapperProps>`
   margin: 0;
   padding-left: 0;
   display: flex;
-  li {
+  > * {
     margin-left: ${theme.spacing.spacing04};
     &:first-child {
       margin-left: 0;
@@ -59,36 +89,10 @@ const NavWrapper = styled.ul<NavWrapperProps>`
     css`
       width: 100%;
       display: block;
-      li {
+      > * {
         margin: 0 0 ${theme.spacing.spacing02};
-        a {
-          display: block;
-        }
       }
     `}
 `;
 
-export const NavLink: FunctionComponent<NavLinkProps> = ({
-  name,
-  link,
-  ...props
-}) => (
-  <MenuLink>
-    <a href={link} title={name} {...props}>
-      {name}
-    </a>
-  </MenuLink>
-);
-
-export const Navigation: FunctionComponent<NavProps> = ({
-  names,
-  links,
-  ...props
-}) => (
-  <NavWrapper {...props}>
-    {names &&
-      names.map((element, index) => (
-        <NavLink key={index} name={element} link={links[index]} />
-      ))}
-  </NavWrapper>
-);
+export const Navigation = { Container, Item, Info };

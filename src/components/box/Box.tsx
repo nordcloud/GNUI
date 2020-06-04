@@ -2,22 +2,40 @@ import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { Container } from "../container";
+import { space, SpaceProps } from "styled-system";
 
 type BoxProps = {
   dark?: boolean;
   minHeight?: string;
   minWidth?: string;
-  margin?: string;
   border?: string;
   color?: string;
+  backgroundColor?: string;
   radius?: "small" | "medium" | "large";
-  padding?: "spacing01" | "spacing02" | "spacing03" | "spacing04" | "spacing05" | "spacing06" | "spacing07" | "spacing08";
-  spacing?: "spacing01" | "spacing02" | "spacing03" | "spacing04" | "spacing05" | "spacing06" | "spacing07" | "spacing08";
+  spacing?:
+    | "spacing01"
+    | "spacing02"
+    | "spacing03"
+    | "spacing04"
+    | "spacing05"
+    | "spacing06"
+    | "spacing07"
+    | "spacing08";
+  innerSpacing?:
+    | "spacing01"
+    | "spacing02"
+    | "spacing03"
+    | "spacing04"
+    | "spacing05"
+    | "spacing06"
+    | "spacing07"
+    | "spacing08";
   shadow?: "shadow01" | "shadow02" | "shadow03" | "shadow04";
+
   children?: React.ReactNode;
 };
 
-const StyledBox = styled(Container)<BoxProps>`
+const StyledBox = styled(Container)<BoxProps & SpaceProps>`
   box-sizing: border-box;
   min-width: 0;
   padding: ${theme.spacing.spacing05};
@@ -39,21 +57,23 @@ const StyledBox = styled(Container)<BoxProps>`
     css`
       border-radius: ${theme.radius[radius]};
     `}
-  ${({ padding }) =>
-    padding &&
-    css`
-      padding: ${theme.spacing[padding]};
-    `}
+
+      ${({ innerSpacing }) =>
+        innerSpacing &&
+        css`
+          padding: ${theme.spacing[innerSpacing]};
+        `}
+
+    ${({ spacing }) =>
+      spacing &&
+      css`
+        margin-bottom: ${theme.spacing[spacing]};
+      `}
+
   ${({ shadow }) =>
     shadow &&
     css`
       box-shadow: ${theme.shadow[shadow]};
-    `}
-  ${({ margin }) =>
-    // margin should be deleted ASAP after mergin Spacer
-    margin &&
-    css`
-      margin-bottom: ${theme.spacing[margin]};
     `}
   ${({ minHeight }) =>
     minHeight &&
@@ -68,15 +88,22 @@ const StyledBox = styled(Container)<BoxProps>`
   ${({ border }) =>
     border &&
     css`
-      border: ${theme.borders[border]};
+      border: ${theme.borders[border] || border};
     `}
   ${({ color }) =>
     color &&
     css`
       color: ${theme.colors[color] || color};
     `}
+  ${({ backgroundColor }) =>
+    backgroundColor &&
+    css`
+      background-color: ${theme.colors[backgroundColor] || backgroundColor};
+    `}
+     ${space}
 `;
 
-export const Box: FunctionComponent<BoxProps> = ({ children, ...props }) => (
-  <StyledBox {...props}>{children}</StyledBox>
-);
+export const Box: FunctionComponent<BoxProps & SpaceProps> = ({
+  children,
+  ...props
+}) => <StyledBox {...props}>{children}</StyledBox>;
