@@ -7,6 +7,7 @@ import { Text } from "../text";
 import { Icon } from "../icon";
 import { Heading } from "../heading";
 import { darken } from "polished";
+import 'react-toastify/dist/ReactToastify.minimal.css';
 
 export interface ToastProps {
   name?:string;
@@ -93,7 +94,7 @@ const ToastTitle = styled.div<MessageProps>`
   }
 `;
 
-export const Message: FunctionComponent<MessageProps> = ({ 
+export const Message: FunctionComponent<MessageProps> = ({
   heading,
   message,
   closeToast
@@ -111,7 +112,7 @@ export const Message: FunctionComponent<MessageProps> = ({
     )
 };
 
-export const Toast: FunctionComponent<ToastProps> = ({ 
+export const Toast: FunctionComponent<ToastProps> = ({
   name,
   severity
 }) => {
