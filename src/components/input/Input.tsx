@@ -24,6 +24,7 @@ export interface InputProps {
 interface LabelProps {
   required?:boolean;
   name?:string;
+  className?:string;
 }
 
 const StyledLabel = styled.label<LabelProps>`
@@ -42,10 +43,11 @@ const StyledLabel = styled.label<LabelProps>`
 
 export const Label: FunctionComponent<LabelProps> = ({
   name = "Label",
+  className,
   required,
 }) => (
   <Flex>
-    <StyledLabel htmlFor={name} required={required}>{name}</StyledLabel>
+    <StyledLabel htmlFor={name} required={required} className={className}>{name}</StyledLabel>
   </Flex>
 );
 
@@ -130,6 +132,33 @@ const StyledDescription = styled(Container)`
   width: 100%;
 `;
 
+const StyledUpload = styled.div`
+  input[type="file"] {
+    display: none;
+  }
+  color: ${theme.colors.primary};
+  background: ${theme.colors.white};
+  transition: ${theme.transition};
+  line-height: ${theme.lineHeight};
+  label {
+    border: ${theme.borders.disabled};
+    border-radius: ${theme.radiusDefault};
+    border-none:none;
+    padding-left: ${theme.spacing.spacing03};
+    display: flex;
+    align-items:center;
+    cursor:pointer;
+    span {
+      margin: -1px 0 -1px auto;
+      border-top-right-radius: ${theme.radiusDefault};
+      border-bottom-right-radius: ${theme.radiusDefault};
+      background-color:${theme.colors.primary};
+      color: ${theme.colors.white};
+      padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
+    }
+  }
+`;
+
 export const Description: FunctionComponent = ({ children }) => (
   <StyledDescription>{children}</StyledDescription>
 );
@@ -153,4 +182,18 @@ export const Input: FunctionComponent<InputProps & SpaceProps> = ({
       />
     )}
   </InputGroup>
+);
+
+export const Upload: FunctionComponent<InputProps & { placeholder?:string } > = ({ 
+  name,
+  placeholder,
+  ...props 
+}) => (
+  <StyledUpload>
+    <label htmlFor={name}>
+      {placeholder}
+      <span>Select</span>
+    </label>
+    <StyledInput name={name} type="file" id={name} {...props} />
+  </StyledUpload>
 );
