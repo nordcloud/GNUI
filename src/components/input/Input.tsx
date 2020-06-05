@@ -21,17 +21,31 @@ export interface InputProps {
   onKeyPress?: (e: any) => void;
 }
 
-const StyledLabel = styled.label`
+interface LabelProps {
+  required?:boolean;
+  name?:string;
+}
+
+const StyledLabel = styled.label<LabelProps>`
   line-height: ${theme.lineHeight};
   color: ${theme.colors.primary};
   margin-bottom: ${theme.spacing.spacing02};
+  ${({ required }) =>
+  required &&
+  css`
+    &:after {
+      content:"*";
+      color:${theme.colors.danger};
+    }
+  `}
 `;
 
-export const Label: FunctionComponent<{ name?: string }> = ({
+export const Label: FunctionComponent<LabelProps> = ({
   name = "Label",
+  required,
 }) => (
   <Flex>
-    <StyledLabel htmlFor={name}>{name}</StyledLabel>
+    <StyledLabel htmlFor={name} required={required}>{name}</StyledLabel>
   </Flex>
 );
 
