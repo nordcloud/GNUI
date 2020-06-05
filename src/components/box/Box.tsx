@@ -31,7 +31,8 @@ type BoxProps = {
     | "spacing07"
     | "spacing08";
   shadow?: "shadow01" | "shadow02" | "shadow03" | "shadow04";
-
+  onClick?: (e: any) => void;
+  onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
   children?: React.ReactNode;
 };
 
