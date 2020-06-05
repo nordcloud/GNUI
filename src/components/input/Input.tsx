@@ -184,14 +184,13 @@ export const Input: FunctionComponent<InputProps & SpaceProps> = ({
 
 export const Upload: FunctionComponent<InputProps & { placeholder?:string } > = ({ 
   name,
-  placeholder,
-  ...props 
+  placeholder
 }) => (
   <StyledUpload>
     <label htmlFor={name}>
       {placeholder}
       <span>Select</span>
     </label>
-    <StyledInput name={name} type="file" id={name} {...props} />
+    <StyledInput name={name} type="file" id={name} />
   </StyledUpload>
 );
