@@ -40,7 +40,7 @@ interface ButtonNextProps {
   onClick?: (e: any) => void;
 }
 
-const TabsContent = styled(Box)`
+export const TabsContent = styled(Box)`
   background-color: ${theme.colors.snowwhite};
   border-top: ${theme.borders.grey};
   border-top-left-radius: 0;
@@ -58,7 +58,7 @@ const TabsContent = styled(Box)`
   }
 `;
 
-const TabContainer: any = styled.li<TabProps>`
+export const TabContainer: any = styled.li<TabProps>`
   display: inline-block;
   list-style: none;
   margin-bottom: -1px;
@@ -247,4 +247,11 @@ export const Tabs: FunctionComponent<TabsProps> = ({
       </TabsCover>
     </TabsWrapper>
   );
+};
+
+export const StyledTab: FunctionComponent<ButtonNextProps> = ({
+  onClick,
+  children,
+}) => {
+  return <NextButton onClick={onClick}>{children}</NextButton>;
 };
