@@ -40,10 +40,6 @@ interface ButtonNextProps {
   onClick?: (e: any) => void;
 }
 
-interface StyledTab {
-  
-}
-
 export const TabsContent = styled(Box)`
   background-color: ${theme.colors.snowwhite};
   border-top: ${theme.borders.grey};
