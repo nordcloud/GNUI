@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
-import { Input, Label, Description } from "../components/input";
+import { Input, Label, Description, Upload } from "../components/input";
 import { Container } from "../components/container";
 import { Button } from "../components/button";
 import { Spacer } from "../components/spacer";
@@ -78,6 +78,16 @@ Nothing more to add, just text placeholder which works exactly like in default H
     <>
       <Label name="Label" required />
       <Input name="required-input" placeholder="Required input" />
+    </>
+  </Story>
+</Preview>
+
+### upload
+
+<Preview>
+  <Story name="upload">
+    <>
+      <Upload name="upload" placeholder="Select a file to upload" />
     </>
   </Story>
 </Preview>
