@@ -24,7 +24,6 @@ export interface InputProps {
 interface LabelProps {
   required?:boolean;
   name?:string;
-  className?:string;
 }
 
 const StyledLabel = styled.label<LabelProps>`
@@ -43,11 +42,10 @@ const StyledLabel = styled.label<LabelProps>`
 
 export const Label: FunctionComponent<LabelProps> = ({
   name = "Label",
-  className,
   required,
 }) => (
   <Flex>
-    <StyledLabel htmlFor={name} required={required} className={className}>{name}</StyledLabel>
+    <StyledLabel htmlFor={name} required={required}>{name}</StyledLabel>
   </Flex>
 );
 
