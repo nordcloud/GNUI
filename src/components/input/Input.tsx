@@ -4,7 +4,7 @@ import theme from "../../theme";
 import { Container, Flex } from "../container";
 import { Icon } from "../icon";
 import { space, SpaceProps } from "styled-system";
-
+import { Spinner } from "../spinner";
 export interface InputProps {
   name: string;
   type: string;
@@ -16,14 +16,15 @@ export interface InputProps {
   required?: boolean;
   status?: "success" | "error";
   children?: string | number | any;
+  loading?: boolean;
   onClick?: (e: any) => void;
   onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
   onKeyPress?: (e: any) => void;
 }
 
 interface LabelProps {
-  required?:boolean;
-  name?:string;
+  required?: boolean;
+  name?: string;
 }
 
 const StyledLabel = styled.label<LabelProps>`
@@ -31,13 +32,13 @@ const StyledLabel = styled.label<LabelProps>`
   color: ${theme.colors.primary};
   margin-bottom: ${theme.spacing.spacing02};
   ${({ required }) =>
-  required &&
-  css`
-    &:after {
-      content:"*";
-      color:${theme.colors.danger};
-    }
-  `}
+    required &&
+    css`
+      &:after {
+        content: "*";
+        color: ${theme.colors.danger};
+      }
+    `}
 `;
 
 export const Label: FunctionComponent<LabelProps> = ({
@@ -45,7 +46,9 @@ export const Label: FunctionComponent<LabelProps> = ({
   required,
 }) => (
   <Flex>
-    <StyledLabel htmlFor={name} required={required}>{name}</StyledLabel>
+    <StyledLabel htmlFor={name} required={required}>
+      {name}
+    </StyledLabel>
   </Flex>
 );
 
@@ -141,16 +144,16 @@ const StyledUpload = styled.div`
   label {
     border: ${theme.borders.disabled};
     border-radius: ${theme.radiusDefault};
-    border-none:none;
+    border-none: none;
     padding-left: ${theme.spacing.spacing03};
     display: flex;
-    align-items:center;
-    cursor:pointer;
+    align-items: center;
+    cursor: pointer;
     span {
       margin: -1px 0 -1px auto;
       border-top-right-radius: ${theme.radiusDefault};
       border-bottom-right-radius: ${theme.radiusDefault};
-      background-color:${theme.colors.primary};
+      background-color: ${theme.colors.primary};
       color: ${theme.colors.white};
       padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
     }
@@ -165,12 +168,14 @@ export const Input: FunctionComponent<InputProps & SpaceProps> = ({
   type = "text",
   name,
   status,
+  loading,
   ...props
 }) => (
   <InputGroup status={status} {...props}>
-    {type === "search" && (
+    {type === "search" && !loading && (
       <Icon image="SEARCH" width="1.2rem" height="1.2rem" />
     )}
+    {type === "search" && loading && <Spinner size={0.2} />}
     <StyledInput name={name} type={type} id={name} {...props} />
     {status && (
       <Icon
@@ -182,10 +187,9 @@ export const Input: FunctionComponent<InputProps & SpaceProps> = ({
   </InputGroup>
 );
 
-export const Upload: FunctionComponent<InputProps & { placeholder?:string } > = ({ 
-  name,
-  placeholder
-}) => (
+export const Upload: FunctionComponent<
+  InputProps & { placeholder?: string }
+> = ({ name, placeholder }) => (
   <StyledUpload>
     <label htmlFor={name}>
       {placeholder}
