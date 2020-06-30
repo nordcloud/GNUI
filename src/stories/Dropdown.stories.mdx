@@ -23,7 +23,12 @@ import { Text } from "../components/text";
 
 <Story name="dropdown">
   {() => {
-    const options = ["Option 1", "Option 2", "Option 3", "Option 4"];
+    const options = [
+      { value: "test", label: "Option 1" },
+      { value: "Option 2" },
+      "Option 3",
+      "Option 4",
+    ];
     const [value, setValue] = useState();
     return (
       <Container>

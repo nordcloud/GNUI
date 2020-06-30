@@ -7,7 +7,7 @@ import { IconProps } from "../icon";
 import { space, SpaceProps } from "styled-system";
 interface DropdownProps {
   name: string;
-  options: Array<string>;
+  options: Array<string | IOption>;
   width?: string;
   value?: string;
   isOpen?: boolean;
@@ -16,6 +16,11 @@ interface DropdownProps {
   onClick: (e: any) => void;
   onMouseLeave: (e: any) => void;
   onChange?: (e: any) => void;
+}
+
+interface IOption {
+  value: string;
+  label?: string;
 }
 
 interface DropdownIconProps extends IconProps {
@@ -114,7 +119,12 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const displayValue: string | IOption | undefined = options.find((option) => {
+    if (typeof option === "string") {
+      return option === value;
+    }
+    return option.value === value;
+  });
   return (
     <DropdownWrapper
       value={value}
@@ -128,7 +138,11 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
         onClick={() => !disabled && setIsOpen(!isOpen)}
         disabled={disabled && disabled}
       >
-        {value || name}
+        {!value
+          ? name
+          : typeof displayValue === "string"
+          ? displayValue
+          : displayValue?.label || displayValue?.value}
         <DropdownIcon
           width="0.75rem"
           height="0.75rem"
@@ -140,13 +154,18 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
         <DropdownMenu onClick={() => setIsOpen(!isOpen)}>
           <DropdownItem key="dropdown-title">{name}</DropdownItem>
           {options &&
-            options.map((option: string) => (
+            options.map((option: string | IOption) => (
               <DropdownItem
-                value={option}
-                key={option}
-                onClick={() => onChange && onChange(option)}
+                value={typeof option === "string" ? option : option.value}
+                key={typeof option === "string" ? option : option.value}
+                onClick={() =>
+                  onChange &&
+                  onChange(typeof option === "string" ? option : option.value)
+                }
               >
-                {option}
+                {typeof option === "string"
+                  ? option
+                  : option.label || option.value}
               </DropdownItem>
             ))}
         </DropdownMenu>
