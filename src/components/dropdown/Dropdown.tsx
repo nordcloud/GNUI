@@ -138,11 +138,11 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
         onClick={() => !disabled && setIsOpen(!isOpen)}
         disabled={disabled && disabled}
       >
-        {!value
+        {!displayValue
           ? name
           : typeof displayValue === "string"
           ? displayValue
-          : displayValue?.label || displayValue?.value}
+          : displayValue.label || displayValue.value}
         <DropdownIcon
           width="0.75rem"
           height="0.75rem"
