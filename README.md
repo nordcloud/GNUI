@@ -28,8 +28,8 @@ When you create PR against `master` branch, Amplify will create new deployment a
 ## Local setup
 
 - git clone this repo
-- `yarn`
-- `yarn storybook`
+- `npm install`
+- `npm run storybook`
 
 ## Ownership
 
