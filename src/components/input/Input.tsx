@@ -15,6 +15,7 @@ export interface InputProps {
   disabled?: boolean;
   required?: boolean;
   status?: "success" | "error";
+  popup?: boolean;
   children?: string | number | any;
   loading?: boolean;
   onClick?: (e: any) => void;
@@ -73,6 +74,7 @@ const InputGroup = styled(Flex)<InputProps & SpaceProps>`
   background: ${theme.colors.white};
   transition: ${theme.transition};
   line-height: ${theme.lineHeight};
+ 
   overflow: hidden;
   &:hover {
     border: ${theme.borders.darkenGray};
@@ -94,6 +96,12 @@ const InputGroup = styled(Flex)<InputProps & SpaceProps>`
       ${setStatusColor(status)}
     `}
 
+  ${({ popup }) =>
+    popup &&
+    css`
+      cursor: pointer;
+    `}
+
   ${space}
 `;
 
@@ -104,6 +112,7 @@ const StyledInput = styled.input<InputProps>`
   background: transparent;
   font-size: ${theme.fontSizes.regular};
   transition: ${theme.transition};
+
   &:placeholder {
     color: ${theme.colors.darks[4]};
   }
@@ -123,6 +132,12 @@ const StyledInput = styled.input<InputProps>`
     type === "search" &&
     css`
       margin-left: ${theme.spacing.spacing02};
+    `}
+
+  ${({ popup }) =>
+    popup &&
+    css`
+      cursor: pointer;
     `}
 `;
 
@@ -168,15 +183,16 @@ export const Input: FunctionComponent<InputProps & SpaceProps> = ({
   type = "text",
   name,
   status,
+  popup,
   loading,
   ...props
 }) => (
-  <InputGroup status={status} {...props}>
+  <InputGroup status={status} {...props} popup={popup}>
     {type === "search" && !loading && (
       <Icon image="SEARCH" width="1.2rem" height="1.2rem" />
     )}
     {type === "search" && loading && <Spinner size={0.2} />}
-    <StyledInput name={name} type={type} id={name} {...props} />
+    <StyledInput name={name} type={type} id={name} {...props} popup={popup} />
     {status && (
       <Icon
         image={`INPUT_${status.toUpperCase()}`}
@@ -184,6 +200,7 @@ export const Input: FunctionComponent<InputProps & SpaceProps> = ({
         height="1.2rem"
       />
     )}
+    {popup && <Icon image={`MENU`} width="1.2rem" height="1.2rem" />}
   </InputGroup>
 );
 
