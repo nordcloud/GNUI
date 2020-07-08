@@ -3,6 +3,7 @@ import { color } from "styled-system";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { Text } from "../text";
+import ninjaGif from "../../utils/img/ninja.gif";
 
 export interface SpinnerProps {
   caption?: string;
@@ -11,6 +12,7 @@ export interface SpinnerProps {
   color?: string;
   onClick?: (e: any) => void;
   onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
+  ninja?: boolean;
 }
 
 const SpinnerContainer = styled.div<SpinnerProps>`
@@ -69,19 +71,28 @@ const StyledRing = styled.div<SpinnerProps>`
   }
 `;
 
+const Image = styled.img<SpinnerProps>`
+  zoom: ${({ size }) => (size ? `${size}` : `1`)};
+`;
+
 export const Spinner: FunctionComponent<SpinnerProps> = ({
   caption,
   color,
   size,
+  ninja,
 }) => {
   return (
     <SpinnerContainer caption={caption}>
-      <StyledRing color={color} size={size}>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </StyledRing>
+      {ninja ? (
+        <Image size={size} src={ninjaGif}></Image>
+      ) : (
+        <StyledRing color={color} size={size}>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </StyledRing>
+      )}
       {caption && <Text>{caption}</Text>}
     </SpinnerContainer>
   );
