@@ -13,7 +13,6 @@ interface IPaginationProps {
 const Pagination = ({ set, current, count, size }: IPaginationProps) => {
   const currentPage = Math.ceil(current / size);
   const nPages = Math.ceil(count / size);
-
   return (
     <nav className="pagination" role="navigation" aria-label="pagination">
       <ul className="pagination-list">
@@ -31,17 +30,20 @@ const Pagination = ({ set, current, count, size }: IPaginationProps) => {
 
         {[...Array(Math.min(Math.ceil(count / size), 5))]
           .map((_, i) => currentPage + i)
-          .map(i => (currentPage === nPages ? i - 4 : current > 3 ? i - 1 : i))
-          .filter(i => i < nPages)
-          .map(i => {
+          .map((i) =>
+            currentPage === nPages ? i - 4 : current > 3 ? i - 1 : i
+          )
+          .filter((i) => i < nPages)
+          .map((i) => {
             return (
               <li key={`p${i}`}>
                 <button
                   onClick={() => set(size * i)}
                   onKeyDown={() => set(size * i)}
                   type="button"
-                  className={`pagination-link ${i === currentPage &&
-                    `current`}`}
+                  className={`pagination-link ${
+                    i === currentPage && `current`
+                  }`}
                 >
                   {i + 1}
                 </button>
@@ -69,28 +71,26 @@ interface IPerPageProps {
 }
 
 const PerPage = ({ size, set }: IPerPageProps) => (
-  <>
-    <nav
-      className="pagination-per-page"
-      role="navigation"
-      aria-label="pagination"
-    >
-      <span className="nav-title">Per page:</span>
-      <ul className="pagination-list">
-        <li>
-          {[10, 20, 50].map(el => (
-            <button
-              key={el}
-              className={`pagination-link ${el === size && `current`}`}
-              onClick={() => set(el)}
-            >
-              {el}
-            </button>
-          ))}
-        </li>
-      </ul>
-    </nav>
-  </>
+  <nav
+    className="pagination-per-page"
+    role="navigation"
+    aria-label="pagination"
+  >
+    <span className="nav-title">Per page:</span>
+    <ul className="pagination-list">
+      <li>
+        {[10, 20, 50].map((el, i) => (
+          <button
+            key={el}
+            onClick={() => set(el)}
+            className={`pagination-link ${el == size && `current`}`}
+          >
+            {el}
+          </button>
+        ))}
+      </li>
+    </ul>
+  </nav>
 );
 
 interface IPaginationAmountProps {
@@ -101,7 +101,7 @@ interface IPaginationAmountProps {
 
 const PaginationAmount = ({ from, size, count }: IPaginationAmountProps) => (
   <p className="nav-title">
-    Showing {from + 1} - {Math.min(from + size, count)} of {count}.
+    Showing {from + 1} - {from + Number(size)} of {count}.
   </p>
 );
 
@@ -166,7 +166,7 @@ export const PaginationBox = ({
   from,
   count,
   setSize,
-  setPage
+  setPage,
 }: IPaginationBoxProps) => {
   return (
     <Flex>
