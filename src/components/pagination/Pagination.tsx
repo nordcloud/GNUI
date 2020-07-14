@@ -8,60 +8,66 @@ interface IPaginationProps {
   current: number;
   count: number;
   size: number;
+  from: number;
 }
 
-const Pagination = ({ set, current, count, size }: IPaginationProps) => {
+const Pagination = ({ set, current, count, size, from }: IPaginationProps) => {
   const currentPage = Math.ceil(current / size);
   const nPages = Math.ceil(count / size);
   return (
-    <nav className="pagination" role="navigation" aria-label="pagination">
-      <ul className="pagination-list">
-        <li>
-          <button
-            onClick={() => set(0)}
-            onKeyDown={() => set(0)}
-            type="button"
-            className="pagination-first"
-            disabled={current === 0}
-          >
-            First
-          </button>
-        </li>
+    <>
+      <nav className="pagination" role="navigation" aria-label="pagination">
+        <ul className="pagination-list">
+          <li>
+            <button
+              onClick={() => set(0)}
+              onKeyDown={() => set(0)}
+              type="button"
+              className="pagination-first"
+              disabled={current <= 0}
+            >
+              First
+            </button>
+          </li>
 
-        {[...Array(Math.min(Math.ceil(count / size), 5))]
-          .map((_, i) => currentPage + i)
-          .map((i) =>
-            currentPage === nPages ? i - 4 : current > 3 ? i - 1 : i
-          )
-          .filter((i) => i < nPages)
-          .map((i) => {
-            return (
-              <li key={`p${i}`}>
-                <button
-                  onClick={() => set(size * i)}
-                  onKeyDown={() => set(size * i)}
-                  type="button"
-                  className={`pagination-link ${
-                    i === currentPage && `current`
-                  }`}
-                >
-                  {i + 1}
-                </button>
-              </li>
-            );
-          })}
-        <li>
-          <button
-            onClick={() => set((nPages - 1) * size)}
-            onKeyDown={() => set((nPages - 1) * size)}
-            type="button"
-            className="pagination-last"
-          >
-            Last
-          </button>
-        </li>
-      </ul>
-    </nav>
+          {[...Array(Math.min(Math.ceil(count / size), 5))]
+            .map((_, i) => currentPage + i)
+            .map((i) =>
+              currentPage === nPages ? i - 4 : current > 3 ? i - 1 : i
+            )
+            .filter((i) => i < nPages)
+            .map((i) => {
+              return (
+                <li key={`p${i}`}>
+                  <button
+                    onClick={() => set(size * i)}
+                    onKeyDown={() => set(size * i)}
+                    type="button"
+                    disabled={i < 0}
+                    className={`pagination-link ${
+                      i === currentPage && `current`
+                    }`}
+                  >
+                    {i < 0 ? "1" : i + 1}
+                  </button>
+                </li>
+              );
+            })}
+
+          <li>
+            <button
+              onClick={() => set((nPages - 1) * size)}
+              onKeyDown={() => set((nPages - 1) * size)}
+              type="button"
+              className="pagination-last"
+              disabled={current <= 0}
+            >
+              Last
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </>
   );
 };
 
@@ -99,11 +105,17 @@ interface IPaginationAmountProps {
   count: number;
 }
 
-const PaginationAmount = ({ from, size, count }: IPaginationAmountProps) => (
-  <p className="nav-title">
-    Showing {from + 1} - {from + Number(size)} of {count}.
-  </p>
-);
+const PaginationAmount = ({ from, size, count }: IPaginationAmountProps) => {
+  const s = Number(size);
+  const maxCurrentPage = count < s ? count : Math.min(from + s);
+  const minCurrentPage = count < s ? "1" : from + 1;
+  return (
+    <p className="nav-title">
+      Showing {minCurrentPage} -
+      {maxCurrentPage > count ? count : maxCurrentPage} of {count}
+    </p>
+  );
+};
 
 interface IPaginationBoxProps {
   size: number;
@@ -173,7 +185,13 @@ export const PaginationBox = ({
       <StyledPaginationBox>
         <PerPage size={size} set={setSize} />
         <PaginationAmount from={from} size={size} count={count} />
-        <Pagination set={setPage} current={from} size={size} count={count} />
+        <Pagination
+          from={from}
+          set={setPage}
+          current={from}
+          size={size}
+          count={count}
+        />
       </StyledPaginationBox>
     </Flex>
   );
