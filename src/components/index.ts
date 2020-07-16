@@ -30,3 +30,4 @@ export * from "./multiselect";
 export * from "./selectbutton";
 export * from "./datepicker";
 export * from "./message";
+export * from "./svgicon";

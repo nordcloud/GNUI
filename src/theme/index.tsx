@@ -35,6 +35,8 @@ type ZIndex = {
   [zIndex: string]: number | any;
 };
 
+type IconSize = { [key: string]: string };
+
 export interface ThemeInterface {
   colors: Colors;
   typography: Typography;
@@ -45,6 +47,7 @@ export interface ThemeInterface {
   breakpoints: Breakpoints;
   zindex: ZIndex;
   [aliases: string]: any;
+  iconsize: IconSize;
 }
 
 const theme: ThemeInterface = {
@@ -142,6 +145,14 @@ const theme: ThemeInterface = {
     md: 768,
     lg: 992,
     xl: 1200,
+  },
+
+  iconsize: {
+    sm: "0.875rem",
+    md: "1.5rem",
+    lg: "2rem",
+    xl: "3rem",
+    xxl: "5rem",
   },
 
   opacity: 0.7,
