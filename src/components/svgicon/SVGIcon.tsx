@@ -1,45 +1,46 @@
 import React from "react";
-import styled, {css} from "styled-components";
+import styled, { css } from "styled-components";
 import theme from "../../theme";
-import {getViewBox} from "../../utils/svgicons";
-import {getPath} from "../../utils/svgicons";
+import { getViewBox } from "../../utils/svgicons";
+import { getPath } from "../../utils/svgicons";
 
 export interface SVGIconProps {
-    name: string;
-    fill?: "success" | "danger" | "warning" | "notification" | "white",
-    size?: "sm" | "md" | "lg" | "xl" | "xxl"
+  name: string;
+  color?: "success" | "danger" | "warning" | "notification" | "white";
+  size?: "sm" | "md" | "lg" | "xl" | "xxl";
 }
 
 const StyledSVGIcon = styled.svg<SVGIconProps>`
-    fill: ${theme.colors.primary};
-    width: ${theme.iconSize.md};
-    height: ${theme.iconSize.md};
-    
-    ${({fill}) =>
-    fill && css`
-        fill: ${theme.colors[fill]};
+  fill: ${theme.colors.primary};
+  width: ${theme.iconSize.md};
+  height: ${theme.iconSize.md};
+
+  ${({ color }) =>
+    color &&
+    css`
+      fill: ${theme.colors[color]};
     `}
-    
-    ${({size}) =>
-    size && css`
-        width: ${theme.iconSize[size]};
-        height: ${theme.iconSize[size]};
+
+  ${({ size }) =>
+    size &&
+    css`
+      width: ${theme.iconSize[size]};
+      height: ${theme.iconSize[size]};
     `}
 `;
 
 export const SVGIcon: React.FC<SVGIconProps> = (props) => {
-    const ViewBox = getViewBox(props.name);
-    const Path = getPath(props.name);
-    return (
-        <StyledSVGIcon
-            {...props}
-            viewBox = {ViewBox}
-            xmlns = "http://www.w3.org/2000/svg"
-            xmlnsXlink = "http://www.w3.org/1999/xlink"
-        >
-            {Path}
-        </StyledSVGIcon>
-    );
+  const ViewBox = getViewBox(props.name);
+  const Path = getPath(props.name);
+
+  return (
+    <StyledSVGIcon
+      {...props}
+      viewBox={ViewBox}
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    >
+      {Path}
+    </StyledSVGIcon>
+  );
 };
-
-
