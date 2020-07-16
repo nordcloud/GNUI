@@ -47,7 +47,7 @@ export interface ThemeInterface {
   breakpoints: Breakpoints;
   zindex: ZIndex;
   [aliases: string]: any;
-  iconsize: IconSize;
+  iconSize: IconSize;
 }
 
 const theme: ThemeInterface = {
@@ -147,7 +147,7 @@ const theme: ThemeInterface = {
     xl: 1200,
   },
 
-  iconsize: {
+  iconSize: {
     sm: "0.875rem",
     md: "1.5rem",
     lg: "2rem",
