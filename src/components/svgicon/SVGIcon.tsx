@@ -12,8 +12,8 @@ export interface SVGIconProps {
 
 const StyledSVGIcon = styled.svg<SVGIconProps>`
     fill: ${theme.colors.primary};
-    width: ${theme.iconsize.md};
-    height: ${theme.iconsize.md};
+    width: ${theme.iconSize.md};
+    height: ${theme.iconSize.md};
     
     ${({fill}) =>
     fill && css`
@@ -22,8 +22,8 @@ const StyledSVGIcon = styled.svg<SVGIconProps>`
     
     ${({size}) =>
     size && css`
-        width: ${theme.iconsize[size]};
-        height: ${theme.iconsize[size]};
+        width: ${theme.iconSize[size]};
+        height: ${theme.iconSize[size]};
     `}
 `;
 
