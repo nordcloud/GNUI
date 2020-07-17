@@ -14,6 +14,7 @@ const StyledSVGIcon = styled.svg<SVGIconProps>`
   fill: ${theme.colors.primary};
   width: ${theme.iconSize.md};
   height: ${theme.iconSize.md};
+  [x: string]: any;
 
   ${({ color }) =>
     color &&
@@ -29,9 +30,9 @@ const StyledSVGIcon = styled.svg<SVGIconProps>`
     `}
 `;
 
-export const SVGIcon: React.FC<SVGIconProps> = (props) => {
-  const ViewBox = getViewBox(props.name);
-  const Path = getPath(props.name);
+export const SVGIcon: React.FC<SVGIconProps> = ({ name, ...props }) => {
+  const ViewBox = getViewBox(name);
+  const Path = getPath(name);
 
   return (
     <StyledSVGIcon
