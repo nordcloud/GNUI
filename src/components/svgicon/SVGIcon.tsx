@@ -14,7 +14,6 @@ const StyledSVGIcon = styled.svg<SVGIconProps>`
   fill: ${theme.colors.primary};
   width: ${theme.iconSize.md};
   height: ${theme.iconSize.md};
-  [x: string]: any;
 
   ${({ color }) =>
     color &&
