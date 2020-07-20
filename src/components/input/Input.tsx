@@ -180,29 +180,33 @@ export const Description: FunctionComponent = ({ children }) => (
   <StyledDescription>{children}</StyledDescription>
 );
 
-export const Input: FunctionComponent<InputProps & SpaceProps> = ({
-  type = "text",
-  name,
-  status,
-  popup,
-  loading,
-  ...props
-}) => (
-  <InputGroup status={status} {...props} popup={popup}>
-    {type === "search" && !loading && (
-      <Icon image="SEARCH" width="1.2rem" height="1.2rem" />
-    )}
-    {type === "search" && loading && <Spinner size={0.2} />}
-    <StyledInput name={name} type={type} id={name} {...props} popup={popup} />
-    {status && (
-      <Icon
-        image={`INPUT_${status.toUpperCase()}`}
-        width="1.2rem"
-        height="1.2rem"
+export const Input: FunctionComponent<
+  InputProps & SpaceProps
+> = React.forwardRef(
+  ({ type = "text", name, status, popup, loading, ...props }, ref) => (
+    <InputGroup status={status} {...props} popup={popup}>
+      {type === "search" && !loading && (
+        <Icon image="SEARCH" width="1.2rem" height="1.2rem" />
+      )}
+      {type === "search" && loading && <Spinner size={0.2} />}
+      <StyledInput
+        name={name}
+        type={type}
+        id={name}
+        ref={ref}
+        {...props}
+        popup={popup}
       />
-    )}
-    {popup && <Icon image={`MENU`} width="1.2rem" height="1.2rem" />}
-  </InputGroup>
+      {status && (
+        <Icon
+          image={`INPUT_${status.toUpperCase()}`}
+          width="1.2rem"
+          height="1.2rem"
+        />
+      )}
+      {popup && <Icon image={`MENU`} width="1.2rem" height="1.2rem" />}
+    </InputGroup>
+  )
 );
 
 export const Upload: FunctionComponent<
