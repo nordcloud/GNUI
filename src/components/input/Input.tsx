@@ -15,6 +15,7 @@ export interface InputProps {
   disabled?: boolean;
   required?: boolean;
   status?: "success" | "error";
+  ref?: any;
   popup?: boolean;
   children?: string | number | any;
   loading?: boolean;

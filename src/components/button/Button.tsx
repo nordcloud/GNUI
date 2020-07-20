@@ -10,6 +10,7 @@ export interface ButtonProps {
   size?: string;
   color?: string;
   select?: boolean;
+  type?: any;
   secondary?: boolean;
   outline?: boolean;
   disabled?: boolean;
