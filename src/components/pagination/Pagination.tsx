@@ -89,7 +89,7 @@ const PerPage = ({ size, set }: IPerPageProps) => (
           <button
             key={el}
             onClick={() => set(el)}
-            className={`pagination-link ${el === size && `current`}`}
+            className={`pagination-link ${el.toString() === size.toString() && `current`}`}
           >
             {el}
           </button>
