@@ -1,0 +1,79 @@
+import { useState } from "react";
+import styled from "styled-components";
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { SVGIcon } from "../components/svgicon";
+import { Container, Flex } from "../components/container";
+
+<Meta title="Components/SVGIcon" component={SVGIcon} />
+
+# SVGIcon
+
+## Props
+
+- `name`: `string` — **required**
+- `size`: `string` — **optional**: "sm" | "md" | "lg" | "xl" | "xxl"
+- `color`: `string` — **optional**: "success" | "danger" | "warning" | "notification" | "white"
+
+### Icons Sizes
+
+<Preview>
+  <Story name="size">
+    <Flex justifyContent="space-evenly">
+        <SVGIcon name="dashboard" size="sm" />
+        <SVGIcon name="dashboard" />
+        <SVGIcon name="dashboard" size="lg" />
+        <SVGIcon name="dashboard" size="xl" />
+        <SVGIcon name="dashboard" size="xxl" />
+    </Flex>
+  </Story>
+</Preview>
+
+### Icons colors
+
+<Preview>
+  <Story name="colors">
+    <Flex justifyContent="space-evenly">
+        <SVGIcon name="dashboard" />
+        <SVGIcon name="dashboard" color="success"/>
+        <SVGIcon name="dashboard" color="danger"/>
+        <SVGIcon name="dashboard" color="warning"/>
+        <SVGIcon name="dashboard" color="notification"/>
+    </Flex>
+  </Story>
+</Preview>
+
+### Menu Icons
+
+<Preview>
+  <Story name="menu">
+    <Flex justifyContent="space-evenly">
+        <SVGIcon name="dashboard" size="lg" />
+        <SVGIcon name="application" size="lg" />
+        <SVGIcon name="cloudAccounts" size="lg" />
+        <SVGIcon name="resource" size="lg" />
+        <SVGIcon name="organizationalStructure" size="lg" />
+        <SVGIcon name="contactPersons" size="lg" />
+        <SVGIcon name="users" size="lg" />
+        <SVGIcon name="mappingRules" size="lg" />
+        <SVGIcon name="costSplittingRules" size="lg" />
+        <SVGIcon name="actionLog" size="lg" />
+        <SVGIcon name="businessUnitType" size="lg" />
+    </Flex>
+  </Story>
+</Preview>
+
+### UI Icons
+
+<Preview>
+  <Story name="ui">
+    <Flex justifyContent="space-evenly">
+        <SVGIcon name="danger" />
+        <SVGIcon name="success" />
+        <SVGIcon name="info" />
+        <SVGIcon name="help" />
+        <SVGIcon name="plus" />
+        <SVGIcon name="minus" />
+    </Flex>
+  </Story>
+</Preview>
+
