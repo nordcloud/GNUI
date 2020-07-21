@@ -11,6 +11,7 @@ export interface InputProps {
   className?: string;
   placeholder?: string;
   value?: string;
+  defaultValue?: string;
   id?: string;
   disabled?: boolean;
   required?: boolean;
