@@ -29,7 +29,7 @@ export const StyledModal = styled(ReactModal)`
 `;
 
 export const ModalBox = styled(Box)<IModalBox>`
-  min-width: ${({ modalMinWidth }) => modalMinWidth || "18.75rem"};
+  min-width: ${({ modalMinWidth }) => modalMinWidth || "32rem"};
   overflow: hidden;
   font-family: ${theme.fonts.body};
   line-height: ${theme.lineHeight};
@@ -79,9 +79,11 @@ const ModalHeading = styled(Heading)`
 export const ModalHeader = styled.div`
   display: flex;
   align-items: center;
-  width: 100%;
+  padding: 0 1rem 1rem;
   margin-bottom: ${theme.spacing.spacing04};
-
+  border-bottom: ${theme.borders.grey};
+  margin-left: -1rem;
+  margin-right: -1rem;
   ${ModalCloseButton} {
     margin-left: auto;
   }

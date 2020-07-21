@@ -9,15 +9,11 @@ import {
   ModalHeader,
   ModalActions,
 } from "./Modal";
-import theme from "../../theme";
 import styled from "styled-components";
 import { Heading } from "../heading";
 
 const ModalHeading = styled(Heading)`
   margin: 0;
-`;
-const MoreSpace = styled.div`
-  margin-top: ${theme.spacing.spacing08};
 `;
 
 interface IModal {
@@ -49,11 +45,9 @@ export const ModalConfirm = ({
             <Icon width="1rem" height="1rem" image="CLOSE_SIDEBAR" />
           </ModalCloseButton>
         </ModalHeader>
-        <ModalContent>
-          <MoreSpace>{children}</MoreSpace>
-        </ModalContent>
+        <ModalContent>{children}</ModalContent>
         <ModalActions>
-          <ModalAction onClick={props.onClose} severity="low">
+          <ModalAction onClick={props.onClose} severity="medium">
             Cancel
           </ModalAction>
           <ModalAction onClick={props.confirm}>{actionLabel}</ModalAction>
