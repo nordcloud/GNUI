@@ -107,10 +107,11 @@ import { Button } from "../components/button";
         <>
           <Button onClick={update}>Open modal</Button>
           <ModalConfirm 
-            contentLabel={"Modal title"}
+            contentLabel="Account"
             isOpen={isOpen}
             confirm={action}
             onClose={update}
+            actionLabel="Delete"
           >
             Do you really want to delete account?
           </ModalConfirm>

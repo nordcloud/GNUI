@@ -17,7 +17,7 @@ const ModalHeading = styled(Heading)`
   margin: 0;
 `;
 const MoreSpace = styled.div`
-  margin: ${theme.spacing.spacing08} ${theme.spacing.spacing04} 0;
+  margin-top: ${theme.spacing.spacing08};
 `;
 
 interface IModal {
@@ -29,11 +29,17 @@ interface IModal {
     event: React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>
   ) => void;
   contentLabel: string;
+  actionLabel: string;
   children: React.ReactNode;
   customStyles?: { [key: string]: string };
 }
 
-export const ModalConfirm = ({ children, contentLabel, ...props }: IModal) => {
+export const ModalConfirm = ({
+  children,
+  contentLabel,
+  actionLabel,
+  ...props
+}: IModal) => {
   return (
     <StyledModal {...props}>
       <ModalBox innerSpacing="spacing04" shadow="shadow04">
@@ -50,7 +56,7 @@ export const ModalConfirm = ({ children, contentLabel, ...props }: IModal) => {
           <ModalAction onClick={props.onClose} severity="low">
             Cancel
           </ModalAction>
-          <ModalAction onClick={props.confirm}>OK</ModalAction>
+          <ModalAction onClick={props.confirm}>{actionLabel}</ModalAction>
         </ModalActions>
       </ModalBox>
     </StyledModal>
