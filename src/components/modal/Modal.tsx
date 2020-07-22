@@ -9,7 +9,7 @@ import { whenIE11 } from "../../utils/browserCompatibility";
 
 const MODAL_ACTION_HEIGHT = "5.625rem";
 
-const StyledModal = styled(ReactModal)`
+export const StyledModal = styled(ReactModal)`
   padding: 0;
   border: none;
   top: 50%;
@@ -28,18 +28,18 @@ const StyledModal = styled(ReactModal)`
   }
 `;
 
-const ModalBox = styled(Box)<IModalBox>`
-  min-width: ${({ modalMinWidth }) => modalMinWidth || "18.75rem"};
+export const ModalBox = styled(Box)<IModalBox>`
+  min-width: ${({ modalMinWidth }) => modalMinWidth || "32rem"};
   overflow: hidden;
   font-family: ${theme.fonts.body};
   line-height: ${theme.lineHeight};
 `;
 
-const ModalCloseButton = styled(Button)`
+export const ModalCloseButton = styled(Button)`
   padding: ${theme.spacing.spacing01};
 `;
 
-const ModalAction = styled(Button)`
+export const ModalAction = styled(Button)`
   margin-left: ${theme.spacing.spacing04};
 
   &:first-child {
@@ -47,7 +47,7 @@ const ModalAction = styled(Button)`
   }
 `;
 
-const ModalActions = styled.div`
+export const ModalActions = styled.div`
   position: sticky;
   bottom: 0;
   right: 0;
@@ -64,7 +64,7 @@ const ModalActions = styled.div`
   `)}
 `;
 
-const ModalContent = styled.div<IModalContent>`
+export const ModalContent = styled.div<IModalContent>`
   max-height: ${({ contentMaxHeight }) => contentMaxHeight || "25rem"};
   overflow-y: auto;
   ${whenIE11(`
@@ -76,12 +76,14 @@ const ModalHeading = styled(Heading)`
   margin: 0;
 `;
 
-const ModalHeader = styled.div`
+export const ModalHeader = styled.div`
   display: flex;
   align-items: center;
-  width: 100%;
+  padding: 0 1rem 1rem;
   margin-bottom: ${theme.spacing.spacing04};
-
+  border-bottom: ${theme.borders.grey};
+  margin-left: -1rem;
+  margin-right: -1rem;
   ${ModalCloseButton} {
     margin-left: auto;
   }
@@ -100,13 +102,14 @@ interface IModalAction {
     event: React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>
   ) => void;
   label: string;
-  disabled: boolean;
+  disabled?: boolean;
   severity: "low" | "medium" | "high";
   order: number;
 }
 
 interface IModal {
   isOpen: boolean;
+  onRequestClose?: () => void;
   onAfterOpen?: () => void;
   onClose?: (
     event: React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>

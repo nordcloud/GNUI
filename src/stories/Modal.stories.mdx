@@ -1,6 +1,6 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { useState } from "react";
-import { Modal } from "../components/modal";
+import { Modal, ModalConfirm } from "../components/modal";
 import { Button } from "../components/button";
 
 <Meta title="Components/Modal" component={Modal} />
@@ -63,28 +63,28 @@ import { Button } from "../components/button";
       return (
         <>
           <Button onClick={update}>Open modal</Button>
-          <Modal 
-            isOpen={isOpen}
-            onAfterOpen={() => {}}
-            onRequestClose={update}
-            onClose={update}
-            contentLabel={"Modal title"}
-            appId="#root"
-            actions={[
-              {
-                order: 0,
-                onAction: update,
-                label: "Second action",
-                severity: "low",
-              },
-              {
-                order: 1,
-                onAction: update,
-                label: "Primary action",
-                severity: "high",
-              }
-            ]}
-          >
+          <Modal
+              isOpen={isOpen}
+              onAfterOpen={() => {}}
+              onRequestClose={update}
+              onClose={update}
+              contentLabel={"Modal title"}
+              appId="#root"
+              actions={[
+                {
+                  order: 0,
+                  onAction: update,
+                  label: "Second action",
+                  severity: "low",
+                },
+                {
+                  order: 1,
+                  onAction: update,
+                  label: "Primary action",
+                  severity: "high",
+                },
+              ]}
+            >
             This is modal content
             <br />          
             Another line of content
@@ -95,3 +95,28 @@ import { Button } from "../components/button";
   </Story>
 </Preview>
 
+### Modal Confirm
+
+<Preview>
+  <Story name="confirm modal">
+    {() => {
+      const [isOpen, setOpen] = useState(false)
+      const update = () => setOpen(!isOpen);
+      const action = () => alert('Deleted')
+      return (
+        <>
+          <Button onClick={update}>Open modal</Button>
+          <ModalConfirm 
+            contentLabel="Account"
+            isOpen={isOpen}
+            confirm={action}
+            onClose={update}
+            actionLabel="Delete"
+          >
+            Do you really want to delete account?
+          </ModalConfirm>
+        </>
+      );
+    }}
+  </Story>
+</Preview>
