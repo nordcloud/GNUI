@@ -9,6 +9,7 @@ export interface ButtonProps {
   priority?: string;
   size?: string;
   color?: string;
+  form?: string;
   select?: boolean;
   type?: any;
   secondary?: boolean;
