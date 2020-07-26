@@ -17,12 +17,30 @@ import title from "title";
 
 ## Props
 
-- `tag`: `string` — _optional_
 - `size`: `string` — _optional_
-- `bold`: `boolean` — _optional_
-- `italic`: `boolean` — _optional_
-- `small`: `boolean` — _optional_
-- `caption`: `boolean` — _optional_
+- `tag`: `string` — _optional_
+- `display`: `string` — _optional_
+- `color`: `boolean` — _optional_
+- `weight`: `boolean` — _optional_
+- `textStyle`: `boolean` — _optional_
+- `align`: `boolean` — _optional_
+
+### size
+
+> `size`: `string` — ["xs" | "sm" | "md" | "lg" | "xl" | "xxl"]
+
+<Preview>
+  <Story name="size">
+    <Container>
+      <Text size="xs">(xs) Extra Small size (10px)</Text>
+      <Text size="sm">(sm) Small size (12px)</Text>
+      <Text size="md">(md) Regular size (16px)</Text>
+      <Text size="lg">(lg) Big size (20px)</Text>
+      <Text size="xl">(xl) Large size (24px)</Text>
+      <Text size="xxl">(xxl) Extra Large size (32px)</Text>
+    </Container>
+  </Story>
+</Preview>
 
 ### tag
 
@@ -38,59 +56,59 @@ import title from "title";
   </Story>
 </Preview>
 
-### bold
+### weight
 
-> `bold`: `boolean`
-
-<Preview>
-  <Story name="bold">
-    <Text bold>Lorem ipsum solor domet.</Text>
-  </Story>
-</Preview>
-
-### italic
-
-> `italic`: `boolean`
+> `weight`: `string` - ["regular" | "medium" | "bold"]
 
 <Preview>
-  <Story name="italic">
-    <Text italic>Lorem ipsum solor domet.</Text>
-  </Story>
-</Preview>
-
-### size
-
-> `size`: `string` — [`extrasmall`, `small`, `regular`, `big`, `large`, `extralarge`]
-
-<Preview>
-  <Story name="size">
+  <Story name="weight">
     <Container>
-      <Text size="extrasmall">Extra Small size</Text>
-      <Text size="small">Small size</Text>
-      <Text size="regular">Regular size</Text>
-      <Text size="big">Big size</Text>
-      <Text size="large">Large size</Text>
-      <Text size="extralarge">Extra Large size</Text>
+      <Text weight="regular">Lorem ipsum solor domet.</Text>
+      <Text weight="medium">Lorem ipsum solor domet.</Text>
+      <Text weight="bold">Lorem ipsum solor domet.</Text>
     </Container>
   </Story>
 </Preview>
 
-### small
+### color
 
-> `small`: `boolean`
+> `color`: `string` - GNUI as first looks for the value in `theme.colors` and if color doesn't exist there `color` will be used as is.
 
 <Preview>
-  <Story name="small">
-    <Text small>Lorem ipsum solor domet.</Text>
+  <Story name="color">
+    <Container>
+      <Text color="danger">Lorem ipsum solor domet.</Text>
+      <Text color="success">Lorem ipsum solor domet.</Text>
+      <Text color="warning">Lorem ipsum solor domet.</Text>
+      <Text color="notification">Lorem ipsum solor domet.</Text>
+      <Text color="#ccc">Lorem ipsum solor domet.</Text>
+    </Container>
   </Story>
 </Preview>
 
-### caption
+### textStyle
 
-> `caption`: `boolean`
+> `textStyle`: `string` - ["normal" | "italic"]
 
 <Preview>
-  <Story name="caption">
-    <Text caption>Lorem ipsum solor domet.</Text>
+  <Story name="textStyle">
+    <Container>
+      <Text textStyle="normal">Lorem ipsum solor domet.</Text>
+      <Text textStyle="italic">Lorem ipsum solor domet.</Text>
+    </Container>
+  </Story>
+</Preview>
+
+### align
+
+> `align`: `boolean`
+
+<Preview>
+  <Story name="align">
+    <Container>
+      <Text align="left">Lorem ipsum solor domet.</Text>
+      <Text align="center">Lorem ipsum solor domet.</Text>
+      <Text align="right">Lorem ipsum solor domet.</Text>
+    </Container>
   </Story>
 </Preview>

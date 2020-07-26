@@ -7,16 +7,10 @@ type Colors = {
 };
 
 type Typography = {
+  fonts: { [font: string]: string };
   fontWeights: Array<number>;
   fontSizes: Array<string>;
-  fonts: { [font: string]: string };
   lineHeight: string;
-  headings: {
-    sizes: Array<number>;
-    weights: Array<number>;
-    margins: Array<string>;
-  };
-  [spacing: string]: string | any;
 };
 
 type Radius = { [key: string]: string };
@@ -73,16 +67,11 @@ const theme: ThemeInterface = {
   typography: {
     fonts: {
       body: "Rubik, sans-serif",
-      monospace: "Fira Code, monospace",
+      heading: "Rubik, sans-serif"
     },
-    headings: {
-      sizes: [2.5, 2, 1.5, 1.25, 1, 0.8],
-      weights: [500, 600],
-      margins: ["1.5rem, 0", "1.25rem, 0", "1rem, 0", ".75rem 0"],
-    },
-    lineHeight: "1.25rem",
-    fontWeights: [400, 500, 600, 700],
-    fontSizes: ["0.625rem", "0.75rem", "1rem", "1.3rem", "1.5rem", "2rem"],
+    fontSizes: ["0.625rem",  "0.75rem", "1rem", "1.25rem", "1.5rem", "2rem"],
+    fontWeights: [400, 500, 700],
+    lineHeight: "1.5em",
   },
 
   borders: {
@@ -114,6 +103,7 @@ const theme: ThemeInterface = {
   },
 
   spacing: {
+    spacing00: "0",
     spacing01: "0.25rem",
     spacing02: "0.5rem",
     spacing03: "0.75rem",
@@ -168,23 +158,19 @@ theme.lineHeight = theme.typography.lineHeight;
 theme.fontWeights.regular = theme.fontWeights[0];
 theme.fontWeights.medium = theme.fontWeights[1];
 theme.fontWeights.bold = theme.fontWeights[2];
-theme.fontWeights.bolder = theme.fontWeights[3];
 
 // Font-sizes
-theme.fontSizes.extrasmall = theme.fontSizes[0];
-theme.fontSizes.small = theme.fontSizes[1];
-theme.fontSizes.regular = theme.fontSizes[2];
-theme.fontSizes.big = theme.fontSizes[3];
-theme.fontSizes.large = theme.fontSizes[4];
-theme.fontSizes.extralarge = theme.fontSizes[5];
+theme.fontSizes.xs = theme.fontSizes[0];
+theme.fontSizes.sm = theme.fontSizes[1];
+theme.fontSizes.md = theme.fontSizes[2];
+theme.fontSizes.lg = theme.fontSizes[3];
+theme.fontSizes.xl = theme.fontSizes[4];
+theme.fontSizes.xxl = theme.fontSizes[5];
 
 // Borders & Radius
 theme.borderDefault = theme.borders.default;
 theme.borderInput = theme.borders.darkenGrey;
 theme.radiusDefault = theme.radius.default;
-
-// Headings
-theme.headings = theme.typography.headings;
 
 export const { breakpoints, spacings, paddings } = theme;
 export const bp = createBreakpoint(breakpoints);
