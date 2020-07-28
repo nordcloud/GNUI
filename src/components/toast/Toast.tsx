@@ -35,7 +35,7 @@ const StyledToastContainer = styled.div<ToastProps>`
       max-width:320px;
       font-weight: ${theme.fontWeights.medium};
       font-family: ${theme.fonts.body};
-      font-size: ${theme.fontSizes.regular};
+      font-size: ${theme.fontSizes.md};
       text-align:left;
       border-radius:${theme.radiusDefault};
       padding: ${theme.spacing.spacing04};
@@ -52,7 +52,7 @@ const StyledToastContainer = styled.div<ToastProps>`
   
       p {
         margin: ${theme.spacing.spacing03} 0 0;
-        font-size: ${theme.fontSizes.small};
+        font-size: ${theme.fontSizes.md};
         font-weight: ${theme.fontWeights.regular};
       }
     }

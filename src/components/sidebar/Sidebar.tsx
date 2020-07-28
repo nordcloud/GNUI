@@ -53,7 +53,7 @@ const Header = styled.div<HeaderProps>`
 
 const Title = styled(Text)`
   font-weight: ${theme.fontWeights[2]};
-  font-size: ${theme.fontSizes.medium};
+  font-size: ${theme.fontSizes.md};
   margin: 0;
   ${space}
 `;
@@ -61,7 +61,7 @@ const Title = styled(Text)`
 const Content = styled(Text)`
   font-weight: ${theme.fontWeights[0]};
   line-height: ${theme.lineHeight};
-  font-size: ${theme.fontSizes.medium};
+  font-size: ${theme.fontSizes.md};
   padding: ${theme.spacing.spacing06} 0;
   margin: 0;
 `;

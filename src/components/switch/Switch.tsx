@@ -67,7 +67,7 @@ const SwitchLabel = styled.label`
   align-items: center;
   font-weight: ${theme.fontWeights.regular};
   font-family: ${theme.fonts.body};
-  font-size: ${theme.fontSizes.regular};
+  font-size: ${theme.fontSizes.md};
 `;
 
 const Inner = styled.div`

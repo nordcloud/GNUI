@@ -14,7 +14,7 @@ const StyledContainer = styled.div<ContainerProps & SpaceProps>`
   box-sizing: border-box;
   font-family: ${theme.fonts.body};
   font-weight: ${theme.fontWeights.regular};
-  font-size: ${theme.fontSizes.regular};
+  font-size: ${theme.fontSizes.md};
   border-radius: ${theme.radiusDefault};
   width: ${(props) => props.width || "100%"};
   ${space};

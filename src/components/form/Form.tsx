@@ -13,7 +13,7 @@ const StyledSubmit = styled.input`
   font-weight: ${theme.fontWeights.regular};
   padding: ${theme.spacing.spacing02} ${theme.spacing.spacing04};
   border-radius: ${theme.radiusDefault};
-  font-size: ${theme.fontSizes.regular};
+  font-size: ${theme.fontSizes.md};
   line-height: ${theme.lineHeight};
   margin: 0 ${theme.spacing.spacing02};
   transition: ${theme.transition};

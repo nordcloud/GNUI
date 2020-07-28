@@ -112,7 +112,7 @@ const StyledInput = styled.input<InputProps>`
   width: 100%;
   box-sizing: border-box;
   background: transparent;
-  font-size: ${theme.fontSizes.regular};
+  font-size: ${theme.fontSizes.md};
   transition: ${theme.transition};
 
   &:placeholder {

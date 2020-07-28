@@ -30,7 +30,7 @@ const StyledToggle = styled.button<ToggleProps>`
   background: transparent;
   padding: ${theme.spacing.spacing02} ${theme.spacing.spacing04};
   transition: ${theme.transition};
-  font-size: ${theme.fontSizes.regular};
+  font-size: ${theme.fontSizes.md};
 
   &.active {
     background: ${theme.colors.primary};
@@ -40,7 +40,7 @@ const StyledToggle = styled.button<ToggleProps>`
   ${({ size }) =>
     size === "small" &&
     css`
-      font-size: ${theme.fontSizes.small};
+      font-size: ${theme.fontSizes.md};
       padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
     `}
 

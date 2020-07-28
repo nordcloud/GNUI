@@ -20,7 +20,7 @@ const StyledBreadcrumbs = styled.nav`
       margin-right: ${theme.spacing.spacing02};
       &:after {
         content: "/";
-        font-size: ${theme.fontSizes.small};
+        font-size: ${theme.fontSizes.sm};
         margin-left: ${theme.spacing.spacing02};
       }
       &:last-child {
@@ -34,7 +34,7 @@ const StyledBreadcrumbs = styled.nav`
       }
       a {
         line-height: 1.5em;
-        font-size: ${theme.fontSizes.small};
+        font-size: ${theme.fontSizes.sm};
         font-weight: ${theme.fontWeights.regular};
         font-family: ${theme.fonts.body};
         color: ${theme.colors.primary};

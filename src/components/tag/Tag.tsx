@@ -14,7 +14,7 @@ export const StyledTag = styled.div`
   text-transform: capitalize;
   text-align: center;
   font-family: ${theme.fonts.body};
-  font-size: ${theme.fontSizes.small};
+  font-size: ${theme.fontSizes.sm};
   line-height: ${theme.lineHeight};
   padding: 0 ${theme.spacing.spacing03};
   margin: ${theme.spacing.spacing01};

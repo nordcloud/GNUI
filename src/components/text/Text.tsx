@@ -30,7 +30,7 @@ const basicStyles = css<TextProps>`
   font-family: ${theme.fonts.body};
   line-height: ${theme.lineHeight};
   font-weight: ${theme.fontWeights.regular};
-  font-size: ${theme.fontSizes.regular};
+  font-size: ${theme.fontSizes.md};
   color: ${(props) => props.color || theme.colors.primary};
 `;
 

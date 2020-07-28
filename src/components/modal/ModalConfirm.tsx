@@ -40,7 +40,7 @@ export const ModalConfirm = ({
     <StyledModal {...props}>
       <ModalBox innerSpacing="spacing04" shadow="shadow04">
         <ModalHeader>
-          <ModalHeading level={5}>{contentLabel}</ModalHeading>
+          <ModalHeading level={4}>{contentLabel}</ModalHeading>
           <ModalCloseButton severity="low" onClick={props.onClose}>
             <Icon width="1rem" height="1rem" image="CLOSE_SIDEBAR" />
           </ModalCloseButton>

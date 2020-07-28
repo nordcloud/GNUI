@@ -132,7 +132,7 @@ const StyledPaginationBox = styled.nav`
   align-items: center;
   .nav-title {
     font-weight: ${theme.fontWeights.regular};
-    font-size: ${theme.fontSizes.regular};
+    font-size: ${theme.fontSizes.md};
   }
   .pagination-per-page {
     display: flex;
@@ -145,7 +145,7 @@ const StyledPaginationBox = styled.nav`
   }
   button {
     padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
-    font-size: ${theme.fontSizes.regular};
+    font-size: ${theme.fontSizes.md};
     font-weight: ${theme.fontWeights.medium};
     line-height: 1.5em;
     border: ${theme.borderDefault};
