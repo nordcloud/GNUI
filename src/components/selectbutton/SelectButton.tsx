@@ -103,17 +103,29 @@ export const SelectButton: FunctionComponent<SelectButtonProps> = ({
   id = "",
   onClick,
   ...props
-}) => <li><button value={value} name={name} className={isActive ? "active" : ""} {...props} onClick={() => onClick(value)}>
-  {labelText}
-</button></li>;
+}) => (
+  <li>
+    <button
+      type="button"
+      value={value}
+      name={name}
+      className={isActive ? "active" : ""}
+      {...props}
+      onClick={() => onClick(value)}
+    >
+      {labelText}
+    </button>
+  </li>
+);
 
-export const MultipleSelect: FunctionComponent<SelectButtonListProps> = ({ 
+export const MultipleSelect: FunctionComponent<SelectButtonListProps> = ({
   status,
   children,
-  size
+  size,
 }) => {
   return (
-  <StyledSelectButtons status={status} size={size}>
-    {children}
-  </StyledSelectButtons>
-)};
+    <StyledSelectButtons status={status} size={size}>
+      {children}
+    </StyledSelectButtons>
+  );
+};
