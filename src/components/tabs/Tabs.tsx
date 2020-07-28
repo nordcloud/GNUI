@@ -201,8 +201,8 @@ export const Tab: FunctionComponent<TabProps> = ({
           <Step>{step}</Step>
         )
       ) : null}
-      <Heading level={5}>{heading}</Heading>
-      <Text small>{caption}</Text>
+      <Text weight="medium">{heading}</Text>
+      <Text size="sm">{caption}</Text>
     </TabContainer>
   );
 };
