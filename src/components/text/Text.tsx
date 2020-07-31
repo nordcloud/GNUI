@@ -4,77 +4,79 @@ import { space } from "styled-system";
 import theme from "../../theme";
 
 interface TextProps {
-  size?: number;
+  size?: "xs" | "sm" | "md" | "lg" | "xl" | "xxl";
   display?: string;
   color?: string;
   tag?: string;
   as?: any;
-  bold?: boolean;
-  italic?: boolean;
-  small?: boolean;
-  caption?: boolean;
-  align?: string;
+  weight?: "regular" | "medium" | "bold";
+  textStyle?: "normal" | "italic";
+  align?: "left" | "center" | "right";
   [propName: string]: any;
 }
 
-const changeSize = (size: number) => css`
-  font-size: ${theme.fontSizes[size]};
-`;
+const changeTag = (tag: string) => {
+  let spacing: string;
+  if(tag !== "p") {
+    spacing = theme.spacing.spacing00
+  } else {
+    spacing = theme.spacing.spacing04
+  }
+  return spacing;
+};
 
 const basicStyles = css<TextProps>`
   text-rendering: optimizeLegibility;
   font-family: ${theme.fonts.body};
   line-height: ${theme.lineHeight};
   font-weight: ${theme.fontWeights.regular};
-  font-size: ${theme.fontSizes.regular};
-  color: ${(props) => props.color || "unset"};
+  font-size: ${theme.fontSizes.md};
+  color: ${(props) => props.color || theme.colors.primary};
 `;
 
 const StyledText = styled.p<TextProps>`
   ${basicStyles};
   ${space};
-  ${({ bold }) =>
-    bold &&
-    css`
-      font-weight: ${theme.fontWeights.bold};
-    `}
   ${({ size }) =>
     size &&
     css`
-      ${changeSize(size)};
-    `}
-  ${({ small }) =>
-    small &&
-    css`
-      margin: ${theme.spacing.spacing02} 0;
-      font-size: ${theme.fontSizes.small};
-    `}
-  ${({ caption }) =>
-    caption &&
-    css`
-      font-size: ${theme.fontSizes.small};
-    `}
-  ${({ italic }) =>
-    italic &&
-    css`
-      font-style: italic;
+      font-size: ${theme.fontSizes[size]};
     `}
   ${({ display }) =>
     display &&
     css`
       display: ${display};
     `}
-
-    ${({ align }) =>
-      align &&
-      css`
-        text-align: ${align};
-      `}
+  ${({ tag }) =>
+    tag &&
+    css `
+      margin-bottom: ${changeTag(tag)};
+    `}
+  ${({ weight }) =>
+    weight &&
+    css `
+      font-weight: ${theme.fontWeights[weight]};
+    `}
+  ${({ textStyle }) =>
+    textStyle &&
+    css `
+      font-style: ${textStyle};
+    `}
+  ${({ align }) =>
+    align &&
+    css`
+      text-align: ${align};
+    `}
+  ${({ color }) =>
+    color &&
+    css`
+      color: ${theme.colors[color] || color};
+    `}
 `;
 
 const StyledCode = styled.code`
   ${basicStyles};
-  font-family: ${theme.fonts.monospace};
+  font-family: ${theme.fonts.body};
   font-size: inherit;
 `;
 
@@ -93,5 +95,5 @@ export const Code: FunctionComponent = ({ children, ...props }) => (
 );
 
 Text.defaultProps = {
-  m: `${theme.spacing.spacing04} 0`,
+  m: `0 0 ${theme.spacing.spacing04} 0`,
 };

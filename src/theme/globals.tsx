@@ -5,9 +5,10 @@ import theme from "./index";
 export const SetGlobalStyle = createGlobalStyle`
   ${reset}
   @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
-  @import url('https://fonts.googleapis.com/css?family=Fira+Code:400,500,700&display=swap');
+  html {
+    font-size: 16px;
+  }
   html, body {
-
      font-family: ${theme.typography.fonts.body};
      background: ${theme.colors.lights[2]};
      color: ${theme.colors.primary};
@@ -15,7 +16,7 @@ export const SetGlobalStyle = createGlobalStyle`
      line-height: ${theme.lineHeight};
   }
   code {
-    font-family: ${theme.typography.fonts.monospace};
+    font-family: ${theme.typography.fonts.body};
     font-weight: ${theme.fontWeights.regular};
   }
 `;

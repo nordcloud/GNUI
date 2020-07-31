@@ -15,7 +15,7 @@ const DatepickerWrapper = styled.div`
     color: ${theme.colors.primary};
     font-family: ${theme.fonts.body};
     font-weight: ${theme.fontWeights.regular};
-    font-size: ${theme.fontSizes.small};
+    font-size: ${theme.fontSizes.sm};
     box-shadow:${theme.shadow.shadow04};
     border-radius:${theme.radiusDefault};
   }

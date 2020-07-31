@@ -18,6 +18,7 @@ Simple heading is styled `h1` tag and looks like below.
 ## Props
 
 - `level`: `number` — _optional_
+- `marginBottom`: `string` — _optional_
 - `color`: `string` — _optional_
 
 ### level
@@ -27,12 +28,32 @@ Simple heading is styled `h1` tag and looks like below.
 <Preview>
   <Story name="levels">
     <Container>
-      <Heading level="1">Heading with level prop</Heading>
-      <Heading level="2">Heading with level prop</Heading>
-      <Heading level="3">Heading with level prop</Heading>
-      <Heading level="4">Heading with level prop</Heading>
-      <Heading level="5">Heading with level prop</Heading>
-      <Heading level="6">Heading with level prop</Heading>
+      <Heading level={1}>Heading with level prop</Heading>
+      <Heading level={2}>Heading with level prop</Heading>
+      <Heading level={3}>Heading with level prop</Heading>
+      <Heading level={4}>Heading with level prop</Heading>
+      <Heading level={5}>Heading with level prop</Heading>
+      <Heading level={6}>Heading with level prop</Heading>
+    </Container>
+  </Story>
+</Preview>
+
+### marginBottom
+
+`marginBottom`: `string` — spacing00 | spacing01 | spacing02 | spacing03 | spacing04 | spacing05 | spacing06 | spacing07 | spacing08
+
+<Preview>
+  <Story name="margins">
+    <Container>
+      <Heading level={4} marginBottom="spacing08">Heading with marginBottom prop: spacing08 (40px)</Heading>
+      <Heading level={4} marginBottom="spacing07">Heading with marginBottom prop: spacing07 (32px)</Heading>
+      <Heading level={4} marginBottom="spacing06">Heading with marginBottom prop: spacing06 (24px)</Heading>
+      <Heading level={4} marginBottom="spacing05">Heading with marginBottom prop: spacing05 (20px)</Heading>
+      <Heading level={4} marginBottom="spacing04">Heading with marginBottom prop: spacing04 (16px)</Heading>
+      <Heading level={4} marginBottom="spacing03">Heading with marginBottom prop: spacing03 (12px)</Heading>
+      <Heading level={4} marginBottom="spacing02">Heading with marginBottom prop: spacing02 (8px)</Heading>
+      <Heading level={4} marginBottom="spacing01">Heading with marginBottom prop: spacing01 (4px)</Heading>
+      <Heading level={4} marginBottom="spacing00">Heading with marginBottom prop: spacing00 (0)</Heading>
     </Container>
   </Story>
 </Preview>
@@ -66,7 +87,7 @@ Simple heading is styled `h1` tag and looks like below.
 
 <Preview>
   <Story name="mixed">
-    <Heading level="3" color="crimson">
+    <Heading level={2} color="danger" marginBottom="spacing05">
       Level and color together
     </Heading>
   </Story>

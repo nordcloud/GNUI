@@ -13,7 +13,7 @@ const Item = styled.div`
   justify-content: left;
   line-height: ${theme.lineHeight};
   font-family: ${theme.fonts.body};
-  font-size: ${theme.fontSizes.regular};
+  font-size: ${theme.fontSizes.md};
   border-radius: ${theme.radius.default};
   padding: 0 ${theme.spacing.spacing03};
   color: ${theme.colors.primary};
@@ -22,7 +22,7 @@ const Item = styled.div`
   vertical-align: middle;
   text-decoration: none;
   &.separator {
-    font-size: ${theme.fontSizes.small};
+    font-size: ${theme.fontSizes.sm};
     color: ${theme.colors.darks[4]};
     margin-bottom: 0;
   }

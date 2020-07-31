@@ -63,7 +63,7 @@ const StyledSelectButtons = styled.ul<StyledSelectButtons>`
       ${({ size }) =>
         size === "small" &&
         css`
-          font-size: ${theme.fontSizes.small};
+          font-size: ${theme.fontSizes.sm};
           padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
         `}
     }

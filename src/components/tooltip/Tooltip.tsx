@@ -73,7 +73,7 @@ const TooltipLabel = styled.div<TooltipProps>`
   margin:0;
   color: ${theme.colors.white};
   line-height: ${theme.lineHeight};
-  font-size: ${theme.fontSizes.regular};
+  font-size: ${theme.fontSizes.md};
   font-weight: ${theme.fontWeights.regular};
   font-family: ${theme.fonts.body};
 `;

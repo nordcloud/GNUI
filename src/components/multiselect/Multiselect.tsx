@@ -38,7 +38,7 @@ const SelectContainer = styled.div<SelectProps>`
         color: ${theme.colors.white};
         padding-left:0;
         padding-right: 0.375rem;
-        font-size:${theme.fontSizes.small};
+        font-size:${theme.fontSizes.sm};
       }
 
       &__remove {

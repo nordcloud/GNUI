@@ -73,7 +73,7 @@ export const Styleguide: FunctionComponent<StyleguideProps> = ({
             justify="flex-end"
             darkText={name === "lights" && true}
           >
-            <Text small>{theme.colors[color.toLowerCase()] || color}</Text>
+            <Text size="sm">{theme.colors[color.toLowerCase()] || color}</Text>
           </ColorColumn>
         </ColorBox>
       ))}

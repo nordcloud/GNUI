@@ -17,7 +17,7 @@ export const MessageWrapper = styled.div<MessageProps>`
   align-items: center;
   border-radius: ${theme.radiusDefault};
   color: ${theme.colors.white};
-  font-size: ${theme.fontSizes.regular};
+  font-size: ${theme.fontSizes.md};
   padding: ${theme.spacing.spacing03};
   line-height: 1.5rem;
   border:1px solid;

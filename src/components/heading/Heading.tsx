@@ -6,39 +6,44 @@ import { space, SpaceProps } from "styled-system";
 interface HeadingProps {
   level: number;
   color?: string;
+  marginBottom?: string;
   as?: any;
 }
 
 const changeAttrs = (level: number) => {
-  let margin: string;
+  let fontSize: string;
   switch (level) {
     case 6:
-      margin = theme.spacing.spacing03;
+      fontSize = theme.fontSizes.xs;
       break;
     case 5:
+      fontSize = theme.fontSizes.sm;
+      break;
     case 4:
-      margin = theme.spacing.spacing04;
+      fontSize = theme.fontSizes.md;
       break;
     case 3:
-      margin = theme.spacing.spacing05;
+      fontSize = theme.fontSizes.lg;
+      break;
+    case 2:
+      fontSize = theme.fontSizes.xl;
+      break;
+    case 1:
+      fontSize = theme.fontSizes.xxl;
       break;
     default:
-      margin = theme.spacing.spacing06;
+      fontSize = theme.fontSizes.md;
   }
-
-  return css`
-    font-size: ${theme.headings.sizes[level - 1]}rem;
-    font-weight: ${theme.headings.weights[level > 2 ? 1 : 0]};
-    margin: ${margin} 0;
-  `;
+  return fontSize;
 };
 
 const StyledHeading = styled.h1<HeadingProps>`
   color: ${theme.colors.primary};
-  font-family: ${theme.fonts.body};
-  font-weight: ${theme.headings.weights[0]};
-  font-size: ${theme.headings.sizes[0]}rem;
-  margin: ${theme.headings.margins[0]};
+  font-family: ${theme.fonts.heading};
+  font-weight: ${theme.fontWeights.medium};
+  line-height: 1.5em;
+  margin-top: 0;
+  margin-bottom: 0;
   text-rendering: optimizeLegibility;
   ${({ color }) =>
     color &&
@@ -48,9 +53,13 @@ const StyledHeading = styled.h1<HeadingProps>`
   ${({ level }) =>
     level &&
     css`
-      ${changeAttrs(level)};
+      font-size: ${changeAttrs(level)};
     `};
-
+  ${({ marginBottom }) =>
+  marginBottom &&
+    css`
+      margin-bottom: ${theme.spacing[marginBottom] || marginBottom};
+    `};
   ${space}
 `;
 
