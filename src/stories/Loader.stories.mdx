@@ -1,0 +1,50 @@
+import styled from "styled-components";
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Loader } from "../components/loader";
+import { Spacer } from "../components/spacer";
+import { Container, Flex } from "../components/container";
+import theme from "../theme";
+
+<Meta title="Components/Loader" component={Loader} />
+
+# Spinner
+
+## Props
+
+> - `inContent`: `boolean` — **optional**
+> - `bottom`: `boolean` — **optional**
+> - `left`: `boolean` — **optional**
+> - `right`: `boolean` — **optional**
+
+## Default
+
+> By default Loader position is: top, center
+
+<Preview>
+  <Story name="default" height="300px">
+    <Loader />
+  </Story>
+</Preview>
+
+## Loader Position
+
+<Preview>
+  <Story name="position" height="300px">
+    <Container>
+      <Loader left />
+      <Loader left bottom />
+      <Loader right />
+      <Loader right bottom />
+    </Container>
+  </Story>
+</Preview>
+
+## In Content
+
+<Preview>
+  <Story name="inContent">
+    <Container>
+      <Loader inContent />
+    </Container>
+  </Story>
+</Preview>

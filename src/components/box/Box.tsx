@@ -39,10 +39,10 @@ type BoxProps = {
 const StyledBox = styled(Container)<BoxProps & SpaceProps>`
   box-sizing: border-box;
   min-width: 0;
-  padding: ${theme.spacing.spacing05};
+  padding: ${theme.spacing.spacing04};
   border-radius: ${theme.radius.default};
   color: ${theme.colors.primary};
-  background: ${theme.colors.white};
+  background: ${theme.colors.snowwhite};
   font-weight: ${theme.fontWeights.regular};
   box-shadow: ${theme.shadow.shadow02};
   transition: ${theme.transition};
