@@ -8,70 +8,69 @@ import theme from "../../theme";
 
 export interface LoaderProps {
   inContent?: boolean;
-  position?: "top-left" | "top-right" | "bottom-right" | "bottom-center" | "bottom-left";
+  position?:
+    | "top-left"
+    | "top-right"
+    | "bottom-right"
+    | "bottom-center"
+    | "bottom-left";
 }
 
 const changePosition = (position: string) => {
-  let loaderPosition: string;
   switch (position) {
     case "top-left":
-      loaderPosition = `
+      return `
       left: ${theme.spacing.spacing08};
       margin-left: 0;
       `;
-    break;
     case "top-right":
-      loaderPosition = `
+      return `
       left: auto;
       right: ${theme.spacing.spacing08};
       margin-left: 0;
       `;
-    break;
     case "bottom-right":
-      loaderPosition = `
+      return `
       top: auto;
       bottom: ${theme.spacing.spacing08};
       left: auto;
       right: ${theme.spacing.spacing08};
       margin-left: 0;
       `;
-    break;
     case "bottom-center":
-      loaderPosition = `
+      return `
       top: auto;
       bottom: ${theme.spacing.spacing08};
       `;
-    break;
     case "bottom-left":
-      loaderPosition = `
+      return `
       top: auto;
       bottom: ${theme.spacing.spacing08};
       left: ${theme.spacing.spacing08};
       margin-left: 0;
       `;
-    break;
     default:
-      loaderPosition = `
+      return `
       top: ${theme.spacing.spacing08};
       left:50%;
       margin-left: -7rem;
-      `
+      `;
   }
-  return loaderPosition;
 };
 
 const LoaderPosition = styled.div<LoaderProps>`
   width: 14rem;
   position: fixed;
   z-index: ${theme.zindex.topoftheworld};
-  top: ${(theme.spacing.spacing08)};
+  top: ${theme.spacing.spacing08};
   left: 50%;
   margin-left: -7rem;
 
-  ${({ position }) => 
-  position && css`
-    ${changePosition(position)}
-  `};
+  ${({ position }) =>
+    position &&
+    css`
+      ${changePosition(position)}
+    `};
 `;
 
 export const Loader: React.FC<LoaderProps> = ({ inContent, ...props }) => {
