@@ -1,6 +1,6 @@
 {
   "name": "@nordcloud/gnui",
-  "version": "0.4.21",
+  "version": "0.4.22",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": "git://github.com/nordcloud/gnui.git",
@@ -46,8 +46,7 @@
     "styled-components-breakpoint": "^3.0.0-preview.20",
     "styled-reset": "^4.1.0",
     "styled-system": "^5.1.5",
-    "title": "^3.4.1",
-    "typescript": "~3.7.2"
+    "title": "^3.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
