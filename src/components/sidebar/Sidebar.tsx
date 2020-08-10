@@ -50,8 +50,6 @@ const SidebarMenu: any = styled.div<ISidebarProps>`
   left: 0;
   bottom: 0;
   position: fixed;
-  overflow-x: hidden;
-  overflow-y: scroll;
   z-index: ${theme.zindex.topoftheworld};
   will-change: transform;
   transition: ${theme.transition};
@@ -88,6 +86,8 @@ const CloseLayer: any = styled.div<ICloseLayer>`
 `;
 const Inner: any = styled.div<IInnerProps>`
   display: inline-block;
+  overflow-x: hidden;
+  overflow-y: scroll;
   ${bp("xs")`width: 100vw`};
   ${bp("sm")`width: 50vw`};
   ${bp("md")`width: 45vw`};
