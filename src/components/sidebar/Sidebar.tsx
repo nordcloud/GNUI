@@ -50,7 +50,6 @@ const SidebarMenu: any = styled.div<ISidebarProps>`
   left: 0;
   bottom: 0;
   position: fixed;
-  z-index: ${theme.zindex.topoftheworld};
   will-change: transform;
   transition: ${theme.transition};
   z-index: ${theme.zindex.topoftheworld};
