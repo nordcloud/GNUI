@@ -7,14 +7,12 @@ import theme from "../theme";
 
 <Meta title="Components/Loader" component={Loader} />
 
-# Spinner
+# Loader
 
 ## Props
 
 > - `inContent`: `boolean` — **optional**
-> - `bottom`: `boolean` — **optional**
-> - `left`: `boolean` — **optional**
-> - `right`: `boolean` — **optional**
+> - `position`: `top-left` | `top-right` | `bottom-right` | `bottom-center` | `bottom-left` — **optional**
 
 ## Default
 
@@ -27,19 +25,23 @@ import theme from "../theme";
 </Preview>
 
 ## Loader Position
+> `position`: `top-left` | `top-right` | `bottom-right` | `bottom-center` | `bottom-left` — **optional**
 
 <Preview>
   <Story name="position" height="300px">
     <Container>
-      <Loader left />
-      <Loader left bottom />
-      <Loader right />
-      <Loader right bottom />
+      <Loader position="top-left" />
+      <Loader />
+      <Loader position="top-right" />
+      <Loader position="bottom-right" />
+      <Loader position="bottom-center" />
+      <Loader position="bottom-left" />
     </Container>
   </Story>
 </Preview>
 
 ## In Content
+> `inContent`: `boolean` — **optional**
 
 <Preview>
   <Story name="inContent">

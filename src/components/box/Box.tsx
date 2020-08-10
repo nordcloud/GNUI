@@ -42,7 +42,7 @@ const StyledBox = styled(Container)<BoxProps & SpaceProps>`
   padding: ${theme.spacing.spacing04};
   border-radius: ${theme.radius.default};
   color: ${theme.colors.primary};
-  background: ${theme.colors.snowwhite};
+  background: ${theme.colors.snowWhite};
   font-weight: ${theme.fontWeights.regular};
   box-shadow: ${theme.shadow.shadow02};
   transition: ${theme.transition};
