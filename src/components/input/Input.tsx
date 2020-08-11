@@ -189,7 +189,7 @@ export const Input: FunctionComponent<
       {type === "search" && !loading && (
         <Icon image="SEARCH" width="1.2rem" height="1.2rem" />
       )}
-      {type === "search" && loading && <Spinner size={0.2} />}
+      {type === "search" && loading && <Spinner />}
       <StyledInput
         name={name}
         type={type}
