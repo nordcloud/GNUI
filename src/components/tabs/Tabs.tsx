@@ -41,7 +41,7 @@ interface ButtonNextProps {
 }
 
 export const TabsContent = styled(Box)`
-  background-color: ${theme.colors.snowwhite};
+  background-color: ${theme.colors.snowWhite};
   border-top: ${theme.borders.grey};
   border-top-left-radius: 0;
   border-top-right-radius: 0;
@@ -93,7 +93,7 @@ export const TabContainer: any = styled.li<TabProps>`
     border-top-left-radius: ${theme.radiusDefault};
   }
   &.tab-active {
-    background-color: ${theme.colors.snowwhite};
+    background-color: ${theme.colors.snowWhite};
     border-bottom: 1px solid transparent;
   }
 
@@ -142,7 +142,7 @@ const TabsStatusButtons = styled.div`
 `;
 
 const TabsCover = styled.div`
-  background-color: ${theme.colors.snowwhite};
+  background-color: ${theme.colors.snowWhite};
   border-bottom-left-radius: ${theme.radiusDefault};
   border-bottom-right-radius: ${theme.radiusDefault};
 `;
