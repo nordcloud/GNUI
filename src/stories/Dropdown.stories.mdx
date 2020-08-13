@@ -31,7 +31,6 @@ import { Text } from "../components/text";
       "Option 4",
     ];
     const [value, setValue] = useState();
-    const [value2, setValue2] = useState();
     return (
       <Container>
         <Dropdown
@@ -39,7 +38,7 @@ import { Text } from "../components/text";
           options={options}
           value={value}
           width="15rem"
-          onChange={setValue}
+          onChange={(val) => setValue(val)}
         />
         <Text>
           Your choice:{" "}
