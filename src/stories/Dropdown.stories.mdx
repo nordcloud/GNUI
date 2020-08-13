@@ -30,7 +30,8 @@ import { Text } from "../components/text";
       "Option 3",
       "Option 4",
     ];
-    const [value, setValue] = useState();
+    const [value, setValue] = useState("");
+    const [value2, setValue2] = useState("");
     return (
       <Container>
         <Dropdown
@@ -47,6 +48,21 @@ import { Text } from "../components/text";
           </Text>
         </Text>
         <Spacer height="2rem" />
+        <Dropdown
+          name="Select an option"
+          options={options}
+          value={value2}
+          width="15rem"
+          onChange={(val) => setValue2(val)}
+          onClear={()=>setValue2("")}
+        />
+        <Text>
+          Your choice:{" "}
+          <Text tag="span" weight="medium">
+            {!value2 ? "nothing" : value2}
+          </Text>
+        </Text>
+        <Spacer height="5rem" />
       </Container>
     );
   }}
