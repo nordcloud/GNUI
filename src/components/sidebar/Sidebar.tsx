@@ -71,6 +71,7 @@ const Background: any = styled.div<IBackgroudProps>`
   pointer-events: ${({ isOpen }) => (isOpen ? "auto" : "none")};
   transition: ${theme.transition};
   opacity: ${({ isOpen }) => (isOpen ? 0.4 : 0)};
+  z-index: ${theme.zindex.topoftheworld};
 `;
 const CloseLayer: any = styled.div<ICloseLayer>`
   background-color: transparent;
@@ -132,6 +133,7 @@ export const Sidebar: FunctionComponent<ISidebarProps> = ({
 }) => {
   return (
     <>
+      <Background onClick={onClick} isOpen={isOpen} {...props}></Background>
       <SidebarMenu
         isOpen={isOpen}
         side={side}
@@ -160,7 +162,6 @@ export const Sidebar: FunctionComponent<ISidebarProps> = ({
           <CloseLayer onClick={onClick} isOpen={isOpen} {...props}></CloseLayer>
         )}
       </SidebarMenu>
-      <Background onClick={onClick} isOpen={isOpen} {...props}></Background>
     </>
   );
 };
