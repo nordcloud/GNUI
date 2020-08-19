@@ -1,41 +1,19 @@
 import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import theme, { bp } from "../../theme";
-import { variant, space } from "styled-system";
+import { space } from "styled-system";
 import { Text } from "../text";
-import { Button, ButtonProps } from "../button";
+import { Button } from "../button";
 import { Icon } from "../icon";
 import { Container, Row, Col } from "react-awesome-styled-grid";
-import ReactModal from "react-modal";
-
-ReactModal.setAppElement("#root");
-
-interface SidebarProps {
-  children?: React.ReactNode;
-  title?: string;
-  isOpen?: boolean;
-  side?: "onLeft" | "onRight";
-  width?: number | string;
-  onClick?: (e: any) => void;
-}
-
-interface SidebarButtonProps extends ButtonProps {
-  icon?: string;
-}
-
-const overlayStyles = {
-  overlay: {
-    position: "fixed",
-    zIndex: theme.zindex.default,
-    backgroundColor: "rgba(0, 0, 0, 0.6)",
-    willChange: "background-color",
-    transition: "background-color 0.3s ease-in-out",
-  },
-};
-
-interface HeaderProps {
-  reverse: Boolean;
-}
+import {
+  ISidebarProps,
+  IBackgroudProps,
+  ICloseLayer,
+  IInnerProps,
+  SidebarButtonProps,
+  HeaderProps,
+} from "./interfaces";
 
 const Header = styled.div<HeaderProps>`
   display: flex;
@@ -47,8 +25,8 @@ const Header = styled.div<HeaderProps>`
   padding: ${theme.spacing.spacing06};
   margin: 0 auto;
   box-sizing: border-box;
-  justify-content: ${(props) => (props.reverse ? "flex-end" : "space-between")};
-  flex-direction: ${(props) => (props.reverse ? "row-reverse" : "row")};
+  justify-content: ${({ reverse }) => (reverse ? "flex-end" : "space-between")};
+  flex-direction: ${({ reverse }) => (reverse ? "row-reverse" : "row")};
 `;
 
 const Title = styled(Text)`
@@ -66,54 +44,64 @@ const Content = styled(Text)`
   margin: 0;
 `;
 
-const MenuStyles = styled(ReactModal)<SidebarProps>`
+const SidebarMenu: any = styled.div<ISidebarProps>`
   top: 0;
   right: 0;
-  outline: 0;
+  left: 0;
+  bottom: 0;
+  position: fixed;
+  will-change: transform;
+  transition: ${theme.transition};
+  z-index: ${theme.zindex.topoftheworld};
+  transform: ${({ isOpen, reverse }) =>
+    isOpen
+      ? "translate3d(0,0,0)"
+      : `translate3d(${reverse ? "-100%,0,0" : "100%,0,0"})`};
+  display: flex;
+  justify-content: ${({ side }) =>
+    side !== "onLeft" ? "flex-end" : "flex-start"};
+`;
+const Background: any = styled.div<IBackgroudProps>`
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  position: fixed;
+  background-color: ${theme.colors.black};
+  pointer-events: ${({ isOpen }) => (isOpen ? "auto" : "none")};
+  transition: ${theme.transition};
+  opacity: ${({ isOpen }) => (isOpen ? 0.4 : 0)};
+`;
+const CloseLayer: any = styled.div<ICloseLayer>`
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+`;
+const Inner: any = styled.div<IInnerProps>`
+  display: inline-block;
+  overflow-x: hidden;
+  overflow-y: scroll;
   ${bp("xs")`width: 100vw`};
   ${bp("sm")`width: 50vw`};
   ${bp("md")`width: 45vw`};
   ${bp("lg")`width: 40vw`};
-  height: 100vh;
-  position: fixed;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  z-index: ${theme.zindex.topoftheworld};
-  border-left: ${(props) => props.side !== "onLeft" && theme.borders.disabled};
-  border-right: ${(props) => props.side === "onLeft" && theme.borders.disabled};
-  background-color: ${theme.colors.white};
   box-shadow: ${theme.shadow.shadow04};
-  transform: translateX(0);
-  will-change: transform;
-  transition: transform 0.3s ease-in-out;
-  ${({ isOpen, side }): any => {
-    isOpen &&
-      css`
-        transform: ${side === "onLeft" ? "translateX(50%)" : "translateX(0)"};
-        transition: transform 0.3s ease-in-out;
-      `;
-  }}
+  background-color: ${theme.colors.white};
+  border-left: ${({ side }) => side !== "onLeft" && theme.borders.disabled};
+  border-right: ${({ side }) => side === "onLeft" && theme.borders.disabled};
   ${({ width }) =>
     width &&
     css`
-      width: ${width} !important;
+      width: ${width};
     `}
+  z-index: 2;
 `;
-
-const SidebarMenu: any = styled(MenuStyles)(
-  variant({
-    prop: "side",
-    variants: {
-      onRight: {
-        right: 0,
-      },
-      onLeft: {
-        left: 0,
-        right: "unset",
-      },
-    },
-  })
-);
 
 const SidebarCloseButton = styled(Button)`
   padding: 0;
@@ -124,9 +112,8 @@ export const CloseButton = ({
   onClick,
   icon,
   children,
-  ...props
 }: SidebarButtonProps) => (
-  <SidebarCloseButton severity="low" onClick={onClick} {...props}>
+  <SidebarCloseButton severity="low" onClick={onClick}>
     {children ? (
       children
     ) : (
@@ -135,7 +122,7 @@ export const CloseButton = ({
   </SidebarCloseButton>
 );
 
-export const Sidebar: FunctionComponent<SidebarProps> = ({
+export const Sidebar: FunctionComponent<ISidebarProps> = ({
   children,
   title,
   side,
@@ -144,30 +131,36 @@ export const Sidebar: FunctionComponent<SidebarProps> = ({
   ...props
 }) => {
   return (
-    <SidebarMenu
-      isOpen={isOpen}
-      side={side}
-      style={overlayStyles}
-      shouldCloseOnOverlayClick
-      shouldCloseOnEsc
-      contentLabel="modal"
-      shouldFocusAfterRender={false}
-      onRequestClose={onClick}
-      {...props}
-    >
-      <Header reverse={side === "onLeft" && true}>
-        <Title tag="span" ml={side === "onLeft" ? [1, 2] : [0]}>
-          {title}
-        </Title>
-        <CloseButton onClick={onClick} {...props} />
-      </Header>
-      <Container>
-        <Row>
-          <Col>
-            <Content>{children}</Content>
-          </Col>
-        </Row>
-      </Container>
-    </SidebarMenu>
+    <>
+      <SidebarMenu
+        isOpen={isOpen}
+        side={side}
+        reverse={side === "onLeft" && true}
+      >
+        <Inner isOpen={isOpen} {...props}>
+          {isOpen && (
+            <>
+              <Header reverse={side === "onLeft" && true}>
+                <Title tag="span" ml={side === "onLeft" ? [1, 2] : [0]}>
+                  {title}
+                </Title>
+                <CloseButton onClick={onClick} />
+              </Header>
+              <Container>
+                <Row>
+                  <Col>
+                    <Content>{children}</Content>
+                  </Col>
+                </Row>
+              </Container>
+            </>
+          )}
+        </Inner>
+        {isOpen && (
+          <CloseLayer onClick={onClick} isOpen={isOpen} {...props}></CloseLayer>
+        )}
+      </SidebarMenu>
+      <Background onClick={onClick} isOpen={isOpen} {...props}></Background>
+    </>
   );
 };

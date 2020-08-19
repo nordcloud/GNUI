@@ -125,7 +125,7 @@ Sidebar in default is displayed on the right side, but optionally you can change
             </Col>
             <Col md={2}>
               <Button onClick={() => setIsOpenRem(!isOpenRem)}>
-                50rem sidebar
+                50rem sidebar on Left
               </Button>
             </Col>
             <Col md={2}>
@@ -145,10 +145,11 @@ Sidebar in default is displayed on the right side, but optionally you can change
           <Sidebar
             title="Width: 50rem"
             width="50rem"
+            side="onLeft"
             isOpen={isOpenRem}
             onClick={() => setIsOpenRem(!isOpenRem)}
           >
-            Sidebar Content
+            Sidebar Content on Left
           </Sidebar>
           <Sidebar
             title="Width: 700px"
