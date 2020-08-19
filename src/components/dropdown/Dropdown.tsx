@@ -129,11 +129,6 @@ const DropdownItem = styled.li`
     cursor: pointer;
     background: ${theme.colors.lights[3]};
   }
-  &:first-of-type {
-    color: ${theme.colors.lights[2]};
-    background: ${theme.colors.darks[4]};
-    cursor: not-allowed;
-  }
 `;
 
 export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
