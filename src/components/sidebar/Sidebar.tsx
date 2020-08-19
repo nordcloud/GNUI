@@ -114,7 +114,7 @@ export const CloseButton = ({
   icon,
   children,
 }: SidebarButtonProps) => (
-  <SidebarCloseButton severity="low" onClick={onClick}>
+  <SidebarCloseButton severity="low" onClick={onClick} title={"Close sidebar"}>
     {children ? (
       children
     ) : (
