@@ -1,26 +1,19 @@
 import styled from "styled-components";
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Spinner } from "../components/spinner";
-import { Button } from "../components/button";
 import { Spacer } from "../components/spacer";
+import { Container, Flex } from "../components/container";
 import theme from "../theme";
 
 <Meta title="Components/Spinner" component={Spinner} />
 
 # Spinner
 
-#### Props
+## Props
 
-```typescript
-export interface SpinnerProps {
-  caption?: string;
-  className?: string;
-  size?: number;
-  color?: string;
-  onClick?: (e: any) => void;
-  onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
-}
-```
+> - `size`: `string` — **optional**: `sm` | `md` | `lg` | `xl` | `xxl`
+> - `color`: `string` — **optional**: `success` | `danger` | `warning` | `notification` | `white`
+> - `ninja`: `boolean` — **optional**
 
 ## Default
 
@@ -30,58 +23,53 @@ export interface SpinnerProps {
   </Story>
 </Preview>
 
-## Color
-
-From `theme`:
+## Ninja
 
 <Preview>
-  <Story name="color theme">
-    <Spinner color="success" size="0.5" />
+  <Story name="ninja">
+    <Spinner ninja />
   </Story>
 </Preview>
 
-Named:
+## Color
+
+> `color`: `string` — **optional**: `success` | `danger` | `warning` | `notification` | `white`
 
 <Preview>
-  <Story name="named">
-    <Spinner color="palevioletred" size="0.5" />
+  <Story name="color">
+    <Flex justifyContent="space-evenly">
+      <Spinner color="success" />
+      <Spinner color="danger" />
+      <Spinner color="warning" />
+      <Spinner color="notification" />
+    </Flex>
   </Story>
 </Preview>
 
 ## Size
 
-> `size?: number;` - size is measured in percentage; 1 is original size of the spinner
+> `size`: `string` — **optional**: `sm` | `md` | `lg` | `xl` | `xxl`
 
 <Preview>
   <Story name="size">
-    <Spinner size="0.2" />
+    <Flex justifyContent="space-evenly">
+      <Spinner size="sm" />
+      <Spinner size="md" />
+      <Spinner size="lg" />
+      <Spinner size="xl" />
+      <Spinner size="xxl" />
+    </Flex>
   </Story>
 </Preview>
 
-## Label
-
-> `caption?: string;` - caption for the spinner
-
 <Preview>
-  <Story name="label">
-    <Spinner size="0.2" caption="Here is a spinner" />
-  </Story>
-</Preview>
-
-## Button
-
-<Preview>
-  <Story name="button">
-    <Button>
-      <Spinner size="0.2" color="white" caption="Spinner" />
-    </Button>
-  </Story>
-</Preview>
-
-## Ninja
-
-<Preview>
-  <Story name="ninja">
-    <Spinner ninja size="0.2" color="white" caption="Spinner" />
+  <Story name="sizeNinja">
+    <Flex justifyContent="space-evenly">
+      <Spinner ninja size="sm" />
+      <Spinner ninja size="md" />
+      <Spinner ninja size="lg" />
+      <Spinner ninja size="xl" />
+      <Spinner ninja size="xxl" />
+    </Flex>
   </Story>
 </Preview>

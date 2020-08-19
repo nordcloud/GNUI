@@ -31,3 +31,4 @@ export * from "./selectbutton";
 export * from "./datepicker";
 export * from "./message";
 export * from "./svgicon";
+export * from "./loader";
