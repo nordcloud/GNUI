@@ -6,7 +6,7 @@ export interface ISidebarProps {
   isOpen?: boolean;
   side?: "onLeft" | "onRight";
   width?: number | string;
-  reverse: boolean;
+  reverse?: boolean;
   onClick?: (e: any) => void;
 }
 export interface IBackgroudProps {
@@ -28,5 +28,5 @@ export interface SidebarButtonProps extends ButtonProps {
 }
 
 export interface HeaderProps {
-  reverse: boolean;
+  reverse?: boolean;
 }
