@@ -2,9 +2,11 @@ import React, { FunctionComponent, useState } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { Icon } from "../icon";
+import { SVGIcon } from "../svgicon/SVGIcon";
 import { Container, Flex } from "../container";
 import { IconProps } from "../icon";
 import { space, SpaceProps } from "styled-system";
+
 interface DropdownProps {
   name: string;
   options: Array<string | IOption>;
@@ -13,21 +15,27 @@ interface DropdownProps {
   isOpen?: boolean;
   disabled?: boolean;
   children?: React.ReactNode;
-  onClick: (e: any) => void;
-  onMouseLeave: (e: any) => void;
-  onChange?: (e: any) => void;
+  onClick?: (e: any) => void;
+  onMouseLeave?: (e: any) => void;
+  onChange: (e: any) => void;
+  onClear?: () => void;
 }
 
 interface IOption {
   value: string;
   label?: string;
 }
+interface IDropdownWrapper {
+  onMouseLeave?: (e: any) => void;
+  onClear?: () => void;
+  value: string;
+}
 
 interface DropdownIconProps extends IconProps {
   animate?: boolean;
 }
 
-const DropdownWrapper = styled(Container)`
+const DropdownWrapper = styled(Container)<IDropdownWrapper>`
   position: relative;
   ${space}
 `;
@@ -38,8 +46,9 @@ const DropdownButton = styled(Flex)`
   background: transparent;
   border: ${theme.borderInput};
   border-radius: ${theme.radiusDefault};
+  line-height: 1.5em;
   color: ${theme.colors.primary};
-  padding: ${theme.spacing.spacing02};
+  padding: ${theme.spacing.spacing03};
   cursor: pointer;
   transition: ${theme.transition};
   &:hover {
@@ -73,8 +82,10 @@ export const DropdownIcon = styled(Icon)<DropdownIconProps>`
       transition: ${theme.transition};
     `}
 `;
-
-const DropdownMenu = styled(Container)`
+interface IDropdownMenu {
+  onClick: () => void;
+}
+const DropdownMenu = styled(Container)<IDropdownMenu>`
   text-align: left;
   width: 100%;
   box-sizing: border-box;
@@ -86,6 +97,21 @@ const DropdownMenu = styled(Container)`
   background: ${theme.colors.white};
   z-index: 1;
   transition: ${theme.transition};
+  box-shadow: ${theme.shadow.shadow02};
+`;
+interface IClear {
+  onClick: () => void;
+}
+const Clear = styled.button<IClear>`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 2rem;
+  display: inline-block;
+  padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
+  background: none;
+  border: none;
+  margin-left: auto;
 `;
 
 const DropdownItem = styled.li`
@@ -103,11 +129,6 @@ const DropdownItem = styled.li`
     cursor: pointer;
     background: ${theme.colors.lights[3]};
   }
-  &:first-of-type {
-    color: ${theme.colors.lights[2]};
-    background: ${theme.colors.darks[4]};
-    cursor: not-allowed;
-  }
 `;
 
 export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
@@ -116,9 +137,11 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
   options,
   disabled = false,
   onChange,
+  onClear,
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+
   const displayValue: string | IOption | undefined = options.find((option) => {
     if (typeof option === "string") {
       return option === value;
@@ -129,9 +152,7 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
     <DropdownWrapper
       value={value}
       {...props}
-      {...(!props.onMouseLeave && {
-        onMouseLeave: () => isOpen && setIsOpen(false),
-      })}
+      onMouseLeave={() => isOpen && setIsOpen(!isOpen)}
     >
       <DropdownButton
         name={name}
@@ -143,6 +164,11 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
           : typeof displayValue === "string"
           ? displayValue
           : displayValue.label || displayValue.value}
+        {onClear && displayValue && (
+          <Clear onClick={() => onClear && onClear()}>
+            <SVGIcon size="sm" name="close" />
+          </Clear>
+        )}
         <DropdownIcon
           width="0.75rem"
           height="0.75rem"
@@ -152,7 +178,6 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
       </DropdownButton>
       {isOpen && !disabled && (
         <DropdownMenu onClick={() => setIsOpen(!isOpen)}>
-          <DropdownItem key="dropdown-title">{name}</DropdownItem>
           {options &&
             options.map((option: string | IOption) => (
               <DropdownItem

@@ -16,6 +16,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_KEY }}
       - run: npm install
+      - run: npm i -g typescript@~3.7
       - run: tsc
       - run: cat .npmrc
       - run: npm publish
