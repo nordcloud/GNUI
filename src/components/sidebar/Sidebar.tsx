@@ -55,7 +55,7 @@ const SidebarMenu: any = styled.div<ISidebarProps>`
   z-index: ${theme.zindex.topoftheworld};
   transform: ${({ isOpen, reverse }) =>
     isOpen
-      ? "translate3d(0%,0,0)"
+      ? "translate3d(0,0,0)"
       : `translate3d(${reverse ? "-100%,0,0" : "100%,0,0"})`};
   display: flex;
   justify-content: ${({ side }) =>
