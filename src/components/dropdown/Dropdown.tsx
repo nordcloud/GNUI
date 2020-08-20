@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { Icon } from "../icon";
 import { SVGIcon } from "../svgicon/SVGIcon";
-import { Container, Flex } from "../container";
+import { Container } from "../container";
 import { IconProps } from "../icon";
 import { space, SpaceProps } from "styled-system";
 

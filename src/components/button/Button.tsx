@@ -214,8 +214,10 @@ const StyledButton = styled.button<ButtonProps>`
   ${({ color }) =>
     color &&
     css`
-      color: ${theme.colors.white};
-      background: ${setColor(color)};
+      color: ${(props: ButtonProps) =>
+        props.severity === "medium" ? setColor(color) : theme.colors.snowWhite};
+      background: ${(props: ButtonProps) =>
+        props.severity === "medium" ? "transparent" : setColor(color)};
       border: 1px solid ${setColor(color)};
       &:hover,
       &:active,
@@ -224,13 +226,20 @@ const StyledButton = styled.button<ButtonProps>`
         color: ${theme.colors.lights[4]};
       }
       &:hover {
-        color: ${theme.colors.white};
+        color: ${(props: ButtonProps) =>
+        props.severity === "medium" ? setColor(color) : theme.colors.snowWhite};
         border-color: ${darken(0.1, setColor(color))};
-        background: ${darken(0.1, theme.colors[color] || color)};
+        background: ${(props: ButtonProps) =>
+          props.severity === "medium"
+            ? "transparent"
+            : darken(0.1, setColor(color))};
       }
       &:active {
         border-color: ${darken(0.2, setColor(color))};
-        background: ${darken(0.2, theme.colors[color] || color)};
+        background: ${(props: ButtonProps) =>
+        props.severity === "medium"
+            ? "transparent"
+            : darken(0.2, setColor(color))};
       }
     `}
 
@@ -275,12 +284,12 @@ export const Button: FunctionComponent<ButtonProps & SpaceProps> = ({
       return (
         <>
           {icon ? (
-            <StyledButton {...props} data-text={children}>
+            <StyledButton {...props}>
               <SVGIcon name={icon} />
               {children ? <span>{children}</span> : <></>}
             </StyledButton>
           ) : (
-            <StyledButton {...props} data-text={children}>
+            <StyledButton {...props}>
               <span>{children}</span>
             </StyledButton>
           )}
