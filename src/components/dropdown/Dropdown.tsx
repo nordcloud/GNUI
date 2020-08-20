@@ -162,7 +162,7 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
     <DropdownWrapper
       value={value}
       {...props}
-      // onMouseLeave={() => isOpen && setIsOpen(!isOpen)}
+      onMouseLeave={() => isOpen && setIsOpen(!isOpen)}
     >
       <DropdownButton
         name={name}
@@ -197,7 +197,6 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
           {options &&
             options.map((option: string | IOption) => (
               <DropdownItem
-                title={typeof option === "string" ? option : option.value}
                 value={typeof option === "string" ? option : option.value}
                 key={typeof option === "string" ? option : option.value}
                 onClick={() =>
