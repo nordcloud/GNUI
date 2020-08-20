@@ -15,6 +15,7 @@ interface DropdownProps {
   isOpen?: boolean;
   disabled?: boolean;
   children?: React.ReactNode;
+  title?: string;
   onClick?: (e: any) => void;
   onMouseLeave?: (e: any) => void;
   onChange: (e: any) => void;
@@ -136,6 +137,7 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
   name,
   options,
   disabled = false,
+  title,
   onChange,
   onClear,
   ...props
@@ -158,6 +160,7 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
         name={name}
         onClick={() => !disabled && setIsOpen(!isOpen)}
         disabled={disabled && disabled}
+        title={title}
       >
         {!displayValue
           ? name
@@ -165,7 +168,10 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
           ? displayValue
           : displayValue.label || displayValue.value}
         {onClear && displayValue && (
-          <Clear onClick={() => onClear && onClear()}>
+          <Clear
+            onClick={() => onClear && onClear()}
+            title={`Clear ${name} value`}
+          >
             <SVGIcon size="sm" name="close" />
           </Clear>
         )}

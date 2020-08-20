@@ -17,6 +17,7 @@ import { Text } from "../components/text";
 - `options`: `Array<any>` — **required**
 - `width`: `string` — _optional_, default: `100%`
 - `value`: `string | number` — taken from Reacts `useState()`
+- `title`: `string`
 - `onChange`: `(e: any) => void` — taken from Reacts `useState()`
 - `onClear`: `() => void` — taken from Reacts `useState()` — **optional**
 
@@ -40,6 +41,7 @@ import { Text } from "../components/text";
           value={value}
           width="15rem"
           onChange={(val) => setValue(val)}
+          title="Example title"
         />
         <Text>
           Your choice:{" "}
@@ -54,7 +56,7 @@ import { Text } from "../components/text";
           value={value2}
           width="15rem"
           onChange={(val) => setValue2(val)}
-          onClear={()=>setValue2("")}
+          onClear={() => setValue2("")}
         />
         <Text>
           Your choice:{" "}
