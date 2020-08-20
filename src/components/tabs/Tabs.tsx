@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components";
 import theme from "../../theme";
-import { Heading } from "../heading";
 import { Text } from "../text";
 import { Box } from "../box";
 import { Button } from "../button";
@@ -161,7 +160,7 @@ export const ButtonPrevious: FunctionComponent<ButtonPreviousProps> = ({
   children,
 }) => {
   return (
-    <PreviousButton outline onClick={onClick}>
+    <PreviousButton onClick={onClick}>
       {children}
     </PreviousButton>
   );
