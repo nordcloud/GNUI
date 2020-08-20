@@ -41,13 +41,17 @@ const DropdownWrapper = styled(Container)<IDropdownWrapper>`
   ${space}
 `;
 
-const DropdownButton = styled(Flex)`
+const DropdownButton = styled.button`
+  width: 100%;
+  display: flex;
   align-items: center;
   justify-content: space-between;
   background: transparent;
   border: ${theme.borderInput};
   border-radius: ${theme.radiusDefault};
   line-height: 1.5em;
+  padding-right: 1.5rem;
+  font-size: inherit;
   color: ${theme.colors.primary};
   padding: ${theme.spacing.spacing03};
   cursor: pointer;
@@ -103,6 +107,9 @@ const DropdownMenu = styled(Container)<IDropdownMenu>`
 interface IClear {
   onClick: () => void;
 }
+const Inner = styled.span`
+  margin-right: 1rem;
+`;
 const Clear = styled.button<IClear>`
   position: absolute;
   top: 0;
@@ -115,12 +122,13 @@ const Clear = styled.button<IClear>`
   margin-left: auto;
 `;
 
-const DropdownItem = styled.li`
+const DropdownItem = styled.button`
   border: 0;
   width: 100%;
   box-sizing: border-box;
+  text-align: left;
   background: transparent;
-  font-size: ${theme.fontSizes.regular};
+  font-size: inherit;
   transition: ${theme.transition};
   padding: ${theme.spacing.spacing01} 0 ${theme.spacing.spacing01}
     ${theme.spacing.spacing01};
@@ -162,11 +170,13 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
         disabled={disabled && disabled}
         title={title}
       >
-        {!displayValue
-          ? name
-          : typeof displayValue === "string"
-          ? displayValue
-          : displayValue.label || displayValue.value}
+        <Inner>
+          {!displayValue
+            ? name
+            : typeof displayValue === "string"
+            ? displayValue
+            : displayValue.label || displayValue.value}
+        </Inner>
         {onClear && displayValue && (
           <Clear
             onClick={() => onClear && onClear()}
@@ -187,6 +197,7 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
           {options &&
             options.map((option: string | IOption) => (
               <DropdownItem
+                title={typeof option === "string" ? option : option.value}
                 value={typeof option === "string" ? option : option.value}
                 key={typeof option === "string" ? option : option.value}
                 onClick={() =>
