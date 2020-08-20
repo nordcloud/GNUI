@@ -1,5 +1,4 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
-import { useState, useEffect } from "react";
 import { Button } from "../components/button";
 import { Container, Flex } from "../components/container";
 import LinkTo from '@storybook/addon-links/react';
@@ -89,39 +88,6 @@ import LinkTo from '@storybook/addon-links/react';
       <Button initialState="success"/>
       <Button initialState="error"/>
     </Flex>
-  </Story>
-</Preview>
-
-### Loading example
-
-<Preview>
-  <Story name="loading">
-    {() => {
-      function simulateNetworkRequest() {
-        return new Promise((resolve) => setTimeout(resolve, 2000));
-      }
-      const [isLoading, setLoading] = useState(false)
-      const update = () => setLoading(() => {
-        if (!isLoading) {
-          setLoading(true);
-          simulateNetworkRequest().then(() => {
-            setLoading(false);
-          });
-        }
-      }, [isLoading]);
-      
-      return (
-        <>
-          <Flex justifyContent="space-evenly">
-          <Button 
-            icon="plus"
-            onClick={update}
-            initialState={isLoading ? 'loading' : ''}
-          >Add new Account</Button>
-          </Flex>
-        </>
-      );
-    }}
   </Story>
 </Preview>
 

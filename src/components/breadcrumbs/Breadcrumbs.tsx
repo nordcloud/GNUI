@@ -13,8 +13,8 @@ export interface BreadcrumbsListProps {
 
 const StyledBreadcrumbs = styled.nav`
   ul {
-    padding:0;
-    margin:0;
+    padding: 0;
+    margin: 0;
     li {
       display: inline-block;
       margin-right: ${theme.spacing.spacing02};
@@ -24,7 +24,7 @@ const StyledBreadcrumbs = styled.nav`
         margin-left: ${theme.spacing.spacing02};
       }
       &:last-child {
-        margin-right:0;
+        margin-right: 0;
         &:after {
           display: none;
         }
@@ -56,8 +56,8 @@ const StyledBreadcrumbs = styled.nav`
 export const Breadcrumbs = ({ list }: BreadcrumbsListProps) => (
   <StyledBreadcrumbs>
     <ul>
-      {list.map(br => (
-        <li>
+      {list.map((br) => (
+        <li key={br.label}>
           <a href={br.uri || ""}>{br.label}</a>
         </li>
       ))}

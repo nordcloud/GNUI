@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import theme from '../../theme'
+import styled from "styled-components";
+import theme from "../../theme";
 
 export interface TableProps {
   hoverline?: boolean;
@@ -8,42 +8,49 @@ export interface TableProps {
 }
 
 const Table: any = styled.table<TableProps>`
-    width: 100%;
-    text-align: left;
-    border-collapse: collapse;
-    font-weight: ${theme.fontWeights.regular};
-    font-family: ${theme.fonts.body};
-    font-size: ${theme.fontSizes.md};
-    line-height: 1.5em;
-    color: ${theme.colors.primary};
-    
-    tbody {
-      tr {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+  font-weight: ${theme.fontWeights.regular};
+  font-family: ${theme.fonts.body};
+  font-size: ${theme.fontSizes.md};
+  line-height: 1.5em;
+  color: ${theme.colors.primary};
+
+  tbody {
+    tr {
+      &:hover {
+        cursor: ${({ hoverline }) => (hoverline ? "pointer" : "default")};
+        background-color: ${({ hoverline }) =>
+          hoverline ? theme.colors.lights[1] : ""};
+      }
+      &:nth-child(odd) {
+        background-color: ${({ striped }) =>
+          striped ? theme.colors.lights[0] : ""};
         &:hover {
-          cursor: ${({ hoverline }) => (hoverline ? 'pointer' : 'default')};
-          background-color: ${({ hoverline }) => (hoverline ? theme.colors.lights[1] : 'none')};
-          }
-          &:nth-child(odd) {
-            background-color: ${({ striped }) => (striped ? theme.colors.lights[0] : 'none')};
-            &:hover {
-              background-color: ${({ hoverline }) => (hoverline ? theme.colors.lights[1] : 'none')};
-            }
-          } 
+          background-color: ${({ hoverline }) =>
+            hoverline ? theme.colors.lights[1] : ""};
         }
       }
     }
-    tbody, thead {
-      td {
-        padding: ${({ small }) =>
-          small ? `${theme.spacing.spacing02} ${theme.spacing.spacing03}` : `${theme.spacing.spacing03}`};
-        }
-        th {
-          padding: ${({ small }) =>
-          small ? `${theme.spacing.spacing02} ${theme.spacing.spacing03}` : `${theme.spacing.spacing03}`};
-          }
-        }
-      }
+  }
+
+  tbody,
+  thead,
+  tfoot {
+    td {
+      padding: ${({ small }) =>
+        small
+          ? `${theme.spacing.spacing02} ${theme.spacing.spacing03}`
+          : `${theme.spacing.spacing03}`};
     }
+    th {
+      padding: ${({ small }) =>
+        small
+          ? `${theme.spacing.spacing02} ${theme.spacing.spacing03}`
+          : `${theme.spacing.spacing03}`};
+    }
+  }
 `;
 
 const Thead = styled.thead`
@@ -53,6 +60,11 @@ const Thead = styled.thead`
 `;
 
 const Tbody = styled.tbody``;
+const Tfoot = styled.tfoot`
+  td {
+    background-color: ${theme.colors.lights[1]};
+  }
+`;
 
 const Td = styled.td<any>`
   border-top: 1px solid ${theme.colors.lights[2]};
@@ -64,8 +76,9 @@ const Th = styled.th<any>``;
 
 Table.thead = Thead;
 Table.tbody = Tbody;
+Table.tfoot = Tfoot;
 Table.td = Td;
 Table.tr = Tr;
 Table.th = Th;
 
-export default Table
+export default Table;

@@ -67,9 +67,9 @@ const theme: ThemeInterface = {
   typography: {
     fonts: {
       body: "Rubik, sans-serif",
-      heading: "Rubik, sans-serif"
+      heading: "Rubik, sans-serif",
     },
-    fontSizes: ["0.625rem",  "0.75rem", "1rem", "1.25rem", "1.5rem", "2rem"],
+    fontSizes: ["0.625rem", "0.75rem", "1rem", "1.25rem", "1.5rem", "2rem"],
     fontWeights: [400, 500, 700],
     lineHeight: "1.5em",
   },
@@ -129,7 +129,7 @@ const theme: ThemeInterface = {
     deep: -9999,
   },
 
-  transition: "all 0.2s linear",
+  transition: "all 0.26s ease-in-out",
 
   breakpoints: {
     xs: 0,

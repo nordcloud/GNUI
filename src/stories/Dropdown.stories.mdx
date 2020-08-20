@@ -17,7 +17,9 @@ import { Text } from "../components/text";
 - `options`: `Array<any>` — **required**
 - `width`: `string` — _optional_, default: `100%`
 - `value`: `string | number` — taken from Reacts `useState()`
-- `onChange`: `() => string | number` — taken from Reacts `useState()`
+- `title`: `string`
+- `onChange`: `(e: any) => void` — taken from Reacts `useState()`
+- `onClear`: `() => void` — taken from Reacts `useState()` — **optional**
 
 ---
 
@@ -29,7 +31,8 @@ import { Text } from "../components/text";
       "Option 3",
       "Option 4",
     ];
-    const [value, setValue] = useState();
+    const [value, setValue] = useState("");
+    const [value2, setValue2] = useState("");
     return (
       <Container>
         <Dropdown
@@ -37,12 +40,29 @@ import { Text } from "../components/text";
           options={options}
           value={value}
           width="15rem"
-          onChange={setValue}
+          onChange={(val) => setValue(val)}
+          title="Example title"
         />
         <Text>
           Your choice:{" "}
           <Text tag="span" weight="medium">
             {!value ? "nothing" : value}
+          </Text>
+        </Text>
+        <Spacer height="2rem" />
+        <Dropdown
+          name="Select an option"
+          options={options}
+          value={value2}
+          width="15rem"
+          onChange={(val) => setValue2(val)}
+          onClear={() => setValue2("")}
+          title="Example title clear option"
+        />
+        <Text>
+          Your choice:{" "}
+          <Text tag="span" weight="medium">
+            {!value2 ? "nothing" : value2}
           </Text>
         </Text>
         <Spacer height="5rem" />

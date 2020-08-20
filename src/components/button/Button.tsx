@@ -19,6 +19,7 @@ export interface ButtonProps {
   type?: any;
   disabled?: boolean;
   className?: string;
+  title?: string;
   onClick?: (e: any) => void;
 }
 
