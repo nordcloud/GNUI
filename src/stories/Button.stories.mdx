@@ -1,131 +1,135 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Button } from "../components/button";
-import { Container } from "../components/container";
+import { Container, Flex } from "../components/container";
+import LinkTo from '@storybook/addon-links/react';
 
 <Meta title="Components/Button" component={Button} />
 
 # Button
 
-> Primary button is default as well.
-
-<Preview>
-  <Story name="primary/default">
-    <Button>Primary button</Button>
-  </Story>
-</Preview>
-
 ## Props
 
-- `outline`: `boolean` — _optional_
-- `size`: `string` — _optional_
-- `color`: `string` — _optional_
-- `severity`: `string` — _optional_
-- `disabled`: `boolean` — _optional_
-- `title`: `string` - _optional_
+> - `severity`: `medium` | `low` — **optional**
+> - `size`: `sm` | `md` — **optional**
+> - `icon`: `string` — **optional** you should use icons from this <LinkTo kind="components-svgicon--ui">list of SVG icons</LinkTo>
+> - `iconRight`: `boolean` — **optional** if you want to place an icon to the right
+> - `initialState`: `success` | `error` | `loading` — **optional**
 
-### outline
-
-> `outline`: `boolean`
+## Default view
 
 <Preview>
-  <Story name="outline/secondary">
-    <Button outline title="Primary button">
-      Primary button
-    </Button>
+  <Story name="default">
+    <Button>Default button</Button>
   </Story>
 </Preview>
 
-### color
+## Severity
+> `severity`: `medium` | `low` — **optional**
+
+<Preview>
+  <Story name="button/severity">
+    <Flex justifyContent="space-evenly">
+      <Button severity="medium">Secondary button</Button>
+      <Button severity="low">Button for use as an icon</Button>
+    </Flex>
+  </Story>
+</Preview>
+
+## Button Sizes
+
+> `severity`: `sm` | `md` — **optional**
+
+<Preview>
+  <Story name="size">
+    <Flex justifyContent="space-evenly">
+      <Button size="sm">Size SM</Button>
+      <Button size="md">Size MD</Button>
+      <Button>Size Default</Button>
+    </Flex>
+  </Story>
+</Preview>
+
+## Button Icons
+
+> `icon`: `string` — **optional** you should use icons from this <LinkTo kind="components-svgicon--ui">list of SVG icons</LinkTo>
+
+<Preview>
+  <Story name="icons">
+    <Flex justifyContent="space-evenly">
+      <Button severity="low" icon="plus">Size SM</Button>
+      <Button severity="low" icon="plus"/>
+    </Flex>
+  </Story>
+</Preview>
+
+## Button Icon Right
+
+> `iconRight`: `boolean` — **optional** if you want to place an icon to the right
+
+<Preview>
+  <Story name="iconRight">
+    <Flex justifyContent="space-evenly">
+      <Button iconRight severity="low" icon="trash">Delete Item</Button>
+    </Flex>
+  </Story>
+</Preview>
+
+## Button initialState
+
+> `initialState`: `success` | `error` | `loading` — **optional**
+
+<Preview>
+  <Story name="initialState">
+    <Flex justifyContent="space-evenly">
+      <Button initialState="loading">Save changes</Button>
+      <Button initialState="success">Save changes</Button>
+      <Button initialState="error">Save changes</Button>
+      <Button initialState="loading"/>
+      <Button initialState="success"/>
+      <Button initialState="error"/>
+    </Flex>
+  </Story>
+</Preview>
+
+## Button Color
 
 > `color`: `string` — can be used in two ways: as an action colors build with `theme` (`accent`, `danger`, `success`, `warning`, `notification`) or just in HEX/named color formats according to [X11 Colors](https://en.wikipedia.org/wiki/X11_color_names)
 
 <Preview>
   <Story name="color">
-    <Container>
-      <p>
-        <Button color="accent">Accent color</Button>
-      </p>
-      <p>
-        <Button color="danger">Danger color</Button>
-      </p>
-      <p>
-        <Button color="success">Success color</Button>
-      </p>
-      <p>
-        <Button color="warning">Warning color</Button>
-      </p>
-      <p>
-        <Button color="notification">Notification color</Button>
-      </p>
-      <p>
-        <Button color="#FF1493">HEX color</Button>
-      </p>
-    </Container>
+    <Flex justifyContent="space-evenly">
+      <Button color="accent">Accent color</Button>
+      <Button color="danger">Danger color</Button>
+      <Button color="success">Success color</Button>
+      <Button color="warning">Warning color</Button>
+      <Button color="notification">Notification color</Button>
+      <Button color="#FF1493">HEX color</Button>
+    </Flex>
   </Story>
 </Preview>
 
-### severity
-
-> `severity`: `string` — [`high`, `medium`, `low`]
-
-<Preview>
-  <Story name="severity">
-    <Container>
-      <p>
-        <Button severity="high">High severity</Button>
-      </p>
-      <p>
-        <Button severity="medium">Medium severity</Button>
-      </p>
-      <p>
-        <Button severity="low">Low severity</Button>
-      </p>
-    </Container>
-  </Story>
-</Preview>
-
-### disabled
+## Button Disabled
 
 > `disabled`: `boolean`
 
 <Preview>
   <Story name="disabled">
-    <Container>
-      <p>
-        <Button disabled>Disabled button</Button>
-      </p>
-      <p>
-        <Button outline disabled>
-          Disabled button
-        </Button>
-      </p>
-      <p>
-        <Button severity="low" disabled>
-          Disabled button
-        </Button>
-      </p>
-      <p>
-        <Button color="warning" disabled>
-          Disabled button
-        </Button>
-      </p>
-      <p>
-        <Button color="#FF1493" disabled>
-          Disabled button
-        </Button>
-      </p>
-    </Container>
+    <Flex justifyContent="space-evenly">
+        <Button disabled>Default button Disabled</Button>
+        <Button severity="medium" disabled>Medium severity Disabled</Button>
+        <Button severity="low" disabled>Low severity Disabled</Button>
+    </Flex>
   </Story>
 </Preview>
 
-### custom spacing
+## Custom spacing
 
 <Preview>
   <Story name="custom-spacing">
     <Container>
       <p>
         <Button ml="3rem" mb="10rem" innerSpacing="0">
-          Disabled button
+          Button with custom spacing
         </Button>
       </p>
     </Container>

@@ -90,9 +90,11 @@ const theme: ThemeInterface = {
   },
 
   radius: {
-    small: "2px",
-    default: "4px",
-    large: "6px",
+    sm: "2px",
+    md: "4px",
+    lg: "6px",
+    xl: "16px",
+    xxl: "22px",
   },
 
   shadow: {
@@ -170,7 +172,7 @@ theme.fontSizes.xxl = theme.fontSizes[5];
 // Borders & Radius
 theme.borderDefault = theme.borders.default;
 theme.borderInput = theme.borders.darkenGrey;
-theme.radiusDefault = theme.radius.default;
+theme.radiusDefault = theme.radius.md;
 
 export const { breakpoints, spacings, paddings } = theme;
 export const bp = createBreakpoint(breakpoints);

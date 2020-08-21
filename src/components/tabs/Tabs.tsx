@@ -161,7 +161,7 @@ export const ButtonPrevious: FunctionComponent<ButtonPreviousProps> = ({
   children,
 }) => {
   return (
-    <PreviousButton outline onClick={onClick}>
+    <PreviousButton onClick={onClick}>
       {children}
     </PreviousButton>
   );
