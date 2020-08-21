@@ -8,7 +8,7 @@ import { Spinner } from "../spinner";
 
 export interface ButtonProps {
   children?: string | React.ReactNode;
-  severity?: "medium" | "low";
+  severity?: "high" |"medium" | "low";
   size?: "sm" | "md";
   icon?: string;
   iconRight?: boolean;
@@ -21,6 +21,9 @@ export interface ButtonProps {
   className?: string;
   title?: string;
   onClick?: (e: any) => void;
+
+  outline?: boolean;
+  secondary?: boolean;
 }
 
 const setColor = (color: string) => {
