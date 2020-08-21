@@ -84,6 +84,7 @@ export const Background: any = styled.div<IBackgroudProps>`
   pointer-events: ${({ isOpen }) => (isOpen ? "auto" : "none")};
   transition: ${theme.transition};
   opacity: ${({ isOpen }) => (isOpen ? 0.4 : 0)};
+  z-index: ${theme.zindex.topoftheworld};
 `;
 
 export const ModalContent = styled.div<IModalContent>`
@@ -124,6 +125,7 @@ export const Modal = ({
 }: IModalProps) => {
   return (
     <>
+      <Background onClick={onClose} {...props}></Background>
       <StyledModal {...props}>
         {props.isOpen && (
           <ModalBox
@@ -159,7 +161,6 @@ export const Modal = ({
           </ModalBox>
         )}
       </StyledModal>
-      <Background onClick={onClose} {...props}></Background>
     </>
   );
 };

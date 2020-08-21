@@ -39,6 +39,7 @@ export const ModalConfirm = ({
 }: IModal) => {
   return (
     <>
+      <Background onClick={onClose} {...props}></Background>
       <StyledModal {...props}>
         {props.isOpen && (
           <ModalBox innerSpacing="spacing04" shadow="shadow04">
@@ -58,7 +59,6 @@ export const ModalConfirm = ({
           </ModalBox>
         )}
       </StyledModal>
-      <Background onClick={onClose} {...props}></Background>
     </>
   );
 };
