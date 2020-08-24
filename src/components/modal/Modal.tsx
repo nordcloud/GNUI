@@ -2,7 +2,6 @@ import React from "react";
 import theme from "../../theme";
 import styled, { keyframes } from "styled-components";
 import { Heading } from "../heading";
-import { Icon } from "../icon";
 import { Button, Box } from "..";
 import { whenIE11 } from "../../utils/browserCompatibility";
 import {
@@ -101,6 +100,7 @@ const ModalHeading = styled(Heading)`
 
 export const ModalHeader = styled.div`
   display: flex;
+  justify-content:space-between;
   align-items: center;
   padding: 0 1rem 1rem;
   margin-bottom: ${theme.spacing.spacing04};
@@ -135,9 +135,7 @@ export const Modal = ({
           >
             <ModalHeader>
               <ModalHeading level={4}>{contentLabel}</ModalHeading>
-              <ModalCloseButton severity="low" onClick={onClose}>
-                <Icon width="1rem" height="1rem" image="CLOSE_SIDEBAR" />
-              </ModalCloseButton>
+              <Button severity="low" size="sm" icon="close" onClick={onClose} />
             </ModalHeader>
             <ModalContent contentMaxHeight={contentMaxHeight}>
               {children}

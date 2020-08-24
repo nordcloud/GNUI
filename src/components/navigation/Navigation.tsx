@@ -14,7 +14,7 @@ const Item = styled.div`
   line-height: ${theme.lineHeight};
   font-family: ${theme.fonts.body};
   font-size: ${theme.fontSizes.md};
-  border-radius: ${theme.radius.default};
+  border-radius: ${theme.radiusDefault};
   padding: 0 ${theme.spacing.spacing03};
   color: ${theme.colors.primary};
   text-decoration: none;
@@ -32,6 +32,8 @@ const Item = styled.div`
   &:not(.separator) {
     &:hover {
       background-color: ${theme.colors.lights[2]};
+      color: ${theme.colors.primary};
+      text-decoration: none;
     }
     &:active,
     &:focus {
