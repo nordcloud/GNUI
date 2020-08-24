@@ -169,6 +169,7 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
         onClick={() => !disabled && setIsOpen(!isOpen)}
         disabled={disabled && disabled}
         title={title}
+        type="button"
       >
         <Inner>
           {!displayValue
@@ -204,6 +205,7 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
                   onChange &&
                   onChange(typeof option === "string" ? option : option.value)
                 }
+                type="button"
               >
                 {typeof option === "string"
                   ? option
