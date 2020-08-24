@@ -1,14 +1,14 @@
 import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
-import { darken } from "polished";
+import { darken, lighten } from "polished";
 import { space, SpaceProps } from "styled-system";
 import { SVGIcon } from "../svgicon";
 import { Spinner } from "../spinner";
 
 export interface ButtonProps {
   children?: string | React.ReactNode;
-  severity?: "high" |"medium" | "low";
+  severity?: "high" | "medium" | "low";
   size?: "sm" | "md";
   icon?: string;
   iconRight?: boolean;
@@ -42,7 +42,8 @@ const changeSize = (size: string) => {
       span {
         padding: 0 ${theme.spacing.spacing01}
       }   
-      svg {
+      svg, .spinner {
+        padding: 0;
         width: ${theme.iconSize.sm};
         height: ${theme.iconSize.sm};
       }
@@ -55,7 +56,8 @@ const changeSize = (size: string) => {
         padding: 0 ${theme.spacing.spacing01};
         line-height: 1rem;
       } 
-      svg {
+      svg, .spinner {
+        padding: 0;
         width: 1rem;
         height: 1rem;
       }
@@ -73,9 +75,11 @@ const changeSeverity = (severity: string) => {
       svg {
         fill: ${theme.colors.primary};
       }
-      div {
-        border-color: ${theme.colors.primary} transparent transparent
-          transparent;
+      .spinner {
+        div {
+          border-color: ${theme.colors.primary} transparent transparent
+            transparent;
+        }
       }
       &:hover {
         background: ${theme.colors.lights[2]};
@@ -99,9 +103,11 @@ const changeSeverity = (severity: string) => {
       svg {
         fill: ${theme.colors.primary};
       }
-      div {
-        border-color: ${theme.colors.primary} transparent transparent
-          transparent;
+      .spinner {
+        div {
+          border-color: ${theme.colors.primary} transparent transparent
+            transparent;
+        }
       }
       &:hover {
         background: ${theme.colors.lights[2]};
@@ -141,6 +147,7 @@ const StyledButton = styled.button<ButtonProps>`
   span {
     z-index: ${theme.zindex.default};
     padding: 0 ${theme.spacing.spacing02};
+    text-decoration: none !important;
   }
 
   svg {
@@ -152,11 +159,19 @@ const StyledButton = styled.button<ButtonProps>`
     padding: 0.125rem;
   }
 
-  div {
+  .spinner {
     width: 1.25rem;
     height: 1.25rem;
-    transition: ${theme.transition};
-    border-color: ${theme.colors.snowWhite} transparent transparent transparent;
+    padding: 0.125rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    div {
+      transition: ${theme.transition};
+      border-color: ${
+        theme.colors.snowWhite
+      } transparent transparent transparent;
+    }
   }
 
   &:focus {
@@ -164,15 +179,15 @@ const StyledButton = styled.button<ButtonProps>`
   }
 
   &:hover {
-    cursor: pointer;
-    color: ${theme.colors.lights[4]};
-    background: ${darken(0.1, theme.colors.primary)}}
     span {
-      text-decoration: none;
+      text-decoration: none !important;
     }
     svg {
       fill: ${theme.colors.lights[4]};
     }
+    cursor: pointer;
+    color: ${theme.colors.lights[4]};
+    background: ${darken(0.1, theme.colors.primary)}};
   }
   &:active {
     color: ${theme.colors.darks[4]};
@@ -209,10 +224,10 @@ const StyledButton = styled.button<ButtonProps>`
   ${({ color }) =>
     color &&
     css`
+      background-color: ${(props: ButtonProps) =>
+        props.severity === "medium" ? "transparent" : setColor(color)};
       color: ${(props: ButtonProps) =>
         props.severity === "medium" ? setColor(color) : theme.colors.snowWhite};
-      background: ${(props: ButtonProps) =>
-        props.severity === "medium" ? "transparent" : setColor(color)};
       border: 1px solid ${setColor(color)};
       &:hover,
       &:active,
@@ -220,20 +235,44 @@ const StyledButton = styled.button<ButtonProps>`
       &:disabled:hover {
         color: ${theme.colors.lights[4]};
       }
+      svg {
+        fill: ${(props: ButtonProps) =>
+          props.severity === "medium"
+            ? setColor(color)
+            : theme.colors.snowWhite};
+      }
+      .spinner {
+        div {
+          border-color: ${(props: ButtonProps) =>
+              props.severity === "medium"
+                ? setColor(color)
+                : theme.colors.snowWhite}
+            transparent transparent transparent;
+        }
+      }
       &:hover {
         color: ${(props: ButtonProps) =>
-        props.severity === "medium" ? setColor(color) : theme.colors.snowWhite};
-        border-color: ${darken(0.1, setColor(color))};
-        background: ${(props: ButtonProps) =>
           props.severity === "medium"
-            ? "transparent"
+            ? setColor(color)
+            : theme.colors.snowWhite};
+        background-color: ${(props: ButtonProps) =>
+          props.severity === "medium"
+            ? lighten(0.35, setColor(color))
             : darken(0.1, setColor(color))};
+        span {
+          text-decoration: none;
+        }
+        svg {
+          fill: ${(props: ButtonProps) =>
+            props.severity === "medium"
+              ? darken(0.1, setColor(color))
+              : theme.colors.snowWhite};
+        }
       }
       &:active {
-        border-color: ${darken(0.2, setColor(color))};
         background: ${(props: ButtonProps) =>
-        props.severity === "medium"
-            ? "transparent"
+          props.severity === "medium"
+            ? lighten(0.25, setColor(color))
             : darken(0.2, setColor(color))};
       }
     `}
@@ -270,7 +309,9 @@ export const Button: FunctionComponent<ButtonProps & SpaceProps> = ({
       return (
         <>
           <StyledButton {...props}>
-            <Spinner />
+            <div className={"spinner"}>
+              <Spinner size="sm" />
+            </div>
             {children ? <span>{children}</span> : <></>}
           </StyledButton>
         </>
