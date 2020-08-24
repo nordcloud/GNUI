@@ -12,7 +12,7 @@ export interface ButtonProps {
   size?: "sm" | "md";
   icon?: string;
   iconRight?: boolean;
-  initialState?: "success" | "error" | "loading";
+  initialState?: string;
   color?: string;
   form?: string;
   select?: boolean;
@@ -39,11 +39,9 @@ const changeSize = (size: string) => {
       font-size: ${theme.fontSizes.xs};
       padding: ${theme.spacing.spacing01};
       line-height: 0.875rem;
-      
       span {
         padding: 0 ${theme.spacing.spacing01}
-      }
-      
+      }   
       svg {
         width: ${theme.iconSize.sm};
         height: ${theme.iconSize.sm};
@@ -52,15 +50,14 @@ const changeSize = (size: string) => {
     case "md":
       return `
       font-size: ${theme.fontSizes.sm};
-      padding: ${theme.spacing.spacing01} ${theme.spacing.spacing01};
-      
+      padding: ${theme.spacing.spacing02} ${theme.spacing.spacing02};
       span {
         padding: 0 ${theme.spacing.spacing01};
-      }
-      
+        line-height: 1rem;
+      } 
       svg {
-        width: ${theme.iconSize.md};
-        height: ${theme.iconSize.md};
+        width: 1rem;
+        height: 1rem;
       }
       `;
   }
@@ -73,28 +70,22 @@ const changeSeverity = (severity: string) => {
       background: transparent;
       border-color: ${theme.colors.primary};
       color: ${theme.colors.primary};
-
       svg {
         fill: ${theme.colors.primary};
       }
-
       div {
         border-color: ${theme.colors.primary} transparent transparent
           transparent;
       }
-
       &:hover {
         background: ${theme.colors.lights[2]};
         color: ${theme.colors.primary};
-
         svg {
           fill: ${theme.colors.primary};
         }
       }
-
       &:active {
         background: ${theme.colors.lights[3]};
-
         svg {
           fill: ${theme.colors.primary};
         }
@@ -105,25 +96,20 @@ const changeSeverity = (severity: string) => {
       background: ${theme.colors.lights[1]};
       color: ${theme.colors.primary};
       border: none;
-
       svg {
         fill: ${theme.colors.primary};
       }
-
       div {
         border-color: ${theme.colors.primary} transparent transparent
           transparent;
       }
-
       &:hover {
         background: ${theme.colors.lights[2]};
         color: ${theme.colors.primary};
-
         svg {
           fill: ${theme.colors.primary};
         }
       }
-
       &:active {
         background: ${theme.colors.lights[3]};
 
@@ -151,10 +137,8 @@ const StyledButton = styled.button<ButtonProps>`
   flex-direction: ${(props: ButtonProps) =>
     props.iconRight ? "row-reverse" : "row"};
   align-items: center;
-  position: relative;
 
   span {
-    transition: ${theme.transition};
     z-index: ${theme.zindex.default};
     padding: 0 ${theme.spacing.spacing02};
   }
@@ -163,9 +147,15 @@ const StyledButton = styled.button<ButtonProps>`
     z-index: ${theme.zindex.default};
     transition: ${theme.transition};
     fill: ${theme.colors.snowWhite};
+    width: 1.25rem;
+    height: 1.25rem;
+    padding: 0.125rem;
   }
 
   div {
+    width: 1.25rem;
+    height: 1.25rem;
+    transition: ${theme.transition};
     border-color: ${theme.colors.snowWhite} transparent transparent transparent;
   }
 
@@ -174,10 +164,12 @@ const StyledButton = styled.button<ButtonProps>`
   }
 
   &:hover {
-    border-radius: ${theme.radius.xxl};
     cursor: pointer;
     color: ${theme.colors.lights[4]};
-
+    background: ${darken(0.1, theme.colors.primary)}}
+    span {
+      text-decoration: none;
+    }
     svg {
       fill: ${theme.colors.lights[4]};
     }
