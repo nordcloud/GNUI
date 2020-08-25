@@ -143,15 +143,15 @@ const StyledButton = styled.button<ButtonProps>`
   flex-direction: ${(props: ButtonProps) =>
     props.iconRight ? "row-reverse" : "row"};
   align-items: center;
+  text-decoration: none;
 
   span {
     z-index: ${theme.zindex.default};
     padding: 0 ${theme.spacing.spacing02};
-    text-decoration: none !important;
+    text-decoration: none;
   }
 
   svg {
-    z-index: ${theme.zindex.default};
     transition: ${theme.transition};
     fill: ${theme.colors.snowWhite};
     width: 1.25rem;
@@ -180,7 +180,7 @@ const StyledButton = styled.button<ButtonProps>`
 
   &:hover {
     span {
-      text-decoration: none !important;
+      text-decoration: none;
     }
     svg {
       fill: ${theme.colors.lights[4]};
@@ -251,6 +251,7 @@ const StyledButton = styled.button<ButtonProps>`
         }
       }
       &:hover {
+        text-decoration: none;
         color: ${(props: ButtonProps) =>
           props.severity === "medium"
             ? setColor(color)
