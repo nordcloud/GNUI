@@ -100,7 +100,7 @@ const ModalHeading = styled(Heading)`
 
 export const ModalHeader = styled.div`
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   align-items: center;
   padding: 0 1rem 1rem;
   margin-bottom: ${theme.spacing.spacing04};
@@ -135,7 +135,13 @@ export const Modal = ({
           >
             <ModalHeader>
               <ModalHeading level={4}>{contentLabel}</ModalHeading>
-              <Button severity="low" size="sm" icon="close" onClick={onClose} />
+              <Button
+                severity="low"
+                size="sm"
+                icon="close"
+                onClick={onClose}
+                title="Close"
+              />
             </ModalHeader>
             <ModalContent contentMaxHeight={contentMaxHeight}>
               {children}

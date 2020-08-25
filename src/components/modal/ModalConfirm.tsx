@@ -10,7 +10,7 @@ import {
 } from "./Modal";
 import styled from "styled-components";
 import { Heading } from "../heading";
-import {Button} from "../button";
+import { Button } from "../button";
 const ModalHeading = styled(Heading)`
   margin: 0;
 `;
@@ -44,7 +44,13 @@ export const ModalConfirm = ({
           <ModalBox innerSpacing="spacing04" shadow="shadow04">
             <ModalHeader>
               <ModalHeading level={4}>{contentLabel}</ModalHeading>
-              <Button severity="low" size="sm" icon="close" onClick={onClose} />
+              <Button
+                severity="low"
+                size="sm"
+                icon="close"
+                onClick={onClose}
+                title="Close"
+              />
             </ModalHeader>
             <ModalContent>{children}</ModalContent>
             <ModalActions>
