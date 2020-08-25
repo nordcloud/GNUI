@@ -1,7 +1,6 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Button } from "../components/button";
 import { Container, Flex } from "../components/container";
-import LinkTo from '@storybook/addon-links/react';
 
 <Meta title="Components/Button" component={Button} />
 
@@ -24,6 +23,7 @@ import LinkTo from '@storybook/addon-links/react';
 </Preview>
 
 ## Severity
+
 > `severity`: `medium` | `low` — **optional**
 
 <Preview>
@@ -56,8 +56,14 @@ import LinkTo from '@storybook/addon-links/react';
 <Preview>
   <Story name="icons">
     <Flex justifyContent="space-evenly">
-      <Button severity="low" icon="plus">Size SM</Button>
-      <Button severity="low" icon="plus"/>
+      <Button icon="plus">
+        Size SM
+      </Button>
+      <Button icon="plus" />
+      <Button icon="plus" severity="medium">
+        Size SM
+      </Button>
+      <Button icon="plus" severity="medium"/>
     </Flex>
   </Story>
 </Preview>
@@ -120,7 +126,9 @@ import LinkTo from '@storybook/addon-links/react';
 <Preview>
   <Story name="iconRight">
     <Flex justifyContent="space-evenly">
-      <Button iconRight severity="low" icon="trash">Delete Item</Button>
+      <Button iconRight severity="low" icon="trash">
+        Delete Item
+      </Button>
     </Flex>
   </Story>
 </Preview>
@@ -135,9 +143,9 @@ import LinkTo from '@storybook/addon-links/react';
       <Button initialState="loading">Save changes</Button>
       <Button initialState="success">Save changes</Button>
       <Button initialState="error">Save changes</Button>
-      <Button initialState="loading"/>
-      <Button initialState="success"/>
-      <Button initialState="error"/>
+      <Button initialState="loading" />
+      <Button initialState="success" />
+      <Button initialState="error" />
     </Flex>
   </Story>
 </Preview>
@@ -149,8 +157,12 @@ import LinkTo from '@storybook/addon-links/react';
 <Preview>
   <Story name="color">
     <Flex justifyContent="space-evenly">
-      <Button color="accent">Accent color</Button>
-      <Button color="danger">Danger color</Button>
+      <Button color="danger" icon="danger">
+        Danger color
+      </Button>
+      <Button color="danger" icon="danger" severity="medium">
+        Danger color
+      </Button>
       <Button color="success">Success color</Button>
       <Button color="warning">Warning color</Button>
       <Button color="notification">Notification color</Button>
@@ -166,9 +178,13 @@ import LinkTo from '@storybook/addon-links/react';
 <Preview>
   <Story name="disabled">
     <Flex justifyContent="space-evenly">
-        <Button disabled>Default button Disabled</Button>
-        <Button severity="medium" disabled>Medium severity Disabled</Button>
-        <Button severity="low" disabled>Low severity Disabled</Button>
+      <Button disabled>Default button Disabled</Button>
+      <Button severity="medium" disabled>
+        Medium severity Disabled
+      </Button>
+      <Button severity="low" disabled>
+        Low severity Disabled
+      </Button>
     </Flex>
   </Story>
 </Preview>
