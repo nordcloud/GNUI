@@ -147,7 +147,7 @@ const StyledButton = styled.button<ButtonProps>`
 
   span {
     padding: 0 ${theme.spacing.spacing02};
-    text-decoration: none;
+    text-decoration: none !important;
   }
 
   svg {
@@ -156,7 +156,6 @@ const StyledButton = styled.button<ButtonProps>`
     width: 1.25rem;
     height: 1.25rem;
     padding: 0.125rem;
-    text-decoration: none !important;
   }
 
   .spinner {
