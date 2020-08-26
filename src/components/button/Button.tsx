@@ -146,7 +146,6 @@ const StyledButton = styled.button<ButtonProps>`
   text-decoration: none;
 
   span {
-    z-index: ${theme.zindex.default};
     padding: 0 ${theme.spacing.spacing02};
     text-decoration: none;
   }
@@ -157,6 +156,7 @@ const StyledButton = styled.button<ButtonProps>`
     width: 1.25rem;
     height: 1.25rem;
     padding: 0.125rem;
+    text-decoration: none !important;
   }
 
   .spinner {

@@ -137,7 +137,7 @@ export const Modal = ({
               <ModalHeading level={4}>{contentLabel}</ModalHeading>
               <Button
                 severity="low"
-                size="sm"
+                size="md"
                 icon="close"
                 onClick={onClose}
                 title="Close"
