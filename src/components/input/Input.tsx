@@ -10,6 +10,7 @@ export interface InputProps {
   type: string;
   className?: string;
   placeholder?: string;
+  title?: string;
   value?: string;
   defaultValue?: string;
   id?: string;
@@ -184,7 +185,7 @@ export const Description: FunctionComponent = ({ children }) => (
 export const Input: FunctionComponent<
   InputProps & SpaceProps
 > = React.forwardRef(
-  ({ type = "text", name, status, popup, loading, ...props }, ref) => (
+  ({ type = "text", name, status, popup, loading, title, ...props }, ref) => (
     <InputGroup status={status} {...props} popup={popup}>
       {type === "search" && !loading && (
         <Icon image="SEARCH" width="1.2rem" height="1.2rem" />
@@ -192,6 +193,7 @@ export const Input: FunctionComponent<
       {type === "search" && loading && <Spinner />}
       <StyledInput
         name={name}
+        title={title}
         type={type}
         id={name}
         ref={ref}
