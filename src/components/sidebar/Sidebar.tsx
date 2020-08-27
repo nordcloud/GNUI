@@ -143,12 +143,12 @@ export const Sidebar: FunctionComponent<ISidebarProps> = ({
           {isOpen && (
             <>
               <Header reverse={side === "onLeft" && true}>
-                <Title tag="span" ml={side === "onLeft" ? [1, 2] : [0]}>
+                <Title tag="span" ml={side === "onLeft" ? ["1rem", "1rem"] : [0]}>
                   {title}
                 </Title>
                 <Button
                   severity="low"
-                  size="sm"
+                  size="md"
                   icon="close"
                   onClick={onClick}
                   title="Close sidebar"

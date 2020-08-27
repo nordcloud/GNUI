@@ -143,12 +143,9 @@ const StyledButton = styled.button<ButtonProps>`
   flex-direction: ${(props: ButtonProps) =>
     props.iconRight ? "row-reverse" : "row"};
   align-items: center;
-  text-decoration: none;
 
   span {
-    z-index: ${theme.zindex.default};
     padding: 0 ${theme.spacing.spacing02};
-    text-decoration: none;
   }
 
   svg {
@@ -179,9 +176,6 @@ const StyledButton = styled.button<ButtonProps>`
   }
 
   &:hover {
-    span {
-      text-decoration: none;
-    }
     svg {
       fill: ${theme.colors.lights[4]};
     }
@@ -251,7 +245,6 @@ const StyledButton = styled.button<ButtonProps>`
         }
       }
       &:hover {
-        text-decoration: none;
         color: ${(props: ButtonProps) =>
           props.severity === "medium"
             ? setColor(color)
@@ -260,9 +253,6 @@ const StyledButton = styled.button<ButtonProps>`
           props.severity === "medium"
             ? lighten(0.35, setColor(color))
             : darken(0.1, setColor(color))};
-        span {
-          text-decoration: none;
-        }
         svg {
           fill: ${(props: ButtonProps) =>
             props.severity === "medium"
