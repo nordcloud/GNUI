@@ -13,7 +13,7 @@ import { Spacer } from "../components/spacer";
 
 <Preview>
   <Story name="input">
-    <Input name="input" placeholder="Placeholder" />
+    <Input name="input" placeholder="Placeholder" title="Title" />
   </Story>
 </Preview>
 
@@ -24,6 +24,7 @@ import { Spacer } from "../components/spacer";
 - `name`: `string` — **required**
 - `type`: `string` — _optional_, default: `text`
 - `placeholder`: `string` – _optional_
+- `title`: `string` – _optional_
 - `disabled`: `boolean` — _optional_
 - `status`: `success | error` - _optional_
 
@@ -37,7 +38,7 @@ import { Spacer } from "../components/spacer";
 
 <Preview>
   <Story name="name">
-    <Input name="Thats my name" />
+    <Input name="Thats my name" title="That's my title" />
   </Story>
 </Preview>
 
@@ -49,7 +50,7 @@ For now it works good for two types: default `text` and `search`. The second one
 
 <Preview>
   <Story name="type">
-    <Input name="search-input" placeholder="Search input" type="search" />
+    <Input name="search-input" placeholder="Search input" type="search" title="Search input" />
   </Story>
 </Preview>
 
