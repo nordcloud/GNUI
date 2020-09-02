@@ -30,7 +30,7 @@ type BoxProps = {
     | "spacing06"
     | "spacing07"
     | "spacing08";
-  shadow?: "shadow01" | "shadow02" | "shadow03" | "shadow04";
+  shadow?: "shadow00" | "shadow01" | "shadow02" | "shadow03" | "shadow04";
   onClick?: (e: any) => void;
   onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
   children?: React.ReactNode;
@@ -59,17 +59,17 @@ const StyledBox = styled(Container)<BoxProps & SpaceProps>`
       border-radius: ${theme.radius[radius]};
     `}
 
-      ${({ innerSpacing }) =>
-        innerSpacing &&
-        css`
-          padding: ${theme.spacing[innerSpacing]};
-        `}
+  ${({ innerSpacing }) =>
+    innerSpacing &&
+    css`
+      padding: ${theme.spacing[innerSpacing]};
+    `}
 
-    ${({ spacing }) =>
-      spacing &&
-      css`
-        margin-bottom: ${theme.spacing[spacing]};
-      `}
+  ${({ spacing }) =>
+    spacing &&
+    css`
+      margin-bottom: ${theme.spacing[spacing]};
+    `}
 
   ${({ shadow }) =>
     shadow &&
