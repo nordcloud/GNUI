@@ -112,6 +112,7 @@ const StyledInput = styled.input<InputProps>`
   width: 100%;
   box-sizing: border-box;
   background: transparent;
+  font-family: ${theme.typography.fonts.body};
   font-size: ${(props: InputProps) =>
   props.small ? theme.fontSizes.md : theme.fontSizes.sm};
   line-height: ${(props: InputProps) =>
