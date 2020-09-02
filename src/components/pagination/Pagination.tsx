@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import theme from "../../theme";
 import { Flex } from "../container";
+import {SVGIcon} from "../svgicon";
 
 interface IPaginationProps {
   set(start: number): void;
@@ -26,7 +27,7 @@ const Pagination = ({ set, current, count, size, from }: IPaginationProps) => {
               className="pagination-first"
               disabled={current <= 0}
             >
-              First
+              <SVGIcon name="arrowLeft" /> <span>First</span>
             </button>
           </li>
 
@@ -48,7 +49,7 @@ const Pagination = ({ set, current, count, size, from }: IPaginationProps) => {
                       i === currentPage && `current`
                     }`}
                   >
-                    {i < 0 ? "1" : i + 1}
+                    <span>{i < 0 ? "1" : i + 1}</span>
                   </button>
                 </li>
               );
@@ -62,7 +63,7 @@ const Pagination = ({ set, current, count, size, from }: IPaginationProps) => {
               className="pagination-last"
               disabled={current <= 0}
             >
-              Last
+              <span>Last</span> <SVGIcon name="arrowRight" />
             </button>
           </li>
         </ul>
@@ -82,20 +83,16 @@ const PerPage = ({ size, set }: IPerPageProps) => (
     role="navigation"
     aria-label="pagination"
   >
-    <span className="nav-title">Per page:</span>
-    <ul className="pagination-list">
-      <li>
-        {[10, 20, 50].map((el, i) => (
-          <button
-            key={el}
-            onClick={() => set(el)}
-            className={`pagination-link ${el.toString() === size.toString() && `current`}`}
-          >
-            {el}
-          </button>
-        ))}
-      </li>
-    </ul>
+    <div className="pagination-show">Show:</div>
+      {[10, 20, 50].map((el, i) => (
+        <button
+          key={el}
+          onClick={() => set(el)}
+          className={`pagination-link ${el.toString() === size.toString() && `current`}`}
+        >
+          <span>{el}</span>
+        </button>
+      ))}
   </nav>
 );
 
@@ -110,10 +107,10 @@ const PaginationAmount = ({ from, size, count }: IPaginationAmountProps) => {
   const maxCurrentPage = count < s ? count : Math.min(from + s);
   const minCurrentPage = count < s ? "1" : from + 1;
   return (
-    <p className="nav-title">
-      Showing {minCurrentPage} -
+    <div className="pagination-result">
+      {minCurrentPage} -
       {maxCurrentPage > count ? count : maxCurrentPage} of {count}
-    </p>
+    </div>
   );
 };
 
@@ -128,11 +125,20 @@ interface IPaginationBoxProps {
 const StyledPaginationBox = styled.nav`
   display: flex;
   width: 100%;
+  background-color: ${theme.colors.lights[0]};
+  padding:${theme.spacing.spacing03};
+  border-top: 2px solid ${theme.colors.lights[2]};
   justify-content: space-between;
   align-items: center;
-  .nav-title {
+  .pagination-result, .pagination-show  {
     font-weight: ${theme.fontWeights.regular};
     font-size: ${theme.fontSizes.md};
+    color: ${theme.colors.darks[4]};
+    margin:0 .5rem 0 0;
+    line-height: 1.5em;
+  }
+  .pagination-result {
+    width: 12rem;
   }
   .pagination-per-page {
     display: flex;
@@ -142,33 +148,75 @@ const StyledPaginationBox = styled.nav`
     display: flex;
     list-style: none;
     padding-left: 0;
+    margin:0;
   }
   button {
-    padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
+    display:flex;
+    align-items: center;
+    background: transparent;
+    border:0;
+    font-weight: ${theme.fontWeights.regular};
     font-size: ${theme.fontSizes.md};
-    font-weight: ${theme.fontWeights.medium};
+    font-family: ${theme.typography.fonts.body};
+    color: ${theme.colors.primary};
     line-height: 1.5em;
-    border: ${theme.borderDefault};
-    border-radius: ${theme.radiusDefault};
-    margin-left: ${theme.spacing.spacing01};
-    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: ${theme.radius.lg};
+    margin:0 ${theme.spacing.spacing01};
+    transition: ${theme.transition};
+    background-color: ${theme.colors.lights[1]};
+    
+    &:hover {
+      cursor: pointer;
+      background-color: ${theme.colors.lights[1]};
+    }
+    
+    &:active {
+      background-color: ${theme.colors.lights[3]};
+    }
+    
+    &:focus {
+      outline: 0;
+    }
+    
     &.current {
       background-color: ${theme.colors.primary};
-      color: ${theme.colors.white};
+      color:#fff;
+      font-weight: ${theme.fontWeights.medium};
     }
-  }
-  .pagination {
-    button {
-      border-radius: 0;
-      margin-left: -0.0625rem;
-      &.pagination-first {
-        border-top-left-radius: ${theme.radiusDefault};
-        border-bottom-left-radius: ${theme.radiusDefault};
+    
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      
+      &:hover {
+        background-color: transparent;
       }
-      &.pagination-last {
-        border-top-right-radius: ${theme.radiusDefault};
-        border-bottom-right-radius: ${theme.radiusDefault};
+    }
+    
+    &.pagination-first {
+      background-color: transparent;
+      svg {
+        padding-left:0;  
+        margin-right: 0.5rem;
       }
+    }
+    &.pagination-last {
+      background-color: transparent;
+      svg {
+        padding-right:0;
+        margin-left: 0.5rem;
+      }
+    }
+    
+    svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      padding: 0.125rem;
+    }
+    span {
+      min-width: 1.5rem;
+      text-align:center;
     }
   }
 `;
@@ -183,7 +231,6 @@ export const PaginationBox = ({
   return (
     <Flex>
       <StyledPaginationBox>
-        <PerPage size={size} set={setSize} />
         <PaginationAmount from={from} size={size} count={count} />
         <Pagination
           from={from}
@@ -192,6 +239,7 @@ export const PaginationBox = ({
           size={size}
           count={count}
         />
+        <PerPage size={size} set={setSize} />
       </StyledPaginationBox>
     </Flex>
   );
