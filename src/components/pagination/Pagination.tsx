@@ -27,7 +27,7 @@ const Pagination = ({ set, current, count, size, from }: IPaginationProps) => {
               className="pagination-first"
               disabled={current <= 0}
             >
-              <SVGIcon name="arrowLeft" /> <span>First</span>
+              <SVGIcon name="chevronLeft" /> <span>First</span>
             </button>
           </li>
 
@@ -63,7 +63,7 @@ const Pagination = ({ set, current, count, size, from }: IPaginationProps) => {
               className="pagination-last"
               disabled={current <= 0}
             >
-              <span>Last</span> <SVGIcon name="arrowRight" />
+              <span>Last</span> <SVGIcon name="chevronRight" />
             </button>
           </li>
         </ul>
@@ -135,7 +135,7 @@ const StyledPaginationBox = styled.nav`
   .pagination-result,
   .pagination-show {
     font-weight: ${theme.fontWeights.regular};
-    font-size: ${theme.fontSizes.md};
+    font-size: ${theme.fontSizes.sm};
     color: ${theme.colors.darks[4]};
     margin: 0 0.5rem 0 0;
     line-height: 1.5em;
@@ -159,17 +159,17 @@ const StyledPaginationBox = styled.nav`
     background: transparent;
     border: 0;
     font-weight: ${theme.fontWeights.regular};
-    font-size: ${theme.fontSizes.md};
+    font-size: ${theme.fontSizes.sm};
     font-family: ${theme.typography.fonts.body};
     color: ${theme.colors.primary};
     line-height: 1.5em;
     padding: 0.5rem;
-    border-radius: ${theme.radius.lg};
+    border-radius: ${theme.radius.md};
     margin: 0 ${theme.spacing.spacing01};
     transition: ${theme.transition};
     background-color: ${theme.colors.lights[1]};
 
-    &:hover {
+    &:hover:not([disabled]) {
       cursor: pointer;
       background-color: ${theme.colors.lights[2]};
     }
@@ -186,39 +186,40 @@ const StyledPaginationBox = styled.nav`
       background-color: ${theme.colors.primary};
       color: #fff;
       font-weight: ${theme.fontWeights.medium};
+      
+      &:hover {
+        background-color: ${theme.colors.primary};
+      }
     }
 
     &:disabled {
       opacity: 0.5;
       cursor: not-allowed;
-
-      &:hover {
-        background-color: transparent;
-      }
     }
 
     &.pagination-first {
       background-color: transparent;
+      padding-left:0.25rem;
       svg {
         padding-left: 0;
-        margin-right: 0.5rem;
+        margin-right: 0.25rem;
       }
     }
     &.pagination-last {
       background-color: transparent;
+      padding-right:0.25rem;
       svg {
         padding-right: 0;
-        margin-left: 0.5rem;
+        margin-left: 0.25rem;
       }
     }
 
     svg {
-      width: 1.25rem;
-      height: 1.25rem;
-      padding: 0.125rem;
+      width: 1rem;
+      height: 1rem;
     }
     span {
-      min-width: 1.5rem;
+      min-width: 1.125rem;
       text-align: center;
     }
   }
