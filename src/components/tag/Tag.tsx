@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { SVGIcon } from "../svgicon";
 import theme from "../../theme";
 
 interface TagProps {
@@ -10,7 +11,8 @@ interface TagProps {
 }
 
 export const StyledTag = styled.div`
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   text-transform: capitalize;
   text-align: center;
   font-family: ${theme.fonts.body};
@@ -26,14 +28,11 @@ export const StyledTag = styled.div`
   span {
     width: 0.8rem;
     height: 0.8rem;
-    border-radius: 1rem;
-    background: rgba(255, 255, 255, 0.3);
     display: block;
-    float: right;
     font-size: 0.5rem;
-    line-height: 0.82rem;
     font-weight: bold;
-    margin: 0.2rem 0 0 0.4rem;
+    margin-left: 0.4rem;
+    margin-bottom: 0.2rem;
     transform: translate(2px, 1px);
   }
   &:hover {
@@ -50,7 +49,11 @@ export const Tag: React.FC<TagProps> = ({
   return (
     <StyledTag color={color} onClick={onClick}>
       {text || "No data"}
-      {showClose && <span>x</span>}
+      {showClose && (
+        <span>
+          <SVGIcon name="close" color="white" size="sm" />
+        </span>
+      )}
     </StyledTag>
   );
 };
