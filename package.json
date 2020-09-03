@@ -56,7 +56,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx)\""
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -80,6 +81,8 @@
     "@storybook/addons": "^6.0.5",
     "@storybook/preset-create-react-app": "^3.1.4",
     "@storybook/react": "^6.0.5",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.3.0",
     "prettier": "2.0.2"
   }
 }
