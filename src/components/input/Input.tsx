@@ -17,6 +17,7 @@ export interface InputProps {
   disabled?: boolean;
   required?: boolean;
   status?: "success" | "error";
+  small?: boolean;
   ref?: any;
   popup?: boolean;
   children?: string | number | any;
@@ -71,13 +72,11 @@ const setStatusColor = (status: "success" | "error") => {
 const InputGroup = styled(Flex)<InputProps & SpaceProps>`
   align-items: center;
   border: ${theme.borders.disabled};
-  padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
+  padding: ${theme.spacing.spacing02};
   border-radius: ${theme.radiusDefault};
   color: ${theme.colors.primary};
   background: ${theme.colors.white};
   transition: ${theme.transition};
-  line-height: ${theme.lineHeight};
- 
   overflow: hidden;
   &:hover {
     border: ${theme.borders.darkenGray};
@@ -113,7 +112,13 @@ const StyledInput = styled.input<InputProps>`
   width: 100%;
   box-sizing: border-box;
   background: transparent;
-  font-size: ${theme.fontSizes.md};
+  font-family: ${theme.typography.fonts.body};
+  font-size: ${(props: InputProps) =>
+  props.small ? theme.fontSizes.md : theme.fontSizes.sm};
+  line-height: ${(props: InputProps) =>
+  props.small ? theme.lineHeight : "1rem"};
+  padding:0;
+  margin:0;
   transition: ${theme.transition};
 
   &:placeholder {
@@ -185,7 +190,7 @@ export const Description: FunctionComponent = ({ children }) => (
 export const Input: FunctionComponent<
   InputProps & SpaceProps
 > = React.forwardRef(
-  ({ type = "text", name, status, popup, loading, title, ...props }, ref) => (
+  ({ type = "text", name, status, popup, loading, title, small, ...props }, ref) => (
     <InputGroup status={status} {...props} popup={popup}>
       {type === "search" && !loading && (
         <Icon image="SEARCH" width="1.2rem" height="1.2rem" />
