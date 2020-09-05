@@ -50,7 +50,12 @@ For now it works good for two types: default `text` and `search`. The second one
 
 <Preview>
   <Story name="type">
-    <Input name="search-input" placeholder="Search input" type="search" title="Search input" />
+    <Input
+      name="search-input"
+      placeholder="Search input"
+      type="search"
+      title="Search input"
+    />
   </Story>
 </Preview>
 
@@ -79,6 +84,17 @@ Nothing more to add, just text placeholder which works exactly like in default H
     <>
       <Label name="Label" required />
       <Input name="required-input" placeholder="Required input" />
+    </>
+  </Story>
+</Preview>
+
+### small
+
+<Preview>
+  <Story name="small">
+    <>
+      <Label name="Label" required />
+      <Input name="required-input" placeholder="Small" small />
     </>
   </Story>
 </Preview>

@@ -114,11 +114,11 @@ const StyledInput = styled.input<InputProps>`
   background: transparent;
   font-family: ${theme.typography.fonts.body};
   font-size: ${(props: InputProps) =>
-  props.small ? theme.fontSizes.md : theme.fontSizes.sm};
+    props.small ? theme.fontSizes.sm : theme.fontSizes.md};
   line-height: ${(props: InputProps) =>
-  props.small ? theme.lineHeight : "1rem"};
-  padding:0;
-  margin:0;
+    props.small ? "1rem" : theme.lineHeight};
+  padding: 0;
+  margin: 0;
   transition: ${theme.transition};
 
   &:placeholder {
@@ -190,7 +190,7 @@ export const Description: FunctionComponent = ({ children }) => (
 export const Input: FunctionComponent<
   InputProps & SpaceProps
 > = React.forwardRef(
-  ({ type = "text", name, status, popup, loading, title, small, ...props }, ref) => (
+  ({ type = "text", name, status, popup, loading, title, ...props }, ref) => (
     <InputGroup status={status} {...props} popup={popup}>
       {type === "search" && !loading && (
         <Icon image="SEARCH" width="1.2rem" height="1.2rem" />
