@@ -22,6 +22,8 @@ export interface InputProps {
   popup?: boolean;
   children?: string | number | any;
   loading?: boolean;
+  autoFocus?: boolean;
+  noBorder?: boolean;
   onClick?: (e: any) => void;
   onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
   onKeyPress?: (e: any) => void;
@@ -91,20 +93,18 @@ const InputGroup = styled(Flex)<InputProps & SpaceProps>`
     border: ${theme.borders.grey};
     cursor: not-allowed;
   }
-
-  ${({ status }) =>
-    status &&
-    css`
-      ${setStatusColor(status)}
-    `}
-
-  ${({ popup }) =>
-    popup &&
-    css`
-      cursor: pointer;
-    `}
-
-  ${space}
+  border-width: ${(props: InputProps) => props.noBorder && "0px"}
+    ${({ status }) =>
+      status &&
+      css`
+        ${setStatusColor(status)}
+      `}
+    ${({ popup }) =>
+      popup &&
+      css`
+        cursor: pointer;
+      `}
+    ${space};
 `;
 
 const StyledInput = styled.input<InputProps>`
