@@ -131,9 +131,10 @@ const DropdownItem = styled.button`
   background: transparent;
   font-size: inherit;
   transition: ${theme.transition};
-  padding: ${theme.spacing.spacing01} 0 ${theme.spacing.spacing01}
-    ${theme.spacing.spacing01};
+  padding: ${theme.spacing.spacing01} 0 ${theme.spacing.spacing01} 1rem;
+
   list-style: none;
+
   transition: ${theme.transition};
   &:hover {
     cursor: pointer;
