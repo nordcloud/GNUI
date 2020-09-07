@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../../theme";
-import { Flex } from "../container";
 import { SVGIcon } from "../svgicon";
 
 interface IPaginationProps {
@@ -122,15 +121,17 @@ interface IPaginationBoxProps {
   count: number;
   setSize(size: number): any;
   setPage(page: number): any;
+  small?: boolean;
 }
 
-const StyledPaginationBox = styled.nav`
+const StyledPaginationBox = styled.nav<IPaginationBoxProps>`
   display: flex;
-  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
   background-color: ${theme.colors.lights[0]};
   padding: ${theme.spacing.spacing03};
   border-top: 2px solid ${theme.colors.lights[2]};
-  justify-content: space-between;
+  justify-content: ${({ small }) => (!small ? "space-between" : "center")};
   align-items: center;
   .pagination-result,
   .pagination-show {
@@ -186,7 +187,7 @@ const StyledPaginationBox = styled.nav`
       background-color: ${theme.colors.primary};
       color: #fff;
       font-weight: ${theme.fontWeights.medium};
-      
+
       &:hover {
         background-color: ${theme.colors.primary};
       }
@@ -199,7 +200,7 @@ const StyledPaginationBox = styled.nav`
 
     &.pagination-first {
       background-color: transparent;
-      padding-left:0.25rem;
+      padding-left: 0.25rem;
       svg {
         padding-left: 0;
         margin-right: 0.25rem;
@@ -207,7 +208,7 @@ const StyledPaginationBox = styled.nav`
     }
     &.pagination-last {
       background-color: transparent;
-      padding-right:0.25rem;
+      padding-right: 0.25rem;
       svg {
         padding-right: 0;
         margin-left: 0.25rem;
@@ -231,20 +232,19 @@ export const PaginationBox = ({
   count,
   setSize,
   setPage,
+  small,
 }: IPaginationBoxProps) => {
   return (
-    <Flex>
-      <StyledPaginationBox>
-        <PaginationAmount from={from} size={size} count={count} />
-        <Pagination
-          from={from}
-          set={setPage}
-          current={from}
-          size={size}
-          count={count}
-        />
-        <PerPage size={size} set={setSize} />
-      </StyledPaginationBox>
-    </Flex>
+    <StyledPaginationBox small={small}>
+      {!small && <PaginationAmount from={from} size={size} count={count} />}
+      <Pagination
+        from={from}
+        set={setPage}
+        current={from}
+        size={size}
+        count={count}
+      />
+      {!small && <PerPage size={size} set={setSize} />}
+    </StyledPaginationBox>
   );
 };
