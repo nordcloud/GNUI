@@ -1,12 +1,10 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent, useState, useEffect } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 
 interface TooltipProps {
-  name?: string;
-  caption?: string;
-  position?: "left" | "right" | "top" | "bottom";
-  arrowPosition?: "left" | "right";
+  caption: string;
+  position?: "left" | "right";
   status?: "danger" | "warning" | "success" | "notification";
   id?: string;
   className?: string;
@@ -19,205 +17,187 @@ const setColor = (color: string) => {
     : color;
 };
 
+const setArrowPosition = (position: string) => {
+  switch (position) {
+    case "left":
+      return `
+        left: 0.5rem;
+        right: auto;
+        margin-left: 0;
+        `;
+    case "right":
+      return `
+        left: auto;
+        right: 0.5rem;
+        margin-left: 0;
+        `;
+    default:
+      return `
+        left: 50%;
+        margin-left: -0.25rem;
+        right:auto;
+      `;
+  }
+};
+
 const TooltipWrapper = styled.div`
-  position:relative;
+  display: inline-block;
 `;
 
 const StyledTooltip = styled.div<TooltipProps>`
-  border: ${theme.borderDefault}; 
-  border-radius: ${theme.radiusDefault};
-  background: ${theme.colors.primary};
-  padding: ${theme.spacing.spacing01};
-  transition: ${theme.transition};
   position: absolute;
-  left:calc(100% + 8px);
-  right:auto;
-  top: auto;
-  text-align:center;
-  display:none;
-  min-width:90px;
+  max-width: 256px;
+  font-size: ${theme.fontSizes.sm};
+  line-height: 1rem;
+  padding: ${theme.spacing.spacing02};
+  background-color: ${theme.colors.primary};
+  color: ${theme.colors.snowWhite};
+  border-radius: ${theme.radius.md};
+  z-index: ${theme.zindex.sticky};
+  animation-name: fadeInUp;
+  -webkit-animation-name: fadeInUp;
+  opacity: 0;
+  animation-duration: 200ms;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 200ms;
+  -webkit-animation-fill-mode: both;
 
-  &.hovered {
-    display:block;
-    z-index: ${theme.zindex.masked};
+  &:after,
+  &:before {
+    top: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  &:after {
+    border-color: transparent;
+    border-top-color: ${theme.colors.primary};
+    border-width: 8px;
+    margin-left: -8px;
+
+    ${({ position }) =>
+      position &&
+      css`
+        ${setArrowPosition(position)}
+      `}
   }
 
   ${({ status }) =>
     status &&
     css`
-      border: 1px solid ${setColor(status)}; 
       background: ${setColor(status)};
-  `}
-
-  &.left {
-    right: calc(100% + 8px);
-    left:auto;
-  }
-
-  &.right {
-    left: calc(100% + 8px);
-    right:auto;
-  }
-  &.top {
-    bottom: calc(100% + 8px);
-    left: -4px;
-  }
-  &.bottom {
-    top: calc(100% + 8px);
-    left: -4px;
-    right:0;
-  }
-`;
-
-const TooltipLabel = styled.div<TooltipProps>` 
-  margin:0;
-  color: ${theme.colors.white};
-  line-height: ${theme.lineHeight};
-  font-size: ${theme.fontSizes.md};
-  font-weight: ${theme.fontWeights.regular};
-  font-family: ${theme.fonts.body};
-`;
-
-const TooltipChildren = styled.div<TooltipProps>` 
-  position:relative;
-  display:inline-flex;
-  align-items:center;
-
-  p {
-    margin:0;
-    display:inline-block;
-  }
-`;
-
-const TooltipArrow = styled.div<TooltipProps>` 
-  content:'';
-  display:block;
-  width:0;
-  height:0;
-  position:absolute;
-  left:-8px;
-  top: calc(50% - 7px);
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-  border-right: 8px solid ${theme.colors.primary}; 
-
-  &.right {
-    ${({ status }) =>
-    status &&
-    css`
-      border-right: 8px solid ${setColor(status)}; 
-  `}
-  }
-
-  &.left {
-    border-top: 8px solid transparent;
-    border-bottom: 8px solid transparent;
-    border-left: 8px solid ${theme.colors.primary}; 
-    border-right:none;
-    top: calc(50% - 7px);
-    left:auto;
-    right:-8px;
-    ${({ status }) =>
-    status &&
-    css`
-      border-left: 8px solid ${setColor(status)}; 
-  `}
-  }
-  &.top {
-    border-top: 8px solid ${theme.colors.primary};
-    border-right: 8px solid transparent; 
-    border-left: 8px solid transparent;
-    border-bottom: none;
-    bottom: -8px;
-    top:auto;
-    left: calc(50% - 7px);
-    ${({ status }) =>
-    status &&
-    css`
-      border-top: 8px solid ${setColor(status)};
-  `}
-  }
-  &.bottom {
-    border-top: none;
-    border-right: 8px solid transparent; 
-    border-left: 8px solid transparent;
-    border-bottom: 8px solid ${theme.colors.primary};
-    top: -8px;
-    bottom:auto;
-    left: calc(50% - 7px);
-    ${({ status }) =>
-    status &&
-    css`
-      border-bottom: 8px solid ${setColor(status)};
-  `}
-  }
-
-  &.top, &.bottom {
-    ${({ arrowPosition }) => {
-      switch (arrowPosition) {
-        case "left":
-          return css`
-            left: 12px;
-            right: auto;
-        `
-        case "right":
-          return css`
-            right: 12px;
-            left:auto;
-        `
-        default:
-          return css`
-            left: calc(50% - 7px);
-            right:auto;
-        `
+      &:after {
+        border-top-color: ${setColor(status)};
       }
+    `}
+
+  @keyframes fadeInUp {
+    from {
+      transform: translate3d(0, -8px, 0);
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
     }
   }
+
+  @-webkit-keyframes fadeInUp {
+    from {
+      transform: translate3d(0, -8px, 0);
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
   }
 `;
 
-export const Tooltip: FunctionComponent<TooltipProps> = ({ 
-  name,
+export const Tooltip: FunctionComponent<TooltipProps> = ({
   status,
   position,
-  arrowPosition,
   caption,
-  children
+  children,
 }) => {
+  const tooltipRef = React.useRef() as React.MutableRefObject<HTMLInputElement>;
+  const wrapperRef = React.useRef() as React.MutableRefObject<HTMLInputElement>;
   const [isHovered, setHovered] = useState(false);
   const [resetTimer, setTimer] = useState(0);
+  const [tooltipPosition, setPosition] = useState({
+    marginTop: 0,
+    width: 0,
+  });
 
   const toggleOver = () => {
-    setHovered(true);
-  }
+    clearTimeout(resetTimer);
+    const timer = () =>
+      setTimeout(() => {
+        setHovered(true);
+      }, 300);
+    setTimer(timer);
+  };
 
   const toggleOut = () => {
     clearTimeout(resetTimer);
-
-    const timer = () => setTimeout(() => {
-      setHovered(false)
-    }, 500);
-
+    const timer = () =>
+      setTimeout(() => {
+        setHovered(false);
+      }, 100);
     setTimer(timer);
-  }
+  };
 
-  const tooltipShow = isHovered ? 'hovered' : '';
-  const classesArrow = arrowPosition ? `${position} arrow-${arrowPosition}` : `${position}`;
-  const classesTooltip = position ? `${position} ${tooltipShow}` : `right ${tooltipShow}`;
+  useEffect(() => {
+    if (isHovered) {
+      let tooltipSize = tooltipRef.current.getBoundingClientRect();
+      setPosition({
+        marginTop: -(tooltipSize.height + 12),
+        width: tooltipSize.width,
+      });
+    }
+  }, [tooltipRef, isHovered]);
+
   return (
-    <TooltipWrapper>
-      <TooltipChildren 
-        onMouseOver={toggleOver} onMouseOut={toggleOut}>
-          <StyledTooltip
-            status={status}
-            name={name}
-            position={position}
-            arrowPosition={arrowPosition}
-            className={classesTooltip}>
-            <TooltipArrow status={status} className={classesArrow} arrowPosition={arrowPosition} />
-            <TooltipLabel>{caption}</TooltipLabel>
-          </StyledTooltip>
-        {children}
-      </TooltipChildren>
+    <TooltipWrapper
+      ref={wrapperRef}
+      onMouseEnter={toggleOver}
+      onMouseLeave={toggleOut}
+    >
+      {isHovered && (
+        <StyledTooltip
+          caption={caption}
+          ref={tooltipRef}
+          status={status}
+          position={position}
+          style={
+            position === "left"
+              ? {
+                  marginTop: tooltipPosition.marginTop,
+                  left: wrapperRef.current.offsetLeft,
+                }
+              : position === "right"
+              ? {
+                  marginTop: tooltipPosition.marginTop,
+                  left:
+                    wrapperRef.current.offsetLeft -
+                    (tooltipPosition.width - wrapperRef.current.offsetWidth),
+                }
+              : {
+                  marginTop: tooltipPosition.marginTop,
+                  left: wrapperRef.current.offsetLeft,
+                  marginLeft:
+                    -(tooltipPosition.width - wrapperRef.current.offsetWidth) /
+                    2,
+                }
+          }
+        >
+          {caption}
+        </StyledTooltip>
+      )}
+      {children}
     </TooltipWrapper>
-)};
+  );
+};
