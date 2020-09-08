@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState, useEffect } from "react";
+import React, { FunctionComponent, useState, useEffect, useRef } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 
@@ -123,8 +123,8 @@ export const Tooltip: FunctionComponent<TooltipProps> = ({
   caption,
   children,
 }) => {
-  const tooltipRef = React.useRef() as React.MutableRefObject<HTMLInputElement>;
-  const wrapperRef = React.useRef() as React.MutableRefObject<HTMLInputElement>;
+  const tooltipRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+  const wrapperRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const [isHovered, setHovered] = useState(false);
   const [resetTimer, setTimer] = useState(0);
   const [tooltipPosition, setPosition] = useState({
@@ -132,7 +132,7 @@ export const Tooltip: FunctionComponent<TooltipProps> = ({
     width: 0,
   });
 
-  const toggleOver = () => {
+  const showTooltip = () => {
     clearTimeout(resetTimer);
     const timer = () =>
       setTimeout(() => {
@@ -141,7 +141,7 @@ export const Tooltip: FunctionComponent<TooltipProps> = ({
     setTimer(timer);
   };
 
-  const toggleOut = () => {
+  const hideTooltip = () => {
     clearTimeout(resetTimer);
     const timer = () =>
       setTimeout(() => {
@@ -163,8 +163,8 @@ export const Tooltip: FunctionComponent<TooltipProps> = ({
   return (
     <TooltipWrapper
       ref={wrapperRef}
-      onMouseEnter={toggleOver}
-      onMouseLeave={toggleOut}
+      onMouseEnter={showTooltip}
+      onMouseLeave={hideTooltip}
     >
       {isHovered && (
         <StyledTooltip
