@@ -17,10 +17,13 @@ export interface InputProps {
   disabled?: boolean;
   required?: boolean;
   status?: "success" | "error";
+  small?: boolean;
   ref?: any;
   popup?: boolean;
   children?: string | number | any;
   loading?: boolean;
+  autoFocus?: boolean;
+  noBorder?: boolean;
   onClick?: (e: any) => void;
   onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
   onKeyPress?: (e: any) => void;
@@ -71,13 +74,11 @@ const setStatusColor = (status: "success" | "error") => {
 const InputGroup = styled(Flex)<InputProps & SpaceProps>`
   align-items: center;
   border: ${theme.borders.disabled};
-  padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
+  padding: ${theme.spacing.spacing02};
   border-radius: ${theme.radiusDefault};
   color: ${theme.colors.primary};
   background: ${theme.colors.white};
   transition: ${theme.transition};
-  line-height: ${theme.lineHeight};
- 
   overflow: hidden;
   &:hover {
     border: ${theme.borders.darkenGray};
@@ -92,20 +93,18 @@ const InputGroup = styled(Flex)<InputProps & SpaceProps>`
     border: ${theme.borders.grey};
     cursor: not-allowed;
   }
-
-  ${({ status }) =>
-    status &&
-    css`
-      ${setStatusColor(status)}
-    `}
-
-  ${({ popup }) =>
-    popup &&
-    css`
-      cursor: pointer;
-    `}
-
-  ${space}
+  border-width: ${(props: InputProps) => props.noBorder && "0px"}
+    ${({ status }) =>
+      status &&
+      css`
+        ${setStatusColor(status)}
+      `}
+    ${({ popup }) =>
+      popup &&
+      css`
+        cursor: pointer;
+      `}
+    ${space};
 `;
 
 const StyledInput = styled.input<InputProps>`
@@ -113,7 +112,13 @@ const StyledInput = styled.input<InputProps>`
   width: 100%;
   box-sizing: border-box;
   background: transparent;
-  font-size: ${theme.fontSizes.md};
+  font-family: ${theme.typography.fonts.body};
+  font-size: ${(props: InputProps) =>
+    props.small ? theme.fontSizes.sm : theme.fontSizes.md};
+  line-height: ${(props: InputProps) =>
+    props.small ? "1rem" : theme.lineHeight};
+  padding: 0;
+  margin: 0;
   transition: ${theme.transition};
 
   &:placeholder {

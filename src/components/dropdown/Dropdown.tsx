@@ -6,6 +6,7 @@ import { SVGIcon } from "../svgicon/SVGIcon";
 import { Container } from "../container";
 import { IconProps } from "../icon";
 import { space, SpaceProps } from "styled-system";
+import { Input } from "../input";
 
 interface DropdownProps {
   name: string;
@@ -130,9 +131,10 @@ const DropdownItem = styled.button`
   background: transparent;
   font-size: inherit;
   transition: ${theme.transition};
-  padding: ${theme.spacing.spacing01} 0 ${theme.spacing.spacing01}
-    ${theme.spacing.spacing01};
+  padding: ${theme.spacing.spacing01} 0 ${theme.spacing.spacing01} 1rem;
+
   list-style: none;
+
   transition: ${theme.transition};
   &:hover {
     cursor: pointer;
@@ -151,7 +153,7 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const [search, setSearch] = useState("");
   const displayValue: string | IOption | undefined = options.find((option) => {
     if (typeof option === "string") {
       return option === value;
@@ -194,24 +196,45 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
         />
       </DropdownButton>
       {isOpen && !disabled && (
-        <DropdownMenu onClick={() => setIsOpen(!isOpen)}>
+        <DropdownMenu>
+          {options && options.length > 3 && (
+            <Input
+              type="search"
+              small
+              name="filter"
+              autoFocus
+              noBorder
+              value={search}
+              onChange={(e: any) => setSearch(e.target.value)}
+            />
+          )}
           {options &&
-            options.map((option: string | IOption) => (
-              <DropdownItem
-                title={typeof option === "string" ? option : option.value}
-                value={typeof option === "string" ? option : option.value}
-                key={typeof option === "string" ? option : option.value}
-                onClick={() =>
-                  onChange &&
-                  onChange(typeof option === "string" ? option : option.value)
-                }
-                type="button"
-              >
-                {typeof option === "string"
-                  ? option
-                  : option.label || option.value}
-              </DropdownItem>
-            ))}
+            options
+              .filter((option) =>
+                JSON.stringify(option)
+                  .toLowerCase()
+                  .includes(search.toLowerCase())
+              )
+              .map((option: string | IOption) => (
+                <DropdownItem
+                  title={typeof option === "string" ? option : option.value}
+                  value={typeof option === "string" ? option : option.value}
+                  key={typeof option === "string" ? option : option.value}
+                  onClick={() => {
+                    onChange &&
+                      onChange(
+                        typeof option === "string" ? option : option.value
+                      );
+                    setIsOpen(!isOpen);
+                    setSearch("");
+                  }}
+                  type="button"
+                >
+                  {typeof option === "string"
+                    ? option
+                    : option.label || option.value}
+                </DropdownItem>
+              ))}
         </DropdownMenu>
       )}
     </DropdownWrapper>

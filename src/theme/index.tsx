@@ -98,6 +98,7 @@ const theme: ThemeInterface = {
   },
 
   shadow: {
+    shadow00: "none",
     shadow01: "0 1px 3px rgba(31, 30, 47, 0.1)",
     shadow02: "0 3px 6px rgba(31, 30, 47, 0.1)",
     shadow03: "0 8px 20px rgba(31, 30, 47, 0.12)",
