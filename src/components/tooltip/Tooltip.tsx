@@ -2,12 +2,10 @@ import React, { FunctionComponent, useState, useEffect, useRef } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 
-interface TooltipProps {
+interface ITooltip {
   caption: string;
   position?: "left" | "right";
   status?: "danger" | "warning" | "success" | "notification";
-  id?: string;
-  className?: string;
   children?: React.ReactNode;
 }
 
@@ -44,9 +42,9 @@ const TooltipWrapper = styled.div`
   display: inline-block;
 `;
 
-const StyledTooltip = styled.div<TooltipProps>`
+const StyledTooltip = styled.div<ITooltip>`
   position: absolute;
-  max-width: 256px;
+  max-width: 16rem;
   font-size: ${theme.fontSizes.sm};
   line-height: 1rem;
   padding: ${theme.spacing.spacing02};
@@ -54,14 +52,10 @@ const StyledTooltip = styled.div<TooltipProps>`
   color: ${theme.colors.snowWhite};
   border-radius: ${theme.radius.md};
   z-index: ${theme.zindex.sticky};
-  animation-name: fadeInUp;
-  -webkit-animation-name: fadeInUp;
+  animation: fadeInUp;
   opacity: 0;
   animation-duration: 200ms;
   animation-fill-mode: both;
-  -webkit-animation-duration: 200ms;
-  -webkit-animation-fill-mode: both;
-
   &:after,
   &:before {
     top: 100%;
@@ -73,13 +67,11 @@ const StyledTooltip = styled.div<TooltipProps>`
     position: absolute;
     pointer-events: none;
   }
-
   &:after {
     border-color: transparent;
     border-top-color: ${theme.colors.primary};
     border-width: 8px;
     margin-left: -8px;
-
     ${({ position }) =>
       position &&
       css`
@@ -105,19 +97,9 @@ const StyledTooltip = styled.div<TooltipProps>`
       opacity: 1;
     }
   }
-
-  @-webkit-keyframes fadeInUp {
-    from {
-      transform: translate3d(0, -8px, 0);
-    }
-    to {
-      transform: translate3d(0, 0, 0);
-      opacity: 1;
-    }
-  }
 `;
 
-export const Tooltip: FunctionComponent<TooltipProps> = ({
+export const Tooltip: FunctionComponent<ITooltip> = ({
   status,
   position,
   caption,
