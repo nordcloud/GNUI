@@ -52,10 +52,8 @@ const StyledTooltip = styled.div<ITooltip>`
   color: ${theme.colors.snowWhite};
   border-radius: ${theme.radius.md};
   z-index: ${theme.zindex.sticky};
-  animation: fadeInUp;
   opacity: 0;
-  animation-duration: 200ms;
-  animation-fill-mode: both;
+  animation: 0.2s ease-in both fadeInUp;
   &:after,
   &:before {
     top: 100%;
