@@ -11,7 +11,7 @@ interface IPaginationProps {
   from: number;
 }
 
-const Pagination = ({ set, current, count, size, from }: IPaginationProps) => {
+const Pagination: React.FC<IPaginationProps> = ({ set, current, count, size, from }) => {
   const currentPage = Math.ceil(current / size);
   const nPages = Math.ceil(count / size);
   return (
@@ -53,7 +53,6 @@ const Pagination = ({ set, current, count, size, from }: IPaginationProps) => {
                 </li>
               );
             })}
-
           <li>
             <button
               onClick={() => set((nPages - 1) * size)}
@@ -124,14 +123,18 @@ interface IPaginationBoxProps {
   small?: boolean;
 }
 
-const StyledPaginationBox = styled.nav<IPaginationBoxProps>`
+interface IStyledPaginationBox {
+  small?: boolean;
+}
+
+const StyledPaginationBox = styled.nav<IStyledPaginationBox>`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   background-color: ${theme.colors.lights[0]};
   padding: ${theme.spacing.spacing03};
   border-top: 2px solid ${theme.colors.lights[2]};
-  justify-content: ${({ small }) => (!small ? "space-between" : "center")};
+  justify-content: ${({ small }) => small ? "center" : "space-between" };
   align-items: center;
   .pagination-result,
   .pagination-show {
@@ -226,14 +229,14 @@ const StyledPaginationBox = styled.nav<IPaginationBoxProps>`
   }
 `;
 
-export const PaginationBox = ({
+export const PaginationBox: React.FC<IPaginationBoxProps> = ({
   size,
   from,
   count,
   setSize,
   setPage,
   small,
-}: IPaginationBoxProps) => {
+}) => {
   return (
     <StyledPaginationBox small={small}>
       {!small && <PaginationAmount from={from} size={size} count={count} />}
