@@ -53,7 +53,7 @@ const StyledTooltip = styled.div<ITooltip>`
   border-radius: ${theme.radius.md};
   z-index: ${theme.zindex.sticky};
   opacity: 0;
-  animation: 0.2s ease-in both fadeInUp;
+  animation: 0.2s ease-in-out both fadeInUp;
   &:after,
   &:before {
     top: 100%;
