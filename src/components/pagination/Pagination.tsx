@@ -11,7 +11,13 @@ interface IPaginationProps {
   from: number;
 }
 
-const Pagination: React.FC<IPaginationProps> = ({ set, current, count, size, from }) => {
+const Pagination: React.FC<IPaginationProps> = ({
+  set,
+  current,
+  count,
+  size,
+  from,
+}) => {
   const currentPage = Math.ceil(current / size);
   const nPages = Math.ceil(count / size);
   return (
@@ -134,7 +140,7 @@ const StyledPaginationBox = styled.nav<IStyledPaginationBox>`
   background-color: ${theme.colors.lights[0]};
   padding: ${theme.spacing.spacing03};
   border-top: 2px solid ${theme.colors.lights[2]};
-  justify-content: ${({ small }) => small ? "center" : "space-between" };
+  justify-content: ${({ small }) => (small ? "center" : "space-between")};
   align-items: center;
   .pagination-result,
   .pagination-show {

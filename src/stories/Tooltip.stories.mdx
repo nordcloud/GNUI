@@ -1,8 +1,10 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Tooltip } from "../components/tooltip";
 import { Text } from "../components/text";
-import { Spacer } from "../components/spacer";
-import title from "title";
+import {  Flex } from "../components/container";
+import { Button } from "../components/button";
+import { SVGIcon } from "../components/svgicon";
+import { Input } from "../components/input";
 
 <Meta title="Components/Tooltip" component={Tooltip} />
 
@@ -10,91 +12,120 @@ import title from "title";
 
 #### Props
 
+> - `caption`: `string` — **required** (tooltip content)
+> - `position`: `left` | `right` — **optional** (default position is center)
+> - `status`: `danger` | `warning` | `success` | `notification` — **optional** (background color of tooltip)
 
-```typescript
-interface TooltipProps {
-  name?: string;
-  caption?: string;
-  position?: "left" | "right" | "top" | "bottom";
-  arrowPosition?: "left" | "right";
-  status?: "danger" | "warning" | "success" | "notification";
-  id?: string;
-  className?: string;
-  children?: React.ReactNode;
-};
-```
+## Default Tooltip
 
-### Default Tooltip
-
-> `caption?: string;` - caption for the tooltip
+> `caption: string;` - caption for the tooltip
 
 <Preview>
   <Story name="default">
-    <div style={{textAlign: "center"}}>
-      <Tooltip name="Hello there" caption="Hello there" >
-        <Text>Tooltip test</Text>
+    <Flex
+      justifyContent="space-evenly"
+      style={{ paddingTop: "3rem", paddingBottom: "3rem" }}
+    >
+      <Tooltip caption="Lorem Ipsum is simply dummy text of the printing and typesetting industry.">
+        <Text>Tooltip</Text>
       </Tooltip>
-    </div>
+    </Flex>
   </Story>
 </Preview>
 
-### Positions for Tooltip
+## Tooltip Position
 
-> - `position?: "left" | "right" | "top" | "bottom";` — position of the tooltip
-> - `arrowPosition?: "left" | "right";` — position for the tooltip's arrow, by default arrow is _centered_
+> - `position`: `left` | `right` - you can align the tooltip to the right side or to the left side of your child element
 
 <Preview>
   <Story name="position">
-    <div style={{textAlign: "center"}}>
-      <Tooltip name="Hello there" caption="Hello there" position="left">
-        <Text>Tooltip left</Text>
-      </Tooltip>
-      <Spacer height="2.5rem" />
-      <Tooltip name="Hello there" caption="Hello there" position="right">
-        <Text>Tooltip right</Text>
-      </Tooltip>
-      <Spacer height="2.5rem" />
-      <Tooltip name="Hello there" caption="Hello there" position="top">
-        <Text>Tooltip top</Text>
-      </Tooltip>
-      <Spacer height="2.5rem" />
-      <Tooltip name="Hello there" caption="Hello there" position="bottom">
-        <Text>Tooltip bottom</Text>
-      </Tooltip>
-      <Spacer height="2.5rem" />
-      <Tooltip name="Hello there" caption="Hello there" position="top" arrowPosition="left">
-        <Text>Tooltip top</Text>
-      </Tooltip>
-      <Spacer height="2.5rem" />
-      <Tooltip name="Hello there" caption="Hello there" position="bottom" arrowPosition="right">
-        <Text>Tooltip top</Text>
-      </Tooltip>
-    </div>
+    <Flex
+      justifyContent="space-evenly"
+      style={{ paddingTop: "3rem", paddingBottom: "3rem" }}
+    >
+      <div>
+        <Tooltip
+          position="left"
+          caption="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        >
+          <Text>Align to the Left</Text>
+        </Tooltip>
+      </div>
+      <div>
+        <Tooltip
+          position="right"
+          caption="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        >
+          <Text>Align to the Right</Text>
+        </Tooltip>
+      </div>
+    </Flex>
   </Story>
 </Preview>
 
-### Status for Tooltip
+## Tooltip Status
 
-> `status?: "danger" | "warning" | "success" | "notification";` — adds color status for tooltips
+> - `status`: `danger` | `warning` | `success` | `notification`
 
 <Preview>
   <Story name="status">
-    <div style={{textAlign: "center"}}>
-      <Tooltip name="Hello there" caption="Hello there" status="success" position="left">
-        <Text>Succes</Text>
-      </Tooltip>
-      <Spacer height="2.5rem" />
-      <Tooltip name="Hello there" caption="Hello there" status="warning" position="right">
-        <Text>Warning</Text>
-      </Tooltip>
-      <Spacer height="2.5rem" />
-      <Tooltip name="Hello there" caption="Hello there" status="danger" position="bottom">
-        <Text>Danger</Text>
-      </Tooltip>
-      <Spacer height="2.5rem" />
-      <Tooltip name="Hello there" caption="Hello there" status="notification" position="top">
-        <Text>Notification</Text>
-      </Tooltip>
-    </div>
+    <Flex
+      justifyContent="space-evenly"
+      style={{ paddingTop: "3rem", paddingBottom: "3rem" }}
+    >
+      <div>
+        <Tooltip status="danger" caption="Error tooltip">
+          <Text>Danger</Text>
+        </Tooltip>
+      </div>
+      <div>
+        <Tooltip status="warning" caption="Warning tooltip">
+          <Text>Warning</Text>
+        </Tooltip>
+      </div>
+      <div>
+        <Tooltip status="success" caption="Success tooltip">
+          <Text>Success</Text>
+        </Tooltip>
+      </div>
+      <div>
+        <Tooltip status="notification" caption="Notification tooltip">
+          <Text>Notification</Text>
+        </Tooltip>
+      </div>
+    </Flex>
+  </Story>
+</Preview>
+
+## Tooltip with other Components
+
+<Preview>
+  <Story name="components">
+    <Flex
+      justifyContent="space-evenly"
+      style={{ paddingTop: "3rem", paddingBottom: "3rem" }}
+    >
+      <div>
+        <Tooltip
+          position="left"
+          caption="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        >
+          <Button>Button example</Button>
+        </Tooltip>
+      </div>
+      <div>
+        <Tooltip caption="Lorem Ipsum is simply dummy text of the printing and typesetting industry.">
+          <SVGIcon name="help" />
+        </Tooltip>
+      </div>
+      <div>
+        <Tooltip
+          position="left"
+          caption="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        >
+          <Input name="Name" placeholder="Name" />
+        </Tooltip>
+      </div>
+    </Flex>
   </Story>
 </Preview>
