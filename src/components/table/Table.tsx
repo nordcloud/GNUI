@@ -72,7 +72,9 @@ const Td = styled.td<any>`
 
 const Tr = styled.tr<any>``;
 
-const Th = styled.th<any>``;
+const Th = styled.th<any>`
+  border-bottom: 2px solid ${theme.colors.lights[2]};
+`;
 
 Table.thead = Thead;
 Table.tbody = Tbody;

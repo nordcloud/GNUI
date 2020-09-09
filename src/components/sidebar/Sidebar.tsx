@@ -128,9 +128,25 @@ export const Sidebar: FunctionComponent<ISidebarProps> = ({
   title,
   side,
   isOpen,
-  onClick,
+  onClick = () => undefined,
   ...props
 }) => {
+  React.useEffect(() => {
+    if (isOpen) {
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") {
+          onClick("");
+        }
+      };
+
+      window.addEventListener("keydown", handleKeyDown);
+
+      return () => {
+        window.removeEventListener("keydown", handleKeyDown);
+      };
+    }
+  }, [isOpen, onClick]);
+
   return (
     <>
       <Background onClick={onClick} isOpen={isOpen} {...props}></Background>
