@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
-import { space } from "styled-system";
+import { space, SpaceProps } from "styled-system";
 import theme from "../../theme";
 
 interface TextProps {
@@ -17,10 +17,10 @@ interface TextProps {
 
 const changeTag = (tag: string) => {
   let spacing: string;
-  if(tag !== "p") {
-    spacing = theme.spacing.spacing00
+  if (tag !== "p") {
+    spacing = theme.spacing.spacing00;
   } else {
-    spacing = theme.spacing.spacing04
+    spacing = theme.spacing.spacing04;
   }
   return spacing;
 };
@@ -49,17 +49,17 @@ const StyledText = styled.p<TextProps>`
     `}
   ${({ tag }) =>
     tag &&
-    css `
+    css`
       margin-bottom: ${changeTag(tag)};
     `}
   ${({ weight }) =>
     weight &&
-    css `
+    css`
       font-weight: ${theme.fontWeights[weight]};
     `}
   ${({ textStyle }) =>
     textStyle &&
-    css `
+    css`
       font-style: ${textStyle};
     `}
   ${({ align }) =>
@@ -80,7 +80,7 @@ const StyledCode = styled.code`
   font-size: inherit;
 `;
 
-export const Text: FunctionComponent<TextProps> = ({
+export const Text: FunctionComponent<TextProps & SpaceProps> = ({
   tag,
   children,
   ...props
