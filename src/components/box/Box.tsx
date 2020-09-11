@@ -13,7 +13,6 @@ type BoxProps = {
   backgroundColor?: string;
   radius?: "small" | "medium" | "large";
   spacing?:
-    | "spacing00"
     | "spacing01"
     | "spacing02"
     | "spacing03"
@@ -23,7 +22,6 @@ type BoxProps = {
     | "spacing07"
     | "spacing08";
   innerSpacing?:
-    | "spacing00"
     | "spacing01"
     | "spacing02"
     | "spacing03"

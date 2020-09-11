@@ -29,7 +29,7 @@ import { Spacer } from "../components/spacer";
                 less
               </Text>
             </PieChart>
-            <Box shadow="shadow00" innerSpacing="spacing00">
+            <Box shadow="shadow00" p={0}>
               <Text size="sm" tag="div" color={theme.colors.darks[3]}>
                 SEP 1 - SEP 7, 2020
               </Text>
@@ -51,20 +51,20 @@ import { Spacer } from "../components/spacer";
         <Col lg={4} md={4} xs={4}>
           <Flex>
             <PieChart
-              progress={82}
+              progress={20}
               size={96}
               strokeWidth={15}
-              color="success"
+              color="danger"
               mr="1rem"
             >
               <Text className="chartValue" size="lg" tag="span" weight="medium">
-                18%
+                20%
               </Text>
               <Text className="chartCaption" size="xs" tag="span">
-                less
+                over
               </Text>
             </PieChart>
-            <Box shadow="shadow00" innerSpacing="spacing00">
+            <Box shadow="shadow00" p={0}>
               <Text size="sm" tag="div" color={theme.colors.darks[3]}>
                 SEP, 2020 Forecasted Total Cost
               </Text>
@@ -74,7 +74,7 @@ import { Spacer } from "../components/spacer";
               <Text tag="div">
                 $ 3456.00
                 <Text size="sm" tag="span" px=".5rem">
-                  less than
+                  over than
                 </Text>
                 <Text size="sm" tag="span">
                   AUG, 2020
