@@ -8,7 +8,15 @@ addParameters({
   options: {
     showRoots: true,
     storySort: {
-      sort: ["Foundation", "Layout", "Typography", "Components", "Form"],
+      sort: [
+        "Foundation",
+        "Layout",
+        "Typography",
+        "Components",
+        "Form",
+        "Widgets",
+        "Pages",
+      ],
     },
   },
   viewMode: "docs",
