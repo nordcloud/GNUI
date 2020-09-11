@@ -18,7 +18,7 @@ interface TextProps {
 const changeTag = (tag: string) => {
   let spacing: string;
   if (tag !== "p") {
-    spacing = theme.spacing.spacing00;
+    spacing = "0";
   } else {
     spacing = theme.spacing.spacing04;
   }
