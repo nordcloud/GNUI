@@ -164,7 +164,7 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
     <DropdownWrapper
       value={value}
       {...props}
-      onMouseLeave={() => isOpen && setIsOpen(!isOpen)}
+      // onMouseLeave={() => isOpen && setIsOpen(!isOpen)}
     >
       <DropdownButton
         name={name}

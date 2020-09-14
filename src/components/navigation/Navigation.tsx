@@ -21,6 +21,7 @@ const Item = styled.div`
   height: 2.5rem;
   vertical-align: middle;
   text-decoration: none;
+  transition: ${theme.transition};
   &.separator {
     font-size: ${theme.fontSizes.sm};
     color: ${theme.colors.darks[4]};
@@ -32,8 +33,6 @@ const Item = styled.div`
   &:not(.separator) {
     &:hover {
       background-color: ${theme.colors.lights[2]};
-      color: ${theme.colors.primary} !important;
-      text-decoration: none !important;
     }
     &:active,
     &:focus {
