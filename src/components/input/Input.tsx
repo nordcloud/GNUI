@@ -5,6 +5,7 @@ import { Container, Flex } from "../container";
 import { Icon } from "../icon";
 import { space, SpaceProps } from "styled-system";
 import { Spinner } from "../spinner";
+
 export interface InputProps {
   name: string;
   type: string;
@@ -217,14 +218,19 @@ export const Input: FunctionComponent<
   )
 );
 
-export const Upload: FunctionComponent<
-  InputProps & { placeholder?: string }
-> = ({ name, placeholder }) => (
+interface UploadProps extends Omit<InputProps, "type"> {}
+
+export const Upload: FunctionComponent<UploadProps> = ({
+  placeholder,
+  title,
+  id = "",
+  ...props
+}) => (
   <StyledUpload>
-    <label htmlFor={name}>
+    <label htmlFor={id}>
       {placeholder}
-      <span>Select</span>
+      <span>{title}</span>
     </label>
-    <StyledInput name={name} type="file" id={name} />
+    <StyledInput type="file" id={id} {...props} />
   </StyledUpload>
 );
