@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components";
 import theme from "../../theme";
-import { Container, Flex } from "../container";
+import { Container, Flex, ContainerProps } from "../container";
 import { InputProps } from "../input";
-import { Button } from "../button";
+import { Button, ButtonProps } from "../button";
 
 const StyledSubmit = styled.input`
   background: ${theme.colors.primary};
@@ -44,10 +44,9 @@ export const FormButtons: FunctionComponent = ({ children, ...props }) => (
   </Flex>
 );
 
-export const CancelButton: FunctionComponent<InputProps> = ({
-  name,
-  ...props
-}) => (
+export const CancelButton: FunctionComponent<
+  ButtonProps & { name: string }
+> = ({ name, ...props }) => (
   <Button color="danger" {...props}>
     {name || "Cancel"}
   </Button>
@@ -64,6 +63,7 @@ export const SubmitButton: FunctionComponent<InputProps> = ({
   />
 );
 
-export const Form: FunctionComponent<InputProps> = ({ children, ...props }) => (
-  <Container {...props}>{children}</Container>
-);
+export const Form: FunctionComponent<ContainerProps> = ({
+  children,
+  ...props
+}) => <Container {...props}>{children}</Container>;

@@ -10,7 +10,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   small?: boolean;
   popup?: boolean;
   loading?: boolean;
-  ref: Ref<HTMLInputElement>;
+  ref?: Ref<HTMLInputElement>;
 }
 
 interface LabelProps {
@@ -19,9 +19,9 @@ interface LabelProps {
 }
 
 interface InputGroupProps {
-  status: Status;
-  noBorder: boolean;
-  popup: boolean;
+  status?: Status;
+  noBorder?: boolean;
+  popup?: boolean;
 }
 
 type Status = "success" | "error";
@@ -85,7 +85,7 @@ const InputGroup = styled(Flex)<InputGroupProps & SpaceProps>`
     border: ${theme.borders.grey};
     cursor: not-allowed;
   }
-  border-width: ${(props: InputProps) => props.noBorder && "0px"}
+  border-width: ${(props: InputGroupProps) => props.noBorder && "0px"}
     ${({ status }) =>
       status &&
       css`
