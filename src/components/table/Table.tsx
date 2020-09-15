@@ -5,6 +5,7 @@ export interface TableProps {
   hoverline?: boolean;
   striped?: boolean;
   small?: boolean;
+  tiny?: boolean;
 }
 
 const Table: any = styled.table<TableProps>`
@@ -13,7 +14,7 @@ const Table: any = styled.table<TableProps>`
   border-collapse: collapse;
   font-weight: ${theme.fontWeights.regular};
   font-family: ${theme.fonts.body};
-  font-size: ${theme.fontSizes.md};
+  font-size: ${({ tiny }) => (tiny ? theme.fontSizes.sm : theme.fontSizes.md)};
   line-height: 1.5em;
   color: ${theme.colors.primary};
 
@@ -39,16 +40,17 @@ const Table: any = styled.table<TableProps>`
   thead,
   tfoot {
     td {
-      padding: ${({ small }) =>
-        small
+      padding: ${({ small, tiny }) =>
+        small || tiny
           ? `${theme.spacing.spacing02} ${theme.spacing.spacing03}`
           : `${theme.spacing.spacing03}`};
     }
     th {
-      padding: ${({ small }) =>
-        small
+      padding: ${({ small, tiny }) =>
+        small || tiny
           ? `${theme.spacing.spacing02} ${theme.spacing.spacing03}`
           : `${theme.spacing.spacing03}`};
+      font-size: ${({ tiny }) => (tiny ? theme.fontSizes.sm : "0.9rem")};
     }
   }
 `;
@@ -56,7 +58,6 @@ const Table: any = styled.table<TableProps>`
 const Thead = styled.thead`
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  font-size: 0.9rem;
 `;
 
 const Tbody = styled.tbody``;
