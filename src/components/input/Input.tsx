@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, InputHTMLAttributes, Ref } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { Container, Flex } from "../container";
@@ -6,34 +6,25 @@ import { Icon } from "../icon";
 import { space, SpaceProps } from "styled-system";
 import { Spinner } from "../spinner";
 
-export interface InputProps {
-  name: string;
-  type: string;
-  className?: string;
-  placeholder?: string;
-  title?: string;
-  value?: string;
-  defaultValue?: string;
-  id?: string;
-  disabled?: boolean;
-  required?: boolean;
-  status?: "success" | "error";
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   small?: boolean;
-  ref?: any;
   popup?: boolean;
-  children?: string | number | any;
   loading?: boolean;
-  autoFocus?: boolean;
-  noBorder?: boolean;
-  onClick?: (e: any) => void;
-  onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
-  onKeyPress?: (e: any) => void;
+  ref: Ref<HTMLInputElement>;
 }
 
 interface LabelProps {
   required?: boolean;
   name?: string;
 }
+
+interface InputGroupProps {
+  status: Status;
+  noBorder: boolean;
+  popup: boolean;
+}
+
+type Status = "success" | "error";
 
 const StyledLabel = styled.label<LabelProps>`
   line-height: ${theme.lineHeight};
@@ -60,7 +51,7 @@ export const Label: FunctionComponent<LabelProps> = ({
   </Flex>
 );
 
-const setStatusColor = (status: "success" | "error") => {
+const setStatusColor = (status: Status) => {
   if (status === "error") {
     return css`
       border: ${theme.borders.danger};
@@ -72,7 +63,7 @@ const setStatusColor = (status: "success" | "error") => {
   }
 };
 
-const InputGroup = styled(Flex)<InputProps & SpaceProps>`
+const InputGroup = styled(Flex)<InputGroupProps & SpaceProps>`
   align-items: center;
   border: ${theme.borders.disabled};
   padding: ${theme.spacing.spacing02};
@@ -168,7 +159,6 @@ const StyledUpload = styled.div`
   label {
     border: ${theme.borders.disabled};
     border-radius: ${theme.radiusDefault};
-    border-none: none;
     padding-left: ${theme.spacing.spacing03};
     display: flex;
     align-items: center;
@@ -189,33 +179,33 @@ export const Description: FunctionComponent = ({ children }) => (
 );
 
 export const Input: FunctionComponent<
-  InputProps & SpaceProps
+  InputGroupProps & InputProps & SpaceProps
 > = React.forwardRef(
-  ({ type = "text", name, status, popup, loading, title, ...props }, ref) => (
-    <InputGroup status={status} {...props} popup={popup}>
-      {type === "search" && !loading && (
-        <Icon image="SEARCH" width="1.2rem" height="1.2rem" />
-      )}
-      {type === "search" && loading && <Spinner />}
-      <StyledInput
-        name={name}
-        title={title}
-        type={type}
-        id={name}
-        ref={ref}
-        {...props}
-        popup={popup}
-      />
-      {status && (
-        <Icon
-          image={`INPUT_${status.toUpperCase()}`}
-          width="1.2rem"
-          height="1.2rem"
+  ({ noBorder, type, popup, status, loading, small, ...props }, ref) => {
+    return (
+      <InputGroup status={status} noBorder={noBorder} popup={popup}>
+        {type === "search" && !loading && (
+          <Icon image="SEARCH" width="1.2rem" height="1.2rem" />
+        )}
+        {type === "search" && loading && <Spinner />}
+        <StyledInput
+          type={type}
+          popup={popup}
+          small={small}
+          ref={ref}
+          {...props}
         />
-      )}
-      {popup && <Icon image={`MENU`} width="1.2rem" height="1.2rem" />}
-    </InputGroup>
-  )
+        {status && (
+          <Icon
+            image={`INPUT_${status.toUpperCase()}`}
+            width="1.2rem"
+            height="1.2rem"
+          />
+        )}
+        {popup && <Icon image={`MENU`} width="1.2rem" height="1.2rem" />}
+      </InputGroup>
+    );
+  }
 );
 
 interface UploadProps extends Omit<InputProps, "type"> {}
@@ -223,7 +213,7 @@ interface UploadProps extends Omit<InputProps, "type"> {}
 export const Upload: FunctionComponent<UploadProps> = ({
   placeholder,
   title,
-  id = "",
+  id = "upload-file",
   ...props
 }) => (
   <StyledUpload>
