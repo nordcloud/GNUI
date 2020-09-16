@@ -5,13 +5,14 @@ import { SVGIcon } from "../svgicon";
 import { InputProps, StyledInput } from "./Input";
 
 const StyledUpload = styled.div`
-  input[type="file"] {
-    display: none;
-  }
   color: ${theme.colors.primary};
   background: ${theme.colors.white};
   transition: ${theme.transition};
   line-height: ${theme.lineHeight};
+
+  input[type="file"] {
+    display: none;
+  }
 `;
 
 const StyledLabel = styled.label`
