@@ -69,6 +69,10 @@ const Tfoot = styled.tfoot`
 
 const Td = styled.td<any>`
   border-top: 1px solid ${theme.colors.lights[2]};
+  border-left: ${({ hasLeftBorder }) =>
+    hasLeftBorder ? `1px solid ${theme.colors.lights[2]}` : "none"};
+  border-right: ${({ hasRightBorder }) =>
+    hasRightBorder ? `1px solid ${theme.colors.lights[2]}` : "none"};
 `;
 
 const Tr = styled.tr<any>``;
