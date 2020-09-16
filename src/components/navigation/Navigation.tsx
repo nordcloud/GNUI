@@ -33,6 +33,7 @@ const Item = styled.div`
   &:not(.separator) {
     &:hover {
       background-color: ${theme.colors.lights[2]};
+      text-decoration: none !important;
     }
     &:active,
     &:focus {
