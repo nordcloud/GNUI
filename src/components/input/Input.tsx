@@ -210,17 +210,14 @@ export const Input: FunctionComponent<
 
 interface UploadProps extends Omit<InputProps, "type"> {}
 
-export const Upload: FunctionComponent<UploadProps> = ({
-  placeholder,
-  title,
-  id = "upload-file",
-  ...props
-}) => (
-  <StyledUpload>
-    <label htmlFor={id}>
-      {placeholder}
-      <span>{title}</span>
-    </label>
-    <StyledInput type="file" id={id} {...props} />
-  </StyledUpload>
+export const Upload: FunctionComponent<UploadProps> = React.forwardRef(
+  ({ placeholder, title, id = "upload-file", ...props }, ref) => (
+    <StyledUpload>
+      <label htmlFor={id}>
+        {placeholder}
+        <span>{title}</span>
+      </label>
+      <StyledInput type="file" id={id} {...props} ref={ref} />
+    </StyledUpload>
+  )
 );
