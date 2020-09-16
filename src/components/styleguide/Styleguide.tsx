@@ -55,10 +55,7 @@ export const Styleguide: FunctionComponent<StyleguideProps> = ({
           color={theme.colors[color.toLowerCase()] || color}
           key={`${color}$-{index}`}
         >
-          <ColorColumn
-            justify="flex-start"
-            darkText={name === "lights" && true}
-          >
+          <ColorColumn justify="flex-start" darkText={name === "lights"}>
             <Text>{color.charAt(0) !== "#" ? color : `${name}[${index}]`}</Text>
           </ColorColumn>
           {description && (
