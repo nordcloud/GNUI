@@ -3,6 +3,7 @@ import { addDecorator, addParameters } from "@storybook/react";
 import { DocsPage, DocsContainer } from "@storybook/addon-docs/blocks";
 import { GnuiContainer } from "../src/components/container";
 import "./global.css";
+import { SetGlobalStyle } from "../src/theme/globals";
 
 addParameters({
   options: {
@@ -26,4 +27,9 @@ addParameters({
   },
 });
 
-addDecorator((storyFn) => <GnuiContainer>{storyFn()}</GnuiContainer>);
+addDecorator((storyFn) => (
+  <GnuiContainer>
+    <SetGlobalStyle />
+    {storyFn()}
+  </GnuiContainer>
+));
