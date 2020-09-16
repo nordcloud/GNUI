@@ -1,6 +1,6 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Tag } from "../components/tag";
-import { Container } from "../components/container";
+import { GnuiContainer } from "../components/container";
 
 <Meta title="Components/Tag" component={Tag} />
 
@@ -21,7 +21,7 @@ import { Container } from "../components/container";
 
 <Preview>
   <Story name="with props">
-    <Container>
+    <GnuiContainer>
       <Tag color="success" text="success" />
       <Tag color="warning" text="in progress" />
       <Tag color="danger" text="failed" />
@@ -35,6 +35,6 @@ import { Container } from "../components/container";
         showClose
         onClick={() => alert("clicked")}
       />
-    </Container>
+    </GnuiContainer>
   </Story>
 </Preview>

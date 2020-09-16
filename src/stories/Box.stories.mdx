@@ -8,7 +8,7 @@ import {
 } from "@storybook/addon-docs/blocks";
 import { Box } from "../components/box";
 import { Spacer } from "../components/spacer";
-import { Container } from "../components/container";
+import { GnuiContainer } from "../components/container";
 
 <Meta title="Components/Box" component={Box} />
 
@@ -59,7 +59,7 @@ type BoxProps = {
 
 <Preview>
   <Story name="border">
-    <Container>
+    <GnuiContainer>
       <Box border="default">Default border</Box>
       <Spacer height="1rem" />
       <Box border="disabled">Bold border</Box>
@@ -69,7 +69,7 @@ type BoxProps = {
       <Box border="notification">Notification border</Box>
       <Spacer height="1rem" />
       <Box border="1px solid violet">Custom border</Box>
-    </Container>
+    </GnuiContainer>
   </Story>
 </Preview>
 
@@ -79,7 +79,7 @@ type BoxProps = {
 
 <Preview>
   <Story name="radius">
-    <Container>
+    <GnuiContainer>
       <Box radius="small" border="disabled">
         Box with small border radius prop
       </Box>
@@ -91,7 +91,7 @@ type BoxProps = {
       <Box radius="large" border="disabled">
         Box with large border radius prop
       </Box>
-    </Container>
+    </GnuiContainer>
   </Story>
 </Preview>
 
@@ -101,11 +101,11 @@ type BoxProps = {
 
 <Preview>
   <Story name="innerSpacing">
-    <Container>
+    <GnuiContainer>
       <Box innerSpacing="spacing04">Box with spacing04 innerSpacing prop</Box>
       <Spacer height="1rem" />
       <Box innerSpacing="spacing07">Box with spacing07 innerSpacing prop</Box>
-    </Container>
+    </GnuiContainer>
   </Story>
 </Preview>
 
@@ -115,7 +115,7 @@ type BoxProps = {
 
 <Preview>
   <Story name="shadow">
-    <Container>
+    <GnuiContainer>
       <Box shadow="shadow01">Box with shadow01 shadow prop</Box>
       <Spacer height="1rem" />
       <Box shadow="shadow02">Box with shadow02 shadow prop</Box>
@@ -123,7 +123,7 @@ type BoxProps = {
       <Box shadow="shadow03">Box with shadow03 shadow prop</Box>
       <Spacer height="1rem" />
       <Box shadow="shadow04">Box with shadow04 shadow prop</Box>
-    </Container>
+    </GnuiContainer>
   </Story>
 </Preview>
 
@@ -133,7 +133,7 @@ type BoxProps = {
 
 <Preview>
   <Story name="color">
-    <Container>
+    <GnuiContainer>
       <Box color="danger">Danger color (from theme)</Box>
       <Spacer height="1rem" />
       <Box color="notification">Notification color (from theme)</Box>
@@ -143,7 +143,7 @@ type BoxProps = {
       </Box>
       <Spacer height="1rem" />
       <Box color="#5ead9d">#5ead9d color</Box>
-    </Container>
+    </GnuiContainer>
   </Story>
 </Preview>
 
@@ -153,7 +153,7 @@ type BoxProps = {
 
 <Preview>
   <Story name="background">
-    <Container>
+    <GnuiContainer>
       <Box backgroundColor="danger" color="white">
         Danger color
       </Box>
@@ -169,6 +169,6 @@ type BoxProps = {
       <Box backgroundColor="#5ead9d" color="white">
         #5ead9d color
       </Box>
-    </Container>
+    </GnuiContainer>
   </Story>
 </Preview>

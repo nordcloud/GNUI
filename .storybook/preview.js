@@ -1,7 +1,7 @@
 import React from "react";
 import { addDecorator, addParameters } from "@storybook/react";
 import { DocsPage, DocsContainer } from "@storybook/addon-docs/blocks";
-import { Container } from "../src/components/container";
+import { GnuiContainer } from "../src/components/container";
 import "./global.css";
 
 addParameters({
@@ -26,4 +26,4 @@ addParameters({
   },
 });
 
-addDecorator((storyFn) => <Container>{storyFn()}</Container>);
+addDecorator((storyFn) => <GnuiContainer>{storyFn()}</GnuiContainer>);

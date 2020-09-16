@@ -1,13 +1,12 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Switch } from "../components/switch";
-import { Container } from "../components/container";
+import { GnuiContainer } from "../components/container";
 import { Spacer } from "../components/spacer";
 import theme from "../theme";
 
 <Meta title="Components/Switch" component={Switch} />
 
 # Switch
-
 
 #### Props
 
@@ -30,7 +29,7 @@ import theme from "../theme";
 
 <Preview>
   <Story name="position">
-    <Container>
+    <GnuiContainer>
       <Switch name="label-left" position="left" labelText="My Switch Button" />
       <Spacer height="1rem" />
       <Switch
@@ -38,7 +37,7 @@ import theme from "../theme";
         position="right"
         labelText="My Switch Button"
       />
-    </Container>
+    </GnuiContainer>
   </Story>
 </Preview>
 
@@ -50,7 +49,7 @@ import theme from "../theme";
 
 <Preview>
   <Story name="severity">
-    <Container>
+    <GnuiContainer>
       <Switch
         name="label1"
         severity="warning"
@@ -74,6 +73,6 @@ import theme from "../theme";
         severity="notification"
         labelText="My Switch Button Notification"
       />
-    </Container>
+    </GnuiContainer>
   </Story>
 </Preview>

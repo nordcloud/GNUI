@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { Icon } from "../icon";
 import { SVGIcon } from "../svgicon/SVGIcon";
-import { Container } from "../container";
+import { GnuiContainer } from "../container";
 import { IconProps } from "../icon";
 import { space, SpaceProps } from "styled-system";
 import { Input } from "../input";
@@ -37,7 +37,7 @@ interface DropdownIconProps extends IconProps {
   animate?: boolean;
 }
 
-const DropdownWrapper = styled(Container)<IDropdownWrapper>`
+const DropdownWrapper = styled(GnuiContainer)<IDropdownWrapper>`
   position: relative;
   ${space}
 `;
@@ -91,7 +91,7 @@ export const DropdownIcon = styled(Icon)<DropdownIconProps>`
 interface IDropdownMenu {
   onClick: () => void;
 }
-const DropdownMenu = styled(Container)<IDropdownMenu>`
+const DropdownMenu = styled(GnuiContainer)<IDropdownMenu>`
   text-align: left;
   width: 100%;
   box-sizing: border-box;

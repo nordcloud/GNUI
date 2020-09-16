@@ -1,6 +1,6 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Button } from "../components/button";
-import { Container, Flex } from "../components/container";
+import { GnuiContainer, Flex } from "../components/container";
 
 <Meta title="Components/Button" component={Button} />
 
@@ -193,12 +193,12 @@ import { Container, Flex } from "../components/container";
 
 <Preview>
   <Story name="custom-spacing">
-    <Container>
+    <GnuiContainer>
       <p>
         <Button ml="3rem" mb="10rem" innerSpacing="0">
           Button with custom spacing
         </Button>
       </p>
-    </Container>
+    </GnuiContainer>
   </Story>
 </Preview>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Input, Label, Description, Upload } from "../components/input";
-import { Container } from "../components/container";
+import { GnuiContainer } from "../components/container";
 import { Button } from "../components/button";
 import { Spacer } from "../components/spacer";
 
@@ -129,16 +129,16 @@ Nothing more to add, just text placeholder which works exactly like in default H
     {() => {
       const [status, setStatus] = useState("success");
       return (
-        <Container>
-          <Container>
+        <GnuiContainer>
+          <GnuiContainer>
             <Input
               name="validation-input"
               value={status === "success" ? "Success!" : "Error!"}
               status={status}
             />
-          </Container>
+          </GnuiContainer>
           <Spacer height="2rem" />
-          <Container>
+          <GnuiContainer>
             <Button
               size="small"
               color={status === "error" ? "danger" : "success"}
@@ -148,8 +148,8 @@ Nothing more to add, just text placeholder which works exactly like in default H
             >
               Change status
             </Button>
-          </Container>
-        </Container>
+          </GnuiContainer>
+        </GnuiContainer>
       );
     }}
   </Story>
@@ -161,10 +161,10 @@ Nothing more to add, just text placeholder which works exactly like in default H
 
 <Preview>
   <Story name="label & description">
-    <Container>
+    <GnuiContainer>
       <Label name="Label" />
       <Input name="labeled-input" placeholder="Labeled input" />
       <Description>Inputs description</Description>
-    </Container>
+    </GnuiContainer>
   </Story>
 </Preview>

@@ -1,6 +1,6 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Spacer } from "../components/spacer";
-import { Flex } from "../components/container";
+import { GnuiContainer, Flex } from "../components/container";
 import { Text } from "../components/text";
 import theme from "../theme";
 
@@ -11,7 +11,7 @@ import theme from "../theme";
 <Preview>
   <Story name="default">
     <Flex>
-      <Container
+      <GnuiContainer
         style={{
           background: theme.colors.warning,
           textAlign: "center",
@@ -19,10 +19,10 @@ import theme from "../theme";
           borderRadius: theme.radius.default,
         }}
       >
-        <Text color="white">Container</Text>
-      </Container>
+        <Text color="white">GnuiContainer</Text>
+      </GnuiContainer>
       <Spacer width="2.5rem" bgColor={theme.colors.danger} />
-      <Container
+      <GnuiContainer
         style={{
           background: theme.colors.warning,
           textAlign: "center",
@@ -30,8 +30,8 @@ import theme from "../theme";
           borderRadius: theme.radius.default,
         }}
       >
-        <Text color="white">Container</Text>
-      </Container>
+        <Text color="white">GnuiContainer</Text>
+      </GnuiContainer>
     </Flex>
   </Story>
 </Preview>
@@ -51,8 +51,8 @@ interface SpacerProps {
 
 <Preview>
   <Story name="margin">
-    <Container>
-      <Container
+    <GnuiContainer>
+      <GnuiContainer
         style={{
           background: theme.colors.warning,
           textAlign: "center",
@@ -61,10 +61,10 @@ interface SpacerProps {
           padding: "0.25rem",
         }}
       >
-        <Text color="white">Container</Text>
-      </Container>
+        <Text color="white">GnuiContainer</Text>
+      </GnuiContainer>
       <Spacer height="25px" />
-      <Container
+      <GnuiContainer
         style={{
           background: theme.colors.warning,
           textAlign: "center",
@@ -73,8 +73,8 @@ interface SpacerProps {
           padding: "0.25rem",
         }}
       >
-        <Text color="white">Container</Text>
-      </Container>
-    </Container>
+        <Text color="white">GnuiContainer</Text>
+      </GnuiContainer>
+    </GnuiContainer>
   </Story>
 </Preview>

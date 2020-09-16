@@ -1,7 +1,7 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useState } from "react";
 import styled from "styled-components";
 import theme from "../../theme";
-import { Container, Flex } from '../container';
+import { GnuiContainer, Flex } from "../container";
 
 export interface RadioProps {
   name: string;
@@ -23,7 +23,7 @@ export interface RadioGroupProps {
   children?: string | number | any;
 }
 
-const RadioWrapper = styled(Container)`
+const RadioWrapper = styled(GnuiContainer)`
   position: relative;
 `;
 
@@ -67,26 +67,26 @@ const RadioInput = styled.input`
   z-index: ${theme.zindex.sticky};
   position: absolute;
   top: 0;
-  left:0;
+  left: 0;
   width: 100%;
   height: 100%;
   margin: 0;
   cursor: pointer;
 
   &:focus {
-      outline: none;
+    outline: none;
   }
 
   &:checked {
     & ~ ${Fill} {
-    width: 0.75rem;
-    height: 0.75rem;
-    transition: width 0.2s ease-out, height 0.2s ease-out;
+      width: 0.75rem;
+      height: 0.75rem;
+      transition: width 0.2s ease-out, height 0.2s ease-out;
 
-    &::before {
+      &::before {
         opacity: 1;
         transition: opacity 1s ease;
-    }
+      }
     }
   }
 `;
@@ -111,34 +111,34 @@ const RadioContainer = styled.div`
   }
 `;
 
-export const Radio: FunctionComponent<RadioProps> = ({ 
+export const Radio: FunctionComponent<RadioProps> = ({
   name,
-  type="radio",
+  type = "radio",
   labelText,
   ...props
-  }) => (
+}) => (
   <RadioFlexWrapper>
     <RadioContainer>
-      <RadioInput type={type} id={name} {...props}/>
+      <RadioInput type={type} id={name} {...props} />
       <Fill />
     </RadioContainer>
     <label htmlFor={name}>{labelText}</label>
   </RadioFlexWrapper>
 );
 
-export const RadioGroup: FunctionComponent<RadioGroupProps> = ({ 
+export const RadioGroup: FunctionComponent<RadioGroupProps> = ({
   name,
-  children
+  children,
 }) => {
   const [isChecked, setIsChecked] = useState(children[0].props.value);
 
   return (
     <RadioWrapper role="radiogroup" name={name}>
-      {React.Children.map(children, element =>
+      {React.Children.map(children, (element) =>
         React.cloneElement(element, {
           ...element.props,
           checked: isChecked === element.props.value,
-          onChange: () => setIsChecked(element.props.value)
+          onChange: () => setIsChecked(element.props.value),
         })
       )}
     </RadioWrapper>
