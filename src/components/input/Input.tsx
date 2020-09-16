@@ -99,7 +99,7 @@ const InputGroup = styled(Flex)<InputGroupProps & SpaceProps>`
     ${space};
 `;
 
-const StyledInput = styled.input<InputProps>`
+export const StyledInput = styled.input<InputProps>`
   border: 0;
   width: 100%;
   box-sizing: border-box;
@@ -148,32 +148,6 @@ const StyledDescription = styled(Container)`
   width: 100%;
 `;
 
-const StyledUpload = styled.div`
-  input[type="file"] {
-    display: none;
-  }
-  color: ${theme.colors.primary};
-  background: ${theme.colors.white};
-  transition: ${theme.transition};
-  line-height: ${theme.lineHeight};
-  label {
-    border: ${theme.borders.disabled};
-    border-radius: ${theme.radiusDefault};
-    padding-left: ${theme.spacing.spacing03};
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    span {
-      margin: -1px 0 -1px auto;
-      border-top-right-radius: ${theme.radiusDefault};
-      border-bottom-right-radius: ${theme.radiusDefault};
-      background-color: ${theme.colors.primary};
-      color: ${theme.colors.white};
-      padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
-    }
-  }
-`;
-
 export const Description: FunctionComponent = ({ children }) => (
   <StyledDescription>{children}</StyledDescription>
 );
@@ -206,18 +180,4 @@ export const Input: FunctionComponent<
       </InputGroup>
     );
   }
-);
-
-interface UploadProps extends Omit<InputProps, "type"> {}
-
-export const Upload: FunctionComponent<UploadProps> = React.forwardRef(
-  ({ placeholder, title, id = "upload-file", ...props }, ref) => (
-    <StyledUpload>
-      <label htmlFor={id}>
-        {placeholder}
-        <span>{title}</span>
-      </label>
-      <StyledInput type="file" id={id} {...props} ref={ref} />
-    </StyledUpload>
-  )
 );
