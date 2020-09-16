@@ -1,7 +1,7 @@
 import React, { FunctionComponent, InputHTMLAttributes, Ref } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
-import { Container, Flex } from "../container";
+import { GnuiContainer, Flex } from "../container";
 import { Icon } from "../icon";
 import { space, SpaceProps } from "styled-system";
 import { Spinner } from "../spinner";
@@ -141,7 +141,7 @@ export const StyledInput = styled.input<InputProps>`
     `}
 `;
 
-const StyledDescription = styled(Container)`
+const StyledDescription = styled(GnuiContainer)`
   font-size: ${theme.fontSizes[1]};
   color: ${theme.colors.darks[3]};
   margin: ${theme.spacing.spacing02} 0;

@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
-import { Container } from "../container";
+import { GnuiContainer } from "../container";
 import { space, SpaceProps } from "styled-system";
 
 type BoxProps = {
@@ -36,7 +36,7 @@ type BoxProps = {
   children?: React.ReactNode;
 };
 
-const StyledBox = styled(Container)<BoxProps & SpaceProps>`
+const StyledBox = styled(GnuiContainer)<BoxProps & SpaceProps>`
   box-sizing: border-box;
   min-width: 0;
   padding: ${theme.spacing.spacing04};

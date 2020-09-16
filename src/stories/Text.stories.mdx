@@ -1,6 +1,6 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Text } from "../components/text";
-import { Container } from "../components/container";
+import { GnuiContainer } from "../components/container";
 import title from "title";
 
 <Meta title="Typography/Text" component={Text} />
@@ -31,14 +31,14 @@ import title from "title";
 
 <Preview>
   <Story name="size">
-    <Container>
+    <GnuiContainer>
       <Text size="xs">(xs) Extra Small size (10px)</Text>
       <Text size="sm">(sm) Small size (12px)</Text>
       <Text size="md">(md) Regular size (16px)</Text>
       <Text size="lg">(lg) Big size (20px)</Text>
       <Text size="xl">(xl) Large size (24px)</Text>
       <Text size="xxl">(xxl) Extra Large size (32px)</Text>
-    </Container>
+    </GnuiContainer>
   </Story>
 </Preview>
 
@@ -48,11 +48,11 @@ import title from "title";
 
 <Preview>
   <Story name="tag">
-    <Container>
+    <GnuiContainer>
       <Text tag="div">
         This is div. <Text tag="span">This is span.</Text>
       </Text>
-    </Container>
+    </GnuiContainer>
   </Story>
 </Preview>
 
@@ -62,11 +62,11 @@ import title from "title";
 
 <Preview>
   <Story name="weight">
-    <Container>
+    <GnuiContainer>
       <Text weight="regular">Lorem ipsum solor domet.</Text>
       <Text weight="medium">Lorem ipsum solor domet.</Text>
       <Text weight="bold">Lorem ipsum solor domet.</Text>
-    </Container>
+    </GnuiContainer>
   </Story>
 </Preview>
 
@@ -76,13 +76,13 @@ import title from "title";
 
 <Preview>
   <Story name="color">
-    <Container>
+    <GnuiContainer>
       <Text color="danger">Lorem ipsum solor domet.</Text>
       <Text color="success">Lorem ipsum solor domet.</Text>
       <Text color="warning">Lorem ipsum solor domet.</Text>
       <Text color="notification">Lorem ipsum solor domet.</Text>
       <Text color="#ccc">Lorem ipsum solor domet.</Text>
-    </Container>
+    </GnuiContainer>
   </Story>
 </Preview>
 
@@ -92,10 +92,10 @@ import title from "title";
 
 <Preview>
   <Story name="textStyle">
-    <Container>
+    <GnuiContainer>
       <Text textStyle="normal">Lorem ipsum solor domet.</Text>
       <Text textStyle="italic">Lorem ipsum solor domet.</Text>
-    </Container>
+    </GnuiContainer>
   </Story>
 </Preview>
 
@@ -105,10 +105,10 @@ import title from "title";
 
 <Preview>
   <Story name="align">
-    <Container>
+    <GnuiContainer>
       <Text align="left">Lorem ipsum solor domet.</Text>
       <Text align="center">Lorem ipsum solor domet.</Text>
       <Text align="right">Lorem ipsum solor domet.</Text>
-    </Container>
+    </GnuiContainer>
   </Story>
 </Preview>

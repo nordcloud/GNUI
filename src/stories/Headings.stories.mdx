@@ -1,6 +1,6 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Heading } from "../components/heading";
-import { Container } from "../components/container";
+import { GnuiContainer } from "../components/container";
 import { Text } from "../components/text";
 
 <Meta title="Typography/Heading" component={Heading} />
@@ -27,14 +27,14 @@ Simple heading is styled `h1` tag and looks like below.
 
 <Preview>
   <Story name="levels">
-    <Container>
+    <GnuiContainer>
       <Heading level={1}>Heading with level prop</Heading>
       <Heading level={2}>Heading with level prop</Heading>
       <Heading level={3}>Heading with level prop</Heading>
       <Heading level={4}>Heading with level prop</Heading>
       <Heading level={5}>Heading with level prop</Heading>
       <Heading level={6}>Heading with level prop</Heading>
-    </Container>
+    </GnuiContainer>
   </Story>
 </Preview>
 
@@ -44,17 +44,35 @@ Simple heading is styled `h1` tag and looks like below.
 
 <Preview>
   <Story name="margins">
-    <Container>
-      <Heading level={4} marginBottom="spacing08">Heading with marginBottom prop: spacing08 (40px)</Heading>
-      <Heading level={4} marginBottom="spacing07">Heading with marginBottom prop: spacing07 (32px)</Heading>
-      <Heading level={4} marginBottom="spacing06">Heading with marginBottom prop: spacing06 (24px)</Heading>
-      <Heading level={4} marginBottom="spacing05">Heading with marginBottom prop: spacing05 (20px)</Heading>
-      <Heading level={4} marginBottom="spacing04">Heading with marginBottom prop: spacing04 (16px)</Heading>
-      <Heading level={4} marginBottom="spacing03">Heading with marginBottom prop: spacing03 (12px)</Heading>
-      <Heading level={4} marginBottom="spacing02">Heading with marginBottom prop: spacing02 (8px)</Heading>
-      <Heading level={4} marginBottom="spacing01">Heading with marginBottom prop: spacing01 (4px)</Heading>
-      <Heading level={4} marginBottom="spacing00">Heading with marginBottom prop: spacing00 (0)</Heading>
-    </Container>
+    <GnuiContainer>
+      <Heading level={4} marginBottom="spacing08">
+        Heading with marginBottom prop: spacing08 (40px)
+      </Heading>
+      <Heading level={4} marginBottom="spacing07">
+        Heading with marginBottom prop: spacing07 (32px)
+      </Heading>
+      <Heading level={4} marginBottom="spacing06">
+        Heading with marginBottom prop: spacing06 (24px)
+      </Heading>
+      <Heading level={4} marginBottom="spacing05">
+        Heading with marginBottom prop: spacing05 (20px)
+      </Heading>
+      <Heading level={4} marginBottom="spacing04">
+        Heading with marginBottom prop: spacing04 (16px)
+      </Heading>
+      <Heading level={4} marginBottom="spacing03">
+        Heading with marginBottom prop: spacing03 (12px)
+      </Heading>
+      <Heading level={4} marginBottom="spacing02">
+        Heading with marginBottom prop: spacing02 (8px)
+      </Heading>
+      <Heading level={4} marginBottom="spacing01">
+        Heading with marginBottom prop: spacing01 (4px)
+      </Heading>
+      <Heading level={4} marginBottom="spacing00">
+        Heading with marginBottom prop: spacing00 (0)
+      </Heading>
+    </GnuiContainer>
   </Story>
 </Preview>
 
@@ -64,23 +82,23 @@ Simple heading is styled `h1` tag and looks like below.
 
 <Preview>
   <Story name="colors">
-    <Container>
+    <GnuiContainer>
       <Heading color="palevioletred">Named color</Heading>
       <Heading color="#6495ED">HEX color</Heading>
-    </Container>
+    </GnuiContainer>
   </Story>
 </Preview>
 
 > You can also use accent colors from `theme`.
 
 <Preview>
-  <Container>
+  <GnuiContainer>
     <Heading color="accent">Accent color</Heading>
     <Heading color="danger">Danger color</Heading>
     <Heading color="success">Success color</Heading>
     <Heading color="warning">Warning color</Heading>
     <Heading color="notification">Notification color</Heading>
-  </Container>
+  </GnuiContainer>
 </Preview>
 
 ### mixed

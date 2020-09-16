@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import { Text } from "../text";
-import { Container, Row, Col } from "../../index";
+import { Container, Row, Col } from "react-awesome-styled-grid";
 import theme from "../../theme";
 
 interface StyleguideProps {
@@ -62,17 +62,11 @@ export const Styleguide: FunctionComponent<StyleguideProps> = ({
             <Text>{color.charAt(0) !== "#" ? color : `${name}[${index}]`}</Text>
           </ColorColumn>
           {description && (
-            <ColorColumn
-              justify="center"
-              darkText={name === "lights" && true}
-            >
+            <ColorColumn justify="center" darkText={name === "lights" && true}>
               <Text>{description}</Text>
             </ColorColumn>
           )}
-          <ColorColumn
-            justify="flex-end"
-            darkText={name === "lights" && true}
-          >
+          <ColorColumn justify="flex-end" darkText={name === "lights" && true}>
             <Text size="sm">{theme.colors[color.toLowerCase()] || color}</Text>
           </ColorColumn>
         </ColorBox>

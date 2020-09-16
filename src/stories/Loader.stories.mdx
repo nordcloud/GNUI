@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Loader } from "../components/loader";
 import { Spacer } from "../components/spacer";
-import { Container, Flex } from "../components/container";
+import { GnuiContainer, Flex } from "../components/container";
 import theme from "../theme";
 
 <Meta title="Components/Loader" component={Loader} />
@@ -25,28 +25,30 @@ import theme from "../theme";
 </Preview>
 
 ## Loader Position
+
 > `position`: `top-left` | `top-right` | `bottom-right` | `bottom-center` | `bottom-left` — **optional**
 
 <Preview>
   <Story name="position" height="300px">
-    <Container>
+    <GnuiContainer>
       <Loader position="top-left" />
       <Loader />
       <Loader position="top-right" />
       <Loader position="bottom-right" />
       <Loader position="bottom-center" />
       <Loader position="bottom-left" />
-    </Container>
+    </GnuiContainer>
   </Story>
 </Preview>
 
 ## In Content
+
 > `inContent`: `boolean` — **optional**
 
 <Preview>
   <Story name="inContent">
-    <Container>
+    <GnuiContainer>
       <Loader inContent />
-    </Container>
+    </GnuiContainer>
   </Story>
 </Preview>

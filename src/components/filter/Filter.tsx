@@ -4,7 +4,7 @@ import { Box } from "../box";
 import { Button } from "../button";
 import { Icon } from "../icon";
 import { DropdownIcon } from "../dropdown";
-import { Container, Row, Col } from "../../index";
+import { Container, Row, Col } from "react-awesome-styled-grid";
 import theme from "../../theme";
 
 const filterBackground = theme.colors.lights[2];

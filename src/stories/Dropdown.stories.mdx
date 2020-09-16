@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Dropdown } from "../components/dropdown";
-import { Container } from "../components/container";
+import { GnuiContainer } from "../components/container";
 import { Spacer } from "../components/spacer";
 import { Text } from "../components/text";
 
@@ -34,7 +34,7 @@ import { Text } from "../components/text";
     const [value, setValue] = useState("");
     const [value2, setValue2] = useState("");
     return (
-      <Container>
+      <GnuiContainer>
         <Dropdown
           name="Select an option"
           options={options}
@@ -66,7 +66,7 @@ import { Text } from "../components/text";
           </Text>
         </Text>
         <Spacer height="5rem" />
-      </Container>
+      </GnuiContainer>
     );
   }}
 </Story>

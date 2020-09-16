@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components";
 import theme from "../../theme";
-import { Container, Flex } from "../container";
+import { GnuiContainer, Flex } from "../container";
 import { space, SpaceProps } from "styled-system";
 export interface CheckboxProps {
   name: string;
@@ -105,7 +105,7 @@ const CheckboxInput = styled.input`
   }
 `;
 
-const CheckboxWrapper = styled(Container)`
+const CheckboxWrapper = styled(GnuiContainer)`
   position: relative;
   ${SingleCheckWrapper} {
     margin-bottom: 1rem;

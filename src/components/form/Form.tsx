@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components";
 import theme from "../../theme";
-import { Container, Flex, ContainerProps } from "../container";
+import { GnuiContainer, Flex, GnuiContainerProps } from "../container";
 import { InputProps } from "../input";
 import { Button, ButtonProps } from "../button";
 
@@ -63,7 +63,7 @@ export const SubmitButton: FunctionComponent<InputProps> = ({
   />
 );
 
-export const Form: FunctionComponent<ContainerProps> = ({
+export const Form: FunctionComponent<GnuiContainerProps> = ({
   children,
   ...props
-}) => <Container {...props}>{children}</Container>;
+}) => <GnuiContainer {...props}>{children}</GnuiContainer>;
