@@ -1,11 +1,11 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, ReactNode } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { space, SpaceProps } from "styled-system";
 
-type ContainerProps = {
+export type ContainerProps = {
   width?: string;
-  children?: string;
+  children: ReactNode;
   margin?: string;
   [propName: string]: string | any;
 };

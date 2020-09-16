@@ -200,10 +200,10 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
           {options && options.length > 3 && (
             <Input
               type="search"
-              small
               name="filter"
               autoFocus
               noBorder
+              small
               value={search}
               onChange={(e: any) => setSearch(e.target.value)}
             />

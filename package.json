@@ -57,7 +57,8 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
-    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx)\""
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx)\"",
+    "check-types": "tsc"
   },
   "eslintConfig": {
     "extends": "react-app"
