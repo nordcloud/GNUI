@@ -18,7 +18,9 @@ import { GnuiContainer, Flex } from "../components/container";
 
 <Preview>
   <Story name="default">
-    <Button>Default button</Button>
+    <Button initialState="success" href>
+      Default button
+    </Button>
   </Story>
 </Preview>
 
@@ -56,14 +58,12 @@ import { GnuiContainer, Flex } from "../components/container";
 <Preview>
   <Story name="icons">
     <Flex justifyContent="space-evenly">
-      <Button icon="plus">
-        Size SM
-      </Button>
+      <Button icon="plus">Size SM</Button>
       <Button icon="plus" />
       <Button icon="plus" severity="medium">
         Size SM
       </Button>
-      <Button icon="plus" severity="medium"/>
+      <Button icon="plus" severity="medium" />
     </Flex>
   </Story>
 </Preview>
@@ -74,13 +74,21 @@ import { GnuiContainer, Flex } from "../components/container";
   <Story name="icons/default">
     <Flex justifyContent="space-evenly">
       <Button severity="low" icon="plus" />
-      <Button severity="low" icon="plus">Add something</Button>
+      <Button severity="low" icon="plus">
+        Add something
+      </Button>
       <Button severity="low" icon="edit" />
-      <Button severity="low" icon="edit">Edit</Button>
-      <Button severity="low" icon="trash"/>
-      <Button severity="low" icon="trash">Delete</Button>
-      <Button severity="low" icon="settings"/>
-      <Button severity="low" icon="settings">Settings</Button>
+      <Button severity="low" icon="edit">
+        Edit
+      </Button>
+      <Button severity="low" icon="trash" />
+      <Button severity="low" icon="trash">
+        Delete
+      </Button>
+      <Button severity="low" icon="settings" />
+      <Button severity="low" icon="settings">
+        Settings
+      </Button>
     </Flex>
   </Story>
 </Preview>
@@ -91,13 +99,21 @@ import { GnuiContainer, Flex } from "../components/container";
   <Story name="icons/md">
     <Flex justifyContent="space-evenly">
       <Button severity="low" size="md" icon="plus" />
-      <Button severity="low" size="md" icon="plus">Add something</Button>
+      <Button severity="low" size="md" icon="plus">
+        Add something
+      </Button>
       <Button severity="low" size="md" icon="edit" />
-      <Button severity="low" size="md" icon="edit" title="Edit">Edit</Button>
-      <Button severity="low" size="md" icon="trash"/>
-      <Button severity="low" size="md" icon="trash">Delete</Button>
-      <Button severity="low" size="md" icon="settings"/>
-      <Button severity="low" size="md" icon="settings">Settings</Button>
+      <Button severity="low" size="md" icon="edit" title="Edit">
+        Edit
+      </Button>
+      <Button severity="low" size="md" icon="trash" />
+      <Button severity="low" size="md" icon="trash">
+        Delete
+      </Button>
+      <Button severity="low" size="md" icon="settings" />
+      <Button severity="low" size="md" icon="settings">
+        Settings
+      </Button>
     </Flex>
   </Story>
 </Preview>
@@ -108,13 +124,21 @@ import { GnuiContainer, Flex } from "../components/container";
   <Story name="icons/sm">
     <Flex justifyContent="space-evenly">
       <Button severity="low" size="sm" icon="plus" />
-      <Button severity="low" size="sm" icon="plus">Add something</Button>
+      <Button severity="low" size="sm" icon="plus">
+        Add something
+      </Button>
       <Button severity="low" size="sm" icon="edit" />
-      <Button severity="low" size="sm" icon="edit">Edit</Button>
-      <Button severity="low" size="sm" icon="trash"/>
-      <Button severity="low" size="sm" icon="trash">Delete</Button>
-      <Button severity="low" size="sm" icon="settings"/>
-      <Button severity="low" size="sm" icon="settings">Settings</Button>
+      <Button severity="low" size="sm" icon="edit">
+        Edit
+      </Button>
+      <Button severity="low" size="sm" icon="trash" />
+      <Button severity="low" size="sm" icon="trash">
+        Delete
+      </Button>
+      <Button severity="low" size="sm" icon="settings" />
+      <Button severity="low" size="sm" icon="settings">
+        Settings
+      </Button>
     </Flex>
   </Story>
 </Preview>
@@ -200,5 +224,15 @@ import { GnuiContainer, Flex } from "../components/container";
         </Button>
       </p>
     </GnuiContainer>
+  </Story>
+</Preview>
+
+## Button as a Link
+
+<Preview>
+  <Story name="button-link">
+    <Button to="http://google.com" target="_blank">
+      Link to
+    </Button>
   </Story>
 </Preview>

@@ -21,7 +21,9 @@ export interface ButtonProps {
   className?: string;
   title?: string;
   onClick?: (e: any) => void;
-
+  as?: any;
+  to?: string;
+  href?: boolean;
   outline?: boolean;
   secondary?: boolean;
 }
@@ -139,7 +141,7 @@ const StyledButton = styled.button<ButtonProps>`
   font-size: ${theme.fontSizes.md};
   line-height: ${theme.lineHeight};
   transition: ${theme.transition};
-  display: flex;
+  display: ${({ href }) => (href ? "inline-flex" : "flex")};
   flex-direction: ${(props: ButtonProps) =>
     props.iconRight ? "row-reverse" : "row"};
   align-items: center;
@@ -275,35 +277,36 @@ export const Button: FunctionComponent<ButtonProps & SpaceProps> = ({
   children,
   icon,
   initialState,
+  to,
   ...props
 }) => {
   switch (initialState) {
     case "success":
       return (
         <>
-          <StyledButton {...props}>
+          <StyledButton as={to ? "a" : "button"} href={to} {...props}>
             <SVGIcon name="success" />
-            {children ? <span>{children}</span> : <></>}
+            {children && <span>{children}</span>}
           </StyledButton>
         </>
       );
     case "error":
       return (
         <>
-          <StyledButton {...props}>
+          <StyledButton as={to ? "a" : "button"} href={to} {...props}>
             <SVGIcon name="danger" />
-            {children ? <span>{children}</span> : <></>}
+            {children && <span>{children}</span>}
           </StyledButton>
         </>
       );
     case "loading":
       return (
         <>
-          <StyledButton {...props}>
-            <div className={"spinner"}>
+          <StyledButton as={to ? "a" : "button"} href={to} {...props}>
+            <div className="spinner">
               <Spinner size="sm" />
             </div>
-            {children ? <span>{children}</span> : <></>}
+            {children && <span>{children}</span>}
           </StyledButton>
         </>
       );
@@ -311,12 +314,12 @@ export const Button: FunctionComponent<ButtonProps & SpaceProps> = ({
       return (
         <>
           {icon ? (
-            <StyledButton {...props}>
+            <StyledButton as={to ? "a" : "button"} href={to} {...props}>
               <SVGIcon name={icon} />
-              {children ? <span>{children}</span> : <></>}
+              {children && <span>{children}</span>}
             </StyledButton>
           ) : (
-            <StyledButton {...props}>
+            <StyledButton as={to ? "a" : "button"} href={to} {...props}>
               <span>{children}</span>
             </StyledButton>
           )}
