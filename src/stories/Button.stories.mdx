@@ -227,11 +227,21 @@ import { GnuiContainer, Flex } from "../components/container";
   </Story>
 </Preview>
 
-## Button as a Link
+## Button as a Link (default)
 
 <Preview>
-  <Story name="button-link">
-    <Button to="http://google.com" target="_blank">
+  <Story name="button link">
+    <Button linkTo="http://google.com" target="_blank">
+      Link to
+    </Button>
+  </Story>
+</Preview>
+
+## Button as a Link with "block" props
+
+<Preview>
+  <Story name="button link block">
+    <Button block linkTo="http://google.com" target="_blank">
       Link to
     </Button>
   </Story>
