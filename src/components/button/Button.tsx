@@ -21,9 +21,8 @@ export interface ButtonProps {
   className?: string;
   title?: string;
   onClick?: (e: any) => void;
-  as?: any;
+  as?: React.ElementType | "a" | "button";
   to?: string;
-  href?: boolean;
   outline?: boolean;
   secondary?: boolean;
 }
@@ -141,7 +140,7 @@ const StyledButton = styled.button<ButtonProps>`
   font-size: ${theme.fontSizes.md};
   line-height: ${theme.lineHeight};
   transition: ${theme.transition};
-  display: ${({ href }) => (href ? "inline-flex" : "flex")};
+  display: ${({ to }) => (to ? "inline-flex" : "flex")};
   flex-direction: ${(props: ButtonProps) =>
     props.iconRight ? "row-reverse" : "row"};
   align-items: center;
@@ -283,12 +282,10 @@ export const Button: FunctionComponent<ButtonProps & SpaceProps> = ({
   switch (initialState) {
     case "success":
       return (
-        <>
-          <StyledButton as={to ? "a" : "button"} href={to} {...props}>
-            <SVGIcon name="success" />
-            {children && <span>{children}</span>}
-          </StyledButton>
-        </>
+        <StyledButton as={to ? "a" : "button"} href={to} {...props}>
+          <SVGIcon name="success" />
+          {children && <span>{children}</span>}
+        </StyledButton>
       );
     case "error":
       return (
