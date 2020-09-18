@@ -110,7 +110,7 @@ export const Tooltip: FunctionComponent<ITooltip> = ({
   children,
   hideTimeout = 100,
   showTimeout = 300,
-  minWidth = "0rem",
+  minWidth = "0",
 }) => {
   const tooltipRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const wrapperRef = useRef() as React.MutableRefObject<HTMLInputElement>;
