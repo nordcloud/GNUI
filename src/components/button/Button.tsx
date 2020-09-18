@@ -141,8 +141,8 @@ const StyledButton = styled.button<ButtonProps>`
   font-size: ${theme.fontSizes.md};
   line-height: ${theme.lineHeight};
   transition: ${theme.transition};
-  display: ${({ linkTo }) => (linkTo ? "inline-flex" : "flex")};
-  display: ${({ display }) => display || ""};
+  display: ${({ display, linkTo }) =>
+    !display && linkTo ? "inline-flex" : display || "flex"};
   flex-direction: ${(props: ButtonProps) =>
     props.iconRight ? "row-reverse" : "row"};
   align-items: center;
