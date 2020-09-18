@@ -23,7 +23,7 @@ export interface ButtonProps {
   onClick?: (e: any) => void;
   as?: React.ElementType | "a" | "button";
   linkTo?: string;
-  block?: boolean;
+  display?: "flex" | "inline-flex";
   outline?: boolean;
   secondary?: boolean;
 }
@@ -141,7 +141,8 @@ const StyledButton = styled.button<ButtonProps>`
   font-size: ${theme.fontSizes.md};
   line-height: ${theme.lineHeight};
   transition: ${theme.transition};
-  display: ${({ block }) => (block ? "flex" : "inline-flex")};
+  display: ${({ linkTo }) => (linkTo ? "inline-flex" : "flex")};
+  display: ${({ display }) => display || ""};
   flex-direction: ${(props: ButtonProps) =>
     props.iconRight ? "row-reverse" : "row"};
   align-items: center;
@@ -278,7 +279,7 @@ export const Button: FunctionComponent<ButtonProps & SpaceProps> = ({
   icon,
   initialState,
   linkTo,
-  block,
+  display,
   ...props
 }) => {
   switch (initialState) {
@@ -286,8 +287,9 @@ export const Button: FunctionComponent<ButtonProps & SpaceProps> = ({
       return (
         <StyledButton
           as={linkTo ? "a" : "button"}
-          block={block}
+          display={display}
           href={linkTo}
+          linkTo={linkTo}
           {...props}
         >
           <SVGIcon name="success" />
@@ -299,8 +301,9 @@ export const Button: FunctionComponent<ButtonProps & SpaceProps> = ({
         <>
           <StyledButton
             as={linkTo ? "a" : "button"}
-            block={block}
+            display={display}
             href={linkTo}
+            linkTo={linkTo}
             {...props}
           >
             <SVGIcon name="danger" />
@@ -313,8 +316,9 @@ export const Button: FunctionComponent<ButtonProps & SpaceProps> = ({
         <>
           <StyledButton
             as={linkTo ? "a" : "button"}
-            block={block}
+            display={display}
             href={linkTo}
+            linkTo={linkTo}
             {...props}
           >
             <div className="spinner">
@@ -330,8 +334,9 @@ export const Button: FunctionComponent<ButtonProps & SpaceProps> = ({
           {icon ? (
             <StyledButton
               as={linkTo ? "a" : "button"}
-              block={block}
+              display={display}
               href={linkTo}
+              linkTo={linkTo}
               {...props}
             >
               <SVGIcon name={icon} />
@@ -340,7 +345,8 @@ export const Button: FunctionComponent<ButtonProps & SpaceProps> = ({
           ) : (
             <StyledButton
               as={linkTo ? "a" : "button"}
-              block={block}
+              display={display}
+              linkTo={linkTo}
               href={linkTo}
               {...props}
             >
