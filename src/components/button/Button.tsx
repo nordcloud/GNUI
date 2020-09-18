@@ -21,7 +21,9 @@ export interface ButtonProps {
   className?: string;
   title?: string;
   onClick?: (e: any) => void;
-
+  as?: React.ElementType | "a" | "button";
+  linkTo?: string;
+  display?: "flex" | "inline-flex";
   outline?: boolean;
   secondary?: boolean;
 }
@@ -139,7 +141,8 @@ const StyledButton = styled.button<ButtonProps>`
   font-size: ${theme.fontSizes.md};
   line-height: ${theme.lineHeight};
   transition: ${theme.transition};
-  display: flex;
+  display: ${({ display, linkTo }) =>
+    !display && linkTo ? "inline-flex" : display || "flex"};
   flex-direction: ${(props: ButtonProps) =>
     props.iconRight ? "row-reverse" : "row"};
   align-items: center;
@@ -275,35 +278,53 @@ export const Button: FunctionComponent<ButtonProps & SpaceProps> = ({
   children,
   icon,
   initialState,
+  linkTo,
+  display,
   ...props
 }) => {
   switch (initialState) {
     case "success":
       return (
-        <>
-          <StyledButton {...props}>
-            <SVGIcon name="success" />
-            {children ? <span>{children}</span> : <></>}
-          </StyledButton>
-        </>
+        <StyledButton
+          as={linkTo ? "a" : "button"}
+          display={display}
+          href={linkTo}
+          linkTo={linkTo}
+          {...props}
+        >
+          <SVGIcon name="success" />
+          {children && <span>{children}</span>}
+        </StyledButton>
       );
     case "error":
       return (
         <>
-          <StyledButton {...props}>
+          <StyledButton
+            as={linkTo ? "a" : "button"}
+            display={display}
+            href={linkTo}
+            linkTo={linkTo}
+            {...props}
+          >
             <SVGIcon name="danger" />
-            {children ? <span>{children}</span> : <></>}
+            {children && <span>{children}</span>}
           </StyledButton>
         </>
       );
     case "loading":
       return (
         <>
-          <StyledButton {...props}>
-            <div className={"spinner"}>
+          <StyledButton
+            as={linkTo ? "a" : "button"}
+            display={display}
+            href={linkTo}
+            linkTo={linkTo}
+            {...props}
+          >
+            <div className="spinner">
               <Spinner size="sm" />
             </div>
-            {children ? <span>{children}</span> : <></>}
+            {children && <span>{children}</span>}
           </StyledButton>
         </>
       );
@@ -311,12 +332,24 @@ export const Button: FunctionComponent<ButtonProps & SpaceProps> = ({
       return (
         <>
           {icon ? (
-            <StyledButton {...props}>
+            <StyledButton
+              as={linkTo ? "a" : "button"}
+              display={display}
+              href={linkTo}
+              linkTo={linkTo}
+              {...props}
+            >
               <SVGIcon name={icon} />
-              {children ? <span>{children}</span> : <></>}
+              {children && <span>{children}</span>}
             </StyledButton>
           ) : (
-            <StyledButton {...props}>
+            <StyledButton
+              as={linkTo ? "a" : "button"}
+              display={display}
+              linkTo={linkTo}
+              href={linkTo}
+              {...props}
+            >
               <span>{children}</span>
             </StyledButton>
           )}
