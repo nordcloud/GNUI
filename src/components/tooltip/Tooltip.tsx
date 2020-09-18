@@ -7,6 +7,9 @@ interface ITooltip {
   position?: "left" | "right";
   status?: "danger" | "warning" | "success" | "notification";
   children?: React.ReactNode;
+  showTimeout?: number;
+  hideTimeout?: number;
+  minWidth?: string;
 }
 
 const setColor = (color: string) => {
@@ -42,8 +45,11 @@ const TooltipWrapper = styled.div`
   display: inline-block;
 `;
 
-const StyledTooltip = styled.div<ITooltip>`
+type StyledTooltipProps = Pick<ITooltip, "position" | "status" | "minWidth">;
+
+const StyledTooltip = styled.div<StyledTooltipProps>`
   position: absolute;
+  min-width: ${({ minWidth }) => minWidth};
   max-width: 16rem;
   font-size: ${theme.fontSizes.sm};
   line-height: 1rem;
@@ -102,6 +108,9 @@ export const Tooltip: FunctionComponent<ITooltip> = ({
   position,
   caption,
   children,
+  hideTimeout = 100,
+  showTimeout = 300,
+  minWidth = "0rem",
 }) => {
   const tooltipRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const wrapperRef = useRef() as React.MutableRefObject<HTMLInputElement>;
@@ -117,7 +126,7 @@ export const Tooltip: FunctionComponent<ITooltip> = ({
     const timer = () =>
       setTimeout(() => {
         setHovered(true);
-      }, 300);
+      }, showTimeout);
     setTimer(timer);
   };
 
@@ -126,13 +135,13 @@ export const Tooltip: FunctionComponent<ITooltip> = ({
     const timer = () =>
       setTimeout(() => {
         setHovered(false);
-      }, 100);
+      }, hideTimeout);
     setTimer(timer);
   };
 
   useEffect(() => {
     if (isHovered) {
-      let tooltipSize = tooltipRef.current.getBoundingClientRect();
+      const tooltipSize = tooltipRef.current.getBoundingClientRect();
       setPosition({
         marginTop: -(tooltipSize.height + 12),
         width: tooltipSize.width,
@@ -148,10 +157,10 @@ export const Tooltip: FunctionComponent<ITooltip> = ({
     >
       {isHovered && (
         <StyledTooltip
-          caption={caption}
           ref={tooltipRef}
           status={status}
           position={position}
+          minWidth={minWidth}
           style={
             position === "left"
               ? {
