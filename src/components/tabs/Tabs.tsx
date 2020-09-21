@@ -20,6 +20,7 @@ interface TabProps {
   index?: number;
   disabled?: boolean;
   buttons?: React.ReactNode;
+  buttonsJustify?: string;
 }
 
 interface TabsProps {
@@ -134,10 +135,16 @@ const Step = styled(Box)`
   }
 `;
 
-const TabsStatusButtons = styled.div`
+interface IStyledTabsStatusButtons {
+  buttonsJustify?: string;
+}
+
+const TabsStatusButtons = styled.div<IStyledTabsStatusButtons>`
   padding: ${theme.spacing.spacing04};
   border-top: ${theme.borders.grey};
   display: flex;
+  justify-content: ${({ buttonsJustify }) =>
+    buttonsJustify ? buttonsJustify : "space-between"};
   position: relative;
 `;
 
@@ -160,11 +167,7 @@ export const ButtonPrevious: FunctionComponent<ButtonPreviousProps> = ({
   onClick,
   children,
 }) => {
-  return (
-    <PreviousButton onClick={onClick}>
-      {children}
-    </PreviousButton>
-  );
+  return <PreviousButton onClick={onClick}>{children}</PreviousButton>;
 };
 
 export const ButtonNext: FunctionComponent<ButtonNextProps> = ({
@@ -184,6 +187,7 @@ export const Tab: FunctionComponent<TabProps> = ({
   disabled,
   onClick,
   buttons,
+  buttonsJustify,
 }) => {
   const className = activeTab === index ? "tab-active" : "tab";
   return (
@@ -193,6 +197,7 @@ export const Tab: FunctionComponent<TabProps> = ({
       key={index}
       disabled={disabled}
       buttons={buttons}
+      buttonsJustify={buttonsJustify}
     >
       {wizard ? (
         activeTab && index ? (
@@ -227,6 +232,7 @@ export const Tabs: FunctionComponent<TabsProps> = ({
               heading={child.props.heading}
               caption={child.props.caption}
               disabled={child.props.disabled}
+              buttonsJustify={child.props.buttonsJustify}
               onClick={child.props.disabled ? undefined : () => handleTab(key)}
             />
           );
@@ -236,12 +242,14 @@ export const Tabs: FunctionComponent<TabsProps> = ({
         {children.map((child, key) => {
           if (key !== step) return undefined;
           return (
-            <React.Fragment>
+            <>
               <TabsContent>{child.props.children}</TabsContent>
               {wizard && (
-                <TabsStatusButtons>{child.props.buttons}</TabsStatusButtons>
+                <TabsStatusButtons buttonsJustify={child.props.buttonsJustify}>
+                  {child.props.buttons}
+                </TabsStatusButtons>
               )}
-            </React.Fragment>
+            </>
           );
         })}
       </TabsCover>
