@@ -60,10 +60,12 @@ interface SidebarProps {
   </Story>
 </Preview>
 
-### sticky
+### footer
+
+You can pass Buttons to footer, and it will displayed at the bottom of the Sidebar.
 
 <Preview>
-  <Story name="sticky">
+  <Story name="footer">
     {() => {
       const [isOpen, setIsOpen] = useState(false);
       const Footer = () => (
@@ -85,9 +87,7 @@ interface SidebarProps {
             onClick={() => setIsOpen(!isOpen)}
             footer={Footer}
           >
-            Sidebar Content Sidebar Content Sidebar Content Sidebar Content
-            Sidebar Content Sidebar Content Sidebar Content Sidebar Content
-            Sidebar Content Sidebar Content Sidebar Content Sidebar Content
+            Sidebar Content
           </Sidebar>
         </Container>
       );

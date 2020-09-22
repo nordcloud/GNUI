@@ -5,7 +5,6 @@ import { space } from "styled-system";
 import { Text } from "../text";
 import { Button } from "../button";
 import { Icon } from "../icon";
-import { Container, Row, Col } from "react-awesome-styled-grid";
 import {
   ISidebarProps,
   IBackgroudProps,
@@ -46,7 +45,7 @@ const Content = styled(Text)`
   line-height: ${theme.lineHeight};
   font-size: ${theme.fontSizes.md};
   padding: ${theme.spacing.spacing06} 0;
-  margin: 0;
+  margin-bottom: 0;
 `;
 
 const SidebarMenu: any = styled.div<ISidebarProps>`
@@ -91,7 +90,8 @@ const CloseLayer: any = styled.div<ICloseLayer>`
 `;
 const Inner: any = styled.div<IInnerProps>`
   position: relative;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   overflow-x: hidden;
   overflow-y: scroll;
   ${bp("xs")`width: 100vw`};
@@ -111,18 +111,22 @@ const Inner: any = styled.div<IInnerProps>`
     `}
   z-index: 2;
 `;
-
+const Container = styled.div`
+  padding: 0 ${theme.spacing.spacing04};
+  flex: 1;
+`;
 const SidebarCloseButton = styled(Button)`
   padding: 0;
   z-index: ${theme.zindex.topoftheworld};
 `;
 
 const FooterSidebar = styled.div`
-  position: absolute;
+  position: sticky;
   bottom: 0;
   right: 0;
   left: 0;
   display: flex;
+  background-color: ${theme.colors.white};
   border-top: ${theme.borders.grey};
   line-height: ${theme.lineHeight};
   padding: ${theme.spacing.spacing04};
@@ -196,11 +200,7 @@ export const Sidebar: FunctionComponent<ISidebarProps> = ({
                 />
               </Header>
               <Container>
-                <Row>
-                  <Col>
-                    <Content>{children}</Content>
-                  </Col>
-                </Row>
+                <Content>{children}</Content>
               </Container>
               {Footer && (
                 <FooterSidebar>
