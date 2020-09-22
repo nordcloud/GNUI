@@ -91,7 +91,7 @@ import CopyToClipboard from "react-copy-to-clipboard";
 
 <Preview>
   <Story name="ui">
-    <Flex justifyContent="space-evenly">
+    <Flex justifyContent="space-evenly" style={{flexWrap: "wrap"}}>
       <CopyToClipboard text="danger">
         <SVGIcon name="danger" />
       </CopyToClipboard>
@@ -241,6 +241,15 @@ import CopyToClipboard from "react-copy-to-clipboard";
       </CopyToClipboard>
       <CopyToClipboard text="cloudSuccess">
         <SVGIcon name="cloudSuccess" />
+      </CopyToClipboard>
+      <CopyToClipboard text="proportional">
+        <SVGIcon name="proportional" />
+      </CopyToClipboard>
+      <CopyToClipboard text="equal">
+        <SVGIcon name="equal" />
+      </CopyToClipboard>
+      <CopyToClipboard text="gear">
+        <SVGIcon name="gear" />
       </CopyToClipboard>
     </Flex>
   </Story>
