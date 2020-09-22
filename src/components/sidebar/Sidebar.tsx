@@ -111,16 +111,13 @@ const Inner: any = styled.div<IInnerProps>`
     `}
   z-index: 2;
 `;
-interface IFooterSidebar {
-  children: any;
-}
 
 const SidebarCloseButton = styled(Button)`
   padding: 0;
   z-index: ${theme.zindex.topoftheworld};
 `;
 
-const FooterSidebar = styled.div<IFooterSidebar>`
+const FooterSidebar = styled.div`
   position: absolute;
   bottom: 0;
   right: 0;
@@ -151,7 +148,7 @@ export const Sidebar: FunctionComponent<ISidebarProps> = ({
   title,
   side,
   isOpen,
-  footer,
+  footer: Footer,
   onClick = () => undefined,
   ...props
 }) => {
@@ -170,6 +167,7 @@ export const Sidebar: FunctionComponent<ISidebarProps> = ({
       };
     }
   }, [isOpen, onClick]);
+
   return (
     <>
       <Background onClick={onClick} isOpen={isOpen} {...props}></Background>
@@ -204,7 +202,11 @@ export const Sidebar: FunctionComponent<ISidebarProps> = ({
                   </Col>
                 </Row>
               </Container>
-              {footer && <FooterSidebar>{footer()}</FooterSidebar>}
+              {Footer && (
+                <FooterSidebar>
+                  <Footer />
+                </FooterSidebar>
+              )}
             </>
           )}
         </Inner>
