@@ -1,5 +1,14 @@
 import { ButtonProps } from "../button";
 
+export interface ISidebarAction {
+  onAction: (
+    event: React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>
+  ) => void;
+  label: string;
+  disabled?: boolean;
+  severity: "low" | "medium" | "high";
+  order: number;
+}
 export interface ISidebarProps {
   children?: React.ReactNode;
   title?: string;
@@ -8,6 +17,7 @@ export interface ISidebarProps {
   width?: number | string;
   reverse?: boolean;
   onClick?: (e: any) => void;
+  footer?: React.ReactElement;
 }
 export interface IBackgroudProps {
   isOpen?: boolean;

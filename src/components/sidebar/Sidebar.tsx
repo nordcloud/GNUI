@@ -13,16 +13,21 @@ import {
   IInnerProps,
   SidebarButtonProps,
   HeaderProps,
-} from "./interfaces";
+} from "./types";
 
 const Header = styled.div<HeaderProps>`
+  position: sticky;
+  top: 0;
+  right: 0;
+  left: 0;
   display: flex;
   width: 100%;
   flex-wrap: nowrap;
   align-items: center;
   border-bottom: ${theme.borders.grey};
+  background-color: ${theme.colors.white};
   line-height: ${theme.lineHeight};
-  padding: ${theme.spacing.spacing06};
+  padding: ${theme.spacing.spacing04};
   margin: 0 auto;
   box-sizing: border-box;
   justify-content: ${({ reverse }) => (reverse ? "flex-end" : "space-between")};
@@ -85,6 +90,7 @@ const CloseLayer: any = styled.div<ICloseLayer>`
   z-index: 1;
 `;
 const Inner: any = styled.div<IInnerProps>`
+  position: relative;
   display: inline-block;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -92,6 +98,8 @@ const Inner: any = styled.div<IInnerProps>`
   ${bp("sm")`width: 50vw`};
   ${bp("md")`width: 45vw`};
   ${bp("lg")`width: 40vw`};
+  ${bp("xl")`width: 30rem`};
+  ${bp("xxl")`width: 30rem`};
   box-shadow: ${theme.shadow.shadow04};
   background-color: ${theme.colors.white};
   border-left: ${({ side }) => side !== "onLeft" && theme.borders.disabled};
@@ -103,10 +111,25 @@ const Inner: any = styled.div<IInnerProps>`
     `}
   z-index: 2;
 `;
+interface IFooterSidebar {
+  children: any;
+}
 
 const SidebarCloseButton = styled(Button)`
   padding: 0;
   z-index: ${theme.zindex.topoftheworld};
+`;
+
+const FooterSidebar = styled.div<IFooterSidebar>`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  border-top: ${theme.borders.grey};
+  line-height: ${theme.lineHeight};
+  padding: ${theme.spacing.spacing04};
+  justify-content: space-between;
 `;
 
 export const CloseButton = ({
@@ -128,6 +151,7 @@ export const Sidebar: FunctionComponent<ISidebarProps> = ({
   title,
   side,
   isOpen,
+  footer,
   onClick = () => undefined,
   ...props
 }) => {
@@ -146,7 +170,6 @@ export const Sidebar: FunctionComponent<ISidebarProps> = ({
       };
     }
   }, [isOpen, onClick]);
-
   return (
     <>
       <Background onClick={onClick} isOpen={isOpen} {...props}></Background>
@@ -181,6 +204,7 @@ export const Sidebar: FunctionComponent<ISidebarProps> = ({
                   </Col>
                 </Row>
               </Container>
+              {footer && <FooterSidebar>{footer()}</FooterSidebar>}
             </>
           )}
         </Inner>

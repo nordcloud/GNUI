@@ -6,19 +6,21 @@ import { Button } from "../components/button";
 <Meta title="Components/Modal" component={Modal} />
 
 # Modal
-> Please take a look at props to understand correctly how `Modal` works.
 
+> Please take a look at props to understand correctly how `Modal` works.
 
 ### Props
 
 - `onClose`: (event: `React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>`) => void - **required**
-- `actions`: Array<{ 
-  * `order`: number - **required** from left to right
-  * `onAction`: (event: `React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>`) => void; - **required**
-  * `severity`: "low" | "medium" | "high" - **required**
-  * `disabled`: boolean - _optional_
-  
+- `actions`: Array<{
+
+  - `order`: number - **required** from left to right
+  - `onAction`: (event: `React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>`) => void; - **required**
+  - `severity`: "low" | "medium" | "high" - **required**
+  - `disabled`: boolean - _optional_
+
   }> — _optional_
+
 - `appId`: string - _optional_
 - `contentMaxHeight`: string - _optional_, default `25rem`
 - `modalMinWidth`: string - _optional_, default `18.75rem`
@@ -28,13 +30,13 @@ import { Button } from "../components/button";
 <Preview>
   <Story name="basic modal">
     {() => {
-      const [isOpen, setOpen] = useState(false)
+      const [isOpen, setOpen] = useState(false);
       const update = () => setOpen(!isOpen);
-      
+
       return (
         <>
           <Button onClick={update}>Open modal</Button>
-          <Modal 
+          <Modal
             isOpen={isOpen}
             onAfterOpen={() => {}}
             onClose={update}
@@ -43,7 +45,7 @@ import { Button } from "../components/button";
             appId="#root"
           >
             This is modal content
-            <br />          
+            <br />
             Another line of content
           </Modal>
         </>
@@ -57,36 +59,36 @@ import { Button } from "../components/button";
 <Preview>
   <Story name="modal with actions">
     {() => {
-      const [isOpen, setOpen] = useState(false)
+      const [isOpen, setOpen] = useState(false);
       const update = () => setOpen(!isOpen);
-      
+
       return (
         <>
           <Button onClick={update}>Open modal</Button>
           <Modal
-              isOpen={isOpen}
-              onAfterOpen={() => {}}
-              onRequestClose={update}
-              onClose={update}
-              contentLabel={"Modal title"}
-              appId="#root"
-              actions={[
-                {
-                  order: 0,
-                  onAction: update,
-                  label: "Second action",
-                  severity: "low",
-                },
-                {
-                  order: 1,
-                  onAction: update,
-                  label: "Primary action",
-                  severity: "high",
-                },
-              ]}
-            >
+            isOpen={isOpen}
+            onAfterOpen={() => {}}
+            onRequestClose={update}
+            onClose={update}
+            contentLabel={"Modal title"}
+            appId="#root"
+            actions={[
+              {
+                order: 0,
+                onAction: update,
+                label: "Second action",
+                severity: "low",
+              },
+              {
+                order: 1,
+                onAction: update,
+                label: "Primary action",
+                severity: "high",
+              },
+            ]}
+          >
             This is modal content
-            <br />          
+            <br />
             Another line of content
           </Modal>
         </>
@@ -100,13 +102,13 @@ import { Button } from "../components/button";
 <Preview>
   <Story name="confirm modal">
     {() => {
-      const [isOpen, setOpen] = useState(false)
+      const [isOpen, setOpen] = useState(false);
       const update = () => setOpen(!isOpen);
-      const action = () => alert('Deleted')
+      const action = () => alert("Deleted");
       return (
         <>
           <Button onClick={update}>Open modal</Button>
-          <ModalConfirm 
+          <ModalConfirm
             contentLabel="Account"
             isOpen={isOpen}
             confirm={action}
