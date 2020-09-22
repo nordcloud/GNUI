@@ -141,6 +141,7 @@ const StyledButton = styled.button<ButtonProps>`
   font-size: ${theme.fontSizes.md};
   line-height: ${theme.lineHeight};
   transition: ${theme.transition};
+  text-decoration: none;
   display: ${({ display, linkTo }) =>
     !display && linkTo ? "inline-flex" : display || "flex"};
   flex-direction: ${(props: ButtonProps) =>
