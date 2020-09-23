@@ -24,7 +24,7 @@ const Header = styled.div<HeaderProps>`
   flex-wrap: nowrap;
   align-items: center;
   border-bottom: ${theme.borders.grey};
-  background-color: ${theme.colors.white};
+  background-color: ${theme.colors.snowWhite};
   line-height: ${theme.lineHeight};
   padding: ${theme.spacing.spacing04};
   margin: 0 auto;
@@ -101,7 +101,7 @@ const Inner: any = styled.div<IInnerProps>`
   ${bp("xl")`width: 30rem`};
   ${bp("xxl")`width: 30rem`};
   box-shadow: ${theme.shadow.shadow04};
-  background-color: ${theme.colors.white};
+  background-color: ${theme.colors.snowWhite};
   border-left: ${({ side }) => side !== "onLeft" && theme.borders.disabled};
   border-right: ${({ side }) => side === "onLeft" && theme.borders.disabled};
   ${({ width }) =>
@@ -126,7 +126,7 @@ const FooterSidebar = styled.div`
   right: 0;
   left: 0;
   display: flex;
-  background-color: ${theme.colors.white};
+  background-color: ${theme.colors.snowWhite};
   border-top: ${theme.borders.grey};
   line-height: ${theme.lineHeight};
   padding: ${theme.spacing.spacing04};
