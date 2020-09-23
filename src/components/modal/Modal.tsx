@@ -10,7 +10,7 @@ import {
   IModal,
   IStyledModal,
   IBackgroudProps,
-} from "./interfaces";
+} from "./types";
 const MODAL_ACTION_HEIGHT = "5.625rem";
 
 export const StyledModal = styled.div<IStyledModal>`
@@ -152,6 +152,7 @@ export const Modal = ({
                   .sort((a, b) => a.order || 0 - b.order || 0)
                   .map((action, idx) => (
                     <ModalAction
+                      title={action.label}
                       key={`modal-action-${idx}`}
                       severity={action.severity}
                       onClick={action.onAction}

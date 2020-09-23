@@ -21,6 +21,21 @@ import { Icon } from "../components/icon";
   needs to provide element (button, link, etc) to open it.
 </Description>
 
+## Props
+
+```typescript
+interface SidebarProps {
+  children?: React.ReactNode;
+  title?: string;
+  isOpen?: boolean;
+  side?: "onLeft" | "onRight";
+  width?: number | string;
+  onClick?: (e: any) => void;
+}
+```
+
+### default
+
 <Preview>
   <Story name="default">
     {() => {
@@ -45,18 +60,40 @@ import { Icon } from "../components/icon";
   </Story>
 </Preview>
 
-## Props
+### footer
 
-```typescript
-interface SidebarProps {
-  children?: React.ReactNode;
-  title?: string;
-  isOpen?: boolean;
-  side?: "onLeft" | "onRight";
-  width?: number | string;
-  onClick?: (e: any) => void;
-}
-```
+You can pass Buttons to footer, and it will displayed at the bottom of the Sidebar.
+
+<Preview>
+  <Story name="footer">
+    {() => {
+      const [isOpen, setIsOpen] = useState(false);
+      const Footer = () => (
+        <>
+          <Button onClick={() => setIsOpen(!isOpen)}>Cancel</Button>
+          <Button>Update</Button>
+        </>
+      );
+      return (
+        <Container>
+          <Row justify="center">
+            <Button onClick={() => setIsOpen(!isOpen)}>
+              Click button to open sidebar
+            </Button>
+          </Row>
+          <Sidebar
+            title="Default sidebar"
+            isOpen={isOpen}
+            onClick={() => setIsOpen(!isOpen)}
+            footer={Footer}
+          >
+            Sidebar Content
+          </Sidebar>
+        </Container>
+      );
+    }}
+  </Story>
+</Preview>
 
 ### side
 

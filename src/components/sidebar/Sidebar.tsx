@@ -5,7 +5,6 @@ import { space } from "styled-system";
 import { Text } from "../text";
 import { Button } from "../button";
 import { Icon } from "../icon";
-import { Container, Row, Col } from "react-awesome-styled-grid";
 import {
   ISidebarProps,
   IBackgroudProps,
@@ -13,16 +12,21 @@ import {
   IInnerProps,
   SidebarButtonProps,
   HeaderProps,
-} from "./interfaces";
+} from "./types";
 
 const Header = styled.div<HeaderProps>`
+  position: sticky;
+  top: 0;
+  right: 0;
+  left: 0;
   display: flex;
   width: 100%;
   flex-wrap: nowrap;
   align-items: center;
   border-bottom: ${theme.borders.grey};
+  background-color: ${theme.colors.snowWhite};
   line-height: ${theme.lineHeight};
-  padding: ${theme.spacing.spacing06};
+  padding: ${theme.spacing.spacing04};
   margin: 0 auto;
   box-sizing: border-box;
   justify-content: ${({ reverse }) => (reverse ? "flex-end" : "space-between")};
@@ -41,7 +45,7 @@ const Content = styled(Text)`
   line-height: ${theme.lineHeight};
   font-size: ${theme.fontSizes.md};
   padding: ${theme.spacing.spacing06} 0;
-  margin: 0;
+  margin-bottom: 0;
 `;
 
 const SidebarMenu: any = styled.div<ISidebarProps>`
@@ -85,15 +89,19 @@ const CloseLayer: any = styled.div<ICloseLayer>`
   z-index: 1;
 `;
 const Inner: any = styled.div<IInnerProps>`
-  display: inline-block;
+  position: relative;
+  display: flex;
+  flex-direction: column;
   overflow-x: hidden;
   overflow-y: scroll;
   ${bp("xs")`width: 100vw`};
   ${bp("sm")`width: 50vw`};
   ${bp("md")`width: 45vw`};
   ${bp("lg")`width: 40vw`};
+  ${bp("xl")`width: 30rem`};
+  ${bp("xxl")`width: 30rem`};
   box-shadow: ${theme.shadow.shadow04};
-  background-color: ${theme.colors.white};
+  background-color: ${theme.colors.snowWhite};
   border-left: ${({ side }) => side !== "onLeft" && theme.borders.disabled};
   border-right: ${({ side }) => side === "onLeft" && theme.borders.disabled};
   ${({ width }) =>
@@ -103,10 +111,26 @@ const Inner: any = styled.div<IInnerProps>`
     `}
   z-index: 2;
 `;
-
+const Container = styled.div`
+  padding: 0 ${theme.spacing.spacing04};
+  flex: 1;
+`;
 const SidebarCloseButton = styled(Button)`
   padding: 0;
   z-index: ${theme.zindex.topoftheworld};
+`;
+
+const FooterSidebar = styled.div`
+  position: sticky;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  background-color: ${theme.colors.snowWhite};
+  border-top: ${theme.borders.grey};
+  line-height: ${theme.lineHeight};
+  padding: ${theme.spacing.spacing04};
+  justify-content: space-between;
 `;
 
 export const CloseButton = ({
@@ -128,6 +152,7 @@ export const Sidebar: FunctionComponent<ISidebarProps> = ({
   title,
   side,
   isOpen,
+  footer: Footer,
   onClick = () => undefined,
   ...props
 }) => {
@@ -175,12 +200,13 @@ export const Sidebar: FunctionComponent<ISidebarProps> = ({
                 />
               </Header>
               <Container>
-                <Row>
-                  <Col>
-                    <Content>{children}</Content>
-                  </Col>
-                </Row>
+                <Content>{children}</Content>
               </Container>
+              {Footer && (
+                <FooterSidebar>
+                  <Footer />
+                </FooterSidebar>
+              )}
             </>
           )}
         </Inner>
