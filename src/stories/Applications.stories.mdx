@@ -1,0 +1,101 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Col, Row } from "react-awesome-styled-grid";
+import theme from "../theme";
+import { Flex } from "../components/container";
+import { Box } from "../components/box";
+import {
+  Accordion,
+  AccordionHeader,
+  AccordionItem,
+} from "../components/accordion";
+import { Text } from "../components/text";
+import { PieChart } from "../components/piechart";
+import { SVGIcon } from "../components/svgicon";
+import { Tooltip } from "../components/tooltip";
+
+<Meta title="Pages/Applications" />
+
+<Preview>
+  <Story name="default">
+    <Box style={{ maxWidth: "1440px" }}>
+      <Box
+        mb={theme.spacing.spacing02}
+        p="0"
+        shadow="shadow00"
+        pt={theme.spacing.spacing02}
+      >
+        <Row>
+          <Col lg={8}>
+            <Flex>
+              <Tooltip
+                status="danger"
+                caption="13% more than AUG, 2020"
+                position="left"
+              >
+                <PieChart
+                  progress={13}
+                  size={52}
+                  strokeWidth={8}
+                  color="danger"
+                >
+                  <SVGIcon name="forecastUp" color="danger" />
+                </PieChart>
+              </Tooltip>
+              <div>
+                <Text
+                  size="lg"
+                  weight="medium"
+                  tag="div"
+                  mb={theme.spacing.spacing01}
+                  ml={theme.spacing.spacing04}
+                >
+                  CADROBOTS
+                </Text>
+                <Flex>
+                  <Text size="sm" tag="span" ml={theme.spacing.spacing04}>
+                    3 environments
+                  </Text>
+                  <Text size="sm" tag="span" ml={theme.spacing.spacing04}>
+                    86 estate records
+                  </Text>
+                </Flex>
+              </div>
+            </Flex>
+          </Col>
+          <Col lg={4}>
+            <Text
+              size="lg"
+              weight="medium"
+              tag="div"
+              align="right"
+              mr={theme.spacing.spacing03}
+              mb={theme.spacing.spacing01}
+            >
+              $ 341.54
+            </Text>
+            <Text
+              size="sm"
+              tag="span"
+              align="right"
+              mr={theme.spacing.spacing02}
+            >
+              Monthly Forecast:
+              <Text size="sm" tag="span" ml={theme.spacing.spacing04}>
+                $ 573.64
+              </Text>
+            </Text>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Accordion mt={theme.spacing.spacing03}>
+              <AccordionHeader small title="List of Environments">
+                <AccordionItem>Details</AccordionItem>
+              </AccordionHeader>
+            </Accordion>
+          </Col>
+        </Row>
+      </Box>
+    </Box>
+  </Story>
+</Preview>
