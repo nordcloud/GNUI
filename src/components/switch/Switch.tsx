@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import theme from "../../theme";
 
 export interface SwitchProps {
-  name?:string;
+  name?: string;
   isChecked?: boolean;
   labelText?: string;
   severity?: "danger" | "notification" | "warning" | "success";
@@ -103,7 +103,7 @@ export const Switch: FunctionComponent<SwitchProps> = ({
   position,
   labelText,
   handleSelect,
-  isChecked = false
+  isChecked = false,
 }) => {
   return (
     <SwitchLabel htmlFor={name}>
@@ -114,7 +114,7 @@ export const Switch: FunctionComponent<SwitchProps> = ({
         <SwitchInput
           type="checkbox"
           id={name}
-          isChecked={isChecked}
+          checked={isChecked}
           severity={severity}
           className={isChecked ? "active" : ""}
           onChange={() => handleSelect && handleSelect(!isChecked)}
