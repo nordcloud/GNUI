@@ -19,7 +19,4 @@ export const SetGlobalStyle = createGlobalStyle`
     font-family: ${theme.typography.fonts.body};
     font-weight: ${theme.fontWeights.regular};
   }
-  a, a:visited {
-    text-decoration: none !important;
-  }
 `;
