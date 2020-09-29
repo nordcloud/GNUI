@@ -1,118 +1,146 @@
 import React, { FunctionComponent, useState } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
-import { Icon, IconProps } from "../icon";
+import { space, SpaceProps } from "styled-system";
+import { SVGIcon } from "../svgicon";
 
 interface AccordionProps {
-    children: any;
+  children: any;
 }
 
 interface AccordionHeaderProps {
-    title: string;
-    description?: string;
-    children: any;
+  title: string;
+  description?: string;
+  children: any;
+  small?: boolean;
 }
 
 interface AccordionItemProps {
-    children: string | number | any;
+  children: string | number | any;
 }
 
-interface HeaderIconProps extends IconProps {
-    animate?: boolean;
+interface HeaderIconProps {
+  animate?: boolean;
 }
 
 interface StyledHeaderProps {
-    isOpen?: boolean;
+  isOpen?: boolean;
+  small?: boolean;
 }
+
+const StyledAccordion = styled.div`
+  ${space}
+`;
 
 const StyledAccordionItem = styled.div`
   padding: ${theme.spacing.spacing03};
+  background-color: ${theme.colors.lights[0]};
+  border: 1px solid ${theme.colors.lights[2]};
+  border-radius: ${theme.radius.md};
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 `;
 
 const StyledHeader = styled.div<StyledHeaderProps>`
-    height: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    background-color: ${theme.colors.lights[1]};
-    border-bottom: 1px solid ${theme.colors.lights[0]};
-    padding: ${theme.spacing.spacing03};
-    ${({ isOpen }) =>
+  font-weight: ${theme.fontWeights.medium};
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: ${theme.colors.lights[1]};
+  padding: ${theme.spacing.spacing03};
+  border-radius: ${theme.radius.md};
+  border: 1px solid ${theme.colors.lights[2]};
+  &:hover {
+    cursor: pointer;
+    background-color: ${theme.colors.lights[2]};
+  }
+  ${({ small }) =>
+    small &&
+    css`
+      font-size: ${theme.fontSizes.sm};
+      line-height: 1.5em;
+      padding: ${theme.spacing.spacing02};
+      svg {
+        width: 1.125rem;
+        height: 1.125rem;
+      }
+    `}
+  ${({ isOpen }) =>
     isOpen &&
     css`
-        background-color: ${theme.colors.lights[2]};
+      background-color: ${theme.colors.lights[2]};
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
     `}
 `;
 
 const HeaderTitle = styled.span`
-  font-weight: 500;
-  margin-left: ${theme.spacing.spacing03};
+  margin-left: ${theme.spacing.spacing02};
 `;
 
 const HeaderDescription = styled.div`
   color: ${theme.colors.darks[1]};
-  font-size: 0.75rem;
+  font-size: ${theme.fontSizes.sm};
   margin-left: auto;
+  font-weight: ${theme.fontWeights.regular};
 `;
 
-export const HeaderIcon = styled(Icon)<HeaderIconProps>`
-    margin: ${theme.spacing.spacing01};
-    display: inline-block;  
+export const HeaderIcon = styled.div<HeaderIconProps>`
+  display: flex;
+  svg {
     transition: ${theme.transition};
+    transform-origin: center;
     transform: rotate(-90deg);
-    ${({ animate }) =>
+  }
+  ${({ animate }) =>
     animate &&
     css`
-        transform: rotate(0deg);
+      svg {
+        transform: rotate(0);
+        transform-origin: center;
         transition: ${theme.transition};
+      }
     `}
 `;
 
 export const AccordionItem: FunctionComponent<AccordionItemProps> = ({
-    children,
-    ...props
-    }) => {
-        return (
-            <StyledAccordionItem {...props}>
-                {children}
-            </StyledAccordionItem>
-        );
-}
+  children,
+  ...props
+}) => {
+  return <StyledAccordionItem {...props}>{children}</StyledAccordionItem>;
+};
 
 export const AccordionHeader: FunctionComponent<AccordionHeaderProps> = ({
-    title,
-    description,
-    children
-    }) => {
-        const [isOpen, toggleIsOpen] = useState(false);
-        return (
-            <>
-                <StyledHeader onClick={() => children && toggleIsOpen(!isOpen)} isOpen={isOpen}>
-                    {children && <HeaderIcon
-                        width="1rem"
-                        height="1rem"
-                        image="ARROW_BOTTOM"
-                        animate={isOpen}
-                        />}
-                    <HeaderTitle>
-                        {title}
-                    </HeaderTitle>
+  title,
+  description,
+  children,
+  small,
+}) => {
+  const [isOpen, toggleIsOpen] = useState(false);
+  return (
+    <>
+      <StyledHeader
+        onClick={() => children && toggleIsOpen(!isOpen)}
+        isOpen={isOpen}
+        small={small}
+      >
+        {children && (
+          <HeaderIcon animate={isOpen}>
+            <SVGIcon name="down" />
+          </HeaderIcon>
+        )}
+        <HeaderTitle>{title}</HeaderTitle>
 
-                    <HeaderDescription>
-                        {description}
-                    </HeaderDescription>
-                </StyledHeader>
-                {isOpen && children}
-            </>
-        )
-    }
+        <HeaderDescription>{description}</HeaderDescription>
+      </StyledHeader>
+      {isOpen && children}
+    </>
+  );
+};
 
-export const Accordion: FunctionComponent<AccordionProps> = ({
-    children
-  }) => {
-    return (
-        <div>
-            {children}
-        </div>
-    );
-  };
+export const Accordion: FunctionComponent<AccordionProps & SpaceProps> = ({
+  children,
+  ...props
+}) => {
+  return <StyledAccordion {...props}>{children}</StyledAccordion>;
+};
