@@ -1,14 +1,11 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, ComponentPropsWithoutRef } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 
-export interface SwitchProps {
-  id: string;
-  isChecked: boolean;
+export interface SwitchProps extends ComponentPropsWithoutRef<"input"> {
   labelText?: string;
   severity?: "danger" | "notification" | "warning" | "success";
   position?: "left" | "right";
-  handleSelect: (value: boolean) => void;
 }
 
 const setColor = (color: string) => {
@@ -98,12 +95,11 @@ const Inner = styled.div`
 `;
 
 export const Switch: FunctionComponent<SwitchProps> = ({
-  id,
-  severity,
+  severity = "success",
   position = "right",
   labelText = "",
-  handleSelect,
-  isChecked = false,
+  id,
+  ...props
 }) => {
   const showLabel = labelText.length > 0;
   return (
@@ -112,14 +108,7 @@ export const Switch: FunctionComponent<SwitchProps> = ({
         <LabelText position={position}>{labelText}</LabelText>
       )}
       <SwitchContainer>
-        <SwitchInput
-          type="checkbox"
-          id={id}
-          checked={isChecked}
-          severity={severity}
-          className={isChecked ? "active" : ""}
-          onChange={() => handleSelect(!isChecked)}
-        />
+        <SwitchInput type="checkbox" id={id} severity={severity} {...props} />
         <Inner className="inner" />
       </SwitchContainer>
       {showLabel && position === "right" && (
