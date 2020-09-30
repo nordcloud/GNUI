@@ -21,6 +21,7 @@ const Header = styled.div<HeaderProps>`
   left: 0;
   display: flex;
   width: 100%;
+  z-index: 1;
   flex-wrap: nowrap;
   align-items: center;
   border-bottom: ${theme.borders.grey};
