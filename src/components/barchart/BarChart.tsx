@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { space } from "styled-system";
 
@@ -16,18 +16,22 @@ interface IStyledBarProps {
   height?: string;
 }
 
-const StyledBarChart = styled.svg`
+const StyledBarChart = styled.svg<IStyledBarProps>`
   width: 100%;
-  height: ${(props: IStyledBarProps) =>
-    props.height ? props.height : "1.5rem"};
+  height: 1.5rem;
   border-radius: ${theme.radiusDefault};
+  ${({ height }) =>
+    height &&
+    css`
+      height: ${height};
+    `};
   ${space};
 `;
 
 type BarProps = IBarValues & IStyledBarProps;
 
 export const BarChart = ({ values, ...visualProps }: BarProps) => {
-  const sum = values.reduce((s, { value }) => s + value, 0);
+  const sum = values.reduce((accumulator, { value }) => accumulator + value, 0);
   let x = 0;
   function calculateX(prevBarWidth: number) {
     return (x = x + prevBarWidth);
