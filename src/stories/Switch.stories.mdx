@@ -10,12 +10,12 @@ import theme from "../theme";
 
 #### Props
 
-- `name`: `string` — _optional_ - switch name
-- `isChecked`: `boolean` — _optional_ - switch value
+- `id`: `string` - id for label/input
+- `isChecked`: `boolean` - switch value
 - `labelText`: `string` — _optional_ - text to display in the label
 - `severity`: `"danger" | "notification" | "warning" | "success"` — _optional_ - color indicator status for switch
 - `position`: `"left" | "right"` — _optional_ - switch position
-- `handleSelect`: `() => boolean` — _optional_ - React `setState` to handle switch change
+- `handleSelect`: `(value: boolean) => void` - callback that passes new value on onChange event
 
 ## Default
 
@@ -54,24 +54,28 @@ import theme from "../theme";
         name="label1"
         severity="warning"
         labelText="My Switch Button Warning"
+        isChecked
       />
       <Spacer height="1rem" />
       <Switch
         name="label2"
         severity="danger"
         labelText="My Switch Button Danger"
+        isChecked
       />
       <Spacer height="1rem" />
       <Switch
         name="label3"
         severity="success"
         labelText="My Switch Button Success"
+        isChecked
       />
       <Spacer height="1rem" />
       <Switch
         name="label4"
         severity="notification"
         labelText="My Switch Button Notification"
+        isChecked
       />
     </GnuiContainer>
   </Story>

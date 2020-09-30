@@ -3,12 +3,12 @@ import styled, { css } from "styled-components";
 import theme from "../../theme";
 
 export interface SwitchProps {
-  name?: string;
-  isChecked?: boolean;
+  id: string;
+  isChecked: boolean;
   labelText?: string;
   severity?: "danger" | "notification" | "warning" | "success";
   position?: "left" | "right";
-  handleSelect?: (e: any) => void;
+  handleSelect: (value: boolean) => void;
 }
 
 const setColor = (color: string) => {
@@ -17,7 +17,9 @@ const setColor = (color: string) => {
     : color;
 };
 
-const SwitchInput = styled.input<SwitchProps>`
+type SwitchInputProps = Pick<SwitchProps, "severity">;
+
+const SwitchInput = styled.input<SwitchInputProps>`
   opacity: 0;
   width: 0;
   height: 0;
@@ -31,15 +33,15 @@ const SwitchInput = styled.input<SwitchProps>`
       `}
 
     &:before {
-      -webkit-transform: translateX(1.45rem);
-      -ms-transform: translateX(1.45rem);
       transform: translateX(1.45rem);
       background-color: ${theme.colors.white};
     }
   }
 `;
 
-const LabelText = styled.div<SwitchProps>`
+type LabelTextProps = Pick<SwitchProps, "position">;
+
+const LabelText = styled.div<LabelTextProps>`
   display: inline-block;
   margin-right: ${theme.spacing.spacing02};
 
@@ -55,7 +57,7 @@ const LabelText = styled.div<SwitchProps>`
         `}
 `;
 
-const SwitchContainer = styled.div<SwitchProps>`
+const SwitchContainer = styled.div`
   position: relative;
   display: inline-block;
   width: 3rem;
@@ -77,7 +79,6 @@ const Inner = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  -webkit-transition: 0.4s;
   transition: 0.4s;
   border-radius: 0.75rem;
   border: ${theme.borders.disabled};
@@ -91,37 +92,37 @@ const Inner = styled.div`
     left: 2px;
     bottom: calc((100% - 1.125rem) / 2);
     background-color: ${theme.colors.lights[3]};
-    -webkit-transition: 0.4s;
     transition: 0.4s;
     border-radius: 50%;
   }
 `;
 
 export const Switch: FunctionComponent<SwitchProps> = ({
-  name,
+  id,
   severity,
-  position,
-  labelText,
+  position = "right",
+  labelText = "",
   handleSelect,
   isChecked = false,
 }) => {
+  const showLabel = labelText.length > 0;
   return (
-    <SwitchLabel htmlFor={name}>
-      {position === "left" && (
+    <SwitchLabel htmlFor={id}>
+      {showLabel && position === "left" && (
         <LabelText position={position}>{labelText}</LabelText>
       )}
       <SwitchContainer>
         <SwitchInput
           type="checkbox"
-          id={name}
+          id={id}
           checked={isChecked}
           severity={severity}
           className={isChecked ? "active" : ""}
-          onChange={() => handleSelect && handleSelect(!isChecked)}
+          onChange={() => handleSelect(!isChecked)}
         />
         <Inner className="inner" />
       </SwitchContainer>
-      {(position === "right" || position === undefined) && (
+      {showLabel && position === "right" && (
         <LabelText position={position}>{labelText}</LabelText>
       )}
     </SwitchLabel>
