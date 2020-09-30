@@ -33,3 +33,4 @@ export * from "./message";
 export * from "./svgicon";
 export * from "./loader";
 export * from "./piechart";
+export * from "./barchart";

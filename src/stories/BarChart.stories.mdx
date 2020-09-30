@@ -1,0 +1,42 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { BarChart } from "../components/barchart";
+import theme from "../theme";
+
+<Meta title="Components/BarChart" component={BarChart} />
+
+# BarChart
+
+## Props
+
+- `values`: array - **required**
+- `height`: string - **optional** - default is 1.5rem (24px)
+- You can use space props from styled-system
+
+## Array
+
+- `value`: number - **required**
+- `color`: string - **required**
+
+## Default
+
+<Preview>
+  <Story name="default">
+    {() => {
+      const values = [
+        {
+          value: 5629.75,
+          color: theme.colors.warning,
+        },
+        {
+          value: 106.28,
+          color: theme.colors.danger,
+        },
+        {
+          value: 99.66,
+          color: theme.colors.notification,
+        },
+      ];
+      return <BarChart values={values} />;
+    }}
+  </Story>
+</Preview>
