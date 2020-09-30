@@ -8,6 +8,7 @@ export interface ISidebarProps {
   width?: number | string;
   reverse?: boolean;
   onClick?: (e: any) => void;
+  footer?: React.ComponentType<any>;
 }
 export interface IBackgroudProps {
   isOpen?: boolean;

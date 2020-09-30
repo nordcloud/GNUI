@@ -32,11 +32,11 @@ const basicStyles = css<TextProps>`
   font-weight: ${theme.fontWeights.regular};
   font-size: ${theme.fontSizes.md};
   color: ${(props) => props.color || theme.colors.primary};
+  margin: 0 0 ${theme.spacing.spacing04} 0;
 `;
 
 const StyledText = styled.p<TextProps>`
-  ${basicStyles};
-  ${space};
+  ${basicStyles}
   ${({ size }) =>
     size &&
     css`
@@ -72,6 +72,7 @@ const StyledText = styled.p<TextProps>`
     css`
       color: ${theme.colors[color] || color};
     `}
+  ${space}
 `;
 
 const StyledCode = styled.code`
@@ -93,7 +94,3 @@ export const Text: FunctionComponent<TextProps & SpaceProps> = ({
 export const Code: FunctionComponent = ({ children, ...props }) => (
   <StyledCode {...props}>{children}</StyledCode>
 );
-
-Text.defaultProps = {
-  m: `0 0 ${theme.spacing.spacing04} 0`,
-};

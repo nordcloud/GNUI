@@ -141,6 +141,7 @@ const StyledButton = styled.button<ButtonProps>`
   font-size: ${theme.fontSizes.md};
   line-height: ${theme.lineHeight};
   transition: ${theme.transition};
+  text-decoration: none;
   display: ${({ display, linkTo }) =>
     !display && linkTo ? "inline-flex" : display || "flex"};
   flex-direction: ${(props: ButtonProps) =>
@@ -166,11 +167,11 @@ const StyledButton = styled.button<ButtonProps>`
     display: flex;
     align-items: center;
     justify-content: center;
+
     div {
       transition: ${theme.transition};
-      border-color: ${
-        theme.colors.snowWhite
-      } transparent transparent transparent;
+      border-color: ${theme.colors.snowWhite} transparent transparent
+        transparent;
     }
   }
 
@@ -179,13 +180,16 @@ const StyledButton = styled.button<ButtonProps>`
   }
 
   &:hover {
+    cursor: pointer;
+    color: ${theme.colors.lights[4]};
+    background: ${darken(0.1, theme.colors.primary)};
+    text-decoration: none;
+
     svg {
       fill: ${theme.colors.lights[4]};
     }
-    cursor: pointer;
-    color: ${theme.colors.lights[4]};
-    background: ${darken(0.1, theme.colors.primary)}};
   }
+
   &:active {
     color: ${theme.colors.darks[4]};
 
@@ -193,10 +197,12 @@ const StyledButton = styled.button<ButtonProps>`
       fill: ${theme.colors.darks[4]};
     }
   }
+
   &:disabled {
     background: ${theme.colors.lights[2]};
     border-color: transparent;
     color: ${theme.colors.lights[4]};
+
     &:hover {
       border-color: transparent;
       background: ${theme.colors.lights[2]};
