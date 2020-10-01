@@ -109,13 +109,13 @@ const RadioContainer = styled.div`
 `;
 
 export const Radio: FunctionComponent<RadioProps> = React.forwardRef(
-  ({ name, labelText, ...props }, ref) => (
+  ({ id, labelText, ...props }, ref) => (
     <RadioFlexWrapper>
       <RadioContainer>
-        <RadioInput type="radio" id={name} ref={ref} {...props} />
+        <RadioInput type="radio" id={id} ref={ref} {...props} />
         <Fill />
       </RadioContainer>
-      <label htmlFor={name}>{labelText}</label>
+      <label htmlFor={id}>{labelText}</label>
     </RadioFlexWrapper>
   )
 );

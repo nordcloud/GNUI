@@ -12,7 +12,7 @@ import { Checkbox, CheckboxGroup } from "../components/checkbox";
 
 <Preview>
   <Story name="simple">
-    <Checkbox name="checkbox-1" labelText="GNUI Checkbox" />
+    <Checkbox id="checkbox-1" labelText="GNUI Checkbox" />
   </Story>
 </Preview>
 
@@ -35,7 +35,7 @@ import { Checkbox, CheckboxGroup } from "../components/checkbox";
         <CheckboxGroup name="gnui-checkbox-group">
           {names.map((names, index) => (
             <Checkbox
-              name={names[index]}
+              id={names[index]}
               onChange={() => handleCheckbox(index)}
               labelText={labels[index]}
             />
