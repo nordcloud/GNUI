@@ -33,9 +33,7 @@ type BarProps = IBarValues & IStyledBarProps;
 export const BarChart = ({ values, ...visualProps }: BarProps) => {
   const sum = values.reduce((accumulator, { value }) => accumulator + value, 0);
   let x = 0;
-  function calculateX(prevBarWidth: number) {
-    return (x = x + prevBarWidth);
-  }
+  let calculateX = (prevBarWidth: number) => (x += prevBarWidth);
   const percentageValues = values.map(({ value, color }, index) => ({
     size: Math.round((value / sum) * 100),
     x:
