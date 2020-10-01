@@ -21,6 +21,7 @@ const Header = styled.div<HeaderProps>`
   left: 0;
   display: flex;
   width: 100%;
+  z-index: ${theme.zindex.default};
   flex-wrap: nowrap;
   align-items: center;
   border-bottom: ${theme.borders.grey};
@@ -86,7 +87,7 @@ const CloseLayer: any = styled.div<ICloseLayer>`
   bottom: 0;
   width: 100%;
   height: 100%;
-  z-index: 1;
+  z-index: ${theme.zindex.default};
 `;
 const Inner: any = styled.div<IInnerProps>`
   position: relative;
