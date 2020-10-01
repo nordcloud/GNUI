@@ -1,35 +1,23 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, InputHTMLAttributes, Ref } from "react";
 import styled from "styled-components";
 import theme from "../../theme";
 import { GnuiContainer, Flex } from "../container";
 import { space, SpaceProps } from "styled-system";
-export interface CheckboxProps {
-  name: string;
-  type?: string;
+
+export interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
   labelText?: string;
-  className?: string;
-  value?: string;
-  id?: string;
-  disabled?: boolean;
-  required?: boolean;
-  valid?: boolean;
-  checked?: boolean;
-  children?: string | number | any;
-  onClick?: (e: any) => void;
-  onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
+  ref?: Ref<HTMLInputElement>;
 }
 
-export interface CheckboxGroupProps {
-  name: string;
-  children?: string | number | any;
-}
+export type CheckboxGroupProps = Pick<CheckboxProps, "name" | "children">;
 
 const SingleCheckWrapper = styled(Flex)`
   margin-bottom: ${theme.spacing.spacing04};
+  ${space}
+
   &:last-child {
     margin-bottom: 0;
   }
-  ${space}
 `;
 
 const CheckboxLabel = styled.label`
@@ -43,6 +31,7 @@ const CheckboxContainer = styled.div`
   width: 1.25rem;
   height: 1.25rem;
   position: relative;
+
   &::before {
     content: "";
     border-radius: 2px;
@@ -69,6 +58,7 @@ const Fill = styled.div`
   transition: width 0.2s ease-in, height 0.2s ease-in;
   pointer-events: none;
   z-index: 1;
+
   &::before {
     content: "";
     opacity: 0;
@@ -97,6 +87,7 @@ const CheckboxInput = styled.input`
       width: 0.75rem;
       height: 0.75rem;
       transition: width 0.2s ease-out, height 0.2s ease-out;
+
       &::before {
         opacity: 1;
         transition: opacity 1s ease;
@@ -107,26 +98,23 @@ const CheckboxInput = styled.input`
 
 const CheckboxWrapper = styled(GnuiContainer)`
   position: relative;
+  ${space}
   ${SingleCheckWrapper} {
     margin-bottom: 1rem;
   }
-  ${space}
 `;
 
-export const Checkbox: FunctionComponent<CheckboxProps & SpaceProps> = ({
-  name,
-  type = "checkbox",
-  labelText,
-  ...props
-}) => (
+export const Checkbox: FunctionComponent<
+  CheckboxProps & SpaceProps
+> = React.forwardRef(({ id, type = "checkbox", labelText, ...props }, ref) => (
   <SingleCheckWrapper>
     <CheckboxContainer>
-      <CheckboxInput type={type} id={name} {...props} />
+      <CheckboxInput type={type} id={id} ref={ref} {...props} />
       <Fill />
     </CheckboxContainer>
-    <CheckboxLabel htmlFor={name}>{labelText}</CheckboxLabel>
+    <CheckboxLabel htmlFor={id}>{labelText}</CheckboxLabel>
   </SingleCheckWrapper>
-);
+));
 
 export const CheckboxGroup: FunctionComponent<
   CheckboxGroupProps & SpaceProps
