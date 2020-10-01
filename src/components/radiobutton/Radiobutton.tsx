@@ -1,27 +1,22 @@
-import React, { FunctionComponent, useState } from "react";
+import React, {
+  FunctionComponent,
+  useState,
+  InputHTMLAttributes,
+  Ref,
+} from "react";
 import styled from "styled-components";
 import theme from "../../theme";
 import { GnuiContainer, Flex } from "../container";
 
-export interface RadioProps {
-  name: string;
-  type: string;
-  labelText: string;
-  className?: string;
-  value?: string;
-  id?: string;
-  disabled?: boolean;
-  required?: boolean;
-  valid?: boolean;
-  children?: string | number | any;
-  onClick?: (e: any) => void;
-  onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
+export interface RadioProps extends InputHTMLAttributes<HTMLInputElement> {
+  labelText?: string;
+  ref?: Ref<HTMLInputElement>;
 }
 
-export interface RadioGroupProps {
+export type RadioGroupProps = {
   name: string;
-  children?: string | number | any;
-}
+  children: any;
+};
 
 const RadioWrapper = styled(GnuiContainer)`
   position: relative;
@@ -29,6 +24,7 @@ const RadioWrapper = styled(GnuiContainer)`
 
 const RadioFlexWrapper = styled(Flex)`
   margin-bottom: ${theme.spacing.spacing04};
+
   label {
     cursor: pointer;
     margin-left: ${theme.spacing.spacing02};
@@ -96,6 +92,7 @@ const RadioContainer = styled.div`
   width: 1.25rem;
   height: 1.25rem;
   position: relative;
+
   &::before {
     content: "";
     border-radius: 100%;
@@ -113,13 +110,12 @@ const RadioContainer = styled.div`
 
 export const Radio: FunctionComponent<RadioProps> = ({
   name,
-  type = "radio",
   labelText,
   ...props
 }) => (
   <RadioFlexWrapper>
     <RadioContainer>
-      <RadioInput type={type} id={name} {...props} />
+      <RadioInput type="radio" id={name} {...props} />
       <Fill />
     </RadioContainer>
     <label htmlFor={name}>{labelText}</label>
@@ -130,7 +126,14 @@ export const RadioGroup: FunctionComponent<RadioGroupProps> = ({
   name,
   children,
 }) => {
-  const [isChecked, setIsChecked] = useState(children[0].props.value);
+  const hasNoChildren = Array.isArray(children) && children.length === 0;
+  const [isChecked, setIsChecked] = useState(
+    Array.isArray(children) && children[0]?.props?.value
+  );
+
+  if (hasNoChildren) {
+    return null;
+  }
 
   return (
     <RadioWrapper role="radiogroup" name={name}>

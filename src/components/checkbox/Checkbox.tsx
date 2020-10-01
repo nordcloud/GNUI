@@ -106,10 +106,10 @@ const CheckboxWrapper = styled(GnuiContainer)`
 
 export const Checkbox: FunctionComponent<
   CheckboxProps & SpaceProps
-> = React.forwardRef(({ id, type = "checkbox", labelText, ...props }, ref) => (
+> = React.forwardRef(({ id, labelText, ...props }, ref) => (
   <SingleCheckWrapper>
     <CheckboxContainer>
-      <CheckboxInput type={type} id={id} ref={ref} {...props} />
+      <CheckboxInput type="checkbox" id={id} ref={ref} {...props} />
       <Fill />
     </CheckboxContainer>
     <CheckboxLabel htmlFor={id}>{labelText}</CheckboxLabel>
