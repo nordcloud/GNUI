@@ -11,16 +11,14 @@ import { Radio, RadioGroup } from "../components/radiobutton";
 
 <Preview>
   <Story name="simple">
-    <Radio name="radiobutton" labelText="GNUI Radio button" />
+    <Radio id="radiobutton" labelText="GNUI Radio button" />
   </Story>
 </Preview>
 
 #### Props
 
-- `name`: `string` — **required**
+- `input element props`
 - `labelText`: `string` — **required** - label for the radio button
-- `disabled`: `boolean` — _optional_ - should be styled separately for now
-- `required`: `boolean` — _optional_ - should be styled separately for now
 
 ### Group Radio button
 
@@ -29,9 +27,9 @@ import { Radio, RadioGroup } from "../components/radiobutton";
 <Preview>
   <Story name="group">
     <RadioGroup name="radiogroup">
-      <Radio name="button1" labelText="New York" value="ny" />
-      <Radio name="button2" labelText="San Francisco" value="sf" />
-      <Radio name="button3" labelText="Los Angeles" value="la" />
+      <Radio id="button1" labelText="New York" value="ny" />
+      <Radio id="button2" labelText="San Francisco" value="sf" />
+      <Radio id="button3" labelText="Los Angeles" value="la" />
     </RadioGroup>
   </Story>
 </Preview>

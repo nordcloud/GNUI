@@ -17,20 +17,25 @@ const StyledSubmit = styled.input`
   line-height: ${theme.lineHeight};
   margin: 0 ${theme.spacing.spacing02};
   transition: ${theme.transition};
+
   &:focus {
     outline: 0;
   }
+
   &:hover {
     cursor: pointer;
     color: ${theme.colors.lights[4]};
   }
+
   &:active {
     color: ${theme.colors.darks[4]};
   }
+
   &:disabled {
     background: ${theme.colors.lights[3]};
     border: ${theme.borders.disabled};
     color: ${theme.colors.darks[4]};
+
     &:hover {
       color: ${theme.colors.darks[4]};
       cursor: not-allowed;
