@@ -50,13 +50,16 @@ const Table: any = styled.table<TableProps>`
         small || tiny
           ? `${theme.spacing.spacing02} ${theme.spacing.spacing03}`
           : `${theme.spacing.spacing03}`};
-      font-size: ${({ tiny }) => (tiny ? theme.fontSizes.sm : "0.9rem")};
+      font-size: ${theme.fontSizes.sm};
+      font-weight: ${theme.fontWeights.medium};
+      color: ${theme.colors.darks[4]};
+      line-height: 1.5em;
     }
   }
 `;
 
 const Thead = styled.thead`
-  letter-spacing: 0.05em;
+  letter-spacing: normal;
   text-transform: uppercase;
 `;
 
