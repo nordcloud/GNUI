@@ -1,6 +1,6 @@
 {
   "name": "@nordcloud/gnui",
-  "version": "0.4.63",
+  "version": "0.4.64",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": "git://github.com/nordcloud/gnui.git",
@@ -17,7 +17,7 @@
     "@testing-library/user-event": "^7.1.2",
     "@types/jest": "^24.0.0",
     "@types/node": "^12.0.0",
-    "@types/react": "^16.9.0",
+    "@types/react": "^16.9.51",
     "@types/react-date-range": "^0.94.4",
     "@types/react-dom": "^16.9.0",
     "@types/react-modal": "^3.10.5",
