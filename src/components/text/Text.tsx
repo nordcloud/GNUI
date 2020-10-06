@@ -12,6 +12,7 @@ interface TextProps {
   weight?: "regular" | "medium" | "bold";
   textStyle?: "normal" | "italic";
   align?: "left" | "center" | "right";
+  lineHeight?: string;
   [propName: string]: any;
 }
 
@@ -71,6 +72,11 @@ const StyledText = styled.p<TextProps>`
     color &&
     css`
       color: ${theme.colors[color] || color};
+    `}
+  ${({ lineHeight }) =>
+    lineHeight &&
+    css`
+      line-height: ${lineHeight};
     `}
   ${space}
 `;
