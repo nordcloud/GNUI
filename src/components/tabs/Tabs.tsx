@@ -224,7 +224,7 @@ export const Tabs: FunctionComponent<TabsProps> = ({
     <TabsWrapper>
       <TabsList className={name}>
         {items.map((child, key) => {
-          const { heading, caption, disabled, buttonsJustify } = child?.props;
+          const { heading, caption, disabled, buttonsJustify } = child.props;
           return (
             <Tab
               wizard={wizard}
