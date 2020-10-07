@@ -53,12 +53,15 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
         isClickOutside && setIsOpen(false);
       }
     };
-    window.addEventListener("click", handleClick);
 
-    return () => {
-      window.removeEventListener("click", handleClick);
-    };
-  }, []);
+    if (isOpen) {
+      window.addEventListener("click", handleClick);
+
+      return () => {
+        window.removeEventListener("click", handleClick);
+      };
+    }
+  }, [isOpen]);
 
   const displayValue: Option | undefined = options.find((option) => {
     if (typeof option === "string") {
