@@ -44,17 +44,17 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
   const wrapper = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
-    const handleClick = (e: MouseEvent) => {
-      if (
-        wrapper.current instanceof HTMLElement &&
-        e.target instanceof HTMLElement
-      ) {
-        const isClickOutside = !wrapper.current.contains(e.target);
-        isClickOutside && setIsOpen(false);
-      }
-    };
-
     if (isOpen) {
+      const handleClick = (e: MouseEvent) => {
+        if (
+          wrapper.current instanceof HTMLElement &&
+          e.target instanceof HTMLElement
+        ) {
+          const isClickOutside = !wrapper.current.contains(e.target);
+          isClickOutside && setIsOpen(false);
+        }
+      };
+
       window.addEventListener("click", handleClick);
 
       return () => {
