@@ -27,7 +27,7 @@ interface TabsProps {
   wizard?: boolean;
   name?: string;
   caption?: string;
-  children: TabProps[];
+  children: Array<TabProps>;
   handleTab: (e: any) => void;
   step: number;
 }
