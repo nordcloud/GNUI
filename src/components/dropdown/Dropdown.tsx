@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useState } from "react";
 import { SpaceProps } from "styled-system";
+import { useClickOutside } from "../../hooks";
 import { SVGIcon } from "../svgicon/SVGIcon";
 import { Input } from "../input";
 import {
@@ -43,25 +44,9 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
   const [search, setSearch] = useState("");
   const wrapper = React.useRef<HTMLDivElement>(null);
 
-  React.useEffect(() => {
-    if (isOpen) {
-      const handleClick = (e: MouseEvent) => {
-        if (
-          wrapper.current instanceof HTMLElement &&
-          e.target instanceof HTMLElement
-        ) {
-          const isClickOutside = !wrapper.current.contains(e.target);
-          isClickOutside && setIsOpen(false);
-        }
-      };
-
-      window.addEventListener("click", handleClick);
-
-      return () => {
-        window.removeEventListener("click", handleClick);
-      };
-    }
-  }, [isOpen]);
+  useClickOutside(wrapper, isOpen, () => {
+    setIsOpen(false);
+  });
 
   const displayValue: Option | undefined = options.find((option) => {
     if (typeof option === "string") {
