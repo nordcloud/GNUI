@@ -55,7 +55,10 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
     return option.value === value;
   });
 
-  const innerText = getOptionValue(displayValue) || name;
+  const innerText =
+    getOptionValue(displayValue, "label") ||
+    getOptionValue(displayValue, "value") ||
+    name;
   const showClearButton = onClear && displayValue;
   const showMenu = isOpen && !disabled;
   const showSearch = options && options.length > 3;
