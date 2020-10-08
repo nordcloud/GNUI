@@ -201,7 +201,7 @@ export const Sidebar: FunctionComponent<ISidebarProps> = ({
                 />
               </Header>
               <Container>
-                <Content>{children}</Content>
+                <Content tag="div">{children}</Content>
               </Container>
               {Footer && (
                 <FooterSidebar>
