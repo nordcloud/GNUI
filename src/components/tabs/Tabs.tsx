@@ -219,34 +219,37 @@ export const Tabs: FunctionComponent<TabsProps> = ({
   handleTab,
   step,
 }) => {
+  const items = React.Children.toArray(children) as TabProps[];
   return (
     <TabsWrapper>
       <TabsList className={name}>
-        {children.map((child, key) => {
+        {items.map((child, key) => {
+          const { heading, caption, disabled, buttonsJustify } = child.props;
           return (
             <Tab
               wizard={wizard}
               step={key + 1}
               activeTab={step}
               index={key}
-              heading={child.props.heading}
-              caption={child.props.caption}
-              disabled={child.props.disabled}
-              buttonsJustify={child.props.buttonsJustify}
-              onClick={child.props.disabled ? undefined : () => handleTab(key)}
+              heading={heading}
+              caption={caption}
+              disabled={disabled}
+              buttonsJustify={buttonsJustify}
+              onClick={disabled ? undefined : () => handleTab(key)}
             />
           );
         })}
       </TabsList>
       <TabsCover>
-        {children.map((child, key) => {
+        {items.map((child, key) => {
           if (key !== step) return undefined;
+          const { children, buttonsJustify, buttons } = child.props;
           return (
             <>
-              <TabsContent>{child.props.children}</TabsContent>
+              <TabsContent>{children}</TabsContent>
               {wizard && (
-                <TabsStatusButtons buttonsJustify={child.props.buttonsJustify}>
-                  {child.props.buttons}
+                <TabsStatusButtons buttonsJustify={buttonsJustify}>
+                  {buttons}
                 </TabsStatusButtons>
               )}
             </>
