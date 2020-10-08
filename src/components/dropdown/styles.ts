@@ -28,7 +28,7 @@ export const DropdownButton = styled.button`
   padding-right: 1.5rem;
   font-size: inherit;
   color: ${theme.colors.primary};
-  padding: ${theme.spacing.spacing03};
+  padding: ${theme.spacing.spacing02};
   cursor: pointer;
   transition: ${theme.transition};
 
