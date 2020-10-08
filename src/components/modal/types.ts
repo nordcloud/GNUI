@@ -18,7 +18,7 @@ export interface IModalAction {
   severity: "low" | "medium" | "high";
   order: number;
 }
-export interface IBackgroudProps {
+export interface IBackgroundProps {
   isOpen?: boolean;
   onClick?: (e: any) => void;
 }
