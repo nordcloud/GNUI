@@ -85,7 +85,7 @@ export const DropdownMenu = styled(GnuiContainer)<DropdownMenuProps>`
   font-weight: ${theme.fontWeights.regular};
   border-radius: ${theme.radiusDefault};
   background: ${theme.colors.white};
-  z-index: 1;
+  z-index: ${theme.zindex.default};
   transition: ${theme.transition};
   box-shadow: ${theme.shadow.shadow02};
 `;
