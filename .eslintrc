@@ -1,0 +1,41 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "extends": [
+    "react-app",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:@typescript-eslint/eslint-recommended"
+  ],
+  "plugins": ["react-hooks", "@typescript-eslint"],
+  "rules": {
+    "no-shadow": "error",
+    "eqeqeq": "warn",
+    "react/prop-types": "off",
+    "prefer-const": "off",
+    "react/jsx-key": "off",
+    "no-underscore-dangle": "off",
+    "no-prototype-builtins": "off",
+    "no-console": "warn",
+    "require-await": "warn",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "@typescript-eslint/consistent-type-definitions": ["warn", "type"],
+    "react/display-name": "off",
+    "react/jsx-boolean-value": "off",
+    "react/jsx-pascal-case": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/interface-name-prefix": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/camelcase": "off",
+    "@typescript-eslint/no-unused-vars": "error"
+  }
+}
