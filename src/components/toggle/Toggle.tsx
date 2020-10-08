@@ -1,10 +1,11 @@
 import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
+import { setColor } from "../../utils/setcolor";
 import { darken } from "polished";
 
 export interface ToggleProps {
-  name:string;
+  name: string;
   toggleValue?: boolean;
   labelText?: string;
   id?: string;
@@ -13,12 +14,6 @@ export interface ToggleProps {
   size?: string;
   handleSelect?: (e: any) => void;
 }
-
-const setColor = (color: string) => {
-  return color !== undefined && theme.colors[color]
-    ? theme.colors[color]
-    : color;
-};
 
 const StyledToggle = styled.button<ToggleProps>`
   border: ${theme.borderDefault};
@@ -71,7 +66,7 @@ export const Toggle: FunctionComponent<ToggleProps> = ({
   name,
   toggleValue,
   labelText,
-  handleSelect
+  handleSelect,
 }) => {
   return (
     <StyledToggle
@@ -79,8 +74,9 @@ export const Toggle: FunctionComponent<ToggleProps> = ({
       status={status}
       name={name}
       className={toggleValue ? "active" : ""}
-      onClick={() => handleSelect && handleSelect(!toggleValue)}>
-        {labelText}
+      onClick={() => handleSelect && handleSelect(!toggleValue)}
+    >
+      {labelText}
     </StyledToggle>
   );
 };

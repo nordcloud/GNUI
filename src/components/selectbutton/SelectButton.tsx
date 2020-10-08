@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
+import { setColor } from "../../utils/setcolor";
 import { darken } from "polished";
 
 export interface SelectButtonProps {
@@ -21,12 +22,6 @@ export interface SelectButtonListProps {
 type StyledSelectButtons = {
   status?: string;
   size?: string;
-};
-
-const setColor = (color: string) => {
-  return color !== undefined && theme.colors[color]
-    ? theme.colors[color]
-    : color;
 };
 
 const StyledSelectButtons = styled.ul<StyledSelectButtons>`

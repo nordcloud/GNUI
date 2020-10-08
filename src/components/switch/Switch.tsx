@@ -1,18 +1,13 @@
 import React, { FunctionComponent, ComponentPropsWithoutRef } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
+import { setColor } from "../../utils/setcolor";
 
 export interface SwitchProps extends ComponentPropsWithoutRef<"input"> {
   labelText?: string;
   severity?: "danger" | "notification" | "warning" | "success";
   position?: "left" | "right";
 }
-
-const setColor = (color: string) => {
-  return color !== undefined && theme.colors[color]
-    ? theme.colors[color]
-    : color;
-};
 
 type SwitchInputProps = Pick<SwitchProps, "severity">;
 
