@@ -219,7 +219,7 @@ export const Tabs: FunctionComponent<TabsProps> = ({
   handleTab,
   step,
 }) => {
-  const items = React.Children.toArray(children) as [TabProps];
+  const items = React.Children.toArray(children) as TabProps[];
   return (
     <TabsWrapper>
       <TabsList className={name}>
