@@ -1,4 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
 <!-- ALL-CONTRIBUTORS-BADGE:END --> 
 
 # General Nordcloud UI
@@ -38,6 +39,12 @@ When you create PR against `master` branch, Amplify will create new deployment a
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/raczyk"><img src="https://avatars0.githubusercontent.com/u/4233480?v=4" width="100px;" alt=""/><br /><sub><b>raczyk</b></sub></a></td>
+    <td align="center"><a href="https://github.com/nowyDEV"><img src="https://avatars2.githubusercontent.com/u/12304307?v=4" width="100px;" alt=""/><br /><sub><b>Dominik N</b></sub></a></td>
+  </tr>
+</table>
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
