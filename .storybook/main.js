@@ -5,4 +5,10 @@ module.exports = {
     "@storybook/addon-links/register",
     "@storybook/addon-docs",
   ],
+  preLoaders: [
+    {
+      test: /\.tsx$/,
+      loader: "eslint-loader",
+    },
+  ],
 };

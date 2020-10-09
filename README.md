@@ -27,7 +27,8 @@ When you create PR against `master` branch, Amplify will create new deployment a
 - Code should be formatted using [Prettier](https://prettier.io/).
 - We are using styled-components for styling.
 - All code should be written using TS.
-- Every component props should be described using interface.
+- Every component props should be described using "type" instead of "interface".
+- Name types with Pascal Case naming convention and Props or Data prefix.
 
 ## Local setup
 
