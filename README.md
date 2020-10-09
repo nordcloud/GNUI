@@ -1,3 +1,6 @@
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+<!-- ALL-CONTRIBUTORS-BADGE:END --> 
+
 # General Nordcloud UI
 
 This repo contains Nordcloud PAT Design System - a collection of reusable react components that can be used in PAT products.
@@ -30,6 +33,18 @@ When you create PR against `master` branch, Amplify will create new deployment a
 - git clone this repo
 - `npm install`
 - `npm run storybook`
+
+## Contributors
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://allcontributors.org) specification.
+Contributions of any kind are welcome!
 
 ## License
 
