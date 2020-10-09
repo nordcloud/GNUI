@@ -31,6 +31,8 @@ When you create PR against `master` branch, Amplify will create new deployment a
 - `npm install`
 - `npm run storybook`
 
-## Ownership
+## License
 
-This code is owned by PAT UX/UI team.
+Licensed under the MIT License, Copyright © 2020 Nordcloud Engineering
+
+See [LICENSE](./LICENSE) for more information.
