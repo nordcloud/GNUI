@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
+import { setColor } from "../../utils/setcolor";
 
 interface ITooltip {
   caption: string;
@@ -11,12 +12,6 @@ interface ITooltip {
   hideTimeout?: number;
   minWidth?: string;
 }
-
-const setColor = (color: string) => {
-  return color !== undefined && theme.colors[color]
-    ? theme.colors[color]
-    : color;
-};
 
 const setArrowPosition = (position: string) => {
   switch (position) {

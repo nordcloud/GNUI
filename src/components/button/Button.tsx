@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
+import { setColor } from "../../utils/setcolor";
 import { darken, lighten } from "polished";
 import { space, SpaceProps } from "styled-system";
 import { SVGIcon } from "../svgicon";
@@ -27,12 +28,6 @@ export interface ButtonProps {
   outline?: boolean;
   secondary?: boolean;
 }
-
-const setColor = (color: string) => {
-  return color !== undefined && theme.colors[color]
-    ? theme.colors[color]
-    : color;
-};
 
 const changeSize = (size: string) => {
   switch (size) {

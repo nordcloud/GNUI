@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
+import { setColor } from "../../utils/setcolor";
 import { ToastContainer } from "react-toastify";
 import { Button } from "../button";
 import { Text } from "../text";
@@ -20,12 +21,6 @@ export interface MessageProps {
   message?: string;
   closeToast?: (e: React.MouseEvent) => void;
 }
-
-const setColor = (color: string) => {
-  return color !== undefined && theme.colors[color]
-    ? theme.colors[color]
-    : color;
-};
 
 const StyledToastContainer = styled.div<ToastProps>`
   .Toastify {
