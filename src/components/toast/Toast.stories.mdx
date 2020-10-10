@@ -1,8 +1,8 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
-import { Message, Toast } from "../components/toast";
-import { Button } from "../components/button";
+import { Message, Toast } from ".";
+import { Button } from "../button";
 import { toast, Slide, Zoom, Flip, Bounce } from 'react-toastify';
-import { Spacer } from "../components/spacer";
+import { Spacer } from "../spacer";
 
 <Meta title="Components/Toast" component={Toast} />
 
@@ -38,9 +38,9 @@ interface MessageProps {
     {() => {
       const customId = "custom-id-yes";
       const displayMsg = () => {
-        toast( 
-          <Message 
-            heading="Scanning..." 
+        toast(
+          <Message
+            heading="Scanning..."
           />,
           {toastId: customId}
         );
@@ -63,9 +63,9 @@ interface MessageProps {
   <Story name="severity">
     {() => {
       const displayMsgSeverity = () => {
-        toast( 
-          <Message 
-            heading="Scanning severity..." 
+        toast(
+          <Message
+            heading="Scanning severity..."
             message="Please wait a bit for the severity level"
           />
         );
