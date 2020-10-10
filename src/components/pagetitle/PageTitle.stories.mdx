@@ -1,5 +1,5 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
-import { PageTitle, PageTitleBreadcrumbs } from "../components/pagetitle";
+import { PageTitle, PageTitleBreadcrumbs } from ".";
 
 
 <Meta title="Layout/PageTitleBreadcrumbs" component={PageTitleBreadcrumbs} />
@@ -36,8 +36,8 @@ interface PageTitleBreadcrumbsProps {
 
 <Preview>
   <Story name="breadcrumbs">
-    <PageTitleBreadcrumbs 
-      title="Page Heading" 
+    <PageTitleBreadcrumbs
+      title="Page Heading"
       list={[
         { label: "Home", uri: `#` },
         { label: "Hosts", uri: `#` },
