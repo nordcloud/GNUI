@@ -1,7 +1,7 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { useState } from "react";
-import { Modal, ModalConfirm } from "../components/modal";
-import { Button } from "../components/button";
+import { Modal, ModalConfirm } from ".";
+import { Button } from "../button";
 
 <Meta title="Components/Modal" component={Modal} />
 
@@ -32,7 +32,6 @@ import { Button } from "../components/button";
     {() => {
       const [isOpen, setOpen] = useState(false);
       const update = () => setOpen(!isOpen);
-
       return (
         <>
           <Button onClick={update}>Open modal</Button>
@@ -51,7 +50,6 @@ import { Button } from "../components/button";
         </>
       );
     }}
-
   </Story>
 </Preview>
 
@@ -62,7 +60,6 @@ import { Button } from "../components/button";
     {() => {
       const [isOpen, setOpen] = useState(false);
       const update = () => setOpen(!isOpen);
-
       return (
         <>
           <Button onClick={update}>Open modal</Button>
@@ -95,7 +92,6 @@ import { Button } from "../components/button";
         </>
       );
     }}
-
   </Story>
 </Preview>
 
