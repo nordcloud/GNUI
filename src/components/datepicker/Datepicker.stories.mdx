@@ -1,7 +1,7 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { addDays } from 'date-fns';
 import { useState } from 'react';
-import { Datepicker } from "../components/datepicker";
+import { Datepicker } from ".";
 import { Calendar, DateRangePicker } from 'react-date-range';
 
 <Meta title="Components/Datepicker" component={Datepicker} />
@@ -22,20 +22,19 @@ type DatepickerProps = {
   <Story name="datepicker">
     {() => {
       const handleSelect = (date) => {
-        console.log(date); 
+        console.log(date);
       }
       return (
         <>
-           <Datepicker>
-             <Calendar
-                date={new Date()}
-                onChange={handleSelect}
-              />
-           </Datepicker>
+          <Datepicker>
+            <Calendar
+              date={new Date()}
+              onChange={(date) => handleSelect(date)}
+            />
+          </Datepicker>
         </>
       );
     }}
-   
   </Story>
 </Preview>
 
@@ -43,7 +42,7 @@ type DatepickerProps = {
   <Story name="daterangepicker">
     {() => {
       const handleSelect = (ranges) => {
-        console.log(ranges); 
+        console.log(ranges);
       }
       const [state, setState] = useState([
         {
@@ -54,8 +53,8 @@ type DatepickerProps = {
       ]);
       return (
         <>
-           <Datepicker>
-             <DateRangePicker
+          <Datepicker>
+            <DateRangePicker
               onChange={item => setState([item.selection])}
               showSelectionPreview={true}
               moveRangeOnFirstSelection={false}
@@ -63,11 +62,9 @@ type DatepickerProps = {
               ranges={state}
               direction="horizontal"
             />
-           </Datepicker>
+          </Datepicker>
         </>
       );
     }}
-   
   </Story>
 </Preview>
-
