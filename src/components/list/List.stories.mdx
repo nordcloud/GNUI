@@ -1,5 +1,5 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
-import { List } from "../components/list";
+import { List } from ".";
 
 <Meta title="Components/List" component={List} />
 
@@ -12,9 +12,9 @@ import { List } from "../components/list";
 - `horizontal`: `boolean` — _optional_ , default `false`
 - `unsorted`: `boolean` — _optional_ , default `false`
 - `hasDescription`: `boolean` - _optional_, default `false`
-- `items`: `array<{ 
-  title: string, 
-  description: string, 
+- `items`: `array<{
+  title: string,
+  description: string,
   rowChildren?: array
 }>  | string | number` — **required**
 - `spacing`: string - _optional_ used for custom spacing for list items
@@ -36,7 +36,7 @@ import { List } from "../components/list";
 
 <Preview>
   <Story name="unstyled list spacing">
-    <List 
+    <List
       spacing="0 0 1.15rem 0"
       items={[
         "List item",
