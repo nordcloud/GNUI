@@ -95,21 +95,24 @@ const Inner: any = styled.div<IInnerProps>`
   flex-direction: column;
   overflow-x: hidden;
   overflow-y: scroll;
-  ${bp("xs")`width: 100vw`};
-  ${bp("sm")`width: 50vw`};
-  ${bp("md")`width: 45vw`};
-  ${bp("lg")`width: 40vw`};
-  ${bp("xl")`width: 30rem`};
-  ${bp("xxl")`width: 30rem`};
   box-shadow: ${theme.shadow.shadow04};
   background-color: ${theme.colors.snowWhite};
   border-left: ${({ side }) => side !== "onLeft" && theme.borders.disabled};
   border-right: ${({ side }) => side === "onLeft" && theme.borders.disabled};
+  max-width: 100%;
   ${({ width }) =>
-    width &&
-    css`
-      width: ${width};
-    `}
+    width
+      ? css`
+          width: ${width};
+        `
+      : css`
+          ${bp("xs")`width: 100vw`};
+          ${bp("sm")`width: 50vw`};
+          ${bp("md")`width: 45vw`};
+          ${bp("lg")`width: 40vw`};
+          ${bp("xl")`width: 30rem`};
+          ${bp("xxl")`width: 30rem`};
+        `}
   z-index: 2;
 `;
 const Container = styled.div`
