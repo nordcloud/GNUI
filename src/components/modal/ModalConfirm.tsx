@@ -16,7 +16,7 @@ const ModalHeading = styled(Heading)`
   margin: 0;
 `;
 
-type IModal = {
+type ModalProps = {
   isOpen: boolean;
   onClose?: (
     event: React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>
@@ -36,7 +36,7 @@ export const ModalConfirm = ({
   actionLabel,
   onClose,
   ...props
-}: IModal) => {
+}: ModalProps) => {
   return (
     <>
       <Background onClick={onClose} {...props}></Background>

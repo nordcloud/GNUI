@@ -135,11 +135,11 @@ const Step = styled(Box)`
   }
 `;
 
-type IStyledTabsStatusButtons = {
+type StyledTabsStatusButtonsProps = {
   buttonsJustify?: string;
 };
 
-const TabsStatusButtons = styled.div<IStyledTabsStatusButtons>`
+const TabsStatusButtons = styled.div<StyledTabsStatusButtonsProps>`
   padding: ${theme.spacing.spacing04};
   border-top: ${theme.borders.grey};
   display: flex;
