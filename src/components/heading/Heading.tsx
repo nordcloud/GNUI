@@ -3,12 +3,12 @@ import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { space, SpaceProps } from "styled-system";
 
-interface HeadingProps {
+type HeadingProps = {
   level: number;
   color?: string;
   marginBottom?: string;
   as?: any;
-}
+};
 
 const changeAttrs = (level: number) => {
   let fontSize: string;
@@ -56,7 +56,7 @@ const StyledHeading = styled.h1<HeadingProps>`
       font-size: ${changeAttrs(level)};
     `};
   ${({ marginBottom }) =>
-  marginBottom &&
+    marginBottom &&
     css`
       margin-bottom: ${theme.spacing[marginBottom] || marginBottom};
     `};

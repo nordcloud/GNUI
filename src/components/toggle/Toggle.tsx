@@ -4,7 +4,7 @@ import theme from "../../theme";
 import { setColor } from "../../utils/setcolor";
 import { darken } from "polished";
 
-export interface ToggleProps {
+export type ToggleProps = {
   name: string;
   toggleValue?: boolean;
   labelText?: string;
@@ -13,7 +13,7 @@ export interface ToggleProps {
   status?: string;
   size?: string;
   handleSelect?: (e: any) => void;
-}
+};
 
 const StyledToggle = styled.button<ToggleProps>`
   border: ${theme.borderDefault};

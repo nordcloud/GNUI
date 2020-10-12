@@ -1,13 +1,12 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components";
 import theme from "../../theme";
-import {default as ReactSelect, CommonProps } from 'react-select';
+import { default as ReactSelect, CommonProps } from "react-select";
 
-
-export interface SelectProps {
-  options?:any;
-  styles?:any;
-}
+export type SelectProps = {
+  options?: any;
+  styles?: any;
+};
 
 const SelectContainer = styled.div<SelectProps>`
   .react-select {
@@ -31,30 +30,30 @@ const SelectContainer = styled.div<SelectProps>`
       margin: ${theme.spacing.spacing01};
       border-radius: 1rem;
       color: ${theme.colors.lights[0]};
-      align-items:center;
-      height:1.5rem;
-      
+      align-items: center;
+      height: 1.5rem;
+
       &__label {
         color: ${theme.colors.white};
-        padding-left:0;
+        padding-left: 0;
         padding-right: 0.375rem;
-        font-size:${theme.fontSizes.sm};
+        font-size: ${theme.fontSizes.sm};
       }
 
       &__remove {
-        width:1.125rem;
-        height:1.125rem;
-        border-radius:50%;
-        align-items:center;
-        justify-content:center;
+        width: 1.125rem;
+        height: 1.125rem;
+        border-radius: 50%;
+        align-items: center;
+        justify-content: center;
         background-color: rgba(255, 255, 255, 0.3);
         &:hover {
           background-color: rgba(255, 255, 255, 0.5);
         }
         svg {
-          color:${theme.colors.white};
+          color: ${theme.colors.white};
           width: 0.75rem;
-          height:0.75rem;
+          height: 0.75rem;
         }
       }
     }
@@ -81,7 +80,6 @@ const SelectContainer = styled.div<SelectProps>`
         background-color: ${theme.colors.lights[1]};
       }
     }
-
   }
 `;
 
@@ -92,20 +90,20 @@ export const Select: FunctionComponent<SelectProps & CommonProps<any>> = ({
 }) => {
   return (
     <SelectContainer>
-      <ReactSelect 
+      <ReactSelect
         className="react-select-container"
         classNamePrefix="react-select"
-        options={options} 
+        options={options}
         styles={styles}
-        theme={theme => ({
+        theme={(theme) => ({
           ...theme,
           colors: {
             ...theme.colors,
             neutral10: "#161632",
           },
         })}
-        {...props}>
-        </ReactSelect>
+        {...props}
+      ></ReactSelect>
     </SelectContainer>
   );
 };

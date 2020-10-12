@@ -15,7 +15,7 @@ import {
 import { getOptionValue } from "./helpers";
 import { Option } from "./types";
 
-interface DropdownProps {
+type DropdownProps = {
   name: string;
   options: Option[];
   onChange: (e: any) => void;
@@ -28,7 +28,7 @@ interface DropdownProps {
   onClick?: (e: any) => void;
   onMouseLeave?: (e: any) => void;
   onClear?: () => void;
-}
+};
 
 export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
   value = "",

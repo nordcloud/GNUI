@@ -10,11 +10,9 @@ export const useClickOutside = <E extends Event = Event>(
   events: string[] = defaultEvents
 ) => {
   const savedCallback = useRef(onClickAway);
-
   useEffect(() => {
     savedCallback.current = onClickAway;
-  }, [onClickAway]);
-
+  });
   useEffect(() => {
     if (active) {
       const handler = (event: E) => {

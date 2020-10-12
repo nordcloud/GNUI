@@ -5,7 +5,7 @@ import { Text } from "../text";
 import { Box } from "../box";
 import { Button } from "../button";
 
-interface TabProps {
+type TabProps = {
   className?: string;
   wizard?: boolean;
   step?: number;
@@ -21,24 +21,24 @@ interface TabProps {
   disabled?: boolean;
   buttons?: React.ReactNode;
   buttonsJustify?: string;
-}
+};
 
-interface TabsProps {
+type TabsProps = {
   wizard?: boolean;
   name?: string;
   caption?: string;
   children: Array<TabProps>;
   handleTab: (e: any) => void;
   step: number;
-}
+};
 
-interface ButtonPreviousProps {
+type ButtonPreviousProps = {
   onClick?: (e: any) => void;
-}
+};
 
-interface ButtonNextProps {
+type ButtonNextProps = {
   onClick?: (e: any) => void;
-}
+};
 
 export const TabsContent = styled(Box)`
   background-color: ${theme.colors.snowWhite};
@@ -135,11 +135,11 @@ const Step = styled(Box)`
   }
 `;
 
-interface IStyledTabsStatusButtons {
+type StyledTabsStatusButtonsProps = {
   buttonsJustify?: string;
-}
+};
 
-const TabsStatusButtons = styled.div<IStyledTabsStatusButtons>`
+const TabsStatusButtons = styled.div<StyledTabsStatusButtonsProps>`
   padding: ${theme.spacing.spacing04};
   border-top: ${theme.borders.grey};
   display: flex;
