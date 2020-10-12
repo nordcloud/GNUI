@@ -1,0 +1,75 @@
+import styled from "styled-components";
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Spinner } from ".";
+import { Spacer } from "../spacer";
+import { Flex } from "../container";
+import theme from "../../theme";
+
+<Meta title="Components/Spinner" component={Spinner} />
+
+# Spinner
+
+## Props
+
+> - `size`: `string` — **optional**: `sm` | `md` | `lg` | `xl` | `xxl`
+> - `color`: `string` — **optional**: `success` | `danger` | `warning` | `notification` | `white`
+> - `ninja`: `boolean` — **optional**
+
+## Default
+
+<Preview>
+  <Story name="default">
+    <Spinner />
+  </Story>
+</Preview>
+
+## Ninja
+
+<Preview>
+  <Story name="ninja">
+    <Spinner ninja />
+  </Story>
+</Preview>
+
+## Color
+
+> `color`: `string` — **optional**: `success` | `danger` | `warning` | `notification` | `white`
+
+<Preview>
+  <Story name="color">
+    <Flex justifyContent="space-evenly">
+      <Spinner color="success" />
+      <Spinner color="danger" />
+      <Spinner color="warning" />
+      <Spinner color="notification" />
+    </Flex>
+  </Story>
+</Preview>
+
+## Size
+
+> `size`: `string` — **optional**: `sm` | `md` | `lg` | `xl` | `xxl`
+
+<Preview>
+  <Story name="size">
+    <Flex justifyContent="space-evenly">
+      <Spinner size="sm" />
+      <Spinner size="md" />
+      <Spinner size="lg" />
+      <Spinner size="xl" />
+      <Spinner size="xxl" />
+    </Flex>
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="sizeNinja">
+    <Flex justifyContent="space-evenly">
+      <Spinner ninja size="sm" />
+      <Spinner ninja size="md" />
+      <Spinner ninja size="lg" />
+      <Spinner ninja size="xl" />
+      <Spinner ninja size="xxl" />
+    </Flex>
+  </Story>
+</Preview>

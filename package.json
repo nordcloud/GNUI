@@ -1,6 +1,7 @@
 {
   "name": "@nordcloud/gnui",
-  "version": "0.4.66",
+  "version": "0.4.67",
+  "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": "git://github.com/nordcloud/gnui.git",

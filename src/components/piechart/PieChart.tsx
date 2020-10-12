@@ -1,6 +1,7 @@
 import React, { useEffect, useState, FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
+import { setColor } from "../../utils/setcolor";
 import { space, SpaceProps } from "styled-system";
 
 interface IPieChart {
@@ -10,12 +11,6 @@ interface IPieChart {
   color?: "danger" | "warning" | "success" | "notification";
   [x: string]: any;
 }
-
-const setColor = (color: string) => {
-  return color !== undefined && theme.colors[color]
-    ? theme.colors[color]
-    : color;
-};
 
 const setColorBgr = (color: string) => {
   switch (color) {

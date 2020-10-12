@@ -1,0 +1,102 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { useState } from "react";
+import { Select } from ".";
+import theme from "../../theme";
+import chroma from 'chroma-js';
+
+<Meta title="Components/Select" component={Select} />
+
+# Multiselect
+
+#### Props
+
+```typescript
+export interface SelectProps {
+  options?:any;
+}
+```
+
+### Basic Select
+
+<Preview>
+  <Story name="basic modal">
+    {() => {
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' }
+      ];
+      return (
+        <div style={{height: '150px'}}>
+          <Select options={options}></Select>
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
+
+### Multiselect
+
+<Preview>
+  <Story name="multiselect">
+    {() => {
+      const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' }
+      ];
+      return (
+        <div style={{height: '150px'}}>
+          <Select
+            isMulti
+            defaultValue={[options[1], options[2]]}
+            options={options}
+          >
+          </Select>
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
+
+### Multiselect: colors
+
+<Preview>
+  <Story name="colors">
+    {() => {
+      const options = [
+        { value: 'chocolate',
+          label: 'Chocolate'
+        },
+        { value: 'strawberry',
+          label: 'Strawberry',
+          color: `${theme.colors.notification}`
+           },
+        { value: 'vanilla',
+          label: 'Vanilla',
+          color: `${theme.colors.danger}`
+        }
+      ];
+      const colorStyles = {
+        multiValue: (styles, { data }) => {
+        const color = data.color;
+        return {
+          ...styles,
+          backgroundColor: color ? color : theme.colors.primary,
+        };
+      },
+      };
+      return (
+        <div style={{height: '150px'}}>
+          <Select
+            isMulti
+            defaultValue={[options[1], options[2]]}
+            options={options}
+            styles={colorStyles}
+          >
+          </Select>
+        </div>
+      );
+    }}
+  </Story>
+</Preview>

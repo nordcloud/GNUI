@@ -1,3 +1,7 @@
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
+<!-- ALL-CONTRIBUTORS-BADGE:END --> 
+
 # General Nordcloud UI
 
 This repo contains Nordcloud PAT Design System - a collection of reusable react components that can be used in PAT products.
@@ -32,6 +36,27 @@ When you create PR against `master` branch, Amplify will create new deployment a
 - `npm install`
 - `npm run storybook`
 
-## Ownership
+## Contributors
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/raczyk"><img src="https://avatars0.githubusercontent.com/u/4233480?v=4" width="100px;" alt=""/><br /><sub><b>raczyk</b></sub></a></td>
+    <td align="center"><a href="https://github.com/nowyDEV"><img src="https://avatars2.githubusercontent.com/u/12304307?v=4" width="100px;" alt=""/><br /><sub><b>Dominik N</b></sub></a></td>
+    <td align="center"><a href="https://github.com/janosio-nordcloud"><img src="https://avatars2.githubusercontent.com/u/58164749?v=4" width="100px;" alt=""/><br /><sub><b>Jan Osio</b></sub></a></td>
+  </tr>
+</table>
 
-This code is owned by PAT UX/UI team.
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://allcontributors.org) specification.
+Contributions of any kind are welcome!
+
+## License
+
+Licensed under the MIT License, Copyright © 2020 Nordcloud Engineering
+
+See [LICENSE](./LICENSE) for more information.
