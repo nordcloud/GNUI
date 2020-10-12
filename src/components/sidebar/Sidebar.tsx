@@ -175,7 +175,7 @@ export const Sidebar: FunctionComponent<ISidebarProps> = ({
 
   return (
     <>
-      <Background onClick={onClick} isOpen={isOpen} {...props}></Background>
+      <Background onClick={onClick} isOpen={isOpen}></Background>
       <SidebarMenu
         isOpen={isOpen}
         side={side}
