@@ -59,7 +59,8 @@
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx)\"",
-    "check-types": "tsc"
+    "check-types": "tsc",
+    "lint": "eslint --ignore-path .gitignore --ext .ts,.tsx ."
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -76,14 +77,28 @@
       "last 1 safari version"
     ]
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && npm run check-types"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
   "devDependencies": {
     "@storybook/addon-actions": "^6.0.5",
     "@storybook/addon-docs": "^6.0.5",
     "@storybook/addon-links": "^6.0.5",
     "@storybook/addons": "^6.0.5",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.2",
     "@storybook/preset-create-react-app": "^3.1.4",
     "@storybook/react": "^6.0.5",
-    "eslint-plugin-react-hooks": "^4.1.2",
     "husky": "^4.2.5",
     "lint-staged": "^10.3.0",
     "prettier": "2.0.2"

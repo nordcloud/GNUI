@@ -11,11 +11,12 @@ import {
 import styled from "styled-components";
 import { Heading } from "../heading";
 import { Button } from "../button";
+
 const ModalHeading = styled(Heading)`
   margin: 0;
 `;
 
-interface IModal {
+type IModal = {
   isOpen: boolean;
   onClose?: (
     event: React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>
@@ -27,7 +28,7 @@ interface IModal {
   actionLabel: string;
   children: React.ReactNode;
   customStyles?: { [key: string]: string };
-}
+};
 
 export const ModalConfirm = ({
   children,
