@@ -1,0 +1,78 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Toggle } from ".";
+import { useState } from "react";
+
+<Meta title="Components/Toggle" component={Toggle} />
+
+# Toggle
+
+#### Props
+
+- `name`: `string` **required**
+- `labelText`: `string` **required**
+- `toggleValue`: `boolean` — _optional_
+- `size`: `string` — _optional_ - small-sized SelectButton
+- `status`: `string` — _optional_ - color indicator status for SelectButton
+- `handleChange`: `() => boolean` — _optional_ - React `setState` to handle toggleValue change
+
+### Default
+
+<Preview>
+  <Story name="default">
+    {
+        () => {
+          const [toggle, setToggle] = useState(false);
+          return (
+              <Toggle labelText="Default" name="default" toggleValue={toggle} handleSelect={setToggle} />
+          )
+        }
+      }
+  </Story>
+</Preview>
+
+### Small
+
+> - `size`: `string` — [`small`]
+
+<Preview>
+  <Story name="small">
+    {
+        () => {
+          const [toggle, setToggle] = useState(false);
+          return (
+              <Toggle size="small" labelText="Small" name="small" toggleValue={toggle} handleSelect={setToggle} />
+          )
+        }
+      }
+  </Story>
+</Preview>
+
+### Color Status
+
+> - `status`: `string` — [`success`, `danger`, `warning`, `notification`]
+
+<Preview>
+  <Story name="status">
+    {
+        () => {
+          const [toggle, setToggle] = useState(false);
+          return (
+            <div>
+              <p>
+                <Toggle status="success" labelText="Success!" name="success" toggleValue={toggle} handleSelect={setToggle}/>
+              </p>
+              <p>
+                <Toggle status="danger" labelText="Danger" name="danger" toggleValue={toggle} handleSelect={setToggle}/>
+              </p>
+              <p>
+                <Toggle status="warning" labelText="Warning" name="warning" toggleValue={toggle} handleSelect={setToggle}/>
+              </p>
+              <p>
+                <Toggle status="notification" labelText="Notification" name="notification" toggleValue={toggle} handleSelect={setToggle}/>
+              </p>
+            </div>
+          )
+        }
+      }
+  </Story>
+</Preview>

@@ -1,0 +1,170 @@
+import { useState } from "react";
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Input, Label, Description, Upload } from ".";
+import { GnuiContainer } from "../container";
+import { Button } from "../button";
+import { Spacer } from "../spacer";
+
+<Meta title="Form/Input" component={Input} />
+
+# Input
+
+> Inputs type defaults to `text`.
+
+<Preview>
+  <Story name="input">
+    <Input name="input" placeholder="Placeholder" title="Title" />
+  </Story>
+</Preview>
+
+## Props
+
+**Input**:
+
+- `name`: `string` — **required**
+- `type`: `string` — _optional_, default: `text`
+- `placeholder`: `string` – _optional_
+- `title`: `string` – _optional_
+- `disabled`: `boolean` — _optional_
+- `status`: `success | error` - _optional_
+
+**Label**:
+
+- `name`: `string`
+
+### name
+
+> `name`: `string`
+
+<Preview>
+  <Story name="name">
+    <Input name="Thats my name" title="That's my title" />
+  </Story>
+</Preview>
+
+### type
+
+> `type`: `string`
+
+For now it works good for two types: default `text` and `search`. The second one displays an icon before text. **TBC**
+
+<Preview>
+  <Story name="type">
+    <Input
+      name="search-input"
+      placeholder="Search input"
+      type="search"
+      title="Search input"
+    />
+  </Story>
+</Preview>
+
+### placeholder
+
+> `placeholder`: `string`
+
+Nothing more to add, just text placeholder which works exactly like in default HTML tag 🕺🏼
+
+### disabled
+
+> `disabled`: `boolean`
+
+<Preview>
+  <Story name="disabled">
+    <Input name="disabled-input" placeholder="Disabled input" disabled />
+  </Story>
+</Preview>
+
+### required
+
+> `required`: `boolean`
+
+<Preview>
+  <Story name="required">
+    <>
+      <Label name="Label" required />
+      <Input name="required-input" placeholder="Required input" />
+    </>
+  </Story>
+</Preview>
+
+### small
+
+<Preview>
+  <Story name="small">
+    <>
+      <Label name="Label" required />
+      <Input name="required-input" placeholder="Small" small />
+    </>
+  </Story>
+</Preview>
+
+### upload
+
+<Preview>
+  <Story name="upload">
+    <>
+      <Upload name="upload" placeholder="Select a file to upload" />
+    </>
+  </Story>
+</Preview>
+
+### popup
+
+<Preview>
+  <Story name="mepopupnu">
+    <>
+      <Label name="Label" required />
+      <Input name="required-input" placeholder="Popup" popup />
+    </>
+  </Story>
+</Preview>
+
+### status
+
+> `status`: `success | error`
+
+<Preview>
+  <Story name="status">
+    {() => {
+      const [status, setStatus] = useState("success");
+      return (
+        <GnuiContainer>
+          <GnuiContainer>
+            <Input
+              name="validation-input"
+              value={status === "success" ? "Success!" : "Error!"}
+              status={status}
+            />
+          </GnuiContainer>
+          <Spacer height="2rem" />
+          <GnuiContainer>
+            <Button
+              size="small"
+              color={status === "error" ? "danger" : "success"}
+              onClick={() =>
+                setStatus(status === "error" ? "success" : "error")
+              }
+            >
+              Change status
+            </Button>
+          </GnuiContainer>
+        </GnuiContainer>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Label and description
+
+> You can add `Label` before `Input` and `Description` after it. Labels name is what exactly will be displayed as a text above `Input`.
+
+<Preview>
+  <Story name="label & description">
+    <GnuiContainer>
+      <Label name="Label" />
+      <Input name="labeled-input" placeholder="Labeled input" />
+      <Description>Inputs description</Description>
+    </GnuiContainer>
+  </Story>
+</Preview>

@@ -1,0 +1,72 @@
+import { useState } from "react";
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Dropdown } from ".";
+import { GnuiContainer } from "../container";
+import { Spacer } from "../spacer";
+import { Text } from "../text";
+
+<Meta title="Components/Dropdown" component={Dropdown} />
+
+# Dropdown
+
+> Please take a look at props to understand correctly how `Dropdown` actually works. It was build to specifically work with [React Hooks](https://reactjs.org/docs/hooks-intro.html).
+
+## Props
+
+- `name`: `string` — **required**
+- `options`: `Array<any>` — **required**
+- `width`: `string` — _optional_, default: `100%`
+- `value`: `string | number` — taken from Reacts `useState()`
+- `title`: `string`
+- `onChange`: `(e: any) => void` — taken from Reacts `useState()`
+- `onClear`: `() => void` — taken from Reacts `useState()` — **optional**
+
+---
+
+<Story name="dropdown">
+  {() => {
+    const options = [
+      { value: "test", label: "Option 1" },
+      { value: "Option 2" },
+      "Option 3",
+      "Option 4",
+    ];
+    const [value, setValue] = useState("");
+    const [value2, setValue2] = useState("");
+    return (
+      <GnuiContainer>
+        <Dropdown
+          name="Select an option"
+          options={options}
+          value={value}
+          width="15rem"
+          onChange={(val) => setValue(val)}
+          title="Example title"
+        />
+        <Text>
+          Your choice:{" "}
+          <Text tag="span" weight="medium">
+            {!value ? "nothing" : value}
+          </Text>
+        </Text>
+        <Spacer height="2rem" />
+        <Dropdown
+          name="Select an option"
+          options={options}
+          value={value2}
+          width="15rem"
+          onChange={(val) => setValue2(val)}
+          onClear={() => setValue2("")}
+          title="Example title clear option"
+        />
+        <Text>
+          Your choice:{" "}
+          <Text tag="span" weight="medium">
+            {!value2 ? "nothing" : value2}
+          </Text>
+        </Text>
+        <Spacer height="5rem" />
+      </GnuiContainer>
+    );
+  }}
+</Story>

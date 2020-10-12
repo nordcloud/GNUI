@@ -1,0 +1,39 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Radio, RadioGroup } from ".";
+
+<Meta title="Form/Radiobutton" component={Radio} />
+
+# Radio Buttons
+
+### Simple Radio button
+
+> Default input type `radio`.
+
+<Preview>
+  <Story name="simple">
+    <Radio id="radiobutton" labelText="GNUI Radio button" />
+  </Story>
+</Preview>
+
+#### Props
+
+- `input element props`
+- `labelText`: `string` — **required** - label for the radio button
+
+### Group Radio button
+
+> Group of radio buttons. First radio button is checked by default
+
+<Preview>
+  <Story name="group">
+    <RadioGroup name="radiogroup">
+      <Radio id="button1" labelText="New York" value="ny" />
+      <Radio id="button2" labelText="San Francisco" value="sf" />
+      <Radio id="button3" labelText="Los Angeles" value="la" />
+    </RadioGroup>
+  </Story>
+</Preview>
+
+#### Props
+
+- `name`: `string` — **required**
