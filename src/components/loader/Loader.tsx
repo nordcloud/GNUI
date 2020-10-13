@@ -6,7 +6,7 @@ import { Text } from "../text";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 
-export interface LoaderProps {
+export type LoaderProps = {
   inContent?: boolean;
   position?:
     | "top-left"
@@ -14,7 +14,7 @@ export interface LoaderProps {
     | "bottom-right"
     | "bottom-center"
     | "bottom-left";
-}
+};
 
 const changePosition = (position: string) => {
   switch (position) {
@@ -72,6 +72,15 @@ const LoaderPosition = styled.div<LoaderProps>`
       ${changePosition(position)}
     `};
 `;
+const LoaderOverlay = styled.div`
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: ${theme.zindex.topoftheworld};
+`;
 
 export const Loader: React.FC<LoaderProps> = ({ inContent, ...props }) => {
   return (
@@ -84,21 +93,23 @@ export const Loader: React.FC<LoaderProps> = ({ inContent, ...props }) => {
           </Text>
         </Flex>
       ) : (
-        <LoaderPosition {...props}>
-          <Box shadow="shadow04">
-            <Flex>
-              <Spinner ninja size="xl" />
-              <div style={{ marginLeft: "1rem" }}>
-                <Text size="sm" tag="div">
-                  Please wait
-                </Text>
-                <Text weight="medium" tag="div">
-                  Loading ...
-                </Text>
-              </div>
-            </Flex>
-          </Box>
-        </LoaderPosition>
+        <LoaderOverlay>
+          <LoaderPosition {...props}>
+            <Box shadow="shadow04">
+              <Flex>
+                <Spinner ninja size="xl" />
+                <div style={{ marginLeft: "1rem" }}>
+                  <Text size="sm" tag="div">
+                    Please wait
+                  </Text>
+                  <Text weight="medium" tag="div">
+                    Loading ...
+                  </Text>
+                </div>
+              </Flex>
+            </Box>
+          </LoaderPosition>
+        </LoaderOverlay>
       )}
     </>
   );
