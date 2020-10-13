@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors)
 <!-- ALL-CONTRIBUTORS-BADGE:END --> 
 
 # General Nordcloud UI
@@ -45,6 +45,7 @@ When you create PR against `master` branch, Amplify will create new deployment a
     <td align="center"><a href="https://github.com/raczyk"><img src="https://avatars0.githubusercontent.com/u/4233480?v=4" width="100px;" alt=""/><br /><sub><b>raczyk</b></sub></a></td>
     <td align="center"><a href="https://github.com/nowyDEV"><img src="https://avatars2.githubusercontent.com/u/12304307?v=4" width="100px;" alt=""/><br /><sub><b>Dominik N</b></sub></a></td>
     <td align="center"><a href="https://github.com/janosio-nordcloud"><img src="https://avatars2.githubusercontent.com/u/58164749?v=4" width="100px;" alt=""/><br /><sub><b>Jan Osio</b></sub></a></td>
+    <td align="center"><a href="https://github.com/Horay"><img src="https://avatars3.githubusercontent.com/u/8356411?v=4" width="100px;" alt=""/><br /><sub><b>Horay</b></sub></a></td>
   </tr>
 </table>
 
