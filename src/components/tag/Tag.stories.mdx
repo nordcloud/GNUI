@@ -1,40 +1,82 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Tag } from ".";
-import { GnuiContainer } from "../container";
+import { Heading } from "../heading";
+import { Flex } from "../container";
+import { Breadcrumbs } from "../breadcrumbs";
 
 <Meta title="Components/Tag" component={Tag} />
 
 # Tag
 
+- `color`: `string` – _optional_, background color of Tag by default background is `theme.colors.lights[2]`
+- `colorText`: `string` – _optional_, text color of Tag by default text color is `theme.colors.primary`
+- `text`: `string` — _optional_, Tag content
+- `icon`: `string` — optional, You can use icon prop to add it to the tag. List of available icons you can find [here](?path=/docs/components-svgicon--ui)
+- `onClick`: `function` — _optional_
+- `showClose`: `boolean` — _optional_, show close button
+
 <Preview>
   <Story name="tag">
-    <Tag>Default tag</Tag>
+    <Tag text="Default tag" />
+    <Tag
+      text="Tag with close button"
+      showClose
+      onClick={() => alert("clicked")}
+    />
+    <Tag
+      text="Tag with close button and icon"
+      showClose
+      icon="plus"
+      showClose
+      onClick={() => alert("clicked")}
+    />
   </Story>
 </Preview>
 
-## Props
-
-- `color`: `string` – _optional_, default: `#d1d1da`
-- `text`: `string` — _optional_, default: `No data`
+## Colored Tag with close button
 
 > `color` props can be used in two ways: as an action colors build with `theme` (`accent`, `danger`, `success`, `warning`, `notification`, `primary`) or just in HEX/named color formats according to [X11 Colors](https://en.wikipedia.org/wiki/X11_color_names)
 
 <Preview>
-  <Story name="with props">
-    <GnuiContainer>
-      <Tag color="success" text="success" />
-      <Tag color="warning" text="in progress" />
-      <Tag color="danger" text="failed" />
-      <Tag color="notification" text="starting" />
-      <Tag color="primary" text="primary" />
-      <Tag color="#daffad" text="custom" />
-      <Tag text="No data" />
-      <Tag
-        text="With close"
-        color="primary"
-        showClose
-        onClick={() => alert("clicked")}
-      />
-    </GnuiContainer>
+  <Story name="close button">
+    <Tag
+      color="success"
+      text="Success"
+      showClose
+      onClick={() => alert("clicked")}
+    />
+    <Tag
+      color="warning"
+      text="Warning"
+      showClose
+      onClick={() => alert("clicked")}
+    />
+    <Tag
+      color="danger"
+      text="Error"
+      showClose
+      onClick={() => alert("clicked")}
+    />
+    <Tag
+      color="notification"
+      text="Help"
+      showClose
+      onClick={() => alert("clicked")}
+    />
+  </Story>
+</Preview>
+
+## Colored Tag with icons
+
+> By default, if you use custom colors text color will be `snowWhite` you can change text color using additional props `textColor`
+
+<Preview>
+  <Story name="tag with icon">
+    <Tag color="success" text="Success" icon="success" />
+    <Tag color="warning" text="Warning" icon="info" />
+    <Tag color="danger" text="Error" icon="danger" />
+    <Tag color="notification" text="Help" icon="help" />
+    <Tag text="Add" icon="plus" />
+    <Tag text="Edit" icon="edit" />
   </Story>
 </Preview>
