@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Checkbox, CheckboxGroup } from ".";
+import { IndeterminateCheckbox } from ".";
 
 <Meta title="Form/Checkbox" component={Checkbox} />
 
@@ -32,6 +33,14 @@ import { Checkbox, CheckboxGroup } from ".";
   </Story>
 </Preview>
 
+### IndeterminateCheckbox
+
+<Preview>
+  <Story name="inter">
+    <IndeterminateCheckbox id="321312" indeterminate={true} />
+  </Story>
+</Preview>
+
 ### Group of Checkboxes
 
 <Preview>
@@ -56,7 +65,3 @@ import { Checkbox, CheckboxGroup } from ".";
     }}
   </Story>
 </Preview>
-
-#### Props
-
-- `name`: `string` — **required**
