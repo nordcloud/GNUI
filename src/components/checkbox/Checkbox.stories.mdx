@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Checkbox, CheckboxGroup } from ".";
+import { IndeterminateCheckbox } from ".";
 
 <Meta title="Form/Checkbox" component={Checkbox} />
 
@@ -20,15 +21,23 @@ import { Checkbox, CheckboxGroup } from ".";
 
 - `input element props`
 - `labelText`: `string` — _optional_ - label for the radio button
-- `withoutLbale`: `boolean` — _optional_ - checkbox without label with larger clickable surface
+- `withoutLbalel`: `boolean` — _optional_ - checkbox without label with larger clickable surface
 
-### Checkbox without Lable
+### Checkbox without Lablel
 
 > Default input type `checkbox` without Label with larger clickable surface.
 
 <Preview>
   <Story name="without label">
     <Checkbox withoutLabel id="checkbox-5" />
+  </Story>
+</Preview>
+
+### IndeterminateCheckbox
+
+<Preview>
+  <Story name="inter">
+    <IndeterminateCheckbox id="321312" indeterminate={true} />
   </Story>
 </Preview>
 
@@ -56,7 +65,3 @@ import { Checkbox, CheckboxGroup } from ".";
     }}
   </Story>
 </Preview>
-
-#### Props
-
-- `name`: `string` — **required**
