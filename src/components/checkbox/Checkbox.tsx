@@ -7,6 +7,7 @@ import { space, SpaceProps } from "styled-system";
 export type CheckboxProps = {
   labelText?: string;
   withoutLabel?: boolean;
+  isIndeterminate?: boolean;
   ref?: Ref<HTMLInputElement>;
 } & InputHTMLAttributes<HTMLInputElement>;
 
@@ -86,6 +87,8 @@ const Fill = styled.div`
   }
 `;
 
+const FillInter = styled(Fill)``;
+
 const CheckboxInput = styled.input`
   opacity: 0;
   z-index: 2;
@@ -107,6 +110,15 @@ const CheckboxInput = styled.input`
       }
     }
   }
+  & ~ ${FillInter} {
+    width: 0.65rem;
+    height: 0.25rem;
+    transition: width 0.2s ease-out, height 0.2s ease-out;
+    &::before {
+      opacity: 1;
+      transition: opacity 1s ease;
+    }
+  }
 `;
 
 const CheckboxWrapper = styled(GnuiContainer)`
@@ -119,17 +131,20 @@ const CheckboxWrapper = styled(GnuiContainer)`
 
 export const Checkbox: FunctionComponent<
   CheckboxProps & SpaceProps
-> = React.forwardRef(({ id, labelText, withoutLabel, ...props }, ref) => (
-  <SingleCheckWrapper withoutLabel={withoutLabel}>
-    <CheckboxContainer>
-      <CheckboxInput type="checkbox" id={id} ref={ref} {...props} />
-      <Fill />
-    </CheckboxContainer>
-    <CheckboxLabel withoutLabel={withoutLabel} htmlFor={id}>
-      {labelText}
-    </CheckboxLabel>
-  </SingleCheckWrapper>
-));
+> = React.forwardRef(
+  ({ id, labelText, withoutLabel, isIndeterminate, ...props }, ref) => (
+    <SingleCheckWrapper withoutLabel={withoutLabel}>
+      <CheckboxContainer>
+        <CheckboxInput type="checkbox" id={id} ref={ref} {...props} />
+        <Fill />
+        {isIndeterminate && <FillInter />}
+      </CheckboxContainer>
+      <CheckboxLabel withoutLabel={withoutLabel} htmlFor={id}>
+        {labelText}
+      </CheckboxLabel>
+    </SingleCheckWrapper>
+  )
+);
 
 export const CheckboxGroup: FunctionComponent<
   CheckboxGroupProps & SpaceProps
