@@ -25,8 +25,8 @@ export const StyledTag = styled.div<TagProps>`
   border-radius: ${theme.radius.xxl};
   margin: 0 4px 4px 0;
 
-  .tag__icon,
-  .tag__close-button {
+  .tag-icon,
+  .tag-close-button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -34,11 +34,11 @@ export const StyledTag = styled.div<TagProps>`
     height: 1rem;
   }
 
-  .tag__icon {
+  .tag-icon {
     margin: 0 0.25rem 0 -0.375rem;
   }
 
-  .tag__close-button {
+  .tag-close-button {
     border-radius: ${theme.radius.xxl};
     background: ${darken(0.1, theme.colors.lights[2])};
     margin: 0 -0.375rem 0 0.5rem;
@@ -52,9 +52,9 @@ export const StyledTag = styled.div<TagProps>`
   &:hover {
     background: ${darken(0.05, theme.colors.lights[2])};
     cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    .tag__text {
-      transition: all 0.2s ease-in-out;
+    transition: ${theme.transition};;
+    .tag-text {
+      transition: ${theme.transition};;
       opacity: 0.8;
     }
   }
@@ -71,7 +71,7 @@ export const StyledTag = styled.div<TagProps>`
       svg {
         fill: ${theme.colors.snowWhite};
       }
-      .tag__close-button {
+      .tag-close-button {
         background: ${darken(0.1, theme.colors[color] || color)};
       }
 
@@ -102,13 +102,13 @@ export const Tag: React.FC<TagProps> = ({
   return (
     <StyledTag colorText={colorText} color={color} onClick={onClick} {...props}>
       {icon && (
-        <div className="tag__icon">
+        <div className="tag-icon">
           <SVGIcon name={icon} size="sm" />
         </div>
       )}
-      <div className="tag__text">{text || "No data"}</div>
+      <div className="tag-text">{text || "No data"}</div>
       {showClose && (
-        <div className="tag__close-button">
+        <div className="tag-close-button">
           <SVGIcon name="close" size="sm" />
         </div>
       )}
