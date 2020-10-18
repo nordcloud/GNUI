@@ -61,18 +61,14 @@ const StyledToggle = styled.button<ToggleProps>`
 `;
 
 export const Toggle: FunctionComponent<ToggleProps> = ({
-  status,
-  size,
-  name,
   toggleValue,
   labelText,
   handleSelect,
+  ...props
 }) => {
   return (
     <StyledToggle
-      size={size}
-      status={status}
-      name={name}
+      {...props}
       className={toggleValue ? "active" : ""}
       onClick={() => handleSelect && handleSelect(!toggleValue)}
     >
