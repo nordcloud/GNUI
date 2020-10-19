@@ -3,14 +3,14 @@ import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { Icon } from "../icon";
 
-export interface MessageProps {
+export type MessageProps = {
   image?: string;
   status?: "success" | "notification" | "danger";
   borderColor?: string;
   background?: string;
   color?: string;
   children?: React.ReactNode;
-}
+};
 
 export const MessageWrapper = styled.div<MessageProps>`
   display: flex;

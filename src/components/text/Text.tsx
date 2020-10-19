@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import { space, SpaceProps } from "styled-system";
 import theme from "../../theme";
 
-interface TextProps {
+type TextProps = {
   size?: "xs" | "sm" | "md" | "lg" | "xl" | "xxl";
   display?: string;
   color?: string;
@@ -14,7 +14,7 @@ interface TextProps {
   align?: "left" | "center" | "right";
   lineHeight?: string;
   [propName: string]: any;
-}
+};
 
 const changeTag = (tag: string) => {
   let spacing: string;

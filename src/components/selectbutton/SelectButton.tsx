@@ -1,23 +1,23 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, ReactNode } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { setColor } from "../../utils/setcolor";
 import { darken } from "polished";
 
-export interface SelectButtonProps {
+export type SelectButtonProps = {
   name: string;
   value: string;
   labelText: string;
   isActive?: boolean;
   id?: string;
   onClick: (value: any) => void;
-}
+};
 
-export interface SelectButtonListProps {
-  children: any;
+export type SelectButtonListProps = {
+  children: ReactNode;
   status?: string;
   size?: string;
-}
+};
 
 type StyledSelectButtons = {
   status?: string;
