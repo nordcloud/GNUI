@@ -98,6 +98,23 @@ export const Loader: React.FC<LoaderProps> = ({
           </Text>
         </Flex>
       ) : (
+        <LoaderPosition {...props}>
+          <Box shadow="shadow04">
+            <Flex>
+              <Spinner ninja size="xl" />
+              <div style={{ marginLeft: "1rem" }}>
+                <Text size="sm" tag="div">
+                  Please wait
+                </Text>
+                <Text weight="medium" tag="div">
+                  Loading ...
+                </Text>
+              </div>
+            </Flex>
+          </Box>
+        </LoaderPosition>
+      )}
+      {!inContent && isBackground && (
         <LoaderOverlay isBackground={isBackground}>
           <LoaderPosition {...props}>
             <Box shadow="shadow04">
