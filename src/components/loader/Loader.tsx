@@ -78,8 +78,7 @@ const LoaderOverlay = styled.div<LoaderProps>`
   bottom: 0;
   left: 0;
   position: fixed;
-  background-color: ${({ isBackground }) =>
-    isBackground ? "rgba(255, 255, 255, 0.5)" : "none"};
+  background-color: rgba(255, 255, 255, 0.5);
   z-index: ${theme.zindex.topoftheworld};
 `;
 
