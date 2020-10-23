@@ -8,7 +8,7 @@ import { Button } from "../button";
 type TabProps = {
   className?: string;
   wizard?: boolean;
-  step?: number;
+  step?: any;
   heading?: string;
   caption?: string;
   activeTab?: number;
@@ -28,8 +28,8 @@ type TabsProps = {
   name?: string;
   caption?: string;
   children: Array<TabProps>;
-  handleTab: (e: any) => void;
-  step: number;
+  handleTab: any;
+  step: any;
 };
 
 type ButtonPreviousProps = {
