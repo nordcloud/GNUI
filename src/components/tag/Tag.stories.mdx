@@ -25,9 +25,21 @@ import { Breadcrumbs } from "../breadcrumbs";
     />
     <Tag
       text="Tag with close button and icon"
-      showClose
       icon="plus"
       showClose
+      onClick={() => alert("clicked")}
+    />
+    <Tag
+      icon="edit"
+      onClick={() => alert("clicked")}
+    />
+    <Tag
+      isTransparent
+      icon="edit"
+      onClick={() => alert("clicked")}
+    />
+    <Tag
+      icon="plus"
       onClick={() => alert("clicked")}
     />
   </Story>
