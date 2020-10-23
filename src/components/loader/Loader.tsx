@@ -8,6 +8,7 @@ import theme from "../../theme";
 
 export type LoaderProps = {
   inContent?: boolean;
+  isBackground?: boolean;
   position?:
     | "top-left"
     | "top-right"
@@ -65,14 +66,13 @@ const LoaderPosition = styled.div<LoaderProps>`
   top: ${theme.spacing.spacing08};
   left: 50%;
   margin-left: -7rem;
-
   ${({ position }) =>
     position &&
     css`
       ${changePosition(position)}
     `};
 `;
-const LoaderOverlay = styled.div`
+const LoaderOverlay = styled.div<LoaderProps>`
   top: 0;
   right: 0;
   bottom: 0;
@@ -82,7 +82,11 @@ const LoaderOverlay = styled.div`
   z-index: ${theme.zindex.topoftheworld};
 `;
 
-export const Loader: React.FC<LoaderProps> = ({ inContent, ...props }) => {
+export const Loader: React.FC<LoaderProps> = ({
+  inContent,
+  isBackground,
+  ...props
+}) => {
   return (
     <>
       {inContent ? (
@@ -93,7 +97,24 @@ export const Loader: React.FC<LoaderProps> = ({ inContent, ...props }) => {
           </Text>
         </Flex>
       ) : (
-        <LoaderOverlay>
+        <LoaderPosition {...props}>
+          <Box shadow="shadow04">
+            <Flex>
+              <Spinner ninja size="xl" />
+              <div style={{ marginLeft: "1rem" }}>
+                <Text size="sm" tag="div">
+                  Please wait
+                </Text>
+                <Text weight="medium" tag="div">
+                  Loading ...
+                </Text>
+              </div>
+            </Flex>
+          </Box>
+        </LoaderPosition>
+      )}
+      {!inContent && isBackground && (
+        <LoaderOverlay isBackground={isBackground}>
           <LoaderPosition {...props}>
             <Box shadow="shadow04">
               <Flex>
