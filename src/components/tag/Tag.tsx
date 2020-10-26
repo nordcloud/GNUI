@@ -12,13 +12,14 @@ type TagProps = {
   icon?: string;
   onClick?: () => void;
   showClose?: boolean;
+  isTransparent?: boolean;
 };
 
 export const StyledTag = styled.div<TagProps>`
   display: flex;
   float: left;
   align-items: center;
-  padding: 0 ${theme.spacing.spacing03};
+  padding: 0;
   font-size: ${theme.fontSizes.sm};
   line-height: 1.5rem;
   background: ${theme.colors.lights[2]};
@@ -33,15 +34,20 @@ export const StyledTag = styled.div<TagProps>`
     width: 1rem;
     height: 1rem;
   }
+  
+  .tag-text {
+    margin: 0 ${theme.spacing.spacing03};
+  }
 
   .tag-icon {
-    margin: 0 0.25rem 0 -0.375rem;
+    margin: 0;
+    padding: ${theme.spacing.spacing01};
   }
 
   .tag-close-button {
     border-radius: ${theme.radius.xxl};
     background: ${darken(0.1, theme.colors.lights[2])};
-    margin: 0 -0.375rem 0 0.5rem;
+    margin: ${theme.spacing.spacing01};
 
     svg {
       width: 0.625rem;
@@ -62,7 +68,29 @@ export const StyledTag = styled.div<TagProps>`
     background: ${darken(0.1, theme.colors.lights[2])};
     cursor: pointer;
   }
-
+  
+  ${({ isTransparent }) =>
+    isTransparent &&
+    css`
+      background: transparent;
+    `}
+    
+  ${({ icon }) =>
+    icon &&
+    css`
+      .tag-text {
+        margin-left: 0;
+      }
+    `}
+    
+  ${({ showClose }) =>
+    showClose &&
+    css`
+      .tag-text {
+        margin-right: ${theme.spacing.spacing01};
+      }
+    `}
+    
   ${({ color }) =>
     color &&
     css`
@@ -97,16 +125,25 @@ export const Tag: React.FC<TagProps> = ({
   icon,
   onClick,
   showClose,
+  isTransparent,
   ...props
 }) => {
   return (
-    <StyledTag colorText={colorText} color={color} onClick={onClick} {...props}>
+    <StyledTag
+      color={color}
+      colorText={colorText}
+      icon={icon}
+      onClick={onClick}
+      showClose={showClose}
+      isTransparent={isTransparent}
+      {...props}
+    >
       {icon && (
         <div className="tag-icon">
           <SVGIcon name={icon} size="sm" />
         </div>
       )}
-      <div className="tag-text">{text || "No data"}</div>
+      {text && <div className="tag-text">{text}</div>}
       {showClose && (
         <div className="tag-close-button">
           <SVGIcon name="close" size="sm" />

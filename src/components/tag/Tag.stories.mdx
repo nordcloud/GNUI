@@ -14,6 +14,7 @@ import { Breadcrumbs } from "../breadcrumbs";
 - `icon`: `string` — optional, icon to be placed inside the tag [list of available icons](?path=/docs/components-svgicon--ui)
 - `onClick`: `function` — _optional_
 - `showClose`: `boolean` — _optional_, show close button
+- `isTransparent`: `boolean` — _optional_, this prop makes the tag background transparent
 
 <Preview>
   <Story name="tag">
@@ -25,9 +26,21 @@ import { Breadcrumbs } from "../breadcrumbs";
     />
     <Tag
       text="Tag with close button and icon"
-      showClose
       icon="plus"
       showClose
+      onClick={() => alert("clicked")}
+    />
+    <Tag
+      icon="edit"
+      onClick={() => alert("clicked")}
+    />
+    <Tag
+      isTransparent
+      icon="edit"
+      onClick={() => alert("clicked")}
+    />
+    <Tag
+      icon="plus"
       onClick={() => alert("clicked")}
     />
   </Story>
