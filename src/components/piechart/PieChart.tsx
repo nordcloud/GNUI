@@ -1,5 +1,6 @@
 import React, { useEffect, useState, FunctionComponent } from "react";
-import styled, { css } from "styled-components/macro";
+// Don't use styled-components/macro, it causes jest errors
+import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { setColor } from "../../utils/setcolor";
 import { space, SpaceProps } from "styled-system";
