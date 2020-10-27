@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import styled, { css } from "styled-components/macro";
+import styled, { css } from "styled-components";
 import { Text } from "../text";
 import { Container, Row, Col } from "react-awesome-styled-grid";
 import theme from "../../theme";

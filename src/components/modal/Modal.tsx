@@ -1,6 +1,6 @@
 import React from "react";
 import theme from "../../theme";
-import styled, { keyframes } from "styled-components/macro";
+import styled, { keyframes } from "styled-components";
 import { Heading } from "../heading";
 import { Button, Box } from "..";
 import { whenIE11 } from "../../utils/browserCompatibility";

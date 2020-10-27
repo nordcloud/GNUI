@@ -1,5 +1,5 @@
 import React, { FunctionComponent, InputHTMLAttributes, Ref } from "react";
-import styled, { css } from "styled-components/macro";
+import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { GnuiContainer, Flex } from "../container";
 import { Icon } from "../icon";

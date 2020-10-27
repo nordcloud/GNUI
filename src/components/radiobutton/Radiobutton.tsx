@@ -4,7 +4,7 @@ import React, {
   InputHTMLAttributes,
   Ref,
 } from "react";
-import styled from "styled-components/macro";
+import styled from "styled-components";
 import theme from "../../theme";
 import { GnuiContainer, Flex } from "../container";
 
