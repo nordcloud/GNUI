@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from "react";
-import styled, { css } from "styled-components/macro";
+import styled, { css } from "styled-components";
 import { Box } from "../box";
 import { Button } from "../button";
 import { Icon } from "../icon";

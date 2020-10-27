@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import styled from "styled-components/macro";
+import styled from "styled-components";
 import theme from "../../theme";
 import { GnuiContainer, Flex, GnuiContainerProps } from "../container";
 import { InputProps } from "../input";

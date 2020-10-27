@@ -3,7 +3,7 @@ import { Box } from "../box";
 import { Flex } from "../container";
 import { Spinner } from "../spinner";
 import { Text } from "../text";
-import styled, { css } from "styled-components/macro";
+import styled, { css } from "styled-components";
 import theme from "../../theme";
 
 export type LoaderProps = {

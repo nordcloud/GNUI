@@ -8,7 +8,7 @@ import {
   ModalActions,
   Background,
 } from "./Modal";
-import styled from "styled-components/macro";
+import styled from "styled-components";
 import { Heading } from "../heading";
 import { Button } from "../button";
 

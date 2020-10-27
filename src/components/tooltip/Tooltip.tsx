@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from "react";
-import styled, { css } from "styled-components/macro";
+import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { setColor } from "../../utils/setcolor";
 
