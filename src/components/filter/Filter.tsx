@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from "react";
-import styled, { css } from "styled-components";
+import styled, { css } from "styled-components/macro";
 import { Box } from "../box";
 import { Button } from "../button";
 import { Icon } from "../icon";
@@ -66,12 +66,12 @@ const FilterContent = styled((props) => <Box {...props} />)<{
     `}
 `;
 
-interface IFilter {
+type IFilter = {
   children: React.ReactNode;
   isFilterOpen?: boolean;
   accompanyingComponent?: React.ReactElement;
   label: string;
-}
+};
 
 export const Filter: FunctionComponent<IFilter> = ({
   children,

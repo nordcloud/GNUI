@@ -1,15 +1,15 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import theme from "../../theme";
 
-export interface BreadcrumbsList {
+export type BreadcrumbsList = {
   label: string;
   uri: string;
-}
+};
 
-export interface BreadcrumbsListProps {
+export type BreadcrumbsListProps = {
   list: Array<BreadcrumbsList>;
-}
+};
 
 const StyledBreadcrumbs = styled.nav`
   ul {

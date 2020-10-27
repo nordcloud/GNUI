@@ -4,14 +4,14 @@ import React, {
   InputHTMLAttributes,
   Ref,
 } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import theme from "../../theme";
 import { GnuiContainer, Flex } from "../container";
 
-export interface RadioProps extends InputHTMLAttributes<HTMLInputElement> {
+export type RadioProps = {
   labelText?: string;
   ref?: Ref<HTMLInputElement>;
-}
+} & InputHTMLAttributes<HTMLInputElement>;
 
 export type RadioGroupProps = {
   name: string;

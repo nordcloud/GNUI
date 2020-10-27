@@ -1,15 +1,15 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import theme from "../../theme";
 import { SVGIcon } from "../svgicon";
 
-interface IPaginationProps {
+type IPaginationProps = {
   set(start: number): void;
   current: number;
   count: number;
   size: number;
   from: number;
-}
+};
 
 const Pagination: React.FC<IPaginationProps> = ({
   set,
@@ -74,10 +74,10 @@ const Pagination: React.FC<IPaginationProps> = ({
   );
 };
 
-interface IPerPageProps {
+type IPerPageProps = {
   size: number;
   set(perPage: number): void;
-}
+};
 
 const PerPage = ({ size, set }: IPerPageProps) => (
   <nav
@@ -100,11 +100,11 @@ const PerPage = ({ size, set }: IPerPageProps) => (
   </nav>
 );
 
-interface IPaginationAmountProps {
+type IPaginationAmountProps = {
   from: number;
   size: number;
   count: number;
-}
+};
 
 const PaginationAmount = ({ from, size, count }: IPaginationAmountProps) => {
   const s = Number(size);
@@ -118,18 +118,18 @@ const PaginationAmount = ({ from, size, count }: IPaginationAmountProps) => {
   );
 };
 
-interface IPaginationBoxProps {
+type IPaginationBoxProps = {
   size: number;
   from: number;
   count: number;
   setSize(size: number): any;
   setPage(page: number): any;
   small?: boolean;
-}
+};
 
-interface IStyledPaginationBox {
+type IStyledPaginationBox = {
   small?: boolean;
-}
+};
 
 const StyledPaginationBox = styled.nav<IStyledPaginationBox>`
   display: flex;

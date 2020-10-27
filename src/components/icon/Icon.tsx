@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { icons } from "../../utils/icons";
 import { space, SpaceProps } from "styled-system";
 
@@ -8,12 +8,12 @@ const svgToMiniDataURI = require("mini-svg-data-uri");
 const getIcon = (icon: string) =>
   icons[icon] ? svgToMiniDataURI(icons[icon]) : svgToMiniDataURI(icon);
 
-export interface IconProps {
+export type IconProps = {
   image: string;
   width: string;
   height: string;
   inline?: boolean;
-}
+};
 
 const StyledIcon = styled.div<IconProps & SpaceProps>`
   display: ${(props) => (props.inline ? "inline-block" : "")};

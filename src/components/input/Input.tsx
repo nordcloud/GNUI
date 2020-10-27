@@ -1,28 +1,28 @@
 import React, { FunctionComponent, InputHTMLAttributes, Ref } from "react";
-import styled, { css } from "styled-components";
+import styled, { css } from "styled-components/macro";
 import theme from "../../theme";
 import { GnuiContainer, Flex } from "../container";
 import { Icon } from "../icon";
 import { space, SpaceProps } from "styled-system";
 import { Spinner } from "../spinner";
 
-export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+export type InputProps = {
   small?: boolean;
   popup?: boolean;
   loading?: boolean;
   ref?: Ref<HTMLInputElement>;
-}
+} & InputHTMLAttributes<HTMLInputElement>;
 
-interface LabelProps {
+type LabelProps = {
   required?: boolean;
   name?: string;
-}
+};
 
-interface InputGroupProps {
+type InputGroupProps = {
   status?: Status;
   noBorder?: boolean;
   popup?: boolean;
-}
+};
 
 type Status = "success" | "error";
 

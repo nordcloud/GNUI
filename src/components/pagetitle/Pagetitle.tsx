@@ -1,20 +1,20 @@
 import React, { FunctionComponent } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import theme from "../../theme";
 import { Breadcrumbs } from "../breadcrumbs";
 import { BreadcrumbsList } from "../breadcrumbs";
 import { Heading } from "../heading";
 import { Box } from "../box";
 
-interface PageTitleProps {
+type PageTitleProps = {
   title: string;
-}
+};
 
-interface PageTitleBreadcrumbsProps {
+type PageTitleBreadcrumbsProps = {
   title: string;
   list: Array<BreadcrumbsList>;
   margin?: string;
-}
+};
 
 const PageTitleWrapper = styled.div`
   h3 {

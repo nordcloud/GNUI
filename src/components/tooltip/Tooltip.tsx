@@ -1,9 +1,9 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from "react";
-import styled, { css } from "styled-components";
+import styled, { css } from "styled-components/macro";
 import theme from "../../theme";
 import { setColor } from "../../utils/setcolor";
 
-interface ITooltip {
+type ITooltip = {
   caption: string;
   position?: "left" | "right";
   status?: "danger" | "warning" | "success" | "notification";
@@ -11,7 +11,7 @@ interface ITooltip {
   showTimeout?: number;
   hideTimeout?: number;
   minWidth?: string;
-}
+};
 
 const setArrowPosition = (position: string) => {
   switch (position) {

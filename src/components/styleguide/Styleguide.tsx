@@ -1,14 +1,14 @@
 import React, { FunctionComponent } from "react";
-import styled, { css } from "styled-components";
+import styled, { css } from "styled-components/macro";
 import { Text } from "../text";
 import { Container, Row, Col } from "react-awesome-styled-grid";
 import theme from "../../theme";
 
-interface StyleguideProps {
+type StyleguideProps = {
   colors?: Array<string | number | any>;
   description?: string;
   name?: string;
-}
+};
 
 const ColorPaletteWrapper = styled((props) => <Container {...props} />)`
   padding: 0;

@@ -1,20 +1,20 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import styled, { css } from "styled-components/macro";
 import theme from "../../theme";
 import { space } from "styled-system";
 
-interface IBarValue {
+type IBarValue = {
   color: string;
   value: number;
-}
+};
 
-interface IBarValues {
+type IBarValues = {
   values: IBarValue[];
-}
+};
 
-interface IStyledBarProps {
+type IStyledBarProps = {
   height?: string;
-}
+};
 
 const StyledBarChart = styled.svg<IStyledBarProps>`
   width: 100%;

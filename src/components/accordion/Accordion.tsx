@@ -1,32 +1,32 @@
 import React, { FunctionComponent, useState } from "react";
-import styled, { css } from "styled-components";
+import styled, { css } from "styled-components/macro";
 import theme from "../../theme";
 import { space, SpaceProps } from "styled-system";
 import { SVGIcon } from "../svgicon";
 
-interface AccordionProps {
+type AccordionProps = {
   children: any;
-}
+};
 
-interface AccordionHeaderProps {
+type AccordionHeaderProps = {
   title: string;
   description?: string;
   children: any;
   small?: boolean;
-}
+};
 
-interface AccordionItemProps {
+type AccordionItemProps = {
   children: string | number | any;
-}
+};
 
-interface HeaderIconProps {
+type HeaderIconProps = {
   animate?: boolean;
-}
+};
 
-interface StyledHeaderProps {
+type StyledHeaderProps = {
   isOpen?: boolean;
   small?: boolean;
-}
+};
 
 const StyledAccordion = styled.div`
   ${space}

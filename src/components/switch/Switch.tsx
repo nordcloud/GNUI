@@ -1,13 +1,13 @@
 import React, { FunctionComponent, ComponentPropsWithoutRef } from "react";
-import styled, { css } from "styled-components";
+import styled, { css } from "styled-components/macro";
 import theme from "../../theme";
 import { setColor } from "../../utils/setcolor";
 
-export interface SwitchProps extends ComponentPropsWithoutRef<"input"> {
+export type SwitchProps = {
   labelText?: string;
   severity?: "danger" | "notification" | "warning" | "success";
   position?: "left" | "right";
-}
+} & ComponentPropsWithoutRef<"input">;
 
 type SwitchInputProps = Pick<SwitchProps, "severity">;
 

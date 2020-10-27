@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import theme from "../../theme";
 import { SVGIcon } from "../svgicon";
 import { InputProps, StyledInput } from "./Input";
@@ -26,7 +26,7 @@ const StyledLabel = styled.label`
   padding: 0.5rem;
 `;
 
-interface UploadProps extends Omit<InputProps, "type"> {}
+type UploadProps = {} & Omit<InputProps, "type">;
 
 export const Upload: FunctionComponent<UploadProps> = React.forwardRef(
   ({ placeholder, id = "upload-file", ...props }, ref) => (

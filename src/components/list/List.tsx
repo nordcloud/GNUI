@@ -1,26 +1,26 @@
 import React, { FunctionComponent } from "react";
-import styled, { css } from "styled-components";
+import styled, { css } from "styled-components/macro";
 import theme from "../../theme";
 import { space, SpaceProps } from "styled-system";
 
-interface StyledListProps {
+type StyledListProps = {
   horizontal?: boolean;
   unordered?: boolean;
   hasDescription?: boolean;
   spacing?: string;
-}
+};
 
-interface INestedListItem extends StyledListProps {
+type INestedListItem = {
   description?: string | number;
   title: string | number;
   rowChildren?: IListItem[];
-}
+} & StyledListProps;
 
 type IListItem = Array<string | number> | INestedListItem;
 
-interface IListProps extends StyledListProps {
+type IListProps = {
   items?: IListItem[];
-}
+} & StyledListProps;
 
 const StyledListItemTitle = styled.span`
   width: 11.25rem;
