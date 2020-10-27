@@ -1,16 +1,16 @@
 import React, { useEffect, useState, FunctionComponent } from "react";
-import styled, { css } from "styled-components";
+import styled, { css } from "styled-components/macro";
 import theme from "../../theme";
 import { setColor } from "../../utils/setcolor";
 import { space, SpaceProps } from "styled-system";
 
-interface IPieChart {
+type IPieChart = {
   size: number;
   progress: number;
   strokeWidth: number;
   color?: "danger" | "warning" | "success" | "notification";
   [x: string]: any;
-}
+};
 
 const setColorBgr = (color: string) => {
   switch (color) {

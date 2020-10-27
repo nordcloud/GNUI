@@ -1,9 +1,9 @@
-import styled, { css } from "styled-components";
+import styled, { css } from "styled-components/macro";
 import theme from "../../theme";
 
-export interface NavWrapperProps {
+export type NavWrapperProps = {
   secondary?: boolean;
-}
+};
 
 const Item = styled.div`
   list-style: none;

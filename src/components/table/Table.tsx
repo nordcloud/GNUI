@@ -1,12 +1,12 @@
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import theme from "../../theme";
 
-export interface TableProps {
+export type TableProps = {
   hoverline?: boolean;
   striped?: boolean;
   small?: boolean;
   tiny?: boolean;
-}
+};
 
 const Table: any = styled.table<TableProps>`
   width: 100%;

@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import styled, { css } from "styled-components";
+import styled, { css } from "styled-components/macro";
 import theme from "../../theme";
 import { setColor } from "../../utils/setcolor";
 import { ToastContainer } from "react-toastify";
@@ -9,18 +9,18 @@ import { Heading } from "../heading";
 import { darken } from "polished";
 import "react-toastify/dist/ReactToastify.minimal.css";
 
-export interface ToastProps {
+export type ToastProps = {
   name?: string;
   heading?: string;
   severity?: "danger" | "notification" | "warning" | "success";
   closeToast?: (e: React.MouseEvent) => void;
-}
+};
 
-export interface MessageProps {
+export type MessageProps = {
   heading?: string;
   message?: string;
   closeToast?: (e: React.MouseEvent) => void;
-}
+};
 
 const StyledToastContainer = styled.div<ToastProps>`
   .Toastify {

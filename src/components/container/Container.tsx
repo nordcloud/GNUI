@@ -1,5 +1,5 @@
 import React, { FunctionComponent, ReactNode } from "react";
-import styled, { css } from "styled-components";
+import styled, { css } from "styled-components/macro";
 import { space, SpaceProps } from "styled-system";
 import theme from "../../theme";
 

@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import styled, { css } from "styled-components";
+import styled, { css } from "styled-components/macro";
 import theme from "../../theme";
 import { setColor } from "../../utils/setcolor";
 import { darken, lighten } from "polished";
@@ -7,7 +7,7 @@ import { space, SpaceProps } from "styled-system";
 import { SVGIcon } from "../svgicon";
 import { Spinner } from "../spinner";
 
-export interface ButtonProps {
+export type ButtonProps = {
   children?: string | React.ReactNode;
   severity?: "high" | "medium" | "low";
   size?: "sm" | "md";
@@ -27,7 +27,7 @@ export interface ButtonProps {
   display?: "flex" | "inline-flex";
   outline?: boolean;
   secondary?: boolean;
-}
+};
 
 const changeSize = (size: string) => {
   switch (size) {
