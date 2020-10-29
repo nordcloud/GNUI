@@ -91,7 +91,10 @@ import CopyToClipboard from "react-copy-to-clipboard";
 
 <Preview>
   <Story name="ui">
-    <Flex justifyContent="space-evenly" style={{flexWrap: "wrap"}}>
+    <Flex justifyContent="space-evenly" style={{ flexWrap: "wrap" }}>
+      <CopyToClipboard text="export">
+        <SVGIcon name="export" />
+      </CopyToClipboard>
       <CopyToClipboard text="danger">
         <SVGIcon name="danger" />
       </CopyToClipboard>
