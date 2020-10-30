@@ -89,6 +89,7 @@ export const Background: any = styled.div<IBackgroudProps>`
 export const ModalContent = styled.div<IModalContent>`
   max-height: ${({ contentMaxHeight }) => contentMaxHeight || "25rem"};
   overflow-y: auto;
+  text-align: left;
   ${whenIE11(`
     padding-bottom: ${MODAL_ACTION_HEIGHT};
   `)}
