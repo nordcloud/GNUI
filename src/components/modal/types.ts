@@ -1,15 +1,16 @@
-export interface IModalBox {
+export type ModalBoxProps = {
   modalMinWidth?: string;
-}
-export interface IStyledModal {
+};
+export type StyledModalProps = {
   isOpen: boolean;
-}
+};
 
-export interface IModalContent {
+export type ModalContentProps = {
   contentMaxHeight?: string;
-}
+  alignContent?: "right" | "center";
+};
 
-export interface IModalAction {
+export type ModalAction = {
   onAction: (
     event: React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>
   ) => void;
@@ -17,19 +18,19 @@ export interface IModalAction {
   disabled?: boolean;
   severity: "low" | "medium" | "high";
   order: number;
-}
-export interface IBackgroudProps {
+};
+export type BackgroudProps = {
   isOpen?: boolean;
   onClick?: (e: any) => void;
-}
-export interface IModal {
+};
+export type ModalProps = {
   isOpen: boolean;
   onRequestClose?: () => void;
   onAfterOpen?: () => void;
   onClose?: (
     event: React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>
   ) => void;
-  actions: IModalAction[];
+  actions: ModalAction[];
   contentLabel: string;
   children: React.ReactNode;
-}
+};

@@ -5,15 +5,15 @@ import { Heading } from "../heading";
 import { Button, Box } from "..";
 import { whenIE11 } from "../../utils/browserCompatibility";
 import {
-  IModalBox,
-  IModalContent,
-  IModal,
-  IStyledModal,
-  IBackgroudProps,
+  ModalBoxProps,
+  ModalContentProps,
+  ModalProps,
+  StyledModalProps,
+  BackgroudProps,
 } from "./types";
 const MODAL_ACTION_HEIGHT = "5.625rem";
 
-export const StyledModal = styled.div<IStyledModal>`
+export const StyledModal = styled.div<StyledModalProps>`
   top: 50%;
   left: 50%;
   position: fixed;
@@ -37,7 +37,7 @@ const showTranslateY = keyframes`
   }
 `;
 
-export const ModalBox = styled(Box)<IModalBox>`
+export const ModalBox = styled(Box)<ModalBoxProps>`
   min-width: ${({ modalMinWidth }) => modalMinWidth || "32rem"};
   overflow: hidden;
   font-family: ${theme.fonts.body};
@@ -73,7 +73,7 @@ export const ModalActions = styled.div`
   `)}
 `;
 
-export const Background: any = styled.div<IBackgroudProps>`
+export const Background = styled.div<BackgroudProps>`
   top: 0;
   right: 0;
   left: 0;
@@ -86,10 +86,10 @@ export const Background: any = styled.div<IBackgroudProps>`
   z-index: ${theme.zindex.topoftheworld};
 `;
 
-export const ModalContent = styled.div<IModalContent>`
+export const ModalContent = styled.div<ModalContentProps>`
   max-height: ${({ contentMaxHeight }) => contentMaxHeight || "25rem"};
   overflow-y: auto;
-  text-align: left;
+  text-align: ${({ alignContent }) => alignContent || "left"};
   ${whenIE11(`
     padding-bottom: ${MODAL_ACTION_HEIGHT};
   `)}
@@ -113,7 +113,7 @@ export const ModalHeader = styled.div`
   }
 `;
 
-type IModalProps = IModal & IModalBox & IModalContent;
+type Modal = ModalProps & ModalBoxProps & ModalContentProps;
 
 export const Modal = ({
   children,
@@ -121,9 +121,10 @@ export const Modal = ({
   actions,
   modalMinWidth,
   contentMaxHeight,
+  alignContent,
   onClose,
   ...props
-}: IModalProps) => {
+}: Modal) => {
   return (
     <>
       <Background onClick={onClose} {...props}></Background>
@@ -144,7 +145,10 @@ export const Modal = ({
                 title="Close"
               />
             </ModalHeader>
-            <ModalContent contentMaxHeight={contentMaxHeight}>
+            <ModalContent
+              alignContent={alignContent}
+              contentMaxHeight={contentMaxHeight}
+            >
               {children}
             </ModalContent>
             {actions?.length > 0 && (
