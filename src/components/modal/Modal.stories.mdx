@@ -24,7 +24,7 @@ import { Button } from "../button";
 - `appId`: string - _optional_
 - `contentMaxHeight`: string - _optional_, default `25rem`
 - `modalMinWidth`: string - _optional_, default `18.75rem`
-- `alignContent`: boolean - _optional_, default `left`
+- `alignText`: string - _optional_, "left" | "right" | "center", default `left`
 
 ### Basic modal
 
@@ -43,7 +43,7 @@ import { Button } from "../button";
             contentLabel={"Modal title"}
             onRequestClose={update}
             appId="#root"
-            alignContent="center"
+            alignText="center"
           >
             This is modal content
             <br />

@@ -1,13 +1,14 @@
 export type ModalBoxProps = {
   modalMinWidth?: string;
 };
+
 export type StyledModalProps = {
   isOpen: boolean;
 };
 
 export type ModalContentProps = {
   contentMaxHeight?: string;
-  alignContent?: "right" | "center";
+  alignText?: "left" | "right" | "center";
 };
 
 export type ModalAction = {

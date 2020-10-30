@@ -28,14 +28,14 @@ type ModalProps = {
   actionLabel: string;
   children: React.ReactNode;
   customStyles?: { [key: string]: string };
-  alignContent?: "right" | "center";
+  alignText?: "left" | "right" | "center";
 };
 
 export const ModalConfirm = ({
   children,
   contentLabel,
   actionLabel,
-  alignContent,
+  alignText,
   onClose,
   ...props
 }: ModalProps) => {
@@ -55,7 +55,7 @@ export const ModalConfirm = ({
                 title="Close"
               />
             </ModalHeader>
-            <ModalContent alignContent={alignContent}>{children}</ModalContent>
+            <ModalContent alignText={alignText}>{children}</ModalContent>
             <ModalActions>
               <ModalAction onClick={onClose} severity="medium">
                 Cancel

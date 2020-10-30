@@ -89,7 +89,7 @@ export const Background = styled.div<BackgroudProps>`
 export const ModalContent = styled.div<ModalContentProps>`
   max-height: ${({ contentMaxHeight }) => contentMaxHeight || "25rem"};
   overflow-y: auto;
-  text-align: ${({ alignContent }) => alignContent || "left"};
+  text-align: ${({ alignText }) => alignText || "left"};
   ${whenIE11(`
     padding-bottom: ${MODAL_ACTION_HEIGHT};
   `)}
@@ -121,7 +121,7 @@ export const Modal = ({
   actions,
   modalMinWidth,
   contentMaxHeight,
-  alignContent,
+  alignText,
   onClose,
   ...props
 }: Modal) => {
@@ -146,7 +146,7 @@ export const Modal = ({
               />
             </ModalHeader>
             <ModalContent
-              alignContent={alignContent}
+              alignText={alignText}
               contentMaxHeight={contentMaxHeight}
             >
               {children}
