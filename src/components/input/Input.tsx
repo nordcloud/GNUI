@@ -152,7 +152,7 @@ const StyledDescription = styled(GnuiContainer)`
   width: 100%;
 `;
 type ClearProps = {
-  onClick: () => void;
+  onClick?: () => void;
 };
 const IconsWrap = styled.div`
   position: absolute;
@@ -170,6 +170,7 @@ const Clear = styled.button<ClearProps>`
   background: none;
   border: none;
   margin-left: auto;
+  outline: none;
   cursor: pointer;
 `;
 
@@ -200,7 +201,7 @@ export const Input: FunctionComponent<
       onClick,
       small,
       showClearButton,
-      onClear,
+      onClear = () => undefined,
       icon,
       ...props
     },
@@ -223,8 +224,8 @@ export const Input: FunctionComponent<
         <IconsWrap>
           {showClearButton && (
             <Clear
-              onClick={() => onClear && onClear()}
-              title={`Clear ${props?.name} value`}
+              onClick={onClear}
+              title={`Clear ${props.name} value`}
               role="button"
             >
               <SVGIcon size="sm" name="close" />
