@@ -27,6 +27,8 @@ import { Spacer } from "../spacer";
 - `title`: `string` – _optional_
 - `disabled`: `boolean` — _optional_
 - `status`: `success | error` - _optional_
+- `showClearButton`: `boolean` - _optional_
+- `onClear`: `() => void` - _optional_
 
 **Label**:
 
@@ -109,13 +111,13 @@ Nothing more to add, just text placeholder which works exactly like in default H
   </Story>
 </Preview>
 
-### popup
+### icon
 
 <Preview>
-  <Story name="mepopupnu">
+  <Story name="icon">
     <>
       <Label name="Label" required />
-      <Input name="required-input" placeholder="Popup" popup />
+      <Input name="required-input" placeholder="" icon="sidebar" />
     </>
   </Story>
 </Preview>
@@ -166,5 +168,24 @@ Nothing more to add, just text placeholder which works exactly like in default H
       <Input name="labeled-input" placeholder="Labeled input" />
       <Description>Inputs description</Description>
     </GnuiContainer>
+  </Story>
+</Preview>
+
+### clear
+
+<Preview>
+  <Story name="clear">
+    <>
+      <Label name="Label" required />
+      <Input
+        name="required-input"
+        placeholder=""
+        icon="sidebar"
+        name="testName"
+        showClearButton
+        onClick={() => alert("click")}
+        onClear={() => alert("clear")}
+      />
+    </>
   </Story>
 </Preview>

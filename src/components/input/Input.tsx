@@ -5,10 +5,13 @@ import { GnuiContainer, Flex } from "../container";
 import { Icon } from "../icon";
 import { space, SpaceProps } from "styled-system";
 import { Spinner } from "../spinner";
+import { SVGIcon } from "../svgicon";
 
 export type InputProps = {
   small?: boolean;
   popup?: boolean;
+  onClear?: () => void;
+  showClearButton?: boolean;
   loading?: boolean;
   ref?: Ref<HTMLInputElement>;
 } & InputHTMLAttributes<HTMLInputElement>;
@@ -21,7 +24,7 @@ type LabelProps = {
 type InputGroupProps = {
   status?: Status;
   noBorder?: boolean;
-  popup?: boolean;
+  icon?: string;
 };
 
 type Status = "success" | "error";
@@ -64,6 +67,7 @@ const setStatusColor = (status: Status) => {
 };
 
 const InputGroup = styled(Flex)<InputGroupProps & SpaceProps>`
+  position: relative;
   align-items: center;
   border: ${theme.borders.disabled};
   padding: ${theme.spacing.spacing02};
@@ -147,6 +151,38 @@ const StyledDescription = styled(GnuiContainer)`
   margin: ${theme.spacing.spacing02} 0;
   width: 100%;
 `;
+type ClearProps = {
+  onClick?: () => void;
+};
+const IconsWrap = styled.div`
+  position: absolute;
+  top: 0;
+  right: ${theme.spacing.spacing06};
+  bottom: 0;
+  display: flex;
+  align-items: center;
+`;
+
+const Clear = styled.button<ClearProps>`
+  display: flex;
+  align-items: center;
+  padding: ${theme.spacing.spacing02};
+  background: none;
+  border: none;
+  margin-left: auto;
+  outline: none;
+  cursor: pointer;
+`;
+
+const NotClickable = styled.div`
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  right: ${theme.spacing.spacing02};
+  bottom: 0;
+  display: flex;
+  align-items: center;
+`;
 
 export const Description: FunctionComponent = ({ children }) => (
   <StyledDescription>{children}</StyledDescription>
@@ -155,7 +191,22 @@ export const Description: FunctionComponent = ({ children }) => (
 export const Input: FunctionComponent<
   InputGroupProps & InputProps & SpaceProps
 > = React.forwardRef(
-  ({ noBorder, type, popup, status, loading, small, ...props }, ref) => {
+  (
+    {
+      noBorder,
+      type,
+      popup,
+      status,
+      loading,
+      onClick,
+      small,
+      showClearButton,
+      onClear = () => undefined,
+      icon,
+      ...props
+    },
+    ref
+  ) => {
     return (
       <InputGroup status={status} noBorder={noBorder} popup={popup}>
         {type === "search" && !loading && (
@@ -164,19 +215,35 @@ export const Input: FunctionComponent<
         {type === "search" && loading && <Spinner />}
         <StyledInput
           type={type}
+          onClick={onClick}
           popup={popup}
           small={small}
           ref={ref}
           {...props}
         />
-        {status && (
-          <Icon
-            image={`INPUT_${status.toUpperCase()}`}
-            width="1.2rem"
-            height="1.2rem"
-          />
+        <IconsWrap>
+          {showClearButton && (
+            <Clear
+              onClick={onClear}
+              title={`Clear ${props.name} value`}
+              role="button"
+            >
+              <SVGIcon size="sm" name="close" />
+            </Clear>
+          )}
+          {status && (
+            <Icon
+              image={`INPUT_${status.toUpperCase()}`}
+              width="1.2rem"
+              height="1.2rem"
+            />
+          )}
+        </IconsWrap>
+        {icon && (
+          <NotClickable>
+            <SVGIcon size="sm" name={icon} />
+          </NotClickable>
         )}
-        {popup && <Icon image={`MENU`} width="1.2rem" height="1.2rem" />}
       </InputGroup>
     );
   }
