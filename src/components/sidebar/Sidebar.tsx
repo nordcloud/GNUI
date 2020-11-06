@@ -6,10 +6,10 @@ import { Text } from "../text";
 import { Button } from "../button";
 import { Icon } from "../icon";
 import {
-  ISidebarProps,
-  IBackgroudProps,
-  ICloseLayer,
-  IInnerProps,
+  SidebarProps,
+  BackgroudProps,
+  CloseLayerProps,
+  InnerProps,
   SidebarButtonProps,
   HeaderProps,
 } from "./types";
@@ -49,7 +49,7 @@ const Content = styled(Text)`
   margin-bottom: 0;
 `;
 
-const SidebarMenu: any = styled.div<ISidebarProps>`
+const SidebarMenu = styled.div<SidebarProps>`
   top: 0;
   right: 0;
   left: 0;
@@ -66,7 +66,7 @@ const SidebarMenu: any = styled.div<ISidebarProps>`
   justify-content: ${({ side }) =>
     side !== "onLeft" ? "flex-end" : "flex-start"};
 `;
-const Background: any = styled.div<IBackgroudProps>`
+const Background = styled.div<BackgroudProps>`
   top: 0;
   right: 0;
   left: 0;
@@ -78,7 +78,7 @@ const Background: any = styled.div<IBackgroudProps>`
   opacity: ${({ isOpen }) => (isOpen ? 0.4 : 0)};
   z-index: ${theme.zindex.topoftheworld};
 `;
-const CloseLayer: any = styled.div<ICloseLayer>`
+const CloseLayer = styled.div<CloseLayerProps>`
   background-color: transparent;
   position: absolute;
   top: 0;
@@ -89,7 +89,7 @@ const CloseLayer: any = styled.div<ICloseLayer>`
   height: 100%;
   z-index: ${theme.zindex.default};
 `;
-const Inner: any = styled.div<IInnerProps>`
+const Inner = styled.div<InnerProps>`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -151,7 +151,7 @@ export const CloseButton = ({
   </SidebarCloseButton>
 );
 
-export const Sidebar: FunctionComponent<ISidebarProps> = ({
+export const Sidebar: FunctionComponent<SidebarProps> = ({
   children,
   title,
   side,
@@ -206,11 +206,7 @@ export const Sidebar: FunctionComponent<ISidebarProps> = ({
               <Container>
                 <Content tag="div">{children}</Content>
               </Container>
-              {Footer && (
-                <FooterSidebar>
-                  <Footer />
-                </FooterSidebar>
-              )}
+              {Footer && <FooterSidebar>{Footer}</FooterSidebar>}
             </>
           )}
         </Inner>

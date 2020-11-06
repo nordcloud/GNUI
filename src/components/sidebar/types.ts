@@ -1,6 +1,6 @@
 import { ButtonProps } from "../button";
 
-export interface ISidebarProps {
+export type SidebarProps = {
   children?: React.ReactNode;
   title?: string;
   isOpen?: boolean;
@@ -8,26 +8,26 @@ export interface ISidebarProps {
   width?: number | string;
   reverse?: boolean;
   onClick?: (e: any) => void;
-  footer?: React.ComponentType<any>;
-}
-export interface IBackgroudProps {
+  footer?: React.ReactNode;
+};
+export type BackgroudProps = {
   isOpen?: boolean;
   onClick?: (e: any) => void;
-}
-export interface ICloseLayer {
+};
+export type CloseLayerProps = {
   isOpen?: boolean;
   onClick?: (e: any) => void;
-}
-export interface IInnerProps {
+};
+export type InnerProps = {
   width?: number | string;
   side?: "onLeft" | "onRight";
   isOpen?: boolean;
-}
+};
 
-export interface SidebarButtonProps extends ButtonProps {
+export type SidebarButtonProps = {
   icon?: string;
-}
+} & ButtonProps;
 
-export interface HeaderProps {
+export type HeaderProps = {
   reverse?: boolean;
-}
+};
