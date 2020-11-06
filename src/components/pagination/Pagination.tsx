@@ -125,19 +125,23 @@ type IPaginationBoxProps = {
   setSize(size: number): any;
   setPage(page: number): any;
   small?: boolean;
+  sidebar?: boolean;
 };
 
 type IStyledPaginationBox = {
+  sidebar?: boolean;
   small?: boolean;
 };
 
 const StyledPaginationBox = styled.nav<IStyledPaginationBox>`
   display: flex;
   flex-wrap: wrap;
+  flex: ${({ sidebar }) => (sidebar ? 1 : 0)};
   justify-content: center;
   background-color: ${theme.colors.lights[0]};
   padding: ${theme.spacing.spacing03};
-  border-top: 2px solid ${theme.colors.lights[2]};
+  border-top: ${({ sidebar }) =>
+    sidebar ? "none" : `2px solid ${theme.colors.lights[2]}`};
   justify-content: ${({ small }) => (small ? "center" : "space-between")};
   align-items: center;
   .pagination-result,
@@ -240,9 +244,10 @@ export const PaginationBox: React.FC<IPaginationBoxProps> = ({
   setSize,
   setPage,
   small,
+  sidebar,
 }) => {
   return (
-    <StyledPaginationBox small={small}>
+    <StyledPaginationBox small={small} sidebar={sidebar}>
       {!small && <PaginationAmount from={from} size={size} count={count} />}
       <Pagination
         from={from}
