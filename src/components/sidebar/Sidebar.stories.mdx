@@ -11,6 +11,7 @@ import { Sidebar } from ".";
 import { Container, Row, Col } from "react-awesome-styled-grid";
 import { Text } from "../text";
 import { Icon } from "../icon";
+import { PaginationBox } from "../pagination/Pagination.tsx";
 
 <Meta title="Components/Sidebar" component={Sidebar} id="sidebar" />
 
@@ -85,7 +86,46 @@ You can pass Buttons to footer, and it will displayed at the bottom of the Sideb
             title="Default sidebar"
             isOpen={isOpen}
             onClick={() => setIsOpen(!isOpen)}
-            footer={Footer}
+            footer={<Footer />}
+          >
+            Sidebar Content
+          </Sidebar>
+        </Container>
+      );
+    }}
+  </Story>
+</Preview>
+
+### footer with pagination
+
+You can pass PaginationBox, and it will displayed at the bottom of the Sidebar.
+
+<Preview>
+  <Story name="footer pagination">
+    {() => {
+      const [isOpen, setIsOpen] = useState(false);
+      return (
+        <Container>
+          <Row justify="center">
+            <Button onClick={() => setIsOpen(!isOpen)}>
+              Click button to open sidebar
+            </Button>
+          </Row>
+          <Sidebar
+            title="Default sidebar"
+            isOpen={isOpen}
+            onClick={() => setIsOpen(!isOpen)}
+            footer={
+              <PaginationBox
+                sidebar
+                small
+                count={400}
+                from={0}
+                size={20}
+                setPage={0}
+                setSize={20}
+              />
+            }
           >
             Sidebar Content
           </Sidebar>

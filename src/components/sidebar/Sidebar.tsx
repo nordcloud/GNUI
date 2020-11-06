@@ -133,7 +133,6 @@ const FooterSidebar = styled.div`
   background-color: ${theme.colors.snowWhite};
   border-top: ${theme.borders.grey};
   line-height: ${theme.lineHeight};
-  padding: ${theme.spacing.spacing04};
   justify-content: space-between;
 `;
 
