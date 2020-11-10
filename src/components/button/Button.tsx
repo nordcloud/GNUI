@@ -271,7 +271,6 @@ const StyledButton = styled.button<ButtonProps>`
             : darken(0.2, setColor(color))};
       }
     `}
-
   ${space}
 `;
 
