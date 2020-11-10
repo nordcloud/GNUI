@@ -13,6 +13,7 @@ type TextProps = {
   textStyle?: "normal" | "italic";
   align?: "left" | "center" | "right";
   lineHeight?: string;
+  width?: string;
   [propName: string]: any;
 };
 
@@ -77,6 +78,11 @@ const StyledText = styled.p<TextProps>`
     lineHeight &&
     css`
       line-height: ${lineHeight};
+    `}
+  ${({ width }) =>
+    width &&
+    css`
+      width: ${width};
     `}
   ${space}
 `;

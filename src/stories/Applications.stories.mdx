@@ -1,32 +1,131 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
-import { Col, Row } from "react-awesome-styled-grid";
+import { Col, Row, Hidden } from "react-awesome-styled-grid";
 import theme from "../theme";
 import { Flex } from "../components/container";
 import { Box } from "../components/box";
-import {
-  Accordion,
-  AccordionHeader,
-  AccordionItem,
-} from "../components/accordion";
 import { Text } from "../components/text";
 import { PieChart } from "../components/piechart";
 import { SVGIcon } from "../components/svgicon";
 import { Tooltip } from "../components/tooltip";
+import { Button } from "../components/button";
+import { Table } from "../components/table";
+import { Spacer } from "../components/spacer";
 
 <Meta title="Pages/Applications" />
 
 <Preview>
   <Story name="default">
-    <Box style={{ maxWidth: "1440px" }}>
+    <Box spacing={"spacing04"} style={{ maxWidth: "1440px" }}>
       <Box
-        mb={theme.spacing.spacing02}
-        p="0"
+        border={theme.borders.grey}
         shadow="shadow00"
-        pt={theme.spacing.spacing02}
+        backgroundColor={theme.colors.lights[0]}
+        innerSpacing="spacing03"
       >
         <Row>
-          <Col lg={8}>
+          <Col sm={5} md={4} lg={7}>
             <Flex>
+              <Hidden xs>
+                <Tooltip
+                  status="danger"
+                  caption="13% more than AUG, 2020"
+                  position="left"
+                >
+                  <PieChart
+                    progress={13}
+                    size={52}
+                    strokeWidth={8}
+                    color="danger"
+                  >
+                    <SVGIcon name="forecastUp" color="danger" />
+                  </PieChart>
+                </Tooltip>
+              </Hidden>
+              <div>
+                <Text
+                  size="lg"
+                  weight="medium"
+                  tag="div"
+                  mb={theme.spacing.spacing01}
+                  ml={theme.spacing.spacing04}
+                  color={theme.colors.danger}
+                >
+                  Unallocated Costs
+                </Text>
+                <Flex>
+                  <Text size="sm" tag="span" ml={theme.spacing.spacing04} color={theme.colors.statusDanger[3]}>
+                    86 estate records
+                  </Text>
+                </Flex>
+              </div>
+            </Flex>
+          </Col>
+          <Col sm={3} md={4} lg={5}>
+            <Flex justifyContent="flex-end">
+              <div
+                style={{
+                  width: "13rem",
+                  paddingLeft: theme.spacing.spacing04,
+                  borderLeft: theme.borders.grey,
+                }}
+              >
+                <Text size="sm" tag="div" mb={theme.spacing.spacing01} color={theme.colors.statusDanger[3]}>
+                  Monthly Costs:
+                </Text>
+                <Text size="lg" weight="medium" tag="div" color={theme.colors.danger}>
+                  $ 604.19
+                </Text>
+              </div>
+              <Hidden xs sm>
+                <div
+                  style={{
+                    width: "13rem",
+                    paddingLeft: theme.spacing.spacing04,
+                    borderLeft: theme.borders.grey,
+                    marginRight: "3rem",
+                  }}
+                >
+                  <Flex py={theme.spacing.spacing01}>
+                    <Text size="sm" tag="div" width="7rem" color={theme.colors.statusDanger[3]}>
+                      Monthly Forecast:
+                    </Text>
+                    <Text
+                      size="sm"
+                      tag="div"
+                      ml={theme.spacing.spacing02}
+                      weight="medium"
+                      color={theme.colors.danger}
+                    >
+                      $ 1,846.71
+                    </Text>
+                  </Flex>
+                  <Flex py={theme.spacing.spacing01}>
+                    <Text size="sm" tag="div" width="7rem" color={theme.colors.statusDanger[3]}>
+                      Previous Month:
+                    </Text>
+                    <Text
+                      size="sm"
+                      tag="div"
+                      ml={theme.spacing.spacing02}
+                      weight="medium"
+                      color={theme.colors.danger}
+                    >
+                      $ 2,146.71
+                    </Text>
+                  </Flex>
+                </div>
+              </Hidden>
+            </Flex>
+          </Col>
+        </Row>
+      </Box>
+    </Box>
+    <Box spacing={"spacing02"} style={{ maxWidth: "1440px" }}>
+      <Row>
+        <Col sm={5} md={4} lg={7}>
+          <Flex>
+            <SVGIcon name="chevronRight" />
+            <Hidden xs>
               <Tooltip
                 status="danger"
                 caption="13% more than AUG, 2020"
@@ -37,65 +136,234 @@ import { Tooltip } from "../components/tooltip";
                   size={52}
                   strokeWidth={8}
                   color="danger"
+                  ml={theme.spacing.spacing03}
                 >
                   <SVGIcon name="forecastUp" color="danger" />
                 </PieChart>
               </Tooltip>
-              <div>
-                <Text
-                  size="lg"
-                  weight="medium"
-                  tag="div"
-                  mb={theme.spacing.spacing01}
-                  ml={theme.spacing.spacing04}
-                >
-                  ApplicationName
+            </Hidden>
+            <div>
+              <Text
+                size="lg"
+                weight="medium"
+                tag="div"
+                mb={theme.spacing.spacing01}
+                ml={theme.spacing.spacing04}
+              >
+                ApplicationName
+              </Text>
+              <Flex>
+                <Text size="sm" tag="span" ml={theme.spacing.spacing04}>
+                  3 environments
                 </Text>
-                <Flex>
-                  <Text size="sm" tag="span" ml={theme.spacing.spacing04}>
-                    3 environments
+                <Text size="sm" tag="span" ml={theme.spacing.spacing04}>
+                  86 estate records
+                </Text>
+              </Flex>
+            </div>
+          </Flex>
+        </Col>
+        <Col sm={3} md={4} lg={5}>
+          <Flex justifyContent="flex-end">
+            <div
+              style={{
+                width: "13rem",
+                paddingLeft: theme.spacing.spacing04,
+                borderLeft: theme.borders.grey,
+              }}
+            >
+              <Text size="sm" tag="div" mb={theme.spacing.spacing01}>
+                Monthly Costs:
+              </Text>
+              <Text size="lg" weight="medium" tag="div">
+                $ 604.19
+              </Text>
+            </div>
+            <Hidden xs sm>
+              <div
+                style={{
+                  width: "13rem",
+                  paddingLeft: theme.spacing.spacing04,
+                  borderLeft: theme.borders.grey,
+                  marginRight: theme.spacing.spacing07,
+                }}
+              >
+                <Flex py={theme.spacing.spacing01}>
+                  <Text size="sm" tag="div" width="7rem">
+                    Monthly Forecast:
                   </Text>
-                  <Text size="sm" tag="span" ml={theme.spacing.spacing04}>
-                    86 estate records
+                  <Text
+                    size="sm"
+                    tag="div"
+                    ml={theme.spacing.spacing02}
+                    weight="medium"
+                  >
+                    $ 1,846.71
+                  </Text>
+                </Flex>
+                <Flex py={theme.spacing.spacing01}>
+                  <Text size="sm" tag="div" width="7rem">
+                    Previous Month:
+                  </Text>
+                  <Text
+                    size="sm"
+                    tag="div"
+                    ml={theme.spacing.spacing02}
+                    weight="medium"
+                  >
+                    $ 2,146.71
                   </Text>
                 </Flex>
               </div>
-            </Flex>
-          </Col>
-          <Col lg={4}>
-            <Text
-              size="lg"
-              weight="medium"
-              tag="div"
-              align="right"
-              mr={theme.spacing.spacing03}
-              mb={theme.spacing.spacing01}
-            >
-              $ 341.54
-            </Text>
-            <Text
-              size="sm"
-              tag="span"
-              align="right"
-              mr={theme.spacing.spacing02}
-            >
-              Monthly Forecast:
-              <Text size="sm" tag="span" ml={theme.spacing.spacing04}>
-                $ 573.64
+            </Hidden>
+            <Button size="md" severity="low" icon="menu" />
+          </Flex>
+        </Col>
+      </Row>
+    </Box>
+    <Box spacing={"spacing02"} style={{ maxWidth: "1440px" }}>
+      <Row>
+        <Col sm={5} md={4} lg={7}>
+          <Flex>
+            <SVGIcon name="chevronDown" />
+            <Hidden xs>
+              <Tooltip
+                status="danger"
+                caption="13% more than AUG, 2020"
+                position="left"
+              >
+                <PieChart
+                  progress={13}
+                  size={52}
+                  strokeWidth={8}
+                  color="danger"
+                  ml={theme.spacing.spacing03}
+                >
+                  <SVGIcon name="forecastUp" color="danger" />
+                </PieChart>
+              </Tooltip>
+            </Hidden>
+            <div>
+              <Text
+                size="lg"
+                weight="medium"
+                tag="div"
+                mb={theme.spacing.spacing01}
+                ml={theme.spacing.spacing04}
+              >
+                ApplicationName
               </Text>
-            </Text>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <Accordion mt={theme.spacing.spacing03}>
-              <AccordionHeader small title="List of Environments">
-                <AccordionItem>Details</AccordionItem>
-              </AccordionHeader>
-            </Accordion>
-          </Col>
-        </Row>
-      </Box>
+              <Flex>
+                <Text size="sm" tag="span" ml={theme.spacing.spacing04}>
+                  3 environments
+                </Text>
+                <Text size="sm" tag="span" ml={theme.spacing.spacing04}>
+                  86 estate records
+                </Text>
+              </Flex>
+            </div>
+          </Flex>
+        </Col>
+        <Col sm={3} md={4} lg={5}>
+          <Flex justifyContent="flex-end">
+            <div
+              style={{
+                width: "13rem",
+                paddingLeft: theme.spacing.spacing04,
+                borderLeft: theme.borders.grey,
+              }}
+            >
+              <Text size="sm" tag="div" mb={theme.spacing.spacing01}>
+                Monthly Costs:
+              </Text>
+              <Text size="lg" weight="medium" tag="div">
+                $ 604.19
+              </Text>
+            </div>
+            <Hidden xs sm>
+              <div
+                style={{
+                  width: "13rem",
+                  paddingLeft: theme.spacing.spacing04,
+                  borderLeft: theme.borders.grey,
+                  marginRight: theme.spacing.spacing07,
+                }}
+              >
+                <Flex py={theme.spacing.spacing01}>
+                  <Text size="sm" tag="div" width="7rem">
+                    Monthly Forecast:
+                  </Text>
+                  <Text
+                    size="sm"
+                    tag="div"
+                    ml={theme.spacing.spacing02}
+                    weight="medium"
+                  >
+                    $ 1,846.71
+                  </Text>
+                </Flex>
+                <Flex py={theme.spacing.spacing01}>
+                  <Text size="sm" tag="div" width="7rem">
+                    Previous Month:
+                  </Text>
+                  <Text
+                    size="sm"
+                    tag="div"
+                    ml={theme.spacing.spacing02}
+                    weight="medium"
+                  >
+                    $ 2,146.71
+                  </Text>
+                </Flex>
+              </div>
+            </Hidden>
+            <Button size="md" severity="low" icon="menu" />
+          </Flex>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Spacer height="1rem" />
+          <Table small>
+            <Table.thead>
+              <Table.tr>
+                <Table.th>Environment</Table.th>
+                <Table.th width="40%">Organization Units</Table.th>
+                <Table.th>Estate Records</Table.th>
+                <Table.th>Monthly cost</Table.th>
+                <Table.th>Monthly Forecast</Table.th>
+                <Table.th>Previous month</Table.th>
+              </Table.tr>
+            </Table.thead>
+            <Table.tbody>
+              <Table.tr>
+                <Table.td>development</Table.td>
+                <Table.td> </Table.td>
+                <Table.td>498</Table.td>
+                <Table.td hasLeftBorder>$ 114.25</Table.td>
+                <Table.td hasLeftBorder>$ 191.42</Table.td>
+                <Table.td hasLeftBorder>$ 191.42</Table.td>
+              </Table.tr>
+              <Table.tr>
+                <Table.td>experimental</Table.td>
+                <Table.td> </Table.td>
+                <Table.td>498</Table.td>
+                <Table.td hasLeftBorder>$ 114.25</Table.td>
+                <Table.td hasLeftBorder>$ 191.42</Table.td>
+                <Table.td hasLeftBorder>$ 191.42</Table.td>
+              </Table.tr>
+              <Table.tr>
+                <Table.td>production</Table.td>
+                <Table.td> </Table.td>
+                <Table.td>498</Table.td>
+                <Table.td hasLeftBorder>$ 114.25</Table.td>
+                <Table.td hasLeftBorder>$ 191.42</Table.td>
+                <Table.td hasLeftBorder>$ 191.42</Table.td>
+              </Table.tr>
+            </Table.tbody>
+          </Table>
+        </Col>
+      </Row>
     </Box>
   </Story>
 </Preview>
