@@ -9,6 +9,7 @@ export type BreadcrumbsList = {
 
 export type BreadcrumbsListProps = {
   list: Array<BreadcrumbsList>;
+  Component?: React.FC<{ to: string }>;
 };
 
 const StyledBreadcrumbs = styled.nav`
@@ -18,20 +19,7 @@ const StyledBreadcrumbs = styled.nav`
     li {
       display: inline-block;
       margin-right: ${theme.spacing.spacing02};
-      &:after {
-        content: "/";
-        font-size: ${theme.fontSizes.sm};
-        margin-left: ${theme.spacing.spacing02};
-      }
-      &:last-child {
-        margin-right: 0;
-        &:after {
-          display: none;
-        }
-        a {
-          color: ${theme.colors.darks[4]};
-        }
-      }
+
       a {
         line-height: 1.5em;
         font-size: ${theme.fontSizes.sm};
@@ -49,18 +37,40 @@ const StyledBreadcrumbs = styled.nav`
           text-decoration: underline;
         }
       }
+
+      &:after {
+        content: "/";
+        font-size: ${theme.fontSizes.sm};
+        margin-left: ${theme.spacing.spacing02};
+      }
+
+      &:last-child {
+        margin-right: 0;
+        &:after {
+          display: none;
+        }
+        a {
+          color: ${theme.colors.darks[4]};
+        }
+      }
     }
   }
 `;
 
-export const Breadcrumbs = ({ list }: BreadcrumbsListProps) => (
-  <StyledBreadcrumbs>
-    <ul>
-      {list.map((br) => (
-        <li key={br.label}>
-          <a href={br.uri || ""}>{br.label}</a>
-        </li>
-      ))}
-    </ul>
-  </StyledBreadcrumbs>
-);
+export const Breadcrumbs = ({ list, Component }: BreadcrumbsListProps) => {
+  return (
+    <StyledBreadcrumbs>
+      <ul>
+        {list.map((br) => (
+          <li key={br.label}>
+            {Component ? (
+              <Component to={br.uri || ""}>{br.label}</Component>
+            ) : (
+              <a href={br.uri || ""}>{br.label}</a>
+            )}
+          </li>
+        ))}
+      </ul>
+    </StyledBreadcrumbs>
+  );
+};

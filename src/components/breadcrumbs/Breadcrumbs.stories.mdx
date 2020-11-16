@@ -16,6 +16,12 @@ Element of the array consists of two properties:
 - `label`: `string` - **required**
 - `uri`: `string` - **required**
 
+### Custom component (React Router)
+
+It's possible to provide custom link component, it needs to implement the `to=` prop
+
+- `Component`: `React.FC<{ to: string }>` - **optional**
+
 <Preview>
   <Story name="default">
     <Breadcrumbs
