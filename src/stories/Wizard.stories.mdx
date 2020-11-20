@@ -11,17 +11,17 @@ import { Button } from "../components/button";
 
 ```typescript
 interface TabProps {
-  className?:string;
+  className?: string;
   wizard?: boolean;
   step?: number;
   heading?: string;
-  caption?:string;
+  caption?: string;
   activeTab: number;
   children?: React.ReactNode;
   onClick?: (e: any) => void;
   onChange?: (e: any) => void;
   props?: any;
-  styleActive?:boolean;
+  styleActive?: boolean;
   index: number;
   disabled?: boolean;
 }
@@ -33,7 +33,7 @@ interface TabsProps {
   children: Array<TabProps>;
   handleTab: () => void;
   step: number;
-  buttons?:React.ReactNode;
+  buttons?: React.ReactNode;
 }
 ```
 
@@ -46,44 +46,100 @@ interface TabsProps {
 
 <Preview>
   <Story name="default">
-    {
-      () => {
-        const [isCurrentStep, setCurrentStep] = useState(0);
-        const nextStep = () => {
-          setCurrentStep(isCurrentStep + 1);
-        };
-        const previousStep = () => {
-          setCurrentStep(isCurrentStep - 1);
-        };
-        const handleSteps = (key) => {
-          setCurrentStep(key);
-        };
-        const buttonsStep1 = <React.Fragment>
+    {() => {
+      const [isCurrentStep, setCurrentStep] = useState(0);
+      const nextStep = () => {
+        setCurrentStep(isCurrentStep + 1);
+      };
+      const previousStep = () => {
+        setCurrentStep(isCurrentStep - 1);
+      };
+      const handleSteps = (key) => {
+        setCurrentStep(key);
+      };
+      const buttonsStep1 = (
+        <React.Fragment>
           <ButtonNext onClick={() => nextStep()}>Next Step</ButtonNext>
-        </React.Fragment>;
-        const buttonsStep2 = <React.Fragment>
-          <ButtonPrevious onClick={() => previousStep()}>Previous Step</ButtonPrevious>
+        </React.Fragment>
+      );
+      const buttonsStep2 = (
+        <React.Fragment>
+          <ButtonPrevious onClick={() => previousStep()}>
+            Previous Step
+          </ButtonPrevious>
           <ButtonNext onClick={() => nextStep()}>Next Step</ButtonNext>
-        </React.Fragment>;
-        const buttonsStep3 = <React.Fragment>
-          <ButtonPrevious onClick={() => previousStep()}>Previous Step</ButtonPrevious>
+        </React.Fragment>
+      );
+      const buttonsStep3 = (
+        <React.Fragment>
+          <ButtonPrevious onClick={() => previousStep()}>
+            Previous Step
+          </ButtonPrevious>
           <ButtonNext onClick={() => {}}>Submit</ButtonNext>
-        </React.Fragment>;
-        return(
-          <Tabs step={isCurrentStep} wizard handleTab={handleSteps}>
-            <Tab heading="Tab 1" caption="Small caption for Tab 1" buttons={buttonsStep1}>
-              <Text>Lorem ipsum for Tab 1. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
-            </Tab>
-            <Tab heading="Tab 2" caption="Small caption for Tab 2" buttons={buttonsStep2}>
-              <Text>Lorem ipsum for Tab 2. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
-            </Tab>
-            <Tab heading="Tab 3" caption="Small caption for Tab 3" buttons={buttonsStep3}>
-              <Text>Lorem ipsum for Tab 3. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
-            </Tab>
-          </Tabs>
-        )
-      }
-    }
+        </React.Fragment>
+      );
+      return (
+        <Tabs step={isCurrentStep} wizard handleTab={handleSteps}>
+          <Tab
+            heading="Tab 1"
+            caption="Small caption for Tab 1"
+            buttons={buttonsStep1}
+          >
+            <Text>
+              Lorem ipsum for Tab 1. Lorem Ipsum is simply dummy text of the
+              printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s, when an
+              unknown printer took a galley of type and scrambled it to make a
+              type specimen book. It has survived not only five centuries, but
+              also the leap into electronic typesetting, remaining essentially
+              unchanged. It was popularised in the 1960s with the release of
+              Letraset sheets containing Lorem Ipsum passages, and more recently
+              with desktop publishing software like Aldus PageMaker including
+              versions of Lorem Ipsum.
+            </Text>
+          </Tab>
+          <Tab
+            heading="Tab 2"
+            caption="Lorem ipsum for Tab 3. Lorem Ipsum is simply dummy text of
+            the printing and typesetting industry."
+            buttons={buttonsStep2}
+          >
+            <Text>
+              Lorem ipsum for Tab 2. Lorem Ipsum is simply dummy text of the
+              printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s, when an
+              unknown printer took a galley of type and scrambled it to make a
+              type specimen book. It has survived not only five centuries, but
+              also the leap into electronic typesetting, remaining essentially
+              unchanged. It was popularised in the 1960s with the release of
+              Letraset sheets containing Lorem Ipsum passages, and more recently
+              with desktop publishing software like Aldus PageMaker including
+              versions of Lorem Ipsum.
+            </Text>
+          </Tab>
+          <Tab
+            heading="Tab 3"
+            caption="Lorem ipsum for Tab 3. Lorem Ipsum is simply dummy text of the
+            printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s."
+            buttons={buttonsStep3}
+          >
+            <Text>
+              Lorem ipsum for Tab 3. Lorem Ipsum is simply dummy text of the
+              printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s, when an
+              unknown printer took a galley of type and scrambled it to make a
+              type specimen book. It has survived not only five centuries, but
+              also the leap into electronic typesetting, remaining essentially
+              unchanged. It was popularised in the 1960s with the release of
+              Letraset sheets containing Lorem Ipsum passages, and more recently
+              with desktop publishing software like Aldus PageMaker including
+              versions of Lorem Ipsum.
+            </Text>
+          </Tab>
+        </Tabs>
+      );
+    }}
   </Story>
 </Preview>
 
@@ -91,43 +147,98 @@ interface TabsProps {
 
 <Preview>
   <Story name="disabled">
-    {
-      () => {
-        const [isCurrentStep, setCurrentStep] = useState(0);
-        const nextStep = () => {
-          setCurrentStep(isCurrentStep + 1);
-        };
-        const previousStep = () => {
-          setCurrentStep(isCurrentStep - 1);
-        };
-        const handleSteps = (key) => {
-          setCurrentStep(key);
-        };
-        const buttonsStep1 = <React.Fragment>
+    {() => {
+      const [isCurrentStep, setCurrentStep] = useState(0);
+      const nextStep = () => {
+        setCurrentStep(isCurrentStep + 1);
+      };
+      const previousStep = () => {
+        setCurrentStep(isCurrentStep - 1);
+      };
+      const handleSteps = (key) => {
+        setCurrentStep(key);
+      };
+      const buttonsStep1 = (
+        <React.Fragment>
           <ButtonNext onClick={() => nextStep()}>Next Step</ButtonNext>
-        </React.Fragment>;
-        const buttonsStep2 = <React.Fragment>
-          <ButtonPrevious onClick={() => previousStep()}>Previous Step</ButtonPrevious>
+        </React.Fragment>
+      );
+      const buttonsStep2 = (
+        <React.Fragment>
+          <ButtonPrevious onClick={() => previousStep()}>
+            Previous Step
+          </ButtonPrevious>
           <ButtonNext onClick={() => nextStep()}>Next Step</ButtonNext>
-        </React.Fragment>;
-        const buttonsStep3 = <React.Fragment>
-          <ButtonPrevious onClick={() => previousStep()}>Previous Step</ButtonPrevious>
+        </React.Fragment>
+      );
+      const buttonsStep3 = (
+        <React.Fragment>
+          <ButtonPrevious onClick={() => previousStep()}>
+            Previous Step
+          </ButtonPrevious>
           <ButtonNext onClick={() => {}}>Submit</ButtonNext>
-        </React.Fragment>;
-        return(
-          <Tabs step={isCurrentStep} wizard handleTab={handleSteps}>
-            <Tab heading="Tab 1" caption="Small caption for Tab 1" buttons={buttonsStep1}>
-              <Text>Lorem ipsum for Tab 1. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
-            </Tab>
-            <Tab disabled heading="Tab 2" caption="Small caption for Tab 2" buttons={buttonsStep2}>
-              <Text>Lorem ipsum for Tab 2. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
-            </Tab>
-            <Tab disabled heading="Tab 3" caption="Small caption for Tab 3" buttons={buttonsStep3}>
-              <Text>Lorem ipsum for Tab 3. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
-            </Tab>
-          </Tabs>
-        )
-      }
-    }
+        </React.Fragment>
+      );
+      return (
+        <Tabs step={isCurrentStep} wizard handleTab={handleSteps}>
+          <Tab
+            heading="Tab 1"
+            caption="Small caption for Tab 1"
+            buttons={buttonsStep1}
+          >
+            <Text>
+              Lorem ipsum for Tab 1. Lorem Ipsum is simply dummy text of the
+              printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s, when an
+              unknown printer took a galley of type and scrambled it to make a
+              type specimen book. It has survived not only five centuries, but
+              also the leap into electronic typesetting, remaining essentially
+              unchanged. It was popularised in the 1960s with the release of
+              Letraset sheets containing Lorem Ipsum passages, and more recently
+              with desktop publishing software like Aldus PageMaker including
+              versions of Lorem Ipsum.
+            </Text>
+          </Tab>
+          <Tab
+            disabled
+            heading="Tab 2"
+            caption="Small caption for Tab 2"
+            buttons={buttonsStep2}
+          >
+            <Text>
+              Lorem ipsum for Tab 2. Lorem Ipsum is simply dummy text of the
+              printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s, when an
+              unknown printer took a galley of type and scrambled it to make a
+              type specimen book. It has survived not only five centuries, but
+              also the leap into electronic typesetting, remaining essentially
+              unchanged. It was popularised in the 1960s with the release of
+              Letraset sheets containing Lorem Ipsum passages, and more recently
+              with desktop publishing software like Aldus PageMaker including
+              versions of Lorem Ipsum.
+            </Text>
+          </Tab>
+          <Tab
+            disabled
+            heading="Tab 3"
+            caption="Small caption for Tab 3"
+            buttons={buttonsStep3}
+          >
+            <Text>
+              Lorem ipsum for Tab 3. Lorem Ipsum is simply dummy text of the
+              printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s, when an
+              unknown printer took a galley of type and scrambled it to make a
+              type specimen book. It has survived not only five centuries, but
+              also the leap into electronic typesetting, remaining essentially
+              unchanged. It was popularised in the 1960s with the release of
+              Letraset sheets containing Lorem Ipsum passages, and more recently
+              with desktop publishing software like Aldus PageMaker including
+              versions of Lorem Ipsum.
+            </Text>
+          </Tab>
+        </Tabs>
+      );
+    }}
   </Story>
 </Preview>

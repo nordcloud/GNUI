@@ -58,9 +58,8 @@ export const TabsContent = styled(Box)`
   }
 `;
 
-export const TabContainer: any = styled.li<TabProps>`
-  display: inline-block;
-  list-style: none;
+export const TabContainer: any = styled.div<TabProps>`
+  flex: 1;
   margin-bottom: -1px;
   padding: ${theme.spacing.spacing04};
   background-color: ${theme.colors.white};
@@ -108,7 +107,9 @@ export const TabContainer: any = styled.li<TabProps>`
   }
 `;
 
-const TabsList = styled.ol`
+const TabsList = styled.div`
+  display: flex;
+  overflow-x: scroll;
   padding: 0;
   margin: 0;
 `;
