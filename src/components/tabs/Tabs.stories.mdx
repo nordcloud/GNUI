@@ -203,8 +203,8 @@ interface TabsProps {
       return (
         <Tabs step={isCurrentStep} handleTab={handleSteps} wizard>
           <Tab
-            heading="Tab 1"
-            caption="Lorem ipsum for Tab 1. Lorem Ipsum is simply dummy text"
+            heading="Application Details"
+            caption="give some general information about your application"
             buttons={
               <>
                 <Button onClick={() => {}}>Button 1</Button>
@@ -226,8 +226,8 @@ interface TabsProps {
             </Text>
           </Tab>
           <Tab
-            heading="Tab 2"
-            caption="Lorem ipsum for Tab 1. Lorem Ipsum is simply dummy text"
+            heading="Application Environments"
+            caption="add environments to your application, setup rules for the cost allocation and automate applications discovery"
             buttonsJustify="flex-start"
             buttons={
               <>
@@ -249,6 +249,30 @@ interface TabsProps {
               versions of Lorem Ipsum.
             </Text>
           </Tab>
+          <Tab
+                      heading="Summary"
+                      caption="great, your application is ready"
+                      buttonsJustify="flex-start"
+                      buttons={
+                        <>
+                          <Button onClick={() => {}}>Button 1</Button>
+                          <Button onClick={() => {}}>Button 2</Button>
+                        </>
+                      }
+                    >
+                      <Text>
+                        Lorem ipsum for Tab 1. Lorem Ipsum is simply dummy text of the
+                        printing and typesetting industry. Lorem Ipsum has been the
+                        industry's standard dummy text ever since the 1500s, when an
+                        unknown printer took a galley of type and scrambled it to make a
+                        type specimen book. It has survived not only five centuries, but
+                        also the leap into electronic typesetting, remaining essentially
+                        unchanged. It was popularised in the 1960s with the release of
+                        Letraset sheets containing Lorem Ipsum passages, and more recently
+                        with desktop publishing software like Aldus PageMaker including
+                        versions of Lorem Ipsum.
+                      </Text>
+                    </Tab>
         </Tabs>
       );
     }}
