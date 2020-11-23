@@ -61,6 +61,7 @@ export const TabContainer: any = styled.div<TabProps>`
   padding: ${theme.spacing.spacing04};
   background-color: ${theme.colors.white};
   border-right: ${theme.borders.grey};
+  border-bottom: 1px solid transparent;
   width: 17rem;
   &:last-child {
     border-right: none;
