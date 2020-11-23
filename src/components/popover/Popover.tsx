@@ -3,16 +3,20 @@ import styled from "styled-components";
 import theme from "../../theme";
 import { useClickOutside } from "../../hooks";
 
+type ContentData = {
+  isVisible: boolean;
+};
+
 type PopoverProps = {
   children?: React.ReactNode;
-  Trigger?: React.ReactComponentElement<any>;
+  trigger?: React.ReactNode;
 };
 
 const StyledPopover = styled.div`
   display: inline-block;
 `;
 
-const Content = styled.div<any>`
+const Content = styled.div`
   display: flex;
   flex-direction: column;
   visibility: hidden;
@@ -26,7 +30,7 @@ const Content = styled.div<any>`
   transition: visibility 0.1s ease-out, opacity 0.1s ease-out;
   margin-top: ${theme.spacing.spacing01};
 
-  ${({ isVisible }: any) =>
+  ${({ isVisible }: ContentData) =>
     isVisible &&
     `
     visibility: visible;
@@ -39,7 +43,7 @@ const StyledTrigger = styled.div`
   cursor: pointer;
 `;
 
-const Popover = ({ children, Trigger }: PopoverProps) => {
+export const Popover = ({ children, trigger }: PopoverProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const toggle = () => {
     setIsVisible(!isVisible);
@@ -53,11 +57,9 @@ const Popover = ({ children, Trigger }: PopoverProps) => {
   return (
     <StyledPopover ref={wrapper}>
       <StyledTrigger className="Popover-trigger" onClick={toggle}>
-        <Trigger />
+        {trigger}
       </StyledTrigger>
       <Content isVisible={isVisible}>{children}</Content>
     </StyledPopover>
   );
 };
-
-export default Popover;

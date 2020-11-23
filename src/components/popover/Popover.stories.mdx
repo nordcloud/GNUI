@@ -1,5 +1,5 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
-import Popover from "./Popover";
+import { Popover } from ".";
 import { Button } from "../button";
 import { Spacer } from "../spacer";
 import { GnuiContainer, Flex } from "../container";
@@ -8,19 +8,16 @@ import { GnuiContainer, Flex } from "../container";
 
 # Popover
 
-> - `Trigger`: `React.ReactComponentElement` - **required**
-> - `children`: `React.ReactNode` - **required**
-
 ## Props
+> - `trigger`: `React.ReactNode` - **required**
+> - `children`: `React.ReactNode` - **required**
 
 ## Default view
 
 <Preview>
   <Story name="default">
     <Popover
-      Trigger={() => (
-        <Button severity="low" icon="menu" size="md" />
-      )}
+      trigger={<Button severity="low" icon="menu" size="md" />}
     >
       <Button mb="0.25rem" severity="low" icon="plus" size="md">
         Add new
