@@ -1,6 +1,7 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Navigation } from ".";
 import Decos from "../../utils/decos.tsx";
+import { SVGIcon } from "../svgicon";
 
 <Meta title="Components/Navigation" component={Navigation.Item} />
 
@@ -68,6 +69,40 @@ import Decos from "../../utils/decos.tsx";
             className="hasBg"
           >
             Contact
+          </Navigation.Item>
+        </Navigation.Container>
+      );
+    }}
+  </Story>
+</Preview>
+
+### Popover Navigation
+
+<Preview>
+  <Story name="popover">
+    {() => {
+      return (
+        <Navigation.Container popoverMenu>
+          <Navigation.Item
+            as="a"
+            href="http://google.com"
+            target="_blank"
+          >
+            <SVGIcon name="edit"/>Edit Environment
+          </Navigation.Item>
+          <Navigation.Item
+            as="a"
+            href="http://google.com"
+            target="_blank"
+          >
+            <SVGIcon name="target" />Discovery Rules
+          </Navigation.Item>
+          <Navigation.Item
+            as="a"
+            href="http://google.com"
+            target="_blank"
+          >
+            <SVGIcon name="trash" />Delete
           </Navigation.Item>
         </Navigation.Container>
       );

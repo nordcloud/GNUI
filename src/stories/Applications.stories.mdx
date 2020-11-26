@@ -11,6 +11,7 @@ import { Button } from "../components/button";
 import { Table } from "../components/table";
 import { Spacer } from "../components/spacer";
 import { Popover } from "../components/popover";
+import { Navigation } from "../components/navigation";
 
 <Meta title="Pages/Applications" />
 
@@ -217,7 +218,27 @@ import { Popover } from "../components/popover";
                 </Flex>
               </div>
             </Hidden>
-            <Button size="md" severity="low" icon="menu" />
+            <Popover
+              trigger={<Button severity="low" icon="menu" size="md" />}
+              alignRight
+            >
+              <Navigation.Container popoverMenu>
+                <Navigation.Item
+                  as="a"
+                  href="http://google.com"
+                  target="_blank"
+                >
+                  <SVGIcon name="edit"/><Text tag="span">Edit Application</Text>
+                </Navigation.Item>
+                <Navigation.Item
+                  as="a"
+                  href="http://google.com"
+                  target="_blank"
+                >
+                  <SVGIcon name="trash" /><Text tag="span">Delete</Text>
+                </Navigation.Item>
+              </Navigation.Container>
+            </Popover>
           </Flex>
         </Col>
       </Row>
@@ -318,7 +339,27 @@ import { Popover } from "../components/popover";
                 </Flex>
               </div>
             </Hidden>
-            <Button size="md" severity="low" icon="menu" />
+            <Popover
+              trigger={<Button severity="low" icon="menu" size="md" />}
+              alignRight
+            >
+              <Navigation.Container popoverMenu>
+                <Navigation.Item
+                  as="a"
+                  href="http://google.com"
+                  target="_blank"
+                >
+                  <SVGIcon name="edit"/><Text tag="span">Edit Application</Text>
+                </Navigation.Item>
+                <Navigation.Item
+                  as="a"
+                  href="http://google.com"
+                  target="_blank"
+                >
+                  <SVGIcon name="trash" /><Text tag="span">Delete</Text>
+                </Navigation.Item>
+              </Navigation.Container>
+            </Popover>
           </Flex>
         </Col>
       </Row>
