@@ -35,3 +35,4 @@ export * from "./svgicon";
 export * from "./loader";
 export * from "./piechart";
 export * from "./barchart";
+export * from "./popover";
