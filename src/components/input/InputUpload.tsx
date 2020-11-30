@@ -2,7 +2,8 @@ import React, { FunctionComponent } from "react";
 import styled from "styled-components";
 import theme from "../../theme";
 import { SVGIcon } from "../svgicon";
-import { InputProps, StyledInput } from "./Input";
+import { StyledInput } from "./Input";
+import { InputProps } from "./types";
 
 const StyledUpload = styled.div`
   color: ${theme.colors.primary};
