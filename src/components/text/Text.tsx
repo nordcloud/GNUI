@@ -14,6 +14,7 @@ type TextProps = {
   align?: "left" | "center" | "right";
   lineHeight?: string;
   width?: string;
+  nowrap?: boolean;
   [propName: string]: any;
 };
 
@@ -83,6 +84,13 @@ const StyledText = styled.p<TextProps>`
     width &&
     css`
       width: ${width};
+    `}
+  ${({ nowrap }) =>
+    nowrap &&
+    css`
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
     `}
   ${space}
 `;
