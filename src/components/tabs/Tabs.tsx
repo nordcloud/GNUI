@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { Text } from "../text";
 import { Box } from "../box";
@@ -42,11 +42,10 @@ type ButtonNextProps = {
 
 export const TabsContent = styled(Box)`
   background-color: ${theme.colors.snowWhite};
-  border-top: ${theme.borders.grey};
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   box-shadow: none;
-  padding: ${theme.spacing.spacing07} ${theme.spacing.spacing04};
+  padding: ${theme.spacing.spacing06} ${theme.spacing.spacing04};
   p {
     line-height: 1.5rem;
     &:first-child {
@@ -58,15 +57,12 @@ export const TabsContent = styled(Box)`
   }
 `;
 
-export const TabContainer: any = styled.li<TabProps>`
-  display: inline-block;
-  list-style: none;
-  margin-bottom: -1px;
+export const TabContainer: any = styled.div<TabProps>`
   padding: ${theme.spacing.spacing04};
   background-color: ${theme.colors.white};
-  border-bottom: ${theme.borders.grey};
   border-right: ${theme.borders.grey};
-  min-width: 15.625rem;
+  border-bottom: 1px solid transparent;
+  width: 17rem;
   &:last-child {
     border-right: none;
     &.tab-active {
@@ -80,21 +76,25 @@ export const TabContainer: any = styled.li<TabProps>`
       disabled ? `${theme.colors.white}` : `${theme.colors.lights[1]}`};
   }
 
-  h5 {
-    margin: 0;
-    font-weight: ${theme.fontWeights.medium};
-    color: ${theme.colors.darks[2]};
-  }
-  p {
-    max-width: 80%;
-    margin: ${theme.spacing.spacing01} 0 0;
-  }
+  ${({ wizard }) =>
+    wizard &&
+    css`
+      width: auto;
+      flex: 1;
+      &:last-child {
+        border-right: none;
+        &.tab-active {
+          border-right: none;
+        }
+      }
+    `}
   &:first-child {
     border-top-left-radius: ${theme.radiusDefault};
   }
   &.tab-active {
     background-color: ${theme.colors.snowWhite};
-    border-bottom: 1px solid transparent;
+    border-bottom: 1px solid ${theme.colors.snowWhite};
+    z-index: ${theme.zindex.default};
   }
 
   &.tab,
@@ -108,9 +108,26 @@ export const TabContainer: any = styled.li<TabProps>`
   }
 `;
 
-const TabsList = styled.ol`
+const TabsList = styled.div`
+  background-color: ${theme.colors.white};
+  display: flex;
+  overflow-x: scroll;
   padding: 0;
   margin: 0;
+  position:relative;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  &::after {
+    content:"";
+    width:100%;
+    position:absolute;
+    left:0;
+    bottom:0;
+    border-bottom: ${theme.borders.grey};
+    z-index: ${theme.zindex.zero};
+  }
+}
 `;
 
 const TabsWrapper = styled(Box)`
@@ -196,6 +213,7 @@ export const Tab: FunctionComponent<TabProps> = ({
       onClick={onClick}
       key={index}
       disabled={disabled}
+      wizard={wizard}
       buttons={buttons}
       buttonsJustify={buttonsJustify}
     >
@@ -206,8 +224,12 @@ export const Tab: FunctionComponent<TabProps> = ({
           <Step>{step}</Step>
         )
       ) : null}
-      <Text weight="medium">{heading}</Text>
-      <Text size="sm">{caption}</Text>
+      <Text weight="medium" mb={theme.spacing.spacing01}>
+        {heading}
+      </Text>
+      <Text size="sm" mb={0} color={theme.colors.darks[3]}>
+        {caption}
+      </Text>
     </TabContainer>
   );
 };
