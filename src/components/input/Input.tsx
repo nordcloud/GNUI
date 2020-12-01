@@ -1,4 +1,4 @@
-import React, { FunctionComponent, InputHTMLAttributes, Ref } from "react";
+import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { GnuiContainer, Flex } from "../container";
@@ -6,28 +6,7 @@ import { Icon } from "../icon";
 import { space, SpaceProps } from "styled-system";
 import { Spinner } from "../spinner";
 import { SVGIcon } from "../svgicon";
-
-export type InputProps = {
-  small?: boolean;
-  popup?: boolean;
-  onClear?: () => void;
-  showClearButton?: boolean;
-  loading?: boolean;
-  ref?: Ref<HTMLInputElement>;
-} & InputHTMLAttributes<HTMLInputElement>;
-
-type LabelProps = {
-  required?: boolean;
-  name?: string;
-};
-
-type InputGroupProps = {
-  status?: Status;
-  noBorder?: boolean;
-  icon?: string;
-};
-
-type Status = "success" | "error";
+import { InputGroupProps, InputProps, LabelProps, Status } from "./types";
 
 const StyledLabel = styled.label<LabelProps>`
   line-height: ${theme.lineHeight};
@@ -66,7 +45,7 @@ const setStatusColor = (status: Status) => {
   }
 };
 
-const InputGroup = styled(Flex)<InputGroupProps & SpaceProps>`
+export const InputGroup = styled(Flex)<InputGroupProps & SpaceProps>`
   position: relative;
   align-items: center;
   border: ${theme.borders.disabled};
@@ -154,7 +133,7 @@ const StyledDescription = styled(GnuiContainer)`
 type ClearProps = {
   onClick?: () => void;
 };
-const IconsWrap = styled.div`
+export const IconsWrap = styled.div`
   position: absolute;
   top: 0;
   right: ${theme.spacing.spacing06};

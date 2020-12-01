@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import styled from "styled-components";
 import theme from "../../theme";
 import { GnuiContainer, Flex, GnuiContainerProps } from "../container";
-import { InputProps } from "../input";
+import { InputProps } from "../input/types";
 import { Button, ButtonProps } from "../button";
 
 const StyledSubmit = styled.input`
