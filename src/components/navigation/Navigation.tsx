@@ -3,6 +3,7 @@ import theme from "../../theme";
 
 export type NavWrapperProps = {
   secondary?: boolean;
+  popoverMenu?: boolean;
 };
 
 const Item = styled.div`
@@ -93,6 +94,29 @@ const Container = styled.div<NavWrapperProps>`
       display: block;
       > * {
         margin: 0 0 ${theme.spacing.spacing02};
+      }
+    `}
+
+  ${({ popoverMenu }) =>
+    popoverMenu &&
+    css`
+      width: 100%;
+      display: block;
+      > * {
+        margin: 0 0 ${theme.spacing.spacing01};
+        padding: 0;
+        height: 2rem;
+        white-space: nowrap;
+
+        svg {
+          width: 1.125rem;
+          height: 1.125rem;
+          margin: 0 0.5rem;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
       }
     `}
 `;
