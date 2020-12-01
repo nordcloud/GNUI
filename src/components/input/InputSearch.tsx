@@ -1,35 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import theme from "../../theme";
 import { Spinner } from "../spinner";
-import { SVGIcon } from "../svgicon";
 import { InputGroupProps, InputProps } from "./types";
 import { InputGroup, StyledInput } from "./Input";
-import { Text } from "../text";
 import { SpaceProps } from "styled-system";
+import { Button } from "../button";
 
-const ButtonSearch = styled.button`
-  position: absolute;
-  top: ${theme.spacing.spacing01};
-  right: ${theme.spacing.spacing01};
-  bottom: ${theme.spacing.spacing01};
-  background-color: ${theme.colors.lights[1]};
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: ${theme.radius.md};
-  outline: none;
-  transition: ${theme.transition};
-  cursor: pointer;
-
-  &:hover {
-    opacity: 0.7;
-  }
-`;
-
-const IconSearch = styled.div`
-  transform: scaleX(-1) scale(0.75) translateX(5px);
+const ButtonWrapper = styled.div`
+  margin: -0.25rem -0.25rem -0.25rem 0;
 `;
 
 type InputSearch = {
@@ -67,14 +45,11 @@ export const InputSearch: React.FC<
           ref={ref}
           {...props}
         />
-        <ButtonSearch onClick={onSearch}>
-          <IconSearch>
-            <SVGIcon size="md" name="search" />
-          </IconSearch>
-          <Text tag="span" size="sm">
+        <ButtonWrapper>
+          <Button size="md" severity="low" icon="search" onClick={onSearch}>
             Search
-          </Text>
-        </ButtonSearch>
+          </Button>
+        </ButtonWrapper>
       </InputGroup>
     );
   }
