@@ -158,6 +158,32 @@ import { Col, Row } from "react-awesome-styled-grid"; import theme from "../them
             </Row>
           </Table.td>
         </Table.tr>
+        <Table.tr>
+          <Table.td>theme.color.background.ui05</Table.td>
+          <Table.td>
+            <ul>
+              <li>High contrast backgrounds;</li>
+              <li>Tooltip backgrounds;</li>
+            </ul>
+          </Table.td>
+          <Table.td>
+            <Row>
+              <Col>
+                <Text size="sm" tag="div" mb="0.25rem" width="10rem">palette.darkGrey.darkGrey700</Text>
+                <Text tag="div">#161632</Text>
+              </Col>
+              <Col>
+                <Box
+                  backgroundColor={theme.color.background.ui05}
+                  width="100%"
+                  minHeight="50px"
+                  shadow="shadow00"
+                  border={theme.borders.grey}
+                ></Box>
+              </Col>
+            </Row>
+          </Table.td>
+        </Table.tr>
       </Table.tbody>
     </Table>
     <Text weight="medium">UI status backgrounds</Text>
@@ -1496,6 +1522,60 @@ import { Col, Row } from "react-awesome-styled-grid"; import theme from "../them
               <Col>
                 <Box
                   backgroundColor={theme.color.support.orangeInverse}
+                  width="100%"
+                  minHeight="50px"
+                  shadow="shadow00"
+                  border={theme.borders.grey}
+                ></Box>
+              </Col>
+            </Row>
+          </Table.td>
+        </Table.tr>
+        <Table.tr>
+          <Table.td>
+            theme.color.support.grey
+          </Table.td>
+          <Table.td>
+            <ul>
+              <li>Chart</li>
+            </ul>
+          </Table.td>
+          <Table.td>
+            <Row>
+              <Col>
+                <Text size="sm" tag="div" mb="0.25rem" width="10rem">palette.grey.grey600</Text>
+                <Text tag="div">#EDEDF0</Text>
+              </Col>
+              <Col>
+                <Box
+                  backgroundColor={theme.color.support.grey}
+                  width="100%"
+                  minHeight="50px"
+                  shadow="shadow00"
+                  border={theme.borders.grey}
+                ></Box>
+              </Col>
+            </Row>
+          </Table.td>
+        </Table.tr>
+        <Table.tr>
+          <Table.td>
+            theme.color.support.greyInverse
+          </Table.td>
+          <Table.td>
+            <ul>
+              <li>Chart background</li>
+            </ul>
+          </Table.td>
+          <Table.td>
+            <Row>
+              <Col>
+                <Text size="sm" tag="div" mb="0.25rem" width="10rem">palette.grey.grey300</Text>
+                <Text tag="div">#C0C0CB</Text>
+              </Col>
+              <Col>
+                <Box
+                  backgroundColor={theme.color.support.greyInverse}
                   width="100%"
                   minHeight="50px"
                   shadow="shadow00"
