@@ -36,3 +36,4 @@ export * from "./loader";
 export * from "./piechart";
 export * from "./barchart";
 export * from "./popover";
+export * from "./stickybar";
