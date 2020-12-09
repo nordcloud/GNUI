@@ -1,4 +1,164 @@
-export const palette: any = {
+export type Grey = {
+  grey100: string;
+  grey200: string;
+  grey300: string;
+  grey400: string;
+  grey500: string;
+  grey600: string;
+  grey700: string;
+  grey800: string;
+};
+export type DarkGrey = {
+  darkGrey100: string;
+  darkGrey200: string;
+  darkGrey300: string;
+  darkGrey400: string;
+  darkGrey500: string;
+  darkGrey600: string;
+  darkGrey700: string;
+  darkGrey800: string;
+};
+export type DarkBlue = {
+  darkBlue100: string;
+  darkBlue200: string;
+  darkBlue300: string;
+  darkBlue400: string;
+  darkBlue500: string;
+  darkBlue600: string;
+  darkBlue700: string;
+  darkBlue800: string;
+};
+export type Red = {
+  red100: string;
+  red200: string;
+  red300: string;
+  red400: string;
+  red500: string;
+  red600: string;
+  red700: string;
+  red800: string;
+};
+export type Pink = {
+  pink100: string;
+  pink200: string;
+  pink300: string;
+  pink400: string;
+  pink500: string;
+  pink600: string;
+  pink700: string;
+  pink800: string;
+};
+export type Purple = {
+  purple100: string;
+  purple200: string;
+  purple300: string;
+  purple400: string;
+  purple500: string;
+  purple600: string;
+  purple700: string;
+  purple800: string;
+};
+export type Indigo = {
+  indigo100: string;
+  indigo200: string;
+  indigo300: string;
+  indigo400: string;
+  indigo500: string;
+  indigo600: string;
+  indigo700: string;
+  indigo800: string;
+};
+export type Blue = {
+  blue100: string;
+  blue200: string;
+  blue300: string;
+  blue400: string;
+  blue500: string;
+  blue600: string;
+  blue700: string;
+  blue800: string;
+};
+export type Cyan = {
+  cyan100: string;
+  cyan200: string;
+  cyan300: string;
+  cyan400: string;
+  cyan500: string;
+  cyan600: string;
+  cyan700: string;
+  cyan800: string;
+};
+export type Teal = {
+  teal100: string;
+  teal200: string;
+  teal300: string;
+  teal400: string;
+  teal500: string;
+  teal600: string;
+  teal700: string;
+  teal800: string;
+};
+export type Green = {
+  green100: string;
+  green200: string;
+  green300: string;
+  green400: string;
+  green500: string;
+  green600: string;
+  green700: string;
+  green800: string;
+};
+export type LightGreen = {
+  lightGreen100: string;
+  lightGreen200: string;
+  lightGreen300: string;
+  lightGreen400: string;
+  lightGreen500: string;
+  lightGreen600: string;
+  lightGreen700: string;
+  lightGreen800: string;
+};
+export type Yellow = {
+  yellow100: string;
+  yellow200: string;
+  yellow300: string;
+  yellow400: string;
+  yellow500: string;
+  yellow600: string;
+  yellow700: string;
+  yellow800: string;
+};
+export type Orange = {
+  orange100: string;
+  orange200: string;
+  orange300: string;
+  orange400: string;
+  orange500: string;
+  orange600: string;
+  orange700: string;
+  orange800: string;
+};
+
+export type colorPalette = {
+  white: string;
+  black: string;
+  grey: Grey;
+  darkGrey: DarkGrey;
+  darkBlue: DarkBlue;
+  red: Red;
+  pink: Pink;
+  purple: Purple;
+  indigo: Indigo;
+  blue: Blue;
+  cyan: Cyan;
+  teal: Teal;
+  green: Green;
+  lightGreen: LightGreen;
+  yellow: Yellow;
+  orange: Orange;
+};
+
+export const palette: colorPalette = {
   white: "#FFFFFF",
   black: "#000000",
   grey: {
@@ -141,4 +301,4 @@ export const palette: any = {
     orange700: "#f57c00",
     orange800: "#ef6c00",
   },
-};
+} as const;

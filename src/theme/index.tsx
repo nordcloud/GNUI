@@ -6,14 +6,80 @@ type Colors = {
   lights: Array<string>;
   [color: string]: string | any;
 };
-
+type backgroundColor = {
+  body: string;
+  ui01: string;
+  ui02: string;
+  ui03: string;
+  ui04: string;
+  ui05: string;
+  error: string;
+  warning: string;
+  success: string;
+  info: string;
+};
+type textColor = {
+  primary: string;
+  secondary: string;
+  placeholder: string;
+  invert: string;
+  error: string;
+  warning: string;
+  success: string;
+  info: string;
+};
+type borderColor = {
+  default: string;
+  input: string;
+  hover: string;
+  focus: string;
+  error: string;
+};
+type interactiveColor = {
+  primary: string;
+  primaryHover: string;
+  primaryActive: string;
+  secondary: string;
+  secondaryHover: string;
+  secondaryActive: string;
+  link: string;
+  linkInverse: string;
+  error: string;
+  errorHover: string;
+  errorActive: string;
+  success: string;
+  successHover: string;
+  successActive: string;
+  info: string;
+  infoHover: string;
+  infoActive: string;
+  disabled: string;
+};
+type supportColor = {
+  red: string;
+  redInverse: string;
+  pink: string;
+  purple: string;
+  indigo: string;
+  blue: string;
+  blueInverse: string;
+  grey: string;
+  greyInverse: string;
+  cyan: string;
+  teal: string;
+  green: string;
+  greenInverse: string;
+  lightGreen: string;
+  yellow: string;
+  orange: string;
+  orangeInverse: string;
+};
 type Color = {
-  background: { [key: string]: string };
-  text: { [key: string]: string };
-  border: { [key: string]: string };
-  interactive: { [key: string]: string };
-  support: { [key: string]: string };
-  [key: string]: string | any;
+  background: backgroundColor;
+  text: textColor;
+  border: borderColor;
+  interactive: interactiveColor;
+  support: supportColor;
 };
 
 type Typography = {
@@ -67,7 +133,7 @@ const theme: ThemeInterface = {
       error: palette.red.red500,
       warning: palette.orange.orange500,
       success: palette.green.green500,
-      information: palette.blue.blue600,
+      info: palette.blue.blue600,
     },
     text: {
       primary: palette.darkBlue.darkBlue700,
@@ -77,7 +143,7 @@ const theme: ThemeInterface = {
       error: palette.red.red700,
       warning: palette.orange.orange800,
       success: palette.green.green700,
-      information: palette.blue.blue700,
+      info: palette.blue.blue700,
     },
     border: {
       default: palette.grey.grey400,
