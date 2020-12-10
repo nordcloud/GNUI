@@ -6,7 +6,8 @@ type Colors = {
   lights: Array<string>;
   [color: string]: string | any;
 };
-type backgroundColor = {
+
+type BackgroundColor = {
   body: string;
   ui01: string;
   ui02: string;
@@ -18,7 +19,8 @@ type backgroundColor = {
   success: string;
   info: string;
 };
-type textColor = {
+
+type TextColor = {
   primary: string;
   secondary: string;
   placeholder: string;
@@ -28,14 +30,16 @@ type textColor = {
   success: string;
   info: string;
 };
-type borderColor = {
+
+type BorderColor = {
   default: string;
   input: string;
   hover: string;
   focus: string;
   error: string;
 };
-type interactiveColor = {
+
+type InteractiveColor = {
   primary: string;
   primaryHover: string;
   primaryActive: string;
@@ -55,7 +59,8 @@ type interactiveColor = {
   infoActive: string;
   disabled: string;
 };
-type supportColor = {
+
+type SupportColor = {
   red: string;
   redInverse: string;
   pink: string;
@@ -74,12 +79,13 @@ type supportColor = {
   orange: string;
   orangeInverse: string;
 };
+
 type Color = {
-  background: backgroundColor;
-  text: textColor;
-  border: borderColor;
-  interactive: interactiveColor;
-  support: supportColor;
+  background: BackgroundColor;
+  text: TextColor;
+  border: BorderColor;
+  interactive: InteractiveColor;
+  support: SupportColor;
 };
 
 type Typography = {

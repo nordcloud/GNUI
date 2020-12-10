@@ -8,6 +8,7 @@ export type Grey = {
   grey700: string;
   grey800: string;
 };
+
 export type DarkGrey = {
   darkGrey100: string;
   darkGrey200: string;
@@ -18,6 +19,7 @@ export type DarkGrey = {
   darkGrey700: string;
   darkGrey800: string;
 };
+
 export type DarkBlue = {
   darkBlue100: string;
   darkBlue200: string;
@@ -28,6 +30,7 @@ export type DarkBlue = {
   darkBlue700: string;
   darkBlue800: string;
 };
+
 export type Red = {
   red100: string;
   red200: string;
@@ -38,6 +41,7 @@ export type Red = {
   red700: string;
   red800: string;
 };
+
 export type Pink = {
   pink100: string;
   pink200: string;
@@ -48,6 +52,7 @@ export type Pink = {
   pink700: string;
   pink800: string;
 };
+
 export type Purple = {
   purple100: string;
   purple200: string;
@@ -58,6 +63,7 @@ export type Purple = {
   purple700: string;
   purple800: string;
 };
+
 export type Indigo = {
   indigo100: string;
   indigo200: string;
@@ -68,6 +74,7 @@ export type Indigo = {
   indigo700: string;
   indigo800: string;
 };
+
 export type Blue = {
   blue100: string;
   blue200: string;
@@ -78,6 +85,7 @@ export type Blue = {
   blue700: string;
   blue800: string;
 };
+
 export type Cyan = {
   cyan100: string;
   cyan200: string;
@@ -88,6 +96,7 @@ export type Cyan = {
   cyan700: string;
   cyan800: string;
 };
+
 export type Teal = {
   teal100: string;
   teal200: string;
@@ -98,6 +107,7 @@ export type Teal = {
   teal700: string;
   teal800: string;
 };
+
 export type Green = {
   green100: string;
   green200: string;
@@ -108,6 +118,7 @@ export type Green = {
   green700: string;
   green800: string;
 };
+
 export type LightGreen = {
   lightGreen100: string;
   lightGreen200: string;
@@ -118,6 +129,7 @@ export type LightGreen = {
   lightGreen700: string;
   lightGreen800: string;
 };
+
 export type Yellow = {
   yellow100: string;
   yellow200: string;
@@ -128,6 +140,7 @@ export type Yellow = {
   yellow700: string;
   yellow800: string;
 };
+
 export type Orange = {
   orange100: string;
   orange200: string;
