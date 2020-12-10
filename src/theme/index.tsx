@@ -1,9 +1,91 @@
 import { createBreakpoint, createMap } from "styled-components-breakpoint";
+import { palette } from "./palette";
 
 type Colors = {
   darks: Array<string>;
   lights: Array<string>;
   [color: string]: string | any;
+};
+
+type BackgroundColor = {
+  body: string;
+  ui01: string;
+  ui02: string;
+  ui03: string;
+  ui04: string;
+  ui05: string;
+  error: string;
+  warning: string;
+  success: string;
+  info: string;
+};
+
+type TextColor = {
+  primary: string;
+  secondary: string;
+  placeholder: string;
+  invert: string;
+  error: string;
+  warning: string;
+  success: string;
+  info: string;
+};
+
+type BorderColor = {
+  default: string;
+  input: string;
+  hover: string;
+  focus: string;
+  error: string;
+};
+
+type InteractiveColor = {
+  primary: string;
+  primaryHover: string;
+  primaryActive: string;
+  secondary: string;
+  secondaryHover: string;
+  secondaryActive: string;
+  link: string;
+  linkInverse: string;
+  error: string;
+  errorHover: string;
+  errorActive: string;
+  success: string;
+  successHover: string;
+  successActive: string;
+  info: string;
+  infoHover: string;
+  infoActive: string;
+  disabled: string;
+};
+
+type SupportColor = {
+  red: string;
+  redInverse: string;
+  pink: string;
+  purple: string;
+  indigo: string;
+  blue: string;
+  blueInverse: string;
+  grey: string;
+  greyInverse: string;
+  cyan: string;
+  teal: string;
+  green: string;
+  greenInverse: string;
+  lightGreen: string;
+  yellow: string;
+  orange: string;
+  orangeInverse: string;
+};
+
+type Color = {
+  background: BackgroundColor;
+  text: TextColor;
+  border: BorderColor;
+  interactive: InteractiveColor;
+  support: SupportColor;
 };
 
 type Typography = {
@@ -31,7 +113,8 @@ type ZIndex = {
 
 type IconSize = { [key: string]: string };
 
-export interface ThemeInterface {
+export type ThemeInterface = {
+  color: Color;
   colors: Colors;
   typography: Typography;
   borders: Borders;
@@ -42,9 +125,79 @@ export interface ThemeInterface {
   zindex: ZIndex;
   [aliases: string]: any;
   iconSize: IconSize;
-}
+};
 
 const theme: ThemeInterface = {
+  color: {
+    background: {
+      body: palette.grey.grey300,
+      ui01: palette.white,
+      ui02: palette.grey.grey100,
+      ui03: palette.grey.grey200,
+      ui04: palette.grey.grey300,
+      ui05: palette.darkGrey.darkGrey700,
+      error: palette.red.red500,
+      warning: palette.orange.orange500,
+      success: palette.green.green500,
+      info: palette.blue.blue600,
+    },
+    text: {
+      primary: palette.darkBlue.darkBlue700,
+      secondary: palette.grey.grey800,
+      placeholder: palette.grey.grey700,
+      invert: palette.white,
+      error: palette.red.red700,
+      warning: palette.orange.orange800,
+      success: palette.green.green700,
+      info: palette.blue.blue700,
+    },
+    border: {
+      default: palette.grey.grey400,
+      input: palette.grey.grey500,
+      hover: palette.grey.grey700,
+      focus: palette.grey.grey800,
+      error: palette.red.red700,
+    },
+    interactive: {
+      primary: palette.darkBlue.darkBlue700,
+      primaryHover: palette.darkBlue.darkBlue800,
+      primaryActive: palette.darkBlue.darkBlue800,
+      secondary: palette.grey.grey300,
+      secondaryHover: palette.grey.grey500,
+      secondaryActive: palette.grey.grey600,
+      link: palette.blue.blue800,
+      linkInverse: palette.blue.blue200,
+      error: palette.red.red600,
+      errorHover: palette.red.red700,
+      errorActive: palette.red.red800,
+      success: palette.green.green600,
+      successHover: palette.green.green700,
+      successActive: palette.green.green800,
+      info: palette.blue.blue600,
+      infoHover: palette.blue.blue700,
+      infoActive: palette.blue.blue800,
+      disabled: palette.grey.grey300,
+    },
+    support: {
+      red: palette.red.red500,
+      redInverse: palette.red.red100,
+      pink: palette.pink.pink500,
+      purple: palette.purple.purple500,
+      indigo: palette.indigo.indigo500,
+      blue: palette.blue.blue500,
+      blueInverse: palette.blue.blue100,
+      grey: palette.grey.grey600,
+      greyInverse: palette.grey.grey300,
+      cyan: palette.cyan.cyan500,
+      teal: palette.teal.teal500,
+      green: palette.green.green500,
+      greenInverse: palette.green.green100,
+      lightGreen: palette.lightGreen.lightGreen500,
+      yellow: palette.yellow.yellow600,
+      orange: palette.orange.orange500,
+      orangeInverse: palette.orange.orange100,
+    },
+  },
   colors: {
     primary: "#161632",
     accent: "#FF2837",
