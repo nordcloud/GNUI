@@ -49,8 +49,8 @@ const StyledTooltip = styled.div<StyledTooltipProps>`
   font-size: ${theme.fontSizes.sm};
   line-height: 1rem;
   padding: ${theme.spacing.spacing02};
-  background-color: ${theme.colors.primary};
-  color: ${theme.colors.snowWhite};
+  background-color: ${theme.color.background.ui05};
+  color: ${theme.color.text.invert};
   border-radius: ${theme.radius.md};
   z-index: ${theme.zindex.sticky};
   opacity: 0;
@@ -68,7 +68,7 @@ const StyledTooltip = styled.div<StyledTooltipProps>`
   }
   &:after {
     border-color: transparent;
-    border-top-color: ${theme.colors.primary};
+    border-top-color: ${theme.color.background.ui05};
     border-width: 8px;
     margin-left: -8px;
     ${({ position }) =>

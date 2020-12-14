@@ -138,17 +138,18 @@ const StyledPaginationBox = styled.nav<IStyledPaginationBox>`
   flex-wrap: wrap;
   flex: ${({ sidebar }) => (sidebar ? 1 : 0)};
   justify-content: center;
-  background-color: ${theme.colors.lights[0]};
+  background-color: ${theme.color.background.ui02};
   padding: ${theme.spacing.spacing03};
-  border-top: ${({ sidebar }) =>
-    sidebar ? "none" : `2px solid ${theme.colors.lights[2]}`};
+  border: ${({ sidebar }) =>
+    sidebar ? "none" : `1px solid ${theme.color.border.default}`};
   justify-content: ${({ small }) => (small ? "center" : "space-between")};
+  border-radius: ${theme.radius.md};
   align-items: center;
   .pagination-result,
   .pagination-show {
     font-weight: ${theme.fontWeights.regular};
     font-size: ${theme.fontSizes.sm};
-    color: ${theme.colors.darks[4]};
+    color: ${theme.color.text.secondary};
     margin: 0 0.5rem 0 0;
     line-height: 1.5em;
   }
@@ -168,26 +169,24 @@ const StyledPaginationBox = styled.nav<IStyledPaginationBox>`
   button {
     display: flex;
     align-items: center;
-    background: transparent;
     border: 0;
     font-weight: ${theme.fontWeights.regular};
     font-size: ${theme.fontSizes.sm};
     font-family: ${theme.typography.fonts.body};
-    color: ${theme.colors.primary};
+    color: ${theme.color.text.primary};
     line-height: 1.5em;
     padding: 0.5rem;
     border-radius: ${theme.radius.md};
     margin: 0 ${theme.spacing.spacing01};
-    transition: ${theme.transition};
-    background-color: ${theme.colors.lights[1]};
+    background-color: ${theme.color.interactive.secondary};
 
     &:hover:not([disabled]) {
       cursor: pointer;
-      background-color: ${theme.colors.lights[2]};
+      background-color: ${theme.color.interactive.secondaryHover};
     }
 
     &:active {
-      background-color: ${theme.colors.lights[3]};
+      background-color: ${theme.color.interactive.secondaryActive};
     }
 
     &:focus {
@@ -195,12 +194,13 @@ const StyledPaginationBox = styled.nav<IStyledPaginationBox>`
     }
 
     &.current {
-      background-color: ${theme.colors.primary};
-      color: #fff;
+      background-color: ${theme.color.interactive.primary};
+      color: ${theme.color.text.invert};
       font-weight: ${theme.fontWeights.medium};
 
       &:hover {
-        background-color: ${theme.colors.primary};
+        background-color: ${theme.color.interactive.primaryHover};
+        color: ${theme.color.text.placeholder};
       }
     }
 

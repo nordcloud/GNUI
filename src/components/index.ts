@@ -20,7 +20,6 @@ export * from "./modal";
 export * from "./tooltip";
 export * from "./styleguide";
 export * from "./spacer";
-export * from "./filter";
 export * from "./pagetitle";
 export * from "./switch";
 export * from "./heading";

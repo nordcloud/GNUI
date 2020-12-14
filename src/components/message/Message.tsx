@@ -16,35 +16,41 @@ export const MessageWrapper = styled.div<MessageProps>`
   display: flex;
   align-items: center;
   border-radius: ${theme.radiusDefault};
-  color: ${theme.colors.white};
+  color: ${theme.color.text.invert};
   font-size: ${theme.fontSizes.md};
   padding: ${theme.spacing.spacing03};
   line-height: 1.5rem;
   border:1px solid;
 
   ${({ status }) =>
-    status &&
+    status === "success" &&
     css`
-      background: ${theme.colors[status]};
-      border-color: ${theme.colors[status]};
+      background: ${theme.color.background.success};
     `}
-
+  ${({ status }) =>
+    status === "danger" &&
+    css`
+      background: ${theme.color.background.error};
+    `}
+  ${({ status }) =>
+    status === "notification" &&
+    css`
+      background: ${theme.color.background.info};
+    `}
   ${({ borderColor }) =>
     borderColor &&
     css`
-      border: 1px solid ${theme.colors[borderColor] || borderColor};
+      border: 1px solid ${borderColor};
     `}
-
   ${({ background }) =>
     background &&
     css`
-      background: ${theme.colors[background] || background};
+      background: ${background};
     `}
-
   ${({ color }) =>
     color &&
     css`
-      color: ${theme.colors[color] || color};
+      color: ${color};
     `}
 `;
 
@@ -58,17 +64,17 @@ export const IconBox = styled.div<MessageProps>`
   ${({ status }) =>
     status === "success" &&
     css`
-      background: rgba(30, 132, 73, 0.5);
+      background: ${theme.color.interactive.success};
     `}
   ${({ status }) =>
     status === "danger" &&
     css`
-      background: rgba(176, 58, 46, 0.5);
+      background: ${theme.color.interactive.error};
     `}
   ${({ status }) =>
     status === "notification" &&
     css`
-      background: rgba(40, 116, 166, 0.5);
+      background: ${theme.color.interactive.infoHover};
     `}
 `;
 

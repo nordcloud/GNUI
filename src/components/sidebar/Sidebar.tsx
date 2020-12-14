@@ -25,7 +25,7 @@ const Header = styled.div<HeaderProps>`
   flex-wrap: nowrap;
   align-items: center;
   border-bottom: ${theme.borders.grey};
-  background-color: ${theme.colors.snowWhite};
+  background-color: ${theme.color.background.ui01};
   line-height: ${theme.lineHeight};
   padding: ${theme.spacing.spacing04};
   margin: 0 auto;
@@ -35,7 +35,7 @@ const Header = styled.div<HeaderProps>`
 `;
 
 const Title = styled(Text)`
-  font-weight: ${theme.fontWeights[2]};
+  font-weight: ${theme.fontWeights.medium};
   font-size: ${theme.fontSizes.md};
   margin: 0;
   ${space}
@@ -45,7 +45,7 @@ const Content = styled(Text)`
   font-weight: ${theme.fontWeights[0]};
   line-height: ${theme.lineHeight};
   font-size: ${theme.fontSizes.md};
-  padding: ${theme.spacing.spacing06} 0;
+  padding: ${theme.spacing.spacing04} 0;
   margin-bottom: 0;
 `;
 
@@ -72,7 +72,7 @@ const Background = styled.div<BackgroudProps>`
   left: 0;
   bottom: 0;
   position: fixed;
-  background-color: ${theme.colors.black};
+  background-color: ${theme.color.background.ui05};
   pointer-events: ${({ isOpen }) => (isOpen ? "auto" : "none")};
   transition: ${theme.transition};
   opacity: ${({ isOpen }) => (isOpen ? 0.4 : 0)};
@@ -96,7 +96,7 @@ const Inner = styled.div<InnerProps>`
   overflow-x: hidden;
   overflow-y: scroll;
   box-shadow: ${theme.shadow.shadow04};
-  background-color: ${theme.colors.snowWhite};
+  background-color: ${theme.color.background.ui01};
   border-left: ${({ side }) => side !== "onLeft" && theme.borders.disabled};
   border-right: ${({ side }) => side === "onLeft" && theme.borders.disabled};
   max-width: 100%;
@@ -130,7 +130,7 @@ const FooterSidebar = styled.div`
   right: 0;
   left: 0;
   display: flex;
-  background-color: ${theme.colors.snowWhite};
+  background-color: ${theme.color.background.ui01};
   border-top: ${theme.borders.grey};
   line-height: ${theme.lineHeight};
   justify-content: space-between;

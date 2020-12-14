@@ -62,7 +62,7 @@ export const ModalActions = styled.div`
   bottom: 0;
   right: 0;
   box-sizing: border-box;
-  background-color: ${theme.colors.white};
+  background-color: ${theme.color.background.ui01};
   width: 100%;
   display: flex;
   padding: ${theme.spacing.spacing07} 0 0 0;
@@ -79,10 +79,10 @@ export const Background = styled.div<BackgroudProps>`
   left: 0;
   bottom: 0;
   position: fixed;
-  background-color: ${theme.colors.black};
+  background-color: ${theme.color.background.ui05};
   pointer-events: ${({ isOpen }) => (isOpen ? "auto" : "none")};
   transition: ${theme.transition};
-  opacity: ${({ isOpen }) => (isOpen ? 0.4 : 0)};
+  opacity: ${({ isOpen }) => (isOpen ? 0.5 : 0)};
   z-index: ${theme.zindex.topoftheworld};
 `;
 

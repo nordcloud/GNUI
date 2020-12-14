@@ -16,16 +16,18 @@ const StyledBreadcrumbs = styled.nav`
   ul {
     padding: 0;
     margin: 0;
+    line-height: 1.125rem;
     li {
       display: inline-block;
       margin-right: ${theme.spacing.spacing02};
+      line-height: 1.125rem;
 
       a {
-        line-height: 1.5em;
+        line-height: 1.125rem;
         font-size: ${theme.fontSizes.sm};
         font-weight: ${theme.fontWeights.regular};
         font-family: ${theme.fonts.body};
-        color: ${theme.colors.primary};
+        color: ${theme.color.interactive.link};
         text-decoration: none;
         transition: ${theme.transition};
         &:hover,
@@ -42,6 +44,7 @@ const StyledBreadcrumbs = styled.nav`
         content: "/";
         font-size: ${theme.fontSizes.sm};
         margin-left: ${theme.spacing.spacing02};
+        color: ${theme.color.text.secondary};
       }
 
       &:last-child {
@@ -50,7 +53,8 @@ const StyledBreadcrumbs = styled.nav`
           display: none;
         }
         a {
-          color: ${theme.colors.darks[4]};
+          color: ${theme.color.text.placeholder};
+          pointer-events: none;
         }
       }
     }

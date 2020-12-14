@@ -20,10 +20,16 @@ const StyledBarChart = styled.svg<IStyledBarProps>`
   width: 100%;
   height: 1.5rem;
   border-radius: ${theme.radiusDefault};
+  rect {
+    height: 1.5rem;
+  }
   ${({ height }) =>
     height &&
     css`
       height: ${height};
+      rect {
+        height: ${height};
+      }
     `};
   ${space};
 `;

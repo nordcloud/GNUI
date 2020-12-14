@@ -66,6 +66,23 @@ import { Text } from "../text";
           </Text>
         </Text>
         <Spacer height="5rem" />
+        <Dropdown
+          disabled
+          name="Select an option"
+          options={options}
+          value={value2}
+          width="15rem"
+          onChange={(val) => setValue2(val)}
+          onClear={() => setValue2("")}
+          title="Example title clear option"
+        />
+        <Text>
+          Your choice:{" "}
+          <Text tag="span" weight="medium">
+            {!value2 ? "nothing" : value2}
+          </Text>
+        </Text>
+        <Spacer height="5rem" />
       </GnuiContainer>
     );
   }}
