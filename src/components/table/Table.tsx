@@ -16,21 +16,21 @@ const Table: any = styled.table<TableProps>`
   font-family: ${theme.fonts.body};
   font-size: ${({ tiny }) => (tiny ? theme.fontSizes.sm : theme.fontSizes.md)};
   line-height: 1.5em;
-  color: ${theme.colors.primary};
+  color: ${theme.color.text.primary};
 
   tbody {
     tr {
       &:hover {
         cursor: ${({ hoverline }) => (hoverline ? "pointer" : "default")};
         background-color: ${({ hoverline }) =>
-          hoverline ? theme.colors.lights[1] : ""};
+          hoverline ? theme.color.background.ui03 : ""};
       }
       &:nth-child(odd) {
         background-color: ${({ striped }) =>
-          striped ? theme.colors.lights[0] : ""};
+          striped ? theme.color.background.ui02 : ""};
         &:hover {
           background-color: ${({ hoverline }) =>
-            hoverline ? theme.colors.lights[1] : ""};
+            hoverline ? theme.color.background.ui03 : ""};
         }
       }
     }
@@ -52,7 +52,7 @@ const Table: any = styled.table<TableProps>`
           : `${theme.spacing.spacing03}`};
       font-size: ${theme.fontSizes.sm};
       font-weight: ${theme.fontWeights.medium};
-      color: ${theme.colors.darks[4]};
+      color: ${theme.color.text.secondary};
       line-height: 1.5em;
     }
   }
@@ -66,22 +66,22 @@ const Thead = styled.thead`
 const Tbody = styled.tbody``;
 const Tfoot = styled.tfoot`
   td {
-    background-color: ${theme.colors.lights[1]};
+    background-color: ${theme.color.background.ui01};
   }
 `;
 
 const Td = styled.td<any>`
-  border-top: 1px solid ${theme.colors.lights[2]};
+  border-top: 1px solid ${theme.color.border.default};
   border-left: ${({ hasLeftBorder }) =>
-    hasLeftBorder ? `1px solid ${theme.colors.lights[2]}` : "none"};
+    hasLeftBorder ? `1px solid ${theme.color.border.default}` : "none"};
   border-right: ${({ hasRightBorder }) =>
-    hasRightBorder ? `1px solid ${theme.colors.lights[2]}` : "none"};
+    hasRightBorder ? `1px solid ${theme.color.border.default}` : "none"};
 `;
 
 const Tr = styled.tr<any>``;
 
 const Th = styled.th<any>`
-  border-bottom: 2px solid ${theme.colors.lights[2]};
+  border-bottom: 2px solid ${theme.color.border.default};
 `;
 
 Table.thead = Thead;

@@ -43,7 +43,7 @@ const StyledSelectButtons = styled.ul<StyledSelectButtons>`
     button {
       outline: none;
       cursor: pointer;
-      color: ${theme.colors.primary};
+      color: ${theme.color.interactive.primary};
       border: none;
       background: transparent;
       padding: ${theme.spacing.spacing02} ${theme.spacing.spacing04};
@@ -51,8 +51,8 @@ const StyledSelectButtons = styled.ul<StyledSelectButtons>`
       font-size: ${theme.fontSizes.regular};
 
       &.active {
-        background: ${theme.colors.primary};
-        color: ${theme.colors.white};
+        background: ${theme.color.interactive.primary};
+        color: ${theme.color.text.invert};
       }
 
       ${({ size }) =>
@@ -73,7 +73,7 @@ const StyledSelectButtons = styled.ul<StyledSelectButtons>`
         button {
           color: ${setColor(status)};
           &.active {
-            color: ${theme.colors.white};
+            color: ${theme.color.text.invert};
             background: ${setColor(status)};
             &:hover {
               background: ${darken(0.1, theme.colors[status] || status)};

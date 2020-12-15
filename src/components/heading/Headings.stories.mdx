@@ -1,7 +1,7 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Heading } from ".";
 import { GnuiContainer } from "../container";
-import { Text } from "../text";
+import theme from "../../theme";
 
 <Meta title="Typography/Heading" component={Heading} />
 
@@ -93,11 +93,10 @@ Simple heading is styled `h1` tag and looks like below.
 
 <Preview>
   <GnuiContainer>
-    <Heading color="accent">Accent color</Heading>
-    <Heading color="danger">Danger color</Heading>
-    <Heading color="success">Success color</Heading>
-    <Heading color="warning">Warning color</Heading>
-    <Heading color="notification">Notification color</Heading>
+    <Heading color={theme.color.text.error}>Danger color</Heading>
+    <Heading color={theme.color.text.success}>Success color</Heading>
+    <Heading color={theme.color.text.warning}>Warning color</Heading>
+    <Heading color={theme.color.text.info}>Notification color</Heading>
   </GnuiContainer>
 </Preview>
 
@@ -105,7 +104,7 @@ Simple heading is styled `h1` tag and looks like below.
 
 <Preview>
   <Story name="mixed">
-    <Heading level={2} color="danger" marginBottom="spacing05">
+    <Heading level={2} color={theme.color.text.error} marginBottom="spacing05">
       Level and color together
     </Heading>
   </Story>

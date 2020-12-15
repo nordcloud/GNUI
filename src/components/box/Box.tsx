@@ -34,6 +34,25 @@ type BoxProps = {
   onClick?: (e: any) => void;
   onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
   children?: React.ReactNode;
+  boxStyle?: "lightGrey" | "grey";
+};
+
+const changeBoxStyle = (boxStyle: string) => {
+  switch (boxStyle) {
+    case "lightGrey":
+      return `
+      background: ${theme.color.background.ui03};
+      border: ${theme.borders.grey};
+      padding: ${theme.spacing.spacing03};
+      box-shadow: ${theme.shadow.shadow00};
+      `;
+    case "grey":
+      return `
+      background: ${theme.color.background.ui04};
+      padding: ${theme.spacing.spacing03};
+      box-shadow: ${theme.shadow.shadow00};
+      `;
+  }
 };
 
 const StyledBox = styled(GnuiContainer)<BoxProps & SpaceProps>`
@@ -41,17 +60,22 @@ const StyledBox = styled(GnuiContainer)<BoxProps & SpaceProps>`
   min-width: 0;
   padding: ${theme.spacing.spacing04};
   border-radius: ${theme.radius.default};
-  color: ${theme.colors.primary};
-  background: ${theme.colors.snowWhite};
+  color: ${theme.color.text.primary};
+  background: ${theme.color.background.ui01};
   font-weight: ${theme.fontWeights.regular};
   box-shadow: ${theme.shadow.shadow02};
   transition: ${theme.transition};
   line-height: ${theme.lineHeight};
+  ${({ boxStyle }) =>
+    boxStyle &&
+    css`
+      ${changeBoxStyle(boxStyle)}
+    `}
   ${({ dark }) =>
     dark &&
     css`
-      background: ${theme.colors.primary};
-      color: ${theme.colors.white};
+      background: ${theme.color.background.ui05};
+      color: ${theme.color.text.invert};
     `}
   ${({ radius }) =>
     radius &&
@@ -94,12 +118,12 @@ const StyledBox = styled(GnuiContainer)<BoxProps & SpaceProps>`
   ${({ color }) =>
     color &&
     css`
-      color: ${theme.colors[color] || color};
+      color: ${color};
     `}
   ${({ backgroundColor }) =>
     backgroundColor &&
     css`
-      background-color: ${theme.colors[backgroundColor] || backgroundColor};
+      background-color: ${backgroundColor};
     `}
      ${space}
 `;

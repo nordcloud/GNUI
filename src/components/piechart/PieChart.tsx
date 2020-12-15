@@ -1,7 +1,6 @@
 import React, { useEffect, useState, FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
-import { setColor } from "../../utils/setcolor";
 import { space, SpaceProps } from "styled-system";
 
 type IPieChart = {
@@ -15,13 +14,25 @@ type IPieChart = {
 const setColorBgr = (color: string) => {
   switch (color) {
     case "danger":
-      return theme.colors.statusDanger[0];
+      return theme.color.support.redInverse;
     case "warning":
-      return theme.colors.statusWarning[0];
+      return theme.color.support.orangeInverse;
     case "success":
-      return theme.colors.statusSuccess[0];
+      return theme.color.support.greenInverse;
     case "notification":
-      return theme.colors.statusNotification[0];
+      return theme.color.support.blueInverse;
+  }
+};
+const setColorProgress = (color: string) => {
+  switch (color) {
+    case "danger":
+      return theme.color.support.red;
+    case "warning":
+      return theme.color.support.orange;
+    case "success":
+      return theme.color.support.green;
+    case "notification":
+      return theme.color.support.blue;
   }
 };
 
@@ -39,7 +50,7 @@ const StyledPieChartDescription = styled.div<IPieChart>`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: ${theme.colors.primary};
+  color: ${theme.color.text.secondary};
   ${({ size }) =>
     size &&
     css`
@@ -50,11 +61,11 @@ const StyledPieChartDescription = styled.div<IPieChart>`
     color &&
     css`
       .chartValue {
-        color: ${setColor(color)};
+        color: ${setColorProgress(color)};
         line-height: 1.5rem;
       }
       .chartCaption {
-        color: ${theme.colors.darks[3]};
+        color: ${theme.color.text.secondary};
       }
     `}
 `;
@@ -69,7 +80,7 @@ const StyledSVG = styled.svg<IPieChart>`
 `;
 const StyledCircleBgr = styled.circle<IPieChart>`
   fill: none;
-  stroke: ${theme.colors.lights[3]};
+  stroke: ${theme.color.support.greyInverse};
   ${({ color }) =>
     color &&
     css`
@@ -81,11 +92,11 @@ const StyledCircleProgress = styled.circle<IPieChart>`
   transform: rotate(-90deg) translateX(-96px);
   transition: stroke-dashoffset 0.85s ease-in-out;
   fill: none;
-  stroke: ${theme.colors.darks[2]};
+  stroke: ${theme.color.support.grey};
   ${({ color }) =>
     color &&
     css`
-      stroke: ${setColor(color)};
+      stroke: ${setColorProgress(color)};
     `}
 
   ${({ size }) =>

@@ -6,9 +6,9 @@ import { InputProps } from "../input/types";
 import { Button, ButtonProps } from "../button";
 
 const StyledSubmit = styled.input`
-  background: ${theme.colors.primary};
+  background: ${theme.color.interactive.primary};
   font-family: ${theme.fonts.body};
-  color: ${theme.colors.white};
+  color: ${theme.color.text.invert};
   border: ${theme.borderDefault};
   font-weight: ${theme.fontWeights.regular};
   padding: ${theme.spacing.spacing02} ${theme.spacing.spacing04};
@@ -24,20 +24,19 @@ const StyledSubmit = styled.input`
 
   &:hover {
     cursor: pointer;
-    color: ${theme.colors.lights[4]};
+    color: ${theme.color.text.placeholder};
   }
 
   &:active {
-    color: ${theme.colors.darks[4]};
+    color: ${theme.color.text.secondary};
   }
 
   &:disabled {
-    background: ${theme.colors.lights[3]};
-    border: ${theme.borders.disabled};
-    color: ${theme.colors.darks[4]};
+    background: ${theme.color.interactive.disabled};
+    color: ${theme.color.text.placeholder};
 
     &:hover {
-      color: ${theme.colors.darks[4]};
+      color: ${theme.color.text.placeholder};
       cursor: not-allowed;
     }
   }

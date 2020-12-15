@@ -12,29 +12,29 @@ const SelectContainer = styled.div<SelectProps>`
   .react-select {
     &-container {
       & > div {
-        background: ${theme.colors.white};
-        border: ${theme.borders.disabled};
+        background: ${theme.color.background.ui01};
+        border: 1px solid ${theme.color.border.input};
         &:hover {
-          border: ${theme.borders.lightenGrey};
+          border: 1px solid ${theme.color.border.hover};
         }
         &:focus {
-          border: 1px solid ${theme.colors.darks[4]};
+          border: 1px solid ${theme.color.border.focus};
+          outline: none;
         }
       }
     }
     &__value-container {
-      color: ${theme.colors.primary};
+      color: ${theme.color.text.primary};
     }
     &__multi-value {
       padding: 0 0.125rem 0 ${theme.spacing.spacing02};
       margin: ${theme.spacing.spacing01};
       border-radius: 1rem;
-      color: ${theme.colors.lights[0]};
       align-items: center;
       height: 1.5rem;
 
       &__label {
-        color: ${theme.colors.white};
+        color: ${theme.color.text.invert};
         padding-left: 0;
         padding-right: 0.375rem;
         font-size: ${theme.fontSizes.sm};
@@ -46,22 +46,22 @@ const SelectContainer = styled.div<SelectProps>`
         border-radius: 50%;
         align-items: center;
         justify-content: center;
-        background-color: rgba(255, 255, 255, 0.3);
+        background-color: rgba(0, 0, 0, 0.3);
         &:hover {
-          background-color: rgba(255, 255, 255, 0.5);
+          background-color: rgba(0, 0, 0, 0.5);
         }
         svg {
-          color: ${theme.colors.white};
+          color: ${theme.color.text.invert};
           width: 0.75rem;
           height: 0.75rem;
         }
       }
     }
     &__placeholder {
-      color: ${theme.colors.darks[4]};
+      color: ${theme.color.text.placeholder};
     }
     &__single-value {
-      color: ${theme.colors.primary};
+      color: ${theme.color.text.primary};
       font-size: ${theme.fontSizes[2]};
       line-height: 1.5rem;
     }
@@ -69,15 +69,15 @@ const SelectContainer = styled.div<SelectProps>`
       box-shadow: ${theme.shadow.shadow04};
     }
     &__option {
-      color: ${theme.colors.primary};
+      color: ${theme.color.text.primary};
       &--is-selected {
-        background-color: ${theme.colors.lights[2]};
+        background-color: ${theme.color.interactive.secondary};
         &.react-select__option--is-focused {
-          background-color: ${theme.colors.lights[2]};
+          background-color: ${theme.color.interactive.secondary};
         }
       }
       &--is-focused {
-        background-color: ${theme.colors.lights[1]};
+        background-color: ${theme.color.interactive.secondary};
       }
     }
   }

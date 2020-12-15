@@ -33,7 +33,7 @@ const RadioFlexWrapper = styled(Flex)`
 `;
 
 const Fill = styled.div`
-  background: ${theme.colors.primary};
+  background: ${theme.color.interactive.primary};
   width: 0;
   height: 0;
   border-radius: 100%;
@@ -96,8 +96,8 @@ const RadioContainer = styled.div`
   &::before {
     content: "";
     border-radius: 100%;
-    border: 1px solid ${theme.colors.lights[3]};
-    background: ${theme.colors.lights[0]};
+    border: 1px solid ${theme.color.border.input};
+    background: ${theme.color.background.ui02};
     width: 100%;
     height: 100%;
     position: absolute;

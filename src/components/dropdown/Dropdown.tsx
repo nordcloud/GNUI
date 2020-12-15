@@ -14,6 +14,8 @@ import {
 } from "./styles";
 import { getOptionValue } from "./helpers";
 import { Option } from "./types";
+import theme from "../../theme";
+import { Spacer } from "../spacer";
 
 type DropdownProps = {
   name: string;
@@ -92,15 +94,17 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
       {showMenu && (
         <DropdownMenu>
           {showSearch && (
-            <Input
-              type="search"
-              name="filter"
-              autoFocus
-              noBorder
-              small
-              value={search}
-              onChange={(e: any) => setSearch(e.target.value)}
-            />
+            <>
+              <Input
+                type="search"
+                name="filter"
+                autoFocus
+                small
+                value={search}
+                onChange={(e: any) => setSearch(e.target.value)}
+              />
+              <Spacer height={theme.spacing.spacing02} />
+            </>
           )}
           {options &&
             options

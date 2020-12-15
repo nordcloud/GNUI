@@ -9,6 +9,7 @@ import {
 import { Box } from ".";
 import { Spacer } from "../spacer";
 import { GnuiContainer } from "../container";
+import theme from "../../theme";
 
 <Meta title="Components/Box" component={Box} />
 
@@ -42,8 +43,25 @@ type BoxProps = {
   spacing?: string;
   shadow?: string;
   children?: React.ReactNode;
+  boxStyle?: "lightGrey" | "grey";
 };
 ```
+
+### lightGrey
+
+<Preview>
+  <Story name="lightGrey">
+    <Box boxStyle="lightGrey">Light grey box</Box>
+  </Story>
+</Preview>
+
+### Grey
+
+<Preview>
+  <Story name="grey">
+    <Box boxStyle="grey">Grey box</Box>
+  </Story>
+</Preview>
 
 ### dark
 
@@ -134,9 +152,9 @@ type BoxProps = {
 <Preview>
   <Story name="color">
     <GnuiContainer>
-      <Box color="danger">Danger color (from theme)</Box>
+      <Box color={theme.color.text.error}>Danger color (from theme)</Box>
       <Spacer height="1rem" />
-      <Box color="notification">Notification color (from theme)</Box>
+      <Box color={theme.color.text.info}>Notification color (from theme)</Box>
       <Spacer height="1rem" />
       <Box color="palevioletred">
         Palevioletred box (not exististing in theme)
@@ -154,11 +172,11 @@ type BoxProps = {
 <Preview>
   <Story name="background">
     <GnuiContainer>
-      <Box backgroundColor="danger" color="white">
+      <Box backgroundColor={theme.color.background.error} color="white">
         Danger color
       </Box>
       <Spacer height="1rem" />
-      <Box backgroundColor="notification" color="white">
+      <Box backgroundColor={theme.color.background.info} color="white">
         Notification color
       </Box>
       <Spacer height="1rem" />

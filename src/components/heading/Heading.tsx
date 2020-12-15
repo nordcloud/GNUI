@@ -38,7 +38,7 @@ const changeAttrs = (level: number) => {
 };
 
 const StyledHeading = styled.h1<HeadingProps>`
-  color: ${theme.colors.primary};
+  color: ${theme.color.text.primary};
   font-family: ${theme.fonts.heading};
   font-weight: ${theme.fontWeights.medium};
   line-height: 1.5em;
@@ -48,7 +48,7 @@ const StyledHeading = styled.h1<HeadingProps>`
   ${({ color }) =>
     color &&
     css`
-      color: ${theme.colors[color] || color};
+      color: ${color};
     `}
   ${({ level }) =>
     level &&

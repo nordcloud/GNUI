@@ -17,7 +17,7 @@ const SwitchInput = styled.input<SwitchInputProps>`
   height: 0;
 
   &:checked + .inner {
-    background-color: ${theme.colors.primary};
+    background-color: ${theme.color.interactive.primary};
     ${({ severity }) =>
       severity &&
       css`
@@ -26,7 +26,7 @@ const SwitchInput = styled.input<SwitchInputProps>`
 
     &:before {
       transform: translateX(1.45rem);
-      background-color: ${theme.colors.white};
+      background-color: ${theme.color.background.ui02};
     }
   }
 `;
@@ -74,7 +74,7 @@ const Inner = styled.div`
   transition: 0.4s;
   border-radius: 0.75rem;
   border: ${theme.borders.disabled};
-  background-color: ${theme.colors.lights[0]};
+  background-color: ${theme.color.background.ui02};
 
   &:before {
     position: absolute;
@@ -83,7 +83,7 @@ const Inner = styled.div`
     width: 1.125rem;
     left: 2px;
     bottom: calc((100% - 1.125rem) / 2);
-    background-color: ${theme.colors.lights[3]};
+    background-color: ${theme.color.interactive.secondaryActive};
     transition: 0.4s;
     border-radius: 50%;
   }

@@ -10,14 +10,15 @@ import { InputGroupProps, InputProps, LabelProps, Status } from "./types";
 
 const StyledLabel = styled.label<LabelProps>`
   line-height: ${theme.lineHeight};
-  color: ${theme.colors.primary};
+  color: ${theme.color.text.primary};
   margin-bottom: ${theme.spacing.spacing02};
   ${({ required }) =>
     required &&
     css`
       &:after {
         content: "*";
-        color: ${theme.colors.danger};
+        color: ${theme.color.text.error};
+        margin-left: ${theme.spacing.spacing01};
       }
     `}
 `;
@@ -51,8 +52,8 @@ export const InputGroup = styled(Flex)<InputGroupProps & SpaceProps>`
   border: ${theme.borders.disabled};
   padding: ${theme.spacing.spacing02};
   border-radius: ${theme.radiusDefault};
-  color: ${theme.colors.primary};
-  background: ${theme.colors.white};
+  color: ${theme.color.text.primary};
+  background: ${theme.color.background.ui02};
   transition: ${theme.transition};
   overflow: hidden;
   &:hover {
@@ -60,11 +61,11 @@ export const InputGroup = styled(Flex)<InputGroupProps & SpaceProps>`
   }
   &:focus {
     outline: 0;
-    border: 1px solid ${theme.colors.darks[4]};
+    border: 1px solid ${theme.color.border.focus};
   }
   &:disabled {
-    color: ${theme.colors.lights[4]};
-    background: ${theme.colors.white};
+    color: ${theme.color.text.placeholder};
+    background: ${theme.color.background.ui02};
     border: ${theme.borders.grey};
     cursor: not-allowed;
   }
@@ -97,7 +98,7 @@ export const StyledInput = styled.input<InputProps>`
   transition: ${theme.transition};
 
   &:placeholder {
-    color: ${theme.colors.darks[4]};
+    color: ${theme.color.text.placeholder};
   }
   &:hover,
   &:focus {
@@ -105,8 +106,8 @@ export const StyledInput = styled.input<InputProps>`
     border: 0;
   }
   &:disabled {
-    color: ${theme.colors.lights[4]};
-    background: ${theme.colors.white};
+    color: ${theme.color.text.placeholder};
+    background: ${theme.color.background.ui02};
     border: 0;
     cursor: not-allowed;
   }
@@ -126,7 +127,7 @@ export const StyledInput = styled.input<InputProps>`
 
 const StyledDescription = styled(GnuiContainer)`
   font-size: ${theme.fontSizes[1]};
-  color: ${theme.colors.darks[3]};
+  color: ${theme.color.text.secondary};
   margin: ${theme.spacing.spacing02} 0;
   width: 100%;
 `;

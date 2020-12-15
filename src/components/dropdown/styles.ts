@@ -5,11 +5,11 @@ import { GnuiContainer } from "../container";
 import { IconProps } from "../icon";
 import { space } from "styled-system";
 
-interface DropdownWrapperProps {
+type DropdownWrapperProps = {
   value: string;
   onMouseLeave?: (e: React.MouseEvent) => void;
   onClear?: () => void;
-}
+};
 
 export const DropdownWrapper = styled(GnuiContainer)<DropdownWrapperProps>`
   position: relative;
@@ -27,39 +27,43 @@ export const DropdownButton = styled.button`
   line-height: 1.5em;
   padding-right: 1.5rem;
   font-size: inherit;
-  color: ${theme.colors.primary};
+  color: ${theme.color.text.primary};
   padding: ${theme.spacing.spacing02};
   cursor: pointer;
   transition: ${theme.transition};
 
+  &:focus {
+    outline: none;
+  }
+
   &:hover {
-    background: ${theme.colors.lights[1]};
-    color: ${theme.colors.primary};
+    border-color: ${theme.color.border.hover};
+    color: ${theme.color.text.primary};
   }
 
   &:active {
-    background: ${theme.colors.lights[2]};
-    color: ${theme.colors.primary};
+    border-color: ${theme.color.border.hover};
+    color: ${theme.color.text.primary};
   }
 
   ${({ disabled }) =>
     disabled &&
     css`
-      background: transparent;
+      background: ${theme.color.interactive.disabled};
       border: ${theme.borderInput};
-      color: ${theme.colors.lights[4]};
+      color: ${theme.color.text.placeholder};
       cursor: not-allowed;
 
       &:hover {
-        background: transparent;
-        color: ${theme.colors.lights[4]};
+        background: ${theme.color.interactive.disabled};
+        color: ${theme.color.text.placeholder};
       }
     `}
 `;
 
-interface DropdownIconProps extends IconProps {
+type DropdownIconProps = {
   animate?: boolean;
-}
+} & IconProps;
 
 export const DropdownIcon = styled(Icon)<DropdownIconProps>`
   transition: ${theme.transition};
@@ -71,32 +75,34 @@ export const DropdownIcon = styled(Icon)<DropdownIconProps>`
     `}
 `;
 
-interface DropdownMenuProps {
+type DropdownMenuProps = {
   onClick: () => void;
-}
+};
 
 export const DropdownMenu = styled(GnuiContainer)<DropdownMenuProps>`
   text-align: left;
   width: 100%;
   box-sizing: border-box;
   position: absolute;
+  padding: ${theme.spacing.spacing02};
   border: ${theme.borderInput};
-  color: ${theme.colors.primary};
+  color: ${theme.color.text.primary};
   font-weight: ${theme.fontWeights.regular};
   border-radius: ${theme.radiusDefault};
-  background: ${theme.colors.white};
+  background: ${theme.color.background.ui01};
   z-index: ${theme.zindex.default};
   transition: ${theme.transition};
-  box-shadow: ${theme.shadow.shadow02};
+  box-shadow: ${theme.shadow.shadow04};
+  margin-top: ${theme.spacing.spacing01};
 `;
 
 export const Inner = styled.span`
   margin-right: 1rem;
 `;
 
-interface IClear {
+type IClear = {
   onClick: () => void;
-}
+};
 
 export const Clear = styled.span<IClear>`
   position: absolute;
@@ -119,13 +125,18 @@ export const DropdownItem = styled.button`
   text-align: left;
   background: transparent;
   font-size: inherit;
-  transition: ${theme.transition};
-  padding: ${theme.spacing.spacing01} 0 ${theme.spacing.spacing01} 1rem;
   list-style: none;
   transition: ${theme.transition};
+  line-height: 1.5rem;
+  padding: ${theme.spacing.spacing01} ${theme.spacing.spacing02};
+  border-radius: ${theme.radius.md};
+
+  &:focus {
+    outline: none;
+  }
 
   &:hover {
     cursor: pointer;
-    background: ${theme.colors.lights[3]};
+    background: ${theme.color.interactive.secondary};
   }
 `;

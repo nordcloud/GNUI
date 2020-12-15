@@ -22,7 +22,7 @@ export const StyledTag = styled.div<TagProps>`
   padding: 0;
   font-size: ${theme.fontSizes.sm};
   line-height: 1.5rem;
-  background: ${theme.colors.lights[2]};
+  background: ${theme.color.interactive.secondary};
   border-radius: ${theme.radius.xxl};
   margin: 0 4px 4px 0;
 
@@ -46,7 +46,7 @@ export const StyledTag = styled.div<TagProps>`
 
   .tag-close-button {
     border-radius: ${theme.radius.xxl};
-    background: ${darken(0.1, theme.colors.lights[2])};
+    background: ${theme.color.interactive.secondaryActive};
     margin: ${theme.spacing.spacing01};
 
     svg {
@@ -56,16 +56,11 @@ export const StyledTag = styled.div<TagProps>`
   }
 
   &:hover {
-    background: ${darken(0.05, theme.colors.lights[2])};
+    background: ${theme.color.interactive.secondaryHover};
     cursor: pointer;
-    transition: ${theme.transition};;
-    .tag-text {
-      transition: ${theme.transition};;
-      opacity: 0.8;
-    }
   }
   &:active {
-    background: ${darken(0.1, theme.colors.lights[2])};
+    background:${theme.color.interactive.secondaryActive};
     cursor: pointer;
   }
   
@@ -95,9 +90,9 @@ export const StyledTag = styled.div<TagProps>`
     color &&
     css`
       background: ${theme.colors[color] || color};
-      color: ${theme.colors.snowWhite};
+      color: ${theme.color.text.invert};
       svg {
-        fill: ${theme.colors.snowWhite};
+        fill: ${theme.color.text.invert};
       }
       .tag-close-button {
         background: ${darken(0.1, theme.colors[color] || color)};

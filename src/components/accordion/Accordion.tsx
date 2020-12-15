@@ -34,8 +34,8 @@ const StyledAccordion = styled.div`
 
 const StyledAccordionItem = styled.div`
   padding: ${theme.spacing.spacing03};
-  background-color: ${theme.colors.lights[0]};
-  border: 1px solid ${theme.colors.lights[2]};
+  background-color: ${theme.color.background.ui02};
+  border: 1px solid ${theme.color.border.default};
   border-radius: ${theme.radius.md};
   border-top-left-radius: 0;
   border-top-right-radius: 0;
@@ -46,13 +46,13 @@ const StyledHeader = styled.div<StyledHeaderProps>`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  background-color: ${theme.colors.lights[1]};
+  background-color: ${theme.color.background.ui03};
   padding: ${theme.spacing.spacing03};
   border-radius: ${theme.radius.md};
-  border: 1px solid ${theme.colors.lights[2]};
+  border: 1px solid ${theme.color.border.default};
   &:hover {
     cursor: pointer;
-    background-color: ${theme.colors.lights[2]};
+    background-color: ${theme.color.background.ui04};
   }
   ${({ small }) =>
     small &&
@@ -68,7 +68,7 @@ const StyledHeader = styled.div<StyledHeaderProps>`
   ${({ isOpen }) =>
     isOpen &&
     css`
-      background-color: ${theme.colors.lights[2]};
+      background-color: ${theme.color.background.ui04};
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
     `}
@@ -79,7 +79,7 @@ const HeaderTitle = styled.span`
 `;
 
 const HeaderDescription = styled.div`
-  color: ${theme.colors.darks[1]};
+  color: ${theme.color.text.secondary};
   font-size: ${theme.fontSizes.sm};
   margin-left: auto;
   font-weight: ${theme.fontWeights.regular};

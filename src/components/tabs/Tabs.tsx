@@ -41,7 +41,7 @@ type ButtonNextProps = {
 };
 
 export const TabsContent = styled(Box)`
-  background-color: ${theme.colors.snowWhite};
+  background-color: ${theme.color.background.ui01};
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   box-shadow: none;
@@ -59,7 +59,7 @@ export const TabsContent = styled(Box)`
 
 export const TabContainer: any = styled.div<TabProps>`
   padding: ${theme.spacing.spacing04};
-  background-color: ${theme.colors.white};
+  background-color: ${theme.color.background.ui02};
   border-right: ${theme.borders.grey};
   border-bottom: 1px solid transparent;
   width: 17rem;
@@ -73,7 +73,9 @@ export const TabContainer: any = styled.div<TabProps>`
   &:hover {
     cursor: ${({ disabled }) => (disabled ? `auto` : `pointer`)};
     background-color: ${({ disabled }) =>
-      disabled ? `${theme.colors.white}` : `${theme.colors.lights[1]}`};
+      disabled
+        ? `${theme.color.background.ui01}`
+        : `${theme.color.background.ui03}`};
   }
 
   ${({ wizard }) =>
@@ -92,8 +94,8 @@ export const TabContainer: any = styled.div<TabProps>`
     border-top-left-radius: ${theme.radiusDefault};
   }
   &.tab-active {
-    background-color: ${theme.colors.snowWhite};
-    border-bottom: 1px solid ${theme.colors.snowWhite};
+    background-color: ${theme.color.background.ui01};
+    border-bottom: 1px solid ${theme.color.background.ui01};
     z-index: ${theme.zindex.default};
   }
 
@@ -101,15 +103,15 @@ export const TabContainer: any = styled.div<TabProps>`
   &.tab-active {
     &:first-child {
       & > div {
-        background-color: ${theme.colors.primary};
-        color: ${theme.colors.white};
+        background-color: ${theme.color.background.ui05};
+        color: ${theme.color.text.invert};
       }
     }
   }
 `;
 
 const TabsList = styled.div`
-  background-color: ${theme.colors.white};
+  background-color: ${theme.color.background.ui02};
   display: flex;
   overflow-x: scroll;
   padding: 0;
@@ -143,12 +145,12 @@ const Step = styled(Box)`
   height: 2rem;
   box-shadow: none;
   margin-bottom: ${theme.spacing.spacing04};
-  background-color: ${theme.colors.lights[2]};
-  color: ${theme.colors.darks[3]};
+  background-color: ${theme.color.background.ui04};
+  color: ${theme.color.text.placeholder};
 
   &.dark {
-    background-color: ${theme.colors.primary};
-    color: ${theme.colors.white};
+    background-color: ${theme.color.background.ui05};
+    color: ${theme.color.text.invert};
   }
 `;
 
@@ -166,7 +168,7 @@ const TabsStatusButtons = styled.div<StyledTabsStatusButtonsProps>`
 `;
 
 const TabsCover = styled.div`
-  background-color: ${theme.colors.snowWhite};
+  background-color: ${theme.color.background.ui01};
   border-bottom-left-radius: ${theme.radiusDefault};
   border-bottom-right-radius: ${theme.radiusDefault};
 `;
@@ -227,7 +229,7 @@ export const Tab: FunctionComponent<TabProps> = ({
       <Text weight="medium" mb={theme.spacing.spacing01}>
         {heading}
       </Text>
-      <Text size="sm" mb={0} color={theme.colors.darks[3]}>
+      <Text size="sm" mb={0} color={theme.color.text.secondary}>
         {caption}
       </Text>
     </TabContainer>

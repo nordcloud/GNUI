@@ -54,10 +54,11 @@ const StyledRing = styled.div<SpinnerProps>`
     height: 100%;
     left: 0;
     top: 0;
-    border: 2px solid ${theme.colors.primary};
+    border: 2px solid ${theme.color.interactive.primary};
     border-radius: 50%;
     animation: ring 0.8s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: ${theme.colors.primary} transparent transparent transparent;
+    border-color: ${theme.color.interactive.primary} transparent transparent
+      transparent;
 
     &:nth-child(1) {
       animation-delay: -0.2s;

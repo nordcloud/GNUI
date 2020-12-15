@@ -2,6 +2,11 @@ import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Navigation } from ".";
 import Decos from "../../utils/decos.tsx";
 import { SVGIcon } from "../svgicon";
+import { Box } from "../box";
+import { Text } from "../text";
+import theme from "../../theme";
+import { Button } from "../button";
+import { Flex } from "../container";
 
 <Meta title="Components/Navigation" component={Navigation.Item} />
 
@@ -45,32 +50,98 @@ import { SVGIcon } from "../svgicon";
   <Story name="secondary">
     {() => {
       return (
-        <Navigation.Container secondary>
-          <Navigation.Item
-            as="a"
-            href="http://google.com"
-            target="_blank"
-            className="hasBg"
-          >
-            Dashboard
-          </Navigation.Item>
-          <Navigation.Item
-            as="a"
-            href="http://google.com"
-            target="_blank"
-            className="hasBg active"
+        <Box boxStyle="lightGrey">
+          <Text
+            size="sm"
+            color={theme.color.text.secondary}
+            mb={theme.spacing.spacing03}
           >
             Settings
-          </Navigation.Item>
-          <Navigation.Item
-            as="a"
-            href="http://google.com"
-            target="_blank"
-            className="hasBg"
+          </Text>
+          <Navigation.Container secondary>
+            <Navigation.Item
+              as="a"
+              href="http://google.com"
+              target="_blank"
+              className="hasBg active"
+            >
+              Employees <SVGIcon name="arrowRight" />
+            </Navigation.Item>
+            <Navigation.Item
+              as="a"
+              href="http://google.com"
+              target="_blank"
+              className="hasBg"
+            >
+              Cost Splitting Rules <SVGIcon name="arrowRight" />
+            </Navigation.Item>
+            <Navigation.Item
+              as="a"
+              href="http://google.com"
+              target="_blank"
+              className="hasBg"
+            >
+              Mapping Rules <SVGIcon name="arrowRight" />
+            </Navigation.Item>
+          </Navigation.Container>
+        </Box>
+      );
+    }}
+  </Story>
+</Preview>
+
+### Business Context Navigation
+
+<Preview>
+  <Story name="business context">
+    {() => {
+      return (
+        <Box boxStyle="lightGrey">
+          <Text
+            size="sm"
+            color={theme.color.text.secondary}
+            mb={theme.spacing.spacing03}
           >
-            Contact
-          </Navigation.Item>
-        </Navigation.Container>
+            Business Contexts
+          </Text>
+          <Navigation.Container secondary>
+            <Navigation.Item
+              as="a"
+              href="http://google.com"
+              target="_blank"
+              className="hasBg active"
+            >
+              <div
+                style={{
+                  width: "0.75rem",
+                  height: "1.5rem",
+                  backgroundColor: `${theme.color.support.purple}`,
+                  borderRadius: "2px",
+                }}
+              ></div>Cost Center <SVGIcon name="arrowRight" />
+            </Navigation.Item>
+            <Navigation.Item
+              as="a"
+              href="http://google.com"
+              target="_blank"
+              className="hasBg"
+            >
+              <div
+                style={{
+                  width: "0.75rem",
+                  height: "1.5rem",
+                  backgroundColor: `${theme.color.support.indigo}`,
+                  borderRadius: "2px",
+                }}
+              ></div>Charging Units <SVGIcon name="arrowRight" />
+            </Navigation.Item>
+          </Navigation.Container>
+          <Flex justifyContent="center">
+            <Button severity="low" mt={theme.spacing.spacing04} icon="plus">
+              Add new Business Context
+            </Button>
+          </Flex>
+        </Box>
       );
     }}
   </Story>
@@ -83,26 +154,17 @@ import { SVGIcon } from "../svgicon";
     {() => {
       return (
         <Navigation.Container popoverMenu>
-          <Navigation.Item
-            as="a"
-            href="http://google.com"
-            target="_blank"
-          >
-            <SVGIcon name="edit"/>Edit Environment
+          <Navigation.Item as="a" href="http://google.com" target="_blank">
+            <SVGIcon name="edit" />
+            Edit Environment
           </Navigation.Item>
-          <Navigation.Item
-            as="a"
-            href="http://google.com"
-            target="_blank"
-          >
-            <SVGIcon name="target" />Discovery Rules
+          <Navigation.Item as="a" href="http://google.com" target="_blank">
+            <SVGIcon name="target" />
+            Discovery Rules
           </Navigation.Item>
-          <Navigation.Item
-            as="a"
-            href="http://google.com"
-            target="_blank"
-          >
-            <SVGIcon name="trash" />Delete
+          <Navigation.Item as="a" href="http://google.com" target="_blank">
+            <SVGIcon name="trash" />
+            Delete
           </Navigation.Item>
         </Navigation.Container>
       );

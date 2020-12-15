@@ -34,7 +34,7 @@ const basicStyles = css<TextProps>`
   line-height: ${theme.lineHeight};
   font-weight: ${theme.fontWeights.regular};
   font-size: ${theme.fontSizes.md};
-  color: ${(props) => props.color || theme.colors.primary};
+  color: ${(props) => props.color || theme.color.text.primary};
   margin: 0 0 ${theme.spacing.spacing04} 0;
 `;
 

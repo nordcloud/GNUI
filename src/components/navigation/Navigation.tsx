@@ -17,7 +17,7 @@ const Item = styled.div`
   font-size: ${theme.fontSizes.md};
   border-radius: ${theme.radiusDefault};
   padding: 0 ${theme.spacing.spacing03};
-  color: ${theme.colors.primary};
+  color: ${theme.color.text.primary};
   text-decoration: none;
   height: 2.5rem;
   vertical-align: middle;
@@ -25,7 +25,7 @@ const Item = styled.div`
   transition: ${theme.transition};
   &.separator {
     font-size: ${theme.fontSizes.sm};
-    color: ${theme.colors.darks[4]};
+    color: ${theme.color.text.secondary};
     margin-bottom: 0;
   }
   & + .separator {
@@ -33,30 +33,45 @@ const Item = styled.div`
   }
   &:not(.separator) {
     &:hover {
-      background-color: ${theme.colors.lights[2]};
+      background-color: ${theme.color.interactive.secondary};
       text-decoration: none !important;
+      color: ${theme.color.text.primary};
     }
     &:active,
     &:focus {
-      background-color: ${theme.colors.lights[3]};
+      background-color: ${theme.color.interactive.secondary};
+      color: ${theme.color.text.primary};
     }
     &.active {
-      background: ${theme.colors.primary};
-      color: ${theme.colors.snowWhite};
+      background: ${theme.color.interactive.primary};
+      color: ${theme.color.text.invert};
       * {
-        fill: ${theme.colors.snowWhite};
+        fill: ${theme.color.text.invert};
       }
     }
   }
   &.hasBg {
-    background: ${theme.colors.lights[2]};
+    position: relative;
+    background: ${theme.color.background.ui03};
+    svg {
+      position: absolute;
+      right: 0;
+      width: 1.25rem;
+      height: 1.25rem;
+      opacity: 0;
+    }
     &:active,
     &:focus {
-      background-color: ${theme.colors.lights[4]};
+      background-color: ${theme.color.interactive.secondary};
+      color: ${theme.color.text.primary};
     }
     &.active {
-      background: ${theme.colors.lights[4]};
-      color: inherit;
+      background: ${theme.color.interactive.secondaryHover};
+      color: ${theme.color.text.primary};
+      * {
+        opacity: 1;
+        fill: ${theme.color.text.primary};
+      }
     }
   }
   * {
@@ -65,15 +80,16 @@ const Item = styled.div`
 `;
 
 const Info = styled.span`
-  width: 1rem;
-  height: 1rem;
-  background: ${theme.colors.danger};
+  width: 1.25rem;
+  height: 1.25rem;
+  background: ${theme.color.background.error};
   display: block;
-  color: #fff;
+  color: ${theme.color.text.invert};
   text-align: center;
   margin-left: auto;
-  font-size: ${theme.typography.fontSizes[1]};
-  line-height: 1rem;
+  font-size: ${theme.fontSizes.sm};
+  line-height: 1.25rem;
+  border-radius: ${theme.radius.sm};
 `;
 
 const Container = styled.div<NavWrapperProps>`

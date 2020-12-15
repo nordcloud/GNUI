@@ -30,7 +30,7 @@ const SingleCheckWrapper = styled(Flex)`
 const CheckboxLabel = styled.label<CheckboxLabelProps>`
   cursor: pointer;
   margin-left: ${theme.spacing.spacing02};
-  font-weight: ${theme.typography.fontWeights[1]};
+  font-weight: ${theme.fontWeights.medium};
   ${({ withoutLabel }) =>
     withoutLabel &&
     css`
@@ -52,8 +52,8 @@ const CheckboxContainer = styled.div`
   &::before {
     content: "";
     border-radius: 2px;
-    border: 1px solid ${theme.colors.lights[3]};
-    background: ${theme.colors.lights[0]};
+    border: 1px solid ${theme.color.border.input};
+    background: ${theme.color.background.ui01};
     width: 100%;
     height: 100%;
     position: absolute;
@@ -65,7 +65,7 @@ const CheckboxContainer = styled.div`
 `;
 
 const Fill = styled.div`
-  background: ${theme.colors.primary};
+  background: ${theme.color.background.ui05};
   width: 0;
   height: 0;
   position: absolute;

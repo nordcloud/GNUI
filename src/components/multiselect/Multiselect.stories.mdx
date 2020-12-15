@@ -1,8 +1,6 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
-import { useState } from "react";
 import { Select } from ".";
 import theme from "../../theme";
-import chroma from 'chroma-js';
 
 <Meta title="Components/Select" component={Select} />
 
@@ -12,7 +10,7 @@ import chroma from 'chroma-js';
 
 ```typescript
 export interface SelectProps {
-  options?:any;
+  options?: any;
 }
 ```
 
@@ -22,12 +20,12 @@ export interface SelectProps {
   <Story name="basic modal">
     {() => {
       const options = [
-        { value: 'chocolate', label: 'Chocolate' },
-        { value: 'strawberry', label: 'Strawberry' },
-        { value: 'vanilla', label: 'Vanilla' }
+        { value: "chocolate", label: "Chocolate" },
+        { value: "strawberry", label: "Strawberry" },
+        { value: "vanilla", label: "Vanilla" },
       ];
       return (
-        <div style={{height: '150px'}}>
+        <div style={{ height: "150px" }}>
           <Select options={options}></Select>
         </div>
       );
@@ -41,18 +39,17 @@ export interface SelectProps {
   <Story name="multiselect">
     {() => {
       const options = [
-        { value: 'chocolate', label: 'Chocolate' },
-        { value: 'strawberry', label: 'Strawberry' },
-        { value: 'vanilla', label: 'Vanilla' }
+        { value: "chocolate", label: "Chocolate" },
+        { value: "strawberry", label: "Strawberry" },
+        { value: "vanilla", label: "Vanilla" },
       ];
       return (
-        <div style={{height: '150px'}}>
+        <div style={{ height: "150px" }}>
           <Select
             isMulti
             defaultValue={[options[1], options[2]]}
             options={options}
-          >
-          </Select>
+          ></Select>
         </div>
       );
     }}
@@ -65,36 +62,35 @@ export interface SelectProps {
   <Story name="colors">
     {() => {
       const options = [
-        { value: 'chocolate',
-          label: 'Chocolate'
+        { value: "chocolate", label: "Chocolate" },
+        {
+          value: "strawberry",
+          label: "Strawberry",
+          color: `${theme.color.interactive.info}`,
         },
-        { value: 'strawberry',
-          label: 'Strawberry',
-          color: `${theme.colors.notification}`
-           },
-        { value: 'vanilla',
-          label: 'Vanilla',
-          color: `${theme.colors.danger}`
-        }
+        {
+          value: "vanilla",
+          label: "Vanilla",
+          color: `${theme.color.interactive.error}`,
+        },
       ];
       const colorStyles = {
         multiValue: (styles, { data }) => {
-        const color = data.color;
-        return {
-          ...styles,
-          backgroundColor: color ? color : theme.colors.primary,
-        };
-      },
+          const color = data.color;
+          return {
+            ...styles,
+            backgroundColor: color ? color : theme.color.interactive.primary,
+          };
+        },
       };
       return (
-        <div style={{height: '150px'}}>
+        <div style={{ height: "150px" }}>
           <Select
             isMulti
             defaultValue={[options[1], options[2]]}
             options={options}
             styles={colorStyles}
-          >
-          </Select>
+          ></Select>
         </div>
       );
     }}

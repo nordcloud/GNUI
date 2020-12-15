@@ -34,9 +34,9 @@ const StyledToastContainer = styled.div<ToastProps>`
       border-radius: ${theme.radiusDefault};
       padding: ${theme.spacing.spacing04};
       box-shadow: ${theme.shadow.shadow04};
-      color: ${theme.colors.white};
+      color: ${theme.color.text.invert};
       line-height: 1.5em;
-      background-color: ${theme.colors.notification};
+      background-color: ${theme.color.interactive.info};
 
       ${({ severity }) =>
         severity &&
@@ -56,7 +56,7 @@ const StyledToastContainer = styled.div<ToastProps>`
       bottom: 0;
       width: 100%;
       height: 0.25rem;
-      background-color: ${darken(0.1, theme.colors.notification)};
+      background-color: ${theme.color.interactive.infoActive};
       border-bottom-left-radius: ${theme.radiusDefault};
       border-bottom-right-radius: ${theme.radiusDefault};
 
@@ -83,7 +83,7 @@ const ToastTitle = styled.div<MessageProps>`
     border: none;
     margin-left: auto;
     svg {
-      fill: ${theme.colors.snowWhite};
+      fill: ${theme.color.text.invert};
     }
     &:focus {
       outline: none;
@@ -92,7 +92,7 @@ const ToastTitle = styled.div<MessageProps>`
       background-color: transparent;
 
       svg {
-        fill: ${theme.colors.white};
+        fill: ${theme.color.text.invert};
       }
     }
   }

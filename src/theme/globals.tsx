@@ -10,8 +10,8 @@ export const SetGlobalStyle = createGlobalStyle`
   }
   html, body {
      font-family: ${theme.typography.fonts.body};
-     background: ${theme.colors.lights[2]};
-     color: ${theme.colors.primary};
+     background: ${theme.color.background.body};
+     color: ${theme.color.text.primary};
      font-weight: ${theme.fontWeights.regular};
      line-height: ${theme.lineHeight};
   }
