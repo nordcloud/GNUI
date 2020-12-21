@@ -42,7 +42,7 @@ const changeBoxStyle = (boxStyle: string) => {
     case "lightGrey":
       return `
       background: ${theme.color.background.ui03};
-      border: ${theme.borders.grey};
+      border: 1px solid ${theme.color.border.default};
       padding: ${theme.spacing.spacing03};
       box-shadow: ${theme.shadow.shadow00};
       `;

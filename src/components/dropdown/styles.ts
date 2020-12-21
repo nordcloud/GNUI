@@ -22,7 +22,7 @@ export const DropdownButton = styled.button`
   align-items: center;
   justify-content: space-between;
   background: transparent;
-  border: ${theme.borderInput};
+  border: 1px solid ${theme.color.border.input};
   border-radius: ${theme.radiusDefault};
   line-height: 1.5em;
   padding-right: 1.5rem;
@@ -34,6 +34,7 @@ export const DropdownButton = styled.button`
 
   &:focus {
     outline: none;
+    border: 1px solid ${theme.color.border.focus};
   }
 
   &:hover {
@@ -50,7 +51,7 @@ export const DropdownButton = styled.button`
     disabled &&
     css`
       background: ${theme.color.interactive.disabled};
-      border: ${theme.borderInput};
+      border: 1px solid ${theme.color.border.input};
       color: ${theme.color.text.placeholder};
       cursor: not-allowed;
 
@@ -85,7 +86,7 @@ export const DropdownMenu = styled(GnuiContainer)<DropdownMenuProps>`
   box-sizing: border-box;
   position: absolute;
   padding: ${theme.spacing.spacing02};
-  border: ${theme.borderInput};
+  border: 1px solid ${theme.color.border.input};
   color: ${theme.color.text.primary};
   font-weight: ${theme.fontWeights.regular};
   border-radius: ${theme.radiusDefault};

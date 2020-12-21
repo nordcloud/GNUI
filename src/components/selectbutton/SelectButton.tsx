@@ -29,13 +29,13 @@ const StyledSelectButtons = styled.ul<StyledSelectButtons>`
   padding: 0;
   display: inline-flex;
   list-style: none;
-  border: ${theme.borderDefault};
+  border: 1px solid ${theme.color.interactive.primary};
   border-radius: ${theme.radiusDefault};
   line-height: ${theme.lineHeight};
 
   li {
     display: inline-block;
-    border-right: ${theme.borderDefault};
+    border-right: 1px solid ${theme.color.interactive.primary};
 
     &:last-child {
       border-right: none;

@@ -9,7 +9,7 @@ const StyledSubmit = styled.input`
   background: ${theme.color.interactive.primary};
   font-family: ${theme.fonts.body};
   color: ${theme.color.text.invert};
-  border: ${theme.borderDefault};
+  border: 1px solid ${theme.color.interactive.primary};
   font-weight: ${theme.fontWeights.regular};
   padding: ${theme.spacing.spacing02} ${theme.spacing.spacing04};
   border-radius: ${theme.radiusDefault};

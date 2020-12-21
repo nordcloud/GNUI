@@ -16,7 +16,7 @@ export type ToggleProps = {
 };
 
 const StyledToggle = styled.button<ToggleProps>`
-  border: ${theme.borderDefault};
+  border: 1px solid ${theme.color.interactive.primary};
   border-radius: ${theme.radiusDefault};
   line-height: ${theme.lineHeight};
   outline: none;
@@ -29,7 +29,7 @@ const StyledToggle = styled.button<ToggleProps>`
 
   &.active {
     background: ${theme.color.interactive.primary};
-    color: ${theme.color.text.primary};
+    color: ${theme.color.text.invert};
   }
 
   ${({ size }) =>
