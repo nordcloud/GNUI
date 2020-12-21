@@ -31,6 +31,11 @@ type TextColor = {
   info: string;
 };
 
+type FieldColor = {
+  default: string;
+  disabled: string;
+};
+
 type BorderColor = {
   default: string;
   input: string;
@@ -83,6 +88,7 @@ type SupportColor = {
 type Color = {
   background: BackgroundColor;
   text: TextColor;
+  field: FieldColor;
   border: BorderColor;
   interactive: InteractiveColor;
   support: SupportColor;
@@ -141,6 +147,10 @@ const theme: ThemeInterface = {
       success: palette.green.green500,
       info: palette.blue.blue600,
     },
+    field: {
+      default: palette.grey.grey100,
+      disabled: palette.grey.grey300,
+    },
     text: {
       primary: palette.darkBlue.darkBlue700,
       secondary: palette.grey.grey800,
@@ -165,8 +175,8 @@ const theme: ThemeInterface = {
       secondary: palette.grey.grey300,
       secondaryHover: palette.grey.grey400,
       secondaryActive: palette.grey.grey500,
-      link: palette.blue.blue800,
-      linkInverse: palette.blue.blue200,
+      link: palette.deepBlue.deepBlue500,
+      linkInverse: palette.deepBlue.deepBlue200,
       error: palette.red.red600,
       errorHover: palette.red.red700,
       errorActive: palette.red.red800,

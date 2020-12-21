@@ -12,7 +12,7 @@ const SelectContainer = styled.div<SelectProps>`
   .react-select {
     &-container {
       & > div {
-        background: ${theme.color.background.ui01};
+        background: ${theme.color.field.default};
         border: 1px solid ${theme.color.border.input};
         &:hover {
           border: 1px solid ${theme.color.border.hover};

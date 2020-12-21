@@ -86,6 +86,17 @@ export type Blue = {
   blue800: string;
 };
 
+export type DeepBlue = {
+  deepBlue100: string;
+  deepBlue200: string;
+  deepBlue300: string;
+  deepBlue400: string;
+  deepBlue500: string;
+  deepBlue600: string;
+  deepBlue700: string;
+  deepBlue800: string;
+};
+
 export type Cyan = {
   cyan100: string;
   cyan200: string;
@@ -163,6 +174,7 @@ export type colorPalette = {
   purple: Purple;
   indigo: Indigo;
   blue: Blue;
+  deepBlue: DeepBlue;
   cyan: Cyan;
   teal: Teal;
   green: Green;
@@ -176,7 +188,7 @@ export const palette: colorPalette = {
   black: "#000000",
   grey: {
     grey100: "#FDFDFE",
-    grey200: "#F8F8F9",
+    grey200: "#fbfbfb",
     grey300: "#EDEDF0",
     grey400: "#E7E7EB",
     grey500: "#D1D1D8",
@@ -253,6 +265,16 @@ export const palette: colorPalette = {
     blue600: "#1e88e5",
     blue700: "#1976d2",
     blue800: "#1565c0",
+  },
+  deepBlue: {
+    deepBlue100: "#c0daf8",
+    deepBlue200: "#92c0f3",
+    deepBlue300: "#368ae9",
+    deepBlue400: "#1770d5",
+    deepBlue500: "#1258a7",
+    deepBlue600: "#0d4079",
+    deepBlue700: "#08274b",
+    deepBlue800: "#030f1d",
   },
   cyan: {
     cyan100: "#b2ebf2",
