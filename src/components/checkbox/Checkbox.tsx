@@ -53,11 +53,12 @@ const CheckboxContainer = styled.div`
     content: "";
     border-radius: 2px;
     border: 1px solid ${theme.color.border.input};
-    background: ${theme.color.background.ui01};
+    background: ${theme.color.field.default};
     width: 100%;
     height: 100%;
     position: absolute;
     top: 0;
+    left: 0;
     box-sizing: border-box;
     pointer-events: none;
     z-index: 0;

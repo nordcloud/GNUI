@@ -53,7 +53,7 @@ export const InputGroup = styled(Flex)<InputGroupProps & SpaceProps>`
   padding: ${theme.spacing.spacing02};
   border-radius: ${theme.radiusDefault};
   color: ${theme.color.text.primary};
-  background: ${theme.color.background.ui02};
+  background: ${theme.color.field.default};
   transition: ${theme.transition};
   overflow: hidden;
   &:hover {
@@ -65,7 +65,7 @@ export const InputGroup = styled(Flex)<InputGroupProps & SpaceProps>`
   }
   &:disabled {
     color: ${theme.color.text.placeholder};
-    background: ${theme.color.background.ui02};
+    background: ${theme.color.field.disabled};
     border: 1px solid ${theme.color.border.input};
     cursor: not-allowed;
   }
@@ -107,7 +107,7 @@ export const StyledInput = styled.input<InputProps>`
   }
   &:disabled {
     color: ${theme.color.text.placeholder};
-    background: ${theme.color.background.ui02};
+    background: transparent;
     border: 0;
     cursor: not-allowed;
   }

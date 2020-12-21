@@ -19,4 +19,13 @@ export const SetGlobalStyle = createGlobalStyle`
     font-family: ${theme.typography.fonts.body};
     font-weight: ${theme.fontWeights.regular};
   }
+  a {
+    color: ${theme.color.interactive.link};
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+      color: ${theme.color.interactive.link}
+    }
+  }
 `;
