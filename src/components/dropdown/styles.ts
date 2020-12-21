@@ -21,7 +21,7 @@ export const DropdownButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: transparent;
+  background: ${theme.color.field.default};
   border: ${theme.borderInput};
   border-radius: ${theme.radiusDefault};
   line-height: 1.5em;
@@ -49,13 +49,13 @@ export const DropdownButton = styled.button`
   ${({ disabled }) =>
     disabled &&
     css`
-      background: ${theme.color.interactive.disabled};
+      background: ${theme.color.field.disabled};
       border: ${theme.borderInput};
       color: ${theme.color.text.placeholder};
       cursor: not-allowed;
 
       &:hover {
-        background: ${theme.color.interactive.disabled};
+        background: ${theme.color.field.disabled};
         color: ${theme.color.text.placeholder};
       }
     `}
@@ -123,7 +123,7 @@ export const DropdownItem = styled.button`
   width: 100%;
   box-sizing: border-box;
   text-align: left;
-  background: transparent;
+  background: ${theme.color.field.default};
   font-size: inherit;
   list-style: none;
   transition: ${theme.transition};
