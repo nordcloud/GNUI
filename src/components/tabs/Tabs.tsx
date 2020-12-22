@@ -60,13 +60,13 @@ export const TabsContent = styled(Box)`
 export const TabContainer: any = styled.div<TabProps>`
   padding: ${theme.spacing.spacing04};
   background-color: ${theme.color.background.ui02};
-  border-right: ${theme.borders.grey};
+  border-right: 1px solid ${theme.color.border.default};
   border-bottom: 1px solid transparent;
   width: 17rem;
   &:last-child {
     border-right: none;
     &.tab-active {
-      border-right: ${theme.borders.grey};
+      border-right: 1px solid ${theme.color.border.default};
     }
   }
 
@@ -126,7 +126,7 @@ const TabsList = styled.div`
     position:absolute;
     left:0;
     bottom:0;
-    border-bottom: ${theme.borders.grey};
+    border-bottom: 1px solid ${theme.color.border.default};
     z-index: ${theme.zindex.zero};
   }
 }
@@ -160,7 +160,7 @@ type StyledTabsStatusButtonsProps = {
 
 const TabsStatusButtons = styled.div<StyledTabsStatusButtonsProps>`
   padding: ${theme.spacing.spacing04};
-  border-top: ${theme.borders.grey};
+  border-top: 1px solid ${theme.color.border.default};
   display: flex;
   justify-content: ${({ buttonsJustify }) =>
     buttonsJustify ? buttonsJustify : "space-between"};

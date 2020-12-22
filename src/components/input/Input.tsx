@@ -37,11 +37,11 @@ export const Label: FunctionComponent<LabelProps> = ({
 const setStatusColor = (status: Status) => {
   if (status === "error") {
     return css`
-      border: ${theme.borders.danger};
+      border: 1px solid ${theme.color.border.error};
     `;
   } else if (status === "success") {
     return css`
-      border: ${theme.borders.success};
+      border: 1px solid ${theme.color.border.input};
     `;
   }
 };
@@ -49,7 +49,7 @@ const setStatusColor = (status: Status) => {
 export const InputGroup = styled(Flex)<InputGroupProps & SpaceProps>`
   position: relative;
   align-items: center;
-  border: ${theme.borders.disabled};
+  border: 1px solid ${theme.color.border.input};
   padding: ${theme.spacing.spacing02};
   border-radius: ${theme.radiusDefault};
   color: ${theme.color.text.primary};
@@ -57,7 +57,7 @@ export const InputGroup = styled(Flex)<InputGroupProps & SpaceProps>`
   transition: ${theme.transition};
   overflow: hidden;
   &:hover {
-    border: ${theme.borders.darkenGray};
+    border: 1px solid ${theme.color.border.focus};
   }
   &:focus {
     outline: 0;
@@ -66,7 +66,7 @@ export const InputGroup = styled(Flex)<InputGroupProps & SpaceProps>`
   &:disabled {
     color: ${theme.color.text.placeholder};
     background: ${theme.color.field.disabled};
-    border: ${theme.borders.grey};
+    border: 1px solid ${theme.color.border.input};
     cursor: not-allowed;
   }
   border-width: ${(props: InputGroupProps) => props.noBorder && "0px"}

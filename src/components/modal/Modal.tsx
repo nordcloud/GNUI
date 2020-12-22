@@ -105,7 +105,7 @@ export const ModalHeader = styled.div`
   align-items: center;
   padding: 0 1rem 1rem;
   margin-bottom: ${theme.spacing.spacing04};
-  border-bottom: ${theme.borders.grey};
+  border-bottom: 1px solid ${theme.color.border.default};
   margin-left: -1rem;
   margin-right: -1rem;
   ${ModalCloseButton} {
