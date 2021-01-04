@@ -11,7 +11,7 @@ type DatepickerProps = {
 const DatepickerWrapper = styled.div`
   .rdrCalendarWrapper,
   .rdrDateRangePickerWrapper {
-    color: ${theme.color.text.primary};
+    color: ${theme.color.text.text01};
     font-family: ${theme.fonts.body};
     font-weight: ${theme.fontWeights.regular};
     font-size: ${theme.fontSizes.sm};

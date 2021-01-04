@@ -24,7 +24,7 @@ const Header = styled.div<HeaderProps>`
   z-index: ${theme.zindex.default};
   flex-wrap: nowrap;
   align-items: center;
-  border-bottom: 1px solid ${theme.color.border.default};
+  border-bottom: 1px solid ${theme.color.border.border01};
   background-color: ${theme.color.background.ui01};
   line-height: ${theme.lineHeight};
   padding: ${theme.spacing.spacing04};
@@ -131,7 +131,7 @@ const FooterSidebar = styled.div`
   left: 0;
   display: flex;
   background-color: ${theme.color.background.ui01};
-  border-top: 1px solid ${theme.color.border.default};
+  border-top: 1px solid ${theme.color.border.border01};
   line-height: ${theme.lineHeight};
   justify-content: space-between;
 `;

@@ -90,9 +90,9 @@ export const StyledTag = styled.div<TagProps>`
     color &&
     css`
       background: ${theme.colors[color] || color};
-      color: ${theme.color.text.invert};
+      color: ${theme.color.text.text04};
       svg {
-        fill: ${theme.color.text.invert};
+        fill: ${theme.color.text.text04};
       }
       .tag-close-button {
         background: ${darken(0.1, theme.colors[color] || color)};

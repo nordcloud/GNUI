@@ -8,7 +8,7 @@ import { Button, ButtonProps } from "../button";
 const StyledSubmit = styled.input`
   background: ${theme.color.interactive.primary};
   font-family: ${theme.fonts.body};
-  color: ${theme.color.text.invert};
+  color: ${theme.color.text.text04};
   border: 1px solid ${theme.color.interactive.primary};
   font-weight: ${theme.fontWeights.regular};
   padding: ${theme.spacing.spacing02} ${theme.spacing.spacing04};
@@ -24,19 +24,19 @@ const StyledSubmit = styled.input`
 
   &:hover {
     cursor: pointer;
-    color: ${theme.color.text.placeholder};
+    color: ${theme.color.text.text03};
   }
 
   &:active {
-    color: ${theme.color.text.secondary};
+    color: ${theme.color.text.text02};
   }
 
   &:disabled {
     background: ${theme.color.interactive.disabled};
-    color: ${theme.color.text.placeholder};
+    color: ${theme.color.text.text03};
 
     &:hover {
-      color: ${theme.color.text.placeholder};
+      color: ${theme.color.text.text03};
       cursor: not-allowed;
     }
   }

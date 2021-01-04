@@ -42,7 +42,7 @@ const changeBoxStyle = (boxStyle: string) => {
     case "lightGrey":
       return `
       background: ${theme.color.background.ui03};
-      border: 1px solid ${theme.color.border.default};
+      border: 1px solid ${theme.color.border.border01};
       padding: ${theme.spacing.spacing03};
       box-shadow: ${theme.shadow.shadow00};
       `;
@@ -60,7 +60,7 @@ const StyledBox = styled(GnuiContainer)<BoxProps & SpaceProps>`
   min-width: 0;
   padding: ${theme.spacing.spacing04};
   border-radius: ${theme.radius.default};
-  color: ${theme.color.text.primary};
+  color: ${theme.color.text.text01};
   background: ${theme.color.background.ui01};
   font-weight: ${theme.fontWeights.regular};
   box-shadow: ${theme.shadow.shadow02};
@@ -75,7 +75,7 @@ const StyledBox = styled(GnuiContainer)<BoxProps & SpaceProps>`
     dark &&
     css`
       background: ${theme.color.background.ui05};
-      color: ${theme.color.text.invert};
+      color: ${theme.color.text.text04};
     `}
   ${({ radius }) =>
     radius &&

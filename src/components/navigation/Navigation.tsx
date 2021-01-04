@@ -17,7 +17,7 @@ const Item = styled.div`
   font-size: ${theme.fontSizes.md};
   border-radius: ${theme.radiusDefault};
   padding: 0 ${theme.spacing.spacing03};
-  color: ${theme.color.text.primary};
+  color: ${theme.color.text.text01};
   text-decoration: none;
   height: 2.5rem;
   vertical-align: middle;
@@ -25,7 +25,7 @@ const Item = styled.div`
   transition: ${theme.transition};
   &.separator {
     font-size: ${theme.fontSizes.sm};
-    color: ${theme.color.text.secondary};
+    color: ${theme.color.text.text02};
     margin-bottom: 0;
   }
   & + .separator {
@@ -35,18 +35,18 @@ const Item = styled.div`
     &:hover {
       background-color: ${theme.color.interactive.secondary};
       text-decoration: none !important;
-      color: ${theme.color.text.primary};
+      color: ${theme.color.text.text01};
     }
     &:active,
     &:focus {
       background-color: ${theme.color.interactive.secondary};
-      color: ${theme.color.text.primary};
+      color: ${theme.color.text.text01};
     }
     &.active {
       background: ${theme.color.interactive.primary};
-      color: ${theme.color.text.invert};
+      color: ${theme.color.text.text04};
       * {
-        fill: ${theme.color.text.invert};
+        fill: ${theme.color.text.text04};
       }
     }
   }
@@ -63,14 +63,14 @@ const Item = styled.div`
     &:active,
     &:focus {
       background-color: ${theme.color.interactive.secondary};
-      color: ${theme.color.text.primary};
+      color: ${theme.color.text.text01};
     }
     &.active {
       background: ${theme.color.interactive.secondaryHover};
-      color: ${theme.color.text.primary};
+      color: ${theme.color.text.text01};
       * {
         opacity: 1;
-        fill: ${theme.color.text.primary};
+        fill: ${theme.color.text.text01};
       }
     }
   }
@@ -84,7 +84,7 @@ const Info = styled.span`
   height: 1.25rem;
   background: ${theme.color.background.error};
   display: block;
-  color: ${theme.color.text.invert};
+  color: ${theme.color.text.text04};
   text-align: center;
   margin-left: auto;
   font-size: ${theme.fontSizes.sm};

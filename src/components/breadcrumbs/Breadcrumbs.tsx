@@ -44,7 +44,7 @@ const StyledBreadcrumbs = styled.nav`
         content: "/";
         font-size: ${theme.fontSizes.sm};
         margin-left: ${theme.spacing.spacing02};
-        color: ${theme.color.text.secondary};
+        color: ${theme.color.text.text02};
       }
 
       &:last-child {
@@ -53,7 +53,7 @@ const StyledBreadcrumbs = styled.nav`
           display: none;
         }
         a {
-          color: ${theme.color.text.placeholder};
+          color: ${theme.color.text.text03};
           pointer-events: none;
         }
       }

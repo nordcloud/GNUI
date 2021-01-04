@@ -60,13 +60,13 @@ export const TabsContent = styled(Box)`
 export const TabContainer: any = styled.div<TabProps>`
   padding: ${theme.spacing.spacing04};
   background-color: ${theme.color.background.ui02};
-  border-right: 1px solid ${theme.color.border.default};
+  border-right: 1px solid ${theme.color.border.border01};
   border-bottom: 1px solid transparent;
   width: 17rem;
   &:last-child {
     border-right: none;
     &.tab-active {
-      border-right: 1px solid ${theme.color.border.default};
+      border-right: 1px solid ${theme.color.border.border01};
     }
   }
 
@@ -104,7 +104,7 @@ export const TabContainer: any = styled.div<TabProps>`
     &:first-child {
       & > div {
         background-color: ${theme.color.background.ui05};
-        color: ${theme.color.text.invert};
+        color: ${theme.color.text.text04};
       }
     }
   }
@@ -126,7 +126,7 @@ const TabsList = styled.div`
     position:absolute;
     left:0;
     bottom:0;
-    border-bottom: 1px solid ${theme.color.border.default};
+    border-bottom: 1px solid ${theme.color.border.border01};
     z-index: ${theme.zindex.zero};
   }
 }
@@ -146,11 +146,11 @@ const Step = styled(Box)`
   box-shadow: none;
   margin-bottom: ${theme.spacing.spacing04};
   background-color: ${theme.color.background.ui04};
-  color: ${theme.color.text.placeholder};
+  color: ${theme.color.text.text03};
 
   &.dark {
     background-color: ${theme.color.background.ui05};
-    color: ${theme.color.text.invert};
+    color: ${theme.color.text.text04};
   }
 `;
 
@@ -160,7 +160,7 @@ type StyledTabsStatusButtonsProps = {
 
 const TabsStatusButtons = styled.div<StyledTabsStatusButtonsProps>`
   padding: ${theme.spacing.spacing04};
-  border-top: 1px solid ${theme.color.border.default};
+  border-top: 1px solid ${theme.color.border.border01};
   display: flex;
   justify-content: ${({ buttonsJustify }) =>
     buttonsJustify ? buttonsJustify : "space-between"};
@@ -229,7 +229,7 @@ export const Tab: FunctionComponent<TabProps> = ({
       <Text weight="medium" mb={theme.spacing.spacing01}>
         {heading}
       </Text>
-      <Text size="sm" mb={0} color={theme.color.text.secondary}>
+      <Text size="sm" mb={0} color={theme.color.text.text02}>
         {caption}
       </Text>
     </TabContainer>

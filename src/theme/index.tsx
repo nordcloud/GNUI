@@ -21,10 +21,10 @@ type BackgroundColor = {
 };
 
 type TextColor = {
-  primary: string;
-  secondary: string;
-  placeholder: string;
-  invert: string;
+  text01: string;
+  text02: string;
+  text03: string;
+  text04: string;
   error: string;
   warning: string;
   success: string;
@@ -37,9 +37,9 @@ type FieldColor = {
 };
 
 type BorderColor = {
-  default: string;
+  border01: string;
+  border02: string;
   input: string;
-  hover: string;
   focus: string;
   error: string;
 };
@@ -152,25 +152,25 @@ const theme: ThemeInterface = {
       disabled: palette.grey.grey300,
     },
     text: {
-      primary: palette.darkBlue.darkBlue700,
-      secondary: palette.grey.grey800,
-      placeholder: palette.grey.grey700,
-      invert: palette.white,
+      text01: palette.darkBlue.darkBlue700,
+      text02: palette.grey.grey800,
+      text03: palette.grey.grey700,
+      text04: palette.white,
       error: palette.red.red700,
       warning: palette.orange.orange800,
       success: palette.green.green700,
       info: palette.blue.blue700,
     },
     border: {
-      default: palette.grey.grey400,
+      border01: palette.grey.grey400,
+      border02: palette.grey.grey800,
       input: palette.grey.grey500,
-      hover: palette.grey.grey700,
       focus: palette.grey.grey800,
       error: palette.red.red700,
     },
     interactive: {
-      primary: palette.darkBlue.darkBlue700,
-      primaryHover: palette.darkBlue.darkBlue800,
+      primary: palette.darkBlue.darkBlue500,
+      primaryHover: palette.darkBlue.darkBlue700,
       primaryActive: palette.darkBlue.darkBlue800,
       secondary: palette.grey.grey300,
       secondaryHover: palette.grey.grey400,

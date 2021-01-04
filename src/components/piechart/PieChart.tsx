@@ -50,7 +50,7 @@ const StyledPieChartDescription = styled.div<IPieChart>`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: ${theme.color.text.secondary};
+  color: ${theme.color.text.text02};
   ${({ size }) =>
     size &&
     css`
@@ -65,7 +65,7 @@ const StyledPieChartDescription = styled.div<IPieChart>`
         line-height: 1.5rem;
       }
       .chartCaption {
-        color: ${theme.color.text.secondary};
+        color: ${theme.color.text.text02};
       }
     `}
 `;

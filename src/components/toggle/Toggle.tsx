@@ -21,7 +21,7 @@ const StyledToggle = styled.button<ToggleProps>`
   line-height: ${theme.lineHeight};
   outline: none;
   cursor: pointer;
-  color: ${theme.color.text.primary};
+  color: ${theme.color.text.text01};
   background: transparent;
   padding: ${theme.spacing.spacing02} ${theme.spacing.spacing04};
   transition: ${theme.transition};
@@ -29,7 +29,7 @@ const StyledToggle = styled.button<ToggleProps>`
 
   &.active {
     background: ${theme.color.interactive.primary};
-    color: ${theme.color.text.invert};
+    color: ${theme.color.text.text04};
   }
 
   ${({ size }) =>
@@ -45,7 +45,7 @@ const StyledToggle = styled.button<ToggleProps>`
       color: ${setColor(status)};
       border: 1px solid ${setColor(status)};
       &.active {
-        color: ${theme.color.text.primary};
+        color: ${theme.color.text.text01};
         background: ${setColor(status)};
         &:hover {
           background: ${darken(0.1, theme.colors[status] || status)};

@@ -16,7 +16,7 @@ const Table: any = styled.table<TableProps>`
   font-family: ${theme.fonts.body};
   font-size: ${({ tiny }) => (tiny ? theme.fontSizes.sm : theme.fontSizes.md)};
   line-height: 1.5em;
-  color: ${theme.color.text.primary};
+  color: ${theme.color.text.text01};
 
   tbody {
     tr {
@@ -52,7 +52,7 @@ const Table: any = styled.table<TableProps>`
           : `${theme.spacing.spacing03}`};
       font-size: ${theme.fontSizes.sm};
       font-weight: ${theme.fontWeights.medium};
-      color: ${theme.color.text.secondary};
+      color: ${theme.color.text.text02};
       line-height: 1.5em;
     }
   }
@@ -71,17 +71,17 @@ const Tfoot = styled.tfoot`
 `;
 
 const Td = styled.td<any>`
-  border-top: 1px solid ${theme.color.border.default};
+  border-top: 1px solid ${theme.color.border.border01};
   border-left: ${({ hasLeftBorder }) =>
-    hasLeftBorder ? `1px solid ${theme.color.border.default}` : "none"};
+    hasLeftBorder ? `1px solid ${theme.color.border.border01}` : "none"};
   border-right: ${({ hasRightBorder }) =>
-    hasRightBorder ? `1px solid ${theme.color.border.default}` : "none"};
+    hasRightBorder ? `1px solid ${theme.color.border.border01}` : "none"};
 `;
 
 const Tr = styled.tr<any>``;
 
 const Th = styled.th<any>`
-  border-bottom: 2px solid ${theme.color.border.default};
+  border-bottom: 2px solid ${theme.color.border.border01};
 `;
 
 Table.thead = Thead;
