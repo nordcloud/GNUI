@@ -34,7 +34,7 @@ const StyledToastContainer = styled.div<ToastProps>`
       border-radius: ${theme.radiusDefault};
       padding: ${theme.spacing.spacing04};
       box-shadow: ${theme.shadow.shadow04};
-      color: ${theme.color.text.invert};
+      color: ${theme.color.text.text04};
       line-height: 1.5em;
       background-color: ${theme.color.interactive.info};
 
@@ -83,7 +83,7 @@ const ToastTitle = styled.div<MessageProps>`
     border: none;
     margin-left: auto;
     svg {
-      fill: ${theme.color.text.invert};
+      fill: ${theme.color.text.text04};
     }
     &:focus {
       outline: none;
@@ -92,7 +92,7 @@ const ToastTitle = styled.div<MessageProps>`
       background-color: transparent;
 
       svg {
-        fill: ${theme.color.text.invert};
+        fill: ${theme.color.text.text04};
       }
     }
   }

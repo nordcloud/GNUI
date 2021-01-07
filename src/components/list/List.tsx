@@ -24,7 +24,7 @@ type IListProps = {
 
 const StyledListItemTitle = styled.span`
   width: 11.25rem;
-  color: ${theme.color.text.secondary};
+  color: ${theme.color.text.text02};
 `;
 
 const StyledListMarker = css`
@@ -33,7 +33,7 @@ const StyledListMarker = css`
   width: 8px;
   height: 8px;
   margin: ${theme.spacing.spacing02};
-  background-color: ${theme.color.text.primary};
+  background-color: ${theme.color.text.text01};
 `;
 
 const StyledList = styled.ul`
@@ -57,7 +57,7 @@ const StyledListItem = styled.li`
   font-family: ${theme.fonts.body};
   display: flex;
   margin: ${(props: StyledListProps) => getListSpacing(props)};
-  color: ${theme.color.text.primary};
+  color: ${theme.color.text.text01};
   line-height: ${theme.typography.lineHeight};
 
   ${(props: StyledListProps) =>

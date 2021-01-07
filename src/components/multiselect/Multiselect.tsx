@@ -15,7 +15,7 @@ const SelectContainer = styled.div<SelectProps>`
         background: ${theme.color.field.default};
         border: 1px solid ${theme.color.border.input};
         &:hover {
-          border: 1px solid ${theme.color.border.hover};
+          border: 1px solid ${theme.color.border.border02};
         }
         &:focus {
           border: 1px solid ${theme.color.border.focus};
@@ -24,7 +24,7 @@ const SelectContainer = styled.div<SelectProps>`
       }
     }
     &__value-container {
-      color: ${theme.color.text.primary};
+      color: ${theme.color.text.text01};
     }
     &__multi-value {
       padding: 0 0.125rem 0 ${theme.spacing.spacing02};
@@ -34,7 +34,7 @@ const SelectContainer = styled.div<SelectProps>`
       height: 1.5rem;
 
       &__label {
-        color: ${theme.color.text.invert};
+        color: ${theme.color.text.text04};
         padding-left: 0;
         padding-right: 0.375rem;
         font-size: ${theme.fontSizes.sm};
@@ -51,17 +51,17 @@ const SelectContainer = styled.div<SelectProps>`
           background-color: rgba(0, 0, 0, 0.5);
         }
         svg {
-          color: ${theme.color.text.invert};
+          color: ${theme.color.text.text04};
           width: 0.75rem;
           height: 0.75rem;
         }
       }
     }
     &__placeholder {
-      color: ${theme.color.text.placeholder};
+      color: ${theme.color.text.text03};
     }
     &__single-value {
-      color: ${theme.color.text.primary};
+      color: ${theme.color.text.text01};
       font-size: ${theme.fontSizes[2]};
       line-height: 1.5rem;
     }
@@ -69,7 +69,7 @@ const SelectContainer = styled.div<SelectProps>`
       box-shadow: ${theme.shadow.shadow04};
     }
     &__option {
-      color: ${theme.color.text.primary};
+      color: ${theme.color.text.text01};
       &--is-selected {
         background-color: ${theme.color.interactive.secondary};
         &.react-select__option--is-focused {

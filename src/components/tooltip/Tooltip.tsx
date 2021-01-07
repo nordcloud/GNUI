@@ -50,7 +50,7 @@ const StyledTooltip = styled.div<StyledTooltipProps>`
   line-height: 1rem;
   padding: ${theme.spacing.spacing02};
   background-color: ${theme.color.background.ui05};
-  color: ${theme.color.text.invert};
+  color: ${theme.color.text.text04};
   border-radius: ${theme.radius.md};
   z-index: ${theme.zindex.sticky};
   opacity: 0;

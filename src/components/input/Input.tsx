@@ -10,7 +10,7 @@ import { InputGroupProps, InputProps, LabelProps, Status } from "./types";
 
 const StyledLabel = styled.label<LabelProps>`
   line-height: ${theme.lineHeight};
-  color: ${theme.color.text.primary};
+  color: ${theme.color.text.text01};
   margin-bottom: ${theme.spacing.spacing02};
   ${({ required }) =>
     required &&
@@ -52,7 +52,7 @@ export const InputGroup = styled(Flex)<InputGroupProps & SpaceProps>`
   border: 1px solid ${theme.color.border.input};
   padding: ${theme.spacing.spacing02};
   border-radius: ${theme.radiusDefault};
-  color: ${theme.color.text.primary};
+  color: ${theme.color.text.text01};
   background: ${theme.color.field.default};
   transition: ${theme.transition};
   overflow: hidden;
@@ -64,7 +64,7 @@ export const InputGroup = styled(Flex)<InputGroupProps & SpaceProps>`
     border: 1px solid ${theme.color.border.focus};
   }
   &:disabled {
-    color: ${theme.color.text.placeholder};
+    color: ${theme.color.text.text03};
     background: ${theme.color.field.disabled};
     border: 1px solid ${theme.color.border.input};
     cursor: not-allowed;
@@ -96,9 +96,10 @@ export const StyledInput = styled.input<InputProps>`
   padding: 0;
   margin: 0;
   transition: ${theme.transition};
+  color: ${theme.color.text.text01};
 
-  &:placeholder {
-    color: ${theme.color.text.placeholder};
+  &::placeholder {
+    color: ${theme.color.text.text03};
   }
   &:hover,
   &:focus {
@@ -106,7 +107,7 @@ export const StyledInput = styled.input<InputProps>`
     border: 0;
   }
   &:disabled {
-    color: ${theme.color.text.placeholder};
+    color: ${theme.color.text.text03};
     background: transparent;
     border: 0;
     cursor: not-allowed;
@@ -127,7 +128,7 @@ export const StyledInput = styled.input<InputProps>`
 
 const StyledDescription = styled(GnuiContainer)`
   font-size: ${theme.fontSizes[1]};
-  color: ${theme.color.text.secondary};
+  color: ${theme.color.text.text02};
   margin: ${theme.spacing.spacing02} 0;
   width: 100%;
 `;

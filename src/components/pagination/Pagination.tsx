@@ -141,7 +141,7 @@ const StyledPaginationBox = styled.nav<IStyledPaginationBox>`
   background-color: ${theme.color.background.ui02};
   padding: ${theme.spacing.spacing03};
   border: ${({ sidebar }) =>
-    sidebar ? "none" : `1px solid ${theme.color.border.default}`};
+    sidebar ? "none" : `1px solid ${theme.color.border.border01}`};
   justify-content: ${({ small }) => (small ? "center" : "space-between")};
   border-radius: ${theme.radius.md};
   align-items: center;
@@ -149,7 +149,7 @@ const StyledPaginationBox = styled.nav<IStyledPaginationBox>`
   .pagination-show {
     font-weight: ${theme.fontWeights.regular};
     font-size: ${theme.fontSizes.sm};
-    color: ${theme.color.text.secondary};
+    color: ${theme.color.text.text02};
     margin: 0 0.5rem 0 0;
     line-height: 1.5em;
   }
@@ -173,7 +173,7 @@ const StyledPaginationBox = styled.nav<IStyledPaginationBox>`
     font-weight: ${theme.fontWeights.regular};
     font-size: ${theme.fontSizes.sm};
     font-family: ${theme.typography.fonts.body};
-    color: ${theme.color.text.primary};
+    color: ${theme.color.text.text01};
     line-height: 1.5em;
     padding: 0.5rem;
     border-radius: ${theme.radius.md};
@@ -195,12 +195,12 @@ const StyledPaginationBox = styled.nav<IStyledPaginationBox>`
 
     &.current {
       background-color: ${theme.color.interactive.primary};
-      color: ${theme.color.text.invert};
+      color: ${theme.color.text.text04};
       font-weight: ${theme.fontWeights.medium};
 
       &:hover {
         background-color: ${theme.color.interactive.primaryHover};
-        color: ${theme.color.text.placeholder};
+        color: ${theme.color.text.text03};
       }
     }
 

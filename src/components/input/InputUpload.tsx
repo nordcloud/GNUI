@@ -6,7 +6,7 @@ import { StyledInput } from "./Input";
 import { InputProps } from "./types";
 
 const StyledUpload = styled.div`
-  color: ${theme.color.text.primary};
+  color: ${theme.color.text.text01};
   background: ${theme.color.field.default};
   transition: ${theme.transition};
   line-height: ${theme.lineHeight};

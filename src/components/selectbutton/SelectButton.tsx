@@ -52,7 +52,7 @@ const StyledSelectButtons = styled.ul<StyledSelectButtons>`
 
       &.active {
         background: ${theme.color.interactive.primary};
-        color: ${theme.color.text.invert};
+        color: ${theme.color.text.text04};
       }
 
       ${({ size }) =>
@@ -73,7 +73,7 @@ const StyledSelectButtons = styled.ul<StyledSelectButtons>`
         button {
           color: ${setColor(status)};
           &.active {
-            color: ${theme.color.text.invert};
+            color: ${theme.color.text.text04};
             background: ${setColor(status)};
             &:hover {
               background: ${darken(0.1, theme.colors[status] || status)};

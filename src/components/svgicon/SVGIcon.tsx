@@ -12,7 +12,7 @@ export type SVGIconProps = {
 };
 
 const StyledSVGIcon = styled.svg<SVGIconProps>`
-  fill: ${theme.color.text.primary};
+  fill: ${theme.color.text.text01};
   width: ${theme.iconSize.md};
   height: ${theme.iconSize.md};
 

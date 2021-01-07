@@ -68,56 +68,56 @@ const changeSeverity = (severity: string) => {
       return `
       background: transparent;
       border-color: ${theme.color.interactive.primary};
-      color: ${theme.color.text.primary};
+      color: ${theme.color.text.text01};
       svg {
-        fill: ${theme.color.text.primary};
+        fill: ${theme.color.text.text01};
       }
       .spinner {
         div {
-          border-color: ${theme.color.text.primary} transparent transparent
+          border-color: ${theme.color.text.text01} transparent transparent
             transparent;
         }
       }
       &:hover {
         background: ${theme.color.interactive.secondary};
-        color: ${theme.color.text.primary};
+        color: ${theme.color.text.text01};
         svg {
-          fill: ${theme.color.text.primary};
+          fill: ${theme.color.text.text01};
         }
       }
       &:active {
         background: ${theme.color.interactive.secondaryHover};
         svg {
-          fill: ${theme.color.text.primary};
+          fill: ${theme.color.text.text01};
         }
       }
       `;
     case "low":
       return `
       background: ${theme.color.interactive.secondary};
-      color: ${theme.color.text.primary};
+      color: ${theme.color.text.text01};
       border: none;
       svg {
-        fill: ${theme.color.text.primary};
+        fill: ${theme.color.text.text01};
       }
       .spinner {
         div {
-          border-color: ${theme.color.text.primary} transparent transparent
+          border-color: ${theme.color.text.text01} transparent transparent
             transparent;
         }
       }
       &:hover {
         background: ${theme.color.interactive.secondaryHover};
-        color: ${theme.color.text.primary};
+        color: ${theme.color.text.text01};
         svg {
-          fill: ${theme.color.text.primary};
+          fill: ${theme.color.text.text01};
         }
       }
       &:active {
         background: ${theme.color.interactive.secondaryActive};
 
         svg {
-          fill: ${theme.color.text.primary};
+          fill: ${theme.color.text.text01};
         }
       }
       `;
@@ -128,7 +128,7 @@ const StyledButton = styled.button<ButtonProps>`
   background: ${theme.color.interactive.primary};
   white-space: nowrap;
   font-family: ${theme.fonts.body};
-  color: ${theme.color.text.invert};
+  color: ${theme.color.text.text04};
   border: ${theme.borders.transparent};
   font-weight: ${theme.fontWeights.regular};
   padding: ${theme.spacing.spacing02};
@@ -147,7 +147,7 @@ const StyledButton = styled.button<ButtonProps>`
   }
 
   svg {
-    fill: ${theme.color.text.invert};
+    fill: ${theme.color.text.text04};
     width: 1.25rem;
     height: 1.25rem;
     padding: 0.125rem;
@@ -162,7 +162,7 @@ const StyledButton = styled.button<ButtonProps>`
     justify-content: center;
 
     div {
-      border-color: ${theme.color.text.invert} transparent transparent
+      border-color: ${theme.color.text.text04} transparent transparent
         transparent;
     }
   }
@@ -173,33 +173,33 @@ const StyledButton = styled.button<ButtonProps>`
 
   &:hover {
     cursor: pointer;
-    color: ${theme.color.text.placeholder};
+    color: ${theme.color.text.text04};
     background: ${theme.color.interactive.primaryHover};
     text-decoration: none;
 
     svg {
-      fill: ${theme.color.text.placeholder};
+      fill: ${theme.color.text.text04};
     }
   }
 
   &:active {
-    color: ${theme.color.text.secondary};
+    color: ${theme.color.text.text04};
     background: ${theme.color.interactive.primaryActive};
 
     svg {
-      fill: ${theme.color.text.secondary};
+      fill: ${theme.color.text.text02};
     }
   }
 
   &:disabled {
     background: ${theme.color.interactive.disabled};
     border-color: transparent;
-    color: ${theme.color.text.placeholder};
+    color: ${theme.color.text.text03};
 
     &:hover {
       border-color: transparent;
       background: ${theme.color.interactive.disabled};
-      color: ${theme.color.text.placeholder};
+      color: ${theme.color.text.text03};
       cursor: not-allowed;
       border-radius: ${theme.radiusDefault};
     }
@@ -225,7 +225,7 @@ const StyledButton = styled.button<ButtonProps>`
       color: ${(props: ButtonProps) =>
         props.severity === "medium"
           ? setColor(color)
-          : theme.color.text.invert};
+          : theme.color.text.text04};
       border: 1px solid ${setColor(color)};
       &:hover,
       &:active,
@@ -237,14 +237,14 @@ const StyledButton = styled.button<ButtonProps>`
         fill: ${(props: ButtonProps) =>
           props.severity === "medium"
             ? setColor(color)
-            : theme.color.text.invert};
+            : theme.color.text.text04};
       }
       .spinner {
         div {
           border-color: ${(props: ButtonProps) =>
               props.severity === "medium"
                 ? setColor(color)
-                : theme.color.text.invert}
+                : theme.color.text.text04}
             transparent transparent transparent;
         }
       }
@@ -252,7 +252,7 @@ const StyledButton = styled.button<ButtonProps>`
         color: ${(props: ButtonProps) =>
           props.severity === "medium"
             ? setColor(color)
-            : theme.color.text.invert};
+            : theme.color.text.text04};
         background-color: ${(props: ButtonProps) =>
           props.severity === "medium"
             ? lighten(0.35, setColor(color))
@@ -261,7 +261,7 @@ const StyledButton = styled.button<ButtonProps>`
           fill: ${(props: ButtonProps) =>
             props.severity === "medium"
               ? darken(0.1, setColor(color))
-              : theme.color.text.invert};
+              : theme.color.text.text04};
         }
       }
       &:active {

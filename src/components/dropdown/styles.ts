@@ -26,7 +26,7 @@ export const DropdownButton = styled.button`
   border-radius: ${theme.radiusDefault};
   line-height: 1.5em;
   font-size: inherit;
-  color: ${theme.color.text.primary};
+  color: ${theme.color.text.text01};
   padding: ${theme.spacing.spacing02};
   cursor: pointer;
   transition: ${theme.transition};
@@ -37,13 +37,13 @@ export const DropdownButton = styled.button`
   }
 
   &:hover {
-    border-color: ${theme.color.border.hover};
-    color: ${theme.color.text.primary};
+    border-color: ${theme.color.border.border02};
+    color: ${theme.color.text.text01};
   }
 
   &:active {
-    border-color: ${theme.color.border.hover};
-    color: ${theme.color.text.primary};
+    border-color: ${theme.color.border.border02};
+    color: ${theme.color.text.text01};
   }
 
   ${({ disabled }) =>
@@ -51,12 +51,12 @@ export const DropdownButton = styled.button`
     css`
       background: ${theme.color.field.disabled};
       border: 1px solid ${theme.color.border.input};
-      color: ${theme.color.text.placeholder};
+      color: ${theme.color.text.text03};
       cursor: not-allowed;
 
       &:hover {
         background: ${theme.color.field.disabled};
-        color: ${theme.color.text.placeholder};
+        color: ${theme.color.text.text03};
       }
     `}
 `;
@@ -86,7 +86,7 @@ export const DropdownMenu = styled(GnuiContainer)<DropdownMenuProps>`
   position: absolute;
   padding: ${theme.spacing.spacing02};
   border: 1px solid ${theme.color.border.input};
-  color: ${theme.color.text.primary};
+  color: ${theme.color.text.text01};
   font-weight: ${theme.fontWeights.regular};
   border-radius: ${theme.radiusDefault};
   background: ${theme.color.background.ui01};

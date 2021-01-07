@@ -11,7 +11,7 @@ export const SetGlobalStyle = createGlobalStyle`
   html, body {
      font-family: ${theme.typography.fonts.body};
      background: ${theme.color.background.body};
-     color: ${theme.color.text.primary};
+     color: ${theme.color.text.text01};
      font-weight: ${theme.fontWeights.regular};
      line-height: ${theme.lineHeight};
   }

@@ -35,7 +35,7 @@ const StyledAccordion = styled.div`
 const StyledAccordionItem = styled.div`
   padding: ${theme.spacing.spacing03};
   background-color: ${theme.color.background.ui02};
-  border: 1px solid ${theme.color.border.default};
+  border: 1px solid ${theme.color.border.border01};
   border-radius: ${theme.radius.md};
   border-top-left-radius: 0;
   border-top-right-radius: 0;
@@ -49,7 +49,7 @@ const StyledHeader = styled.div<StyledHeaderProps>`
   background-color: ${theme.color.background.ui03};
   padding: ${theme.spacing.spacing03};
   border-radius: ${theme.radius.md};
-  border: 1px solid ${theme.color.border.default};
+  border: 1px solid ${theme.color.border.border01};
   &:hover {
     cursor: pointer;
     background-color: ${theme.color.background.ui04};
@@ -79,7 +79,7 @@ const HeaderTitle = styled.span`
 `;
 
 const HeaderDescription = styled.div`
-  color: ${theme.color.text.secondary};
+  color: ${theme.color.text.text02};
   font-size: ${theme.fontSizes.sm};
   margin-left: auto;
   font-weight: ${theme.fontWeights.regular};
