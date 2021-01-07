@@ -126,6 +126,7 @@ const SidebarCloseButton = styled(Button)`
 
 const FooterSidebar = styled.div`
   position: sticky;
+  z-index: ${theme.zindex.default};
   bottom: 0;
   right: 0;
   left: 0;
