@@ -59,7 +59,7 @@ export const TabsContent = styled(Box)`
 
 export const TabContainer: any = styled.div<TabProps>`
   padding: ${theme.spacing.spacing04};
-  background-color: ${theme.color.background.ui02};
+  background-color: ${theme.color.background.ui03};
   border-right: 1px solid ${theme.color.border.border01};
   border-bottom: 1px solid transparent;
   width: 17rem;
@@ -111,7 +111,7 @@ export const TabContainer: any = styled.div<TabProps>`
 `;
 
 const TabsList = styled.div`
-  background-color: ${theme.color.background.ui02};
+  background-color: ${theme.color.background.ui03};
   display: flex;
   overflow-x: scroll;
   padding: 0;

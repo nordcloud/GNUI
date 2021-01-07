@@ -138,7 +138,7 @@ const StyledPaginationBox = styled.nav<IStyledPaginationBox>`
   flex-wrap: wrap;
   flex: ${({ sidebar }) => (sidebar ? 1 : 0)};
   justify-content: center;
-  background-color: ${theme.color.background.ui02};
+  background-color: ${theme.color.background.ui03};
   padding: ${theme.spacing.spacing03};
   border: ${({ sidebar }) =>
     sidebar ? "none" : `1px solid ${theme.color.border.border01}`};

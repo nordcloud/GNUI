@@ -162,7 +162,7 @@ const theme: ThemeInterface = {
       info: palette.blue.blue700,
     },
     border: {
-      border01: palette.grey.grey400,
+      border01: palette.grey.grey300,
       border02: palette.grey.grey800,
       input: palette.grey.grey500,
       focus: palette.grey.grey800,
