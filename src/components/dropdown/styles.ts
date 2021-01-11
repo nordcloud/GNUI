@@ -123,7 +123,8 @@ export const DropdownItem = styled.button`
   width: 100%;
   box-sizing: border-box;
   text-align: left;
-  background: ${theme.color.field.default};
+  background: transparent;
+  color: ${theme.color.text.text01};
   font-size: inherit;
   list-style: none;
   transition: ${theme.transition};

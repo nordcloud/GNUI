@@ -55,27 +55,10 @@ export const MessageWrapper = styled.div<MessageProps>`
 `;
 
 export const IconBox = styled.div<MessageProps>`
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
   border-radius: ${theme.radiusDefault};
-  padding: ${theme.spacing.spacing02};
   margin-right: ${theme.spacing.spacing03};
-
-  ${({ status }) =>
-    status === "success" &&
-    css`
-      background: ${theme.color.interactive.success};
-    `}
-  ${({ status }) =>
-    status === "danger" &&
-    css`
-      background: ${theme.color.interactive.error};
-    `}
-  ${({ status }) =>
-    status === "notification" &&
-    css`
-      background: ${theme.color.interactive.infoHover};
-    `}
 `;
 
 export const Align = styled.div`

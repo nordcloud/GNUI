@@ -73,8 +73,8 @@ const Inner = styled.div`
   bottom: 0;
   transition: 0.4s;
   border-radius: 0.75rem;
-  border: ${theme.borders.disabled};
-  background-color: ${theme.color.background.ui02};
+  border: 1px solid ${theme.color.border.input};
+  background-color: ${theme.color.field.default};
 
   &:before {
     position: absolute;
@@ -83,7 +83,7 @@ const Inner = styled.div`
     width: 1.125rem;
     left: 2px;
     bottom: calc((100% - 1.125rem) / 2);
-    background-color: ${theme.color.interactive.secondaryActive};
+    background-color: ${theme.color.interactive.primary};
     transition: 0.4s;
     border-radius: 50%;
   }
