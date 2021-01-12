@@ -146,6 +146,7 @@ const theme: ThemeInterface = {
       warning: "var(--background-warning)",
       success: "var(--background-success)",
       info: "var(--background-info)",
+      overlay: "var(--background-overlay)",
     },
     field: {
       default: "var(--field-default)",
