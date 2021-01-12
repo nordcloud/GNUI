@@ -8,6 +8,7 @@ type Colors = {
 
 type BackgroundColor = {
   body: string;
+  overlay: string;
   ui01: string;
   ui02: string;
   ui03: string;
