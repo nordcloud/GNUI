@@ -31,5 +31,5 @@ export const useThemeSwitcher = () => {
     setC(value);
     localStorage.setItem("NC_GNUI_THEME", THEME_OPTIONS[value]);
   };
-  return setTheme;
+  return [c, setTheme];
 };
