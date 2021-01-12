@@ -72,10 +72,10 @@ const Background = styled.div<BackgroudProps>`
   left: 0;
   bottom: 0;
   position: fixed;
-  background-color: ${theme.color.background.ui05};
+  background-color: ${theme.color.background.overlay};
   pointer-events: ${({ isOpen }) => (isOpen ? "auto" : "none")};
   transition: ${theme.transition};
-  opacity: ${({ isOpen }) => (isOpen ? 0.4 : 0)};
+  opacity: ${({ isOpen }) => (isOpen ? 0.7 : 0)};
   z-index: ${theme.zindex.topoftheworld};
 `;
 const CloseLayer = styled.div<CloseLayerProps>`
@@ -97,8 +97,10 @@ const Inner = styled.div<InnerProps>`
   overflow-y: scroll;
   box-shadow: ${theme.shadow.shadow04};
   background-color: ${theme.color.background.ui01};
-  border-left: ${({ side }) => side !== "onLeft" && theme.borders.disabled};
-  border-right: ${({ side }) => side === "onLeft" && theme.borders.disabled};
+  border-left: ${({ side }) =>
+    side !== "onLeft" && `1px solid ${theme.color.border.border01}`};
+  border-right: ${({ side }) =>
+    side === "onLeft" && `1px slid ${theme.color.border.border01}`};
   max-width: 100%;
   ${({ width }) =>
     width

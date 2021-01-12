@@ -9,6 +9,7 @@ type Colors = {
 
 type BackgroundColor = {
   body: string;
+  overlay: string;
   ui01: string;
   ui02: string;
   ui03: string;
@@ -137,6 +138,7 @@ const theme: ThemeInterface = {
   color: {
     background: {
       body: palette.grey.grey300,
+      overlay: palette.black,
       ui01: palette.white,
       ui02: palette.grey.grey100,
       ui03: palette.grey.grey200,

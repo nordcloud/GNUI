@@ -74,8 +74,8 @@ export const TabContainer: any = styled.div<TabProps>`
     cursor: ${({ disabled }) => (disabled ? `auto` : `pointer`)};
     background-color: ${({ disabled }) =>
       disabled
-        ? `${theme.color.background.ui01}`
-        : `${theme.color.background.ui03}`};
+        ? `${theme.color.background.ui03}`
+        : `${theme.color.background.ui01}`};
   }
 
   ${({ wizard }) =>
@@ -146,7 +146,7 @@ const Step = styled(Box)`
   box-shadow: none;
   margin-bottom: ${theme.spacing.spacing04};
   background-color: ${theme.color.background.ui04};
-  color: ${theme.color.text.text03};
+  color: ${theme.color.text.text02};
 
   &.dark {
     background-color: ${theme.color.background.ui05};

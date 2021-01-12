@@ -79,10 +79,10 @@ export const Background = styled.div<BackgroudProps>`
   left: 0;
   bottom: 0;
   position: fixed;
-  background-color: ${theme.color.background.ui05};
+  background-color: ${theme.color.background.overlay};
   pointer-events: ${({ isOpen }) => (isOpen ? "auto" : "none")};
   transition: ${theme.transition};
-  opacity: ${({ isOpen }) => (isOpen ? 0.5 : 0)};
+  opacity: ${({ isOpen }) => (isOpen ? 0.7 : 0)};
   z-index: ${theme.zindex.topoftheworld};
 `;
 
