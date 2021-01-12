@@ -1,8 +1,10 @@
+import React from "react";
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 import theme from ".";
+import { useThemeSwitcher } from "./switcher";
 
-export const SetGlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
   ${reset}
   @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
   html {
@@ -29,3 +31,8 @@ export const SetGlobalStyle = createGlobalStyle`
     }
   }
 `;
+
+export const SetGlobalStyle = () => {
+  useThemeSwitcher();
+  return <GlobalStyle />;
+};
