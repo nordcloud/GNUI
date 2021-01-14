@@ -32,6 +32,7 @@ const SelectContainer = styled.div<SelectProps>`
       border-radius: 1rem;
       align-items: center;
       height: 1.5rem;
+      background-color: ${theme.color.interactive.primary};
 
       &__label {
         color: ${theme.color.text.text04};
@@ -46,9 +47,9 @@ const SelectContainer = styled.div<SelectProps>`
         border-radius: 50%;
         align-items: center;
         justify-content: center;
-        background-color: rgba(0, 0, 0, 0.3);
+        background-color: ${theme.color.interactive.primaryActive};
         &:hover {
-          background-color: rgba(0, 0, 0, 0.5);
+          background-color: ${theme.color.interactive.primaryActive};
         }
         svg {
           color: ${theme.color.text.text04};
@@ -99,7 +100,6 @@ export const Select: FunctionComponent<SelectProps & CommonProps<any>> = ({
           ...theme,
           colors: {
             ...theme.colors,
-            neutral10: "#161632",
           },
         })}
         {...props}
