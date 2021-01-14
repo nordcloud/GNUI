@@ -2,6 +2,7 @@ import { palette } from "./palette";
 
 export default [
   ["--background-body", palette.grey.grey300],
+  ["--background-overlay", palette.black],
   ["--background-ui01", palette.white],
   ["--background-ui02", palette.grey.grey100],
   ["--background-ui03", palette.grey.grey200],
