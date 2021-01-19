@@ -15,7 +15,7 @@ type TextProps = {
   lineHeight?: string;
   width?: string;
   nowrap?: boolean;
-  titleCase?: boolean;
+  isTitle?: boolean;
   [propName: string]: any;
 };
 
@@ -93,8 +93,8 @@ const StyledText = styled.p<TextProps>`
       text-overflow: ellipsis;
       overflow: hidden;
     `} 
-  ${({ titleCase }) =>
-    titleCase &&
+  ${({ isTitle }) =>
+    isTitle &&
     css`
       text-transform: ${theme.typography.titleCase};
     `}

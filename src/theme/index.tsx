@@ -99,7 +99,13 @@ type Typography = {
   fontWeights: Array<number>;
   fontSizes: Array<string>;
   lineHeight: string;
-  titleCase: string;
+  titleCase:
+    | "none"
+    | "capitalize"
+    | "uppercase"
+    | "lowercase"
+    | "initial"
+    | "inherit";
 };
 
 type Radius = { [key: string]: string };
