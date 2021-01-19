@@ -21,6 +21,7 @@ const StyledBreadcrumbs = styled.nav`
       display: inline-block;
       margin-right: ${theme.spacing.spacing02};
       line-height: 1.125rem;
+      text-transform: ${theme.typography.titleCase};
 
       a {
         line-height: 1.125rem;

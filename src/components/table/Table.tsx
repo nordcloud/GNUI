@@ -51,7 +51,6 @@ const Table: any = styled.table<TableProps>`
           ? `${theme.spacing.spacing02} ${theme.spacing.spacing03}`
           : `${theme.spacing.spacing03}`};
       font-size: ${theme.fontSizes.sm};
-      font-weight: ${theme.fontWeights.medium};
       color: ${theme.color.text.text02};
       line-height: 1.5em;
     }
@@ -60,7 +59,7 @@ const Table: any = styled.table<TableProps>`
 
 const Thead = styled.thead`
   letter-spacing: normal;
-  text-transform: uppercase;
+  text-transform: ${theme.typography.titleCase};
 `;
 
 const Tbody = styled.tbody``;

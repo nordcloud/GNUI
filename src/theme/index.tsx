@@ -99,6 +99,7 @@ type Typography = {
   fontWeights: Array<number>;
   fontSizes: Array<string>;
   lineHeight: string;
+  titleCase: string;
 };
 
 type Radius = { [key: string]: string };
@@ -236,6 +237,7 @@ const theme: ThemeInterface = {
     fontSizes: ["0.625rem", "0.75rem", "1rem", "1.25rem", "1.5rem", "2rem"],
     fontWeights: [400, 500, 700],
     lineHeight: "1.5em",
+    titleCase: "capitalize",
   },
 
   borders: {

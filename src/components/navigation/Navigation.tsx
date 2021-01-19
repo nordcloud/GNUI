@@ -23,6 +23,7 @@ const Item = styled.div`
   vertical-align: middle;
   text-decoration: none;
   transition: ${theme.transition};
+  text-transform: ${theme.typography.titleCase};
   &.separator {
     font-size: ${theme.fontSizes.sm};
     color: ${theme.color.text.text02};

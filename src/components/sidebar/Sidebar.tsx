@@ -36,7 +36,7 @@ const Header = styled.div<HeaderProps>`
 
 const Title = styled(Text)`
   font-weight: ${theme.fontWeights.medium};
-  font-size: ${theme.fontSizes.md};
+  text-transform: ${theme.typography.titleCase};
   margin: 0;
   ${space}
 `;

@@ -226,7 +226,7 @@ export const Tab: FunctionComponent<TabProps> = ({
           <Step>{step}</Step>
         )
       ) : null}
-      <Text weight="medium" mb={theme.spacing.spacing01}>
+      <Text titleCase weight="medium" mb={theme.spacing.spacing01}>
         {heading}
       </Text>
       <Text size="sm" mb={0} color={theme.color.text.text02}>
