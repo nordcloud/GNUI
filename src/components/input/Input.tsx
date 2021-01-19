@@ -71,7 +71,7 @@ export const InputGroup = styled(Flex)<InputGroupProps & SpaceProps>`
     border: 1px solid ${theme.color.border.input};
     cursor: not-allowed;
   }
-  border-width: ${(props: InputGroupProps) => props.noBorder && "0px"};
+  border-width: ${(props: InputGroupProps) => props.noBorder && "0"};
   ${({ status }) =>
     status &&
     css`
