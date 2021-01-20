@@ -84,7 +84,7 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
             <SVGIcon size="sm" name="close" />
           </Clear>
         )}
-        <DropdownIcon animate={isOpen && true}>
+        <DropdownIcon animate={isOpen}>
           <SVGIcon name="chevronDown" />
         </DropdownIcon>
       </DropdownButton>
