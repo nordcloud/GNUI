@@ -84,12 +84,9 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
             <SVGIcon size="sm" name="close" />
           </Clear>
         )}
-        <DropdownIcon
-          width="0.75rem"
-          height="0.75rem"
-          image="ARROW_BOTTOM"
-          animate={isOpen && true}
-        />
+        <DropdownIcon animate={isOpen && true}>
+          <SVGIcon name="chevronDown" />
+        </DropdownIcon>
       </DropdownButton>
       {showMenu && (
         <DropdownMenu>
