@@ -1,8 +1,6 @@
 import styled, { css } from "styled-components";
 import theme from "../../theme";
-import { Icon } from "../icon";
 import { GnuiContainer } from "../container";
-import { IconProps } from "../icon";
 import { space } from "styled-system";
 
 type DropdownWrapperProps = {
@@ -49,13 +47,13 @@ export const DropdownButton = styled.button`
   ${({ disabled }) =>
     disabled &&
     css`
-      background: ${theme.color.field.disabled};
+      background: ${theme.color.interactive.disabled};
       border: 1px solid ${theme.color.border.input};
       color: ${theme.color.text.text03};
       cursor: not-allowed;
 
       &:hover {
-        background: ${theme.color.field.disabled};
+        background: ${theme.color.interactive.disabled};
         color: ${theme.color.text.text03};
       }
     `}
@@ -63,16 +61,19 @@ export const DropdownButton = styled.button`
 
 type DropdownIconProps = {
   animate?: boolean;
-} & IconProps;
+};
 
-export const DropdownIcon = styled(Icon)<DropdownIconProps>`
+export const DropdownIcon = styled.div<DropdownIconProps>`
   transition: ${theme.transition};
+  display: flex;
+  align-items: center;
+  justify-items: center;
   ${({ animate }) =>
     animate &&
     css`
       transform: rotate(180deg);
-      transition: ${theme.transition};
-    `}
+      transform-origin: center center;
+    `};
 `;
 
 type DropdownMenuProps = {
