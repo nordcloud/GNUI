@@ -106,6 +106,7 @@ export const ModalHeader = styled.div`
   padding: 0 1rem 1rem;
   margin-bottom: ${theme.spacing.spacing04};
   border-bottom: 1px solid ${theme.color.border.border01};
+  text-transform: ${theme.typography.titleCase};
   margin-left: -1rem;
   margin-right: -1rem;
   ${ModalCloseButton} {

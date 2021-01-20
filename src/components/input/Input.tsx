@@ -12,6 +12,8 @@ const StyledLabel = styled.label<LabelProps>`
   line-height: ${theme.lineHeight};
   color: ${theme.color.text.text01};
   margin-bottom: ${theme.spacing.spacing02};
+  text-transform: ${theme.typography.titleCase};
+
   ${({ required }) =>
     required &&
     css`
@@ -69,18 +71,18 @@ export const InputGroup = styled(Flex)<InputGroupProps & SpaceProps>`
     border: 1px solid ${theme.color.border.input};
     cursor: not-allowed;
   }
-  border-width: ${(props: InputGroupProps) => props.noBorder && "0px"}
-    ${({ status }) =>
-      status &&
-      css`
-        ${setStatusColor(status)}
-      `}
-    ${({ popup }) =>
-      popup &&
-      css`
-        cursor: pointer;
-      `}
-    ${space};
+  border-width: ${(props: InputGroupProps) => props.noBorder && "0"};
+  ${({ status }) =>
+    status &&
+    css`
+      ${setStatusColor(status)}
+    `};
+  ${({ popup }) =>
+    popup &&
+    css`
+      cursor: pointer;
+    `};
+  ${space};
 `;
 
 export const StyledInput = styled.input<InputProps>`

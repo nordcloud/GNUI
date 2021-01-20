@@ -1,8 +1,14 @@
 import styled from "styled-components";
-import { Meta, Story, Preview, Title, Description } from "@storybook/addon-docs/blocks";
+import {
+  Meta,
+  Story,
+  Preview,
+  Title,
+  Description,
+} from "@storybook/addon-docs/blocks";
 import { StickyBar } from "./";
 import { Spacer } from "../spacer";
-import { Box } from '../box'
+import { Box } from "../box";
 import theme from "../../theme";
 
 <Meta title="Components/StickyBar" component={StickyBar} />
@@ -10,7 +16,9 @@ import theme from "../../theme";
 <Title>Sticky Bar</Title>
 
 <Description>
-  Element acts like it is relatively positioned until it is scrolled to a certain threshold point (0px from the top of the viewport), after which it becomes fixed.
+  Element acts like it is relatively positioned until it is scrolled to a
+  certain threshold point (0px from the top of the viewport), after which it
+  becomes fixed.
 </Description>
 
 ## Props
@@ -27,7 +35,10 @@ import theme from "../../theme";
         overflowY: "scroll",
       }}
     >
-      <StickyBar>Sample Text</StickyBar>
+      <StickyBar>
+        Some description text
+        <a href="#">link text</a>
+      </StickyBar>
       <Spacer height="5rem" />
       <Box border="default">Sample content</Box>
       <Spacer height="5rem" />

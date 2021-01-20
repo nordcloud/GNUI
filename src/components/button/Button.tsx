@@ -141,6 +141,7 @@ const StyledButton = styled.button<ButtonProps>`
   flex-direction: ${(props: ButtonProps) =>
     props.iconRight ? "row-reverse" : "row"};
   align-items: center;
+  text-transform: ${theme.typography.titleCase};
 
   span {
     padding: 0 ${theme.spacing.spacing02};

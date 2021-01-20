@@ -16,8 +16,8 @@ const Wrapper = styled("div")`
   padding: ${theme.spacing.spacing02} ${theme.spacing.spacing04};
   display: flex;
   justify-content: center;
-  background-color: ${theme.colors.primary};
-  color: ${theme.colors.snowWhite};
+  background-color: ${theme.color.support.blueInverse};
+  color: ${theme.color.text.text01};
 `;
 
 export const StickyBar: React.FC<Props> = ({ children }) => {

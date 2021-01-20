@@ -76,6 +76,7 @@ const StyledHeader = styled.div<StyledHeaderProps>`
 
 const HeaderTitle = styled.span`
   margin-left: ${theme.spacing.spacing02};
+  text-transform: ${theme.typography.titleCase};
 `;
 
 const HeaderDescription = styled.div`
