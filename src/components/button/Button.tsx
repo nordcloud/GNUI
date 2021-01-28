@@ -1,4 +1,8 @@
-import React, { FunctionComponent } from "react";
+import React, {
+  FunctionComponent,
+  ButtonHTMLAttributes,
+  MouseEvent,
+} from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { setColor } from "../../utils/setcolor";
@@ -7,7 +11,7 @@ import { space, SpaceProps } from "styled-system";
 import { SVGIcon } from "../svgicon";
 import { Spinner } from "../spinner";
 
-export type ButtonProps = {
+export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   children?: string | React.ReactNode;
   severity?: "high" | "medium" | "low";
   size?: "sm" | "md";
@@ -17,11 +21,8 @@ export type ButtonProps = {
   color?: string;
   form?: string;
   select?: boolean;
-  type?: any;
-  disabled?: boolean;
   className?: string;
-  title?: string;
-  onClick?: (e: any) => void;
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
   as?: React.ElementType | "a" | "button";
   linkTo?: string;
   display?: "flex" | "inline-flex";
