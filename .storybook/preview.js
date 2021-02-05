@@ -9,14 +9,21 @@ addParameters({
   options: {
     showRoots: true,
     storySort: {
-      sort: [
+      order: [
         "Foundation",
-        "Layout",
+        [
+          "Grid",
+          "Colors",
+          "Icons",
+          "Spacing",
+        ],
         "Typography",
         "Components",
-        "Form",
-        "Widgets",
+        "Forms",
+        "Patterns",
         "Pages",
+        "Widgets",
+
       ],
     },
   },
