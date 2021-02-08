@@ -2,7 +2,6 @@ import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { GnuiContainer, Flex } from "../container";
-import { Icon } from "../icon";
 import { space, SpaceProps } from "styled-system";
 import { Spinner } from "../spinner";
 import { SVGIcon } from "../svgicon";
@@ -192,9 +191,7 @@ export const Input: FunctionComponent<
   ) => {
     return (
       <InputGroup status={status} noBorder={noBorder} popup={popup}>
-        {type === "search" && !loading && (
-          <Icon image="SEARCH" width="1.2rem" height="1.2rem" />
-        )}
+        {type === "search" && !loading && <SVGIcon name="search" />}
         {type === "search" && loading && <Spinner />}
         <StyledInput
           type={type}
@@ -214,13 +211,7 @@ export const Input: FunctionComponent<
               <SVGIcon size="sm" name="close" />
             </Clear>
           )}
-          {status && (
-            <Icon
-              image={`INPUT_${status.toUpperCase()}`}
-              width="1.2rem"
-              height="1.2rem"
-            />
-          )}
+          {status && <SVGIcon name={status} />}
         </IconsWrap>
         {icon && (
           <NotClickable>

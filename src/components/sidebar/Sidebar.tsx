@@ -4,7 +4,7 @@ import theme, { bp } from "../../theme";
 import { space } from "styled-system";
 import { Text } from "../text";
 import { Button } from "../button";
-import { Icon } from "../icon";
+import { SVGIcon } from "../svgicon";
 import {
   SidebarProps,
   BackgroudProps,
@@ -145,11 +145,7 @@ export const CloseButton = ({
   children,
 }: SidebarButtonProps) => (
   <SidebarCloseButton severity="low" onClick={onClick} title={"Close sidebar"}>
-    {children ? (
-      children
-    ) : (
-      <Icon width="24px" height="24px" image={icon || "CLOSE_SIDEBAR"} />
-    )}
+    {children ? children : <SVGIcon name={icon || "close"} />}
   </SidebarCloseButton>
 );
 
