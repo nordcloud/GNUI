@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
-import { Icon } from "../icon";
+import { SVGIcon } from "../svgicon";
 
 export type MessageProps = {
   image?: string;
@@ -75,7 +75,7 @@ export const Message: FunctionComponent<MessageProps> = ({
       <Align>
         {image && (
           <IconBox {...props}>
-            <Icon image={image} width="1.5rem" height="1.5rem" />
+            <SVGIcon name={image} />
           </IconBox>
         )}
       </Align>

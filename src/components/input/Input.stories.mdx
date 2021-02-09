@@ -6,7 +6,7 @@ import { Button } from "../button";
 import { Spacer } from "../spacer";
 import { InputSearch } from "./InputSearch.tsx";
 
-<Meta title="Form/Input" component={Input} />
+<Meta title="Forms/Input" component={Input} />
 
 # Input
 
@@ -146,7 +146,7 @@ Nothing more to add, just text placeholder which works exactly like in default H
               size="small"
               color={status === "error" ? "danger" : "success"}
               onClick={() =>
-                setStatus(status === "error" ? "success" : "error")
+                setStatus(status === "danger" ? "success" : "danger")
               }
             >
               Change status
