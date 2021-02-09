@@ -2,8 +2,8 @@ import React, { FunctionComponent } from "react";
 import styled from "styled-components";
 import theme from "../../theme";
 import { SVGIcon } from "../svgicon";
-import { StyledInput } from "./Input";
-import { InputProps } from "./types";
+import { StyledInput } from "./styles";
+import { StyledInputProps } from "./types";
 
 const StyledUpload = styled.div`
   color: ${theme.color.text.text01};
@@ -27,7 +27,7 @@ const StyledLabel = styled.label`
   padding: 0.5rem;
 `;
 
-type UploadProps = {} & Omit<InputProps, "type">;
+type UploadProps = {} & Omit<StyledInputProps, "type">;
 
 export const Upload: FunctionComponent<UploadProps> = React.forwardRef(
   ({ placeholder, id = "upload-file", ...props }, ref) => (

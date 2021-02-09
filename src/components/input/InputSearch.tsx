@@ -1,22 +1,22 @@
 import React from "react";
 import styled from "styled-components";
-import { Spinner } from "../spinner";
-import { InputGroupProps, InputProps } from "./types";
-import { InputGroup, StyledInput } from "./Input";
 import { SpaceProps } from "styled-system";
 import { Button } from "../button";
+import { Spinner } from "../spinner";
+import { StyledInputProps, StyledInputGroupProps } from "./types";
+import { InputGroup, StyledInput } from "./styles";
 
 const ButtonWrapper = styled.div`
   margin: -0.25rem -0.25rem -0.25rem 0;
 `;
 
-type InputSearch = {
-  onSearch?: () => void;
-};
+type Props = StyledInputGroupProps &
+  StyledInputProps &
+  SpaceProps & {
+    onSearch?: () => void;
+  };
 
-export const InputSearch: React.FC<
-  InputGroupProps & InputProps & SpaceProps & InputSearch
-> = React.forwardRef(
+export const InputSearch: React.FC<Props> = React.forwardRef(
   (
     {
       noBorder,
