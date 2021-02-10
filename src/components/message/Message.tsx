@@ -1,18 +1,20 @@
-import React, { FunctionComponent } from "react";
+import * as React from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { SVGIcon } from "../svgicon";
 
-export type MessageProps = {
+export type MessageProps = React.HTMLProps<HTMLDivElement> & {
   image?: string;
   status?: "success" | "notification" | "danger";
   borderColor?: string;
   background?: string;
   color?: string;
-  children?: React.ReactNode;
+  as?: React.ElementType | keyof JSX.IntrinsicElements;
 };
 
-export const MessageWrapper = styled.div<MessageProps>`
+type MessageWrapperProps = Omit<MessageProps, "children" | "image">;
+
+export const MessageWrapper = styled.div<MessageWrapperProps>`
   display: flex;
   align-items: center;
   border-radius: ${theme.radiusDefault};
@@ -54,7 +56,7 @@ export const MessageWrapper = styled.div<MessageProps>`
     `}
 `;
 
-export const IconBox = styled.div<MessageProps>`
+export const IconBox = styled.div`
   display: flex;
   align-items: center;
   border-radius: ${theme.radiusDefault};
@@ -65,7 +67,7 @@ export const Align = styled.div`
   margin-bottom: auto;
 `;
 
-export const Message: FunctionComponent<MessageProps> = ({
+export const Message: React.FC<MessageProps> = ({
   children,
   image,
   ...props
@@ -73,11 +75,9 @@ export const Message: FunctionComponent<MessageProps> = ({
   <MessageWrapper {...props}>
     {image && (
       <Align>
-        {image && (
-          <IconBox {...props}>
-            <SVGIcon name={image} />
-          </IconBox>
-        )}
+        <IconBox>
+          <SVGIcon name={image} />
+        </IconBox>
       </Align>
     )}
     {children}
