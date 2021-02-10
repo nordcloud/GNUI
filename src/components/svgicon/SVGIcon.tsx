@@ -1,17 +1,16 @@
-import React from "react";
+import React, { HTMLAttributes } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { getViewBox } from "../../utils/svgicons";
 import { getPath } from "../../utils/svgicons";
 
-export type SVGIconProps = {
+export type SVGIconProps = HTMLAttributes<HTMLOrSVGElement> & {
   name: string;
   color?: "success" | "danger" | "warning" | "notification" | "white";
   size?: "sm" | "md" | "lg" | "xl" | "xxl";
-  [x: string]: any;
 };
 
-const StyledSVGIcon = styled.svg<SVGIconProps>`
+const StyledSVGIcon = styled.svg<Pick<SVGIconProps, "color" | "size">>`
   fill: ${theme.color.text.text01};
   width: ${theme.iconSize.md};
   height: ${theme.iconSize.md};
