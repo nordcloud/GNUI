@@ -1,32 +1,29 @@
-import React, { FunctionComponent } from "react";
+import React, { ButtonHTMLAttributes } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { SingleColors } from "../../theme/config";
 import { setColor } from "../../utils/setcolor";
 import { darken } from "polished";
 
-export type ToggleProps = {
-  name: string;
-  toggleValue?: boolean;
+export type ToggleProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  value: boolean;
   labelText?: string;
-  id?: string;
-  className?: string;
   status?: SingleColors;
   size?: string;
-  handleSelect?: (e: any) => void;
+  onChange: (value: boolean) => void;
 };
 
-const StyledToggle = styled.button<ToggleProps>`
+const StyledToggle = styled.button<Pick<ToggleProps, "size" | "status">>`
   border: 1px solid ${theme.color.interactive.primary};
   border-radius: ${theme.radiusDefault};
   line-height: ${theme.lineHeight};
-  outline: none;
-  cursor: pointer;
   color: ${theme.color.text.text01};
-  background: transparent;
   padding: ${theme.spacing.spacing02} ${theme.spacing.spacing04};
   transition: ${theme.transition};
   font-size: ${theme.fontSizes.md};
+  outline: none;
+  cursor: pointer;
+  background: transparent;
 
   &.active {
     background: ${theme.color.interactive.primary};
@@ -48,12 +45,15 @@ const StyledToggle = styled.button<ToggleProps>`
       &.active {
         color: ${theme.color.text.text01};
         background: ${setColor(status)};
+
         &:hover {
           background: ${darken(0.1, theme.colors[status] || status)};
         }
+
         &:active {
           background: ${darken(0.2, theme.colors[status] || status)};
         }
+
         &:disabled {
           background: ${darken(0.3, theme.colors[status] || status)};
         }
@@ -61,17 +61,17 @@ const StyledToggle = styled.button<ToggleProps>`
     `}
 `;
 
-export const Toggle: FunctionComponent<ToggleProps> = ({
-  toggleValue,
-  labelText,
-  handleSelect,
+export const Toggle: React.FC<ToggleProps> = ({
+  value,
+  labelText = "",
+  onChange,
   ...props
 }) => {
   return (
     <StyledToggle
+      className={value ? "active" : ""}
+      onClick={onChange}
       {...props}
-      className={toggleValue ? "active" : ""}
-      onClick={() => handleSelect && handleSelect(!toggleValue)}
     >
       {labelText}
     </StyledToggle>
