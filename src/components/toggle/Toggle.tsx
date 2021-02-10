@@ -1,9 +1,9 @@
 import React, { ButtonHTMLAttributes } from "react";
+import { darken } from "polished";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { SingleColors } from "../../theme/config";
 import { setColor } from "../../utils/setcolor";
-import { darken } from "polished";
 
 export type ToggleProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   value: boolean;
