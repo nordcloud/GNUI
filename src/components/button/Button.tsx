@@ -5,6 +5,7 @@ import React, {
 } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
+import { SingleColors } from "../../theme/config";
 import { setColor } from "../../utils/setcolor";
 import { darken, lighten } from "polished";
 import { space, SpaceProps } from "styled-system";
@@ -18,7 +19,7 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   icon?: string;
   iconRight?: boolean;
   initialState?: string;
-  color?: string;
+  color?: SingleColors;
   form?: string;
   select?: boolean;
   className?: string;

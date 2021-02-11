@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
+import { SingleColors } from "../../theme/config";
 import { setColor } from "../../utils/setcolor";
 import { darken } from "polished";
 
@@ -10,7 +11,7 @@ export type ToggleProps = {
   labelText?: string;
   id?: string;
   className?: string;
-  status?: string;
+  status?: SingleColors;
   size?: string;
   handleSelect?: (e: any) => void;
 };

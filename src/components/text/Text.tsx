@@ -2,13 +2,14 @@ import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import { space, SpaceProps } from "styled-system";
 import theme from "../../theme";
+import { SingleColors } from "../../theme/config";
 
 type TextProps = {
   size?: "xs" | "sm" | "md" | "lg" | "xl" | "xxl";
   display?: string;
-  color?: string;
-  tag?: string;
-  as?: any;
+  color?: SingleColors | string;
+  tag?: keyof JSX.IntrinsicElements;
+  as?: React.ElementType | keyof JSX.IntrinsicElements;
   weight?: "regular" | "medium" | "bold";
   textStyle?: "normal" | "italic";
   align?: "left" | "center" | "right";
@@ -19,7 +20,7 @@ type TextProps = {
   [propName: string]: any;
 };
 
-const changeTag = (tag: string) => {
+const changeTag = (tag: keyof JSX.IntrinsicElements) => {
   let spacing: string;
   if (tag !== "p") {
     spacing = "0";
@@ -74,7 +75,7 @@ const StyledText = styled.p<TextProps>`
   ${({ color }) =>
     color &&
     css`
-      color: ${theme.colors[color] || color};
+      color: ${theme.colors[color as SingleColors] || color};
     `}
   ${({ lineHeight }) =>
     lineHeight &&

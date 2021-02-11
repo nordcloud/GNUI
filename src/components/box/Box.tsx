@@ -1,38 +1,20 @@
 import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
+import { space, SpaceProps } from "styled-system";
 import theme from "../../theme";
 import { GnuiContainer } from "../container";
-import { space, SpaceProps } from "styled-system";
 
 type BoxProps = {
   dark?: boolean;
   minHeight?: string;
   minWidth?: string;
-  border?: string;
+  border?: keyof typeof theme.borders;
   color?: string;
   backgroundColor?: string;
-  radius?: "small" | "medium" | "large";
-  spacing?:
-    | "spacing00"
-    | "spacing01"
-    | "spacing02"
-    | "spacing03"
-    | "spacing04"
-    | "spacing05"
-    | "spacing06"
-    | "spacing07"
-    | "spacing08";
-  innerSpacing?:
-    | "spacing00"
-    | "spacing01"
-    | "spacing02"
-    | "spacing03"
-    | "spacing04"
-    | "spacing05"
-    | "spacing06"
-    | "spacing07"
-    | "spacing08";
-  shadow?: "shadow00" | "shadow01" | "shadow02" | "shadow03" | "shadow04";
+  radius?: keyof typeof theme.radius;
+  spacing?: keyof typeof theme.spacing;
+  innerSpacing?: keyof typeof theme.spacing;
+  shadow?: keyof typeof theme.shadow;
   onClick?: (e: any) => void;
   onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
   children?: React.ReactNode;
@@ -61,7 +43,7 @@ const StyledBox = styled(GnuiContainer)<BoxProps & SpaceProps>`
   box-sizing: border-box;
   min-width: 0;
   padding: ${theme.spacing.spacing04};
-  border-radius: ${theme.radius.default};
+  border-radius: ${theme.radiusDefault};
   color: ${theme.color.text.text01};
   background: ${theme.color.background.ui01};
   font-weight: ${theme.fontWeights.regular};
