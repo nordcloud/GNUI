@@ -184,6 +184,7 @@ export const breakpoints = {
 
 export const iconSize = {
   sm: "0.875rem",
+  smd: "1.2rem",
   md: "1.5rem",
   lg: "2rem",
   xl: "3rem",
