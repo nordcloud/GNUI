@@ -32,7 +32,7 @@ export const Input: React.FC<Props> = React.forwardRef(
   ) => {
     return (
       <InputGroup status={status} noBorder={noBorder} popup={popup}>
-        {type === "search" && !loading && <SVGIcon name="search" />}
+        {type === "search" && !loading && <SVGIcon name="search" size="smd" />}
         {type === "search" && loading && <Spinner />}
         <StyledInput
           type={type}
@@ -52,7 +52,7 @@ export const Input: React.FC<Props> = React.forwardRef(
               <SVGIcon size="sm" name="close" />
             </Clear>
           )}
-          {status && <SVGIcon name={status} />}
+          {status && <SVGIcon name={status} size="smd" />}
         </IconsWrap>
         {icon && (
           <NotClickable>
