@@ -1,17 +1,16 @@
-import React, { FunctionComponent, ReactNode } from "react";
+import React, { ReactNode, HTMLAttributes } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { SingleColors } from "../../theme/config";
 import { setColor } from "../../utils/setcolor";
 import { darken } from "polished";
 
-export type SelectButtonProps = {
+export type SelectButtonProps = HTMLAttributes<HTMLButtonElement> & {
   name: string;
   value: string;
   labelText: string;
   isActive?: boolean;
-  id?: string;
-  onClick: (value: any) => void;
+  onClick: (value: SelectButtonProps["value"]) => void;
 };
 
 export type SelectButtonListProps = {
@@ -21,6 +20,37 @@ export type SelectButtonListProps = {
 };
 
 type StyledSelectButtons = Pick<SelectButtonListProps, "size" | "status">;
+
+function getStatusCss(status: SingleColors) {
+  return css`
+    border: 1px solid ${setColor(status)};
+
+    li {
+      border-right: 1px solid ${setColor(status)};
+
+      button {
+        color: ${setColor(status)};
+
+        &.active {
+          color: ${theme.color.text.text04};
+          background: ${setColor(status)};
+
+          &:hover {
+            background: ${darken(0.1, theme.colors[status] || status)};
+          }
+
+          &:active {
+            background: ${darken(0.2, theme.colors[status] || status)};
+          }
+
+          &:disabled {
+            background: ${darken(0.3, theme.colors[status] || status)};
+          }
+        }
+      }
+    }
+  `;
+}
 
 const StyledSelectButtons = styled.ul<StyledSelectButtons>`
   margin: 0;
@@ -63,38 +93,14 @@ const StyledSelectButtons = styled.ul<StyledSelectButtons>`
     }
   }
 
-  ${({ status }) =>
-    status &&
-    css`
-      border: 1px solid ${setColor(status)};
-      li {
-        border-right: 1px solid ${setColor(status)};
-        button {
-          color: ${setColor(status)};
-          &.active {
-            color: ${theme.color.text.text04};
-            background: ${setColor(status)};
-            &:hover {
-              background: ${darken(0.1, theme.colors[status] || status)};
-            }
-            &:active {
-              background: ${darken(0.2, theme.colors[status] || status)};
-            }
-            &:disabled {
-              background: ${darken(0.3, theme.colors[status] || status)};
-            }
-          }
-        }
-      }
-    `}
+  ${({ status }) => status && getStatusCss(status)}
 `;
 
-export const SelectButton: FunctionComponent<SelectButtonProps> = ({
+export const SelectButton: React.FC<SelectButtonProps> = ({
   name,
   value,
   labelText,
   isActive = false,
-  id = "",
   onClick,
   ...props
 }) => (
@@ -104,15 +110,15 @@ export const SelectButton: FunctionComponent<SelectButtonProps> = ({
       value={value}
       name={name}
       className={isActive ? "active" : ""}
-      {...props}
       onClick={() => onClick(value)}
+      {...props}
     >
       {labelText}
     </button>
   </li>
 );
 
-export const MultipleSelect: FunctionComponent<SelectButtonListProps> = ({
+export const MultipleSelect: React.FC<SelectButtonListProps> = ({
   status,
   children,
   size,

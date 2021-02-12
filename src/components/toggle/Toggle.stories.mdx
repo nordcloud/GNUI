@@ -1,6 +1,6 @@
+import { useState } from "react";
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Toggle } from ".";
-import { useState } from "react";
 
 <Meta title="Forms/Toggle" component={Toggle} />
 
@@ -19,14 +19,17 @@ import { useState } from "react";
 
 <Preview>
   <Story name="default">
-    {
-        () => {
-          const [toggle, setToggle] = useState(false);
-          return (
-              <Toggle labelText="Default" name="default" toggleValue={toggle} handleSelect={setToggle} />
-          )
-        }
-      }
+    {() => {
+      const [toggle, setToggle] = useState(false);
+      return (
+        <Toggle
+          labelText="Default"
+          name="default"
+          value={toggle}
+          onChange={() => setToggle((prevState) => !prevState)}
+        />
+      );
+    }}
   </Story>
 </Preview>
 
@@ -36,14 +39,18 @@ import { useState } from "react";
 
 <Preview>
   <Story name="small">
-    {
-        () => {
-          const [toggle, setToggle] = useState(false);
-          return (
-              <Toggle size="small" labelText="Small" name="small" toggleValue={toggle} handleSelect={setToggle} />
-          )
-        }
-      }
+    {() => {
+      const [toggle, setToggle] = useState(false);
+      return (
+        <Toggle
+          size="small"
+          labelText="Small"
+          name="small"
+          value={toggle}
+          onChange={() => setToggle((prevState) => !prevState)}
+        />
+      );
+    }}
   </Story>
 </Preview>
 
@@ -53,26 +60,48 @@ import { useState } from "react";
 
 <Preview>
   <Story name="status">
-    {
-        () => {
-          const [toggle, setToggle] = useState(false);
-          return (
-            <div>
-              <p>
-                <Toggle status="success" labelText="Success!" name="success" toggleValue={toggle} handleSelect={setToggle}/>
-              </p>
-              <p>
-                <Toggle status="danger" labelText="Danger" name="danger" toggleValue={toggle} handleSelect={setToggle}/>
-              </p>
-              <p>
-                <Toggle status="warning" labelText="Warning" name="warning" toggleValue={toggle} handleSelect={setToggle}/>
-              </p>
-              <p>
-                <Toggle status="notification" labelText="Notification" name="notification" toggleValue={toggle} handleSelect={setToggle}/>
-              </p>
-            </div>
-          )
-        }
-      }
+    {() => {
+      const [toggle, setToggle] = useState(false);
+      return (
+        <div>
+          <p>
+            <Toggle
+              status="success"
+              labelText="Success!"
+              name="success"
+              value={toggle}
+              onChange={() => setToggle((prevState) => !prevState)}
+            />
+          </p>
+          <p>
+            <Toggle
+              status="danger"
+              labelText="Danger"
+              name="danger"
+              value={toggle}
+              onChange={() => setToggle((prevState) => !prevState)}
+            />
+          </p>
+          <p>
+            <Toggle
+              status="warning"
+              labelText="Warning"
+              name="warning"
+              value={toggle}
+              onChange={() => setToggle((prevState) => !prevState)}
+            />
+          </p>
+          <p>
+            <Toggle
+              status="notification"
+              labelText="Notification"
+              name="notification"
+              value={toggle}
+              onChange={() => setToggle((prevState) => !prevState)}
+            />
+          </p>
+        </div>
+      );
+    }}
   </Story>
 </Preview>

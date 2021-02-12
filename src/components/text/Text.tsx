@@ -1,10 +1,10 @@
-import React, { FunctionComponent } from "react";
+import React, { HTMLAttributes } from "react";
 import styled, { css } from "styled-components";
 import { space, SpaceProps } from "styled-system";
 import theme from "../../theme";
 import { SingleColors } from "../../theme/config";
 
-type TextProps = {
+type TextProps = HTMLAttributes<HTMLElement> & {
   size?: "xs" | "sm" | "md" | "lg" | "xl" | "xxl";
   display?: string;
   color?: SingleColors | string;
@@ -17,7 +17,6 @@ type TextProps = {
   width?: string;
   nowrap?: boolean;
   isTitle?: boolean;
-  [propName: string]: any;
 };
 
 const changeTag = (tag: keyof JSX.IntrinsicElements) => {
@@ -30,14 +29,14 @@ const changeTag = (tag: keyof JSX.IntrinsicElements) => {
   return spacing;
 };
 
-const basicStyles = css<TextProps>`
+const basicStyles = css<Pick<TextProps, "color">>`
   text-rendering: optimizeLegibility;
   font-family: ${theme.fonts.body};
   line-height: ${theme.lineHeight};
   font-weight: ${theme.fontWeights.regular};
   font-size: ${theme.fontSizes.md};
-  color: ${(props) => props.color || theme.color.text.text01};
   margin: 0 0 ${theme.spacing.spacing04} 0;
+  color: ${(props) => props.color || theme.color.text.text01};
 `;
 
 const StyledText = styled.p<TextProps>`
@@ -108,16 +107,18 @@ const StyledCode = styled.code`
   font-size: inherit;
 `;
 
-export const Text: FunctionComponent<TextProps & SpaceProps> = ({
-  tag,
+export const Text: React.FC<TextProps & SpaceProps> = ({
+  tag = "p",
   children,
   ...props
 }) => (
-  <StyledText as={tag || "p"} tag={tag} {...props}>
+  <StyledText as={tag} tag={tag} {...props}>
     {children}
   </StyledText>
 );
 
-export const Code: FunctionComponent = ({ children, ...props }) => (
+type CodeProps = HTMLAttributes<HTMLSpanElement>;
+
+export const Code: React.FC<CodeProps> = ({ children, ...props }) => (
   <StyledCode {...props}>{children}</StyledCode>
 );
