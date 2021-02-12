@@ -2,12 +2,13 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { SVGIcon } from "../svgicon";
 import theme from "../../theme";
+import { SingleColors } from "../../theme/config";
 import { darken } from "polished";
 import { space } from "styled-system";
 
 type TagProps = {
-  color?: string;
-  colorText?: string;
+  color?: SingleColors;
+  colorText?: SingleColors;
   text?: string;
   icon?: string;
   onClick?: () => void;
@@ -108,7 +109,7 @@ export const StyledTag = styled.div<TagProps>`
   ${({ colorText }) =>
     colorText &&
     css`
-      color: ${theme.colors[colorText] || colorText};
+      color: ${theme.colors[colorText]};
     `}
   ${space}
 `;

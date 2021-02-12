@@ -63,7 +63,7 @@ const SelectContainer = styled.div<SelectProps>`
     }
     &__single-value {
       color: ${theme.color.text.text01};
-      font-size: ${theme.fontSizes[2]};
+      font-size: ${theme.fontSizes.md};
       line-height: 1.5rem;
     }
     &__menu {

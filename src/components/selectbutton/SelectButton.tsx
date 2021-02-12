@@ -1,6 +1,7 @@
 import React, { FunctionComponent, ReactNode } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
+import { SingleColors } from "../../theme/config";
 import { setColor } from "../../utils/setcolor";
 import { darken } from "polished";
 
@@ -15,14 +16,11 @@ export type SelectButtonProps = {
 
 export type SelectButtonListProps = {
   children: ReactNode;
-  status?: string;
+  status?: SingleColors;
   size?: string;
 };
 
-type StyledSelectButtons = {
-  status?: string;
-  size?: string;
-};
+type StyledSelectButtons = Pick<SelectButtonListProps, "size" | "status">;
 
 const StyledSelectButtons = styled.ul<StyledSelectButtons>`
   margin: 0;
@@ -48,7 +46,7 @@ const StyledSelectButtons = styled.ul<StyledSelectButtons>`
       background: transparent;
       padding: ${theme.spacing.spacing02} ${theme.spacing.spacing04};
       transition: ${theme.transition};
-      font-size: ${theme.fontSizes.regular};
+      font-size: ${theme.fontSizes.lg};
       text-transform: ${theme.typography.titleCase};
 
       &.active {

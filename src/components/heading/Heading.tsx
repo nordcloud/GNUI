@@ -1,40 +1,34 @@
-import React, { FunctionComponent } from "react";
+import * as React from "react";
 import styled, { css } from "styled-components";
-import theme from "../../theme";
 import { space, SpaceProps } from "styled-system";
+import theme from "../../theme";
+
+type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 
 type HeadingProps = {
-  level: number;
+  level: HeadingLevel;
   color?: string;
-  marginBottom?: string;
-  as?: any;
+  marginBottom?: keyof typeof theme.spacing;
+  as?: React.ElementType | keyof JSX.IntrinsicElements;
 };
 
-const changeAttrs = (level: number) => {
-  let fontSize: string;
+const changeAttrs = (level: HeadingLevel) => {
   switch (level) {
     case 6:
-      fontSize = theme.fontSizes.xs;
-      break;
+      return theme.fontSizes.xs;
     case 5:
-      fontSize = theme.fontSizes.sm;
-      break;
+      return theme.fontSizes.sm;
     case 4:
-      fontSize = theme.fontSizes.md;
-      break;
+      return theme.fontSizes.md;
     case 3:
-      fontSize = theme.fontSizes.lg;
-      break;
+      return theme.fontSizes.lg;
     case 2:
-      fontSize = theme.fontSizes.xl;
-      break;
+      return theme.fontSizes.xl;
     case 1:
-      fontSize = theme.fontSizes.xxl;
-      break;
+      return theme.fontSizes.xxl;
     default:
-      fontSize = theme.fontSizes.md;
+      return theme.fontSizes.md;
   }
-  return fontSize;
 };
 
 const StyledHeading = styled.h1<HeadingProps>`
@@ -63,12 +57,16 @@ const StyledHeading = styled.h1<HeadingProps>`
   ${space}
 `;
 
-export const Heading: FunctionComponent<HeadingProps & SpaceProps> = ({
+export const Heading: React.FC<HeadingProps & SpaceProps> = ({
   children,
   level,
   ...props
 }) => (
-  <StyledHeading as={level ? `h${level}` : "h1"} level={level || 1} {...props}>
+  <StyledHeading
+    as={level ? (`h${level}` as keyof JSX.IntrinsicElements) : "h1"}
+    level={level || 1}
+    {...props}
+  >
     {children}
   </StyledHeading>
 );
