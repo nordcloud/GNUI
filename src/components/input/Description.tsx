@@ -4,7 +4,7 @@ import theme from "../../theme";
 import { GnuiContainer } from "../container";
 
 const StyledDescription = styled(GnuiContainer)`
-  font-size: ${theme.fontSizes[1]};
+  font-size: ${theme.fontSizes.sm};
   color: ${theme.color.text.text02};
   margin: ${theme.spacing.spacing02} 0;
   width: 100%;
