@@ -1,22 +1,17 @@
-import { InputHTMLAttributes, Ref } from "react";
+import * as React from "react";
 
 export type Status = "success" | "error";
 
-export type InputProps = {
+export type StyledInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   small?: boolean;
   popup?: boolean;
   onClear?: () => void;
   showClearButton?: boolean;
   loading?: boolean;
-  ref?: Ref<HTMLInputElement>;
-} & InputHTMLAttributes<HTMLInputElement>;
-
-export type LabelProps = {
-  required?: boolean;
-  name?: string;
+  ref?: React.Ref<HTMLInputElement>;
 };
 
-export type InputGroupProps = {
+export type StyledInputGroupProps = {
   status?: Status;
   noBorder?: boolean;
   icon?: string;

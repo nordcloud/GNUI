@@ -1,8 +1,8 @@
-import React, { FunctionComponent } from "react";
+import * as React from "react";
 import styled from "styled-components";
 import theme from "../../theme";
 import { GnuiContainer, Flex, GnuiContainerProps } from "../container";
-import { InputProps } from "../input/types";
+import { StyledInputProps } from "../input/types";
 import { Button, ButtonProps } from "../button";
 
 const StyledSubmit = styled.input`
@@ -42,21 +42,22 @@ const StyledSubmit = styled.input`
   }
 `;
 
-export const FormButtons: FunctionComponent = ({ children, ...props }) => (
+export const FormButtons: React.FC = ({ children, ...props }) => (
   <Flex margin="1rem 0" justifyContent="flex-end" {...props}>
     {children}
   </Flex>
 );
 
-export const CancelButton: FunctionComponent<
-  ButtonProps & { name: string }
-> = ({ name, ...props }) => (
+export const CancelButton: React.FC<ButtonProps & { name: string }> = ({
+  name,
+  ...props
+}) => (
   <Button color="danger" {...props}>
     {name || "Cancel"}
   </Button>
 );
 
-export const SubmitButton: FunctionComponent<InputProps> = ({
+export const SubmitButton: React.FC<StyledInputProps> = ({
   name,
   ...props
 }) => (
@@ -67,7 +68,6 @@ export const SubmitButton: FunctionComponent<InputProps> = ({
   />
 );
 
-export const Form: FunctionComponent<GnuiContainerProps> = ({
-  children,
-  ...props
-}) => <GnuiContainer {...props}>{children}</GnuiContainer>;
+export const Form: React.FC<GnuiContainerProps> = ({ children, ...props }) => (
+  <GnuiContainer {...props}>{children}</GnuiContainer>
+);

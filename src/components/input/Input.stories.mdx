@@ -85,8 +85,12 @@ Nothing more to add, just text placeholder which works exactly like in default H
 <Preview>
   <Story name="required">
     <>
-      <Label name="Label" required />
-      <Input name="required-input" placeholder="Required input" />
+      <Label name="Label" htmlFor="required-id" required />
+      <Input
+        name="required-input"
+        id="required-id"
+        placeholder="Required input"
+      />
     </>
   </Story>
 </Preview>
@@ -96,8 +100,8 @@ Nothing more to add, just text placeholder which works exactly like in default H
 <Preview>
   <Story name="small">
     <>
-      <Label name="Label" required />
-      <Input name="required-input" placeholder="Small" small />
+      <Label name="Label" htmlFor="small-id" required />
+      <Input name="required-input" id="small-id" placeholder="Small" small />
     </>
   </Story>
 </Preview>
@@ -117,8 +121,8 @@ Nothing more to add, just text placeholder which works exactly like in default H
 <Preview>
   <Story name="icon">
     <>
-      <Label name="Label" required />
-      <Input name="required-input" placeholder="" icon="sidebar" />
+      <Label name="Label" htmlFor="icon-id" required />
+      <Input name="required-input" id="icon-id" placeholder="" icon="sidebar" />
     </>
   </Story>
 </Preview>
@@ -165,8 +169,12 @@ Nothing more to add, just text placeholder which works exactly like in default H
 <Preview>
   <Story name="label & description">
     <GnuiContainer>
-      <Label name="Label" />
-      <Input name="labeled-input" placeholder="Labeled input" />
+      <Label name="Label" htmlFor="description-id" />
+      <Input
+        name="labeled-input"
+        id="description-id"
+        placeholder="Labeled input"
+      />
       <Description>Inputs description</Description>
     </GnuiContainer>
   </Story>
@@ -177,9 +185,10 @@ Nothing more to add, just text placeholder which works exactly like in default H
 <Preview>
   <Story name="clear">
     <>
-      <Label name="Label" required />
+      <Label name="Label" htmlFor="clear-id" required />
       <Input
         name="required-input"
+        id="clear-id"
         placeholder=""
         icon="sidebar"
         name="testName"
