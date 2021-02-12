@@ -21,7 +21,7 @@ export type SelectButtonListProps = {
 
 type StyledSelectButtons = Pick<SelectButtonListProps, "size" | "status">;
 
-function getStatusCss(status: string) {
+function getStatusCss(status: SingleColors) {
   return css`
     border: 1px solid ${setColor(status)};
 
