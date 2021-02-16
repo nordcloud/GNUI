@@ -42,7 +42,7 @@ const Title = styled(Text)`
 `;
 
 const Content = styled(Text)`
-  font-weight: ${theme.fontWeights.medium};
+  font-weight: ${theme.fontWeights.regular};
   line-height: ${theme.lineHeight};
   font-size: ${theme.fontSizes.md};
   padding: ${theme.spacing.spacing04} 0;
