@@ -91,7 +91,7 @@ export const colors = {
   statusSuccess: ["#A9DFBF", "#27AE60", "#1E8449", "#196F3D"],
   statusWarning: ["#FAD7A0", "#F39C12", "#B9770E", "#9C640C"],
   statusNotification: ["#AED6F1", "#3498DB", "#2874A6", "#21618C"],
-};
+} as const;
 
 export type SingleColors =
   | "primary"
@@ -113,7 +113,7 @@ export const typography = {
   fontWeights: [400, 500, 700],
   lineHeight: "1.5em",
   titleCase: "capitalize",
-};
+} as const;
 
 export const borders = {
   default: "1px solid #161632",
@@ -128,7 +128,7 @@ export const borders = {
   warning: "1px solid #f39c12",
   notification: "1px solid #3498db",
   transparent: "1px solid transparent",
-};
+} as const;
 
 export const radius = {
   sm: "2px",
@@ -136,7 +136,7 @@ export const radius = {
   lg: "6px",
   xl: "16px",
   xxl: "22px",
-};
+} as const;
 
 export const shadow = {
   shadow00: "none",
@@ -144,7 +144,7 @@ export const shadow = {
   shadow02: "0 3px 6px rgba(31, 30, 47, 0.1)",
   shadow03: "0 8px 20px rgba(31, 30, 47, 0.12)",
   shadow04: "0 12px 22px rgba(31, 30, 47, 0.18)",
-};
+} as const;
 
 export const spacing = {
   spacing00: "0",
@@ -156,7 +156,7 @@ export const spacing = {
   spacing06: "1.5rem",
   spacing07: "2rem",
   spacing08: "2.5rem",
-};
+} as const;
 
 export const zindex = {
   topoftheworld: 9999,
@@ -169,7 +169,7 @@ export const zindex = {
   default: 1,
   zero: 0,
   deep: -9999,
-};
+} as const;
 
 export const transition = "all 0.26s ease-in-out";
 
@@ -180,7 +180,7 @@ export const breakpoints = {
   lg: 992,
   xl: 1200,
   xxl: 1440,
-};
+} as const;
 
 export const iconSize = {
   sm: "0.875rem",
@@ -189,6 +189,6 @@ export const iconSize = {
   lg: "2rem",
   xl: "3rem",
   xxl: "5rem",
-};
+} as const;
 
 export const opacity = 0.7;
