@@ -1,5 +1,5 @@
 import * as React from "react";
-import { paths } from "../../utils/svgicons";
+import { SVGIconProps } from "../svgicon";
 
 export type Status = "success" | "danger";
 
@@ -15,5 +15,5 @@ export type StyledInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
 export type StyledInputGroupProps = {
   status?: Status;
   noBorder?: boolean;
-  icon?: keyof typeof paths;
+  icon?: SVGIconProps["name"];
 };

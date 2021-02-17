@@ -1,5 +1,5 @@
 import { ButtonProps } from "../button";
-import { paths } from "../../utils/svgicons";
+import { SVGIconProps } from "../svgicon";
 
 export type SidebarProps = {
   children?: React.ReactNode;
@@ -26,7 +26,7 @@ export type InnerProps = {
 };
 
 export type SidebarButtonProps = {
-  icon?: keyof typeof paths;
+  icon?: SVGIconProps["name"];
 } & ButtonProps;
 
 export type HeaderProps = {

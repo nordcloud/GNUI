@@ -3,11 +3,10 @@ import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { SingleColors } from "../../theme/config";
 import { getViewBox } from "../../utils/svgicons";
-import { getPath } from "../../utils/svgicons";
-import { paths } from "../../utils/svgicons";
+import { getPath, PathName } from "../../utils/svgicons";
 
 export type SVGIconProps = HTMLAttributes<HTMLOrSVGElement> & {
-  name: keyof typeof paths;
+  name: PathName;
   color?: SingleColors;
   size?: keyof typeof theme.iconSize;
 };

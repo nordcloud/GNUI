@@ -21,6 +21,8 @@ export const paths = {
   default: <path />,
 } as const;
 
-export const getPath = (name: keyof typeof paths) => {
+export const getPath = (name: PathName) => {
   return paths[name] ?? paths["default"];
 };
+
+export type PathName = keyof typeof paths;
