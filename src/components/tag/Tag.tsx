@@ -1,16 +1,16 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { SVGIcon } from "../svgicon";
-import theme from "../../theme";
-import { SingleColors } from "../../theme/config";
 import { darken } from "polished";
 import { space } from "styled-system";
+import { SVGIcon, SVGIconProps } from "../svgicon";
+import theme from "../../theme";
+import { SingleColors } from "../../theme/config";
 
 type TagProps = {
   color?: SingleColors;
   colorText?: SingleColors;
   text?: string;
-  icon?: string;
+  icon?: SVGIconProps["name"];
   onClick?: () => void;
   showClose?: boolean;
   isTransparent?: boolean;

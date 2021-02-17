@@ -4,19 +4,19 @@ import React, {
   MouseEvent,
 } from "react";
 import styled, { css } from "styled-components";
+import { darken, lighten } from "polished";
+import { space, SpaceProps } from "styled-system";
 import theme from "../../theme";
 import { SingleColors } from "../../theme/config";
 import { setColor } from "../../utils/setcolor";
-import { darken, lighten } from "polished";
-import { space, SpaceProps } from "styled-system";
-import { SVGIcon } from "../svgicon";
+import { SVGIcon, SVGIconProps } from "../svgicon";
 import { Spinner } from "../spinner";
 
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   children?: string | React.ReactNode;
   severity?: "high" | "medium" | "low";
   size?: "sm" | "md";
-  icon?: string;
+  icon?: SVGIconProps["name"];
   iconRight?: boolean;
   initialState?: string;
   color?: SingleColors;

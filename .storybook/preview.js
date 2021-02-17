@@ -23,7 +23,6 @@ addParameters({
         "Patterns",
         "Pages",
         "Widgets",
-
       ],
     },
   },
