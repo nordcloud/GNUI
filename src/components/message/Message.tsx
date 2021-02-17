@@ -1,10 +1,11 @@
 import * as React from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
+import { paths } from "../../utils/svgicons";
 import { SVGIcon } from "../svgicon";
 
 export type MessageProps = React.HTMLProps<HTMLDivElement> & {
-  image?: string;
+  image?: keyof typeof paths;
   status?: "success" | "notification" | "danger";
   borderColor?: string;
   background?: string;

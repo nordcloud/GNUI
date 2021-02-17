@@ -19,10 +19,7 @@ import { Navigation } from "../components/navigation";
   <Story name="default">
     <Box spacing={"spacing04"} style={{ maxWidth: "1440px" }}>
       <Box
-        border={theme.borders.grey}
-        shadow="shadow00"
-        backgroundColor={theme.colors.lights[0]}
-        innerSpacing="spacing03"
+        boxStyle="lightGrey"
       >
         <Row>
           <Col sm={5} md={4} lg={7}>
@@ -50,12 +47,12 @@ import { Navigation } from "../components/navigation";
                   tag="div"
                   mb={theme.spacing.spacing01}
                   ml={theme.spacing.spacing04}
-                  color={theme.colors.danger}
+                  color={theme.color.text.error}
                 >
                   Unallocated Costs
                 </Text>
                 <Flex>
-                  <Text size="sm" tag="span" ml={theme.spacing.spacing04} color={theme.colors.statusDanger[3]}>
+                  <Text size="sm" tag="span" ml={theme.spacing.spacing04} color={theme.color.text.error}>
                     86 estate records
                   </Text>
                 </Flex>
@@ -71,10 +68,10 @@ import { Navigation } from "../components/navigation";
                   borderLeft: theme.borders.grey,
                 }}
               >
-                <Text size="sm" tag="div" mb={theme.spacing.spacing01} color={theme.colors.statusDanger[3]}>
+                <Text size="sm" tag="div" mb={theme.spacing.spacing01} color={theme.color.text.error}>
                   Monthly Costs:
                 </Text>
-                <Text size="lg" weight="medium" tag="div" color={theme.colors.danger}>
+                <Text size="lg" weight="medium" tag="div" color={theme.color.text.error}>
                   $ 604.19
                 </Text>
               </div>
@@ -88,7 +85,7 @@ import { Navigation } from "../components/navigation";
                   }}
                 >
                   <Flex py={theme.spacing.spacing01}>
-                    <Text size="sm" tag="div" width="7rem" color={theme.colors.statusDanger[3]}>
+                    <Text size="sm" tag="div" width="7rem" color={theme.color.text.error}>
                       Monthly Forecast:
                     </Text>
                     <Text
@@ -96,13 +93,13 @@ import { Navigation } from "../components/navigation";
                       tag="div"
                       ml={theme.spacing.spacing02}
                       weight="medium"
-                      color={theme.colors.danger}
+                      color={theme.color.text.error}
                     >
                       $ 1,846.71
                     </Text>
                   </Flex>
                   <Flex py={theme.spacing.spacing01}>
-                    <Text size="sm" tag="div" width="7rem" color={theme.colors.statusDanger[3]}>
+                    <Text size="sm" tag="div" width="7rem" color={theme.color.text.error}>
                       Previous Month:
                     </Text>
                     <Text
@@ -110,7 +107,7 @@ import { Navigation } from "../components/navigation";
                       tag="div"
                       ml={theme.spacing.spacing02}
                       weight="medium"
-                      color={theme.colors.danger}
+                      color={theme.color.text.error}
                     >
                       $ 2,146.71
                     </Text>

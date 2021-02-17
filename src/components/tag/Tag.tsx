@@ -1,6 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { SVGIcon } from "../svgicon";
+import { paths } from "../../utils/svgicons";
 import theme from "../../theme";
 import { SingleColors } from "../../theme/config";
 import { darken } from "polished";
@@ -10,7 +11,7 @@ type TagProps = {
   color?: SingleColors;
   colorText?: SingleColors;
   text?: string;
-  icon?: string;
+  icon?: keyof typeof paths;
   onClick?: () => void;
   showClose?: boolean;
   isTransparent?: boolean;

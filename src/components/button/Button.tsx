@@ -10,13 +10,14 @@ import { setColor } from "../../utils/setcolor";
 import { darken, lighten } from "polished";
 import { space, SpaceProps } from "styled-system";
 import { SVGIcon } from "../svgicon";
+import { paths } from "../../utils/svgicons";
 import { Spinner } from "../spinner";
 
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   children?: string | React.ReactNode;
   severity?: "high" | "medium" | "low";
   size?: "sm" | "md";
-  icon?: string;
+  icon?: keyof typeof paths;
   iconRight?: boolean;
   initialState?: string;
   color?: SingleColors;

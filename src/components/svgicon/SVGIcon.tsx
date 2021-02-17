@@ -4,9 +4,10 @@ import theme from "../../theme";
 import { SingleColors } from "../../theme/config";
 import { getViewBox } from "../../utils/svgicons";
 import { getPath } from "../../utils/svgicons";
+import { paths } from "../../utils/svgicons";
 
 export type SVGIconProps = HTMLAttributes<HTMLOrSVGElement> & {
-  name: string;
+  name: keyof typeof paths;
   color?: SingleColors;
   size?: keyof typeof theme.iconSize;
 };
@@ -32,7 +33,7 @@ const StyledSVGIcon = styled.svg<Pick<SVGIconProps, "color" | "size">>`
 
 export const SVGIcon: React.FC<SVGIconProps> = ({ name, ...props }) => {
   const ViewBox = getViewBox(name);
-  const Path = getPath(name);
+  const Path = React.useMemo(() => getPath(name), [name]);
 
   return (
     <StyledSVGIcon
