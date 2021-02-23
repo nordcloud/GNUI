@@ -61,6 +61,7 @@ const StyledTextarea = styled.textarea<TextareaProps>`
   transition: ${theme.transition};
   color: ${theme.color.text.text01};
   resize: none;
+
   &::placeholder {
     color: ${theme.color.text.text03};
   }
@@ -82,10 +83,10 @@ const StyledTextarea = styled.textarea<TextareaProps>`
 type Props = TextareaGroupProps & TextareaProps;
 
 export const Textarea: React.FC<Props> = React.forwardRef(
-  ({ status, small, ...props }, ref) => {
+  ({ status, ...props }, ref) => {
     return (
       <TextareaGroup status={status}>
-        <StyledTextarea small={small} ref={ref} {...props} />
+        <StyledTextarea ref={ref} {...props} />
       </TextareaGroup>
     );
   }
