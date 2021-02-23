@@ -1,0 +1,61 @@
+import { useState } from "react";
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Textarea } from ".";
+import { GnuiContainer } from "../container";
+import { Spacer } from "../spacer";
+import { Button } from "../button";
+import theme from "../../theme";
+
+<Meta title="Forms/Textarea" component={Textarea} />
+
+# Textarea
+
+#### Props
+
+- `status`: `string` — _optional_ - color indicator status for SelectButton
+
+## default
+
+<Preview>
+  <Story name="default">
+    <Textarea />
+  </Story>
+</Preview>
+
+## small
+
+<Preview>
+  <Story name="small">
+    <Textarea small />
+  </Story>
+</Preview>
+
+## status
+
+> `status`: `success | error`
+
+<Preview>
+  <Story name="status">
+    {() => {
+      const [status, setStatus] = useState("success");
+      return (
+        <GnuiContainer>
+          <GnuiContainer>
+            <Textarea status={status} />
+          </GnuiContainer>
+          <GnuiContainer>
+            <Button
+              size="small"
+              color={status === "error" ? "danger" : "success"}
+              onClick={() =>
+                setStatus(status === "danger" ? "success" : "danger")
+              }
+            >
+              Change status
+            </Button>
+          </GnuiContainer>
+        </GnuiContainer>
+      );
+    }}
+  </Story>
+</Preview>

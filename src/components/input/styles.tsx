@@ -4,7 +4,7 @@ import theme from "../../theme";
 import { Flex } from "../container";
 import { StyledInputGroupProps, StyledInputProps, Status } from "./types";
 
-const setStatusColor = (status: Status) => {
+export const setStatusColor = (status: Status) => {
   if (status === "danger") {
     return css`
       border: 1px solid ${theme.color.border.error};
