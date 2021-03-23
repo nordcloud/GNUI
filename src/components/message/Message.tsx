@@ -61,6 +61,10 @@ export const IconBox = styled.div`
   align-items: center;
   border-radius: ${theme.radiusDefault};
   margin-right: ${theme.spacing.spacing03};
+
+  svg {
+    fill: currentColor;
+  }
 `;
 
 export const Align = styled.div`
