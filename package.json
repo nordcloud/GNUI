@@ -22,7 +22,7 @@
     "@types/react-date-range": "^0.94.4",
     "@types/react-dom": "^16.9.0",
     "@types/react-modal": "^3.10.5",
-    "@types/react-select": "^3.0.13",
+    "@types/react-select": "^4.0.13",
     "@types/storybook__addon-info": "^5.2.1",
     "@types/styled-components": "^5.1.0",
     "@types/styled-system": "^5.1.7",
