@@ -38,7 +38,7 @@
     "react-dom": "^16.12.0",
     "react-modal": "^3.11.2",
     "react-scripts": "^3.4.3",
-    "react-select": "^3.1.0",
+    "react-select": "^4.3.0",
     "react-toastify": "^5.5.0",
     "reset": "^0.1.0",
     "storybook": "6.0.5",
