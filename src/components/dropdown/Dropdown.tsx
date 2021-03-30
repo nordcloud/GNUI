@@ -27,6 +27,7 @@ type DropdownProps = {
   disabled?: boolean;
   children?: React.ReactNode;
   title?: string;
+  showSearchWhen?: number;
   onClick?: (e: any) => void;
   onMouseLeave?: (e: any) => void;
   onClear?: () => void;
@@ -40,6 +41,7 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
   title,
   onChange,
   onClear,
+  showSearchWhen = 3,
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -63,7 +65,7 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
     name;
   const showClearButton = onClear && displayValue;
   const showMenu = isOpen && !disabled;
-  const showSearch = options && options.length > 3;
+  const showSearch = options && options.length > showSearchWhen;
 
   return (
     <DropdownWrapper value={value} ref={wrapper} {...props}>
