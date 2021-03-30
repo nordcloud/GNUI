@@ -18,7 +18,7 @@ import { Text } from "../text";
 - `width`: `string` — _optional_, default: `100%`
 - `value`: `string | number` — taken from Reacts `useState()`
 - `title`: `string`
-- `showSearchWhen`: `number`;
+- `minNumOfOptionsToShowSearchBox`: `number`;
 - `onChange`: `(e: any) => void` — taken from Reacts `useState()`
 - `onClear`: `() => void` — taken from Reacts `useState()` — **optional**
 
@@ -55,7 +55,7 @@ import { Text } from "../text";
           name="Select an option"
           options={options}
           value={value2}
-          showSearchWhen={10}
+          minNumOfOptionsToShowSearchBox={10}
           width="15rem"
           onChange={(val) => setValue2(val)}
           onClear={() => setValue2("")}
