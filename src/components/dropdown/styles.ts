@@ -83,6 +83,8 @@ type DropdownMenuProps = {
 export const DropdownMenu = styled(GnuiContainer)<DropdownMenuProps>`
   text-align: left;
   width: 100%;
+  max-height: 90vh;
+  overflow: auto;
   box-sizing: border-box;
   position: absolute;
   padding: ${theme.spacing.spacing02};
