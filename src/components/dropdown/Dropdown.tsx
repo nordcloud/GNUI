@@ -41,7 +41,7 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
   title,
   onChange,
   onClear,
-  minNumOfOptionsToShowSearchBox = 3,
+  minNumOfOptionsToShowSearchBox = 4,
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -65,7 +65,8 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
     name;
   const showClearButton = onClear && displayValue;
   const showMenu = isOpen && !disabled;
-  const showSearch = options && options.length > minNumOfOptionsToShowSearchBox;
+  const showSearch =
+    options && options.length >= minNumOfOptionsToShowSearchBox;
 
   return (
     <DropdownWrapper value={value} ref={wrapper} {...props}>
