@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components";
 import theme from "../../theme";
-import { default as ReactSelect, CommonProps } from "react-select";
+import { default as ReactSelect, Props } from "react-select";
 
 export type SelectProps = {
   options?: any;
@@ -84,7 +84,7 @@ const SelectContainer = styled.div<SelectProps>`
   }
 `;
 
-export const Select: FunctionComponent<SelectProps & CommonProps<any>> = ({
+export const Select: FunctionComponent<SelectProps & Props<any>> = ({
   options,
   styles,
   ...props
