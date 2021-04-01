@@ -84,7 +84,7 @@ const SelectContainer = styled.div<SelectProps>`
   }
 `;
 
-export const Select: FunctionComponent<SelectProps & Props<any>> = ({
+export const Select: FunctionComponent<SelectProps & Props<{}>> = ({
   options,
   styles,
   ...props
