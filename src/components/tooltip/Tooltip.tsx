@@ -122,6 +122,7 @@ export const Tooltip: FunctionComponent<ITooltip> = ({
       setTimeout(() => {
         setHovered(true);
       }, showTimeout);
+    // @ts-ignore
     setTimer(timer);
   };
 
@@ -131,6 +132,7 @@ export const Tooltip: FunctionComponent<ITooltip> = ({
       setTimeout(() => {
         setHovered(false);
       }, hideTimeout);
+    // @ts-ignore
     setTimer(timer);
   };
 

@@ -6,29 +6,34 @@ import { GnuiContainer, Flex } from "../container";
 
 # Button
 
-## Props
+> Buttons are used to initialize an action. Button labels express what action will occur when the user interacts with it.
 
-> - `severity`: `medium` | `low` — **optional**
-> - `size`: `sm` | `md` — **optional**
-> - `icon`: `string` — **optional** you should use icons from this <LinkTo kind="components-svgicon--ui">list of SVG icons</LinkTo>
-> - `iconRight`: `boolean` — **optional** if you want to place an icon to the right
-> - `initialState`: `success` | `error` | `loading` — **optional**
-> - `linkTo`: `string` — **optional**
-> - `display`: `flex` | ` inline-flex``you might have change Button with linkTo from inline to block ` — **optional**
+## Button properties
 
-## Default view
+|   properties | required | type                                                           | description                                                                                                                                                                                                                            |
+| -----------: | :------: | :------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|     children |  false   | string                                                         | button label                                                                                                                                                                                                                           |
+|     severity |  false   | <code>medium</code>, <code>low</code>                          |                                                                                                                                                                                                                                        |
+|         size |  false   | <code>sm</code>, <code>md</code>                               |                                                                                                                                                                                                                                        |
+|         icon |  false   | string                                                         | to get icon names look into SVG icon component                                                                                                                                                                                         |
+|    iconRight |  false   | boolean                                                        | place an icon to the right side of button                                                                                                                                                                                              |
+| initialState |  false   | <code>success</code>, <code>error</code>, <code>loading</code> |                                                                                                                                                                                                                                        |
+|        color |  false   | string                                                         | can be used in two ways: as an action colors build with `theme` (`accent`, `danger`, `success`, `warning`, `notification`) or just in HEX/named color formats according to [X11 Colors](https://en.wikipedia.org/wiki/X11_color_names) |
+|     disabled |  false   | boolean                                                        |                                                                                                                                                                                                                                        |
+|       linkTo |  false   | string                                                         | displays button as a link                                                                                                                                                                                                              |
+|      display |  false   | <code>flex</code>, <code>inline-flex</code>                    | you might have change Button with linkTo from inline to block                                                                                                                                                                          |
+
+## default button
 
 <Preview>
   <Story name="default">
-    <Button initialState="success" href>
-      Default button
-    </Button>
+    <Button>Default button</Button>
   </Story>
 </Preview>
 
-## Severity
+## severity
 
-> `severity`: `medium` | `low` — **optional**
+> severity: `medium` | `low`
 
 <Preview>
   <Story name="button/severity">
@@ -39,9 +44,9 @@ import { GnuiContainer, Flex } from "../container";
   </Story>
 </Preview>
 
-## Button Sizes
+## size
 
-> `severity`: `sm` | `md` — **optional**
+> size: `sm` | `md`
 
 <Preview>
   <Story name="size">
@@ -53,101 +58,24 @@ import { GnuiContainer, Flex } from "../container";
   </Story>
 </Preview>
 
-## Button Icons
+## icon
 
-> `icon`: `string` — **optional** you should use icons from this <LinkTo kind="components-svgicon--ui">list of SVG icons</LinkTo>
+> `icon`: `string`
 
 <Preview>
   <Story name="icons">
     <Flex justifyContent="space-evenly">
-      <Button icon="plus">Size SM</Button>
-      <Button icon="plus" />
-      <Button icon="plus" severity="medium">
-        Size SM
+      <Button icon="plus" severity="low">
+        Label
       </Button>
-      <Button icon="plus" severity="medium" />
+      <Button icon="plus" severity="low" />
     </Flex>
   </Story>
 </Preview>
 
-## Buttons with Icons size "default"
+## iconRight
 
-<Preview>
-  <Story name="icons/default">
-    <Flex justifyContent="space-evenly">
-      <Button severity="low" icon="plus" />
-      <Button severity="low" icon="plus">
-        Add something
-      </Button>
-      <Button severity="low" icon="edit" />
-      <Button severity="low" icon="edit">
-        Edit
-      </Button>
-      <Button severity="low" icon="trash" />
-      <Button severity="low" icon="trash">
-        Delete
-      </Button>
-      <Button severity="low" icon="settings" />
-      <Button severity="low" icon="settings">
-        Settings
-      </Button>
-    </Flex>
-  </Story>
-</Preview>
-
-## Buttons with Icons size "md"
-
-<Preview>
-  <Story name="icons/md">
-    <Flex justifyContent="space-evenly">
-      <Button severity="low" size="md" icon="plus" />
-      <Button severity="low" size="md" icon="plus">
-        Add something
-      </Button>
-      <Button severity="low" size="md" icon="edit" />
-      <Button severity="low" size="md" icon="edit" title="Edit">
-        Edit
-      </Button>
-      <Button severity="low" size="md" icon="trash" />
-      <Button severity="low" size="md" icon="trash">
-        Delete
-      </Button>
-      <Button severity="low" size="md" icon="settings" />
-      <Button severity="low" size="md" icon="settings">
-        Settings
-      </Button>
-    </Flex>
-  </Story>
-</Preview>
-
-## Buttons with Icons size "sm"
-
-<Preview>
-  <Story name="icons/sm">
-    <Flex justifyContent="space-evenly">
-      <Button severity="low" size="sm" icon="plus" />
-      <Button severity="low" size="sm" icon="plus">
-        Add something
-      </Button>
-      <Button severity="low" size="sm" icon="edit" />
-      <Button severity="low" size="sm" icon="edit">
-        Edit
-      </Button>
-      <Button severity="low" size="sm" icon="trash" />
-      <Button severity="low" size="sm" icon="trash">
-        Delete
-      </Button>
-      <Button severity="low" size="sm" icon="settings" />
-      <Button severity="low" size="sm" icon="settings">
-        Settings
-      </Button>
-    </Flex>
-  </Story>
-</Preview>
-
-## Button Icon Right
-
-> `iconRight`: `boolean` — **optional** if you want to place an icon to the right
+> `iconRight`: `boolean`
 
 <Preview>
   <Story name="iconRight">
@@ -159,9 +87,9 @@ import { GnuiContainer, Flex } from "../container";
   </Story>
 </Preview>
 
-## Button initialState
+## initialState
 
-> `initialState`: `success` | `error` | `loading` — **optional**
+> `initialState`: `success` | `error` | `loading`
 
 <Preview>
   <Story name="initialState">
@@ -176,9 +104,9 @@ import { GnuiContainer, Flex } from "../container";
   </Story>
 </Preview>
 
-## Button Color
+## color
 
-> `color`: `string` — can be used in two ways: as an action colors build with `theme` (`accent`, `danger`, `success`, `warning`, `notification`) or just in HEX/named color formats according to [X11 Colors](https://en.wikipedia.org/wiki/X11_color_names)
+> `color`: `string`
 
 <Preview>
   <Story name="color">
@@ -197,21 +125,13 @@ import { GnuiContainer, Flex } from "../container";
   </Story>
 </Preview>
 
-## Button Disabled
+## disabled
 
 > `disabled`: `boolean`
 
 <Preview>
   <Story name="disabled">
-    <Flex justifyContent="space-evenly">
-      <Button disabled>Default button Disabled</Button>
-      <Button severity="medium" icon="save" disabled>
-        Medium severity Disabled
-      </Button>
-      <Button severity="low" disabled>
-        Low severity Disabled
-      </Button>
-    </Flex>
+    <Button disabled>Disabled button</Button>
   </Story>
 </Preview>
 
@@ -229,7 +149,9 @@ import { GnuiContainer, Flex } from "../container";
   </Story>
 </Preview>
 
-## Button as a Link (default)
+## linkTo
+
+> linkTo: `string`
 
 <Preview>
   <Story name="button link">
@@ -239,12 +161,22 @@ import { GnuiContainer, Flex } from "../container";
   </Story>
 </Preview>
 
-## Button as a Link with display="flex"
+## display
+
+> display: `flex` | `inline-flex`
 
 <Preview>
   <Story name="button link flex">
     <Button display="flex" linkTo="http://google.com" target="_blank">
-      Link to
+      Button
+    </Button>
+    <Button
+      mt="1rem"
+      display="inline-flex"
+      linkTo="http://google.com"
+      target="_blank"
+    >
+      Button
     </Button>
   </Story>
 </Preview>
