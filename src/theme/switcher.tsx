@@ -14,7 +14,7 @@ const defaultTheme =
     : previousTheme === "DARK"
     ? THEME_OPTIONS.DARK
     : window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: light)").matches
+      window.matchMedia("(prefers-color-scheme: dark)").matches
     ? THEME_OPTIONS.DARK
     : THEME_OPTIONS.LIGHT;
 
