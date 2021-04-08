@@ -8,7 +8,7 @@ import {
 } from "@storybook/addon-docs/blocks";
 import { Box } from ".";
 import { Spacer } from "../spacer";
-import { GnuiContainer } from "../container";
+import { GnuiContainer, Flex } from "../container";
 import theme from "../../theme";
 
 <Meta title="Components/Box" component={Box} />
@@ -22,48 +22,49 @@ import theme from "../../theme";
   styled in many ways.
 </Description>
 
+## Props
+
+|      properties | required | type                                                                                                                                                                                                                                                                                | description                                                                                                     |
+| --------------: | :------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------- |
+|            dark |  false   | boolean                                                                                                                                                                                                                                                                             |                                                                                                                 |
+|       minHeight |  false   | string                                                                                                                                                                                                                                                                              |                                                                                                                 |
+|        minWidth |  false   | string                                                                                                                                                                                                                                                                              |                                                                                                                 |
+|          border |  false   | string, or <code>default</code>, <code>medium</code>, <code>bold</code>, <code>grey</code>, <code>disabled</code>, <code>darkenGrey</code>, <code>dark</code>, <code>success</code>, <code>danger</code>, <code>warning</code>, <code>notification</code>, <code>transparent</code> | GNUI as first looks for the value in `theme.colors` and if color doesn't exist there `color` will be used as is |
+|           color |  false   | string                                                                                                                                                                                                                                                                              | GNUI as first looks for the value in `theme.colors` and if color doesn't exist there `color` will be used as is |
+| backgroundColor |  false   | string                                                                                                                                                                                                                                                                              |                                                                                                                 |
+|          radius |  false   | string, or <code>small</code>, <code>default</code>, <code>large</code>                                                                                                                                                                                                             |                                                                                                                 |
+|    innerSpacing |  false   | string, or <code>spacing01</code>, <code>spacing02</code>, <code>spacing03</code>, <code>spacing04</code>, <code>spacing05</code>, <code>spacing06</code>, <code>spacing07</code>                                                                                                   |                                                                                                                 |
+|         spacing |  false   | string                                                                                                                                                                                                                                                                              |                                                                                                                 |
+|          shadow |  false   | string, or <code>shadow01</code>, <code>shadow02</code>, <code>shadow03</code>, <code>shadow04</code>                                                                                                                                                                               |                                                                                                                 |
+|        children |  false   | React.ReactNode                                                                                                                                                                                                                                                                     |                                                                                                                 |
+|        boxStyle |  false   | <code>lightGrey</code>, <code>grey</code>                                                                                                                                                                                                                                           |                                                                                                                 |
+
+### default
+
 <Preview>
   <Story name="box">
     <Box>Default box</Box>
   </Story>
 </Preview>
 
-## Props
+### boxStyle
 
-```typescript
-type BoxProps = {
-  dark?: boolean;
-  minHeight?: string;
-  minWidth?: string;
-  border?: string;
-  color?: string;
-  backgroundColor?: string;
-  radius?: string;
-  innerSpacing?: string;
-  spacing?: string;
-  shadow?: string;
-  children?: React.ReactNode;
-  boxStyle?: "lightGrey" | "grey";
-};
-```
-
-### lightGrey
+> boxStyle: `lightGrey` | `grey`
 
 <Preview>
-  <Story name="lightGrey">
-    <Box boxStyle="lightGrey">Light grey box</Box>
-  </Story>
-</Preview>
-
-### Grey
-
-<Preview>
-  <Story name="grey">
-    <Box boxStyle="grey">Grey box</Box>
+  <Story name="boxStyle">
+    <Flex justifyContent="space-evenly">
+      <Box boxStyle="lightGrey">Light grey box</Box>
+    </Flex>
+    <Flex justifyContent="space-evenly" mt="1rem">
+      <Box boxStyle="grey">Grey box</Box>
+    </Flex>
   </Story>
 </Preview>
 
 ### dark
+
+> dark: `boolean`
 
 <Preview>
   <Story name="dark">
@@ -71,7 +72,7 @@ type BoxProps = {
   </Story>
 </Preview>
 
-### Border
+### border
 
 > `border`: `string` - [`default`, `medium`, `bold`, `grey`, `disabled`, `darkenGrey`, `dark`, `success`, `danger`, `warning`, `notification`, `transparent`] or a custom border
 
@@ -91,7 +92,7 @@ type BoxProps = {
   </Story>
 </Preview>
 
-### Border radius
+### radius
 
 > `radius`: `string` — [`small`, `default`, `large`]
 
@@ -113,7 +114,7 @@ type BoxProps = {
   </Story>
 </Preview>
 
-### Padding
+### innerSpacing
 
 > `innerSpacing`: `string` — [`spacing01`, `spacing02`, `spacing03`, `spacing04`, `spacing05`, `spacing06`, `spacing07`]
 
@@ -127,7 +128,7 @@ type BoxProps = {
   </Story>
 </Preview>
 
-### Shadow
+### shadow
 
 > `shadow`: `string` — [`shadow01`, `shadow02`, `shadow03`, `shadow04`]
 
@@ -145,7 +146,7 @@ type BoxProps = {
   </Story>
 </Preview>
 
-### Color
+### color
 
 > `color`: `string` — GNUI as first looks for the value in `theme.colors` and if color doesn't exist there `color` will be used as is.
 
@@ -165,9 +166,9 @@ type BoxProps = {
   </Story>
 </Preview>
 
-### Background Color
+### backgroundColor
 
-> `backgroundColor`: `string` 
+> `backgroundColor`: `string` — GNUI as first looks for the value in `theme.colors` and if color doesn't exist there `color` will be used as is.
 
 <Preview>
   <Story name="background">
