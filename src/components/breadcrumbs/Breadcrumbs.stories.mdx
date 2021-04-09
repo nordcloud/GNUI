@@ -5,22 +5,21 @@ import { Breadcrumbs } from ".";
 
 # Breadcrumbs
 
-## Props
+> The `Breadcrumbs` component accepts a list of `BreadcrumbsList` component and is responsible for displaying the page links in the hierarchy.
 
-- `list`: `Array<BreadcrumbsList>;` - **required**
+## Breadcrumbs properties
 
-### list
+| properties | required | type                       | description |
+| ---------: | :------: | :------------------------- | :---------- |
+|       list |   true   | `Array<BreadcrumbsList>`   |             |
+|  Component |  false   | `React.FC<{ to: string }>` |             |
 
-Element of the array consists of two properties:
+## BreadcrumbsList properties
 
-- `label`: `string` - **required**
-- `uri`: `string` - **required**
-
-### Custom component (React Router)
-
-It's possible to provide custom link component, it needs to implement the `to=` prop
-
-- `Component`: `React.FC<{ to: string }>` - **optional**
+| properties | required | type   | description |
+| ---------: | :------: | :----- | :---------- |
+|      label |   true   | string |             |
+|        uri |   true   | string |             |
 
 <Preview>
   <Story name="default">
@@ -28,7 +27,7 @@ It's possible to provide custom link component, it needs to implement the `to=` 
       list={[
         { label: "Home", uri: `#` },
         { label: "Hosts", uri: `#` },
-        { label: "Host Details", uri: `#` }
+        { label: "Host Details", uri: `#` },
       ]}
     />
   </Story>
