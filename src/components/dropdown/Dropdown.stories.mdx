@@ -11,82 +11,90 @@ import { Text } from "../text";
 
 > Please take a look at props to understand correctly how `Dropdown` actually works. It was build to specifically work with [React Hooks](https://reactjs.org/docs/hooks-intro.html).
 
-## Props
+## Dropdown properties
 
-- `name`: `string` — **required**
-- `options`: `Array<any>` — **required**
-- `width`: `string` — _optional_, default: `100%`
-- `value`: `string | number` — taken from Reacts `useState()`
-- `title`: `string`
-- `minNumOfOptionsToShowSearchBox`: — _optional_, `number`;
-- `onChange`: `(e: any) => void` — taken from Reacts `useState()`
-- `onClear`: `() => void` — taken from Reacts `useState()` — **optional**
+|                  CheckboxGroup | required | type                                     | description                                  |
+| -----------------------------: | :------: | :--------------------------------------- | :------------------------------------------- |
+|                           name |   true   | string                                   |                                              |
+|                        options |   true   | `Array<any>`                             |                                              |
+|                       onChange |   true   | `(e: any) => void`                       | taken from Reacts `useState()`               |
+|                          width |  false   | string                                   | default: `100%`                              |
+|                          value |  false   | <code>string</code>, <code>number</code> | taken from Reacts `useState()`               |
+|                          title |  false   | string                                   |                                              |
+| minNumOfOptionsToShowSearchBox |  false   | number                                   | minimum number of options to show search box |
+|                        onClear |  false   | `() => void`                             | taken from Reacts `useState()`               |
 
----
+## dropdown with search
 
-<Story name="dropdown">
-  {() => {
-    const options = [
-      { value: "test", label: "Option 1" },
-      { value: "Option 2" },
-      "Option 3",
-      "Option 4",
-    ];
-    const [value, setValue] = useState("");
-    const [value2, setValue2] = useState("");
-    return (
-      <GnuiContainer>
-        <Dropdown
-          name="Select an option"
-          options={options}
-          value={value}
-          width="15rem"
-          minNumOfOptionsToShowSearchBox={4}
-          onChange={(val) => setValue(val)}
-          title="Example title"
-        />
-        <Text>
-          Your choice:{" "}
-          <Text tag="span" weight="medium">
-            {!value ? "nothing" : value}
+<Preview>
+  <Story name="dropdown">
+    {() => {
+      const options = [
+        { value: "test", label: "Option 1" },
+        { value: "Option 2" },
+        "Option 3",
+        "Option 4",
+      ];
+      const [value, setValue] = useState("");
+      const [value2, setValue2] = useState("");
+      return (
+        <GnuiContainer>
+          <Dropdown
+            name="Select an option"
+            options={options}
+            value={value}
+            width="15rem"
+            minNumOfOptionsToShowSearchBox={4}
+            onChange={(val) => setValue(val)}
+            title="Example title"
+          />
+          <Text>
+            Your choice:{" "}
+            <Text tag="span" weight="medium">
+              {!value ? "nothing" : value}
+            </Text>
           </Text>
-        </Text>
-        <Spacer height="2rem" />
-        <Dropdown
-          name="Select an option"
-          options={options}
-          value={value2}
-          minNumOfOptionsToShowSearchBox={10}
-          width="15rem"
-          onChange={(val) => setValue2(val)}
-          onClear={() => setValue2("")}
-          title="Example title clear option"
-        />
-        <Text>
-          Your choice:{" "}
-          <Text tag="span" weight="medium">
-            {!value2 ? "nothing" : value2}
+          <Spacer height="8rem" />
+        </GnuiContainer>
+      );
+    }}
+  </Story>
+</Preview>
+
+## dropdown without search
+
+<Preview>
+  <Story name="dropdown without search">
+    {() => {
+      const options = [
+        { value: "test", label: "Option 1" },
+        { value: "Option 2" },
+        "Option 3",
+        "Option 4",
+      ];
+      const [value, setValue] = useState("");
+      const [value2, setValue2] = useState("");
+      return (
+        <GnuiContainer>
+          <Dropdown
+            name="Select an option"
+            options={options}
+            value={value2}
+            minNumOfOptionsToShowSearchBox={10}
+            width="15rem"
+            onChange={(val) => setValue2(val)}
+            onClear={() => setValue2("")}
+            title="Example title clear option"
+          />
+          <Text>
+            Your choice:{" "}
+            <Text tag="span" weight="medium">
+              {!value2 ? "nothing" : value2}
+            </Text>
           </Text>
-        </Text>
-        <Spacer height="5rem" />
-        <Dropdown
-          disabled
-          name="Select an option"
-          options={options}
-          value={value2}
-          width="15rem"
-          onChange={(val) => setValue2(val)}
-          onClear={() => setValue2("")}
-          title="Example title clear option"
-        />
-        <Text>
-          Your choice:{" "}
-          <Text tag="span" weight="medium">
-            {!value2 ? "nothing" : value2}
-          </Text>
-        </Text>
-        <Spacer height="5rem" />
-      </GnuiContainer>
-    );
-  }}
-</Story>
+          <Spacer height="8rem" />
+        </GnuiContainer>
+      );
+    }}
+  </Story>
+</Preview>
