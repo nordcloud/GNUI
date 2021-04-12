@@ -6,16 +6,21 @@ import theme from "../../theme";
 
 # BarChart
 
-## Props
+> BarChart is used to compare at least two values.
 
-- `values`: array - **required**
-- `height`: string - **optional** - default is 1.5rem (24px)
-- You can use space props from styled-system
+## BarChart properties
 
-## Array
+| properties | required | type      | description              |
+| ---------: | :------: | :-------- | :----------------------- |
+|     values |   true   | `Array<BarItem>` |                          |
+|     height |  false   | string    | default is 1.5rem (24px) |
 
-- `value`: number - **required**
-- `color`: string - **required**
+## BarItem properties
+
+| properties | required | type   | description |
+| ---------: | :------: | :----- | :---------- |
+|      value |   true   | number |             |
+|      color |   true   | string |             |
 
 ## Default
 
