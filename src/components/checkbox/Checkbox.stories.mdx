@@ -7,9 +7,15 @@ import { IndeterminateCheckbox } from ".";
 
 # Checkbox
 
-### Simple Checkbox
+### Checkbox properties
 
-> Default input type `checkbox`.
+|      properties | required | type    | description                                          |
+| --------------: | :------: | :------ | :--------------------------------------------------- |
+|       labelText |  false   | string  | Checkbox label                                       |
+|    withoutLabel |  false   | boolean | Checkbox without label with larger clickable surface |
+| isIndeterminate |  false   | boolean | Checkbox with third state of indeterminate           |
+
+### Default
 
 <Preview>
   <Story name="simple">
@@ -17,31 +23,31 @@ import { IndeterminateCheckbox } from ".";
   </Story>
 </Preview>
 
-#### Props
-
-- `input element props`
-- `labelText`: `string` — _optional_ - label for the radio button
-- `withoutLbalel`: `boolean` — _optional_ - checkbox without label with larger clickable surface
-
-### Checkbox without Lablel
+### withoutLabel
 
 > Default input type `checkbox` without Label with larger clickable surface.
 
 <Preview>
-  <Story name="without label">
+  <Story name="withoutLabel">
     <Checkbox withoutLabel id="checkbox-5" />
   </Story>
 </Preview>
 
-### IndeterminateCheckbox
+### isIndeterminate
 
 <Preview>
-  <Story name="inter">
+  <Story name="isIndeterminate">
     <IndeterminateCheckbox id="321312" indeterminate={true} />
   </Story>
 </Preview>
 
-### Group of Checkboxes
+# CheckboxGroup
+
+### CheckboxGroup properties
+
+| CheckboxGroup | required | type                | description |
+| ------------: | :------: | :------------------ | :---------- |
+|      children |  false   | `ReactElement<any>` |             |
 
 <Preview>
   <Story name="group">
