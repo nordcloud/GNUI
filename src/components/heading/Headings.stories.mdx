@@ -7,7 +7,7 @@ import theme from "../../theme";
 
 # Heading
 
-Simple heading is styled `h1` tag and looks like below.
+> Simple heading is styled `h1` tag and looks like below.
 
 <Preview>
   <Story name="simple">
@@ -15,11 +15,13 @@ Simple heading is styled `h1` tag and looks like below.
   </Story>
 </Preview>
 
-## Props
+## Heading properties
 
-- `level`: `number` — _optional_
-- `marginBottom`: `string` — _optional_
-- `color`: `string` — _optional_
+|   properties | required | type                                                                                                                                                                                                                           | description                                                                                                 |
+| -----------: | :------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------- |
+|        level |  false   | number                                                                                                                                                                                                                         | number from 1 to 6                                                                                          |
+| marginBottom |  false   | string, <code>spacing00</code>, <code>spacing01</code>, <code>spacing02</code> ,<code>spacing03</code> ,<code>spacing04</code> ,<code>spacing05</code> ,<code>spacing06</code> ,<code>spacing07</code> ,<code>spacing08</code> |                                                                                                             |
+|        color |  false   | string                                                                                                                                                                                                                         | can be in HEX/named colors formats according to [X11 Colors](https://en.wikipedia.org/wiki/X11_color_names) |
 
 ### level
 
@@ -81,31 +83,12 @@ Simple heading is styled `h1` tag and looks like below.
 `color`: `string` — can be in HEX/named colors formats according to [X11 Colors](https://en.wikipedia.org/wiki/X11_color_names)
 
 <Preview>
-  <Story name="colors">
-    <GnuiContainer>
-      <Heading color="palevioletred">Named color</Heading>
-      <Heading color="#6495ED">HEX color</Heading>
-    </GnuiContainer>
-  </Story>
-</Preview>
-
-> You can also use accent colors from `theme`.
-
-<Preview>
   <GnuiContainer>
+    <Heading color="palevioletred">Named color</Heading>
+    <Heading color="#6495ED">HEX color</Heading>
     <Heading color={theme.color.text.error}>Danger color</Heading>
     <Heading color={theme.color.text.success}>Success color</Heading>
     <Heading color={theme.color.text.warning}>Warning color</Heading>
     <Heading color={theme.color.text.info}>Notification color</Heading>
   </GnuiContainer>
-</Preview>
-
-### mixed
-
-<Preview>
-  <Story name="mixed">
-    <Heading level={2} color={theme.color.text.error} marginBottom="spacing05">
-      Level and color together
-    </Heading>
-  </Story>
 </Preview>
