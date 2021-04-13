@@ -1,54 +1,40 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Message, Toast } from ".";
 import { Button } from "../button";
-import { toast, Slide, Zoom, Flip, Bounce } from 'react-toastify';
+import { toast, Slide, Zoom, Flip, Bounce } from "react-toastify";
 import { Spacer } from "../spacer";
 
 <Meta title="Components/Toast" component={Toast} />
 
 # Toast
-> Please take a look at props to understand correctly how `Toast` works.
 
-### Props
+## Toast properties
 
-```typescript
-interface ToastProps {
-  name?:string;
-  heading?: string;
-  severity?: "danger" | "notification" | "warning" | "success";
-  closeToast?: (e: React.MouseEvent) => void;
-}
-```
+| properties | required | type                                                                                       | description                                 |
+| ---------: | :------: | :----------------------------------------------------------------------------------------- | :------------------------------------------ |
+|       name |  false   | string                                                                                     |                                             |
+|   severity |  false   | <code>danger</code>, <code>notification</code>, <code>warning</code>, <code>success</code> | by default toast has "notification" styling |
 
-```typescript
-interface MessageProps {
-  heading?: string;
-  message?: string;
-  closeToast?: (e: React.MouseEvent) => void;
-}
-```
+## Message properties
 
-### Default Toast
+| properties | required | type                                       | description                    |
+| ---------: | :------: | :----------------------------------------- | :----------------------------- |
+|    heading |  false   | string                                     | optional heading for the toast |
+|    message |  false   | string                                     | optional message for the toast |
+| closeToast |  false   | <code>(e: React.MouseEvent) => void</code> |                                |
 
-> `heading?: string;` - optional heading for the toast
-> `message?: string;` - optional message for the toast
+### default
 
 <Preview>
   <Story name="default">
     {() => {
-      const customId = "custom-id-yes";
-      const displayMsg = () => {
-        toast(
-          <Message
-            heading="Scanning..."
-          />,
-          {toastId: customId}
-        );
-      }
+      const showToast = () => {
+        toast(<Message heading="Scanning..." />);
+      };
       return (
         <>
-          <Button onClick={displayMsg} >Notify!</Button>
-          <Spacer height="1.5rem" />
+          <Button onClick={showToast}>Show Toast</Button>
+          <Spacer height="0.5rem" />
           <Toast />
         </>
       );
@@ -56,7 +42,8 @@ interface MessageProps {
   </Story>
 </Preview>
 
-### Severity Toast
+### severity
+
 > `severity?: "danger" | "notification" | "warning" | "success";` - by default toast has `"notification"` styling
 
 <Preview>
@@ -69,10 +56,10 @@ interface MessageProps {
             message="Please wait a bit for the severity level"
           />
         );
-      }
+      };
       return (
         <>
-          <Button onClick={(e) => {e.preventDefault(); displayMsgSeverity();}}>Notify!</Button>
+          <Button onClick={displayMsgSeverity}>Show Toast</Button>
           <Spacer height="0.5rem" />
           <Toast />
           <Spacer height="0.5rem" />
