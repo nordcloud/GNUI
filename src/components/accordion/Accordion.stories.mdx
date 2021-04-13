@@ -5,39 +5,54 @@ import { Accordion, AccordionHeader, AccordionItem } from "./";
 
 # Accordion
 
-#### Props
+> You can build an accordion using a combination of the `Accordion`, `AccordionHeader` and `AccordionItem` components. The Accordion component accepts a list of AccordionHeader components as children and each AccordionHeader accepts a list of AccordionItems that are responsible for displaying content.
 
-- `children`: `AccordionHeader components` — **required**
+## Accordion properties
+
+| properties | required | type                       | description |
+| ---------: | :------: | :------------------------- | :---------- |
+|   children |   true   | AccordionHeader components |             |
 
 <Preview>
   <Story name="accordion">
     <Accordion>
-        <AccordionHeader title="Header 1" description="description..." />
-        <AccordionHeader title="Header 2" description="description..." />
+      <AccordionHeader title="Header 1" description="description..." />
+      <AccordionHeader title="Header 2" description="description..." />
     </Accordion>
   </Story>
 </Preview>
 
-# accordion header
+# AccordionHeader
 
-#### Props
+## AccordionHeader properties
 
-- `title`: `string` — header title **required**
-- `description`: `string` — header description — _optional_
-- `children`: `AccordionItem components` — _optional_
+|  properties | required | type                     | description |
+| ----------: | :------: | :----------------------- | :---------- |
+|       title |   true   | string                   |             |
+| description |  false   | string                   |             |
+|    children |  false   | AccordionItem components |             |
+
+# AccordionItem
+
+## AccordionItem properties
+
+| properties | required | type                 | description |
+| ---------: | :------: | :------------------- | :---------- |
+|   children |   true   |  any  |             |
+
 
 <Preview>
   <Story name="accordion header">
     <Accordion>
-        <AccordionHeader title="Header 1" description="description...">
-            <AccordionItem>1234</AccordionItem>
-        </AccordionHeader>
-        <AccordionHeader title="Header 2" description="description...">
-            <AccordionItem>1234</AccordionItem>
-        </AccordionHeader>
-        <AccordionHeader title="Header 3" description="description...">
-            <AccordionItem>1234</AccordionItem>
-        </AccordionHeader>
+      <AccordionHeader title="Header 1" description="description...">
+        <AccordionItem>1234</AccordionItem>
+      </AccordionHeader>
+      <AccordionHeader title="Header 2" description="description...">
+        <AccordionItem>1234</AccordionItem>
+      </AccordionHeader>
+      <AccordionHeader title="Header 3" description="description...">
+        <AccordionItem>1234</AccordionItem>
+      </AccordionHeader>
     </Accordion>
   </Story>
 </Preview>
