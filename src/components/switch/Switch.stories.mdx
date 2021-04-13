@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Switch } from ".";
 import { GnuiContainer } from "../container";
@@ -8,14 +9,17 @@ import theme from "../../theme";
 
 # Switch
 
-#### Props
+> A switch allows to change a setting between two states.
 
-- `input element props`
-- `labelText`: `string` — _optional_ - text to display in the label
-- `severity`: `"danger" | "notification" | "warning" | "success"` — _optional_ - color indicator status for switch
-- `position`: `"left" | "right"` — _optional_ - switch position
+## Switch properties
 
-## Default
+| properties | required | type                                                                                          | description                       |
+| ---------: | :------: | :-------------------------------------------------------------------------------------------- | :-------------------------------- |
+|  labelText |  false   | string                                                                                        | text to display in the label      |
+|   severity |  false   | <code>danger</code> , <code>notification</code> , <code>warning</code> , <code>success</code> | color indicator status for switch |
+|   position |  false   | <code>left</code> , <code>right</code>                                                        | switch position                   |
+
+## default
 
 <Preview>
   <Story name="default">
@@ -23,7 +27,7 @@ import theme from "../../theme";
   </Story>
 </Preview>
 
-## Label Position
+## position
 
 <Preview>
   <Story name="position">
@@ -39,7 +43,7 @@ import theme from "../../theme";
   </Story>
 </Preview>
 
-## Switch severity
+## severity
 
 > Adds color indication for severity levels
 >
@@ -47,34 +51,43 @@ import theme from "../../theme";
 
 <Preview>
   <Story name="severity">
-    <GnuiContainer>
-      <Switch
-        name="label1"
-        severity="warning"
-        labelText="My Switch Button Warning"
-        checked
-      />
-      <Spacer height="1rem" />
-      <Switch
-        name="label2"
-        severity="danger"
-        labelText="My Switch Button Danger"
-        checked
-      />
-      <Spacer height="1rem" />
-      <Switch
-        name="label3"
-        severity="success"
-        labelText="My Switch Button Success"
-        checked
-      />
-      <Spacer height="1rem" />
-      <Switch
-        name="label4"
-        severity="notification"
-        labelText="My Switch Button Notification"
-        checked
-      />
-    </GnuiContainer>
+    {() => {
+      const [toggle, setToggle] = useState(true);
+      return (
+        <GnuiContainer>
+          <Switch
+            name="label1"
+            severity="warning"
+            labelText="My Switch Button Warning"
+            onClick={() => setToggle((prevState) => !prevState)}
+            checked={toggle}
+          />
+          <Spacer height="1rem" />
+          <Switch
+            name="label2"
+            severity="danger"
+            labelText="My Switch Button Danger"
+            onClick={() => setToggle((prevState) => !prevState)}
+            checked={toggle}
+          />
+          <Spacer height="1rem" />
+          <Switch
+            name="label3"
+            severity="success"
+            labelText="My Switch Button Success"
+            onClick={() => setToggle((prevState) => !prevState)}
+            checked={toggle}
+          />
+          <Spacer height="1rem" />
+          <Switch
+            name="label4"
+            severity="notification"
+            labelText="My Switch Button Notification"
+            onClick={() => setToggle((prevState) => !prevState)}
+            checked={toggle}
+          />
+        </GnuiContainer>
+      );
+    }}
   </Story>
 </Preview>
