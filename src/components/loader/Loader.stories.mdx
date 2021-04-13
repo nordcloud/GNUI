@@ -9,11 +9,13 @@ import theme from "../../theme";
 
 # Loader
 
-## Props
+## Loader properties
 
-> - `inContent`: `boolean` — **optional**
-> - `isBackground`: `boolean` — **optional**
-> - `position`: `top-left` | `top-right` | `bottom-right` | `bottom-center` | `bottom-left` — **optional**
+|   properties | required | type                                                                                                                               | description |
+| -----------: | :------: | :--------------------------------------------------------------------------------------------------------------------------------- | :---------- |
+|    inContent |  false   | boolean                                                                                                                            |             |
+| isBackground |  false   | boolean                                                                                                                            |             |
+|     position |  false   | <code>top-left</code> , <code>top-right</code> , <code>bottom-right</code> , <code>bottom-center</code> , <code>bottom-left</code> |             |
 
 ## Default
 
@@ -25,7 +27,7 @@ import theme from "../../theme";
   </Story>
 </Preview>
 
-## Loader Position
+## position
 
 > `position`: `top-left` | `top-right` | `bottom-right` | `bottom-center` | `bottom-left` — **optional**
 
@@ -42,7 +44,7 @@ import theme from "../../theme";
   </Story>
 </Preview>
 
-## In Content
+## inContent
 
 > `inContent`: `boolean` — **optional**
 
@@ -59,7 +61,7 @@ import theme from "../../theme";
 > `isBackground`: `boolean` — **optional**
 
 <Preview>
-  <Story name="isBackground">
+  <Story name="isBackground" height="300px">
     <GnuiContainer>
       <Loader isBackground />
     </GnuiContainer>
