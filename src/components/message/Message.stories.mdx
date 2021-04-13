@@ -8,17 +8,15 @@ import { Spacer } from "../spacer";
 
 # Message
 
-#### Props
+#### Message properties
 
-```typescript
-type MessageProps = {
-  image?: string;
-  status?: "success" | "notification" | "danger";
-  borderColor?: string;
-  background?: string;
-  color?: string;
-};
-```
+|  properties | required | type                                                                 | description                                                                                       |
+| ----------: | :------: | :------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------ |
+|      status |  false   | <code>success</code>, <code>notification</code>, <code>danger</code> |                                                                                                   |
+|       image |  false   | string                                                               | to get icon names look into <a href="?path=/docs/components-svgicon--size">SVG icon component</a> |
+| borderColor |  false   | string                                                               | border color                                                                                      |
+|  background |  false   | string                                                               | background color                                                                                  |
+|       color |  false   | string                                                               | text color                                                                                        |
 
 ## Default
 
