@@ -9,26 +9,27 @@ import title from "title";
 
 > Simple `Text` is styled `p` paragraph.
 
+## Text properties
+
+| properties | required | type                                                                                                  | description                                                                                                                                                 |
+| ---------: | :------: | :---------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|       size |  false   | <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>xxl</code> | Text size                                                                                                                                                   |
+|        tag |  false   | string                                                                                                | <code>Text</code> can can be rendered as any other HTML tag instead of p (i.e. <code>Text</code> with <code>tag="span"</code>, will be rendered as a span). |
+|    display |  false   | string                                                                                                | used as css <code>display</code> prop                                                                                                                       |
+| lineHeight |  false   | string                                                                                                | used as css <code>line-height</code> prop                                                                                                                   |
+|      color |  false   | string                                                                                                | used as css <code>color</code> prop                                                                                                                         |
+|     weight |  false   | <code>regular</code>, <code>medium</code>, <code>bold</code>                                          | Text weight                                                                                                                                                 |
+|  textStyle |  false   | <code>normal</code>, <code>italic</code>                                                              | Text style - italic or normal                                                                                                                               |
+|      align |  false   | <code>left</code>, <code>center</code>, <code>right</code>                                            | Text align                                                                                                                                                  |
+|      width |  false   | string                                                                                                | used as css <code>width</code> prop                                                                                                                                                              |
+|     nowrap |  false   | boolean                                                                                               |                                                                                                                                                             |
+|    isTitle |  false   | boolean                                                                                               |                                                                                                                                                             |
+
 <Preview>
   <Story name="simple">
     <Text>Default paragraph.</Text>
   </Story>
 </Preview>
-
-## Props
-
-- `size`: `string` — _optional_
-- `tag`: `string` — _optional_
-- `display`: `string` — _optional_
-- `lineHeight`: `string` — _optional_
-- `color`: `boolean` — _optional_
-- `weight`: `boolean` — _optional_
-- `textStyle`: `boolean` — _optional_
-- `align`: `boolean` — _optional_
-- `lineHeight`: `string` — _optional_
-- `width`: `string` — _optional_
-- `nowrap`: `boolean` — _optional_
-- `isTitle`: `boolean` — _optional_
 
 ### size
 
@@ -114,6 +115,18 @@ import title from "title";
       <Text align="left">Lorem ipsum solor domet.</Text>
       <Text align="center">Lorem ipsum solor domet.</Text>
       <Text align="right">Lorem ipsum solor domet.</Text>
+    </GnuiContainer>
+  </Story>
+</Preview>
+
+### isTitle
+
+> `isTitle`: `boolean`
+
+<Preview>
+  <Story name="isTitle">
+    <GnuiContainer>
+      <Text isTitle="true">Lorem ipsum solor domet.</Text>
     </GnuiContainer>
   </Story>
 </Preview>
