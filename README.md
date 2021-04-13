@@ -4,12 +4,12 @@
 
 # General Nordcloud UI
 
-This repo contains Nordcloud PAT Design System - a collection of reusable react components that can be used in PAT products.
+This repo contains the Nordcloud Design System - a collection of reusable React components used in Nordcloud's SaaS products.
 
 ## Components
 
-1. Design System (`/components`)
-2. Storybook (`/stories`)
+1. Design System (`/src/components`)
+2. Storybook (`/src/stories`)
 
 ## Usage
 
@@ -17,9 +17,9 @@ This repo contains Nordcloud PAT Design System - a collection of reusable react 
 
 ## Storybook deployment
 
-Storybook allows you to preview GNUI components. It deploys automatically using Amplify Console, triggered by changes on branch `master`. Pipeline steps can be found in `amplify.yml`.
+Storybook allows you to preview components. It deploys the code automatically with Amplify Console triggered by changes on branch `master`. Pipeline steps are found in `amplify.yml`.
 
-When you create PR against `master` branch, Amplify will create new deployment automatically - the environment will be attached to PR at Github. Reviewers can preview changes using this deployment - after the PR gets merged or rejected, the environment is destroyed automatically by Amplify Console.
+When you create a PR against the `master` branch, Amplify creates a new deployment automatically - the environment will be attached to the PR at Github. Reviewers can preview changes using this deployment - after the PR gets merged or rejected, the environment is destroyed automatically by Amplify Console.
 
 ## Contributing to this repo
 
