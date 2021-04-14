@@ -11,9 +11,7 @@ import "react-toastify/dist/ReactToastify.minimal.css";
 
 export type ToastProps = {
   name?: string;
-  heading?: string;
   severity?: "danger" | "notification" | "warning" | "success";
-  closeToast?: (e: React.MouseEvent) => void;
 };
 
 export type MessageProps = {
