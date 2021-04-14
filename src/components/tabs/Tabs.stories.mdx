@@ -8,39 +8,32 @@ import { Text } from "../text";
 
 # Tabs
 
-#### Props
+## Tabs properties
 
-```typescript
-interface TabProps {
-  className?: string;
-  wizard?: boolean;
-  step?: number;
-  heading?: string;
-  caption?: string;
-  activeTab: number;
-  children?: React.ReactNode;
-  onClick?: (e: any) => void;
-  onChange?: (e: any) => void;
-  props?: any;
-  styleActive?: boolean;
-  index: number;
-  disabled?: boolean;
-}
+| properties | required | type                      | description        |
+| ---------: | :------: | :------------------------ | :----------------- |
+|     wizard |  false   | boolean                   | enable wizard mode |
+|       name |  false   | string                    |                    |
+|   children |   true   | <code>`Array<Tab>`</code> | array of tabs      |
+|  handleTab |   true   | <code>`() => void`</code> |                    |
+|       step |   true   | number                    |                    |
 
-interface TabsProps {
-  wizard?: boolean;
-  name?: string;
-  caption?: string;
-  children: Array<TabProps>;
-  handleTab: () => void;
-  step: number;
-  buttons?: React.ReactNode;
-}
-```
+## Tab properties
+
+|     properties | required | type                            | description                               |
+| -------------: | :------: | :------------------------------ | :---------------------------------------- |
+|           step |  false   | number                          |                                           |
+|        heading |  false   | string                          | tab heading                               |
+|        caption |  false   | string                          | tab caption                               |
+|       children |  false   | <code>`React.ReactNode`</code>  | tab content                               |
+|        onClick |  false   | <code>`(e: any) => void`</code> |                                           |
+|       onChange |  false   | <code>`(e: any) => void`</code> |                                           |
+|    styleActive |  false   | boolean                         |                                           |
+|       disabled |  false   | boolean                         |                                           |
+|        buttons |  false   | <code>`React.ReactNode`</code>  | custom buttons for tab                    |
+| buttonsJustify |  false   | string                          | buttons justify, default: "space-between" |
 
 ## Default
-
-> `caption?: string;` - caption for the tab
 
 <Preview>
   <Story name="default">
@@ -250,29 +243,29 @@ interface TabsProps {
             </Text>
           </Tab>
           <Tab
-                      heading="Summary"
-                      caption="great, your application is ready"
-                      buttonsJustify="flex-start"
-                      buttons={
-                        <>
-                          <Button onClick={() => {}}>Button 1</Button>
-                          <Button onClick={() => {}}>Button 2</Button>
-                        </>
-                      }
-                    >
-                      <Text>
-                        Lorem ipsum for Tab 1. Lorem Ipsum is simply dummy text of the
-                        printing and typesetting industry. Lorem Ipsum has been the
-                        industry's standard dummy text ever since the 1500s, when an
-                        unknown printer took a galley of type and scrambled it to make a
-                        type specimen book. It has survived not only five centuries, but
-                        also the leap into electronic typesetting, remaining essentially
-                        unchanged. It was popularised in the 1960s with the release of
-                        Letraset sheets containing Lorem Ipsum passages, and more recently
-                        with desktop publishing software like Aldus PageMaker including
-                        versions of Lorem Ipsum.
-                      </Text>
-                    </Tab>
+            heading="Summary"
+            caption="great, your application is ready"
+            buttonsJustify="flex-start"
+            buttons={
+              <>
+                <Button onClick={() => {}}>Button 1</Button>
+                <Button onClick={() => {}}>Button 2</Button>
+              </>
+            }
+          >
+            <Text>
+              Lorem ipsum for Tab 1. Lorem Ipsum is simply dummy text of the
+              printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s, when an
+              unknown printer took a galley of type and scrambled it to make a
+              type specimen book. It has survived not only five centuries, but
+              also the leap into electronic typesetting, remaining essentially
+              unchanged. It was popularised in the 1960s with the release of
+              Letraset sheets containing Lorem Ipsum passages, and more recently
+              with desktop publishing software like Aldus PageMaker including
+              versions of Lorem Ipsum.
+            </Text>
+          </Tab>
         </Tabs>
       );
     }}
