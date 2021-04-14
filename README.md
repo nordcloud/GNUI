@@ -1,6 +1,8 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors)
-<!-- ALL-CONTRIBUTORS-BADGE:END --> 
+
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 # General Nordcloud UI
 
@@ -36,7 +38,12 @@ When you create a PR against the `master` branch, Amplify creates a new deployme
 - `npm install`
 - `npm run storybook`
 
+## Development
+
+- Make sure to check out [Storybook Design System](https://github.com/storybookjs/design-system)
+
 ## Contributors
+
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -51,6 +58,7 @@ When you create a PR against the `master` branch, Amplify creates a new deployme
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://allcontributors.org) specification.
