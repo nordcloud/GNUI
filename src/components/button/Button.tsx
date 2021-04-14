@@ -71,6 +71,9 @@ const changeSeverity = (severity: string) => {
       background: transparent;
       border-color: ${theme.color.interactive.primary};
       color: ${theme.color.text.text01};
+      svg {
+        fill: ${theme.color.text.text01};
+      }
       .spinner {
         div {
           border-color: ${theme.color.text.text01} transparent transparent
@@ -80,9 +83,15 @@ const changeSeverity = (severity: string) => {
       &:hover {
         background: ${theme.color.interactive.secondary};
         color: ${theme.color.text.text01};
+        svg {
+          fill: ${theme.color.text.text01};
+        }
       }
       &:active {
         background: ${theme.color.interactive.secondaryHover};
+        svg {
+          fill: ${theme.color.text.text01};
+        }
       }
       `;
     case "low":
@@ -90,6 +99,9 @@ const changeSeverity = (severity: string) => {
       background: ${theme.color.interactive.secondary};
       color: ${theme.color.text.text01};
       border: none;
+      svg {
+        fill: ${theme.color.text.text01};
+      }
       .spinner {
         div {
           border-color: ${theme.color.text.text01} transparent transparent
@@ -99,9 +111,16 @@ const changeSeverity = (severity: string) => {
       &:hover {
         background: ${theme.color.interactive.secondaryHover};
         color: ${theme.color.text.text01};
+        svg {
+          fill: ${theme.color.text.text01};
+        }
       }
       &:active {
         background: ${theme.color.interactive.secondaryActive};
+
+        svg {
+          fill: ${theme.color.text.text01};
+        }
       }
       `;
   }
@@ -131,7 +150,7 @@ const StyledButton = styled.button<ButtonProps>`
   }
 
   svg {
-    fill: currentColor;
+    fill: ${theme.color.text.text04};
     width: 1.25rem;
     height: 1.25rem;
     padding: 0.125rem;
@@ -160,6 +179,10 @@ const StyledButton = styled.button<ButtonProps>`
     color: ${theme.color.text.text04};
     background: ${theme.color.interactive.primaryHover};
     text-decoration: none;
+
+    svg {
+      fill: ${theme.color.text.text04};
+    }
   }
 
   &:active {
@@ -213,6 +236,12 @@ const StyledButton = styled.button<ButtonProps>`
       &:disabled:hover {
         color: ${theme.color.interactive.disabled};
       }
+      svg {
+        fill: ${(props: ButtonProps) =>
+          props.severity === "medium"
+            ? setColor(color)
+            : theme.color.text.text04};
+      }
       .spinner {
         div {
           border-color: ${(props: ButtonProps) =>
@@ -231,6 +260,12 @@ const StyledButton = styled.button<ButtonProps>`
           props.severity === "medium"
             ? lighten(0.35, setColor(color))
             : darken(0.1, setColor(color))};
+        svg {
+          fill: ${(props: ButtonProps) =>
+            props.severity === "medium"
+              ? darken(0.1, setColor(color))
+              : theme.color.text.text04};
+        }
       }
       &:active {
         background: ${(props: ButtonProps) =>
