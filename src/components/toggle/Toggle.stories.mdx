@@ -1,19 +1,22 @@
 import { useState } from "react";
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Toggle } from ".";
+import { Spacer } from "../spacer";
 
 <Meta title="Forms/Toggle" component={Toggle} />
 
 # Toggle
 
-#### Props
+> A toggle button allows changing a setting between two states.
 
-- `name`: `string` **required**
-- `labelText`: `string` **required**
-- `toggleValue`: `boolean` — _optional_
-- `size`: `string` — _optional_ - small-sized SelectButton
-- `status`: `string` — _optional_ - color indicator status for SelectButton
-- `handleChange`: `() => boolean` — _optional_ - React `setState` to handle toggleValue change
+## Toggle properties
+
+|  properties | required | type                                                                                       | description                                   |
+| ----------: | :------: | :----------------------------------------------------------------------------------------- | :-------------------------------------------- |
+|    onChange |   true   | <code>() => boolean</code>                                                                 | React `setState` to handle toggleValue change |
+|   labelText |   true   | string                                                                                     |                                               |
+|        size |  false   | <code>small</code>                                                                         |                                               |
+|      status |  false   | <code>success</code>, <code>danger</code>, <code>warning</code>, <code>notification</code> | color indicator status for SelectButton       |
 
 ### Default
 
@@ -24,7 +27,6 @@ import { Toggle } from ".";
       return (
         <Toggle
           labelText="Default"
-          name="default"
           value={toggle}
           onChange={() => setToggle((prevState) => !prevState)}
         />
@@ -35,7 +37,7 @@ import { Toggle } from ".";
 
 ### Small
 
-> - `size`: `string` — [`small`]
+> - `size`: `small`
 
 <Preview>
   <Story name="small">
@@ -56,7 +58,7 @@ import { Toggle } from ".";
 
 ### Color Status
 
-> - `status`: `string` — [`success`, `danger`, `warning`, `notification`]
+> - `status`: `success`, `danger`, `warning`, `notification`
 
 <Preview>
   <Story name="status">
@@ -73,6 +75,7 @@ import { Toggle } from ".";
               onChange={() => setToggle((prevState) => !prevState)}
             />
           </p>
+          <Spacer height="1rem" />
           <p>
             <Toggle
               status="danger"
@@ -82,6 +85,7 @@ import { Toggle } from ".";
               onChange={() => setToggle((prevState) => !prevState)}
             />
           </p>
+          <Spacer height="1rem" />
           <p>
             <Toggle
               status="warning"
@@ -91,6 +95,7 @@ import { Toggle } from ".";
               onChange={() => setToggle((prevState) => !prevState)}
             />
           </p>
+          <Spacer height="1rem" />
           <p>
             <Toggle
               status="notification"
