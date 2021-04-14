@@ -8,41 +8,49 @@ import { Spacer } from "../spacer";
 
 # Message
 
-#### Props
+#### Message properties
 
-```typescript
-type MessageProps = {
-  image?: string;
-  status?: "success" | "notification" | "danger";
-  borderColor?: string;
-  background?: string;
-  color?: string;
-};
-```
+|  properties | required | type                                                                 | description                                                                                       |
+| ----------: | :------: | :------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------ |
+|      status |  false   | <code>success</code>, <code>notification</code>, <code>danger</code> |                                                                                                   |
+|       image |  false   | string                                                               | to get icon names look into <a href="?path=/docs/components-svgicon--size">SVG icon component</a> |
+| borderColor |  false   | string                                                               | border color                                                                                      |
+|  background |  false   | string                                                               | background color                                                                                  |
+|       color |  false   | string                                                               | text color                                                                                        |
 
-## Default
+## default
 
 <Preview>
   <Story name="default">
-    <>
-      <Message status="success" image="success">
+      <Message>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
         veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
         commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
         velit esse cillum dolore eu fugiat nulla pariatur.
       </Message>
+  </Story>
+</Preview>
+
+## status
+
+<Preview>
+  <Story name="status">
+    <>
+      <Message status="success" image="success">
+        status: success
+      </Message>
       <Spacer height="1rem" />
       <Message status="danger" image="danger">
-        Account has been added
+        status: danger
       </Message>
       <Spacer height="1rem" />
       <Message status="notification" image="info">
-        Account has been added
+        status: notification
       </Message>
       <Spacer height="1rem" />
       <Message status="danger" background="#F5B7B1" color="#B03A2E">
-        Account has been added
+        custom background and color
       </Message>
     </>
   </Story>
