@@ -8,6 +8,19 @@ import theme from "../../theme";
 
 # Spacer
 
+> Used for separate elements
+
+## Spacer properties
+
+| properties | required | type           | description                            |
+| ---------: | :------: | :------------- | :------------------------------------- |
+|  className |  false   | string         | custom css class name                  |
+|     height |  false   | number, string | height of element                      |
+|      width |  false   | number, string | width of element                       |
+|    bgColor |  false   | string         | background color, default: transparent |
+|     border |  false   | string         | border styles                          |
+|     margin |  false   | number, string |                                        |
+
 <Preview>
   <Story name="default">
     <Flex>
@@ -35,19 +48,6 @@ import theme from "../../theme";
     </Flex>
   </Story>
 </Preview>
-
-## Props
-
-```typescript
-interface SpacerProps {
-  className?: string;
-  height?: number | string;
-  width?: number | string;
-  background?: string;
-  border?: string;
-  margin?: number | string;
-}
-```
 
 <Preview>
   <Story name="margin">
