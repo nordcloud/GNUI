@@ -5,20 +5,27 @@ import { PaginationBox } from ".";
 
 # Pagination
 
-## Props
+## Pagination properties
 
-- `size`: `number` — **required**
-- `count`: `number` — **required**
-- `from`: `number` — **required**
-- `setPage`: `number` — **required**
-- `setSize`: `number` — **required**
-- `sidebar`: `boolean` — **option**
+| properties | required | type    | description                  |
+| ---------: | :------: | :------ | :--------------------------- |
+|       size |   true   | number  | number of item per page      |
+|      count |   true   | number  | number of all items          |
+|       from |   true   | number  | index of first item on page  |
+|    setPage |   true   | number  | set current page             |
+|    setSize |   true   | number  | set number of items per page |
+|      small |  false   | boolean | small size styles            |
+|    sidebar |  false   | boolean | small size for sidebar usage |
+
+## default
 
 <Preview>
   <Story name="default">
     <PaginationBox count={400} from={0} size={20} setPage={0} setSize={20} />
   </Story>
 </Preview>
+
+## small
 
 <Preview>
   <Story name="small">
