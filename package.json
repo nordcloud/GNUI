@@ -1,6 +1,6 @@
 {
   "name": "@nordcloud/gnui",
-  "version": "0.11.2",
+  "version": "0.11.3",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -47,6 +47,9 @@
     ]
   },
   "dependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "babel-loader": "^8.1.0",
     "polished": "^3.4.4",
     "react": "^16.13.1",
     "react-awesome-styled-grid": "^3.0.12",
@@ -61,12 +64,10 @@
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.6",
-    "@babel/preset-env": "^7.9.6",
     "@storybook/addon-actions": "^6.0.5",
     "@storybook/addon-docs": "^6.0.5",
     "@storybook/addon-info": "5.3.19",
-    "@storybook/addon-knobs": "^6.2.4",
+    "@storybook/addon-knobs": "^6.0.5",
     "@storybook/addon-links": "^6.0.5",
     "@storybook/addons": "^6.0.5",
     "@storybook/preset-create-react-app": "^3.1.4",
@@ -80,10 +81,9 @@
     "@types/react-date-range": "^0.94.4",
     "@types/react-dom": "^16.9.0",
     "@types/react-select": "^4.0.13",
-    "@types/storybook__addon-info": "^4.1.2",
+    "@types/storybook__addon-info": "^5.2.1",
     "@types/styled-components": "^5.1.0",
     "@types/styled-system": "^5.1.7",
-    "babel-loader": "^8.1.0",
     "date-fns": "^2.14.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
