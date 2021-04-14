@@ -9,22 +9,25 @@ import { Button } from "../button";
 
 > Please take a look at props to understand correctly how `Modal` works.
 
-### Props
+### Modal properties
 
-- `onClose`: (event: `React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>`) => void - **required**
-- `actions`: Array<{
+|       properties | required | type                                                                | description            |
+| ---------------: | :------: | :------------------------------------------------------------------ | :--------------------- |
+|          onClose |   true   | <code>(event: React.MouseEvent<Element, MouseEvent>) => void</code> |                        |
+|          actions |  false   | <code>`Array<Action>`</code>                                        | list of action buttons |
+|            appId |  false   | string                                                              |                        |
+| contentMaxHeight |  false   | string                                                              | default: `25rem`       |
+|    modalMinWidth |  false   | string                                                              | default: `18.75rem`    |
+|        alignText |  false   | <code>left</code>, <code>right</code>, <code>center</code>          | default: `left`        |
 
-  - `order`: number - **required** from left to right
-  - `onAction`: (event: `React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>`) => void; - **required**
-  - `severity`: "low" | "medium" | "high" - **required**
-  - `disabled`: boolean - _optional_
+### Action properties
 
-  }> — _optional_
-
-- `appId`: string - _optional_
-- `contentMaxHeight`: string - _optional_, default `25rem`
-- `modalMinWidth`: string - _optional_, default `18.75rem`
-- `alignText`: string - _optional_, "left" | "right" | "center", default `left`
+| properties | required | type                                                                | description        |
+| ---------: | :------: | :------------------------------------------------------------------ | :----------------- |
+|      order |   true   | number                                                              | from left to right |
+|   onAction |   true   | <code>(event: React.MouseEvent<Element, MouseEvent>) => void</code> |                    |
+|   severity |   true   | <code>low</code>, <code>medium</code>, <code>high</code>            |                    |
+|   disabled |  false   | boolean                                                             |                    |
 
 ### Basic modal
 
