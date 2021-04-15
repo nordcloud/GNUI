@@ -7,17 +7,19 @@ import { Spacer } from "../spacer";
 
 # Popover
 
-## Props
-> - `trigger`: `React.ReactNode` - **required**
-> - `children`: `React.ReactNode` - **required**
+## Popover Props
+
+| properties | required | type            | description     |
+| ---------: | :------: | :-------------- | :-------------- |
+|    trigger |   true   | React.ReactNode | trigger element |
+|   children |   true   | React.ReactNode | content         |
+| alignRight |  false   | boolean         |                 |
 
 ## Default view
 
 <Preview>
   <Story name="default">
-    <Popover
-      trigger={<Button severity="low" icon="menu" size="md" />}
-    >
+    <Popover trigger={<Button severity="low" icon="menu" size="md" />}>
       <Button mb="0.25rem" severity="low" icon="plus" size="md">
         Add new
       </Button>
