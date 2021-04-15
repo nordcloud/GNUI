@@ -8,24 +8,27 @@ import { SVGIcon } from "../svgicon";
 
 # PieChart
 
-## Props
+## PieChart properties
 
-- `size`: `number` — **required**
-- `progress`: `number` — **required**
-- `strokeWidth`: `number` — **required**
-- `color`: `danger` | `warning` | `success` | `notification`;
+|  properties | required | type                                                                                       | description              |
+| ----------: | :------: | :----------------------------------------------------------------------------------------- | :----------------------- |
+|        size |   true   | number                                                                                     | width and height in `px` |
+|    progress |   true   | number                                                                                     |                          |
+| strokeWidth |   true   | number                                                                                     |                          |
+|       color |  false   | <code>danger</code>, <code>warning</code>, <code>success</code>, <code>notification</code> |                          |
+|    children |  false   | <code>`ReactElement<any>`</code>                                                           | elements inside chart    |
 
 ## Default
 
 <Preview>
   <Story name="default">
-    <PieChart
-      progress={33}
-      size={96}
-      strokeWidth={15}
-    >
-      <Text className="chartValue" size="lg" tag="span" weight="medium">33%</Text>
-      <Text className="chartCaption" size="xs" tag="span">progress</Text>
+    <PieChart progress={33} size={96} strokeWidth={15}>
+      <Text className="chartValue" size="lg" tag="span" weight="medium">
+        33%
+      </Text>
+      <Text className="chartCaption" size="xs" tag="span">
+        progress
+      </Text>
     </PieChart>
   </Story>
 </Preview>
@@ -37,50 +40,43 @@ import { SVGIcon } from "../svgicon";
 <Preview>
   <Story name="color">
     <Flex justifyContent="space-evenly">
-      <PieChart
-        progress={13}
-        size={96}
-        strokeWidth={15}
-        color="danger"
-      >
-        <Text className="chartValue" size="lg" tag="span" weight="medium">13%</Text>
-        <Text className="chartCaption" size="xs" tag="span">progress</Text>
+      <PieChart progress={13} size={96} strokeWidth={15} color="danger">
+        <Text className="chartValue" size="lg" tag="span" weight="medium">
+          13%
+        </Text>
+        <Text className="chartCaption" size="xs" tag="span">
+          progress
+        </Text>
       </PieChart>
-      <PieChart
-        progress={26}
-        size={96}
-        strokeWidth={15}
-        color="warning"
-      >
-        <Text className="chartValue" size="lg" tag="span" weight="medium">26%</Text>
-        <Text className="chartCaption" size="xs" tag="span">progress</Text>
+      <PieChart progress={26} size={96} strokeWidth={15} color="warning">
+        <Text className="chartValue" size="lg" tag="span" weight="medium">
+          26%
+        </Text>
+        <Text className="chartCaption" size="xs" tag="span">
+          progress
+        </Text>
       </PieChart>
-      <PieChart
-        progress={65}
-        size={96}
-        strokeWidth={15}
-        color="success"
-      >
-        <Text className="chartValue" size="lg" tag="span" weight="medium">65%</Text>
-        <Text className="chartCaption" size="xs" tag="span">progress</Text>
+      <PieChart progress={65} size={96} strokeWidth={15} color="success">
+        <Text className="chartValue" size="lg" tag="span" weight="medium">
+          65%
+        </Text>
+        <Text className="chartCaption" size="xs" tag="span">
+          progress
+        </Text>
       </PieChart>
-      <PieChart
-        progress={75}
-        size={96}
-        strokeWidth={15}
-        color="notification"
-      >
-        <Text className="chartValue" size="lg" tag="span" weight="medium">75%</Text>
-        <Text className="chartCaption" size="xs" tag="span">progress</Text>
+      <PieChart progress={75} size={96} strokeWidth={15} color="notification">
+        <Text className="chartValue" size="lg" tag="span" weight="medium">
+          75%
+        </Text>
+        <Text className="chartCaption" size="xs" tag="span">
+          progress
+        </Text>
       </PieChart>
-      <PieChart
-        progress={100}
-        size={96}
-        strokeWidth={15}
-        color="success"
-      >
-        <SVGIcon name="success" color="success" size="md"/>
-        <Text className="chartCaption" size="xs" tag="span">progress</Text>
+      <PieChart progress={100} size={96} strokeWidth={15} color="success">
+        <SVGIcon name="success" color="success" size="md" />
+        <Text className="chartCaption" size="xs" tag="span">
+          progress
+        </Text>
       </PieChart>
     </Flex>
   </Story>
