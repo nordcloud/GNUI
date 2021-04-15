@@ -7,13 +7,23 @@ import { useState } from "react";
 
 # SelectButton
 
-#### Props
+#### MultipleSelect properties
 
-- `list`: `array` — **required** and containes the following **required** props: `name`: `string`, `value`: `string`, `labelText`: `string` and the following _optional_: `id`, `className`
-- `handleChange`: `() => string | number` — _optional_ - React `setState` to handle select value change
-- `value`: `string | number` — _optional_ - current select value
-- `size`: `string` — _optional_ - small-sized SelectButton
-- `status`: `string` — _optional_ - color indicator status for SelectButton
+| properties | required | type                                                                                       | description                             |
+| ---------: | :------: | :----------------------------------------------------------------------------------------- | :-------------------------------------- |
+|   children |   true   | <code>`Array<SelectButton>`</code>                                                         |                                         |
+|       size |  false   | `small`                                                                                    | small-sized SelectButton                |
+|     status |  false   | <code>success</code>, <code>danger</code>, <code>warning</code>, <code>notification</code> | color indicator status for SelectButton |
+
+#### SelectButton properties
+
+| properties | required | type                                                       | description                                    |
+| ---------: | :------: | :--------------------------------------------------------- | :--------------------------------------------- |
+|       name |   true   | string                                                     |                                                |
+|    onClick |   true   | <code>`(value: SelectButtonProps["value"]) => void`</code> | React `setState` to handle select value change |
+|      value |   true   | string                                                     |                                                |
+|  labelText |   true   | string                                                     |                                                |
+|   isActive |  false   | boolean                                                    |                                                |
 
 ### Default
 
