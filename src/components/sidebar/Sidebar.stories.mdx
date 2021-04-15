@@ -16,23 +16,19 @@ import { PaginationBox } from "../pagination/Pagination.tsx";
 
 # Sidebar
 
-<Description>
-  Sidebars by default will be displayed on the right side of the screen. User
-  needs to provide element (button, link, etc) to open it.
-</Description>
+> Sidebars by default will be displayed on the right side of the screen. User needs to provide element (button, link, etc) to open it.
 
-## Props
+## Sidebar properties
 
-```typescript
-interface SidebarProps {
-  children?: React.ReactNode;
-  title?: string;
-  isOpen?: boolean;
-  side?: "onLeft" | "onRight";
-  width?: number | string;
-  onClick?: (e: any) => void;
-}
-```
+| properties | required | type                                      | description |
+| ---------: | :------: | :---------------------------------------- | :---------- |
+|   children |  false   | <code>`ReactElement<any>`</code>          |             |
+|      title |  false   | string                                    |             |
+|     isOpen |  false   | boolean                                   |             |
+|       side |  false   | <code>onLeft</code>, <code>onRight</code> |             |
+|      width |  false   | number, string                            |             |
+|    onClick |  false   | <code>(e: any) => void</code>             |             |
+|     footer |  false   | <code>`ReactElement<any>`</code>          |             |
 
 ### default
 
