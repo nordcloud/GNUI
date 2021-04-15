@@ -10,17 +10,21 @@ import { Flex } from "../container";
 
 <Meta title="Components/Navigation" component={Navigation.Item} />
 
-<Preview>
-  <Story name="single link">
-    {() => {
-      return (
-        <Navigation.Item as="a" href="http://google.com" target="_blank">
-          Google
-        </Navigation.Item>
-      );
-    }}
-  </Story>
-</Preview>
+# Navigation
+
+## Navigation.Container properties
+
+|  properties | required | type                                  | description               |
+| ----------: | :------: | :------------------------------------ | :------------------------ |
+|    children |   true   | <code>`Array<Navigation.Item>`</code> |                           |
+|   secondary |  false   | boolean                               | styles for secondary menu |
+| popoverMenu |  false   | boolean                               | styles for popover menu   |
+
+## Navigation.Item properties
+
+| properties | required | type                             | description |
+| ---------: | :------: | :------------------------------- | :---------- |
+|   children |   true   | <code>`ReactElement<any>`</code> |             |
 
 ### Primary Navigation
 
