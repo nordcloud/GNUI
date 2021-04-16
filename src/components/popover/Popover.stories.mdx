@@ -2,6 +2,7 @@ import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Popover } from ".";
 import { Button } from "../button";
 import { Spacer } from "../spacer";
+import { Flex } from "../container";
 
 <Meta title="Components/Popover" component={Popover} />
 
@@ -9,11 +10,11 @@ import { Spacer } from "../spacer";
 
 ## Popover Props
 
-| properties | required | type            | description     |
-| ---------: | :------: | :-------------- | :-------------- |
-|    trigger |   true   | React.ReactNode | trigger element |
-|   children |   true   | React.ReactNode | content         |
-| alignRight |  false   | boolean         |                 |
+| properties | required | type            | description                                                   |
+| ---------: | :------: | :-------------- | :------------------------------------------------------------ |
+|    trigger |   true   | React.ReactNode | trigger element                                               |
+|   children |   true   | React.ReactNode | content                                                       |
+| alignRight |  false   | boolean         | justifies the content to the right in relation to the trigger |
 
 ## Default view
 
@@ -27,6 +28,27 @@ import { Spacer } from "../spacer";
         Edit
       </Button>
     </Popover>
+    <Spacer height="8rem" />
+  </Story>
+</Preview>
+
+## alignRight
+
+<Preview>
+  <Story name="alignRight">
+    <Flex justifyContent="flex-end">
+      <Popover
+        alignRight
+        trigger={<Button severity="low" icon="menu" size="md" />}
+      >
+        <Button mb="0.25rem" severity="low" icon="plus" size="md">
+          Add new
+        </Button>
+        <Button severity="low" icon="edit" size="md">
+          Edit
+        </Button>
+      </Popover>
+    </Flex>
     <Spacer height="8rem" />
   </Story>
 </Preview>
