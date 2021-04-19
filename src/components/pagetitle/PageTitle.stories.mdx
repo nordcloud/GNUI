@@ -1,20 +1,17 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { PageTitle, PageTitleBreadcrumbs } from ".";
 
-
 <Meta title="Patterns/PageTitleBreadcrumbs" component={PageTitleBreadcrumbs} />
 
-# Page Title with Breadcrumbs
 
-### Page Title
 
-#### Props
+# Page Title
 
-```typescript
-interface PageTitleProps {
-  title: string;
-}
-```
+## Page Title properties
+
+| properties | required | type   | description |
+| ---------: | :------: | :----- | :---------- |
+|      title |   true   | string |             |
 
 <Preview>
   <Story name="pagetitle">
@@ -22,17 +19,22 @@ interface PageTitleProps {
   </Story>
 </Preview>
 
-### Page Title with Breadcrumbs
+# Page Title with Breadcrumbs
 
-#### Props
+## Page Title with Breadcrumbs properties
 
-```typescript
-interface PageTitleBreadcrumbsProps {
-  title: string;
-  list: Array<BreadcrumbsList>;
-  margin?: string;
-};
-```
+| properties | required | type                                  | description |
+| ---------: | :------: | :------------------------------------ | :---------- |
+|      title |   true   | string                                |             |
+|       list |   true   | <code>`Array<BreadcrumbsList>`</code> |             |
+|     margin |  false   | string                                |             |
+
+## BreadcrumbsList properties
+
+| properties | required | type   | description |
+| ---------: | :------: | :----- | :---------- |
+|      label |   true   | string |             |
+|        uri |   true   | string |             |
 
 <Preview>
   <Story name="breadcrumbs">
@@ -41,9 +43,8 @@ interface PageTitleBreadcrumbsProps {
       list={[
         { label: "Home", uri: `#` },
         { label: "Hosts", uri: `#` },
-        { label: "Host Details", uri: `#` }
+        { label: "Host Details", uri: `#` },
       ]}
-      />
+    />
   </Story>
 </Preview>
-

@@ -3,11 +3,15 @@ import { Radio, RadioGroup } from ".";
 
 <Meta title="Forms/Radiobutton" component={Radio} />
 
-# Radio Buttons
-
-### Simple Radio button
+# Radio Button
 
 > Default input type `radio`.
+
+## Radio Button properties
+
+| properties | required | type   | description                |
+| ---------: | :------: | :----- | :------------------------- |
+|  labelText |   true   | string | label for the radio button |
 
 <Preview>
   <Story name="simple">
@@ -15,14 +19,15 @@ import { Radio, RadioGroup } from ".";
   </Story>
 </Preview>
 
-#### Props
-
-- `input element props`
-- `labelText`: `string` — **required** - label for the radio button
-
-### Group Radio button
+## RadioGroup
 
 > Group of radio buttons. First radio button is checked by default
+
+## RadioGroup properties
+
+| properties | required | type   | description |
+| ---------: | :------: | :----- | :---------- |
+|       name |   true   | string |             |
 
 <Preview>
   <Story name="group">
@@ -33,7 +38,3 @@ import { Radio, RadioGroup } from ".";
     </RadioGroup>
   </Story>
 </Preview>
-
-#### Props
-
-- `name`: `string` — **required**
