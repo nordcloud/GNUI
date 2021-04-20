@@ -10,9 +10,12 @@ import theme from "../../theme";
 
 # Textarea
 
-#### Props
+## Textarea properties
 
-- `status`: `string` — _optional_ - color indicator status for SelectButton
+| properties | required | type                                      | description                             |
+| ---------: | :------: | :---------------------------------------- | :-------------------------------------- |
+|     status |  false   | <code>`success`</code>, <code>`error`</code> | color indicator status for SelectButton |
+|      small |  false   | boolean                                   | small size styles                       |
 
 ## default
 
@@ -43,6 +46,7 @@ import theme from "../../theme";
           <GnuiContainer>
             <Textarea status={status} />
           </GnuiContainer>
+          <Spacer height="1rem" />
           <GnuiContainer>
             <Button
               size="small"
