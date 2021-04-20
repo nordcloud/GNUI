@@ -18,22 +18,24 @@ import { InputSearch } from "./InputSearch.tsx";
   </Story>
 </Preview>
 
-## Props
+## Input properties
 
-**Input**:
+|      properties | required | type                                         | description                           |
+| --------------: | :------: | :------------------------------------------- | :------------------------------------ |
+|            name |   true   | string                                       |                                       |
+|            type |  false   | string                                       | default: `text`                       |
+|     placeholder |  false   | string                                       | Placeholder text inside input element |
+|           title |  false   | string                                       |                                       |
+|        disabled |  false   | boolean                                      |                                       |
+|          status |  false   | <code>`success`</code>, <code>`error`</code> |                                       |
+| showClearButton |  false   | boolean                                      |                                       |
+|         onClear |  false   | <code>`() => void`</code>                    |                                       |
 
-- `name`: `string` — **required**
-- `type`: `string` — _optional_, default: `text`
-- `placeholder`: `string` – _optional_
-- `title`: `string` – _optional_
-- `disabled`: `boolean` — _optional_
-- `status`: `success | error` - _optional_
-- `showClearButton`: `boolean` - _optional_
-- `onClear`: `() => void` - _optional_
+## Label properties
 
-**Label**:
-
-- `name`: `string`
+| properties | required | type   | description |
+| ---------: | :------: | :----- | :---------- |
+|       name |   true   | string |             |
 
 ### name
 
@@ -66,7 +68,7 @@ For now it works good for two types: default `text` and `search`. The second one
 
 > `placeholder`: `string`
 
-Nothing more to add, just text placeholder which works exactly like in default HTML tag 🕺🏼
+Placeholder text inside input element
 
 ### disabled
 
