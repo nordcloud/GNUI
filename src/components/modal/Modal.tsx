@@ -52,6 +52,7 @@ export const ModalCloseButton = styled(Button)`
 
 export const ModalAction = styled(Button)`
   margin-left: ${theme.spacing.spacing04};
+
   &:first-child {
     margin-left: auto;
   }
