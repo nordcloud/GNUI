@@ -37,6 +37,7 @@ export const ModalConfirm = ({
   actionLabel,
   alignText,
   onClose,
+  confirm,
   ...props
 }: ModalProps) => {
   return (
@@ -57,10 +58,12 @@ export const ModalConfirm = ({
             </ModalHeader>
             <ModalContent alignText={alignText}>{children}</ModalContent>
             <ModalActions>
-              <ModalAction onClick={onClose} severity="medium">
+              <ModalAction onClick={onClose} severity="medium" type="button">
                 Cancel
               </ModalAction>
-              <ModalAction onClick={props.confirm}>{actionLabel}</ModalAction>
+              <ModalAction onClick={confirm} type="button">
+                {actionLabel}
+              </ModalAction>
             </ModalActions>
           </ModalBox>
         )}
