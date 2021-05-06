@@ -1,6 +1,6 @@
 {
   "name": "@nordcloud/gnui",
-  "version": "0.13.0",
+  "version": "1.0.0",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -39,7 +39,6 @@
     "react-modal": "^3.11.2",
     "react-scripts": "^3.4.3",
     "react-select": "^4.3.0",
-    "react-toastify": "^5.5.0",
     "reset": "^0.1.0",
     "storybook": "6.0.5",
     "styled": "^1.0.0",

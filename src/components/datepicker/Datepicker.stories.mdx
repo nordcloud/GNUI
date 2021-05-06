@@ -1,8 +1,8 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
-import { addDays } from 'date-fns';
-import { useState } from 'react';
+import { addDays } from "date-fns";
+import { useState } from "react";
 import { Datepicker } from ".";
-import { Calendar, DateRangePicker } from 'react-date-range';
+import { Calendar, DateRangePicker } from "react-date-range";
 
 <Meta title="Forms/Datepicker" component={Datepicker} />
 
@@ -12,7 +12,7 @@ import { Calendar, DateRangePicker } from 'react-date-range';
 
 ```typescript
 type DatepickerProps = {
-  children?:any;
+  children?: any;
 };
 ```
 
@@ -23,16 +23,11 @@ type DatepickerProps = {
     {() => {
       const handleSelect = (date) => {
         console.log(date);
-      }
+      };
       return (
-        <>
-          <Datepicker>
-            <Calendar
-              date={new Date()}
-              onChange={(date) => handleSelect(date)}
-            />
-          </Datepicker>
-        </>
+        <Datepicker>
+          <Calendar date={new Date()} onChange={(date) => handleSelect(date)} />
+        </Datepicker>
       );
     }}
   </Story>
@@ -43,27 +38,25 @@ type DatepickerProps = {
     {() => {
       const handleSelect = (ranges) => {
         console.log(ranges);
-      }
+      };
       const [state, setState] = useState([
         {
           startDate: new Date(),
           endDate: addDays(new Date(), 7),
-          key: 'selection'
-        }
+          key: "selection",
+        },
       ]);
       return (
-        <>
-          <Datepicker>
-            <DateRangePicker
-              onChange={item => setState([item.selection])}
-              showSelectionPreview={true}
-              moveRangeOnFirstSelection={false}
-              months={2}
-              ranges={state}
-              direction="horizontal"
-            />
-          </Datepicker>
-        </>
+        <Datepicker>
+          <DateRangePicker
+            onChange={(item) => setState([item.selection])}
+            showSelectionPreview={true}
+            moveRangeOnFirstSelection={false}
+            months={2}
+            ranges={state}
+            direction="horizontal"
+          />
+        </Datepicker>
       );
     }}
   </Story>
