@@ -39,67 +39,25 @@ import { Text } from "../text";
   <Story name="default">
     {() => {
       const [isCurrentStep, setCurrentStep] = useState(0);
-      const nextStep = () => {
-        setCurrentStep(isCurrentStep + 1);
-      };
-      const previousStep = () => {
-        setCurrentStep(isCurrentStep - 1);
-      };
-      const handleSteps = (key) => {
-        setCurrentStep(key);
-      };
       return (
-        <Tabs step={isCurrentStep} handleTab={handleSteps}>
+        <Tabs step={isCurrentStep} handleTab={setCurrentStep}>
           <Tab
             heading="Tab 1"
             caption="Lorem ipsum for Tab 1. Lorem Ipsum is simply dummy text"
           >
-            <Text>
-              Lorem ipsum for Tab 1. Lorem Ipsum is simply dummy text of the
-              printing and typesetting industry. Lorem Ipsum has been the
-              industry's standard dummy text ever since the 1500s, when an
-              unknown printer took a galley of type and scrambled it to make a
-              type specimen book. It has survived not only five centuries, but
-              also the leap into electronic typesetting, remaining essentially
-              unchanged. It was popularised in the 1960s with the release of
-              Letraset sheets containing Lorem Ipsum passages, and more recently
-              with desktop publishing software like Aldus PageMaker including
-              versions of Lorem Ipsum.
-            </Text>
+            <Text>Tab 1 Content.</Text>
           </Tab>
           <Tab
             heading="Tab 2"
             caption="Lorem ipsum for Tab 1. Lorem Ipsum is simply dummy text"
           >
-            <Text>
-              Lorem ipsum for Tab 2. Lorem Ipsum is simply dummy text of the
-              printing and typesetting industry. Lorem Ipsum has been the
-              industry's standard dummy text ever since the 1500s, when an
-              unknown printer took a galley of type and scrambled it to make a
-              type specimen book. It has survived not only five centuries, but
-              also the leap into electronic typesetting, remaining essentially
-              unchanged. It was popularised in the 1960s with the release of
-              Letraset sheets containing Lorem Ipsum passages, and more recently
-              with desktop publishing software like Aldus PageMaker including
-              versions of Lorem Ipsum.
-            </Text>
+            <Text>Tab 2 Content.</Text>
           </Tab>
           <Tab
             heading="Tab 3"
             caption="Lorem ipsum for Tab 1. Lorem Ipsum is simply dummy text"
           >
-            <Text>
-              Lorem ipsum for Tab 3. Lorem Ipsum is simply dummy text of the
-              printing and typesetting industry. Lorem Ipsum has been the
-              industry's standard dummy text ever since the 1500s, when an
-              unknown printer took a galley of type and scrambled it to make a
-              type specimen book. It has survived not only five centuries, but
-              also the leap into electronic typesetting, remaining essentially
-              unchanged. It was popularised in the 1960s with the release of
-              Letraset sheets containing Lorem Ipsum passages, and more recently
-              with desktop publishing software like Aldus PageMaker including
-              versions of Lorem Ipsum.
-            </Text>
+            <Text>Tab 3 Content.</Text>
           </Tab>
         </Tabs>
       );
@@ -113,58 +71,16 @@ import { Text } from "../text";
   <Story name="nocaption">
     {() => {
       const [isCurrentStep, setCurrentStep] = useState(0);
-      const nextStep = () => {
-        setCurrentStep(isCurrentStep + 1);
-      };
-      const previousStep = () => {
-        setCurrentStep(isCurrentStep - 1);
-      };
-      const handleSteps = (key) => {
-        setCurrentStep(key);
-      };
       return (
-        <Tabs step={isCurrentStep} handleTab={handleSteps}>
+        <Tabs step={isCurrentStep} handleTab={setCurrentStep}>
           <Tab heading="Tab 1">
-            <Text>
-              Lorem ipsum for Tab 1. Lorem Ipsum is simply dummy text of the
-              printing and typesetting industry. Lorem Ipsum has been the
-              industry's standard dummy text ever since the 1500s, when an
-              unknown printer took a galley of type and scrambled it to make a
-              type specimen book. It has survived not only five centuries, but
-              also the leap into electronic typesetting, remaining essentially
-              unchanged. It was popularised in the 1960s with the release of
-              Letraset sheets containing Lorem Ipsum passages, and more recently
-              with desktop publishing software like Aldus PageMaker including
-              versions of Lorem Ipsum.
-            </Text>
+            <Text>Tab 1 Content.</Text>
           </Tab>
           <Tab heading="Tab 2">
-            <Text>
-              Lorem ipsum for Tab 2. Lorem Ipsum is simply dummy text of the
-              printing and typesetting industry. Lorem Ipsum has been the
-              industry's standard dummy text ever since the 1500s, when an
-              unknown printer took a galley of type and scrambled it to make a
-              type specimen book. It has survived not only five centuries, but
-              also the leap into electronic typesetting, remaining essentially
-              unchanged. It was popularised in the 1960s with the release of
-              Letraset sheets containing Lorem Ipsum passages, and more recently
-              with desktop publishing software like Aldus PageMaker including
-              versions of Lorem Ipsum.
-            </Text>
+            <Text>Tab 2 Content.</Text>
           </Tab>
           <Tab heading="Tab 3">
-            <Text>
-              Lorem ipsum for Tab 3. Lorem Ipsum is simply dummy text of the
-              printing and typesetting industry. Lorem Ipsum has been the
-              industry's standard dummy text ever since the 1500s, when an
-              unknown printer took a galley of type and scrambled it to make a
-              type specimen book. It has survived not only five centuries, but
-              also the leap into electronic typesetting, remaining essentially
-              unchanged. It was popularised in the 1960s with the release of
-              Letraset sheets containing Lorem Ipsum passages, and more recently
-              with desktop publishing software like Aldus PageMaker including
-              versions of Lorem Ipsum.
-            </Text>
+            <Text>Tab 3 Content.</Text>
           </Tab>
         </Tabs>
       );
@@ -185,38 +101,24 @@ import { Text } from "../text";
     {() => {
       const [isCurrentStep, setCurrentStep] = useState(0);
       const nextStep = () => {
-        setCurrentStep(isCurrentStep + 1);
+        setCurrentStep((prevStep) => prevStep + 1);
       };
       const previousStep = () => {
-        setCurrentStep(isCurrentStep - 1);
-      };
-      const handleSteps = (key) => {
-        setCurrentStep(key);
+        setCurrentStep((prevStep) => prevStep - 1);
       };
       return (
-        <Tabs step={isCurrentStep} handleTab={handleSteps} wizard>
+        <Tabs step={isCurrentStep} handleTab={setCurrentStep} wizard>
           <Tab
             heading="Application Details"
             caption="give some general information about your application"
             buttons={
               <>
-                <Button onClick={() => {}}>Button 1</Button>
-                <Button onClick={() => {}}>Button 2</Button>
+                <Button onClick={previousStep}>Previous</Button>
+                <Button onClick={nextStep}>Next</Button>
               </>
             }
           >
-            <Text>
-              Lorem ipsum for Tab 1. Lorem Ipsum is simply dummy text of the
-              printing and typesetting industry. Lorem Ipsum has been the
-              industry's standard dummy text ever since the 1500s, when an
-              unknown printer took a galley of type and scrambled it to make a
-              type specimen book. It has survived not only five centuries, but
-              also the leap into electronic typesetting, remaining essentially
-              unchanged. It was popularised in the 1960s with the release of
-              Letraset sheets containing Lorem Ipsum passages, and more recently
-              with desktop publishing software like Aldus PageMaker including
-              versions of Lorem Ipsum.
-            </Text>
+            <Text>Tab 1 Content.</Text>
           </Tab>
           <Tab
             heading="Application Environments"
@@ -224,47 +126,25 @@ import { Text } from "../text";
             buttonsJustify="flex-start"
             buttons={
               <>
-                <Button onClick={() => {}}>Button 1</Button>
-                <Button onClick={() => {}}>Button 2</Button>
+                <Button onClick={previousStep}>Previous</Button>
+                <Button onClick={nextStep}>Next</Button>
               </>
             }
           >
-            <Text>
-              Lorem ipsum for Tab 1. Lorem Ipsum is simply dummy text of the
-              printing and typesetting industry. Lorem Ipsum has been the
-              industry's standard dummy text ever since the 1500s, when an
-              unknown printer took a galley of type and scrambled it to make a
-              type specimen book. It has survived not only five centuries, but
-              also the leap into electronic typesetting, remaining essentially
-              unchanged. It was popularised in the 1960s with the release of
-              Letraset sheets containing Lorem Ipsum passages, and more recently
-              with desktop publishing software like Aldus PageMaker including
-              versions of Lorem Ipsum.
-            </Text>
+            <Text>Tab 2 Content.</Text>
           </Tab>
           <Tab
             heading="Summary"
             caption="great, your application is ready"
-            buttonsJustify="flex-start"
+            buttonsJustify="center"
             buttons={
               <>
-                <Button onClick={() => {}}>Button 1</Button>
-                <Button onClick={() => {}}>Button 2</Button>
+                <Button onClick={previousStep}>Previous</Button>
+                <Button onClick={nextStep}>Next</Button>
               </>
             }
           >
-            <Text>
-              Lorem ipsum for Tab 1. Lorem Ipsum is simply dummy text of the
-              printing and typesetting industry. Lorem Ipsum has been the
-              industry's standard dummy text ever since the 1500s, when an
-              unknown printer took a galley of type and scrambled it to make a
-              type specimen book. It has survived not only five centuries, but
-              also the leap into electronic typesetting, remaining essentially
-              unchanged. It was popularised in the 1960s with the release of
-              Letraset sheets containing Lorem Ipsum passages, and more recently
-              with desktop publishing software like Aldus PageMaker including
-              versions of Lorem Ipsum.
-            </Text>
+            <Text>Tab 3 Content.</Text>
           </Tab>
         </Tabs>
       );
@@ -272,39 +152,47 @@ import { Text } from "../text";
   </Story>
 </Preview>
 
-## One Tab
+## Disabled tab
+
+> `disabled`: `boolean` — Disables switching to a tab by clicking on it
 
 <Preview>
-  <Story name="one tab">
+  <Story name="disabled tab">
     {() => {
       const [isCurrentStep, setCurrentStep] = useState(0);
       const nextStep = () => {
-        setCurrentStep(isCurrentStep + 1);
+        setCurrentStep((prevStep) => prevStep + 1);
       };
       const previousStep = () => {
-        setCurrentStep(isCurrentStep - 1);
-      };
-      const handleSteps = (key) => {
-        setCurrentStep(key);
+        setCurrentStep((prevStep) => prevStep - 1);
       };
       return (
-        <Tabs step={isCurrentStep} handleTab={handleSteps}>
+        <Tabs step={isCurrentStep} handleTab={setCurrentStep} wizard>
           <Tab
             heading="Tab 1"
             caption="Lorem ipsum for Tab 1. Lorem Ipsum is simply dummy text"
+            disabled
+            buttons={
+              <>
+                <Button onClick={previousStep}>Previous</Button>
+                <Button onClick={nextStep}>Next</Button>
+              </>
+            }
           >
-            <Text>
-              Lorem ipsum for Tab 1. Lorem Ipsum is simply dummy text of the
-              printing and typesetting industry. Lorem Ipsum has been the
-              industry's standard dummy text ever since the 1500s, when an
-              unknown printer took a galley of type and scrambled it to make a
-              type specimen book. It has survived not only five centuries, but
-              also the leap into electronic typesetting, remaining essentially
-              unchanged. It was popularised in the 1960s with the release of
-              Letraset sheets containing Lorem Ipsum passages, and more recently
-              with desktop publishing software like Aldus PageMaker including
-              versions of Lorem Ipsum.
-            </Text>
+            <Text>Tab 1 Content.</Text>
+          </Tab>
+          <Tab
+            heading="Tab 2"
+            caption="Lorem ipsum for Tab 2. Lorem Ipsum is simply dummy text"
+            disabled
+            buttons={
+              <>
+                <Button onClick={previousStep}>Previous</Button>
+                <Button onClick={nextStep}>Next</Button>
+              </>
+            }
+          >
+            <Text>Tab 2 Content.</Text>
           </Tab>
         </Tabs>
       );
