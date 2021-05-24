@@ -272,7 +272,7 @@ export const Tabs: FunctionComponent<TabsProps> = ({
           return (
             <React.Fragment key={key}>
               <TabsContent>{children}</TabsContent>
-              {wizard && (
+              {buttons != null && (
                 <TabsStatusButtons buttonsJustify={buttonsJustify}>
                   {buttons}
                 </TabsStatusButtons>
