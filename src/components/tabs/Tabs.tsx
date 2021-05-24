@@ -251,6 +251,7 @@ export const Tabs: FunctionComponent<TabsProps> = ({
           const { heading, caption, disabled, buttonsJustify } = child.props;
           return (
             <Tab
+              key={key}
               wizard={wizard}
               step={key + 1}
               activeTab={step}
@@ -269,14 +270,14 @@ export const Tabs: FunctionComponent<TabsProps> = ({
           if (key !== step) return undefined;
           const { children, buttonsJustify, buttons } = child.props;
           return (
-            <>
+            <React.Fragment key={key}>
               <TabsContent>{children}</TabsContent>
               {wizard && (
                 <TabsStatusButtons buttonsJustify={buttonsJustify}>
                   {buttons}
                 </TabsStatusButtons>
               )}
-            </>
+            </React.Fragment>
           );
         })}
       </TabsCover>
