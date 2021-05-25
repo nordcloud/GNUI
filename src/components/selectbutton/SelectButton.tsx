@@ -1,9 +1,9 @@
 import React, { ReactNode, HTMLAttributes } from "react";
 import styled, { css } from "styled-components";
+import { darken } from "polished";
 import theme from "../../theme";
 import { SingleColors } from "../../theme/config";
 import { setColor } from "../../utils/setcolor";
-import { darken } from "polished";
 
 export type SelectButtonProps = HTMLAttributes<HTMLButtonElement> & {
   name: string;

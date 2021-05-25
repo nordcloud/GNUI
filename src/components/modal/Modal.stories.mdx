@@ -41,10 +41,8 @@ import { Button } from "../button";
           <Button onClick={update}>Open modal</Button>
           <Modal
             isOpen={isOpen}
-            onAfterOpen={() => {}}
             onClose={update}
             contentLabel={"Modal title"}
-            onRequestClose={update}
             appId="#root"
             alignText="center"
           >
@@ -70,8 +68,6 @@ import { Button } from "../button";
           <Button onClick={update}>Open modal</Button>
           <Modal
             isOpen={isOpen}
-            onAfterOpen={() => {}}
-            onRequestClose={update}
             onClose={update}
             contentLabel={"Modal title"}
             appId="#root"

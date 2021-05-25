@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from "react";
 import styled, { css } from "styled-components";
-import theme from "../../theme";
 import { space, SpaceProps } from "styled-system";
+import theme from "../../theme";
 import { SVGIcon } from "../svgicon";
 
 type AccordionProps = {

@@ -1,8 +1,8 @@
 import React, { FunctionComponent, InputHTMLAttributes, Ref } from "react";
 import styled, { css } from "styled-components";
+import { space, SpaceProps } from "styled-system";
 import theme from "../../theme";
 import { GnuiContainer, Flex } from "../container";
-import { space, SpaceProps } from "styled-system";
 
 export type CheckboxProps = {
   labelText?: string;

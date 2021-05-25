@@ -1,7 +1,7 @@
 import React, { useEffect, useState, FunctionComponent } from "react";
 import styled, { css } from "styled-components";
-import theme from "../../theme";
 import { space, SpaceProps } from "styled-system";
+import theme from "../../theme";
 
 type IPieChart = {
   size: number;
