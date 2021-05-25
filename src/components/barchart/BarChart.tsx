@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import theme from "../../theme";
 import { space } from "styled-system";
+import theme from "../../theme";
 
 type IBarValue = {
   color: string;

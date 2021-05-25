@@ -26,8 +26,6 @@ export type BackgroudProps = {
 };
 export type ModalProps = {
   isOpen: boolean;
-  onRequestClose?: () => void;
-  onAfterOpen?: () => void;
   onClose?: (
     event: React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>
   ) => void;

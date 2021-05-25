@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
+import { space } from "styled-system";
 import theme from "../../theme";
 import { GnuiContainer } from "../container";
-import { space } from "styled-system";
 
 type DropdownWrapperProps = {
   value: string;

@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
+import { default as ReactSelect, Props } from "react-select";
 import styled from "styled-components";
 import theme from "../../theme";
-import { default as ReactSelect, Props } from "react-select";
 
 export type SelectProps = {
   options?: any;
