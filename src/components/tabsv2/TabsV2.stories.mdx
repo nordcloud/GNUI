@@ -1,0 +1,241 @@
+import { useState } from "react";
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { TabsV2, TabV2 } from ".";
+import { Button } from "../button";
+import { Text } from "../text";
+import { Tab, Tabs } from "../tabs"; import { SVGIcon } from "../svgicon";
+
+<Meta title="Components/TabsV2" component={TabsV2} />
+
+# TabsV2
+
+## TabsV2 properties
+
+| properties | required | type                      | description        |
+| ---------: | :------: | :------------------------ | :----------------- |
+|     wizard |  false   | boolean                   | enable wizard mode |
+|       name |  false   | string                    |                    |
+|   children |   true   | <code>`Array<Tab>`</code> | array of tabs      |
+|  handleTab |   true   | <code>`() => void`</code> |                    |
+|       step |   true   | number                    |                    |
+
+## TabV2 properties
+
+|     properties | required | type                            | description                               |
+| -------------: | :------: | :------------------------------ | :---------------------------------------- |
+|           step |  false   | number                          |                                           |
+|        heading |  false   | <code>`React.ReactNode`</code>  | custom heading for tab                    |
+|        caption |  false   | string                          | tab caption                               |
+|       children |  false   | <code>`React.ReactNode`</code>  | tab content                               |
+|        onClick |  false   | <code>`(e: any) => void`</code> |                                           |
+|       onChange |  false   | <code>`(e: any) => void`</code> |                                           |
+|    styleActive |  false   | boolean                         |                                           |
+|       disabled |  false   | boolean                         |                                           |
+|        buttons |  false   | <code>`React.ReactNode`</code>  | custom buttons for tab                    |
+| buttonsJustify |  false   | string                          | buttons justify, default: "space-between" |
+
+### Default
+
+<Preview>
+  <Story name="default">
+    {() => {
+      const [isCurrentStep, setCurrentStep] = useState(0);
+      return (
+        <TabsV2 step={isCurrentStep} handleTab={setCurrentStep}>
+          <TabV2
+            heading={<h1>Tab 1</h1>}
+            caption="Lorem ipsum for Tab 1. Lorem Ipsum is simply dummy text"
+          >
+            <Text>Tab 1 Content.</Text>
+          </TabV2>
+          <TabV2
+            heading={<h1>Tab 2</h1>}
+            caption="Lorem ipsum for Tab 1. Lorem Ipsum is simply dummy text"
+          >
+            <Text>Tab 2 Content.</Text>
+          </TabV2>
+          <TabV2
+            heading={<h1>Tab 3</h1>}
+            caption="Lorem ipsum for Tab 1. Lorem Ipsum is simply dummy text"
+          >
+            <Text>Tab 3 Content.</Text>
+          </TabV2>
+        </TabsV2>
+      );
+    }}
+  </Story>
+</Preview>
+
+### No Caption
+
+<Preview>
+  <Story name="nocaption">
+    {() => {
+      const [isCurrentStep, setCurrentStep] = useState(0);
+      return (
+        <TabsV2 step={isCurrentStep} handleTab={setCurrentStep}>
+          <TabV2 heading={<h1>Tab 1</h1>}>
+            <Text>Tab 1 Content.</Text>
+          </TabV2>
+          <TabV2 heading={<h1>Tab 2</h1>}>
+            <Text>Tab 2 Content.</Text>
+          </TabV2>
+          <TabV2 heading={<h1>Tab 3</h1>}>
+            <Text>Tab 3 Content.</Text>
+          </TabV2>
+        </TabsV2>
+      );
+    }}
+  </Story>
+</Preview>
+
+### Wizard With Buttons
+
+> `wizard?: boolean;` - Enable wizard mode
+
+> `buttons?: React.ReactNode;` - Custom buttons on tab
+
+> `buttonsJustify?: string;` - Buttons justify, default: "space-between"
+
+<Preview>
+  <Story name="With Buttons">
+    {() => {
+      const [isCurrentStep, setCurrentStep] = useState(0);
+      const nextStep = () => {
+        setCurrentStep((prevStep) => prevStep + 1);
+      };
+      const previousStep = () => {
+        setCurrentStep((prevStep) => prevStep - 1);
+      };
+      return (
+        <TabsV2 step={isCurrentStep} handleTab={setCurrentStep} wizard>
+          <TabV2
+            heading={<h1>Application Details</h1>}
+            caption="give some general information about your application"
+            buttons={
+              <>
+                <Button onClick={previousStep}>Previous</Button>
+                <Button onClick={nextStep}>Next</Button>
+              </>
+            }
+          >
+            <Text>Tab 1 Content.</Text>
+          </TabV2>
+          <TabV2
+            heading={<h1>Application Environments</h1>}
+            caption="add environments to your application, setup rules for the cost allocation and automate applications discovery"
+            buttonsJustify="flex-start"
+            buttons={
+              <>
+                <Button onClick={previousStep}>Previous</Button>
+                <Button onClick={nextStep}>Next</Button>
+              </>
+            }
+          >
+            <Text>Tab 2 Content.</Text>
+          </TabV2>
+          <TabV2
+            heading={<h1>Summary</h1>}
+            caption="great, your application is ready"
+            buttonsJustify="center"
+            buttons={
+              <>
+                <Button onClick={previousStep}>Previous</Button>
+                <Button onClick={nextStep}>Next</Button>
+              </>
+            }
+          >
+            <Text>Tab 3 Content.</Text>
+          </TabV2>
+        </TabsV2>
+      );
+    }}
+  </Story>
+</Preview>
+
+### Disabled tab
+
+> `disabled`: `boolean` — Disables switching to a tab by clicking on it
+
+<Preview>
+  <Story name="disabled tab">
+    {() => {
+      const [isCurrentStep, setCurrentStep] = useState(0);
+      const nextStep = () => {
+        setCurrentStep((prevStep) => prevStep + 1);
+      };
+      const previousStep = () => {
+        setCurrentStep((prevStep) => prevStep - 1);
+      };
+      return (
+        <TabsV2 step={isCurrentStep} handleTab={setCurrentStep} wizard>
+          <TabV2
+            heading={<h1>Tab 1</h1>}
+            caption="Lorem ipsum for Tab 1. Lorem Ipsum is simply dummy text"
+            disabled
+            buttons={
+              <>
+                <Button onClick={previousStep}>Previous</Button>
+                <Button onClick={nextStep}>Next</Button>
+              </>
+            }
+          >
+            <Text>Tab 1 Content.</Text>
+          </TabV2>
+          <TabV2
+            heading={<h1>Tab 2</h1>}
+            caption="Lorem ipsum for Tab 2. Lorem Ipsum is simply dummy text"
+            disabled
+            buttons={
+              <>
+                <Button onClick={previousStep}>Previous</Button>
+                <Button onClick={nextStep}>Next</Button>
+              </>
+            }
+          >
+            <Text>Tab 2 Content.</Text>
+          </TabV2>
+        </TabsV2>
+      );
+    }}
+  </Story>
+</Preview>
+
+
+### Customize heading
+<Preview>
+  <Story name="customizeheading">
+    {() => {
+      const [isCurrentStep, setCurrentStep] = useState(0);
+      return (
+        <TabsV2 step={isCurrentStep} handleTab={setCurrentStep}>
+          <TabV2 heading={
+            <>
+              <SVGIcon name="aws" size="md" />
+              <h1>Tab 1</h1>
+            </>
+          }
+          >
+            <Text>Tab 1 Content.</Text>
+          </TabV2>
+          <TabV2 heading={
+            <>
+              <SVGIcon name="azure" size="md" />
+              <h1>Tab 1</h1>
+            </>
+          }>
+            <Text>Tab 2 Content.</Text>
+          </TabV2>
+          <TabV2 heading={
+            <>
+              <SVGIcon name="gcp" size="md" />
+              <h1>Tab 1</h1>
+            </>
+          }>
+            <Text>Tab 3 Content.</Text>
+          </TabV2>
+        </TabsV2>
+      );
+    }}
+  </Story>
+</Preview>
