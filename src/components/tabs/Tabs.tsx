@@ -210,13 +210,6 @@ export const Tab: FunctionComponent<TabProps> = ({
   buttonsJustify,
   label = (
     <>
-      {wizard ? (
-        activeTab && index ? (
-          <Step {...(index <= activeTab && { className: "dark" })}>{step}</Step>
-        ) : (
-          <Step>{step}</Step>
-        )
-      ) : null}
       <Text weight="medium" mb={theme.spacing.spacing01}>
         {heading}
       </Text>
@@ -237,6 +230,13 @@ export const Tab: FunctionComponent<TabProps> = ({
       buttons={buttons}
       buttonsJustify={buttonsJustify}
     >
+      {wizard ? (
+        activeTab && index ? (
+          <Step {...(index <= activeTab && { className: "dark" })}>{step}</Step>
+        ) : (
+          <Step>{step}</Step>
+        )
+      ) : null}
       {label}
     </TabContainer>
   );
