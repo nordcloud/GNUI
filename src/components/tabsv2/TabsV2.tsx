@@ -2,60 +2,20 @@ import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { Text } from "../text";
-import { Box } from "../box";
-import { Button } from "../button";
-
-type TabProps = {
-  className?: string;
-  wizard?: boolean;
-  step?: number;
-  heading?: React.ReactNode;
-  caption?: string;
-  activeTab?: number;
-  children?: React.ReactNode;
-  onClick?: (e: any) => void;
-  onChange?: (e: any) => void;
-  props?: any;
-  styleActive?: boolean;
-  index?: number;
-  disabled?: boolean;
-  buttons?: React.ReactNode;
-  buttonsJustify?: string;
-};
-
-type TabsProps = {
-  wizard?: boolean;
-  name?: string;
-  caption?: string;
-  children: Array<TabProps>;
-  handleTab: (e: any) => void;
-  step: number;
-};
-
-type ButtonPreviousProps = {
-  onClick?: (e: any) => void;
-};
-
-type ButtonNextProps = {
-  onClick?: (e: any) => void;
-};
-
-export const TabsV2Content = styled(Box)`
-  background-color: ${theme.color.background.ui01};
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  box-shadow: none;
-  padding: ${theme.spacing.spacing06} ${theme.spacing.spacing04};
-  p {
-    line-height: 1.5rem;
-    &:first-child {
-      margin-top: 0;
-    }
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-`;
+import {
+  ButtonNextProps,
+  ButtonPreviousProps,
+  TabProps,
+  TabsContent,
+  TabsProps,
+  Step,
+  TabsWrapper,
+  TabsList,
+  NextButton,
+  PreviousButton,
+  TabsCover,
+  TabsStatusButtons,
+} from "../tabs";
 
 export const TabV2Container: any = styled.div<TabProps>`
   padding: ${theme.spacing.spacing04};
@@ -98,7 +58,6 @@ export const TabV2Container: any = styled.div<TabProps>`
     border-bottom: 1px solid ${theme.color.background.ui01};
     z-index: ${theme.zindex.default};
   }
-
   &.tab,
   &.tab-active {
     &:first-child {
@@ -109,78 +68,6 @@ export const TabV2Container: any = styled.div<TabProps>`
       }
     }
   }
-`;
-
-const TabsList = styled.div`
-  background-color: ${theme.color.background.ui03};
-  display: flex;
-  overflow-x: auto;
-  padding: 0;
-  margin: 0;
-  position:relative;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  &::after {
-    content:"";
-    width:100%;
-    position:absolute;
-    left:0;
-    bottom:0;
-    border-bottom: 1px solid ${theme.color.border.border01};
-    z-index: ${theme.zindex.zero};
-  }
-}
-`;
-
-const TabsWrapper = styled(Box)`
-  padding: 0;
-`;
-
-const Step = styled(Box)`
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  box-shadow: none;
-  margin-bottom: ${theme.spacing.spacing04};
-  background-color: ${theme.color.background.ui04};
-  color: ${theme.color.text.text02};
-
-  &.dark {
-    background-color: ${theme.color.background.ui05};
-    color: ${theme.color.text.text04};
-  }
-`;
-
-type StyledTabsStatusButtonsProps = {
-  buttonsJustify?: string;
-};
-
-const TabsStatusButtons = styled.div<StyledTabsStatusButtonsProps>`
-  padding: ${theme.spacing.spacing04};
-  border-top: 1px solid ${theme.color.border.border01};
-  display: flex;
-  justify-content: ${({ buttonsJustify }) =>
-    buttonsJustify ? buttonsJustify : "space-between"};
-  position: relative;
-`;
-
-const TabsCover = styled.div`
-  background-color: ${theme.color.background.ui01};
-  border-bottom-left-radius: ${theme.radiusDefault};
-  border-bottom-right-radius: ${theme.radiusDefault};
-`;
-
-const PreviousButton = styled(Button)`
-  position: absolute;
-  border: none;
-`;
-const NextButton = styled(Button)`
-  margin-left: auto;
-  margin-right: auto;
 `;
 
 export const ButtonV2Previous: FunctionComponent<ButtonPreviousProps> = ({
@@ -274,7 +161,7 @@ export const TabsV2: FunctionComponent<TabsProps> = ({
           const { children, buttonsJustify, buttons } = child.props;
           return (
             <React.Fragment key={key}>
-              <TabsV2Content>{children}</TabsV2Content>
+              <TabsContent>{children}</TabsContent>
               {buttons != null && (
                 <TabsStatusButtons buttonsJustify={buttonsJustify}>
                   {buttons}

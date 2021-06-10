@@ -5,7 +5,7 @@ import { Text } from "../text";
 import { Box } from "../box";
 import { Button } from "../button";
 
-type TabProps = {
+export type TabProps = {
   className?: string;
   wizard?: boolean;
   step?: number;
@@ -23,7 +23,7 @@ type TabProps = {
   buttonsJustify?: string;
 };
 
-type TabsProps = {
+export type TabsProps = {
   wizard?: boolean;
   name?: string;
   caption?: string;
@@ -32,11 +32,11 @@ type TabsProps = {
   step: number;
 };
 
-type ButtonPreviousProps = {
+export type ButtonPreviousProps = {
   onClick?: (e: any) => void;
 };
 
-type ButtonNextProps = {
+export type ButtonNextProps = {
   onClick?: (e: any) => void;
 };
 
@@ -110,7 +110,7 @@ export const TabContainer: any = styled.div<TabProps>`
   }
 `;
 
-const TabsList = styled.div`
+export const TabsList = styled.div`
   background-color: ${theme.color.background.ui03};
   display: flex;
   overflow-x: scroll;
@@ -132,11 +132,11 @@ const TabsList = styled.div`
 }
 `;
 
-const TabsWrapper = styled(Box)`
+export const TabsWrapper = styled(Box)`
   padding: 0;
 `;
 
-const Step = styled(Box)`
+export const Step = styled(Box)`
   padding: 0;
   display: flex;
   align-items: center;
@@ -158,7 +158,7 @@ type StyledTabsStatusButtonsProps = {
   buttonsJustify?: string;
 };
 
-const TabsStatusButtons = styled.div<StyledTabsStatusButtonsProps>`
+export const TabsStatusButtons = styled.div<StyledTabsStatusButtonsProps>`
   padding: ${theme.spacing.spacing04};
   border-top: 1px solid ${theme.color.border.border01};
   display: flex;
@@ -167,17 +167,17 @@ const TabsStatusButtons = styled.div<StyledTabsStatusButtonsProps>`
   position: relative;
 `;
 
-const TabsCover = styled.div`
+export const TabsCover = styled.div`
   background-color: ${theme.color.background.ui01};
   border-bottom-left-radius: ${theme.radiusDefault};
   border-bottom-right-radius: ${theme.radiusDefault};
 `;
 
-const PreviousButton = styled(Button)`
+export const PreviousButton = styled(Button)`
   position: absolute;
   border: none;
 `;
-const NextButton = styled(Button)`
+export const NextButton = styled(Button)`
   margin-left: auto;
   margin-right: auto;
 `;
