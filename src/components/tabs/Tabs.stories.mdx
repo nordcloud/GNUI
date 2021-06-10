@@ -41,9 +41,9 @@ import { Flex } from "../container";
 <Preview>
   <Story name="default">
     {() => {
-      const [isCurrentStep, setCurrentStep] = useState(0);
+      const [currentStep, setCurrentStep] = useState(0);
       return (
-        <Tabs step={isCurrentStep} handleTab={setCurrentStep}>
+        <Tabs step={currentStep} handleTab={setCurrentStep}>
           <Tab
             heading="Tab 1"
             caption="Lorem ipsum for Tab 1. Lorem Ipsum is simply dummy text"
@@ -73,9 +73,9 @@ import { Flex } from "../container";
 <Preview>
   <Story name="nocaption">
     {() => {
-      const [isCurrentStep, setCurrentStep] = useState(0);
+      const [currentStep, setCurrentStep] = useState(0);
       return (
-        <Tabs step={isCurrentStep} handleTab={setCurrentStep}>
+        <Tabs step={currentStep} handleTab={setCurrentStep}>
           <Tab heading="Tab 1">
             <Text>Tab 1 Content.</Text>
           </Tab>
@@ -96,9 +96,9 @@ import { Flex } from "../container";
 <Preview>
   <Story name="Custom Label">
     {() => {
-      const [isCurrentStep, setCurrentStep] = useState(0);
+      const [currentStep, setCurrentStep] = useState(0);
       return (
-        <Tabs step={isCurrentStep} handleTab={setCurrentStep}>
+        <Tabs step={currentStep} handleTab={setCurrentStep}>
           <Tab
             label={
               <Flex as="span">
@@ -134,7 +134,7 @@ import { Flex } from "../container";
 <Preview>
   <Story name="With Buttons">
     {() => {
-      const [isCurrentStep, setCurrentStep] = useState(0);
+      const [currentStep, setCurrentStep] = useState(0);
       const nextStep = () => {
         setCurrentStep((prevStep) => prevStep + 1);
       };
@@ -142,7 +142,7 @@ import { Flex } from "../container";
         setCurrentStep((prevStep) => prevStep - 1);
       };
       return (
-        <Tabs step={isCurrentStep} handleTab={setCurrentStep} wizard>
+        <Tabs step={currentStep} handleTab={setCurrentStep} wizard>
           <Tab
             heading="Application Details"
             caption="give some general information about your application"
@@ -194,7 +194,7 @@ import { Flex } from "../container";
 <Preview>
   <Story name="disabled tab">
     {() => {
-      const [isCurrentStep, setCurrentStep] = useState(0);
+      const [currentStep, setCurrentStep] = useState(0);
       const nextStep = () => {
         setCurrentStep((prevStep) => prevStep + 1);
       };
@@ -202,7 +202,7 @@ import { Flex } from "../container";
         setCurrentStep((prevStep) => prevStep - 1);
       };
       return (
-        <Tabs step={isCurrentStep} handleTab={setCurrentStep} wizard>
+        <Tabs step={currentStep} handleTab={setCurrentStep} wizard>
           <Tab
             heading="Tab 1"
             caption="Lorem ipsum for Tab 1. Lorem Ipsum is simply dummy text"
