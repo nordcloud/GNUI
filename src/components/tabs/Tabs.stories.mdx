@@ -3,6 +3,8 @@ import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Tabs, Tab } from ".";
 import { Button } from "../button";
 import { Text } from "../text";
+import { SVGIcon } from "../svgicon";
+import { GnuiContainer, Flex } from "../container";
 
 <Meta title="Components/Tabs" component={Tabs} />
 
@@ -74,6 +76,38 @@ import { Text } from "../text";
       return (
         <Tabs step={isCurrentStep} handleTab={setCurrentStep}>
           <Tab heading="Tab 1">
+            <Text>Tab 1 Content.</Text>
+          </Tab>
+          <Tab heading="Tab 2">
+            <Text>Tab 2 Content.</Text>
+          </Tab>
+          <Tab heading="Tab 3">
+            <Text>Tab 3 Content.</Text>
+          </Tab>
+        </Tabs>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Custom Label
+
+<Preview>
+  <Story name="Custom Content">
+    {() => {
+      const [isCurrentStep, setCurrentStep] = useState(0);
+      return (
+        <Tabs step={isCurrentStep} handleTab={setCurrentStep}>
+          <Tab
+            label={
+              <Flex as="span">
+                <SVGIcon name="aws" />
+                <Text mb={0} ml="0.5rem">
+                  AWS resources.
+                </Text>
+              </Flex>
+            }
+          >
             <Text>Tab 1 Content.</Text>
           </Tab>
           <Tab heading="Tab 2">
