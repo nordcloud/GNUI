@@ -3,6 +3,8 @@ import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Tabs, Tab } from ".";
 import { Button } from "../button";
 import { Text } from "../text";
+import { SVGIcon } from "../svgicon";
+import { Flex } from "../container";
 
 <Meta title="Components/Tabs" component={Tabs} />
 
@@ -32,15 +34,16 @@ import { Text } from "../text";
 |       disabled |  false   | boolean                         |                                           |
 |        buttons |  false   | <code>`React.ReactNode`</code>  | custom buttons for tab                    |
 | buttonsJustify |  false   | string                          | buttons justify, default: "space-between" |
+|          label |  false   | <code>`React.ReactNode`</code>  | custom label element                      |
 
 ## Default
 
 <Preview>
   <Story name="default">
     {() => {
-      const [isCurrentStep, setCurrentStep] = useState(0);
+      const [currentStep, setCurrentStep] = useState(0);
       return (
-        <Tabs step={isCurrentStep} handleTab={setCurrentStep}>
+        <Tabs step={currentStep} handleTab={setCurrentStep}>
           <Tab
             heading="Tab 1"
             caption="Lorem ipsum for Tab 1. Lorem Ipsum is simply dummy text"
@@ -70,10 +73,42 @@ import { Text } from "../text";
 <Preview>
   <Story name="nocaption">
     {() => {
-      const [isCurrentStep, setCurrentStep] = useState(0);
+      const [currentStep, setCurrentStep] = useState(0);
       return (
-        <Tabs step={isCurrentStep} handleTab={setCurrentStep}>
+        <Tabs step={currentStep} handleTab={setCurrentStep}>
           <Tab heading="Tab 1">
+            <Text>Tab 1 Content.</Text>
+          </Tab>
+          <Tab heading="Tab 2">
+            <Text>Tab 2 Content.</Text>
+          </Tab>
+          <Tab heading="Tab 3">
+            <Text>Tab 3 Content.</Text>
+          </Tab>
+        </Tabs>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Custom Label
+
+<Preview>
+  <Story name="Custom Label">
+    {() => {
+      const [currentStep, setCurrentStep] = useState(0);
+      return (
+        <Tabs step={currentStep} handleTab={setCurrentStep}>
+          <Tab
+            label={
+              <Flex as="span">
+                <SVGIcon name="aws" />
+                <Text mb={0} ml="0.5rem">
+                  AWS resources
+                </Text>
+              </Flex>
+            }
+          >
             <Text>Tab 1 Content.</Text>
           </Tab>
           <Tab heading="Tab 2">
@@ -99,7 +134,7 @@ import { Text } from "../text";
 <Preview>
   <Story name="With Buttons">
     {() => {
-      const [isCurrentStep, setCurrentStep] = useState(0);
+      const [currentStep, setCurrentStep] = useState(0);
       const nextStep = () => {
         setCurrentStep((prevStep) => prevStep + 1);
       };
@@ -107,7 +142,7 @@ import { Text } from "../text";
         setCurrentStep((prevStep) => prevStep - 1);
       };
       return (
-        <Tabs step={isCurrentStep} handleTab={setCurrentStep} wizard>
+        <Tabs step={currentStep} handleTab={setCurrentStep} wizard>
           <Tab
             heading="Application Details"
             caption="give some general information about your application"
@@ -159,7 +194,7 @@ import { Text } from "../text";
 <Preview>
   <Story name="disabled tab">
     {() => {
-      const [isCurrentStep, setCurrentStep] = useState(0);
+      const [currentStep, setCurrentStep] = useState(0);
       const nextStep = () => {
         setCurrentStep((prevStep) => prevStep + 1);
       };
@@ -167,7 +202,7 @@ import { Text } from "../text";
         setCurrentStep((prevStep) => prevStep - 1);
       };
       return (
-        <Tabs step={isCurrentStep} handleTab={setCurrentStep} wizard>
+        <Tabs step={currentStep} handleTab={setCurrentStep} wizard>
           <Tab
             heading="Tab 1"
             caption="Lorem ipsum for Tab 1. Lorem Ipsum is simply dummy text"

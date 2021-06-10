@@ -21,6 +21,7 @@ type TabProps = {
   disabled?: boolean;
   buttons?: React.ReactNode;
   buttonsJustify?: string;
+  label?: React.ReactNode;
 };
 
 type TabsProps = {
@@ -207,6 +208,16 @@ export const Tab: FunctionComponent<TabProps> = ({
   onClick,
   buttons,
   buttonsJustify,
+  label = (
+    <>
+      <Text weight="medium" mb={theme.spacing.spacing01}>
+        {heading}
+      </Text>
+      <Text size="sm" mb={0} color={theme.color.text.text02}>
+        {caption}
+      </Text>
+    </>
+  ),
 }) => {
   const className = activeTab === index ? "tab-active" : "tab";
   return (
@@ -226,12 +237,7 @@ export const Tab: FunctionComponent<TabProps> = ({
           <Step>{step}</Step>
         )
       ) : null}
-      <Text weight="medium" mb={theme.spacing.spacing01}>
-        {heading}
-      </Text>
-      <Text size="sm" mb={0} color={theme.color.text.text02}>
-        {caption}
-      </Text>
+      {label}
     </TabContainer>
   );
 };
@@ -248,7 +254,13 @@ export const Tabs: FunctionComponent<TabsProps> = ({
     <TabsWrapper>
       <TabsList className={name}>
         {items.map((child, key) => {
-          const { heading, caption, disabled, buttonsJustify } = child.props;
+          const {
+            heading,
+            caption,
+            disabled,
+            buttonsJustify,
+            label,
+          } = child.props;
           return (
             <Tab
               key={key}
@@ -261,6 +273,7 @@ export const Tabs: FunctionComponent<TabsProps> = ({
               disabled={disabled}
               buttonsJustify={buttonsJustify}
               onClick={disabled ? undefined : () => handleTab(key)}
+              label={label}
             />
           );
         })}
