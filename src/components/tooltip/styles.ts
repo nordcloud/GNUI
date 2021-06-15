@@ -3,7 +3,7 @@ import theme from "../../theme";
 import { setColor } from "../../utils/setcolor";
 import { Props as TooltipProps } from "./Tooltip";
 
-const setArrowPosition = (position: string) => {
+function setArrowPosition(position: string) {
   switch (position) {
     case "left":
       return `
@@ -24,7 +24,7 @@ const setArrowPosition = (position: string) => {
         right:auto;
       `;
   }
-};
+}
 
 export const TooltipWrapper = styled.div`
   display: inline-block;
