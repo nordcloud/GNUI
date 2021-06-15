@@ -48,6 +48,7 @@ export const StyledTooltip = styled.div<StyledTooltipProps>`
   z-index: ${theme.zindex.sticky};
   opacity: 0;
   animation: 0.2s ease-in-out both fadeInUp;
+
   &:after,
   &:before {
     top: 100%;
@@ -59,6 +60,7 @@ export const StyledTooltip = styled.div<StyledTooltipProps>`
     position: absolute;
     pointer-events: none;
   }
+
   &:after {
     border-color: transparent;
     border-top-color: ${theme.color.background.ui05};
