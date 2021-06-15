@@ -1,9 +1,8 @@
-import React, { FunctionComponent, useState, useEffect, useRef } from "react";
-import styled, { css } from "styled-components";
-import theme from "../../theme";
-import { setColor } from "../../utils/setcolor";
+import * as React from "react";
+import { StyledTooltip, TooltipWrapper } from "./styles";
+import { useTooltipHover } from "./hooks";
 
-type ITooltip = {
+export type Props = {
   caption: string;
   position?: "left" | "right";
   status?: "danger" | "warning" | "success" | "notification";
@@ -13,92 +12,7 @@ type ITooltip = {
   minWidth?: string;
 };
 
-const setArrowPosition = (position: string) => {
-  switch (position) {
-    case "left":
-      return `
-        left: 0.5rem;
-        right: auto;
-        margin-left: 0;
-        `;
-    case "right":
-      return `
-        left: auto;
-        right: 0.5rem;
-        margin-left: 0;
-        `;
-    default:
-      return `
-        left: 50%;
-        margin-left: -0.25rem;
-        right:auto;
-      `;
-  }
-};
-
-const TooltipWrapper = styled.div`
-  display: inline-block;
-`;
-
-type StyledTooltipProps = Pick<ITooltip, "position" | "status" | "minWidth">;
-
-const StyledTooltip = styled.div<StyledTooltipProps>`
-  position: absolute;
-  min-width: ${({ minWidth }) => minWidth};
-  max-width: 16rem;
-  font-size: ${theme.fontSizes.sm};
-  line-height: 1rem;
-  padding: ${theme.spacing.spacing02};
-  background-color: ${theme.color.background.ui05};
-  color: ${theme.color.text.text04};
-  border-radius: ${theme.radius.md};
-  z-index: ${theme.zindex.sticky};
-  opacity: 0;
-  animation: 0.2s ease-in-out both fadeInUp;
-  &:after,
-  &:before {
-    top: 100%;
-    left: 50%;
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-  }
-  &:after {
-    border-color: transparent;
-    border-top-color: ${theme.color.background.ui05};
-    border-width: 8px;
-    margin-left: -8px;
-    ${({ position }) =>
-      position &&
-      css`
-        ${setArrowPosition(position)}
-      `}
-  }
-
-  ${({ status }) =>
-    status &&
-    css`
-      background: ${setColor(status)};
-      &:after {
-        border-top-color: ${setColor(status)};
-      }
-    `}
-
-  @keyframes fadeInUp {
-    from {
-      transform: translate3d(0, -8px, 0);
-    }
-    to {
-      transform: translate3d(0, 0, 0);
-      opacity: 1;
-    }
-  }
-`;
-
-export const Tooltip: FunctionComponent<ITooltip> = ({
+export function Tooltip({
   status,
   position,
   caption,
@@ -106,25 +20,19 @@ export const Tooltip: FunctionComponent<ITooltip> = ({
   hideTimeout = 100,
   showTimeout = 300,
   minWidth = "0",
-}) => {
-  const tooltipRef = useRef() as React.MutableRefObject<HTMLInputElement>;
-  const wrapperRef = useRef() as React.MutableRefObject<HTMLInputElement>;
-  const timerRef = useRef<ReturnType<typeof window.setTimeout>>(-1);
+}: Props) {
+  const tooltipRef = React.useRef<HTMLDivElement>(null);
+  const wrapperRef = React.useRef<HTMLDivElement>(null);
 
-  const [isHovered, setHovered] = useState(false);
-  const [tooltipPosition, setPosition] = useState({
+  const [tooltipPosition, setPosition] = React.useState({
     marginTop: 0,
     width: 0,
   });
 
-  useEffect(() => {
-    return () => {
-      window.clearTimeout(timerRef.current);
-    };
-  }, []);
+  const { isHovered, updateIsHovered } = useTooltipHover();
 
-  useEffect(() => {
-    if (isHovered) {
+  React.useEffect(() => {
+    if (isHovered && tooltipRef.current instanceof HTMLDivElement) {
       const tooltipSize = tooltipRef.current.getBoundingClientRect();
       setPosition({
         marginTop: -(tooltipSize.height + 12),
@@ -134,31 +42,39 @@ export const Tooltip: FunctionComponent<ITooltip> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isHovered]);
 
-  const showTooltip = () => {
-    window.clearTimeout(timerRef.current);
+  const getStyle = () => {
+    if (wrapperRef.current == null) {
+      return;
+    }
 
-    const timer = window.setTimeout(() => {
-      setHovered(true);
-    }, showTimeout);
+    if (position === "left") {
+      return {
+        marginTop: tooltipPosition.marginTop,
+        left: wrapperRef.current.offsetLeft,
+      };
+    }
 
-    timerRef.current = timer;
-  };
+    if (position === "right") {
+      return {
+        marginTop: tooltipPosition.marginTop,
+        left:
+          wrapperRef.current.offsetLeft -
+          (tooltipPosition.width - wrapperRef.current.offsetWidth),
+      };
+    }
 
-  const hideTooltip = () => {
-    window.clearTimeout(timerRef.current);
-
-    const timer = window.setTimeout(() => {
-      setHovered(false);
-    }, hideTimeout);
-
-    timerRef.current = timer;
+    return {
+      marginTop: tooltipPosition.marginTop,
+      left: wrapperRef.current.offsetLeft,
+      marginLeft: -(tooltipPosition.width - wrapperRef.current.offsetWidth) / 2,
+    };
   };
 
   return (
     <TooltipWrapper
       ref={wrapperRef}
-      onMouseEnter={showTooltip}
-      onMouseLeave={hideTooltip}
+      onMouseEnter={() => updateIsHovered(true, showTimeout)}
+      onMouseLeave={() => updateIsHovered(false, hideTimeout)}
     >
       {isHovered && (
         <StyledTooltip
@@ -166,27 +82,7 @@ export const Tooltip: FunctionComponent<ITooltip> = ({
           status={status}
           position={position}
           minWidth={minWidth}
-          style={
-            position === "left"
-              ? {
-                  marginTop: tooltipPosition.marginTop,
-                  left: wrapperRef.current.offsetLeft,
-                }
-              : position === "right"
-              ? {
-                  marginTop: tooltipPosition.marginTop,
-                  left:
-                    wrapperRef.current.offsetLeft -
-                    (tooltipPosition.width - wrapperRef.current.offsetWidth),
-                }
-              : {
-                  marginTop: tooltipPosition.marginTop,
-                  left: wrapperRef.current.offsetLeft,
-                  marginLeft:
-                    -(tooltipPosition.width - wrapperRef.current.offsetWidth) /
-                    2,
-                }
-          }
+          style={getStyle()}
         >
           {caption}
         </StyledTooltip>
@@ -194,4 +90,4 @@ export const Tooltip: FunctionComponent<ITooltip> = ({
       {children}
     </TooltipWrapper>
   );
-};
+}
