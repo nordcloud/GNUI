@@ -39,6 +39,7 @@ export function Tooltip({
         width: tooltipSize.width,
       });
     }
+    // Providing refs to dependency array of useEffect may cause unexpected problems
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isHovered]);
 
