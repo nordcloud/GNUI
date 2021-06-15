@@ -109,32 +109,19 @@ export const Tooltip: FunctionComponent<ITooltip> = ({
 }) => {
   const tooltipRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const wrapperRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+  const timerRef = useRef<ReturnType<typeof window.setTimeout>>(-1);
+
   const [isHovered, setHovered] = useState(false);
-  const [resetTimer, setTimer] = useState(0);
   const [tooltipPosition, setPosition] = useState({
     marginTop: 0,
     width: 0,
   });
 
-  const showTooltip = () => {
-    clearTimeout(resetTimer);
-    const timer = () =>
-      setTimeout(() => {
-        setHovered(true);
-      }, showTimeout);
-    // @ts-ignore
-    setTimer(timer);
-  };
-
-  const hideTooltip = () => {
-    clearTimeout(resetTimer);
-    const timer = () =>
-      setTimeout(() => {
-        setHovered(false);
-      }, hideTimeout);
-    // @ts-ignore
-    setTimer(timer);
-  };
+  useEffect(() => {
+    return () => {
+      window.clearTimeout(timerRef.current);
+    };
+  }, []);
 
   useEffect(() => {
     if (isHovered) {
@@ -144,7 +131,28 @@ export const Tooltip: FunctionComponent<ITooltip> = ({
         width: tooltipSize.width,
       });
     }
-  }, [tooltipRef, isHovered]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isHovered]);
+
+  const showTooltip = () => {
+    window.clearTimeout(timerRef.current);
+
+    const timer = window.setTimeout(() => {
+      setHovered(true);
+    }, showTimeout);
+
+    timerRef.current = timer;
+  };
+
+  const hideTooltip = () => {
+    window.clearTimeout(timerRef.current);
+
+    const timer = window.setTimeout(() => {
+      setHovered(false);
+    }, hideTimeout);
+
+    timerRef.current = timer;
+  };
 
   return (
     <TooltipWrapper
