@@ -109,4 +109,137 @@ export const osComponentsIcons = {
       />
     </>
   ),
+  awsCloudWatch: (
+    <>
+      <rect width="24" height="24" fill="#FDFDFE" />
+      <path
+        d="M21.4207 16.1197L11.7136 14.6937L2 16.1215L11.7111 19.7204L21.4207 16.1197Z"
+        fill="#B7CA9D"
+      />
+      <path
+        d="M3.9436 15.9534L5.58451 16.4663L5.73404 16.2966V4.81463L5.58451 4.61853L3.9436 5.24622V15.9534"
+        fill="#4B612C"
+      />
+      <path
+        d="M11.3941 15.4459L5.58447 16.4664V4.6189L11.3941 5.92539V15.4459Z"
+        fill="#759C3E"
+      />
+      <path
+        d="M8.80391 17.4536L6.53955 16.7556V2.13241L8.80391 1.00024L9.00206 1.21607V17.2122L8.80391 17.4536"
+        fill="#4B612C"
+      />
+      <path
+        d="M16.5629 15.6333L8.80371 17.4536V1L16.5629 4.02431V15.6333Z"
+        fill="#759C3E"
+      />
+      <path
+        d="M11.7077 19.5645L2 16.1216V18.1185L11.7077 22.9722V19.5645"
+        fill="#4B612C"
+      />
+      <path
+        d="M21.4205 18.1161L11.7075 22.9722V19.5644L21.4205 16.1196V18.1161Z"
+        fill="#759C3E"
+      />
+      <path
+        d="M18.6926 12.8112H16.3389L9.62915 13.2683L11.7102 13.6519L18.6926 12.8112Z"
+        fill="#B7CA9D"
+      />
+      <path
+        d="M9.62915 17.6825L11.7093 18.3066L11.7692 18.2421L11.7674 13.5502L11.7076 13.4927L9.62915 13.2683V17.6825"
+        fill="#4B612C"
+      />
+      <path
+        d="M18.6925 12.8112L11.7075 13.4924L11.7093 18.3066L18.6925 16.2044V12.8112Z"
+        fill="#759C3E"
+      />
+    </>
+  ),
+  awsInspector: (
+    <>
+      <path d="M24 0H0V23.8H24V0Z" fill="white" />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M11.9999 22.4L2.8999 16.5L11.9999 14.9L21.0999 16.5L11.9999 22.4Z"
+        fill="#B7CA9D"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M11.9999 19.8V22.4L4.0999 18.6L2.8999 18.1V16.5"
+        fill="#4B612C"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M12 19.8V22.4L19.9 18.6L21.1 18.1V16.5"
+        fill="#759C3E"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M8.19995 14.6L12 18.2L15.8 14.6L12 14.2L8.19995 14.6Z"
+        fill="#B7CA9D"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M8.19995 14.6L12 15.1V18.2L8.19995 17.1C8.19995 17.1 8.19995 14.6 8.19995 14.6Z"
+        fill="#4B612C"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M15.8 14.6L12 15.1V18.2L15.8 17.1V14.6Z"
+        fill="#759C3E"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M8.19995 13L12 13.3L15.7 8.19998L12 1.59998L8.19995 3.39998V13Z"
+        fill="#4B612C"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M15.8 3.39998L12 1.59998V13.3L15.8 13V3.39998Z"
+        fill="#759C3E"
+      />
+    </>
+  ),
+  stackDrive: (
+    <>
+      <rect width="24" height="24" fill="#FDFDFE" />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M6.50091 3L1.00122 12.4595L6.50091 21.9189H17.5001L23 12.4595L17.5001 3H6.50091Z"
+        fill="#8CC63F"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M6.50098 21.9191H17.4271L11.9608 12.4596L6.50098 21.9191Z"
+        fill="#009245"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M1 12.4595L6.50101 21.919L11.9637 12.4595H1Z"
+        fill="#006837"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M6.50018 3L1.00049 12.4595H11.9603L11.9625 12.4551L17.427 3H6.50018Z"
+        fill="#39B54A"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M17.462 3L11.9998 12.4595L17.462 21.9189L22.9637 12.4595L17.462 3Z"
+        fill="#8CC63F"
+      />
+    </>
+  ),
 };
