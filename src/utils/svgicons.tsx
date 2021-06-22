@@ -4,6 +4,8 @@ import { cloudIcons } from "./icons/cloud-provider";
 import { klarityIcons } from "./icons/klarity-resource";
 import { menuIcons } from "./icons/menu";
 import { uiIcons } from "./icons/ui";
+import { osProviderIcons } from "./icons/os-provider";
+import { osComponentsIcons } from "./icons/os-components";
 
 export const getViewBox = (name: string) => {
   switch (name) {
@@ -18,6 +20,8 @@ export const paths = {
   ...klarityIcons,
   ...menuIcons,
   ...uiIcons,
+  ...osProviderIcons,
+  ...osComponentsIcons,
   default: <path />,
 } as const;
 
