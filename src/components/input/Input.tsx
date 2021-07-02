@@ -3,13 +3,7 @@ import { SpaceProps } from "styled-system";
 import { Spinner } from "../spinner";
 import { SVGIcon } from "../svgicon";
 import { StyledInputGroupProps, StyledInputProps } from "./types";
-import {
-  Clear,
-  IconsWrap,
-  InputGroup,
-  NotClickable,
-  StyledInput,
-} from "./styles";
+import { Clear, InputGroup, StyledInput } from "./styles";
 
 type Props = StyledInputGroupProps & StyledInputProps & SpaceProps;
 
@@ -42,22 +36,18 @@ export const Input: React.FC<Props> = React.forwardRef(
           ref={ref}
           {...props}
         />
-        <IconsWrap>
-          {showClearButton && (
-            <Clear
-              onClick={onClear}
-              title={`Clear ${props.name} value`}
-              role="button"
-            >
-              <SVGIcon size="sm" name="close" />
-            </Clear>
-          )}
-          {status && <SVGIcon name={status} size="smd" />}
-        </IconsWrap>
+        {showClearButton && (
+          <Clear
+            onClick={onClear}
+            title={`Clear ${props.name} value`}
+            role="button"
+          >
+            <SVGIcon size="sm" name="close" />
+          </Clear>
+        )}
+        {status && <SVGIcon name={status} size="smd" />}
         {icon && (
-          <NotClickable>
-            <SVGIcon size="sm" name={icon} />
-          </NotClickable>
+          <SVGIcon size="sm" name={icon} css={{ pointerEvents: "none" }} />
         )}
       </InputGroup>
     );

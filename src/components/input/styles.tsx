@@ -116,22 +116,3 @@ export const Clear = styled.button<ClearProps>`
   outline: none;
   cursor: pointer;
 `;
-
-export const IconsWrap = styled.div`
-  position: absolute;
-  top: 0;
-  right: ${theme.spacing.spacing06};
-  bottom: 0;
-  display: flex;
-  align-items: center;
-`;
-
-export const NotClickable = styled.div`
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-  right: ${theme.spacing.spacing02};
-  bottom: 0;
-  display: flex;
-  align-items: center;
-`;
