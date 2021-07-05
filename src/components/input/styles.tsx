@@ -109,7 +109,7 @@ type ClearProps = {
 export const Clear = styled.button<ClearProps>`
   display: flex;
   align-items: center;
-  padding: ${theme.spacing.spacing02};
+  padding: 0 ${theme.spacing.spacing02};
   background: none;
   border: none;
   margin-left: auto;
