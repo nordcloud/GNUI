@@ -5,6 +5,7 @@ import { useTooltipHover } from "./hooks";
 export type Props = {
   caption: string;
   position?: "left" | "right";
+  bottom?: boolean;
   status?: "danger" | "warning" | "success" | "notification";
   children?: React.ReactNode;
   showTimeout?: number;
@@ -16,6 +17,7 @@ export function Tooltip({
   status,
   position,
   caption,
+  bottom = false,
   children,
   hideTimeout = 100,
   showTimeout = 300,
@@ -35,7 +37,9 @@ export function Tooltip({
     if (isHovered && tooltipRef.current instanceof HTMLDivElement) {
       const tooltipSize = tooltipRef.current.getBoundingClientRect();
       setPosition({
-        marginTop: -(tooltipSize.height + 12),
+        marginTop: bottom
+          ? tooltipSize.height - 12
+          : -(tooltipSize.height + 12),
         width: tooltipSize.width,
       });
     }
@@ -82,6 +86,7 @@ export function Tooltip({
           ref={tooltipRef}
           status={status}
           position={position}
+          bottom={bottom}
           minWidth={minWidth}
           style={getStyle()}
         >
