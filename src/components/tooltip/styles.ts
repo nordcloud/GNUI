@@ -32,7 +32,7 @@ export const TooltipWrapper = styled.div`
 
 type StyledTooltipProps = Pick<
   TooltipProps,
-  "position" | "status" | "minWidth"
+  "position" | "status" | "minWidth" | "bottom"
 >;
 
 export const StyledTooltip = styled.div<StyledTooltipProps>`
@@ -71,7 +71,13 @@ export const StyledTooltip = styled.div<StyledTooltipProps>`
       css`
         ${setArrowPosition(position)}
       `}
-  }
+      
+    ${({ bottom }) =>
+      bottom &&
+      css`
+        top: -16px;
+        transform: rotate(180deg);
+      `}
 
   ${({ status }) =>
     status &&
