@@ -71,13 +71,14 @@ export const StyledTooltip = styled.div<StyledTooltipProps>`
       css`
         ${setArrowPosition(position)}
       `}
-      
+
     ${({ bottom }) =>
       bottom &&
       css`
         top: -16px;
         transform: rotate(180deg);
       `}
+  }
 
   ${({ status }) =>
     status &&
