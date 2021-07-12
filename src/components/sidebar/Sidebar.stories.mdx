@@ -24,6 +24,7 @@ import { PaginationBox } from "../pagination/Pagination.tsx";
 | ---------: | :------: | :---------------------------------------- | :---------- |
 |   children |  false   | <code>`ReactElement<any>`</code>          |             |
 |      title |  false   | string                                    |             |
+|    caption |  false   | string                                    |             |
 |     isOpen |  false   | boolean                                   |             |
 |       side |  false   | <code>onLeft</code>, <code>onRight</code> |             |
 |      width |  false   | number, string                            |             |
@@ -45,6 +46,7 @@ import { PaginationBox } from "../pagination/Pagination.tsx";
           </Row>
           <Sidebar
             title="Default sidebar"
+            caption="Default sidebar caption"
             isOpen={isOpen}
             onClick={() => setIsOpen(!isOpen)}
           >
