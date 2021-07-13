@@ -4,6 +4,7 @@ import { SVGIconProps } from "../svgicon";
 export type SidebarProps = {
   children?: React.ReactNode;
   title?: string;
+  caption?: string;
   isOpen?: boolean;
   side?: "onLeft" | "onRight";
   width?: number | string;

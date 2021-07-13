@@ -38,6 +38,12 @@ export const Title = styled(Text)`
   ${space}
 `;
 
+export const Caption = styled(Text)`
+  font-size: ${theme.fontSizes.sm};
+  color: ${theme.color.text.text02};
+  margin-bottom: 0;
+`;
+
 export const Content = styled(Text)`
   font-weight: ${theme.fontWeights.regular};
   line-height: ${theme.lineHeight};

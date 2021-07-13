@@ -4,6 +4,7 @@ import { SVGIcon } from "../svgicon";
 import { SidebarProps, SidebarButtonProps } from "./types";
 import {
   Background,
+  Caption,
   CloseLayer,
   Container,
   Content,
@@ -28,6 +29,7 @@ export const CloseButton: React.FC<SidebarButtonProps> = ({
 export const Sidebar: React.FC<SidebarProps> = ({
   children,
   title,
+  caption,
   side,
   isOpen,
   footer: Footer,
@@ -62,12 +64,15 @@ export const Sidebar: React.FC<SidebarProps> = ({
           {isOpen && (
             <>
               <Header reverse={side === "onLeft" && true}>
-                <Title
-                  tag="span"
-                  ml={side === "onLeft" ? ["1rem", "1rem"] : [0]}
-                >
-                  {title}
-                </Title>
+                <header>
+                  <Title
+                    tag="span"
+                    ml={side === "onLeft" ? ["1rem", "1rem"] : [0]}
+                  >
+                    {title}
+                  </Title>
+                  {caption && <Caption>{caption}</Caption>}
+                </header>
                 <Button
                   severity="low"
                   size="md"
