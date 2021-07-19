@@ -1,15 +1,17 @@
 import React from "react";
 import { createGlobalStyle } from "styled-components";
-import reset from "styled-reset";
+import { Helmet } from "react-helmet";
 import theme from ".";
 import { useThemeSwitcher } from "./switcher";
+import { resetCss } from "./reset";
 
 const GlobalStyle = createGlobalStyle`
-  ${reset}
-  @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+  ${resetCss};
+
   html {
     font-size: 16px;
   }
+
   html, body {
      font-family: ${theme.typography.fonts.body};
      background: ${theme.color.background.body};
@@ -17,10 +19,12 @@ const GlobalStyle = createGlobalStyle`
      font-weight: ${theme.fontWeights.regular};
      line-height: ${theme.lineHeight};
   }
+
   code {
     font-family: ${theme.typography.fonts.body};
     font-weight: ${theme.fontWeights.regular};
   }
+
   a {
     color: ${theme.color.interactive.link};
     text-decoration: none;
@@ -34,5 +38,21 @@ const GlobalStyle = createGlobalStyle`
 
 export const SetGlobalStyle = () => {
   useThemeSwitcher();
-  return <GlobalStyle />;
+  return (
+    <>
+      <Helmet>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin=""
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
+          rel="stylesheet"
+        />
+      </Helmet>
+      <GlobalStyle />
+    </>
+  );
 };
