@@ -11,9 +11,11 @@ jobs:
         with:
           node-version: "14"
           registry-url: "https://registry.npmjs.org"
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_KEY }}
+      - run: echo "@nordcloud:registry=https://npm.pkg.github.com/" >> .npmrc
+      - run: echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" >> .npmrc
       - run: npm install --global npm
       - run: npm ci
       - run: npm run check:types
       - run: npm publish --access public --ignore-scripts
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_KEY }}
