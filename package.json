@@ -1,10 +1,60 @@
 {
   "name": "@nordcloud/gnui",
-  "version": "1.8.1",
+  "description": "Nordcloud Design System - a collection of reusable React components used in Nordcloud's SaaS products",
+  "version": "2.0.0",
   "license": "MIT",
+  "private": true,
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "repository": "git://github.com/nordcloud/gnui.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nordcloud/GNUI.git"
+  },
+  "author": "Nordcloud Engineering",
+  "bugs": {
+    "url": "https://github.com/nordcloud/GNUI"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx)\"",
+    "check:types": "tsc",
+    "lint": "eslint --ignore-path .gitignore --ext .ts,.tsx ."
+  },
+  "engines": {
+    "node": ">=14.15.5",
+    "npm": ">=7.0.0"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && npm run check:types"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
   "dependencies": {
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
@@ -48,47 +98,6 @@
     "styled-system": "^5.1.5",
     "title": "^3.4.1",
     "typescript": "^3.9.7"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public",
-    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx)\"",
-    "check-types": "tsc",
-    "lint": "eslint --ignore-path .gitignore --ext .ts,.tsx ."
-  },
-  "engines": {
-    "node": ">=14.15.5",
-    "npm": ">=7.0.0"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged && npm run check-types"
-    }
-  },
-  "lint-staged": {
-    "*.{ts,tsx}": [
-      "prettier --write",
-      "eslint --fix"
-    ]
   },
   "devDependencies": {
     "@storybook/addon-actions": "^6.0.5",
