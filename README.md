@@ -13,9 +13,17 @@ This repo contains the Nordcloud Design System - a collection of reusable React 
 1. Design System (`/src/components`)
 2. Storybook (`/src/stories`)
 
-## Usage
+## Install
 
-[WIP] Install github package.
+```bash
+npm install @nordcloud/gnui
+```
+
+or
+
+```bash
+yarn add @nordcloud/gnui
+```
 
 ## Storybook deployment
 
@@ -41,6 +49,23 @@ When you create a PR against the `master` branch, Amplify creates a new deployme
 ## Development
 
 - Make sure to check out [Storybook Design System](https://github.com/storybookjs/design-system)
+
+## Local testing
+
+There is a possibility to build & test the package locally in the project it's currently used in.
+
+```bash
+npm run build
+npm pack
+```
+
+You will get a tarball with the freshly built package, you can copy it inside your project's folder and install with
+
+```bash
+npm install nordcloud-gnui-${VERSION}.tgz
+```
+
+After the successful installation it's ready to be tested (remember to restart the dev server)
 
 ## Contributors
 
