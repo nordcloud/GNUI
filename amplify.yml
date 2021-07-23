@@ -3,12 +3,10 @@ frontend:
   phases:
     preBuild:
       commands:
-        - nvm install 14.15.5
-        - nvm use 14.15.5
+        - nvm install
+        - nvm use
         - npm install --global npm
-        - echo >> .npmrc
-        - echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" >> .npmrc
-        - npm install
+        - npm ci
     build:
       commands:
         - npm run build-storybook
