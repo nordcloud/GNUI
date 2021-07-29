@@ -76,6 +76,11 @@ export const StyledInput = styled.input<StyledInputProps>`
     color: ${theme.color.text.text03};
   }
 
+  &:-webkit-autofill {
+    box-shadow: 0 0 0 1rem ${theme.color.background.ui03} inset;
+    -webkit-text-fill-color: ${theme.color.text.text01};
+  }
+
   &:hover,
   &:focus {
     outline: 0;
