@@ -3,7 +3,7 @@ import { StyledTooltip, TooltipWrapper } from "./styles";
 import { useTooltipHover } from "./hooks";
 
 export type Props = {
-  caption: string;
+  caption: React.ReactNode;
   position?: "left" | "right";
   bottom?: boolean;
   status?: "danger" | "warning" | "success" | "notification";
