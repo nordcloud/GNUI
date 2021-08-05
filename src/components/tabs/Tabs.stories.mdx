@@ -35,6 +35,7 @@ import { Flex } from "../container";
 |        buttons |  false   | <code>`React.ReactNode`</code>  | custom buttons for tab                    |
 | buttonsJustify |  false   | string                          | buttons justify, default: "space-between" |
 |          label |  false   | <code>`React.ReactNode`</code>  | custom label element                      |
+|          width |  false   | <code>`string`</code>           | custom width value, default: 17rem        |
 
 ## Default
 
@@ -234,3 +235,32 @@ import { Flex } from "../container";
     }}
   </Story>
 </Preview>
+
+## Tab width
+
+<Preview>
+  <Story name="width">
+    {() => {
+      const [currentStep, setCurrentStep] = useState(0);
+      return (
+        <Tabs step={currentStep} handleTab={setCurrentStep}>
+          <Tab
+            width="auto"
+            heading="Tab 1 with very long title to show. (Lorem Ipsum is simply dummy text)"
+            caption="Lorem ipsum for Tab 1. Lorem Ipsum is simply dummy text"
+          >
+            <Text>Tab 1 Content.</Text>
+          </Tab>
+          <Tab
+            width="5rem"
+            heading="Tab 2"
+            caption="Lorem ipsum for Tab 1. Lorem Ipsum is simply dummy text"
+          >
+            <Text>Tab 2 Content.</Text>
+          </Tab>
+        </Tabs>
+      );
+    }}
+  </Story>
+</Preview>
+

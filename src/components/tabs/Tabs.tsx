@@ -19,6 +19,7 @@ type TabProps = {
   styleActive?: boolean;
   index?: number;
   disabled?: boolean;
+  width?: string;
   buttons?: React.ReactNode;
   buttonsJustify?: string;
   label?: React.ReactNode;
@@ -28,6 +29,7 @@ type TabsProps = {
   wizard?: boolean;
   name?: string;
   caption?: string;
+  width?: string;
   children: Array<TabProps>;
   handleTab: (e: any) => void;
   step: number;
@@ -63,7 +65,7 @@ export const TabContainer: any = styled.div<TabProps>`
   background-color: ${theme.color.background.ui03};
   border-right: 1px solid ${theme.color.border.border01};
   border-bottom: 1px solid transparent;
-  width: 17rem;
+  width: ${({ width }) => (width ? width : `17rem`)};
   &:last-child {
     border-right: none;
     &.tab-active {
@@ -204,6 +206,7 @@ export const Tab: FunctionComponent<TabProps> = ({
   caption,
   activeTab,
   index,
+  width,
   disabled,
   onClick,
   buttons,
@@ -225,6 +228,7 @@ export const Tab: FunctionComponent<TabProps> = ({
       className={className}
       onClick={onClick}
       key={index}
+      width={width}
       disabled={disabled}
       wizard={wizard}
       buttons={buttons}
@@ -259,12 +263,14 @@ export const Tabs: FunctionComponent<TabsProps> = ({
             caption,
             disabled,
             buttonsJustify,
+            width,
             label,
           } = child.props;
           return (
             <Tab
               key={key}
               wizard={wizard}
+              width={width}
               step={key + 1}
               activeTab={step}
               index={key}
