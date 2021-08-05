@@ -65,7 +65,7 @@ export const TabContainer: any = styled.div<TabProps>`
   background-color: ${theme.color.background.ui03};
   border-right: 1px solid ${theme.color.border.border01};
   border-bottom: 1px solid transparent;
-  width: ${({ width }) => (width ? width : `17rem`)};
+  width: ${({ width }) => width ?? "17rem"};
   &:last-child {
     border-right: none;
     &.tab-active {
