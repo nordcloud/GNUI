@@ -77,6 +77,7 @@ const StyledSelectButtons = styled.ul<StyledSelectButtons>`
       padding: ${theme.spacing.spacing02} ${theme.spacing.spacing04};
       transition: ${theme.transition};
       font-size: ${theme.fontSizes.md};
+      font-family: ${theme.fonts.body};
       line-height: 1.5;
       text-transform: ${theme.typography.titleCase};
 
