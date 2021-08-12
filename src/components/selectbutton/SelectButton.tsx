@@ -76,7 +76,9 @@ const StyledSelectButtons = styled.ul<StyledSelectButtons>`
       background: transparent;
       padding: ${theme.spacing.spacing02} ${theme.spacing.spacing04};
       transition: ${theme.transition};
-      font-size: ${theme.fontSizes.lg};
+      font-size: ${theme.fontSizes.md};
+      font-family: ${theme.fonts.body};
+      line-height: 1.5;
       text-transform: ${theme.typography.titleCase};
 
       &.active {
@@ -88,6 +90,7 @@ const StyledSelectButtons = styled.ul<StyledSelectButtons>`
         size === "small" &&
         css`
           font-size: ${theme.fontSizes.sm};
+          line-height: initial;
           padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
         `}
     }
