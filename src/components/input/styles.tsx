@@ -57,6 +57,12 @@ export const InputGroup = styled(Flex)<StyledInputGroupProps & SpaceProps>`
   ${space};
 `;
 
+// Autofill selector styles need to be divided in two separate selectors
+const autofillCss = css`
+  box-shadow: 0 0 0 1rem ${theme.color.background.ui03} inset;
+  -webkit-text-fill-color: ${theme.color.text.text01};
+`;
+
 export const StyledInput = styled.input<StyledInputProps>`
   border: 0;
   width: 100%;
@@ -74,6 +80,14 @@ export const StyledInput = styled.input<StyledInputProps>`
 
   &::placeholder {
     color: ${theme.color.text.text03};
+  }
+
+  &:-webkit-autofill {
+    ${autofillCss}
+  }
+
+  &:autofill {
+    ${autofillCss}
   }
 
   &:hover,
