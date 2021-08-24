@@ -54,9 +54,6 @@
   "dependencies": {
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
-    "@fortawesome/fontawesome-svg-core": "^1.2.27",
-    "@fortawesome/free-solid-svg-icons": "^5.12.1",
-    "@fortawesome/react-fontawesome": "^0.1.8",
     "@storybook/addon-info": "5.3.19",
     "@storybook/addon-knobs": "6.0.5",
     "@testing-library/jest-dom": "^4.2.4",
