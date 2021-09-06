@@ -30,7 +30,7 @@ Copy & paste types from component file and wrap it with three backticks followed
 #### Example:
 
 ```typescript
-interface BoxProps {
+type BoxProps = {
   color: string;
   width?: number;
   margin?: Array<string | number>;

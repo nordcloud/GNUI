@@ -10,7 +10,7 @@ import { Button } from "../components/button";
 # Wizard
 
 ```typescript
-interface TabProps {
+type TabProps = {
   className?: string;
   wizard?: boolean;
   step?: number;
@@ -24,9 +24,9 @@ interface TabProps {
   styleActive?: boolean;
   index: number;
   disabled?: boolean;
-}
+};
 
-interface TabsProps {
+type TabsProps = {
   wizard?: boolean;
   name?: string;
   caption?: string;
@@ -34,7 +34,7 @@ interface TabsProps {
   handleTab: () => void;
   step: number;
   buttons?: React.ReactNode;
-}
+};
 ```
 
 ## Default
