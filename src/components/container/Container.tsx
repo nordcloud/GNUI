@@ -33,6 +33,7 @@ export const Flex = styled(Container)`
   ${(props) => css`
     align-items: ${props.alignItems || "center"};
     justify-content: ${props.justifyContent || "flex-start"};
+    flex-direction: ${props.flexDirection || "row"};
     margin: ${props.margin};
   `}
   ${space}
