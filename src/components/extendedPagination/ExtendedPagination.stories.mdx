@@ -1,0 +1,17 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { ExtendedPaginationBox } from ".";
+
+<Meta title="Components/ExtendedPagination" component={ExtendedPaginationBox} />
+
+# Extended Pagination
+
+##
+## default
+
+<Preview>
+  <Story name="default">
+      {[0, 20, 80, 100, 240, 280, 300, 360, 380].map((currentFrom) => (
+        <ExtendedPaginationBox count={400} from={currentFrom} size={20} setPage={0} setSize={20} />
+      ))}
+  </Story>
+</Preview>
