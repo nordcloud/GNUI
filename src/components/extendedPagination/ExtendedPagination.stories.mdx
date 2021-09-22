@@ -5,13 +5,81 @@ import { ExtendedPaginationBox } from ".";
 
 # Extended Pagination
 
-##
+## properties
+
+| properties | required | type    | description                  |
+| ---------: | :------: | :------ | :--------------------------- |
+|       size |   true   | number  | number of item per page      |
+|      count |   true   | number  | number of all items          |
+|       from |   true   | number  | index of first item on page  |
+|    setPage |   true   | number  | set current page             |
+|    setSize |   true   | number  | set number of items per page |
+|      small |  false   | boolean | small size styles            |
+
 ## default
 
+### first page
+
 <Preview>
-  <Story name="default">
-      {[0, 20, 80, 100, 240, 280, 300, 360, 380].map((currentFrom) => (
-        <ExtendedPaginationBox count={400} from={currentFrom} size={20} setPage={0} setSize={20} />
-      ))}
+  <Story name="first-page">
+    <ExtendedPaginationBox count={400} from={0} size={20} setPage={0} setSize={20} />
+  </Story>
+</Preview>
+
+### second page
+
+<Preview>
+  <Story name="second-page">
+    <ExtendedPaginationBox count={400} from={20} size={20} setPage={0} setSize={20} />
+  </Story>
+</Preview>
+
+### middle
+
+<Preview>
+  <Story name="middle">
+    <ExtendedPaginationBox count={400} from={240} size={20} setPage={0} setSize={20} />
+  </Story>
+</Preview>
+
+### second to last page
+
+<Preview>
+  <Story name="second-to-last-page">
+    <ExtendedPaginationBox count={400} from={360} size={20} setPage={0} setSize={20} />
+  </Story>
+</Preview>
+
+### last page
+
+<Preview>
+  <Story name="last-page">
+    <ExtendedPaginationBox count={400} from={380} size={20} setPage={0} setSize={20} />
+  </Story>
+</Preview>
+
+### different edge cases in the middle of the pagination
+
+<Preview>
+  <Story name="edge-cases">
+    <ExtendedPaginationBox count={400} from={80} size={20} setPage={0} setSize={20} />
+    <ExtendedPaginationBox count={400} from={100} size={20} setPage={0} setSize={20} />
+    <ExtendedPaginationBox count={400} from={280} size={20} setPage={0} setSize={20} />
+    <ExtendedPaginationBox count={400} from={300} size={20} setPage={0} setSize={20} />
+  </Story>
+</Preview>
+
+## small
+
+<Preview>
+  <Story name="small">
+    <ExtendedPaginationBox
+      small
+      count={400}
+      from={0}
+      size={20}
+      setPage={0}
+      setSize={20}
+    />
   </Story>
 </Preview>
