@@ -43,6 +43,7 @@ function Pagination({ count, from: current, set, size }: IPaginationProps) {
               onKeyDown={() => set(currentPage - 1)}
               type="button"
               className="pagination-prev"
+              data-testid="prev-page"
             >
               <SVGIcon name="chevronLeft" />
             </button>
@@ -57,11 +58,12 @@ function Pagination({ count, from: current, set, size }: IPaginationProps) {
                 onKeyDown={() => set(0)}
                 type="button"
                 className="pagination-link"
+                data-testid="first-page"
               >
                 <span>1</span>
               </button>
             </li>
-            <li className="dots">
+            <li className="dots" data-testid="first-page-dots">
               <Text tag="div">...</Text>
             </li>
           </>
@@ -80,6 +82,7 @@ function Pagination({ count, from: current, set, size }: IPaginationProps) {
                   className={`pagination-link ${
                     i === currentPage && `current`
                   }`}
+                  data-testid={`button-${i}`}
                 >
                   <span>{i + 1}</span>
                 </button>
@@ -89,7 +92,7 @@ function Pagination({ count, from: current, set, size }: IPaginationProps) {
 
         {currentPage + 5 < nPages && (
           <>
-            <li className="dots">
+            <li className="dots" data-testid="last-page-dots">
               <Text tag="div">...</Text>
             </li>
             <li>
@@ -98,6 +101,7 @@ function Pagination({ count, from: current, set, size }: IPaginationProps) {
                 onKeyDown={() => set(0)}
                 type="button"
                 className="pagination-link"
+                data-testid="last-page"
               >
                 <span>{nPages}</span>
               </button>
@@ -113,6 +117,7 @@ function Pagination({ count, from: current, set, size }: IPaginationProps) {
                 onKeyDown={() => set(currentPage + 1)}
                 type="button"
                 className="pagination-next"
+                data-testid="next-page"
               >
                 <SVGIcon name="chevronRight" />
               </button>
