@@ -10,8 +10,10 @@ export type IPaginationBoxProps = {
 
 export type IPaginationProps = {
   set(start: number): void;
-  current?: number;
+  current: number;
   count: number;
   size: number;
   from: number;
 };
+
+export type IExtendedPaginationProps = Omit<IPaginationProps, "current">;

@@ -33,7 +33,7 @@ test("shows `per page` component", async () => {
 
 test("shows last page button on 1st page", () => {
   getComponent(getParams());
-  
+
   expect(screen.getByTestId("last-page")).toBeInTheDocument();
   expect(screen.getByTestId("last-page-dots")).toBeInTheDocument();
 
@@ -62,28 +62,28 @@ test("shows 1st and last page buttons in the middle", () => {
 });
 
 test("shows only `next` button", () => {
-    getComponent(getParams());
-    expect(screen.getByTestId("next-page")).toBeInTheDocument();
-    expect(screen.queryByTestId("prev-page")).not.toBeInTheDocument();
+  getComponent(getParams());
+  expect(screen.getByTestId("next-page")).toBeInTheDocument();
+  expect(screen.queryByTestId("prev-page")).not.toBeInTheDocument();
 });
 
 test("shows only `prev` button", () => {
-    getComponent(getParams(180));
-    expect(screen.queryByTestId("next-page")).not.toBeInTheDocument();
-    expect(screen.getByTestId("prev-page")).toBeInTheDocument();
+  getComponent(getParams(180));
+  expect(screen.queryByTestId("next-page")).not.toBeInTheDocument();
+  expect(screen.getByTestId("prev-page")).toBeInTheDocument();
 });
 
 test("shows `prev` and 'next' button", () => {
-    getComponent(getParams(100));
-    expect(screen.queryByTestId("next-page")).toBeInTheDocument();
-    expect(screen.getByTestId("prev-page")).toBeInTheDocument();
+  getComponent(getParams(100));
+  expect(screen.queryByTestId("next-page")).toBeInTheDocument();
+  expect(screen.getByTestId("prev-page")).toBeInTheDocument();
 });
 
 test("notifies about changing page", () => {
-    getComponent(getParams());
-    const button = screen.getByTestId("button-1");
-    userEvent.click(button);
-    expect(setPage).toHaveBeenCalledWith(expect.anything());
+  getComponent(getParams());
+  const button = screen.getByTestId("button-1");
+  userEvent.click(button);
+  expect(setPage).toHaveBeenCalledWith(expect.anything());
 });
 
 test("renders without number of results and `per page` for small screens", async () => {
@@ -99,5 +99,7 @@ test("renders without number of results and `per page` for small screens", async
     />
   );
   expect(await screen.queryByText(/show/i)).toBeNull();
-  expect(await screen.queryByText(`1 -${params.size} of ${params.count}`)).toBeNull();
-})
+  expect(
+    await screen.queryByText(`1 -${params.size} of ${params.count}`)
+  ).toBeNull();
+});

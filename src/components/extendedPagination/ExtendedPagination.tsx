@@ -1,7 +1,7 @@
 import * as React from "react";
 import {
+  IExtendedPaginationProps,
   IPaginationBoxProps,
-  IPaginationProps,
   PaginationAmount,
   PerPage,
   StyledPaginationBox,
@@ -9,8 +9,8 @@ import {
 import { Text } from "../text";
 import { SVGIcon } from "../svgicon";
 
-function Pagination({ count, from: current, set, size }: IPaginationProps) {
-  const currentPage = Math.ceil(current / size);
+function Pagination({ count, from, set, size }: IExtendedPaginationProps) {
+  const currentPage = Math.ceil(from / size);
   const nPages = Math.ceil(count / size);
 
   const generatePagesItems = (numberOfPages, subtract = false) => {
