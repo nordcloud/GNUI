@@ -85,3 +85,19 @@ test("notifies about changing page", () => {
     userEvent.click(button);
     expect(setPage).toHaveBeenCalledWith(expect.anything());
 });
+
+test("renders without number of results and `per page` for small screens", async () => {
+  const params = getParams();
+  render(
+    <ExtendedPaginationBox
+      count={params.count}
+      from={params.from}
+      setPage={setPage}
+      setSize={setSize}
+      size={params.size}
+      small
+    />
+  );
+  expect(await screen.queryByText(/show/i)).toBeNull();
+  expect(await screen.queryByText(`1 -${params.size} of ${params.count}`)).toBeNull();
+})
