@@ -18,6 +18,7 @@ export const StyledPaginationBox = styled.nav<Props>`
   justify-content: ${({ small }) => (small ? "center" : "space-between")};
   border-radius: ${theme.radius.md};
   align-items: center;
+
   .pagination-result,
   .pagination-show {
     font-weight: ${theme.fontWeights.regular};
@@ -26,19 +27,23 @@ export const StyledPaginationBox = styled.nav<Props>`
     margin: 0 ${theme.spacing.spacing02} 0 0;
     line-height: ${theme.lineHeight};
   }
+
   .pagination-result {
     width: 12rem;
   }
+
   .pagination-per-page {
     display: flex;
     align-items: center;
   }
+
   .pagination-list {
     display: flex;
     list-style: none;
     padding-left: 0;
     margin: 0;
   }
+
   button {
     display: flex;
     align-items: center;
@@ -90,6 +95,7 @@ export const StyledPaginationBox = styled.nav<Props>`
         padding-left: 0;
       }
     }
+
     &.pagination-last,
     &.pagination-next {
       background-color: transparent;
@@ -103,11 +109,13 @@ export const StyledPaginationBox = styled.nav<Props>`
       width: 1rem;
       height: 1rem;
     }
+
     span {
       min-width: 1.125rem;
       text-align: center;
     }
   }
+
   .dots {
     margin: 0 ${theme.spacing.spacing02};
 
