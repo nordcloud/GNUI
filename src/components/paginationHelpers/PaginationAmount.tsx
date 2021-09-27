@@ -1,16 +1,12 @@
 import * as React from "react";
 
-type IPaginationAmountProps = {
+type Props = {
   from: number;
   size: number;
   count: number;
 };
 
-export const PaginationAmount = ({
-  from,
-  size,
-  count,
-}: IPaginationAmountProps) => {
+export const PaginationAmount = ({ from, size, count }: Props) => {
   const s = Number(size);
   const maxCurrentPage = count < s ? count : Math.min(from + s);
   const minCurrentPage = count < s ? "1" : from + 1;

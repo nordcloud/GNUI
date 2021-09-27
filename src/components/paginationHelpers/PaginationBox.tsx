@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import theme from "../../theme";
 
-type IStyledPaginationBox = {
+type Props = {
   sidebar?: boolean;
   small?: boolean;
 };
 
-export const StyledPaginationBox = styled.nav<IStyledPaginationBox>`
+export const StyledPaginationBox = styled.nav<Props>`
   display: flex;
   flex-wrap: wrap;
   flex: ${({ sidebar }) => (sidebar ? 1 : 0)};
