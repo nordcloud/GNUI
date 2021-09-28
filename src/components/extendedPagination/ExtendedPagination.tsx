@@ -13,7 +13,7 @@ function Pagination({ count, from, set, size }: IExtendedPaginationProps) {
   const currentPage = Math.ceil(from / size);
   const nPages = Math.ceil(count / size);
 
-  const generatePagesItems = (numberOfPages, subtract = false) => {
+  const generatePagesItems = (numberOfPages: number, subtract = false) => {
     return Array.from(Array(numberOfPages), (_, i) => {
       if (subtract) {
         return nPages - (i + 1);

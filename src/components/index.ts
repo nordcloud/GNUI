@@ -35,3 +35,4 @@ export * from "./text";
 export * from "./toggle";
 export * from "./tooltip";
 export * from "./textarea";
+export * from "./extendedPagination";
