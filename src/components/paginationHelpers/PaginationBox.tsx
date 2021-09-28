@@ -88,13 +88,28 @@ export const StyledPaginationBox = styled.nav<Props>`
     }
 
     &.pagination-first,
-    &.pagination-prev {
-      background-color: transparent;
-    }
-
+    &.pagination-prev,
     &.pagination-last,
     &.pagination-next {
       background-color: transparent;
+    }
+
+    &.pagination-first {
+      padding-left: ${theme.spacing.spacing01};
+      svg {
+        padding-left: 0;
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+
+    &.pagination-last {
+      padding-right: ${theme.spacing.spacing01};
+      svg {
+        padding-right: 0;
+        width: 1rem;
+        height: 1rem;
+      }
     }
 
     svg {
