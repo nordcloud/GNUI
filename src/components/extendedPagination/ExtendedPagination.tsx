@@ -13,6 +13,10 @@ function Pagination({ count, from, set, size }: IExtendedPaginationProps) {
   const currentPage = Math.ceil(from / size);
   const nPages = Math.ceil(count / size);
 
+  // 6 & 7 pages make a lot of problem with dots so shrinking base number of visible
+  // pages to 4 to avoid overlaps (problem: rendering dots and direct page at the same time)
+  const baseNumberOfPages = [6, 7].includes(nPages) ? 4 : 5;
+
   const generatePagesItems = (numberOfPages: number, subtract = false) => {
     return Array.from(Array(numberOfPages), (_, i) => {
       if (subtract) {
@@ -23,15 +27,26 @@ function Pagination({ count, from, set, size }: IExtendedPaginationProps) {
   };
 
   const getPages = () => {
-    const endPages = generatePagesItems(5, true);
-    if (currentPage < 5) {
-      return generatePagesItems(5);
-    } else if (endPages.includes(currentPage)) {
+    const endPages = generatePagesItems(baseNumberOfPages, true);
+    if (currentPage < baseNumberOfPages - 1) {
+      return generatePagesItems(baseNumberOfPages);
+    } else if (endPages.includes(currentPage - 1)) {
       return endPages.reverse();
     } else {
       return [currentPage - 1, currentPage, currentPage + 1];
     }
   };
+
+  const setPage = (pageNumber: number) => {
+    if (currentPage !== pageNumber) {
+      set(pageNumber * size);
+    }
+  };
+
+  const showFirstPageJump =
+    currentPage >= baseNumberOfPages - 1 && nPages > baseNumberOfPages;
+  const showLastPageJump =
+    currentPage + baseNumberOfPages <= nPages && nPages > baseNumberOfPages;
 
   return (
     <nav className="pagination" role="navigation" aria-label="pagination">
@@ -39,8 +54,8 @@ function Pagination({ count, from, set, size }: IExtendedPaginationProps) {
         {currentPage > 0 && (
           <li>
             <button
-              onClick={() => set(currentPage - 1)}
-              onKeyDown={() => set(currentPage - 1)}
+              onClick={() => setPage(currentPage - 1)}
+              onKeyDown={() => setPage(currentPage - 1)}
               type="button"
               className="pagination-prev"
               data-testid="prev-page"
@@ -50,12 +65,12 @@ function Pagination({ count, from, set, size }: IExtendedPaginationProps) {
           </li>
         )}
 
-        {currentPage > 4 && (
+        {showFirstPageJump && (
           <>
             <li>
               <button
-                onClick={() => set(0)}
-                onKeyDown={() => set(0)}
+                onClick={() => setPage(0)}
+                onKeyDown={() => setPage(0)}
                 type="button"
                 className="pagination-link"
                 data-testid="first-page"
@@ -75,8 +90,8 @@ function Pagination({ count, from, set, size }: IExtendedPaginationProps) {
             return (
               <li key={`p${i}`}>
                 <button
-                  onClick={() => set(size * i)}
-                  onKeyDown={() => set(size * i)}
+                  onClick={() => setPage(i)}
+                  onKeyDown={() => setPage(i)}
                   type="button"
                   disabled={i < 0}
                   className={`pagination-link ${
@@ -90,15 +105,15 @@ function Pagination({ count, from, set, size }: IExtendedPaginationProps) {
             );
           })}
 
-        {currentPage + 5 < nPages && (
+        {showLastPageJump && (
           <>
             <li className="dots" data-testid="last-page-dots">
               <Text tag="div">...</Text>
             </li>
             <li>
               <button
-                onClick={() => set(0)}
-                onKeyDown={() => set(0)}
+                onClick={() => setPage(nPages - 1)}
+                onKeyDown={() => setPage(nPages - 1)}
                 type="button"
                 className="pagination-link"
                 data-testid="last-page"
@@ -113,8 +128,8 @@ function Pagination({ count, from, set, size }: IExtendedPaginationProps) {
           <>
             <li>
               <button
-                onClick={() => set(currentPage + 1)}
-                onKeyDown={() => set(currentPage + 1)}
+                onClick={() => setPage(currentPage + 1)}
+                onKeyDown={() => setPage(currentPage + 1)}
                 type="button"
                 className="pagination-next"
                 data-testid="next-page"

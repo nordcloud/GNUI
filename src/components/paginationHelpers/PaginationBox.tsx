@@ -90,24 +90,16 @@ export const StyledPaginationBox = styled.nav<Props>`
     &.pagination-first,
     &.pagination-prev {
       background-color: transparent;
-      padding-left: ${theme.spacing.spacing01};
-      svg {
-        padding-left: 0;
-      }
     }
 
     &.pagination-last,
     &.pagination-next {
       background-color: transparent;
-      padding-right: ${theme.spacing.spacing01};
-      svg {
-        padding-right: 0;
-      }
     }
 
     svg {
-      width: 1rem;
-      height: 1rem;
+      width: 1.125rem;
+      height: 1.125rem;
     }
 
     span {
