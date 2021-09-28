@@ -88,26 +88,33 @@ export const StyledPaginationBox = styled.nav<Props>`
     }
 
     &.pagination-first,
-    &.pagination-prev {
-      background-color: transparent;
-      padding-left: ${theme.spacing.spacing01};
-      svg {
-        padding-left: 0;
-      }
-    }
-
+    &.pagination-prev,
     &.pagination-last,
     &.pagination-next {
       background-color: transparent;
+    }
+
+    &.pagination-first {
+      padding-left: ${theme.spacing.spacing01};
+      svg {
+        padding-left: 0;
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+
+    &.pagination-last {
       padding-right: ${theme.spacing.spacing01};
       svg {
         padding-right: 0;
+        width: 1rem;
+        height: 1rem;
       }
     }
 
     svg {
-      width: 1rem;
-      height: 1rem;
+      width: 1.125rem;
+      height: 1.125rem;
     }
 
     span {
