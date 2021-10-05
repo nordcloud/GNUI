@@ -97,8 +97,7 @@
     "storybook": "6.0.5",
     "styled-components": "^5.0.1",
     "styled-components-breakpoint": "^3.0.0-preview.20",
-    "styled-system": "^5.1.5",
-    "typescript": "^3.9.7"
+    "styled-system": "^5.1.5"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^6.0.5",
@@ -122,6 +121,7 @@
     "stylelint": "^13.13.1",
     "stylelint-config-recommended": "^5.0.0",
     "stylelint-config-styled-components": "^0.1.1",
-    "stylelint-processor-styled-components": "^1.10.0"
+    "stylelint-processor-styled-components": "^1.10.0",
+    "typescript": "^3.9.7"
   }
 }
