@@ -1,0 +1,5 @@
+build
+dist
+coverage
+.eslintrc.js
+lint-staged.config.js

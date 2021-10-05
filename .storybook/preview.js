@@ -11,12 +11,7 @@ addParameters({
     storySort: {
       order: [
         "Foundation",
-        [
-          "Grid",
-          "Colors",
-          "Icons",
-          "Spacing",
-        ],
+        ["Grid", "Colors", "Icons", "Spacing"],
         "Typography",
         "Components",
         "Forms",

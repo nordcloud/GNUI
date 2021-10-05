@@ -32,15 +32,12 @@ export const PageTitle: FunctionComponent<PageTitleProps> = ({ title }) => {
   );
 };
 
-export const PageTitleBreadcrumbs: FunctionComponent<PageTitleBreadcrumbsProps> = ({
-  title,
-  list,
-  margin,
-}) => {
-  return (
-    <Box innerSpacing="spacing04" shadow="shadow02">
-      <PageTitle title={title} />
-      <Breadcrumbs list={list} />
-    </Box>
-  );
-};
+export const PageTitleBreadcrumbs: FunctionComponent<PageTitleBreadcrumbsProps> =
+  ({ title, list, margin }) => {
+    return (
+      <Box innerSpacing="spacing04" shadow="shadow02">
+        <PageTitle title={title} />
+        <Breadcrumbs list={list} />
+      </Box>
+    );
+  };
