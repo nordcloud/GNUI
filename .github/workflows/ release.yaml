@@ -16,6 +16,6 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_KEY }}
       - run: npm install --global npm
       - run: npm ci
-      - run: npm run check:types
+      - run: npm run compile:publish
       - run: cat .npmrc
       - run: npm publish --access public
