@@ -34,5 +34,5 @@ export default create({
   brandTitle: "GNUI",
 
   brandImage:
-    "https://nordcloud.com/wp-content/themes/nordcloud/images/logo.svg"
+    "https://nordcloud.com/wp-content/themes/nordcloud/images/logo.svg",
 });

@@ -1,7 +1,7 @@
 {
   "name": "@nordcloud/gnui",
   "description": "Nordcloud Design System - a collection of reusable React components used in Nordcloud's SaaS products",
-  "version": "2.7.3",
+  "version": "2.8.0",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -16,13 +16,21 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "compile:publish": "tsc --project tsconfig.publish.json",
+    "test": "react-scripts test --passWithNoTests",
+    "test:commit": "npm run test -- -o --silent --watchAll=false",
+    "test:all": "npm run test -- --silent --watchAll=false",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx)\"",
     "check:types": "tsc",
-    "lint": "eslint --ignore-path .gitignore --ext .ts,.tsx ."
+    "check:format": "prettier --check \"**/*.+(js|json|ts|tsx)\"",
+    "lint": "eslint --ignore-path .gitignore --ext .ts,.tsx .",
+    "lint:quiet": "npm run lint -- --quiet",
+    "lint:css": "stylelint '**/*.tsx'",
+    "lint:css:quiet": "npm run lint:css -- --quiet",
+    "validate:commit": "npm-run-all --parallel check:types test:commit"
   },
   "engines": {
     "node": ">=14.15.5",
@@ -42,23 +50,23 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && npm run check:types"
+      "pre-commit": "lint-staged && npm run validate:commit"
     }
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
+    "*.{ts,tsx,js}": [
       "prettier --write",
-      "eslint --fix"
+      "eslint --fix",
+      "stylelint",
+      "git add"
+    ],
+    "*.{md,mdx,css,yaml,yml}": [
+      "prettier --write"
     ]
   },
   "dependencies": {
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
-    "@storybook/addon-info": "5.3.19",
-    "@storybook/addon-knobs": "6.0.5",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
     "@types/jest": "^24.0.0",
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.51",
@@ -70,7 +78,6 @@
     "@types/styled-components": "^5.1.0",
     "@types/styled-system": "^5.1.7",
     "babel-loader": "^8.1.0",
-    "chroma-js": "^2.1.0",
     "date-fns": "^2.14.0",
     "mini-svg-data-uri": "^1.1.3",
     "polished": "^3.4.4",
@@ -81,31 +88,41 @@
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
     "react-modal": "^3.11.2",
-    "react-scripts": "^3.4.3",
+    "react-scripts": "^4.0.3",
     "react-select": "^4.3.0",
-    "reset": "^0.1.0",
-    "storybook": "6.0.5",
-    "styled": "^1.0.0",
     "styled-components": "^5.0.1",
     "styled-components-breakpoint": "^3.0.0-preview.20",
-    "styled-system": "^5.1.5",
-    "title": "^3.4.1",
-    "typescript": "^3.9.7"
+    "styled-system": "^5.1.5"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^6.0.5",
     "@storybook/addon-docs": "^6.0.5",
+    "@storybook/addon-info": "^5.3.19",
+    "@storybook/addon-knobs": "^6.0.5",
     "@storybook/addon-links": "^6.0.5",
     "@storybook/addons": "^6.0.5",
     "@storybook/preset-create-react-app": "^3.1.4",
     "@storybook/react": "^6.0.5",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.2.1",
     "@types/react-helmet": "^6.1.2",
     "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-jest": "^24.5.2",
+    "eslint-plugin-jest-dom": "^3.9.2",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-hooks": "^4.1.2",
+    "eslint-plugin-testing-library": "^3.10.2",
     "husky": "^4.2.5",
     "lint-staged": "^10.3.0",
-    "prettier": "2.0.2"
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.4.1",
+    "storybook": "^6.0.5",
+    "stylelint": "^13.13.1",
+    "stylelint-config-recommended": "^5.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.10.0",
+    "typescript": "^4.2.2"
   }
 }

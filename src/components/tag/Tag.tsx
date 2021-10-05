@@ -35,7 +35,7 @@ export const StyledTag = styled.div<TagProps>`
     width: 1rem;
     height: 1rem;
   }
-  
+
   .tag-text {
     margin: 0 ${theme.spacing.spacing03};
   }
@@ -61,16 +61,16 @@ export const StyledTag = styled.div<TagProps>`
     cursor: pointer;
   }
   &:active {
-    background:${theme.color.interactive.secondaryActive};
+    background: ${theme.color.interactive.secondaryActive};
     cursor: pointer;
   }
-  
+
   ${({ isTransparent }) =>
     isTransparent &&
     css`
       background: transparent;
     `}
-    
+
   ${({ icon }) =>
     icon &&
     css`

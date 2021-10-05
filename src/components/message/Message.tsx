@@ -22,7 +22,7 @@ export const MessageWrapper = styled.div<MessageWrapperProps>`
   font-size: ${theme.fontSizes.md};
   padding: ${theme.spacing.spacing03};
   line-height: 1.5rem;
-  border:1px solid;
+  border: 1px solid;
 
   ${({ status }) =>
     status === "success" &&
