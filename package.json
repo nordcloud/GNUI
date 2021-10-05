@@ -67,8 +67,6 @@
   "dependencies": {
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
-    "@storybook/addon-info": "5.3.19",
-    "@storybook/addon-knobs": "6.0.5",
     "@types/jest": "^24.0.0",
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.51",
@@ -92,7 +90,6 @@
     "react-modal": "^3.11.2",
     "react-scripts": "^4.0.3",
     "react-select": "^4.3.0",
-    "storybook": "6.0.5",
     "styled-components": "^5.0.1",
     "styled-components-breakpoint": "^3.0.0-preview.20",
     "styled-system": "^5.1.5"
@@ -100,6 +97,8 @@
   "devDependencies": {
     "@storybook/addon-actions": "^6.0.5",
     "@storybook/addon-docs": "^6.0.5",
+    "@storybook/addon-info": "^5.3.19",
+    "@storybook/addon-knobs": "^6.0.5",
     "@storybook/addon-links": "^6.0.5",
     "@storybook/addons": "^6.0.5",
     "@storybook/preset-create-react-app": "^3.1.4",
@@ -119,6 +118,7 @@
     "lint-staged": "^10.3.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.4.1",
+    "storybook": "^6.0.5",
     "stylelint": "^13.13.1",
     "stylelint-config-recommended": "^5.0.0",
     "stylelint-config-styled-components": "^0.1.1",

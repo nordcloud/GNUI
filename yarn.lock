@@ -1794,7 +1794,7 @@
     "ts-dedent" "^1.1.1"
     "util-deprecate" "^1.0.2"
 
-"@storybook/addon-info@5.3.19":
+"@storybook/addon-info@^5.3.19":
   "integrity" "sha512-MiFLcyoOmwawquagQHkqiPHnvBOKrVaS/wnO1XyBvIHwkK+KN7CZ9l7HakA4SO76kugrY9OJYyi5YvEEdN6vww=="
   "resolved" "https://registry.npmjs.org/@storybook/addon-info/-/addon-info-5.3.19.tgz"
   "version" "5.3.19"
@@ -1815,7 +1815,7 @@
     "react-lifecycles-compat" "^3.0.4"
     "util-deprecate" "^1.0.2"
 
-"@storybook/addon-knobs@6.0.5":
+"@storybook/addon-knobs@^6.0.5":
   "integrity" "sha512-P3pNBkIRyYTgT1R7dD+8hBBlMMpTawLYYyzpjGnsf8daYvEdZd4M73PPU4GZnucX/EhZlZLMDX8AW6jkwUb68w=="
   "resolved" "https://registry.npmjs.org/@storybook/addon-knobs/-/addon-knobs-6.0.5.tgz"
   "version" "6.0.5"
@@ -15629,7 +15629,7 @@
   "resolved" "https://registry.npmjs.org/store2/-/store2-2.11.2.tgz"
   "version" "2.11.2"
 
-"storybook@6.0.5":
+"storybook@^6.0.5":
   "integrity" "sha512-Ss4rjLiJkNX/6MIiKlguNmwRmJsBv84UxMosgUoEwSj+CU1M+o5HVfddReswyiGJDjjEzR6p4mx0D33MzDt9IA=="
   "resolved" "https://registry.npmjs.org/storybook/-/storybook-6.0.5.tgz"
   "version" "6.0.5"
