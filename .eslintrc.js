@@ -139,7 +139,7 @@ module.exports = {
     // eslint-plugin-sonarjs
     "sonarjs/cognitive-complexity": "off",
     "sonarjs/no-duplicate-string": "off",
-    "sonarjs/no-nested-template-literals": isProd ? "off" : "warn",
+    "sonarjs/no-nested-template-literals": "off",
     "sonarjs/no-unused-collection": "warn",
     "sonarjs/no-collapsible-if": "warn",
     // @typescript-eslint/eslint-plugin
