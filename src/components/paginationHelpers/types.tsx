@@ -15,4 +15,7 @@ export type IPaginationProps = {
   size: number;
 };
 
-export type IExtendedPaginationProps = Omit<IPaginationProps, "current">;
+export type IExtendedPaginationProps = { from: number } & Omit<
+  IPaginationProps,
+  "current"
+>;

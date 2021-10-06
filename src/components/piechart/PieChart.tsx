@@ -1,4 +1,4 @@
-import React, { useEffect, useState, FunctionComponent } from "react";
+import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import { space, SpaceProps } from "styled-system";
 import theme from "../../theme";
@@ -8,6 +8,7 @@ type IPieChart = {
   progress: number;
   strokeWidth: number;
   color?: "danger" | "warning" | "success" | "notification";
+  [x: string]: any;
 };
 
 const setColorBgr = (color: string) => {
@@ -105,14 +106,16 @@ const StyledCircleProgress = styled.circle<IPieChart>`
     `}
 `;
 
-export const PieChart: FunctionComponent<IPieChart & SpaceProps> = ({
+type Props = { children: React.ReactNode } & IPieChart & SpaceProps;
+
+export function PieChart({
   size,
   progress,
   strokeWidth,
   color,
   children,
   ...props
-}) => {
+}: Props) {
   const center = size / 2;
   const radius = (size - strokeWidth) / 2;
   const circumference = radius * 2 * Math.PI;
@@ -152,4 +155,4 @@ export const PieChart: FunctionComponent<IPieChart & SpaceProps> = ({
       )}
     </StyledPieChartWrap>
   );
-};
+}
