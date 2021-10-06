@@ -1,4 +1,7 @@
 import React from "react";
+import styled from "styled-components";
+import { Button } from "../button";
+import { Heading } from "../heading";
 import {
   StyledModal,
   ModalBox,
@@ -8,9 +11,6 @@ import {
   ModalActions,
   Background,
 } from "./Modal";
-import styled from "styled-components";
-import { Heading } from "../heading";
-import { Button } from "../button";
 
 const ModalHeading = styled(Heading)`
   margin: 0;
@@ -31,7 +31,7 @@ type ModalProps = {
   alignText?: "left" | "right" | "center";
 };
 
-export const ModalConfirm = ({
+export function ModalConfirm({
   children,
   contentLabel,
   actionLabel,
@@ -39,7 +39,7 @@ export const ModalConfirm = ({
   onClose,
   confirm,
   ...props
-}: ModalProps) => {
+}: ModalProps) {
   return (
     <>
       <Background onClick={onClose} {...props}></Background>
@@ -70,4 +70,4 @@ export const ModalConfirm = ({
       </StyledModal>
     </>
   );
-};
+}

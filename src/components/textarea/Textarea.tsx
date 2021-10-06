@@ -1,8 +1,8 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
-import { Status } from "../input/types";
 import { setStatusColor } from "../input/styles";
+import { Status } from "../input/types";
 
 export type TextareaGroupProps = {
   status?: Status;

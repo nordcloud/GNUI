@@ -2,8 +2,7 @@ import React, { HTMLAttributes } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { SingleColors } from "../../theme/config";
-import { getViewBox } from "../../utils/svgicons";
-import { getPath, PathName } from "../../utils/svgicons";
+import { getViewBox, getPath, PathName } from "../../utils/svgicons";
 
 export type SVGIconProps = HTMLAttributes<HTMLOrSVGElement> & {
   name: PathName;

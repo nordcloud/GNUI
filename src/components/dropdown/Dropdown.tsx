@@ -1,8 +1,11 @@
 import React, { FunctionComponent, useState } from "react";
 import { SpaceProps } from "styled-system";
 import { useClickOutside } from "../../hooks";
-import { SVGIcon } from "../svgicon/SVGIcon";
+import theme from "../../theme";
 import { Input } from "../input";
+import { Spacer } from "../spacer";
+import { SVGIcon } from "../svgicon/SVGIcon";
+import { getOptionValue } from "./helpers";
 import {
   Clear,
   DropdownButton,
@@ -12,10 +15,7 @@ import {
   DropdownWrapper,
   Inner,
 } from "./styles";
-import { getOptionValue } from "./helpers";
 import { Option } from "./types";
-import theme from "../../theme";
-import { Spacer } from "../spacer";
 
 type DropdownProps = {
   name: string;

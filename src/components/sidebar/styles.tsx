@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components";
-import theme, { bp } from "../../theme";
 import { space } from "styled-system";
-import { Text } from "../text";
+import theme, { bp } from "../../theme";
 import { Button } from "../button";
+import { Text } from "../text";
 import {
   SidebarProps,
   BackgroudProps,

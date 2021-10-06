@@ -1,6 +1,6 @@
 import * as React from "react";
-import { StyledTooltip, TooltipWrapper } from "./styles";
 import { useTooltipHover } from "./hooks";
+import { StyledTooltip, TooltipWrapper } from "./styles";
 
 export type Props = {
   caption: React.ReactNode;

@@ -6,8 +6,8 @@ import {
   PerPage,
   StyledPaginationBox,
 } from "../paginationHelpers";
-import { Text } from "../text";
 import { SVGIcon } from "../svgicon";
+import { Text } from "../text";
 
 function Pagination({ count, from, set, size }: IExtendedPaginationProps) {
   const currentPage = Math.ceil(from / size);

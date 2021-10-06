@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import theme from "../../theme";
 import { useClickOutside } from "../../hooks";
+import theme from "../../theme";
 import { Box } from "../box";
 
 type ContentData = {
@@ -48,7 +48,7 @@ const StyledTrigger = styled.div`
   cursor: pointer;
 `;
 
-export const Popover = ({ children, trigger, alignRight }: PopoverProps) => {
+export function Popover({ children, trigger, alignRight }: PopoverProps) {
   const [isVisible, setIsVisible] = useState(false);
   const toggle = () => {
     setIsVisible(!isVisible);
@@ -71,4 +71,4 @@ export const Popover = ({ children, trigger, alignRight }: PopoverProps) => {
       </Content>
     </StyledPopover>
   );
-};
+}

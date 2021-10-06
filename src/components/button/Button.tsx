@@ -3,14 +3,14 @@ import React, {
   ButtonHTMLAttributes,
   MouseEvent,
 } from "react";
-import styled, { css } from "styled-components";
 import { darken, lighten } from "polished";
+import styled, { css } from "styled-components";
 import { space, SpaceProps } from "styled-system";
 import theme from "../../theme";
 import { SingleColors } from "../../theme/config";
 import { setColor } from "../../utils/setcolor";
-import { SVGIcon, SVGIconProps } from "../svgicon";
 import { Spinner } from "../spinner";
+import { SVGIcon, SVGIconProps } from "../svgicon";
 
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   children?: string | React.ReactNode;

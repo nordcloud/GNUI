@@ -98,8 +98,8 @@ test("renders without number of results and `per page` for small screens", async
       small
     />
   );
-  expect(await screen.queryByText(/show/i)).toBeNull();
-  expect(
-    await screen.queryByText(`1 -${params.size} of ${params.count}`)
-  ).toBeNull();
+  await expect(screen.queryByText(/show/i)).resolves.toBeNull();
+  await expect(
+    screen.queryByText(`1 -${params.size} of ${params.count}`)
+  ).resolves.toBeNull();
 });

@@ -1,9 +1,9 @@
 import React from "react";
-import { createGlobalStyle } from "styled-components";
 import { Helmet } from "react-helmet";
-import theme from ".";
-import { useThemeSwitcher } from "./switcher";
+import { createGlobalStyle } from "styled-components";
 import { resetCss } from "./reset";
+import { useThemeSwitcher } from "./switcher";
+import theme from ".";
 
 const GlobalStyle = createGlobalStyle`
   ${resetCss};
@@ -36,7 +36,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export const SetGlobalStyle = () => {
+export function SetGlobalStyle() {
   useThemeSwitcher();
   return (
     <>
@@ -55,4 +55,4 @@ export const SetGlobalStyle = () => {
       <GlobalStyle />
     </>
   );
-};
+}

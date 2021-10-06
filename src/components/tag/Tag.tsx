@@ -1,10 +1,10 @@
 import React from "react";
-import styled, { css } from "styled-components";
 import { darken } from "polished";
+import styled, { css } from "styled-components";
 import { space } from "styled-system";
-import { SVGIcon, SVGIconProps } from "../svgicon";
 import theme from "../../theme";
 import { SingleColors } from "../../theme/config";
+import { SVGIcon, SVGIconProps } from "../svgicon";
 
 type TagProps = {
   color?: SingleColors;

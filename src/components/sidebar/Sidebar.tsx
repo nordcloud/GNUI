@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Button } from "../button";
 import { SVGIcon } from "../svgicon";
-import { SidebarProps, SidebarButtonProps } from "./types";
 import {
   Background,
   Caption,
@@ -15,6 +14,7 @@ import {
   SidebarMenu,
   Title,
 } from "./styles";
+import { SidebarProps, SidebarButtonProps } from "./types";
 
 export const CloseButton: React.FC<SidebarButtonProps> = ({
   onClick,

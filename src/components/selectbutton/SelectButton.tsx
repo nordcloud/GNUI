@@ -1,6 +1,6 @@
 import React, { ReactNode, HTMLAttributes } from "react";
-import styled, { css } from "styled-components";
 import { darken } from "polished";
+import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { SingleColors } from "../../theme/config";
 import { setColor } from "../../utils/setcolor";

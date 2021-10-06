@@ -1,9 +1,9 @@
 import * as React from "react";
 import styled from "styled-components";
 import theme from "../../theme";
+import { Button, ButtonProps } from "../button";
 import { GnuiContainer, Flex, GnuiContainerProps } from "../container";
 import { StyledInputProps } from "../input/types";
-import { Button, ButtonProps } from "../button";
 
 const StyledSubmit = styled.input`
   background: ${theme.color.interactive.primary};

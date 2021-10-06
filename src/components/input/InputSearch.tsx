@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { SpaceProps } from "styled-system";
 import { Button } from "../button";
 import { Spinner } from "../spinner";
-import { StyledInputProps, StyledInputGroupProps } from "./types";
 import { InputGroup, StyledInput } from "./styles";
+import { StyledInputProps, StyledInputGroupProps } from "./types";
 
 const ButtonWrapper = styled.div`
   margin: -0.25rem -0.25rem -0.25rem 0;

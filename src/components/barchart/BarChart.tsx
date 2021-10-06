@@ -36,7 +36,7 @@ const StyledBarChart = styled.svg<IStyledBarProps>`
 
 type BarProps = IBarValues & IStyledBarProps;
 
-export const BarChart = ({ values, ...visualProps }: BarProps) => {
+export function BarChart({ values, ...visualProps }: BarProps) {
   const sum = values.reduce((accumulator, { value }) => accumulator + value, 0);
   let x = 0;
   const calculateX = (prevBarWidth: number) => (x += prevBarWidth);
@@ -57,4 +57,4 @@ export const BarChart = ({ values, ...visualProps }: BarProps) => {
       </g>
     </StyledBarChart>
   );
-};
+}

@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
-import { color } from "styled-system";
 import styled, { css } from "styled-components";
+import { color } from "styled-system";
 import theme from "../../theme";
 
 export type SpinnerProps = {

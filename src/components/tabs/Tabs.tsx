@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
-import { Text } from "../text";
 import { Box } from "../box";
 import { Button } from "../button";
+import { Text } from "../text";
 
 type TabProps = {
   className?: string;
