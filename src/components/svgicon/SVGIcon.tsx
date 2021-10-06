@@ -30,7 +30,7 @@ const StyledSVGIcon = styled.svg<Pick<SVGIconProps, "color" | "size">>`
 `;
 
 export const SVGIcon: React.FC<SVGIconProps> = ({ name, ...props }) => {
-  const ViewBox = getViewBox(name);
+  const ViewBox = getViewBox();
   const Path = React.useMemo(() => getPath(name), [name]);
 
   return (

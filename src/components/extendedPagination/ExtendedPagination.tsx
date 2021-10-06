@@ -156,7 +156,7 @@ export function ExtendedPaginationBox({
   return (
     <StyledPaginationBox small={small} sidebar={sidebar}>
       {!small && <PaginationAmount from={from} size={size} count={count} />}
-      <Pagination from={from} set={setPage} size={size} count={count} />
+      <Pagination set={setPage} size={size} count={count} />
       {!small && <PerPage size={size} set={setSize} />}
     </StyledPaginationBox>
   );

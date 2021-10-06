@@ -27,9 +27,7 @@ export const InputSearch: React.FC<Props> = React.forwardRef(
       onClick,
       onSearch,
       small,
-      showClearButton,
-      onClear = () => undefined,
-      icon,
+      icon = "search",
       ...props
     },
     ref
@@ -46,7 +44,7 @@ export const InputSearch: React.FC<Props> = React.forwardRef(
           {...props}
         />
         <ButtonWrapper>
-          <Button size="md" severity="low" icon="search" onClick={onSearch}>
+          <Button size="md" severity="low" icon={icon} onClick={onSearch}>
             Search
           </Button>
         </ButtonWrapper>

@@ -8,7 +8,6 @@ type IPieChart = {
   progress: number;
   strokeWidth: number;
   color?: "danger" | "warning" | "success" | "notification";
-  [x: string]: any;
 };
 
 const setColorBgr = (color: string) => {
@@ -111,8 +110,6 @@ export const PieChart: FunctionComponent<IPieChart & SpaceProps> = ({
   progress,
   strokeWidth,
   color,
-  displayValue,
-  valueDescription,
   children,
   ...props
 }) => {

@@ -1,6 +1,6 @@
 import { palette } from "./palette";
 
-export default [
+const DARK_COLORS = [
   ["--background-body", palette.darkGrey.darkGrey500],
   ["--background-overlay", palette.black],
   ["--background-ui01", palette.darkGrey.darkGrey300],
@@ -63,3 +63,5 @@ export default [
   ["--support-orange", palette.orange.orange400],
   ["--support-orangeInverse", palette.darkGrey.darkGrey100],
 ];
+
+export default DARK_COLORS;

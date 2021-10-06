@@ -10,7 +10,6 @@ export const StyledPaginationBox = styled.nav<Props>`
   display: flex;
   flex-wrap: wrap;
   flex: ${({ sidebar }) => (sidebar ? 1 : 0)};
-  justify-content: center;
   background-color: ${theme.color.background.ui03};
   padding: ${theme.spacing.spacing03};
   border: ${({ sidebar }) =>
@@ -58,17 +57,32 @@ export const StyledPaginationBox = styled.nav<Props>`
     margin: 0 ${theme.spacing.spacing01};
     background-color: ${theme.color.background.ui03};
 
-    &:hover:not([disabled]) {
-      cursor: pointer;
-      background-color: ${theme.color.interactive.secondaryHover};
-    }
-
     &:active {
       background-color: ${theme.color.interactive.secondaryActive};
     }
 
     &:focus {
       outline: 0;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    &:hover:not([disabled]) {
+      cursor: pointer;
+      background-color: ${theme.color.interactive.secondaryHover};
+    }
+
+    svg {
+      width: 1.125rem;
+      height: 1.125rem;
+    }
+
+    span {
+      min-width: 1.125rem;
+      text-align: center;
     }
 
     &.current {
@@ -82,11 +96,6 @@ export const StyledPaginationBox = styled.nav<Props>`
       }
     }
 
-    &:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-
     &.pagination-first,
     &.pagination-prev,
     &.pagination-last,
@@ -96,6 +105,7 @@ export const StyledPaginationBox = styled.nav<Props>`
 
     &.pagination-first {
       padding-left: ${theme.spacing.spacing01};
+
       svg {
         padding-left: 0;
         width: 1rem;
@@ -105,21 +115,12 @@ export const StyledPaginationBox = styled.nav<Props>`
 
     &.pagination-last {
       padding-right: ${theme.spacing.spacing01};
+
       svg {
         padding-right: 0;
         width: 1rem;
         height: 1rem;
       }
-    }
-
-    svg {
-      width: 1.125rem;
-      height: 1.125rem;
-    }
-
-    span {
-      min-width: 1.125rem;
-      text-align: center;
     }
   }
 

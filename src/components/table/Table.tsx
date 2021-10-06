@@ -8,6 +8,8 @@ export type TableProps = {
   tiny?: boolean;
 };
 
+/* stylelint-disable no-descending-specificity */
+/* eslint-disable sonarjs/no-identical-functions */
 const Table: any = styled.table<TableProps>`
   width: 100%;
   text-align: left;
@@ -63,6 +65,7 @@ const Thead = styled.thead`
 `;
 
 const Tbody = styled.tbody``;
+
 const Tfoot = styled.tfoot`
   td {
     background-color: ${theme.color.background.ui01};

@@ -36,7 +36,7 @@ module.exports = {
     "no-console": "off",
     "require-await": "off",
     camelcase: "off", // @typescript-eslint/naming-convention is used
-    "no-nested-ternary": "error",
+    "no-nested-ternary": isProd ? "off" : "warn",
     complexity: ["error", 15],
     "max-params": ["error", 3],
     eqeqeq: ["error", "smart"],
@@ -148,7 +148,7 @@ module.exports = {
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/interface-name-prefix": "off",
     "@typescript-eslint/no-empty-function": "off",
-    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-explicit-any": isProd ? "off" : "warn",
     "@typescript-eslint/naming-convention": [
       "error",
       {
@@ -211,7 +211,7 @@ module.exports = {
       },
       {
         selector: "enum",
-        format: ["PascalCase"],
+        format: ["PascalCase", "UPPER_CASE"],
       },
       {
         selector: "enumMember",

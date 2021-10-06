@@ -84,6 +84,7 @@ const SelectContainer = styled.div<SelectProps>`
   }
 `;
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 export const Select: FunctionComponent<SelectProps & Props<{}>> = ({
   options,
   styles,
@@ -96,10 +97,10 @@ export const Select: FunctionComponent<SelectProps & Props<{}>> = ({
         classNamePrefix="react-select"
         options={options}
         styles={styles}
-        theme={(theme) => ({
-          ...theme,
+        theme={(reactSelectTheme) => ({
+          ...reactSelectTheme,
           colors: {
-            ...theme.colors,
+            ...reactSelectTheme.colors,
           },
         })}
         {...props}
