@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Button } from "../button";
 import { SVGIcon } from "../svgicon";
-import { SidebarProps, SidebarButtonProps } from "./types";
 import {
   Background,
   Caption,
@@ -15,6 +14,7 @@ import {
   SidebarMenu,
   Title,
 } from "./styles";
+import { SidebarProps, SidebarButtonProps } from "./types";
 
 export const CloseButton: React.FC<SidebarButtonProps> = ({
   onClick,
@@ -32,7 +32,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   caption,
   side,
   isOpen,
-  footer: Footer,
+  footer,
   onClick = () => undefined,
   ...props
 }) => {
@@ -55,15 +55,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
   return (
     <>
       <Background onClick={onClick} isOpen={isOpen}></Background>
-      <SidebarMenu
-        isOpen={isOpen}
-        side={side}
-        reverse={side === "onLeft" && true}
-      >
+      <SidebarMenu isOpen={isOpen} side={side} reverse={side === "onLeft"}>
         <Inner isOpen={isOpen} {...props}>
           {isOpen && (
             <>
-              <Header reverse={side === "onLeft" && true}>
+              <Header reverse={side === "onLeft"}>
                 <header>
                   <Title
                     tag="span"
@@ -85,7 +81,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               <Container>
                 <Content tag="div">{children}</Content>
               </Container>
-              {Footer && <FooterSidebar>{Footer}</FooterSidebar>}
+              {footer && <FooterSidebar>{footer}</FooterSidebar>}
             </>
           )}
         </Inner>

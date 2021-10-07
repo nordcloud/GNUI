@@ -1,8 +1,11 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { useState } from "react";
 import { SpaceProps } from "styled-system";
 import { useClickOutside } from "../../hooks";
-import { SVGIcon } from "../svgicon/SVGIcon";
+import theme from "../../theme";
 import { Input } from "../input";
+import { Spacer } from "../spacer";
+import { SVGIcon } from "../svgicon/SVGIcon";
+import { getOptionValue } from "./helpers";
 import {
   Clear,
   DropdownButton,
@@ -12,10 +15,7 @@ import {
   DropdownWrapper,
   Inner,
 } from "./styles";
-import { getOptionValue } from "./helpers";
 import { Option } from "./types";
-import theme from "../../theme";
-import { Spacer } from "../spacer";
 
 type DropdownProps = {
   name: string;
@@ -33,7 +33,7 @@ type DropdownProps = {
   onClear?: () => void;
 };
 
-export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
+export function Dropdown({
   value = "",
   name,
   options,
@@ -43,7 +43,7 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
   onClear,
   minNumOfOptionsToShowSearchBox = 4,
   ...props
-}) => {
+}: DropdownProps & SpaceProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [search, setSearch] = useState("");
   const wrapper = React.useRef<HTMLDivElement>(null);
@@ -73,7 +73,7 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
       <DropdownButton
         name={name}
         onClick={() => !disabled && setIsOpen(!isOpen)}
-        disabled={disabled && disabled}
+        disabled={disabled}
         title={title}
         type="button"
       >
@@ -98,6 +98,7 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
               <Input
                 type="search"
                 name="filter"
+                // eslint-disable-next-line jsx-a11y/no-autofocus
                 autoFocus
                 small
                 value={search}
@@ -114,21 +115,21 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
                   .includes(search.toLowerCase())
               )
               .map((option: Option) => {
-                const value = getOptionValue(option);
+                const optionValue = getOptionValue(option);
 
                 return (
                   <DropdownItem
-                    title={value}
-                    value={value}
-                    key={value}
+                    title={optionValue}
+                    value={optionValue}
+                    key={optionValue}
                     onClick={() => {
-                      onChange && onChange(value);
+                      onChange && onChange(optionValue);
                       setIsOpen(!isOpen);
                       setSearch("");
                     }}
                     type="button"
                   >
-                    {getOptionValue(option, "label") || value}
+                    {getOptionValue(option, "label") || optionValue}
                   </DropdownItem>
                 );
               })}
@@ -136,4 +137,4 @@ export const Dropdown: FunctionComponent<DropdownProps & SpaceProps> = ({
       )}
     </DropdownWrapper>
   );
-};
+}

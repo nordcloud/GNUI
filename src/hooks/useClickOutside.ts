@@ -3,6 +3,7 @@ import { off, on } from "../utils/listeners";
 
 const defaultEvents = ["mousedown", "touchstart"];
 
+/* eslint-disable max-params */
 export const useClickOutside = <E extends Event = Event>(
   ref: RefObject<HTMLElement | null>,
   active = true,
@@ -22,10 +23,12 @@ export const useClickOutside = <E extends Event = Event>(
         }
       };
       for (const eventName of events) {
+        // @ts-expect-error hard to properly type event listeners
         on(document, eventName, handler);
       }
       return () => {
         for (const eventName of events) {
+          // @ts-expect-error hard to properly type event listeners
           off(document, eventName, handler);
         }
       };

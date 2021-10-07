@@ -2,8 +2,8 @@ import * as React from "react";
 import { SpaceProps } from "styled-system";
 import { Spinner } from "../spinner";
 import { SVGIcon } from "../svgicon";
-import { StyledInputGroupProps, StyledInputProps } from "./types";
 import { Clear, InputGroup, StyledInput } from "./styles";
+import { StyledInputGroupProps, StyledInputProps } from "./types";
 
 type Props = StyledInputGroupProps & StyledInputProps & SpaceProps;
 

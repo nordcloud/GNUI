@@ -6,6 +6,7 @@ export type NavWrapperProps = {
   popoverMenu?: boolean;
 };
 
+/* stylelint-disable no-descending-specificity */
 const Item = styled.div`
   list-style: none;
   display: flex;
@@ -18,31 +19,39 @@ const Item = styled.div`
   border-radius: ${theme.radiusDefault};
   padding: 0 ${theme.spacing.spacing03};
   color: ${theme.color.text.text01};
-  text-decoration: none;
   height: 2.5rem;
   vertical-align: middle;
   text-decoration: none;
   transition: ${theme.transition};
   text-transform: ${theme.typography.titleCase};
+
+  * {
+    margin-right: 0.8125rem;
+  }
+
   &.separator {
     font-size: ${theme.fontSizes.sm};
     color: ${theme.color.text.text02};
     margin-bottom: 0;
   }
+
   & + .separator {
     margin-top: -${theme.spacing.spacing02};
   }
+
   &:not(.separator) {
     &:hover {
       background-color: ${theme.color.interactive.secondary};
       text-decoration: none !important;
       color: ${theme.color.text.text01};
     }
+
     &:active,
     &:focus {
       background-color: ${theme.color.interactive.secondary};
       color: ${theme.color.text.text01};
     }
+
     &.active {
       background: ${theme.color.interactive.primary};
       color: ${theme.color.text.text04};
@@ -51,9 +60,11 @@ const Item = styled.div`
       }
     }
   }
+
   &.hasBg {
     position: relative;
     background: ${theme.color.background.ui03};
+
     svg {
       position: absolute;
       right: 0;
@@ -61,11 +72,13 @@ const Item = styled.div`
       height: 1.25rem;
       opacity: 0;
     }
+
     &:active,
     &:focus {
       background-color: ${theme.color.interactive.secondary};
       color: ${theme.color.text.text01};
     }
+
     &.active {
       background: ${theme.color.interactive.secondaryHover};
       color: ${theme.color.text.text01};
@@ -74,9 +87,6 @@ const Item = styled.div`
         fill: ${theme.color.text.text01};
       }
     }
-  }
-  * {
-    margin-right: 0.8125rem;
   }
 `;
 

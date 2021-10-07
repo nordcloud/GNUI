@@ -16,6 +16,7 @@ export const setStatusColor = (status: Status) => {
   }
 };
 
+/* eslint-disable sonarjs/no-identical-functions */
 export const InputGroup = styled(Flex)<StyledInputGroupProps & SpaceProps>`
   position: relative;
   align-items: center;

@@ -1,10 +1,10 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import theme from "../../theme";
 import { Box } from "../box";
 import { Flex } from "../container";
 import { Spinner } from "../spinner";
 import { Text } from "../text";
-import theme from "../../theme";
 
 export type LoaderProps = {
   inContent?: boolean;

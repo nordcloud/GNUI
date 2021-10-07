@@ -1,6 +1,6 @@
 import React, { ReactNode, HTMLAttributes } from "react";
-import styled, { css } from "styled-components";
 import { darken } from "polished";
+import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { SingleColors } from "../../theme/config";
 import { setColor } from "../../utils/setcolor";
@@ -21,6 +21,7 @@ export type SelectButtonListProps = {
 
 type StyledSelectButtons = Pick<SelectButtonListProps, "size" | "status">;
 
+/* stylelint-disable no-descending-specificity */
 function getStatusCss(status: SingleColors) {
   return css`
     border: 1px solid ${setColor(status)};
@@ -68,6 +69,7 @@ const StyledSelectButtons = styled.ul<StyledSelectButtons>`
     &:last-child {
       border-right: none;
     }
+
     button {
       outline: none;
       cursor: pointer;

@@ -1,10 +1,9 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components";
 import theme from "../../theme";
-import { Breadcrumbs } from "../breadcrumbs";
-import { BreadcrumbsList } from "../breadcrumbs";
-import { Heading } from "../heading";
 import { Box } from "../box";
+import { Breadcrumbs, BreadcrumbsList } from "../breadcrumbs";
+import { Heading } from "../heading";
 
 type PageTitleProps = {
   title: string;
@@ -13,7 +12,6 @@ type PageTitleProps = {
 type PageTitleBreadcrumbsProps = {
   title: string;
   list: Array<BreadcrumbsList>;
-  margin?: string;
 };
 
 const PageTitleWrapper = styled.div`
@@ -33,7 +31,7 @@ export const PageTitle: FunctionComponent<PageTitleProps> = ({ title }) => {
 };
 
 export const PageTitleBreadcrumbs: FunctionComponent<PageTitleBreadcrumbsProps> =
-  ({ title, list, margin }) => {
+  ({ title, list }) => {
     return (
       <Box innerSpacing="spacing04" shadow="shadow02">
         <PageTitle title={title} />

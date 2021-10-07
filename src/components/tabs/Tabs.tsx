@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
-import { Text } from "../text";
 import { Box } from "../box";
 import { Button } from "../button";
+import { Text } from "../text";
 
 type TabProps = {
   className?: string;
@@ -43,17 +43,21 @@ type ButtonNextProps = {
   onClick?: (e: any) => void;
 };
 
+/* stylelint-disable no-descending-specificity */
 export const TabsContent = styled(Box)`
   background-color: ${theme.color.background.ui01};
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   box-shadow: none;
   padding: ${theme.spacing.spacing06} ${theme.spacing.spacing04};
+
   p {
     line-height: 1.5rem;
+
     &:first-child {
       margin-top: 0;
     }
+
     &:last-child {
       margin-bottom: 0;
     }
@@ -119,20 +123,19 @@ const TabsList = styled.div`
   overflow-x: scroll;
   padding: 0;
   margin: 0;
-  position:relative;
+  position: relative;
   &::-webkit-scrollbar {
     display: none;
   }
   &::after {
-    content:"";
-    width:100%;
-    position:absolute;
-    left:0;
-    bottom:0;
+    content: "";
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
     border-bottom: 1px solid ${theme.color.border.border01};
     z-index: ${theme.zindex.zero};
   }
-}
 `;
 
 const TabsWrapper = styled(Box)`
@@ -281,10 +284,14 @@ export const Tabs: FunctionComponent<TabsProps> = ({
       <TabsCover>
         {items.map((child, key) => {
           if (key !== step) return undefined;
-          const { children, buttonsJustify, buttons } = child.props;
+          const {
+            children: innerChildren,
+            buttonsJustify,
+            buttons,
+          } = child.props;
           return (
             <React.Fragment key={key}>
-              <TabsContent>{children}</TabsContent>
+              <TabsContent>{innerChildren}</TabsContent>
               {buttons != null && (
                 <TabsStatusButtons buttonsJustify={buttonsJustify}>
                   {buttons}

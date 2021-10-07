@@ -13,7 +13,9 @@ export type IPaginationProps = {
   current: number;
   count: number;
   size: number;
-  from: number;
 };
 
-export type IExtendedPaginationProps = Omit<IPaginationProps, "current">;
+export type IExtendedPaginationProps = { from: number } & Omit<
+  IPaginationProps,
+  "current"
+>;

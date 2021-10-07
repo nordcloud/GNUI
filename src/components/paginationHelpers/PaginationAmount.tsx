@@ -6,7 +6,7 @@ type Props = {
   count: number;
 };
 
-export const PaginationAmount = ({ from, size, count }: Props) => {
+export function PaginationAmount({ from, size, count }: Props) {
   const s = Number(size);
   const maxCurrentPage = count < s ? count : Math.min(from + s);
   const minCurrentPage = count < s ? "1" : from + 1;
@@ -16,4 +16,4 @@ export const PaginationAmount = ({ from, size, count }: Props) => {
       {count}
     </div>
   );
-};
+}

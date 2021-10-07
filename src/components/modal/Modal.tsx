@@ -1,10 +1,10 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import { Heading } from "../heading";
-import { Button } from "../button";
-import { Box } from "../box";
 import theme from "../../theme";
 import { whenIE11 } from "../../utils/browserCompatibility";
+import { Box } from "../box";
+import { Button } from "../button";
+import { Heading } from "../heading";
 import {
   ModalBoxProps,
   ModalContentProps,

@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { SpaceProps } from "styled-system";
 import { Button } from "../button";
 import { Spinner } from "../spinner";
-import { StyledInputProps, StyledInputGroupProps } from "./types";
 import { InputGroup, StyledInput } from "./styles";
+import { StyledInputProps, StyledInputGroupProps } from "./types";
 
 const ButtonWrapper = styled.div`
   margin: -0.25rem -0.25rem -0.25rem 0;
@@ -27,9 +27,7 @@ export const InputSearch: React.FC<Props> = React.forwardRef(
       onClick,
       onSearch,
       small,
-      showClearButton,
-      onClear = () => undefined,
-      icon,
+      icon = "search",
       ...props
     },
     ref
@@ -46,7 +44,7 @@ export const InputSearch: React.FC<Props> = React.forwardRef(
           {...props}
         />
         <ButtonWrapper>
-          <Button size="md" severity="low" icon="search" onClick={onSearch}>
+          <Button size="md" severity="low" icon={icon} onClick={onSearch}>
             Search
           </Button>
         </ButtonWrapper>

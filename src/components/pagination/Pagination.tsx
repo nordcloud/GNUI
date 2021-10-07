@@ -13,7 +13,6 @@ const Pagination: React.FC<IPaginationProps> = ({
   current,
   count,
   size,
-  from,
 }) => {
   const currentPage = Math.ceil(current / size);
   const nPages = Math.ceil(count / size);
@@ -83,13 +82,7 @@ export const PaginationBox: React.FC<IPaginationBoxProps> = ({
   return (
     <StyledPaginationBox small={small} sidebar={sidebar}>
       {!small && <PaginationAmount from={from} size={size} count={count} />}
-      <Pagination
-        from={from}
-        set={setPage}
-        current={from}
-        size={size}
-        count={count}
-      />
+      <Pagination set={setPage} current={from} size={size} count={count} />
       {!small && <PerPage size={size} set={setSize} />}
     </StyledPaginationBox>
   );

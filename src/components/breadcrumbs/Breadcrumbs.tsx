@@ -62,7 +62,7 @@ const StyledBreadcrumbs = styled.nav`
   }
 `;
 
-export const Breadcrumbs = ({ list, Component }: BreadcrumbsListProps) => {
+export function Breadcrumbs({ list, Component }: BreadcrumbsListProps) {
   return (
     <StyledBreadcrumbs>
       <ul>
@@ -78,4 +78,4 @@ export const Breadcrumbs = ({ list, Component }: BreadcrumbsListProps) => {
       </ul>
     </StyledBreadcrumbs>
   );
-};
+}

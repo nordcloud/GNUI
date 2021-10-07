@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import styled, { css } from "styled-components";
 import { space } from "styled-system";
 import theme from "../../theme";
@@ -36,10 +36,11 @@ const StyledBarChart = styled.svg<IStyledBarProps>`
 
 type BarProps = IBarValues & IStyledBarProps;
 
-export const BarChart = ({ values, ...visualProps }: BarProps) => {
+export function BarChart({ values, ...visualProps }: BarProps) {
+  const xRef = React.useRef(0);
   const sum = values.reduce((accumulator, { value }) => accumulator + value, 0);
-  let x = 0;
-  const calculateX = (prevBarWidth: number) => (x += prevBarWidth);
+
+  const calculateX = (prevBarWidth: number) => (xRef.current += prevBarWidth);
   const percentageValues = values.map(({ value, color }, index) => ({
     size: Math.round((value / sum) * 100),
     x:
@@ -48,6 +49,7 @@ export const BarChart = ({ values, ...visualProps }: BarProps) => {
         : calculateX(Math.round((values[index - 1].value / sum) * 100)),
     color,
   }));
+
   return (
     <StyledBarChart {...visualProps}>
       <g>
@@ -57,4 +59,4 @@ export const BarChart = ({ values, ...visualProps }: BarProps) => {
       </g>
     </StyledBarChart>
   );
-};
+}
