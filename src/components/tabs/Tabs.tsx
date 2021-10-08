@@ -13,8 +13,8 @@ type TabProps = {
   caption?: string;
   activeTab?: number;
   children?: React.ReactNode;
-  onClick?: (e: any) => void;
-  onChange?: (e: any) => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
   props?: any;
   styleActive?: boolean;
   index?: number;
@@ -36,11 +36,11 @@ type TabsProps = {
 };
 
 type ButtonPreviousProps = {
-  onClick?: (e: any) => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 type ButtonNextProps = {
-  onClick?: (e: any) => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 /* stylelint-disable no-descending-specificity */

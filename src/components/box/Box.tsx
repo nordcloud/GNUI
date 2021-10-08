@@ -15,7 +15,7 @@ type BoxProps = {
   spacing?: keyof typeof theme.spacing;
   innerSpacing?: keyof typeof theme.spacing;
   shadow?: keyof typeof theme.shadow;
-  onClick?: (e: any) => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
   children?: React.ReactNode;
   boxStyle?: "lightGrey" | "grey";

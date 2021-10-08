@@ -22,15 +22,13 @@ export const useClickOutside = <E extends Event = Event>(
           !el.contains(event.target) && savedCallback.current(event);
         }
       };
-      for (const eventName of events) {
-        // @ts-expect-error hard to properly type event listeners
-        on(document, eventName, handler);
-      }
+
+      // @ts-expect-error hard to properly type event listeners
+      events.forEach((eventName) => on(document, eventName, handler));
+
       return () => {
-        for (const eventName of events) {
-          // @ts-expect-error hard to properly type event listeners
-          off(document, eventName, handler);
-        }
+        // @ts-expect-error hard to properly type event listeners
+        events.forEach((eventName) => off(document, eventName, handler));
       };
     }
   }, [events, ref, active]);
