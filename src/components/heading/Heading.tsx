@@ -6,6 +6,7 @@ import theme from "../../theme";
 type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 
 type HeadingProps = {
+  children: React.ReactNode;
   level: HeadingLevel;
   color?: string;
   marginBottom?: keyof typeof theme.spacing;
@@ -57,16 +58,18 @@ const StyledHeading = styled.h1<HeadingProps>`
   ${space}
 `;
 
-export const Heading: React.FC<HeadingProps & SpaceProps> = ({
+export function Heading({
   children,
   level,
   ...props
-}) => (
-  <StyledHeading
-    as={level ? (`h${level}` as keyof JSX.IntrinsicElements) : "h1"}
-    level={level || 1}
-    {...props}
-  >
-    {children}
-  </StyledHeading>
-);
+}: HeadingProps & SpaceProps) {
+  return (
+    <StyledHeading
+      as={level ? (`h${level}` as keyof JSX.IntrinsicElements) : "h1"}
+      level={level || 1}
+      {...props}
+    >
+      {children}
+    </StyledHeading>
+  );
+}

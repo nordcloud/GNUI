@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React from "react";
 import styled from "styled-components";
 import { themeCss, mainCss, customCss } from "./styles";
 
@@ -12,6 +12,6 @@ const DatepickerWrapper = styled.div`
   ${customCss}
 `;
 
-export const Datepicker: FunctionComponent<DatepickerProps> = ({
-  children,
-}) => <DatepickerWrapper>{children}</DatepickerWrapper>;
+export function Datepicker({ children }: DatepickerProps) {
+  return <DatepickerWrapper>{children}</DatepickerWrapper>;
+}
