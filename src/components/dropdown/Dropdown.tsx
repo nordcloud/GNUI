@@ -20,7 +20,7 @@ import { Option } from "./types";
 type DropdownProps = {
   name: string;
   options: Option[];
-  onChange: (e: any) => void;
+  onChange: (value?: string) => void;
   width?: string;
   value?: string;
   isOpen?: boolean;
@@ -28,8 +28,8 @@ type DropdownProps = {
   children?: React.ReactNode;
   title?: string;
   minNumOfOptionsToShowSearchBox?: number;
-  onClick?: (e: any) => void;
-  onMouseLeave?: (e: any) => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onMouseLeave?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   onClear?: () => void;
 };
 
@@ -102,7 +102,9 @@ export function Dropdown({
                 autoFocus
                 small
                 value={search}
-                onChange={(e: any) => setSearch(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setSearch(e.target.value)
+                }
               />
               <Spacer height={theme.spacing.spacing02} />
             </>
