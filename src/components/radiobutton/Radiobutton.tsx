@@ -120,10 +120,7 @@ export const Radio: FunctionComponent<RadioProps> = React.forwardRef(
   )
 );
 
-export const RadioGroup: FunctionComponent<RadioGroupProps> = ({
-  name,
-  children,
-}) => {
+export function RadioGroup({ name, children }: RadioGroupProps) {
   const hasNoChildren = Array.isArray(children) && children.length === 0;
   const [isChecked, setIsChecked] = useState(
     Array.isArray(children) && children[0]?.props?.value
@@ -144,4 +141,4 @@ export const RadioGroup: FunctionComponent<RadioGroupProps> = ({
       )}
     </RadioWrapper>
   );
-};
+}
