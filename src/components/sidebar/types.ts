@@ -12,7 +12,7 @@ export type SidebarProps = {
   onClick?: (e: any) => void;
   footer?: React.ReactNode;
 };
-export type BackgroudProps = {
+export type BackgroundProps = {
   isOpen?: boolean;
   onClick?: (e: any) => void;
 };

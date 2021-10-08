@@ -10,7 +10,7 @@ import {
   ModalContentProps,
   ModalProps,
   StyledModalProps,
-  BackgroudProps,
+  BackgroundProps,
 } from "./types";
 const MODAL_ACTION_HEIGHT = "5.625rem";
 
@@ -75,7 +75,7 @@ export const ModalActions = styled.div`
   `)}
 `;
 
-export const Background = styled.div<BackgroudProps>`
+export const Background = styled.div<BackgroundProps>`
   top: 0;
   right: 0;
   left: 0;

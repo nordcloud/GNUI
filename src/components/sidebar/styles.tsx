@@ -5,7 +5,7 @@ import { Button } from "../button";
 import { Text } from "../text";
 import {
   SidebarProps,
-  BackgroudProps,
+  BackgroundProps,
   CloseLayerProps,
   InnerProps,
   HeaderProps,
@@ -70,7 +70,7 @@ export const SidebarMenu = styled.div<SidebarProps>`
     side !== "onLeft" ? "flex-end" : "flex-start"};
 `;
 
-export const Background = styled.div<BackgroudProps>`
+export const Background = styled.div<BackgroundProps>`
   top: 0;
   right: 0;
   left: 0;

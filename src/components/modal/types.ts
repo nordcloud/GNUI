@@ -20,7 +20,7 @@ export type ModalAction = {
   severity: "low" | "medium" | "high";
   order: number;
 };
-export type BackgroudProps = {
+export type BackgroundProps = {
   isOpen?: boolean;
   onClick?: (e: any) => void;
 };
