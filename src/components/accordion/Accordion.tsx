@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import { space, SpaceProps } from "styled-system";
 import theme from "../../theme";
@@ -104,19 +104,16 @@ export const HeaderIcon = styled.div<HeaderIconProps>`
     `}
 `;
 
-export const AccordionItem: FunctionComponent<AccordionItemProps> = ({
-  children,
-  ...props
-}) => {
+export function AccordionItem({ children, ...props }: AccordionItemProps) {
   return <StyledAccordionItem {...props}>{children}</StyledAccordionItem>;
-};
+}
 
-export const AccordionHeader: FunctionComponent<AccordionHeaderProps> = ({
+export function AccordionHeader({
   title,
   description,
   children,
   small,
-}) => {
+}: AccordionHeaderProps) {
   const [isOpen, toggleIsOpen] = useState(false);
   return (
     <>
@@ -137,11 +134,8 @@ export const AccordionHeader: FunctionComponent<AccordionHeaderProps> = ({
       {isOpen && children}
     </>
   );
-};
+}
 
-export const Accordion: FunctionComponent<AccordionProps & SpaceProps> = ({
-  children,
-  ...props
-}) => {
+export function Accordion({ children, ...props }: AccordionProps & SpaceProps) {
   return <StyledAccordion {...props}>{children}</StyledAccordion>;
-};
+}

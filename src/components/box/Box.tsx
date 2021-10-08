@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React from "react";
 import styled, { css } from "styled-components";
 import { space, SpaceProps } from "styled-system";
 import theme from "../../theme";
@@ -112,7 +112,6 @@ const StyledBox = styled(GnuiContainer)<BoxProps & SpaceProps>`
      ${space}
 `;
 
-export const Box: FunctionComponent<BoxProps & SpaceProps> = ({
-  children,
-  ...props
-}) => <StyledBox {...props}>{children}</StyledBox>;
+export function Box({ children, ...props }: BoxProps & SpaceProps) {
+  return <StyledBox {...props}>{children}</StyledBox>;
+}
