@@ -71,19 +71,17 @@ export const Align = styled.div`
   margin-bottom: auto;
 `;
 
-export const Message: React.FC<MessageProps> = ({
-  children,
-  image,
-  ...props
-}) => (
-  <MessageWrapper {...props}>
-    {image && (
-      <Align>
-        <IconBox>
-          <SVGIcon name={image} />
-        </IconBox>
-      </Align>
-    )}
-    {children}
-  </MessageWrapper>
-);
+export function Message({ children, image, ...props }: MessageProps) {
+  return (
+    <MessageWrapper {...props}>
+      {image && (
+        <Align>
+          <IconBox>
+            <SVGIcon name={image} />
+          </IconBox>
+        </Align>
+      )}
+      {children}
+    </MessageWrapper>
+  );
+}
