@@ -33,7 +33,7 @@
     "lint:quiet": "npm run lint -- --quiet",
     "lint:css": "stylelint '**/*.tsx'",
     "lint:css:quiet": "npm run lint:css -- --quiet",
-    "validate:commit": "npm-run-all --parallel check:types test:commit"
+    "validate:all": "npm-run-all --parallel check:types check:format lint:quiet lint:css:quiet test:all"
   },
   "engines": {
     "node": ">=14.15.5",
@@ -53,7 +53,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && npm run validate:commit"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
