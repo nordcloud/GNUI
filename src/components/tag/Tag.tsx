@@ -114,7 +114,7 @@ export const StyledTag = styled.div<TagProps>`
   ${space}
 `;
 
-export const Tag: React.FC<TagProps> = ({
+export function Tag({
   color,
   colorText,
   text,
@@ -123,7 +123,7 @@ export const Tag: React.FC<TagProps> = ({
   showClose,
   isTransparent,
   ...props
-}) => {
+}: TagProps) {
   return (
     <StyledTag
       color={color}
@@ -147,4 +147,4 @@ export const Tag: React.FC<TagProps> = ({
       )}
     </StyledTag>
   );
-};
+}

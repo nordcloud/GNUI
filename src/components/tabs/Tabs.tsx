@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { Box } from "../box";
@@ -37,10 +37,12 @@ type TabsProps = {
 
 type ButtonPreviousProps = {
   onClick?: (e: any) => void;
+  children?: React.ReactNode;
 };
 
 type ButtonNextProps = {
   onClick?: (e: any) => void;
+  children?: React.ReactNode;
 };
 
 /* stylelint-disable no-descending-specificity */
@@ -188,21 +190,15 @@ const NextButton = styled(Button)`
   margin-right: auto;
 `;
 
-export const ButtonPrevious: FunctionComponent<ButtonPreviousProps> = ({
-  onClick,
-  children,
-}) => {
+export function ButtonPrevious({ onClick, children }: ButtonPreviousProps) {
   return <PreviousButton onClick={onClick}>{children}</PreviousButton>;
-};
+}
 
-export const ButtonNext: FunctionComponent<ButtonNextProps> = ({
-  onClick,
-  children,
-}) => {
+export function ButtonNext({ onClick, children }: ButtonNextProps) {
   return <NextButton onClick={onClick}>{children}</NextButton>;
-};
+}
 
-export const Tab: FunctionComponent<TabProps> = ({
+export function Tab({
   wizard,
   step,
   heading,
@@ -224,7 +220,7 @@ export const Tab: FunctionComponent<TabProps> = ({
       </Text>
     </>
   ),
-}) => {
+}: TabProps) {
   const className = activeTab === index ? "tab-active" : "tab";
   return (
     <TabContainer
@@ -247,15 +243,9 @@ export const Tab: FunctionComponent<TabProps> = ({
       {label}
     </TabContainer>
   );
-};
+}
 
-export const Tabs: FunctionComponent<TabsProps> = ({
-  name,
-  wizard,
-  children,
-  handleTab,
-  step,
-}) => {
+export function Tabs({ name, wizard, children, handleTab, step }: TabsProps) {
   const items = React.Children.toArray(children) as TabProps[];
   return (
     <TabsWrapper>
@@ -303,11 +293,8 @@ export const Tabs: FunctionComponent<TabsProps> = ({
       </TabsCover>
     </TabsWrapper>
   );
-};
+}
 
-export const StyledTab: FunctionComponent<ButtonNextProps> = ({
-  onClick,
-  children,
-}) => {
+export function StyledTab({ onClick, children }: ButtonNextProps) {
   return <NextButton onClick={onClick}>{children}</NextButton>;
-};
+}
