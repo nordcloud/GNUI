@@ -1,14 +1,8 @@
-import React, { HTMLAttributes } from "react";
+import * as React from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { SingleColors } from "../../theme/config";
-import { getViewBox, getPath, PathName } from "../../utils/svgicons";
-
-export type SVGIconProps = HTMLAttributes<HTMLOrSVGElement> & {
-  name: PathName;
-  color?: SingleColors;
-  size?: keyof typeof theme.iconSize;
-};
+import { getPath, PathName } from "./paths";
 
 const StyledSVGIcon = styled.svg<Pick<SVGIconProps, "color" | "size">>`
   fill: ${theme.color.text.text01};
@@ -29,18 +23,25 @@ const StyledSVGIcon = styled.svg<Pick<SVGIconProps, "color" | "size">>`
     `}
 `;
 
-export const SVGIcon: React.FC<SVGIconProps> = ({ name, ...props }) => {
-  const ViewBox = getViewBox();
+const VIEW_BOX = "0 0 24 24";
+
+export type SVGIconProps = React.HTMLAttributes<HTMLOrSVGElement> & {
+  name: PathName;
+  color?: SingleColors;
+  size?: keyof typeof theme.iconSize;
+};
+
+export function SVGIcon({ name, ...props }: SVGIconProps) {
   const Path = React.useMemo(() => getPath(name), [name]);
 
   return (
     <StyledSVGIcon
       {...props}
-      viewBox={ViewBox}
+      viewBox={VIEW_BOX}
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     >
       {Path}
     </StyledSVGIcon>
   );
-};
+}

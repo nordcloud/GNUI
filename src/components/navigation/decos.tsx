@@ -477,7 +477,7 @@ function Orgs2() {
   );
 }
 
-const Decos = {
+export const Decos = {
   Dashboard,
   Applications,
   Accounts,
@@ -491,5 +491,3 @@ const Decos = {
   ActionLog,
   Reports,
 };
-
-export default Decos;
