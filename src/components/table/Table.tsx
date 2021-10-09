@@ -16,22 +16,22 @@ const Table: any = styled.table<TableProps>`
   border-collapse: collapse;
   font-weight: ${theme.fontWeights.regular};
   font-family: ${theme.fonts.body};
-  font-size: ${({ tiny }) => (tiny ? theme.fontSizes.sm : theme.fontSizes.md)};
+  font-size: ${({ tiny }: any) => (tiny ? theme.fontSizes.sm : theme.fontSizes.md)};
   line-height: 1.5em;
   color: ${theme.color.text.text01};
 
   tbody {
     tr {
       &:hover {
-        cursor: ${({ hoverline }) => (hoverline ? "pointer" : "default")};
-        background-color: ${({ hoverline }) =>
+        cursor: ${({ hoverline }: any) => (hoverline ? "pointer" : "default")};
+        background-color: ${({ hoverline }: any) =>
           hoverline ? theme.color.background.ui03 : ""};
       }
       &:nth-child(odd) {
-        background-color: ${({ striped }) =>
+        background-color: ${({ striped }: any) =>
           striped ? theme.color.background.ui02 : ""};
         &:hover {
-          background-color: ${({ hoverline }) =>
+          background-color: ${({ hoverline }: any) =>
             hoverline ? theme.color.background.ui03 : ""};
         }
       }
@@ -42,13 +42,13 @@ const Table: any = styled.table<TableProps>`
   thead,
   tfoot {
     td {
-      padding: ${({ small, tiny }) =>
+      padding: ${({ small, tiny }: any) =>
         small || tiny
           ? `${theme.spacing.spacing02} ${theme.spacing.spacing03}`
           : `${theme.spacing.spacing03}`};
     }
     th {
-      padding: ${({ small, tiny }) =>
+      padding: ${({ small, tiny }: any) =>
         small || tiny
           ? `${theme.spacing.spacing02} ${theme.spacing.spacing03}`
           : `${theme.spacing.spacing03}`};
@@ -74,9 +74,9 @@ const Tfoot = styled.tfoot`
 
 const Td = styled.td<any>`
   border-top: 1px solid ${theme.color.border.border01};
-  border-left: ${({ hasLeftBorder }) =>
+  border-left: ${({ hasLeftBorder }: any) =>
     hasLeftBorder ? `1px solid ${theme.color.border.border01}` : "none"};
-  border-right: ${({ hasRightBorder }) =>
+  border-right: ${({ hasRightBorder }: any) =>
     hasRightBorder ? `1px solid ${theme.color.border.border01}` : "none"};
 `;
 
