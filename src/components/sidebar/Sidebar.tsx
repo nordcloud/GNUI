@@ -40,7 +40,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
     if (isOpen) {
       const handleKeyDown = (e: KeyboardEvent) => {
         if (e.key === "Escape") {
-          onClick("");
+          onClick();
         }
       };
 

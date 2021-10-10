@@ -9,7 +9,7 @@ export type SidebarProps = {
   side?: "onLeft" | "onRight";
   width?: number | string;
   reverse?: boolean;
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick?: () => void;
   footer?: React.ReactNode;
 };
 export type BackgroundProps = {
