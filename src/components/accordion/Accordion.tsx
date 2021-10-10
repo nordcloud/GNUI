@@ -16,7 +16,7 @@ type AccordionHeaderProps = {
 };
 
 type AccordionItemProps = {
-  children: string | number | React.ReactNode;
+  children: React.ReactNode;
 };
 
 type HeaderIconProps = {
