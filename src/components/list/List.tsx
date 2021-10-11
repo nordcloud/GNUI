@@ -73,7 +73,7 @@ const StyledListItem = styled.li`
 const isNested = (item: IListItem): item is INestedListItem =>
   (item as INestedListItem).title !== undefined;
 
-export function List(props: IListProps & SpaceProps): JSX.Element {
+export function List(props: IListProps & SpaceProps) {
   return (
     <StyledList {...props}>
       {props.items &&
