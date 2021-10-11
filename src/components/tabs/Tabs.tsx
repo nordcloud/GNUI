@@ -13,8 +13,7 @@ type TabProps = {
   caption?: string;
   activeTab?: number;
   children?: React.ReactNode;
-  onClick?: () => void;
-  onChange?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   props?: any;
   styleActive?: boolean;
   index?: number;
