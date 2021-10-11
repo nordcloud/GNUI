@@ -146,7 +146,9 @@ export const Checkbox: FunctionComponent<CheckboxProps & SpaceProps> =
     )
   );
 
-export const CheckboxGroup: FunctionComponent<CheckboxGroupProps & SpaceProps> =
-  ({ name, children }) => {
-    return <CheckboxWrapper name={name}>{children}</CheckboxWrapper>;
-  };
+export function CheckboxGroup({
+  name,
+  children,
+}: CheckboxGroupProps & SpaceProps) {
+  return <CheckboxWrapper name={name}>{children}</CheckboxWrapper>;
+}

@@ -25,14 +25,12 @@ const StyledLabel = styled.label<Pick<Props, "required">>`
     `}
 `;
 
-export const Label: React.FC<Props> = ({
-  name = "Label",
-  required = false,
-  ...props
-}) => (
-  <Flex>
-    <StyledLabel required={required} {...props}>
-      {name}
-    </StyledLabel>
-  </Flex>
-);
+export function Label({ name = "Label", required = false, ...props }: Props) {
+  return (
+    <Flex>
+      <StyledLabel required={required} {...props}>
+        {name}
+      </StyledLabel>
+    </Flex>
+  );
+}

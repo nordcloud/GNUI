@@ -16,17 +16,19 @@ import {
 } from "./styles";
 import { SidebarProps, SidebarButtonProps } from "./types";
 
-export const CloseButton: React.FC<SidebarButtonProps> = ({
-  onClick,
-  icon,
-  children,
-}) => (
-  <SidebarCloseButton severity="low" onClick={onClick} title={"Close sidebar"}>
-    {children ? children : <SVGIcon name={icon || "close"} />}
-  </SidebarCloseButton>
-);
+export function CloseButton({ onClick, icon, children }: SidebarButtonProps) {
+  return (
+    <SidebarCloseButton
+      severity="low"
+      onClick={onClick}
+      title={"Close sidebar"}
+    >
+      {children ? children : <SVGIcon name={icon || "close"} />}
+    </SidebarCloseButton>
+  );
+}
 
-export const Sidebar: React.FC<SidebarProps> = ({
+export function Sidebar({
   children,
   title,
   caption,
@@ -35,7 +37,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   footer,
   onClick = () => undefined,
   ...props
-}) => {
+}: SidebarProps) {
   React.useEffect(() => {
     if (isOpen) {
       const handleKeyDown = (e: KeyboardEvent) => {
@@ -91,4 +93,4 @@ export const Sidebar: React.FC<SidebarProps> = ({
       </SidebarMenu>
     </>
   );
-};
+}

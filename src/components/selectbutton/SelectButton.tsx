@@ -101,36 +101,38 @@ const StyledSelectButtons = styled.ul<StyledSelectButtons>`
   ${({ status }) => status && getStatusCss(status)}
 `;
 
-export const SelectButton: React.FC<SelectButtonProps> = ({
+export function SelectButton({
   name,
   value,
   labelText,
   isActive = false,
   onClick,
   ...props
-}) => (
-  <li>
-    <button
-      type="button"
-      value={value}
-      name={name}
-      className={isActive ? "active" : ""}
-      onClick={() => onClick(value)}
-      {...props}
-    >
-      {labelText}
-    </button>
-  </li>
-);
+}: SelectButtonProps) {
+  return (
+    <li>
+      <button
+        type="button"
+        value={value}
+        name={name}
+        className={isActive ? "active" : ""}
+        onClick={() => onClick(value)}
+        {...props}
+      >
+        {labelText}
+      </button>
+    </li>
+  );
+}
 
-export const MultipleSelect: React.FC<SelectButtonListProps> = ({
+export function MultipleSelect({
   status,
   children,
   size,
-}) => {
+}: SelectButtonListProps) {
   return (
     <StyledSelectButtons status={status} size={size}>
       {children}
     </StyledSelectButtons>
   );
-};
+}

@@ -42,32 +42,39 @@ const StyledSubmit = styled.input`
   }
 `;
 
-export const FormButtons: React.FC = ({ children, ...props }) => (
-  <Flex margin="1rem 0" justifyContent="flex-end" {...props}>
-    {children}
-  </Flex>
-);
+type FormButtonsProps = {
+  children: React.ReactNode;
+};
 
-export const CancelButton: React.FC<ButtonProps & { name: string }> = ({
+export function FormButtons({ children, ...props }: FormButtonsProps) {
+  return (
+    <Flex margin="1rem 0" justifyContent="flex-end" {...props}>
+      {children}
+    </Flex>
+  );
+}
+
+export function CancelButton({
   name,
   ...props
-}) => (
-  <Button color="danger" {...props}>
-    {name || "Cancel"}
-  </Button>
-);
+}: ButtonProps & { name: string }) {
+  return (
+    <Button color="danger" {...props}>
+      {name || "Cancel"}
+    </Button>
+  );
+}
 
-export const SubmitButton: React.FC<StyledInputProps> = ({
-  name,
-  ...props
-}) => (
-  <StyledSubmit
-    name={name || "Submit"}
-    {...props}
-    {...(!props.type && { type: "submit" })}
-  />
-);
+export function SubmitButton({ name, ...props }: StyledInputProps) {
+  return (
+    <StyledSubmit
+      name={name || "Submit"}
+      {...props}
+      {...(!props.type && { type: "submit" })}
+    />
+  );
+}
 
-export const Form: React.FC<GnuiContainerProps> = ({ children, ...props }) => (
-  <GnuiContainer {...props}>{children}</GnuiContainer>
-);
+export function Form({ children, ...props }: GnuiContainerProps) {
+  return <GnuiContainer {...props}>{children}</GnuiContainer>;
+}

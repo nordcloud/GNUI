@@ -14,6 +14,6 @@ type Props = {
   children: React.ReactNode;
 };
 
-export const Description: React.FC<Props> = ({ children }) => (
-  <StyledDescription>{children}</StyledDescription>
-);
+export function Description({ children }: Props) {
+  return <StyledDescription>{children}</StyledDescription>;
+}

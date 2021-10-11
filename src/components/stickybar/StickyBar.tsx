@@ -20,6 +20,6 @@ const Wrapper = styled("div")`
   color: ${theme.color.text.text01};
 `;
 
-export const StickyBar: React.FC<Props> = ({ children }) => {
+export function StickyBar({ children }: Props) {
   return <Wrapper>{children}</Wrapper>;
-};
+}

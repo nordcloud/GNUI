@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ComponentPropsWithoutRef } from "react";
+import React, { ComponentPropsWithoutRef } from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { setColor } from "../../utils/setcolor";
@@ -89,13 +89,13 @@ const Inner = styled.div`
   }
 `;
 
-export const Switch: FunctionComponent<SwitchProps> = ({
+export function Switch({
   severity = "success",
   position = "right",
   labelText = "",
   id,
   ...props
-}) => {
+}: SwitchProps) {
   const showLabel = labelText.length > 0;
   return (
     <SwitchLabel htmlFor={id}>
@@ -111,4 +111,4 @@ export const Switch: FunctionComponent<SwitchProps> = ({
       )}
     </SwitchLabel>
   );
-};
+}

@@ -1,8 +1,4 @@
-import React, {
-  FunctionComponent,
-  ButtonHTMLAttributes,
-  MouseEvent,
-} from "react";
+import React, { ButtonHTMLAttributes, MouseEvent } from "react";
 import { darken, lighten } from "polished";
 import styled, { css } from "styled-components";
 import { space, SpaceProps } from "styled-system";
@@ -243,14 +239,14 @@ const StyledButton = styled.button<ButtonProps>`
   ${space}
 `;
 
-export const Button: FunctionComponent<ButtonProps & SpaceProps> = ({
+export function Button({
   children,
   icon,
   initialState,
   linkTo,
   display,
   ...props
-}) => {
+}: ButtonProps & SpaceProps) {
   switch (initialState) {
     case "success":
       return (
@@ -325,4 +321,4 @@ export const Button: FunctionComponent<ButtonProps & SpaceProps> = ({
         </>
       );
   }
-};
+}
