@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import * as React from "react";
 import dark from "./dark";
 import light from "./light";
 
@@ -19,9 +19,9 @@ const defaultTheme =
     : THEME_OPTIONS.LIGHT;
 
 export const useThemeSwitcher = () => {
-  const [c, setC] = useState<THEME_OPTIONS>(defaultTheme);
+  const [c, setC] = React.useState<THEME_OPTIONS>(defaultTheme);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const newTheme = c === THEME_OPTIONS.DARK ? dark : light;
     newTheme.forEach((el) => {
       document.documentElement.style.setProperty(el[0], el[1]);

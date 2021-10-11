@@ -1,20 +1,20 @@
-import { RefObject, useEffect, useRef } from "react";
+import * as React from "react";
 import { off, on } from "../utils/listeners";
 
 const defaultEvents = ["mousedown", "touchstart"];
 
 /* eslint-disable max-params */
 export const useClickOutside = <E extends Event = Event>(
-  ref: RefObject<HTMLElement | null>,
+  ref: React.RefObject<HTMLElement | null>,
   active = true,
   onClickAway: (event: E) => void,
   events: string[] = defaultEvents
 ) => {
-  const savedCallback = useRef(onClickAway);
-  useEffect(() => {
+  const savedCallback = React.useRef(onClickAway);
+  React.useEffect(() => {
     savedCallback.current = onClickAway;
   });
-  useEffect(() => {
+  React.useEffect(() => {
     if (active) {
       const handler = (event: E) => {
         const { current: el } = ref;
