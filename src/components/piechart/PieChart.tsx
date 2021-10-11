@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import * as React from "react";
 import styled, { css } from "styled-components";
 import { space, SpaceProps } from "styled-system";
 import theme from "../../theme";
@@ -120,9 +120,9 @@ export function PieChart({
   const radius = (size - strokeWidth) / 2;
   const circumference = radius * 2 * Math.PI;
 
-  const [offset, setOffset] = useState(circumference);
+  const [offset, setOffset] = React.useState(circumference);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const progressOffset = ((100 - progress) / 100) * circumference;
     setOffset(progressOffset);
   }, [setOffset, circumference, progress, offset]);

@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes, MouseEvent } from "react";
+import * as React from "react";
 import { darken, lighten } from "polished";
 import styled, { css } from "styled-components";
 import { space, SpaceProps } from "styled-system";
@@ -8,7 +8,7 @@ import { setColor } from "../../utils/setcolor";
 import { Spinner } from "../spinner";
 import { SVGIcon, SVGIconProps } from "../svgicon";
 
-export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   children?: string | React.ReactNode;
   severity?: "high" | "medium" | "low";
   size?: "sm" | "md";
@@ -19,7 +19,7 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   form?: string;
   select?: boolean;
   className?: string;
-  onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   as?: React.ElementType | "a" | "button";
   linkTo?: string;
   display?: "flex" | "inline-flex";

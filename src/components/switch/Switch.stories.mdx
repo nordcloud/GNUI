@@ -1,4 +1,4 @@
-import { useState } from "react";
+import * as React from "react";
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Switch } from ".";
 import { GnuiContainer } from "../container";
@@ -52,7 +52,7 @@ import theme from "../../theme";
 <Preview>
   <Story name="severity">
     {() => {
-      const [toggle, setToggle] = useState(true);
+      const [toggle, setToggle] = React.useState(true);
       return (
         <GnuiContainer>
           <Switch

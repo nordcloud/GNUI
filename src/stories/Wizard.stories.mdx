@@ -1,4 +1,4 @@
-import { useState } from "react";
+import * as React from "react";
 import styled from "styled-components";
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Tabs, Tab, ButtonPrevious, ButtonNext } from "../components/tabs";
@@ -47,7 +47,7 @@ type TabsProps = {
 <Preview>
   <Story name="default">
     {() => {
-      const [isCurrentStep, setCurrentStep] = useState(0);
+      const [isCurrentStep, setCurrentStep] = React.useState(0);
       const nextStep = () => {
         setCurrentStep(isCurrentStep + 1);
       };
@@ -148,7 +148,7 @@ type TabsProps = {
 <Preview>
   <Story name="disabled">
     {() => {
-      const [isCurrentStep, setCurrentStep] = useState(0);
+      const [isCurrentStep, setCurrentStep] = React.useState(0);
       const nextStep = () => {
         setCurrentStep(isCurrentStep + 1);
       };

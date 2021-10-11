@@ -1,11 +1,11 @@
-import React, { ReactNode, HTMLAttributes } from "react";
+import * as React from "react";
 import { darken } from "polished";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { SingleColors } from "../../theme/config";
 import { setColor } from "../../utils/setcolor";
 
-export type SelectButtonProps = HTMLAttributes<HTMLButtonElement> & {
+export type SelectButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
   name: string;
   value: string;
   labelText: string;
@@ -14,7 +14,7 @@ export type SelectButtonProps = HTMLAttributes<HTMLButtonElement> & {
 };
 
 export type SelectButtonListProps = {
-  children: ReactNode;
+  children: React.ReactNode;
   status?: SingleColors;
   size?: string;
 };

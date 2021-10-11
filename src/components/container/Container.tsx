@@ -1,11 +1,11 @@
-import React, { FunctionComponent, ReactNode } from "react";
+import * as React from "react";
 import styled, { css } from "styled-components";
 import { space, SpaceProps } from "styled-system";
 import theme from "../../theme";
 
 export type ContainerProps = {
   width?: string;
-  children: ReactNode;
+  children: React.ReactNode;
   margin?: string;
   [propName: string]: string | any;
 };
@@ -20,7 +20,7 @@ const StyledContainer = styled.div<ContainerProps & SpaceProps>`
   ${space};
 `;
 
-export const Container: FunctionComponent<ContainerProps & SpaceProps> =
+export const Container: React.FunctionComponent<ContainerProps & SpaceProps> =
   React.forwardRef(({ children, ...props }, ref) => (
     <StyledContainer {...props} ref={ref}>
       {children}

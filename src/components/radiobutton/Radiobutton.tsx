@@ -1,17 +1,12 @@
-import React, {
-  FunctionComponent,
-  useState,
-  InputHTMLAttributes,
-  Ref,
-} from "react";
+import * as React from "react";
 import styled from "styled-components";
 import theme from "../../theme";
 import { GnuiContainer, Flex } from "../container";
 
 export type RadioProps = {
   labelText?: string;
-  ref?: Ref<HTMLInputElement>;
-} & InputHTMLAttributes<HTMLInputElement>;
+  ref?: React.Ref<HTMLInputElement>;
+} & React.InputHTMLAttributes<HTMLInputElement>;
 
 export type RadioGroupProps = {
   name: string;
@@ -108,7 +103,7 @@ const RadioContainer = styled.div`
   }
 `;
 
-export const Radio: FunctionComponent<RadioProps> = React.forwardRef(
+export const Radio: React.FunctionComponent<RadioProps> = React.forwardRef(
   ({ id, labelText, ...props }, ref) => (
     <RadioFlexWrapper>
       <RadioContainer>
@@ -122,7 +117,7 @@ export const Radio: FunctionComponent<RadioProps> = React.forwardRef(
 
 export function RadioGroup({ name, children }: RadioGroupProps) {
   const hasNoChildren = Array.isArray(children) && children.length === 0;
-  const [isChecked, setIsChecked] = useState(
+  const [isChecked, setIsChecked] = React.useState(
     Array.isArray(children) && children[0]?.props?.value
   );
 

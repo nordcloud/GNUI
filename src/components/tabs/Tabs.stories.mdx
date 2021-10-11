@@ -1,4 +1,4 @@
-import { useState } from "react";
+import * as React from "react";
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Tabs, Tab } from ".";
 import { Button } from "../button";
@@ -42,7 +42,7 @@ import { Flex } from "../container";
 <Preview>
   <Story name="default">
     {() => {
-      const [currentStep, setCurrentStep] = useState(0);
+      const [currentStep, setCurrentStep] = React.useState(0);
       return (
         <Tabs step={currentStep} handleTab={setCurrentStep}>
           <Tab
@@ -74,7 +74,7 @@ import { Flex } from "../container";
 <Preview>
   <Story name="nocaption">
     {() => {
-      const [currentStep, setCurrentStep] = useState(0);
+      const [currentStep, setCurrentStep] = React.useState(0);
       return (
         <Tabs step={currentStep} handleTab={setCurrentStep}>
           <Tab heading="Tab 1">
@@ -97,7 +97,7 @@ import { Flex } from "../container";
 <Preview>
   <Story name="Custom Label">
     {() => {
-      const [currentStep, setCurrentStep] = useState(0);
+      const [currentStep, setCurrentStep] = React.useState(0);
       return (
         <Tabs step={currentStep} handleTab={setCurrentStep}>
           <Tab
@@ -135,7 +135,7 @@ import { Flex } from "../container";
 <Preview>
   <Story name="With Buttons">
     {() => {
-      const [currentStep, setCurrentStep] = useState(0);
+      const [currentStep, setCurrentStep] = React.useState(0);
       const nextStep = () => {
         setCurrentStep((prevStep) => prevStep + 1);
       };
@@ -195,7 +195,7 @@ import { Flex } from "../container";
 <Preview>
   <Story name="disabled tab">
     {() => {
-      const [currentStep, setCurrentStep] = useState(0);
+      const [currentStep, setCurrentStep] = React.useState(0);
       const nextStep = () => {
         setCurrentStep((prevStep) => prevStep + 1);
       };
@@ -241,7 +241,7 @@ import { Flex } from "../container";
 <Preview>
   <Story name="width">
     {() => {
-      const [currentStep, setCurrentStep] = useState(0);
+      const [currentStep, setCurrentStep] = React.useState(0);
       return (
         <Tabs step={currentStep} handleTab={setCurrentStep}>
           <Tab
@@ -263,4 +263,3 @@ import { Flex } from "../container";
     }}
   </Story>
 </Preview>
-

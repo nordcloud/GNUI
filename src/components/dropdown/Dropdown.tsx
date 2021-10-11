@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import * as React from "react";
 import { SpaceProps } from "styled-system";
 import { useClickOutside } from "../../hooks";
 import theme from "../../theme";
@@ -44,8 +44,8 @@ export function Dropdown({
   minNumOfOptionsToShowSearchBox = 4,
   ...props
 }: DropdownProps & SpaceProps) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [search, setSearch] = useState("");
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [search, setSearch] = React.useState("");
   const wrapper = React.useRef<HTMLDivElement>(null);
 
   useClickOutside(wrapper, isOpen, () => {

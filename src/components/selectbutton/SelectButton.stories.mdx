@@ -1,7 +1,7 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { MultipleSelect, SelectButton } from ".";
 import { Text } from "../text";
-import { useState } from "react";
+import * as React from "react";
 
 <Meta title="Forms/SelectButton" component={MultipleSelect} />
 
@@ -30,7 +30,7 @@ import { useState } from "react";
 <Preview>
   <Story name="default">
     {() => {
-      const [value, setValue] = useState();
+      const [value, setValue] = React.useState();
       return (
         <MultipleSelect>
           <SelectButton
@@ -67,7 +67,7 @@ import { useState } from "react";
 <Preview>
   <Story name="small">
     {() => {
-      const [value, setValue] = useState();
+      const [value, setValue] = React.useState();
       return (
         <MultipleSelect size="small">
           <SelectButton
@@ -104,7 +104,7 @@ import { useState } from "react";
 <Preview>
   <Story name="status">
     {() => {
-      const [value, setValue] = useState();
+      const [value, setValue] = React.useState();
       return (
         <div>
           <Text>Success</Text>

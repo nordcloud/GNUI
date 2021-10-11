@@ -1,4 +1,4 @@
-import { useState } from "react";
+import * as React from "react";
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Input, Label, Description, Upload } from ".";
 import { GnuiContainer } from "../container";
@@ -136,7 +136,7 @@ Placeholder text inside input element
 <Preview>
   <Story name="status">
     {() => {
-      const [status, setStatus] = useState("success");
+      const [status, setStatus] = React.useState("success");
       return (
         <GnuiContainer>
           <GnuiContainer>

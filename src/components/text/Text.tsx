@@ -1,10 +1,10 @@
-import React, { HTMLAttributes } from "react";
+import * as React from "react";
 import styled, { css } from "styled-components";
 import { space, SpaceProps } from "styled-system";
 import theme from "../../theme";
 import { SingleColors } from "../../theme/config";
 
-type TextProps = HTMLAttributes<HTMLElement> & {
+type TextProps = React.HTMLAttributes<HTMLElement> & {
   size?: "xs" | "sm" | "md" | "lg" | "xl" | "xxl";
   display?: string;
   color?: SingleColors | string;
@@ -116,7 +116,7 @@ export function Text({
   );
 }
 
-type CodeProps = HTMLAttributes<HTMLSpanElement>;
+type CodeProps = React.HTMLAttributes<HTMLSpanElement>;
 
 export function Code({ children, ...props }: CodeProps) {
   return <StyledCode {...props}>{children}</StyledCode>;

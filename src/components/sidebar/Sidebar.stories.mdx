@@ -5,7 +5,7 @@ import {
   Title,
   Description,
 } from "@storybook/addon-docs/blocks";
-import { useState } from "react";
+import * as React from "react";
 import { Button } from "../button";
 import { Sidebar } from ".";
 import { Container, Row, Col } from "react-awesome-styled-grid";
@@ -36,7 +36,7 @@ import { PaginationBox } from "../pagination/Pagination.tsx";
 <Preview>
   <Story name="default">
     {() => {
-      const [isOpen, setIsOpen] = useState(false);
+      const [isOpen, setIsOpen] = React.useState(false);
       return (
         <Container>
           <Row justify="center">
@@ -65,7 +65,7 @@ You can pass Buttons to footer, and it will displayed at the bottom of the Sideb
 <Preview>
   <Story name="footer">
     {() => {
-      const [isOpen, setIsOpen] = useState(false);
+      const [isOpen, setIsOpen] = React.useState(false);
       const Footer = () => (
         <>
           <Button onClick={() => setIsOpen(!isOpen)}>Cancel</Button>
@@ -100,7 +100,7 @@ You can pass PaginationBox, and it will displayed at the bottom of the Sidebar.
 <Preview>
   <Story name="footer pagination">
     {() => {
-      const [isOpen, setIsOpen] = useState(false);
+      const [isOpen, setIsOpen] = React.useState(false);
       return (
         <Container>
           <Row justify="center">
@@ -139,8 +139,8 @@ Sidebar in default is displayed on the right side, but optionally you can change
 <Preview>
   <Story name="side">
     {() => {
-      const [isOpen, setIsOpen] = useState(false);
-      const [isOpenLeft, setIsOpenLeft] = useState(false);
+      const [isOpen, setIsOpen] = React.useState(false);
+      const [isOpenLeft, setIsOpenLeft] = React.useState(false);
       return (
         <Container>
           <Row justify="center">
@@ -186,9 +186,9 @@ Sidebar in default is displayed on the right side, but optionally you can change
 <Preview>
   <Story name="custom width">
     {() => {
-      const [isOpen20, setIsOpen20] = useState(false);
-      const [isOpenRem, setIsOpenRem] = useState(false);
-      const [isOpenPx, setIsOpenPx] = useState(false);
+      const [isOpen20, setIsOpen20] = React.useState(false);
+      const [isOpenRem, setIsOpenRem] = React.useState(false);
+      const [isOpenPx, setIsOpenPx] = React.useState(false);
       return (
         <Container>
           <Row justify="space-around">

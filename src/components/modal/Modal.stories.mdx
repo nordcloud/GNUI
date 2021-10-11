@@ -1,5 +1,5 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
-import { useState } from "react";
+import * as React from "react";
 import { Modal, ModalConfirm } from ".";
 import { Button } from "../button";
 
@@ -34,7 +34,7 @@ import { Button } from "../button";
 <Preview>
   <Story name="basic modal">
     {() => {
-      const [isOpen, setOpen] = useState(false);
+      const [isOpen, setOpen] = React.useState(false);
       const update = () => setOpen(!isOpen);
       return (
         <>
@@ -61,7 +61,7 @@ import { Button } from "../button";
 <Preview>
   <Story name="modal with actions">
     {() => {
-      const [isOpen, setOpen] = useState(false);
+      const [isOpen, setOpen] = React.useState(false);
       const update = () => setOpen(!isOpen);
       return (
         <>
@@ -101,7 +101,7 @@ import { Button } from "../button";
 <Preview>
   <Story name="confirm modal">
     {() => {
-      const [isOpen, setOpen] = useState(false);
+      const [isOpen, setOpen] = React.useState(false);
       const update = () => setOpen(!isOpen);
       const action = () => alert("Deleted");
       return (
