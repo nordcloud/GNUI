@@ -42,7 +42,7 @@ export function Sidebar({
     if (isOpen) {
       const handleKeyDown = (e: KeyboardEvent) => {
         if (e.key === "Escape") {
-          onClick("");
+          onClick();
         }
       };
 

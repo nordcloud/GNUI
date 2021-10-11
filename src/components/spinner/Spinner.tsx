@@ -6,7 +6,7 @@ import theme from "../../theme";
 export type SpinnerProps = {
   size?: "sm" | "md" | "lg" | "xl" | "xxl";
   color?: "success" | "danger" | "warning" | "notification" | "white";
-  onClick?: (e: any) => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
   ninja?: boolean;
 };

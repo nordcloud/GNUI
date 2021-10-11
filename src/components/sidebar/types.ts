@@ -9,16 +9,16 @@ export type SidebarProps = {
   side?: "onLeft" | "onRight";
   width?: number | string;
   reverse?: boolean;
-  onClick?: (e: any) => void;
+  onClick?: () => void;
   footer?: React.ReactNode;
 };
 export type BackgroundProps = {
   isOpen?: boolean;
-  onClick?: (e: any) => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 export type CloseLayerProps = {
   isOpen?: boolean;
-  onClick?: (e: any) => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 export type InnerProps = {
   width?: number | string;

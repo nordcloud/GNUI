@@ -5,18 +5,18 @@ import theme from "../../theme";
 import { SVGIcon } from "../svgicon";
 
 type AccordionProps = {
-  children: any;
+  children: React.ReactNode;
 };
 
 type AccordionHeaderProps = {
   title: string;
   description?: string;
-  children: any;
+  children: React.ReactNode;
   small?: boolean;
 };
 
 type AccordionItemProps = {
-  children: string | number | any;
+  children: React.ReactNode;
 };
 
 type HeaderIconProps = {

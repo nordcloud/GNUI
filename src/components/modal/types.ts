@@ -22,7 +22,7 @@ export type ModalAction = {
 };
 export type BackgroundProps = {
   isOpen?: boolean;
-  onClick?: (e: any) => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 export type ModalProps = {
   isOpen: boolean;

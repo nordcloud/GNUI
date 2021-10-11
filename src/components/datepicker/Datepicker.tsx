@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { themeCss, mainCss, customCss } from "./styles";
 
 type DatepickerProps = {
-  children?: any;
+  children?: React.ReactNode;
 };
 
 const DatepickerWrapper = styled.div`
