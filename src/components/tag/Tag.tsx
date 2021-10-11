@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { darken } from "polished";
 import styled, { css } from "styled-components";
 import { space } from "styled-system";

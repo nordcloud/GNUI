@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { default as ReactSelect, Props } from "react-select";
 import styled from "styled-components";
 import theme from "../../theme";

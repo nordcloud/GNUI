@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import styled, { css } from "styled-components";
 import { color as styledSystemColor } from "styled-system";
 import theme from "../../theme";
