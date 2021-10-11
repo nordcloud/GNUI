@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React from "react";
 import styled from "styled-components";
 import theme from "../../theme";
 import { Box } from "../box";
@@ -22,20 +22,22 @@ const PageTitleWrapper = styled.div`
   }
 `;
 
-export const PageTitle: FunctionComponent<PageTitleProps> = ({ title }) => {
+export function PageTitle({ title }: PageTitleProps) {
   return (
     <PageTitleWrapper>
       <Heading level={3}>{title}</Heading>
     </PageTitleWrapper>
   );
-};
+}
 
-export const PageTitleBreadcrumbs: FunctionComponent<PageTitleBreadcrumbsProps> =
-  ({ title, list }) => {
-    return (
-      <Box innerSpacing="spacing04" shadow="shadow02">
-        <PageTitle title={title} />
-        <Breadcrumbs list={list} />
-      </Box>
-    );
-  };
+export function PageTitleBreadcrumbs({
+  title,
+  list,
+}: PageTitleBreadcrumbsProps) {
+  return (
+    <Box innerSpacing="spacing04" shadow="shadow02">
+      <PageTitle title={title} />
+      <Breadcrumbs list={list} />
+    </Box>
+  );
+}

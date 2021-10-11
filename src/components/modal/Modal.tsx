@@ -118,7 +118,7 @@ export const ModalHeader = styled.div`
 
 type Props = ModalProps & ModalBoxProps & ModalContentProps;
 
-export const Modal: React.FC<Props> = ({
+export function Modal({
   children,
   contentLabel,
   actions,
@@ -127,7 +127,7 @@ export const Modal: React.FC<Props> = ({
   alignText,
   onClose,
   ...props
-}) => {
+}: Props) {
   return (
     <>
       <Background onClick={onClose} {...props}></Background>
@@ -176,4 +176,4 @@ export const Modal: React.FC<Props> = ({
       </StyledModal>
     </>
   );
-};
+}

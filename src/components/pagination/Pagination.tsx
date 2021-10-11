@@ -8,12 +8,7 @@ import {
 } from "../paginationHelpers";
 import { SVGIcon } from "../svgicon";
 
-const Pagination: React.FC<IPaginationProps> = ({
-  set,
-  current,
-  count,
-  size,
-}) => {
+function Pagination({ set, current, count, size }: IPaginationProps) {
   const currentPage = Math.ceil(current / size);
   const nPages = Math.ceil(count / size);
   return (
@@ -68,9 +63,9 @@ const Pagination: React.FC<IPaginationProps> = ({
       </ul>
     </nav>
   );
-};
+}
 
-export const PaginationBox: React.FC<IPaginationBoxProps> = ({
+export function PaginationBox({
   size,
   from,
   count,
@@ -78,7 +73,7 @@ export const PaginationBox: React.FC<IPaginationBoxProps> = ({
   setPage,
   small,
   sidebar,
-}) => {
+}: IPaginationBoxProps) {
   return (
     <StyledPaginationBox small={small} sidebar={sidebar}>
       {!small && <PaginationAmount from={from} size={size} count={count} />}
@@ -86,4 +81,4 @@ export const PaginationBox: React.FC<IPaginationBoxProps> = ({
       {!small && <PerPage size={size} set={setSize} />}
     </StyledPaginationBox>
   );
-};
+}

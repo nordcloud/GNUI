@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React from "react";
 import styled, { css } from "styled-components";
 import { space, SpaceProps } from "styled-system";
 import theme from "../../theme";
@@ -73,9 +73,7 @@ const StyledListItem = styled.li`
 const isNested = (item: IListItem): item is INestedListItem =>
   (item as INestedListItem).title !== undefined;
 
-export const List: FunctionComponent<IListProps & SpaceProps> = (
-  props
-): JSX.Element => {
+export function List(props: IListProps & SpaceProps) {
   return (
     <StyledList {...props}>
       {props.items &&
@@ -103,20 +101,22 @@ export const List: FunctionComponent<IListProps & SpaceProps> = (
         })}
     </StyledList>
   );
-};
+}
 
-const ListItem: FunctionComponent<INestedListItem> = (props): JSX.Element => (
-  <StyledListItem
-    horizontal={props.horizontal || false}
-    unordered={props.unordered || false}
-  >
-    {props.hasDescription ? (
-      <>
-        <StyledListItemTitle>{props.title}</StyledListItemTitle>
-        <span>{props.description}</span>
-      </>
-    ) : (
-      <span>{props.title}</span>
-    )}
-  </StyledListItem>
-);
+function ListItem(props: INestedListItem): JSX.Element {
+  return (
+    <StyledListItem
+      horizontal={props.horizontal || false}
+      unordered={props.unordered || false}
+    >
+      {props.hasDescription ? (
+        <>
+          <StyledListItemTitle>{props.title}</StyledListItemTitle>
+          <span>{props.description}</span>
+        </>
+      ) : (
+        <span>{props.title}</span>
+      )}
+    </StyledListItem>
+  );
+}

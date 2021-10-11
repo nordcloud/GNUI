@@ -20,13 +20,10 @@ type TextProps = HTMLAttributes<HTMLElement> & {
 };
 
 const changeTag = (tag: keyof JSX.IntrinsicElements) => {
-  let spacing: string;
   if (tag !== "p") {
-    spacing = "0";
-  } else {
-    spacing = theme.spacing.spacing04;
+    return "0";
   }
-  return spacing;
+  return theme.spacing.spacing04;
 };
 
 const basicStyles = css<Pick<TextProps, "color">>`
@@ -107,18 +104,20 @@ const StyledCode = styled.code`
   font-size: inherit;
 `;
 
-export const Text: React.FC<TextProps & SpaceProps> = ({
+export function Text({
   tag = "p",
   children,
   ...props
-}) => (
-  <StyledText as={tag} tag={tag} {...props}>
-    {children}
-  </StyledText>
-);
+}: TextProps & SpaceProps) {
+  return (
+    <StyledText as={tag} tag={tag} {...props}>
+      {children}
+    </StyledText>
+  );
+}
 
 type CodeProps = HTMLAttributes<HTMLSpanElement>;
 
-export const Code: React.FC<CodeProps> = ({ children, ...props }) => (
-  <StyledCode {...props}>{children}</StyledCode>
-);
+export function Code({ children, ...props }: CodeProps) {
+  return <StyledCode {...props}>{children}</StyledCode>;
+}

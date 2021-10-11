@@ -82,11 +82,7 @@ const LoaderOverlay = styled.div<LoaderProps>`
   z-index: ${theme.zindex.topoftheworld};
 `;
 
-export const Loader: React.FC<LoaderProps> = ({
-  inContent,
-  isBackground,
-  ...props
-}) => {
+export function Loader({ inContent, isBackground, ...props }: LoaderProps) {
   return (
     <>
       {inContent ? (
@@ -134,4 +130,4 @@ export const Loader: React.FC<LoaderProps> = ({
       )}
     </>
   );
-};
+}

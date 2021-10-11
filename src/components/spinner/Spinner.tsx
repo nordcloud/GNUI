@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React from "react";
 import styled, { css } from "styled-components";
 import { color as styledSystemColor } from "styled-system";
 import theme from "../../theme";
@@ -102,11 +102,7 @@ const Image = styled.img<SpinnerProps>`
     `}
 `;
 
-export const Spinner: FunctionComponent<SpinnerProps> = ({
-  color,
-  size,
-  ninja,
-}) => {
+export function Spinner({ color, size, ninja }: SpinnerProps) {
   return (
     <>
       {ninja ? (
@@ -120,4 +116,4 @@ export const Spinner: FunctionComponent<SpinnerProps> = ({
       )}
     </>
   );
-};
+}
