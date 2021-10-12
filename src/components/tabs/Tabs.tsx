@@ -24,12 +24,14 @@ type TabProps = {
   label?: React.ReactNode;
 };
 
+type TabsChild = React.ReactElement<TabProps> | boolean | null | undefined;
+
 type TabsProps = {
   wizard?: boolean;
   name?: string;
   caption?: string;
   width?: string;
-  children: Array<TabProps>;
+  children: TabsChild | TabsChild[];
   handleTab: (e: any) => void;
   step: number;
 };
@@ -221,6 +223,7 @@ export function Tab({
   ),
 }: TabProps) {
   const className = activeTab === index ? "tab-active" : "tab";
+
   return (
     <TabContainer
       className={className}
@@ -245,7 +248,10 @@ export function Tab({
 }
 
 export function Tabs({ name, wizard, children, handleTab, step }: TabsProps) {
-  const items = React.Children.toArray(children) as TabProps[];
+  const items = React.Children.toArray(
+    children
+  ) as React.ReactElement<TabProps>[];
+
   return (
     <TabsWrapper>
       <TabsList className={name}>
