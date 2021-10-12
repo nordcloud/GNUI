@@ -17,10 +17,10 @@ import {
 } from "./styles";
 import { Option } from "./types";
 
-type DropdownProps = {
+type DropdownProps = SpaceProps & {
   name: string;
   options: Option[];
-  onChange: (value?: string) => void;
+  onChange: (value: string) => void;
   width?: string;
   value?: string;
   isOpen?: boolean;
@@ -43,7 +43,7 @@ export function Dropdown({
   onClear,
   minNumOfOptionsToShowSearchBox = 4,
   ...props
-}: DropdownProps & SpaceProps) {
+}: DropdownProps) {
   const [isOpen, setIsOpen] = React.useState(false);
   const [search, setSearch] = React.useState("");
   const wrapper = React.useRef<HTMLDivElement>(null);
@@ -125,7 +125,8 @@ export function Dropdown({
                     value={optionValue}
                     key={optionValue}
                     onClick={() => {
-                      onChange && onChange(optionValue);
+                      // default empty string is used to satisfy typescript, we're lacking proper typing in props and getOptionValue
+                      onChange(optionValue ?? "");
                       setIsOpen(!isOpen);
                       setSearch("");
                     }}
