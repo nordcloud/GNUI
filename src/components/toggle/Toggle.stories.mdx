@@ -1,4 +1,4 @@
-import { useState } from "react";
+import * as React from "react";
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Toggle } from ".";
 import { Spacer } from "../spacer";
@@ -23,7 +23,7 @@ import { Spacer } from "../spacer";
 <Preview>
   <Story name="default">
     {() => {
-      const [toggle, setToggle] = useState(false);
+      const [toggle, setToggle] = React.useState(false);
       return (
         <Toggle
           labelText="Default"
@@ -42,7 +42,7 @@ import { Spacer } from "../spacer";
 <Preview>
   <Story name="small">
     {() => {
-      const [toggle, setToggle] = useState(false);
+      const [toggle, setToggle] = React.useState(false);
       return (
         <Toggle
           size="small"
@@ -63,7 +63,7 @@ import { Spacer } from "../spacer";
 <Preview>
   <Story name="status">
     {() => {
-      const [toggle, setToggle] = useState(false);
+      const [toggle, setToggle] = React.useState(false);
       return (
         <div>
           <p>

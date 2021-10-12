@@ -1,4 +1,4 @@
-import React, { FunctionComponent, InputHTMLAttributes, Ref } from "react";
+import * as React from "react";
 import styled, { css } from "styled-components";
 import { space, SpaceProps } from "styled-system";
 import theme from "../../theme";
@@ -8,8 +8,8 @@ export type CheckboxProps = {
   labelText?: string;
   withoutLabel?: boolean;
   isIndeterminate?: boolean;
-  ref?: Ref<HTMLInputElement>;
-} & InputHTMLAttributes<HTMLInputElement>;
+  ref?: React.Ref<HTMLInputElement>;
+} & React.InputHTMLAttributes<HTMLInputElement>;
 
 export type CheckboxGroupProps = Pick<CheckboxProps, "name" | "children">;
 
@@ -130,7 +130,7 @@ const CheckboxWrapper = styled(GnuiContainer)`
   }
 `;
 
-export const Checkbox: FunctionComponent<CheckboxProps & SpaceProps> =
+export const Checkbox: React.FunctionComponent<CheckboxProps & SpaceProps> =
   React.forwardRef(
     ({ id, labelText, withoutLabel, isIndeterminate, ...props }, ref) => (
       <SingleCheckWrapper withoutLabel={withoutLabel}>

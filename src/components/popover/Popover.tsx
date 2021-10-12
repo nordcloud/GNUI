@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import * as React from "react";
 import styled from "styled-components";
 import { useClickOutside } from "../../hooks";
 import theme from "../../theme";
@@ -49,7 +49,7 @@ const StyledTrigger = styled.div`
 `;
 
 export function Popover({ children, trigger, alignRight }: PopoverProps) {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = React.useState(false);
   const toggle = () => {
     setIsVisible(!isVisible);
   };

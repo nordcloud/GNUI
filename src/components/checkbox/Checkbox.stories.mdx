@@ -1,4 +1,4 @@
-import { useState } from "react";
+import * as React from "react";
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Checkbox, CheckboxGroup } from ".";
 import { IndeterminateCheckbox } from ".";
@@ -52,7 +52,11 @@ import { IndeterminateCheckbox } from ".";
 <Preview>
   <Story name="group">
     {() => {
-      const [value, setValue] = useState({ 0: false, 1: false, 2: false });
+      const [value, setValue] = React.useState({
+        0: false,
+        1: false,
+        2: false,
+      });
       const handleCheckbox = (index) =>
         setValue({ ...value, [index]: !value[index] });
       const labels = ["New York", "San Francisco", "Los Angeles"];

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import * as React from "react";
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Textarea } from ".";
 import { GnuiContainer } from "../container";
@@ -12,10 +12,10 @@ import theme from "../../theme";
 
 ## Textarea properties
 
-| properties | required | type                                      | description                             |
-| ---------: | :------: | :---------------------------------------- | :-------------------------------------- |
+| properties | required | type                                         | description                             |
+| ---------: | :------: | :------------------------------------------- | :-------------------------------------- |
 |     status |  false   | <code>`success`</code>, <code>`error`</code> | color indicator status for SelectButton |
-|      small |  false   | boolean                                   | small size styles                       |
+|      small |  false   | boolean                                      | small size styles                       |
 
 ## default
 
@@ -40,7 +40,7 @@ import theme from "../../theme";
 <Preview>
   <Story name="status">
     {() => {
-      const [status, setStatus] = useState("success");
+      const [status, setStatus] = React.useState("success");
       return (
         <GnuiContainer>
           <GnuiContainer>

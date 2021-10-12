@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import * as React from "react";
 import styled, { css } from "styled-components";
 import { space, SpaceProps } from "styled-system";
 import theme from "../../theme";
@@ -114,7 +114,7 @@ export function AccordionHeader({
   children,
   small,
 }: AccordionHeaderProps) {
-  const [isOpen, toggleIsOpen] = useState(false);
+  const [isOpen, toggleIsOpen] = React.useState(false);
   return (
     <>
       <StyledHeader

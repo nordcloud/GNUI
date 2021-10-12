@@ -1,6 +1,6 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { addDays } from "date-fns";
-import { useState } from "react";
+import * as React from "react";
 import { Datepicker } from ".";
 import { Calendar, DateRangePicker } from "react-date-range";
 
@@ -39,7 +39,7 @@ type DatepickerProps = {
       const handleSelect = (ranges) => {
         console.log(ranges);
       };
-      const [state, setState] = useState([
+      const [state, setState] = React.useState([
         {
           startDate: new Date(),
           endDate: addDays(new Date(), 7),

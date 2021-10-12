@@ -1,4 +1,4 @@
-import { useState } from "react";
+import * as React from "react";
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Dropdown } from ".";
 import { GnuiContainer } from "../container";
@@ -35,8 +35,8 @@ import { Text } from "../text";
         "Option 3",
         "Option 4",
       ];
-      const [value, setValue] = useState("");
-      const [value2, setValue2] = useState("");
+      const [value, setValue] = React.useState("");
+      const [value2, setValue2] = React.useState("");
       return (
         <GnuiContainer>
           <Dropdown
@@ -72,8 +72,8 @@ import { Text } from "../text";
         "Option 3",
         "Option 4",
       ];
-      const [value, setValue] = useState("");
-      const [value2, setValue2] = useState("");
+      const [value, setValue] = React.useState("");
+      const [value2, setValue2] = React.useState("");
       return (
         <GnuiContainer>
           <Dropdown
