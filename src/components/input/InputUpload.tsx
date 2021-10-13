@@ -29,11 +29,8 @@ const StyledLabel = styled.label`
 
 type UploadProps = Omit<StyledInputProps, "type">;
 
-export const Upload = React.forwardRef(
-  (
-    { placeholder, id = "upload-file", ...props }: UploadProps,
-    ref: React.Ref<HTMLInputElement>
-  ) => (
+export const Upload = React.forwardRef<HTMLInputElement, UploadProps>(
+  ({ placeholder, id = "upload-file", ...props }, ref) => (
     <StyledUpload>
       <StyledLabel htmlFor={id}>
         {placeholder}

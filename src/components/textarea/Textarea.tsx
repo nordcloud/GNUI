@@ -82,7 +82,7 @@ const StyledTextarea = styled.textarea<TextareaProps>`
 
 type Props = TextareaGroupProps & TextareaProps;
 
-export const Textarea: React.FC<Props> = React.forwardRef(
+export const Textarea = React.forwardRef<HTMLTextAreaElement, Props>(
   ({ status, ...props }, ref) => {
     return (
       <TextareaGroup status={status}>
