@@ -16,7 +16,7 @@ type Props = StyledInputGroupProps &
     onSearch?: () => void;
   };
 
-export const InputSearch: React.FC<Props> = React.forwardRef(
+export const InputSearch = React.forwardRef<HTMLInputElement, Props>(
   (
     {
       noBorder,

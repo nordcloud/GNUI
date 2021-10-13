@@ -130,21 +130,21 @@ const CheckboxWrapper = styled(GnuiContainer)`
   }
 `;
 
-export const Checkbox: React.FunctionComponent<CheckboxProps & SpaceProps> =
-  React.forwardRef(
-    ({ id, labelText, withoutLabel, isIndeterminate, ...props }, ref) => (
-      <SingleCheckWrapper withoutLabel={withoutLabel}>
-        <CheckboxContainer>
-          <CheckboxInput type="checkbox" id={id} ref={ref} {...props} />
-          <Fill />
-          {isIndeterminate && <FillInter />}
-        </CheckboxContainer>
-        <CheckboxLabel withoutLabel={withoutLabel} htmlFor={id}>
-          {labelText}
-        </CheckboxLabel>
-      </SingleCheckWrapper>
-    )
-  );
+export const Checkbox = React.forwardRef<
+  HTMLInputElement,
+  CheckboxProps & SpaceProps
+>(({ id, labelText, withoutLabel, isIndeterminate, ...props }, ref) => (
+  <SingleCheckWrapper withoutLabel={withoutLabel}>
+    <CheckboxContainer>
+      <CheckboxInput type="checkbox" id={id} ref={ref} {...props} />
+      <Fill />
+      {isIndeterminate && <FillInter />}
+    </CheckboxContainer>
+    <CheckboxLabel withoutLabel={withoutLabel} htmlFor={id}>
+      {labelText}
+    </CheckboxLabel>
+  </SingleCheckWrapper>
+));
 
 export function CheckboxGroup({
   name,

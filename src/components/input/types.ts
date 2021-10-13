@@ -9,7 +9,6 @@ export type StyledInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   onClear?: () => void;
   showClearButton?: boolean;
   loading?: boolean;
-  ref?: React.Ref<HTMLInputElement>;
 };
 
 export type StyledInputGroupProps = {

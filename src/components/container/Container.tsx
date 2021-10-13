@@ -20,12 +20,14 @@ const StyledContainer = styled.div<ContainerProps & SpaceProps>`
   ${space};
 `;
 
-export const Container: React.FunctionComponent<ContainerProps & SpaceProps> =
-  React.forwardRef(({ children, ...props }, ref) => (
-    <StyledContainer {...props} ref={ref}>
-      {children}
-    </StyledContainer>
-  ));
+export const Container = React.forwardRef<
+  HTMLDivElement,
+  ContainerProps & SpaceProps
+>(({ children, ...props }, ref) => (
+  <StyledContainer {...props} ref={ref}>
+    {children}
+  </StyledContainer>
+));
 
 export const Flex = styled(Container)`
   display: flex;

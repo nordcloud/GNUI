@@ -7,7 +7,7 @@ import { StyledInputGroupProps, StyledInputProps } from "./types";
 
 type Props = StyledInputGroupProps & StyledInputProps & SpaceProps;
 
-export const Input: React.FC<Props> = React.forwardRef(
+export const Input = React.forwardRef<HTMLInputElement, Props>(
   (
     {
       noBorder,
