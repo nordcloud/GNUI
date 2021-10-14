@@ -49,8 +49,6 @@ module.exports = {
     "fp/no-rest-parameters": "off",
     "fp/no-nil": "off",
     "fp/no-throw": "off",
-    "fp/no-loops": isProd ? "off" : "warn",
-    "fp/no-let": isProd ? "off" : "warn",
     "fp/no-mutating-methods": [
       isProd ? "off" : "warn",
       {
@@ -127,7 +125,7 @@ module.exports = {
     "react/prop-types": "off",
     "react/display-name": "off",
     "react/function-component-definition": [
-      isProd ? "off" : "warn",
+      "error",
       {
         namedComponents: "function-declaration",
         unnamedComponents: "arrow-function",
@@ -249,16 +247,16 @@ module.exports = {
         "jest/require-top-level-describe": "off",
         "jest/prefer-expect-assertions": "off",
         "jest/expect-expect": "off",
-        "jest/no-mocks-import": "off",
-        "jest/no-identical-title": "warn",
         "jest/valid-expect-in-promise": "warn",
-        "jest/no-disabled-tests": isProd ? "off" : "warn",
-        "jest/require-to-throw-message": isProd ? "off" : "warn",
+        "jest/no-identical-title": "error",
+        "jest/no-mocks-import": "error",
+        "jest/no-disabled-tests": "error",
+        "jest/require-to-throw-message": "error",
         "jest/no-commented-out-tests": "error",
         // eslint-plugin-jest-dom
         "jest-dom/prefer-in-document": "off",
         // eslint-plugin-testing-library
-        "testing-library/prefer-screen-queries": isProd ? "off" : "warn",
+        "testing-library/prefer-screen-queries": "error",
         // eslint-plugin-fp
         "fp/no-loops": "off",
       },
