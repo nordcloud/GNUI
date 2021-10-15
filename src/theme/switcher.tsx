@@ -37,9 +37,5 @@ export const useThemeSwitcher = () => {
     localStorage.setItem("NC_GNUI_THEME", THEME_OPTIONS[value]);
   };
 
-  return { currentTheme: c, setTheme };
+  return { currentTheme, setTheme };
 };
-
-export function getTypedKeys<T>(obj: T): Array<keyof T> {
-  return Object.keys(obj) as Array<keyof typeof obj>;
-}
