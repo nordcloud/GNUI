@@ -2,11 +2,11 @@ import * as React from "react";
 import { Checkbox } from "./Checkbox";
 
 type Props = React.ComponentProps<typeof Checkbox> & {
-  indeterminate: boolean;
+  indeterminate?: boolean;
 };
 
 export const IndeterminateCheckbox = React.forwardRef<HTMLInputElement, Props>(
-  ({ indeterminate, id, ...rest }, ref) => {
+  ({ indeterminate = false, id, ...rest }, ref) => {
     const defaultRef = React.useRef<HTMLInputElement>(null);
     const resolvedRef = ref ?? defaultRef;
 

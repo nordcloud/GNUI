@@ -73,7 +73,7 @@ const Tfoot = styled.tfoot`
   }
 `;
 
-const Td = styled.td<{ hasLeftBorder?: boolean; hasRightBorder: boolean }>`
+const Td = styled.td<{ hasLeftBorder?: boolean; hasRightBorder?: boolean }>`
   border-top: 1px solid ${theme.color.border.border01};
   border-left: ${({ hasLeftBorder }) =>
     hasLeftBorder ? `1px solid ${theme.color.border.border01}` : "none"};
@@ -83,11 +83,11 @@ const Td = styled.td<{ hasLeftBorder?: boolean; hasRightBorder: boolean }>`
 
 const Tr = styled.tr``;
 
-const Th = styled.th`
+const Th = styled.th<{ width?: string }>`
   border-bottom: 2px solid ${theme.color.border.border01};
 `;
 
-function Table(props: StyledTableProps) {
+function Table(props: React.ComponentProps<typeof StyledTable>) {
   return <StyledTable {...props} />;
 }
 
