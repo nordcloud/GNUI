@@ -1,36 +1,26 @@
 import * as React from "react";
 import styled, { css } from "styled-components";
-import { space, SpaceProps } from "styled-system";
 import theme from "../../theme";
 import { GnuiContainer, Flex } from "../container";
-
-export type CheckboxProps = {
-  labelText?: string;
-  withoutLabel?: boolean;
-  isIndeterminate?: boolean;
-  ref?: React.Ref<HTMLInputElement>;
-} & React.InputHTMLAttributes<HTMLInputElement>;
-
-export type CheckboxGroupProps = Pick<CheckboxProps, "name" | "children">;
-
-type CheckboxLabelProps = {
-  withoutLabel?: boolean;
-};
 
 const SingleCheckWrapper = styled(Flex)`
   margin-bottom: ${theme.spacing.spacing04};
   position: ${({ withoutLabel }) => (withoutLabel ? "relative" : "static")};
 
-  ${space}
   &:last-child {
     margin-bottom: 0;
   }
 `;
 
+type CheckboxLabelProps = {
+  withoutLabel?: boolean;
+};
+
 const CheckboxLabel = styled.label<CheckboxLabelProps>`
   cursor: pointer;
   margin-left: ${theme.spacing.spacing02};
   font-weight: ${theme.fontWeights.medium};
+
   ${({ withoutLabel }) =>
     withoutLabel &&
     css`
@@ -76,6 +66,7 @@ const Fill = styled.div`
   transition: width 0.2s ease-in, height 0.2s ease-in;
   pointer-events: none;
   z-index: 1;
+
   &::before {
     content: "";
     opacity: 0;
@@ -90,6 +81,14 @@ const Fill = styled.div`
 
 const FillInter = styled(Fill)``;
 
+const CheckboxWrapper = styled(GnuiContainer)`
+  position: relative;
+
+  ${SingleCheckWrapper} {
+    margin-bottom: 1rem;
+  }
+`;
+
 const CheckboxInput = styled.input`
   opacity: 0;
   z-index: 2;
@@ -100,21 +99,25 @@ const CheckboxInput = styled.input`
   height: 100%;
   margin: 0;
   cursor: pointer;
+
   &:checked {
     & ~ ${Fill} {
       width: 0.65rem;
       height: 0.65rem;
       transition: width 0.2s ease-out, height 0.2s ease-out;
+
       &::before {
         opacity: 1;
         transition: opacity 1s ease;
       }
     }
   }
+
   & ~ ${FillInter} {
     width: 0.65rem;
     height: 0.25rem;
     transition: width 0.2s ease-out, height 0.2s ease-out;
+
     &::before {
       opacity: 1;
       transition: opacity 1s ease;
@@ -122,33 +125,30 @@ const CheckboxInput = styled.input`
   }
 `;
 
-const CheckboxWrapper = styled(GnuiContainer)`
-  position: relative;
-  ${space}
-  ${SingleCheckWrapper} {
-    margin-bottom: 1rem;
-  }
-`;
+export type CheckboxProps = React.InputHTMLAttributes<HTMLInputElement> & {
+  labelText?: string;
+  withoutLabel?: boolean;
+  isIndeterminate?: boolean;
+  ref?: React.Ref<HTMLInputElement>;
+};
 
-export const Checkbox = React.forwardRef<
-  HTMLInputElement,
-  CheckboxProps & SpaceProps
->(({ id, labelText, withoutLabel, isIndeterminate, ...props }, ref) => (
-  <SingleCheckWrapper withoutLabel={withoutLabel}>
-    <CheckboxContainer>
-      <CheckboxInput type="checkbox" id={id} ref={ref} {...props} />
-      <Fill />
-      {isIndeterminate && <FillInter />}
-    </CheckboxContainer>
-    <CheckboxLabel withoutLabel={withoutLabel} htmlFor={id}>
-      {labelText}
-    </CheckboxLabel>
-  </SingleCheckWrapper>
-));
+export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
+  ({ id, labelText, withoutLabel, isIndeterminate, ...props }, ref) => (
+    <SingleCheckWrapper withoutLabel={withoutLabel}>
+      <CheckboxContainer>
+        <CheckboxInput type="checkbox" id={id} ref={ref} {...props} />
+        <Fill />
+        {isIndeterminate && <FillInter />}
+      </CheckboxContainer>
+      <CheckboxLabel withoutLabel={withoutLabel} htmlFor={id}>
+        {labelText}
+      </CheckboxLabel>
+    </SingleCheckWrapper>
+  )
+);
 
-export function CheckboxGroup({
-  name,
-  children,
-}: CheckboxGroupProps & SpaceProps) {
+export type CheckboxGroupProps = Pick<CheckboxProps, "name" | "children">;
+
+export function CheckboxGroup({ name, children }: CheckboxGroupProps) {
   return <CheckboxWrapper name={name}>{children}</CheckboxWrapper>;
 }
