@@ -7,29 +7,39 @@ export enum THEME_OPTIONS {
   DARK,
 }
 
-const previousTheme = localStorage.getItem("NC_GNUI_THEME");
-const defaultTheme =
-  previousTheme === "LIGHT"
-    ? THEME_OPTIONS.LIGHT
-    : previousTheme === "DARK"
-    ? THEME_OPTIONS.DARK
-    : window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches
+function getPreferredBrowserTheme() {
+  return window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
     ? THEME_OPTIONS.DARK
     : THEME_OPTIONS.LIGHT;
+}
+
+const previousTheme = localStorage.getItem("NC_GNUI_THEME");
+const themeValue = parseInt(previousTheme ?? "-1", 10);
+
+const defaultTheme =
+  themeValue in THEME_OPTIONS ? themeValue : getPreferredBrowserTheme();
 
 export const useThemeSwitcher = () => {
-  const [c, setC] = React.useState<THEME_OPTIONS>(defaultTheme);
+  const [currentTheme, setCurrentTheme] =
+    React.useState<THEME_OPTIONS>(defaultTheme);
 
   React.useEffect(() => {
-    const newTheme = c === THEME_OPTIONS.DARK ? dark : light;
+    const newTheme = currentTheme === THEME_OPTIONS.DARK ? dark : light;
+
     newTheme.forEach((el) => {
       document.documentElement.style.setProperty(el[0], el[1]);
     });
-  }, [c]);
+  }, [currentTheme]);
+
   const setTheme = (value: THEME_OPTIONS) => {
-    setC(value);
+    setCurrentTheme(value);
     localStorage.setItem("NC_GNUI_THEME", THEME_OPTIONS[value]);
   };
+
   return { currentTheme: c, setTheme };
 };
+
+export function getTypedKeys<T>(obj: T): Array<keyof T> {
+  return Object.keys(obj) as Array<keyof typeof obj>;
+}
