@@ -1,7 +1,8 @@
+import * as React from "react";
 import styled from "styled-components";
 import theme from "../../theme";
 
-export type TableProps = {
+export type StyledTableProps = {
   hoverline?: boolean;
   striped?: boolean;
   small?: boolean;
@@ -10,7 +11,7 @@ export type TableProps = {
 
 /* stylelint-disable no-descending-specificity */
 /* eslint-disable sonarjs/no-identical-functions */
-const Table: any = styled.table<TableProps>`
+const StyledTable = styled.table<StyledTableProps>`
   width: 100%;
   text-align: left;
   border-collapse: collapse;
@@ -72,7 +73,7 @@ const Tfoot = styled.tfoot`
   }
 `;
 
-const Td = styled.td<any>`
+const Td = styled.td<{ hasLeftBorder?: boolean; hasRightBorder: boolean }>`
   border-top: 1px solid ${theme.color.border.border01};
   border-left: ${({ hasLeftBorder }) =>
     hasLeftBorder ? `1px solid ${theme.color.border.border01}` : "none"};
@@ -80,12 +81,17 @@ const Td = styled.td<any>`
     hasRightBorder ? `1px solid ${theme.color.border.border01}` : "none"};
 `;
 
-const Tr = styled.tr<any>``;
+const Tr = styled.tr``;
 
-const Th = styled.th<any>`
+const Th = styled.th`
   border-bottom: 2px solid ${theme.color.border.border01};
 `;
 
+function Table(props: StyledTableProps) {
+  return <StyledTable {...props} />;
+}
+
+/* eslint-disable fp/no-mutation */
 Table.thead = Thead;
 Table.tbody = Tbody;
 Table.tfoot = Tfoot;
