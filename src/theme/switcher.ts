@@ -3,8 +3,8 @@ import dark from "./dark";
 import light from "./light";
 
 export enum THEME_OPTIONS {
-  LIGHT,
-  DARK,
+  LIGHT = "LIGHT",
+  DARK = "DARK",
 }
 
 function getPreferredBrowserTheme() {
@@ -14,11 +14,14 @@ function getPreferredBrowserTheme() {
     : THEME_OPTIONS.LIGHT;
 }
 
-const previousTheme = localStorage.getItem("NC_GNUI_THEME");
-const themeValue = parseInt(previousTheme ?? "-1", 10);
+function isThemeValue(value: string): value is keyof typeof THEME_OPTIONS {
+  return value === "LIGHT" || value === "DARK";
+}
 
-const defaultTheme =
-  themeValue in THEME_OPTIONS ? themeValue : getPreferredBrowserTheme();
+const savedThemeValue = localStorage.getItem("NC_GNUI_THEME") ?? "";
+const defaultTheme = isThemeValue(savedThemeValue)
+  ? THEME_OPTIONS[savedThemeValue]
+  : getPreferredBrowserTheme();
 
 export const useThemeSwitcher = () => {
   const [currentTheme, setCurrentTheme] =
