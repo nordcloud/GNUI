@@ -5,47 +5,6 @@ import { Box } from "../box";
 import { Button } from "../button";
 import { Text } from "../text";
 
-type TabProps = {
-  className?: string;
-  wizard?: boolean;
-  step?: number;
-  heading?: string;
-  caption?: string;
-  activeTab?: number;
-  children?: React.ReactNode;
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  props?: any;
-  styleActive?: boolean;
-  index?: number;
-  disabled?: boolean;
-  width?: string;
-  buttons?: React.ReactNode;
-  buttonsJustify?: string;
-  label?: React.ReactNode;
-};
-
-type TabsChild = React.ReactElement<TabProps> | boolean | null | undefined;
-
-type TabsProps = {
-  wizard?: boolean;
-  name?: string;
-  caption?: string;
-  width?: string;
-  children: TabsChild | TabsChild[];
-  handleTab: (e: any) => void;
-  step: number;
-};
-
-type ButtonPreviousProps = {
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  children?: React.ReactNode;
-};
-
-type ButtonNextProps = {
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  children?: React.ReactNode;
-};
-
 /* stylelint-disable no-descending-specificity */
 export const TabsContent = styled(Box)`
   background-color: ${theme.color.background.ui01};
@@ -67,12 +26,17 @@ export const TabsContent = styled(Box)`
   }
 `;
 
-export const TabContainer: any = styled.div<TabProps>`
+export const TabContainer = styled.div<{
+  disabled?: boolean;
+  wizard?: boolean;
+  width?: string;
+}>`
   padding: ${theme.spacing.spacing04};
   background-color: ${theme.color.background.ui03};
   border-right: 1px solid ${theme.color.border.border01};
   border-bottom: 1px solid transparent;
   width: ${({ width }) => width ?? "17rem"};
+
   &:last-child {
     border-right: none;
     &.tab-active {
@@ -100,9 +64,11 @@ export const TabContainer: any = styled.div<TabProps>`
         }
       }
     `}
+
   &:first-child {
     border-top-left-radius: ${theme.radiusDefault};
   }
+
   &.tab-active {
     background-color: ${theme.color.background.ui01};
     border-bottom: 1px solid ${theme.color.background.ui01};
@@ -127,9 +93,11 @@ const TabsList = styled.div`
   padding: 0;
   margin: 0;
   position: relative;
+
   &::-webkit-scrollbar {
     display: none;
   }
+
   &::after {
     content: "";
     width: 100%;
@@ -186,31 +154,58 @@ const PreviousButton = styled(Button)`
   position: absolute;
   border: none;
 `;
+
 const NextButton = styled(Button)`
   margin-left: auto;
   margin-right: auto;
 `;
 
+type ButtonPreviousProps = {
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  children?: React.ReactNode;
+};
+
 export function ButtonPrevious({ onClick, children }: ButtonPreviousProps) {
   return <PreviousButton onClick={onClick}>{children}</PreviousButton>;
 }
 
+type ButtonNextProps = {
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  children?: React.ReactNode;
+};
+
 export function ButtonNext({ onClick, children }: ButtonNextProps) {
   return <NextButton onClick={onClick}>{children}</NextButton>;
 }
+
+type TabProps = Partial<{
+  className: string;
+  wizard: boolean;
+  step: number;
+  heading: string;
+  caption: string;
+  activeTab: number;
+  children: React.ReactNode;
+  onClick: React.MouseEventHandler<HTMLDivElement>;
+  styleActive: boolean;
+  index: number;
+  disabled: boolean;
+  width: string;
+  buttons: React.ReactNode;
+  buttonsJustify: string;
+  label: React.ReactNode;
+}>;
 
 export function Tab({
   wizard,
   step,
   heading,
   caption,
-  activeTab,
-  index,
+  activeTab = -1,
+  index = 0,
   width,
   disabled,
   onClick,
-  buttons,
-  buttonsJustify,
   label = (
     <>
       <Text weight="medium" mb={theme.spacing.spacing01}>
@@ -223,6 +218,7 @@ export function Tab({
   ),
 }: TabProps) {
   const className = activeTab === index ? "tab-active" : "tab";
+  const isActive = activeTab && index;
 
   return (
     <TabContainer
@@ -232,20 +228,28 @@ export function Tab({
       width={width}
       disabled={disabled}
       wizard={wizard}
-      buttons={buttons}
-      buttonsJustify={buttonsJustify}
     >
       {wizard ? (
-        activeTab && index ? (
-          <Step {...(index <= activeTab && { className: "dark" })}>{step}</Step>
-        ) : (
-          <Step>{step}</Step>
-        )
+        <Step {...(isActive && index <= activeTab && { className: "dark" })}>
+          {step}
+        </Step>
       ) : null}
       {label}
     </TabContainer>
   );
 }
+
+type TabsChild = React.ReactElement<TabProps> | boolean | null | undefined;
+
+type TabsProps = {
+  wizard?: boolean;
+  name?: string;
+  caption?: string;
+  width?: string;
+  children: TabsChild | TabsChild[];
+  handleTab: (key: number) => void;
+  step: number;
+};
 
 export function Tabs({ name, wizard, children, handleTab, step }: TabsProps) {
   const items = React.Children.toArray(
