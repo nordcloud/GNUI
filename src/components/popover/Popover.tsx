@@ -4,11 +4,6 @@ import { useClickOutside } from "../../hooks";
 import theme from "../../theme";
 import { Box } from "../box";
 
-type ContentData = {
-  isVisible: boolean;
-  [x: string]: any;
-};
-
 type PopoverProps = {
   children?: React.ReactNode;
   trigger?: React.ReactNode;
@@ -20,20 +15,22 @@ const StyledPopover = styled.div`
   position: relative;
 `;
 
-const Content = styled.div`
+const Content = styled.div<{ isVisible: boolean; alignRight?: boolean }>`
   visibility: hidden;
   opacity: 0;
   position: absolute;
   z-index: ${theme.zindex.dropdown};
   transition: visibility 0.1s ease-out, opacity 0.1s ease-out;
   margin-top: ${theme.spacing.spacing01};
-  ${({ isVisible }: ContentData) =>
+
+  ${({ isVisible }) =>
     isVisible &&
     `
     visibility: visible;
     opacity: 1;
   `}
-  ${({ alignRight }: PopoverProps) =>
+
+  ${({ alignRight }) =>
     alignRight &&
     `
       right: 0;
