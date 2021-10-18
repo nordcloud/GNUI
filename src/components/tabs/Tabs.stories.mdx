@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { Tabs, Tab } from ".";
 import { Button } from "../button";
@@ -12,13 +11,13 @@ import { Flex } from "../container";
 
 ## Tabs properties
 
-| properties | required | type                      | description        |
-| ---------: | :------: | :------------------------ | :----------------- |
-|     wizard |  false   | boolean                   | enable wizard mode |
-|       name |  false   | string                    |                    |
-|   children |   true   | <code>`Array<Tab>`</code> | array of tabs      |
-|  handleTab |   true   | <code>`() => void`</code> |                    |
-|       step |   true   | number                    |                    |
+| properties | required | type                                 | description        |
+| ---------: | :------: | :----------------------------------- | :----------------- |
+|     wizard |  false   | boolean                              | enable wizard mode |
+|       name |  false   | string                               |                    |
+|   children |   true   | <code>`Array<Tab>`</code>            | array of tabs      |
+|  handleTab |   true   | <code>`(key: number) => void`</code> |                    |
+|       step |   true   | number                               |                    |
 
 ## Tab properties
 

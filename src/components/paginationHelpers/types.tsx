@@ -2,8 +2,8 @@ export type IPaginationBoxProps = {
   size: number;
   from: number;
   count: number;
-  setSize(size: number): any;
-  setPage(page: number): any;
+  setSize: (size: number) => void;
+  setPage: (page: number) => void;
   small?: boolean;
   sidebar?: boolean;
 };

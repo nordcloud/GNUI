@@ -28,9 +28,13 @@ function Pagination({ set, current, count, size }: IPaginationProps) {
 
         {[...Array(Math.min(Math.ceil(count / size), 5))]
           .map((_, i) => currentPage + i)
-          .map((i) =>
-            currentPage === nPages ? i - 4 : current > 3 ? i - 1 : i
-          )
+          .map((i) => {
+            if (currentPage === nPages) {
+              return i - 4;
+            }
+
+            return current > 3 ? i - 1 : i;
+          })
           .filter((i) => i < nPages)
           .map((i) => {
             return (

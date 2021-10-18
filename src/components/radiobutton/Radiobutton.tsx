@@ -3,16 +3,6 @@ import styled from "styled-components";
 import theme from "../../theme";
 import { GnuiContainer, Flex } from "../container";
 
-export type RadioProps = {
-  labelText?: string;
-  ref?: React.Ref<HTMLInputElement>;
-} & React.InputHTMLAttributes<HTMLInputElement>;
-
-export type RadioGroupProps = {
-  name: string;
-  children: any;
-};
-
 const RadioWrapper = styled(GnuiContainer)`
   position: relative;
 `;
@@ -103,6 +93,11 @@ const RadioContainer = styled.div`
   }
 `;
 
+export type RadioProps = {
+  labelText?: string;
+  ref?: React.Ref<HTMLInputElement>;
+} & React.InputHTMLAttributes<HTMLInputElement>;
+
 export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
   ({ id, labelText, ...props }, ref) => (
     <RadioFlexWrapper>
@@ -114,6 +109,11 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
     </RadioFlexWrapper>
   )
 );
+
+export type RadioGroupProps = {
+  name: string;
+  children: React.ReactElement<React.ComponentProps<typeof Radio>>;
+};
 
 export function RadioGroup({ name, children }: RadioGroupProps) {
   const hasNoChildren = Array.isArray(children) && children.length === 0;

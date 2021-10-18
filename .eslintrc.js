@@ -30,13 +30,13 @@ module.exports = {
     // general
     "no-shadow": "off", // @typescript-eslint/no-shadow is used
     "consistent-return": "off",
-    "prefer-const": "off",
     "no-underscore-dangle": "off",
     "no-prototype-builtins": "off",
-    "no-console": "off",
     "require-await": "off",
     camelcase: "off", // @typescript-eslint/naming-convention is used
-    "no-nested-ternary": isProd ? "off" : "warn",
+    "no-nested-ternary": "error",
+    "no-console": isProd ? "error" : "warn",
+    "prefer-const": "error",
     complexity: ["error", 15],
     "max-params": ["error", 3],
     eqeqeq: ["error", "smart"],
@@ -56,13 +56,10 @@ module.exports = {
       },
     ],
     "fp/no-mutation": [
-      isProd ? "off" : "warn",
+      "error",
       {
         commonjs: true,
-        exceptions: [
-          { object: "window", property: "location" },
-          { property: "current" },
-        ],
+        exceptions: [{ property: "current" }],
       },
     ],
     // eslint-plugin-import
@@ -144,9 +141,9 @@ module.exports = {
     "@typescript-eslint/no-use-before-define": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
-    "@typescript-eslint/interface-name-prefix": "off",
+    "@typescript-eslint/interface-name-prefix": ["off", "never"],
     "@typescript-eslint/no-empty-function": "off",
-    "@typescript-eslint/no-explicit-any": isProd ? "off" : "warn",
+    "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/naming-convention": [
       "error",
       {

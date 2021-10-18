@@ -1,14 +1,9 @@
 import * as React from "react";
-import { default as ReactSelect, Props } from "react-select";
+import { default as ReactSelect } from "react-select";
 import styled from "styled-components";
 import theme from "../../theme";
 
-export type SelectProps = {
-  options?: any;
-  styles?: any;
-};
-
-const SelectContainer = styled.div<SelectProps>`
+const SelectContainer = styled.div`
   .react-select {
     &-container {
       & > div {
@@ -85,7 +80,11 @@ const SelectContainer = styled.div<SelectProps>`
 `;
 
 // eslint-disable-next-line @typescript-eslint/ban-types
-export function Select({ options, styles, ...props }: SelectProps & Props<{}>) {
+export function Select({
+  options,
+  styles,
+  ...props
+}: React.ComponentProps<typeof ReactSelect>) {
   return (
     <SelectContainer>
       <ReactSelect

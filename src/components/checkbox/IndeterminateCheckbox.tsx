@@ -1,17 +1,24 @@
 import * as React from "react";
 import { Checkbox } from "./Checkbox";
 
-const IndeterminateCheckbox = React.forwardRef(
-  ({ indeterminate, id, ...rest }: any, ref: any) => {
-    const defaultRef = React.useRef();
-    const resolvedRef = ref || defaultRef;
+type Props = React.ComponentProps<typeof Checkbox> & {
+  indeterminate?: boolean;
+};
+
+export const IndeterminateCheckbox = React.forwardRef<HTMLInputElement, Props>(
+  ({ indeterminate = false, id, ...rest }, ref) => {
+    const defaultRef = React.useRef<HTMLInputElement>(null);
+    const resolvedRef = ref ?? defaultRef;
+
     React.useEffect(() => {
-      resolvedRef.current.indeterminate = indeterminate;
+      if ("current" in resolvedRef && resolvedRef.current != null) {
+        resolvedRef.current.indeterminate = indeterminate;
+      }
     }, [resolvedRef, indeterminate]);
+
     return (
       <Checkbox
         id={id}
-        type="checkbox"
         withoutLabel
         isIndeterminate={indeterminate}
         ref={resolvedRef}
@@ -20,5 +27,3 @@ const IndeterminateCheckbox = React.forwardRef(
     );
   }
 );
-
-export { IndeterminateCheckbox };

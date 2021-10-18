@@ -3,15 +3,9 @@ import styled, { css } from "styled-components";
 import { space, SpaceProps } from "styled-system";
 import theme from "../../theme";
 
-type IPieChart = {
-  size: number;
-  progress: number;
-  strokeWidth: number;
-  color?: "danger" | "warning" | "success" | "notification";
-  [x: string]: any;
-};
+type Color = "danger" | "warning" | "success" | "notification";
 
-const setColorBgr = (color: string) => {
+const setColorBgr = (color: Color) => {
   switch (color) {
     case "danger":
       return theme.color.support.redInverse;
@@ -23,7 +17,8 @@ const setColorBgr = (color: string) => {
       return theme.color.support.blueInverse;
   }
 };
-const setColorProgress = (color: string) => {
+
+const setColorProgress = (color: Color) => {
   switch (color) {
     case "danger":
       return theme.color.support.red;
@@ -42,7 +37,7 @@ const StyledPieChartWrap = styled.div`
   ${space}
 `;
 
-const StyledPieChartDescription = styled.div<IPieChart>`
+const StyledPieChartDescription = styled.div<{ color?: Color; size?: number }>`
   position: absolute;
   left: 0;
   top: 0;
@@ -51,12 +46,14 @@ const StyledPieChartDescription = styled.div<IPieChart>`
   justify-content: center;
   align-items: center;
   color: ${theme.color.text.text02};
+
   ${({ size }) =>
     size &&
     css`
       width: ${size}px;
       height: ${size}px;
     `}
+
   ${({ color }) =>
     color &&
     css`
@@ -70,17 +67,20 @@ const StyledPieChartDescription = styled.div<IPieChart>`
     `}
 `;
 
-const StyledSVG = styled.svg<IPieChart>`
+const StyledSVG = styled.svg<{ size?: number }>`
   display: block;
+
   ${({ size }) =>
     size &&
     css`
-      width: ${size};
+      width: ${size}px;
     `}
 `;
-const StyledCircleBgr = styled.circle<IPieChart>`
+
+const StyledCircleBgr = styled.circle<{ color?: Color }>`
   fill: none;
   stroke: ${theme.color.support.greyInverse};
+
   ${({ color }) =>
     color &&
     css`
@@ -88,11 +88,12 @@ const StyledCircleBgr = styled.circle<IPieChart>`
     `}
 `;
 
-const StyledCircleProgress = styled.circle<IPieChart>`
+const StyledCircleProgress = styled.circle<{ color?: Color; size?: number }>`
   transform: rotate(-90deg) translateX(-96px);
   transition: stroke-dashoffset 0.85s ease-in-out;
   fill: none;
   stroke: ${theme.color.support.grey};
+
   ${({ color }) =>
     color &&
     css`
@@ -106,13 +107,19 @@ const StyledCircleProgress = styled.circle<IPieChart>`
     `}
 `;
 
-type Props = { children: React.ReactNode } & IPieChart & SpaceProps;
+type Props = {
+  size: number;
+  progress: number;
+  strokeWidth: number;
+  color?: Color;
+  children?: React.ReactNode;
+} & SpaceProps;
 
 export function PieChart({
   size,
   progress,
   strokeWidth,
-  color,
+  color = "success",
   children,
   ...props
 }: Props) {
