@@ -110,11 +110,9 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
   )
 );
 
-type RadioGroupChild = React.ReactElement<React.ComponentProps<typeof Radio>>;
-
 export type RadioGroupProps = {
   name: string;
-  children: RadioGroupChild | RadioGroupChild[];
+  children: React.ReactElement<React.ComponentProps<typeof Radio>>[];
 };
 
 export function RadioGroup({ name, children }: RadioGroupProps) {
