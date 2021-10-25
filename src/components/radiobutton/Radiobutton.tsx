@@ -112,14 +112,15 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
 
 export type RadioGroupProps = {
   name: string;
-  children: React.ReactElement<React.ComponentProps<typeof Radio>>;
+  children: React.ReactElement<React.ComponentProps<typeof Radio>>[];
 };
 
 export function RadioGroup({ name, children }: RadioGroupProps) {
-  const hasNoChildren = Array.isArray(children) && children.length === 0;
   const [isChecked, setIsChecked] = React.useState(
-    Array.isArray(children) && children[0]?.props?.value
+    Array.isArray(children) && children[0].props.value
   );
+
+  const hasNoChildren = Array.isArray(children) && children.length === 0;
 
   if (hasNoChildren) {
     return null;
