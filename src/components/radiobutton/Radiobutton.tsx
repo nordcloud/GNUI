@@ -94,7 +94,7 @@ const RadioContainer = styled.div`
 `;
 
 export type RadioProps = {
-  labelText?: string;
+  labelText?: React.ReactNode;
   ref?: React.Ref<HTMLInputElement>;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
