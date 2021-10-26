@@ -73,10 +73,11 @@ const RadioInput = styled.input`
 `;
 
 const RadioContainer = styled.div`
-  cursor: pointer;
+  position: relative;
   width: 1.25rem;
   height: 1.25rem;
-  position: relative;
+  flex: 0 0 1.25rem;
+  cursor: pointer;
 
   &::before {
     content: "";
