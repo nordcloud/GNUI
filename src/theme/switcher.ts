@@ -18,14 +18,14 @@ function isThemeValue(value: string): value is keyof typeof THEME_OPTIONS {
   return value === "LIGHT" || value === "DARK";
 }
 
-const savedThemeValue = localStorage.getItem("NC_GNUI_THEME") ?? "";
-const defaultTheme = isThemeValue(savedThemeValue)
-  ? THEME_OPTIONS[savedThemeValue]
-  : getPreferredBrowserTheme();
-
 export const useThemeSwitcher = () => {
-  const [currentTheme, setCurrentTheme] =
-    React.useState<THEME_OPTIONS>(defaultTheme);
+  const [currentTheme, setCurrentTheme] = React.useState<THEME_OPTIONS>(() => {
+    const savedThemeValue = window.localStorage.getItem("NC_GNUI_THEME") ?? "";
+
+    return isThemeValue(savedThemeValue)
+      ? THEME_OPTIONS[savedThemeValue]
+      : getPreferredBrowserTheme();
+  });
 
   React.useEffect(() => {
     const newTheme = currentTheme === THEME_OPTIONS.DARK ? dark : light;
