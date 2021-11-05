@@ -94,10 +94,6 @@ const TabsList = styled.div`
   margin: 0;
   position: relative;
 
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
   &::after {
     content: "";
     width: 100%;
