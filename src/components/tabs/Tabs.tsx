@@ -89,7 +89,7 @@ export const TabContainer = styled.div<{
 const TabsList = styled.div`
   background-color: ${theme.color.background.ui03};
   display: flex;
-  overflow-x: scroll;
+  overflow-x: auto;
   padding: 0;
   margin: 0;
   position: relative;
