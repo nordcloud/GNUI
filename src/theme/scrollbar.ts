@@ -1,15 +1,15 @@
 import { css } from "styled-components";
-import theme from ".";
+import { color } from "./config";
 
 export const scrollbarCustomStyles = css`
   html {
-    scrollbar-face-color: ${theme.color.support.grey};
-    scrollbar-base-color: ${theme.color.support.grey};
-    scrollbar-highlight-color: ${theme.color.support.grey};
-    scrollbar-track-color: ${theme.color.background.ui01};
-    scrollbar-arrow-color: ${theme.color.background.ui01};
-    scrollbar-shadow-color: ${theme.color.support.grey};
-    scrollbar-dark-shadow-color: ${theme.color.support.grey};
+    scrollbar-face-color: ${color.support.grey};
+    scrollbar-base-color: ${color.support.grey};
+    scrollbar-highlight-color: ${color.support.grey};
+    scrollbar-track-color: ${color.background.ui01};
+    scrollbar-arrow-color: ${color.background.ui01};
+    scrollbar-shadow-color: ${color.support.grey};
+    scrollbar-dark-shadow-color: ${color.support.grey};
   }
 
   ::-webkit-scrollbar {
@@ -17,15 +17,15 @@ export const scrollbarCustomStyles = css`
     height: 14px;
   }
   ::-webkit-scrollbar-track-piece {
-    background-color: ${theme.color.background.ui01};
+    background-color: ${color.background.ui01};
   }
   ::-webkit-scrollbar-thumb {
     height: 10px;
-    background-color: ${theme.color.support.grey};
+    background-color: ${color.support.grey};
     border-radius: 5px;
   }
   ::-webkit-scrollbar-corner {
-    background-color: ${theme.color.background.ui01};
+    background-color: ${color.background.ui01};
   }
 
   body * {

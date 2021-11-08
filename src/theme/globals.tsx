@@ -2,9 +2,9 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { createGlobalStyle } from "styled-components";
 import { resetCss } from "./reset";
+import { scrollbarCustomStyles } from "./scrollbar";
 import { useThemeSwitcher } from "./switcher";
 import theme from ".";
-import { scrollbarCustomStyles } from "./scrollbar";
 
 type Props = {
   customScrollbars?: boolean;
