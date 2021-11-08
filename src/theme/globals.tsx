@@ -1,11 +1,15 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, css } from "styled-components";
 import { resetCss } from "./reset";
 import { useThemeSwitcher } from "./switcher";
 import theme from ".";
 
-const GlobalStyle = createGlobalStyle`
+type Props = {
+  customScrollbars?: boolean;
+};
+
+const GlobalStyle = createGlobalStyle<Props>`
   ${resetCss};
 
   html {
@@ -34,9 +38,50 @@ const GlobalStyle = createGlobalStyle`
       color: ${theme.color.interactive.link}
     }
   }
+
+  ${({ customScrollbars }) =>
+    customScrollbars &&
+    css`
+      html {
+        scrollbar-face-color: ${theme.color.support.grey};
+        scrollbar-base-color: ${theme.color.support.grey};
+        scrollbar-highlight-color: ${theme.color.support.grey};
+        scrollbar-track-color: ${theme.color.background.ui01};
+        scrollbar-arrow-color: ${theme.color.background.ui01};
+        scrollbar-shadow-color: ${theme.color.support.grey};
+        scrollbar-dark-shadow-color: ${theme.color.support.grey};
+      }
+
+      ::-webkit-scrollbar {
+        width: 14px;
+        height: 14px;
+      }
+      ::-webkit-scrollbar-track-piece {
+        background-color: ${theme.color.background.ui01};
+      }
+      ::-webkit-scrollbar-thumb {
+        height: 10px;
+        background-color: ${theme.color.support.grey};
+        border-radius: 5px;
+      }
+      ::-webkit-scrollbar-corner {
+        background-color: ${theme.color.background.ui01};
+      }
+
+      body * {
+        ::-webkit-scrollbar {
+          width: 10px;
+          height: 10px;
+        }
+      }
+    `}
 `;
 
-export function SetGlobalStyle() {
+/**
+ * Component for setting global styles using GNUI theme.
+ * @param {boolean} [customScrollbars] - Option to enable GNUI theme based styling for scrollbars.
+ */
+export function SetGlobalStyle({ customScrollbars }: Props) {
   useThemeSwitcher();
   return (
     <>
@@ -52,7 +97,7 @@ export function SetGlobalStyle() {
           rel="stylesheet"
         />
       </Helmet>
-      <GlobalStyle />
+      <GlobalStyle customScrollbars={customScrollbars} />
     </>
   );
 }
