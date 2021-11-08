@@ -2,10 +2,15 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { createGlobalStyle } from "styled-components";
 import { resetCss } from "./reset";
+import { scrollbarCustomStyles } from "./scrollbar";
 import { useThemeSwitcher } from "./switcher";
 import theme from ".";
 
-const GlobalStyle = createGlobalStyle`
+type Props = {
+  customScrollbars?: boolean;
+};
+
+const GlobalStyle = createGlobalStyle<Props>`
   ${resetCss};
 
   html {
@@ -34,9 +39,15 @@ const GlobalStyle = createGlobalStyle`
       color: ${theme.color.interactive.link}
     }
   }
+
+  ${({ customScrollbars }) => customScrollbars && scrollbarCustomStyles}
 `;
 
-export function SetGlobalStyle() {
+/**
+ * Component for setting global styles using GNUI theme.
+ * @param {boolean} [customScrollbars=false] - Option to enable GNUI theme based styling for scrollbars.
+ */
+export function SetGlobalStyle({ customScrollbars = false }: Props) {
   useThemeSwitcher();
   return (
     <>
@@ -52,7 +63,7 @@ export function SetGlobalStyle() {
           rel="stylesheet"
         />
       </Helmet>
-      <GlobalStyle />
+      <GlobalStyle customScrollbars={customScrollbars} />
     </>
   );
 }
