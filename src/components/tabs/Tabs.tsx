@@ -39,7 +39,7 @@ export const TabContainer = styled.div<{
   width: ${({ width }) => width ?? "17rem"};
 
   &:last-child {
-    border-right: none;
+    border-right-color: transparent;
     &.tab-active {
       border-right: 1px solid ${theme.color.border.border01};
     }
