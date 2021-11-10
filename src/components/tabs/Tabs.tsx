@@ -4,6 +4,7 @@ import theme from "../../theme";
 import { Box } from "../box";
 import { Button } from "../button";
 import { Text } from "../text";
+import { flattenChildren } from "../../utils/flattenChildren/flattenChildren";
 
 /* stylelint-disable no-descending-specificity */
 export const TabsContent = styled(Box)`
@@ -242,22 +243,28 @@ type TabsProps = {
   name?: string;
   caption?: string;
   width?: string;
-  children: TabsChild | TabsChild[];
+  children: TabsChild | (TabsChild | TabsChild[])[];
   handleTab: (key: number) => void;
   step: number;
 };
 
 export function Tabs({ name, wizard, children, handleTab, step }: TabsProps) {
   const items = React.Children.toArray(
-    children
+    flattenChildren(children)
   ) as React.ReactElement<TabProps>[];
 
   return (
     <TabsWrapper>
       <TabsList className={name}>
         {items.map((child, key) => {
-          const { heading, caption, disabled, buttonsJustify, width, label } =
-            child.props;
+          const {
+            heading,
+            caption,
+            disabled,
+            buttonsJustify,
+            width,
+            label,
+          } = child.props;
           return (
             <Tab
               key={key}
