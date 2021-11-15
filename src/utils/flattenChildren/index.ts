@@ -1,0 +1,1 @@
+export { flattenChildren } from "./flattenChildren";

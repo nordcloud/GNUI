@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
-import { flattenChildren } from "../../utils/flattenChildren/flattenChildren";
+import { flattenChildren } from "../../utils/flattenChildren";
 import { Box } from "../box";
 import { Button } from "../button";
 import { Text } from "../text";
