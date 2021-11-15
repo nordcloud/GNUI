@@ -1,6 +1,7 @@
 import * as React from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
+import { flattenChildren } from "../../utils/flattenChildren";
 import { Box } from "../box";
 import { Button } from "../button";
 import { Text } from "../text";
@@ -38,7 +39,7 @@ export const TabContainer = styled.div<{
   width: ${({ width }) => width ?? "17rem"};
 
   &:last-child {
-    border-right: none;
+    border-right-color: transparent;
     &.tab-active {
       border-right: 1px solid ${theme.color.border.border01};
     }
@@ -242,14 +243,14 @@ type TabsProps = {
   name?: string;
   caption?: string;
   width?: string;
-  children: TabsChild | TabsChild[];
+  children: TabsChild | (TabsChild | TabsChild[])[];
   handleTab: (key: number) => void;
   step: number;
 };
 
 export function Tabs({ name, wizard, children, handleTab, step }: TabsProps) {
   const items = React.Children.toArray(
-    children
+    flattenChildren(children)
   ) as React.ReactElement<TabProps>[];
 
   return (
