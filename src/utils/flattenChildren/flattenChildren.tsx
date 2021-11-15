@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Code from https://github.com/gregberge/react-flatten-children
 import * as React from "react";
 

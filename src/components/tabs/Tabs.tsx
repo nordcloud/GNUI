@@ -1,10 +1,10 @@
 import * as React from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
+import { flattenChildren } from "../../utils/flattenChildren/flattenChildren";
 import { Box } from "../box";
 import { Button } from "../button";
 import { Text } from "../text";
-import { flattenChildren } from "../../utils/flattenChildren/flattenChildren";
 
 /* stylelint-disable no-descending-specificity */
 export const TabsContent = styled(Box)`
