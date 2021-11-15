@@ -13,7 +13,7 @@ export function flattenChildren(children: React.ReactNode): ReactChildArray {
         flattenChildren((child as React.ReactElement<any>).props.children)
       );
     }
-    
+
     flatChildren.push(child);
     return flatChildren;
   }, []);
