@@ -279,7 +279,10 @@ export function Tabs({ name, wizard, children, handleTab, step }: TabsProps) {
       </TabsList>
       <TabsCover>
         {items.map((child, key) => {
-          if (key !== step) return undefined;
+          if (key !== step) {
+            return undefined;
+          }
+
           const {
             children: innerChildren,
             buttonsJustify,

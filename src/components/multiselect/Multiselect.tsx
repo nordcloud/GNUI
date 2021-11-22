@@ -99,7 +99,7 @@ export function Select({
           },
         })}
         {...props}
-      ></ReactSelect>
+      />
     </SelectContainer>
   );
 }
