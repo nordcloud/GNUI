@@ -7,7 +7,15 @@ import { ExtendedPaginationBox } from "./ExtendedPagination";
 const setSize = jest.fn();
 const setPage = jest.fn();
 
-const getComponent = ({ from, count, size }) =>
+const getComponent = ({
+  from,
+  count,
+  size,
+}: {
+  from: number;
+  count: number;
+  size: number;
+}) =>
   render(
     <ExtendedPaginationBox
       count={count}

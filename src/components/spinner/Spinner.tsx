@@ -106,12 +106,12 @@ export function Spinner({ color, size, ninja }: SpinnerProps) {
   return (
     <>
       {ninja ? (
-        <Image size={size} src={ninjaImg}></Image>
+        <Image size={size} src={ninjaImg} />
       ) : (
         <StyledRing color={color} size={size}>
-          <div></div>
-          <div></div>
-          <div></div>
+          <div />
+          <div />
+          <div />
         </StyledRing>
       )}
     </>

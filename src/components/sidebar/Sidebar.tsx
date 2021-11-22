@@ -56,7 +56,7 @@ export function Sidebar({
 
   return (
     <>
-      <Background onClick={onClick} isOpen={isOpen}></Background>
+      <Background onClick={onClick} isOpen={isOpen} />
       <SidebarMenu isOpen={isOpen} side={side} reverse={side === "onLeft"}>
         <Inner isOpen={isOpen} {...props}>
           {isOpen && (
@@ -87,9 +87,7 @@ export function Sidebar({
             </>
           )}
         </Inner>
-        {isOpen && (
-          <CloseLayer onClick={onClick} isOpen={isOpen} {...props}></CloseLayer>
-        )}
+        {isOpen && <CloseLayer onClick={onClick} isOpen={isOpen} {...props} />}
       </SidebarMenu>
     </>
   );
