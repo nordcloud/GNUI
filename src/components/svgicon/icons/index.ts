@@ -5,4 +5,5 @@ export { klarityIcons } from "./klarity-resource";
 export { menuIcons } from "./menu";
 export { osComponentsIcons } from "./os-components";
 export { osProviderIcons } from "./os-provider";
+export { NCIcons } from "./nc";
 export { uiIcons } from "./ui";
