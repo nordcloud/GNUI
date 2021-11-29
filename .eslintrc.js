@@ -6,6 +6,7 @@ const isProd = process.env.NODE_ENV === "production";
 module.exports = {
   extends: [
     "@nordcloud/eslint-config-pat/profile/web-app",
+    "@nordcloud/eslint-config-pat/mixins/jest",
     "@nordcloud/eslint-config-pat/mixins/react",
   ],
 
@@ -14,6 +15,9 @@ module.exports = {
   settings: {
     react: {
       version: "16.13.1", // React version. "detect" automatically picks the version you have installed.
+    },
+    jest: {
+      version: "26",
     },
   },
 

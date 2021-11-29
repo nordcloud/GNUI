@@ -90,7 +90,7 @@
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
-    "@nordcloud/eslint-config-pat": "^1.0.0",
+    "@nordcloud/eslint-config-pat": "^2.0.0",
     "@storybook/addon-actions": "^6.0.5",
     "@storybook/addon-docs": "^6.0.5",
     "@storybook/addon-info": "^5.3.19",
