@@ -15,6 +15,6 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_KEY }}
       - run: npm ci
-      - run: npm run compile:publish
+      - run: npm run build
       - run: cat .npmrc
       - run: npm publish --access public

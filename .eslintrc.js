@@ -12,6 +12,8 @@ module.exports = {
 
   parserOptions: { tsconfigRootDir: __dirname },
 
+  ignorePatterns: ["rollup.config.js"],
+
   settings: {
     react: {
       version: "16.13.1", // React version. "detect" automatically picks the version you have installed.
