@@ -17,13 +17,11 @@
     "dist/**"
   ],
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
     "compile:publish": "tsc --project tsconfig.publish.json",
-    "test": "react-scripts test --passWithNoTests",
+    "test": "jest",
+    "test:watch": "npm run test -- --watch",
     "test:commit": "npm run test -- -o --silent --watchAll=false",
     "test:all": "npm run test -- --silent --watchAll=false",
-    "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx)\"",
@@ -36,8 +34,8 @@
     "validate:all": "npm-run-all --parallel check:types check:format lint:quiet lint:css:quiet test:all"
   },
   "engines": {
-    "node": ">=14.15.5",
-    "npm": ">=7.0.0"
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
   },
   "browserslist": {
     "production": [
@@ -83,7 +81,6 @@
     "react-copy-to-clipboard": "^5.0.2",
     "react-date-range": "^1.0.3",
     "react-helmet": "^6.1.0",
-    "react-scripts": "^4.0.3",
     "react-select": "^4.3.0",
     "styled-components": "^5.0.1",
     "styled-components-breakpoint": "^3.0.0-preview.20",
@@ -102,7 +99,7 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.2.1",
-    "@types/jest": "^26.0.23",
+    "@types/jest": "^27.0.3",
     "@types/node": "^14.14.37",
     "@types/react": "^16.9.51",
     "@types/react-dom": "^16.9.0",
@@ -110,6 +107,9 @@
     "@types/storybook__addon-info": "^5.2.1",
     "@types/styled-components": "^5.1.1",
     "husky": "^4.2.5",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.4.4",
+    "jest-watch-typeahead": "^1.0.0",
     "lint-staged": "^10.3.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.4.1",
@@ -120,6 +120,7 @@
     "stylelint-config-recommended": "^5.0.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.10.0",
+    "ts-jest": "^27.1.1",
     "typescript": "^4.2.2"
   }
 }
