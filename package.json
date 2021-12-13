@@ -1,7 +1,7 @@
 {
   "name": "@nordcloud/gnui",
   "description": "Nordcloud Design System - a collection of reusable React components used in Nordcloud's SaaS products",
-  "version": "3.4.0",
+  "version": "4.0.0",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -35,7 +35,7 @@
     "validate:all": "npm-run-all --parallel check:types check:format lint:quiet lint:css:quiet test:all"
   },
   "engines": {
-    "node": ">=16.0.0",
+    "node": ">=16.13.0",
     "npm": ">=8.0.0"
   },
   "browserslist": {
@@ -68,11 +68,11 @@
   },
   "peerDependencies": {
     "react": "^16.13.1",
-    "react-dom": "^16.12.0",
-    "styled-components": "^5.0.1"
+    "react-dom": "^16.12.0"
   },
   "dependencies": {
     "@types/react-date-range": "^0.94.4",
+    "@types/react-select": "^4.0.18",
     "@types/styled-system": "^5.1.7",
     "polished": "^3.4.4",
     "react-awesome-styled-grid": "^3.0.12",
@@ -102,7 +102,6 @@
     "@types/react": "^16.9.51",
     "@types/react-dom": "^16.9.0",
     "@types/react-helmet": "^6.1.2",
-    "@types/react-select": "^4.0.13",
     "@types/storybook__addon-info": "^5.2.1",
     "@types/styled-components": "^5.1.1",
     "date-fns": "^2.14.0",

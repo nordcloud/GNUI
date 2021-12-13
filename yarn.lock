@@ -3202,10 +3202,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-select@^4.0.13":
-  "integrity" "sha512-rXYEc565IzzjgQzs9C0YCFxV/QajMZnCHG5QwRQ5BZMfH0Lj90VI/xohawemRkD46IvpaLRbO6xzSquJlgBGUA=="
-  "resolved" "https://registry.npmjs.org/@types/react-select/-/react-select-4.0.13.tgz"
-  "version" "4.0.13"
+"@types/react-select@^4.0.18":
+  "integrity" "sha512-uCPRMPshd96BwHuT7oCrFduiv5d6km3VwmtW7rVl9g4XetS3VoJ9nZo540LiwtQgaFcW96POwaxQDZDAyYaepg=="
+  "resolved" "https://registry.npmjs.org/@types/react-select/-/react-select-4.0.18.tgz"
+  "version" "4.0.18"
   dependencies:
     "@emotion/serialize" "^1.0.0"
     "@types/react" "*"
