@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { Helmet } from "react-helmet";
 import { createGlobalStyle } from "styled-components";
 import { resetCss } from "./reset";

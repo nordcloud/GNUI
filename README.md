@@ -55,7 +55,7 @@ When you create a PR against the `master` branch, Amplify creates a new deployme
 There is a possibility to build & test the package locally in the project it's currently used in.
 
 ```bash
-npm run compile:publish
+npm run build
 npm pack
 ```
 
