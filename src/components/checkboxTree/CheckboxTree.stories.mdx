@@ -1,0 +1,56 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { CheckboxTree } from ".";
+
+<Meta title="Forms/CheckboxTree" component={CheckboxTree} />
+
+# CheckboxTree
+
+> The `CheckboxTree` component accepts an array of `Composition` objects and renders it as a tree of checkboxes.
+
+### CheckboxTree properties
+
+|  properties | required |       type        | description                                                         |
+| ----------: | :------: | :---------------: | :------------------------------------------------------------------ |
+| composition |   true   | CheckboxTreeProps | Composition of how Checkboxes and its childrens should be displayed |
+|    onChange |  false   |    () => void     | Returns array with all checked `uid` values                         |
+| preSelected |  false   |     string[]      | Array of `uid` values that should be pre selected                   |
+|    onExpand |  false   |    () => void     | Returns array with all expanded `uid` values                        |
+| preExpanded |  false   |     string[]      | Array of `uid` values that should be pre expanded                   |
+
+### Default
+
+<Preview>
+  <Story name="simple">
+    <CheckboxTree
+      preExpanded={["id-pork", "id-meat", "id-ham"]}
+      composition={[
+        {
+          uid: "id-meat",
+          label: "Meat",
+          children: [
+            {
+              uid: "id-pork",
+              label: "Pork",
+              children: [
+                {
+                  uid: "id-ham",
+                  label: "ham",
+                  children: [
+                    {
+                      uid: "id-10%",
+                      label: "10% fat",
+                    },
+                    {
+                      uid: "id-15%",
+                      label: "15% fat",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ]}
+    />
+  </Story>
+</Preview>

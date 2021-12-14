@@ -19,7 +19,7 @@ type AccordionItemProps = {
   children: React.ReactNode;
 };
 
-type HeaderIconProps = {
+export type HeaderIconProps = {
   animate?: boolean;
 };
 
