@@ -83,7 +83,6 @@ function RecursiveCheckboxes({
   setExpanded,
   setIndeterminate,
 }: RecursiveCheckboxesProps) {
-  console.log(parent);
   const handleSelect = (uid: string) => {
     const idsInAction = [uid];
     if (composition.children) {
@@ -114,28 +113,31 @@ function RecursiveCheckboxes({
   };
 
   const handleIndeterminate = () => {
-    if (composition && composition.children) {
-      const everyChildChecked = composition.children.every(({ uid }) =>
+    if (parent && parent.children) {
+      const everyChildChecked = parent.children.every(({ uid }) =>
         selected.includes(uid)
       );
-      const someChildChecked = composition.children.some(({ uid }) =>
+      const someChildChecked = parent.children.some(({ uid }) =>
         selected.includes(uid)
       );
 
       console.log(
         `${
-          composition.uid
+          parent.uid
         } == some:${someChildChecked} notEvery:${!everyChildChecked} every:${everyChildChecked}`
       );
 
       if (someChildChecked && !everyChildChecked) {
-        setIndeterminate([...indeterminate, composition.uid]);
+        //setIndeterminate([...indeterminate, parent.uid]);
+        return true;
       }
 
       if (everyChildChecked || !someChildChecked) {
-        setIndeterminate(indeterminate.filter((id) => id !== composition.uid));
+        //setIndeterminate(indeterminate.filter((id) => id !== parent.uid));
+        return false;
       }
     }
+    return false;
   };
 
   React.useEffect(() => {
@@ -162,8 +164,21 @@ function RecursiveCheckboxes({
           )}
           <CheckboxWrap>
             <Checkbox
-              isIndeterminate={indeterminate.includes(composition.uid)}
-              checked={selected.includes(composition.uid)}
+              isIndeterminate={
+                !selected.includes(composition.uid) &&
+                composition.children &&
+                composition.children.some(({ uid }) =>
+                  selected.includes(uid)
+                ) &&
+                !composition.children.every(({ uid }) => selected.includes(uid))
+              }
+              checked={
+                selected.includes(composition.uid) ||
+                (composition.children &&
+                  composition.children.every(({ uid }) =>
+                    selected.includes(uid)
+                  ))
+              }
               id={composition.uid}
               labelText={composition.label}
               onChange={(e) => {
