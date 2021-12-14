@@ -85,6 +85,7 @@ function RecursiveCheckboxes({
 }: RecursiveCheckboxesProps) {
   const handleSelect = (uid: string) => {
     const idsInAction = [uid];
+
     if (composition.children) {
       const recursive = (children: Composition[]) => {
         children.forEach((child) => {
@@ -121,11 +122,11 @@ function RecursiveCheckboxes({
         selected.includes(uid)
       );
 
-      console.log(
+      /* console.log(
         `${
           parent.uid
         } == some:${someChildChecked} notEvery:${!everyChildChecked} every:${everyChildChecked}`
-      );
+      ); */
 
       if (someChildChecked && !everyChildChecked) {
         //setIndeterminate([...indeterminate, parent.uid]);
@@ -142,7 +143,14 @@ function RecursiveCheckboxes({
 
   React.useEffect(() => {
     handleIndeterminate();
+    console.log(selected);
   }, [selected]);
+
+  /*  for handling parent check if childrens are checked
+      but doesnt put parent uid into selected array
+      parent &&
+      parent.children &&
+      parent.children.every(({ uid }) => selected.includes(uid)) */
 
   return (
     <div css={{ border: "1px solid grey" }}>
@@ -172,13 +180,7 @@ function RecursiveCheckboxes({
                 ) &&
                 !composition.children.every(({ uid }) => selected.includes(uid))
               }
-              checked={
-                selected.includes(composition.uid) ||
-                (composition.children &&
-                  composition.children.every(({ uid }) =>
-                    selected.includes(uid)
-                  ))
-              }
+              checked={selected.includes(composition.uid)}
               id={composition.uid}
               labelText={composition.label}
               onChange={(e) => {

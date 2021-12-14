@@ -22,7 +22,7 @@ import { CheckboxTree } from ".";
 <Preview>
   <Story name="simple">
     <CheckboxTree
-      preExpanded={["id-pork", "id-meat", "id-ham"]}
+      preExpanded={["id-pork", "id-meat"]}
       composition={[
         {
           uid: "id-meat",
@@ -34,43 +34,31 @@ import { CheckboxTree } from ".";
               children: [
                 {
                   uid: "id-ham",
-                  label: "ham",
-                  children: [
-                    {
-                      uid: "id-10%",
-                      label: "10% fat",
-                    },
-                    {
-                      uid: "id-15%",
-                      label: "15% fat",
-                    },
-                  ],
+                  label: "Ham",
+                },
+                {
+                  uid: "id-bacon",
+                  label: "Bacon",
                 },
               ],
             },
-          ],
-        },
-        {
-          uid: "id-meat2",
-          label: "Meat2",
-          children: [
             {
-              uid: "id-pork2",
-              label: "Pork2",
+              uid: "id-chicken",
+              label: "Chicken",
               children: [
                 {
-                  uid: "id-ham2",
-                  label: "ham2",
-                  children: [
-                    {
-                      uid: "id-10%2",
-                      label: "10% fat2",
-                    },
-                    {
-                      uid: "id-15%2",
-                      label: "15% fat2",
-                    },
-                  ],
+                  uid: "id-chicken-breast",
+                  label: "Breast",
+                },
+              ],
+            },
+            {
+              uid: "id-turkey",
+              label: "Turkey",
+              children: [
+                {
+                  uid: "id-turkey-breast",
+                  label: "Breast",
                 },
               ],
             },
