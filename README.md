@@ -25,6 +25,60 @@ or
 yarn add @nordcloud/gnui
 ```
 
+Make sure you have a proper versions of required packages installed, they are specified in `peerDependencies` field inside `package.json`.
+
+Version 7 or greater of `npm` should install them automatically, if not, run:
+
+```bash
+npm install react react-dom styled-components
+```
+
+Don't forget to install types if you are using TypeScript:
+
+```bash
+npm install -D @types/react @types/react-dom @types/styled-components
+```
+
+## Usage
+
+Apply global GNUI styles at the top level of your app:
+
+```tsx
+import { SetGlobalStyle } from "@nordcloud/gnui";
+
+ReactDOM.render(
+  <React.StrictMode>
+    <SetGlobalStyle customScrollbars />
+    <App />
+  </React.StrictMode>,
+  document.getElementById("root")
+);
+```
+
+Switch themes:
+
+```tsx
+import {
+  Button,
+  SVGIcon,
+  useThemeSwitcher,
+  THEME_OPTIONS,
+} from "@nordcloud/gnui";
+
+function UserSettings() {
+  const { currentTheme, setTheme } = useThemeSwitcher();
+
+  return (
+    <Button onClick={() => setTheme(nextTheme)}>
+      <IconWrap>
+        <SVGIcon name="dashboard" />
+      </IconWrap>
+      Switch to {THEME_OPTIONS[nextTheme].toLowerCase()} theme
+    </Button>
+  );
+}
+```
+
 ## Storybook deployment
 
 Storybook allows you to preview components. It deploys the code automatically with Amplify Console triggered by changes on branch `master`. Pipeline steps are found in `amplify.yml`.
@@ -42,9 +96,28 @@ When you create a PR against the `master` branch, Amplify creates a new deployme
 
 ## Local setup
 
-- git clone this repo
-- `npm install`
-- `npm run storybook`
+### 1. Clone the repo
+
+### 2. Setup Node
+
+Below versions of Node & npm are required:
+
+```bash
+  "node": ">=16.13.0",
+  "npm": ">=8.0.0"
+```
+
+### 3. Install packages
+
+```bash
+npm install
+```
+
+### 4. Run Storybook to verify everything works
+
+```bash
+npm run storybook
+```
 
 ## Development
 
@@ -55,7 +128,7 @@ When you create a PR against the `master` branch, Amplify creates a new deployme
 There is a possibility to build & test the package locally in the project it's currently used in.
 
 ```bash
-npm run compile:publish
+npm run build
 npm pack
 ```
 

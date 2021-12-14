@@ -5,7 +5,6 @@ frontend:
       commands:
         - nvm install
         - nvm use
-        - npm install --global npm
         - npm ci
     build:
       commands:
@@ -13,7 +12,7 @@ frontend:
   artifacts:
     baseDirectory: storybook-static
     files:
-      - "**/*"
+      - '**/*'
   cache:
     paths:
       - node_modules/**/*
