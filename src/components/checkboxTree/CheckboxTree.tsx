@@ -114,37 +114,33 @@ function RecursiveCheckboxes({
   };
 
   const handleIndeterminate = () => {
-    if (parent && parent.children) {
-      const everyChildChecked = parent.children.every(({ uid }) =>
+    console.log(selected);
+    if (composition.children) {
+      const checkboxNotSelected = !selected.includes(composition.uid);
+      const someChildrenChecked = composition.children.some(({ uid }) =>
         selected.includes(uid)
       );
-      const someChildChecked = parent.children.some(({ uid }) =>
+      const notAllChildrenSelected = !composition.children.every(({ uid }) =>
         selected.includes(uid)
       );
-
-      /* console.log(
-        `${
-          parent.uid
-        } == some:${someChildChecked} notEvery:${!everyChildChecked} every:${everyChildChecked}`
-      ); */
-
-      if (someChildChecked && !everyChildChecked) {
-        //setIndeterminate([...indeterminate, parent.uid]);
+      /* if (!notAllChildrenSelected) {
+        setSelected([...selected, composition.uid]);
+      } */
+      if (
+        checkboxNotSelected &&
+        someChildrenChecked &&
+        notAllChildrenSelected
+      ) {
         return true;
       }
-
-      if (everyChildChecked || !someChildChecked) {
-        //setIndeterminate(indeterminate.filter((id) => id !== parent.uid));
-        return false;
-      }
     }
+
     return false;
   };
 
   React.useEffect(() => {
-    handleIndeterminate();
-    console.log(selected);
-  }, [selected]);
+    console.log(composition);
+  }, []);
 
   /*  for handling parent check if childrens are checked
       but doesnt put parent uid into selected array
@@ -172,14 +168,7 @@ function RecursiveCheckboxes({
           )}
           <CheckboxWrap>
             <Checkbox
-              isIndeterminate={
-                !selected.includes(composition.uid) &&
-                composition.children &&
-                composition.children.some(({ uid }) =>
-                  selected.includes(uid)
-                ) &&
-                !composition.children.every(({ uid }) => selected.includes(uid))
-              }
+              isIndeterminate={!!handleIndeterminate()}
               checked={selected.includes(composition.uid)}
               id={composition.uid}
               labelText={composition.label}
