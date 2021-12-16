@@ -1,5 +1,15 @@
 import { HeaderIconProps } from "../accordion";
 
+// test
+export type Comp = {
+  uid: string;
+  label: string;
+  children?: Comp[];
+  parent?: Comp;
+};
+
+//main
+
 export type CheckboxTreeProps = {
   composition: Composition[];
   preSelected?: string[];

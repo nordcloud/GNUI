@@ -103,6 +103,8 @@ function RecursiveCheckboxes({
     } else {
       setSelected([...selected, ...idsInAction]);
     }
+
+    handleIndeterminate();
   };
 
   const handleExpand = (uid: string) => {
@@ -114,7 +116,6 @@ function RecursiveCheckboxes({
   };
 
   const handleIndeterminate = () => {
-    console.log(selected);
     if (composition.children) {
       const checkboxNotSelected = !selected.includes(composition.uid);
       const someChildrenChecked = composition.children.some(({ uid }) =>
@@ -123,9 +124,6 @@ function RecursiveCheckboxes({
       const notAllChildrenSelected = !composition.children.every(({ uid }) =>
         selected.includes(uid)
       );
-      /* if (!notAllChildrenSelected) {
-        setSelected([...selected, composition.uid]);
-      } */
       if (
         checkboxNotSelected &&
         someChildrenChecked &&
@@ -137,10 +135,6 @@ function RecursiveCheckboxes({
 
     return false;
   };
-
-  React.useEffect(() => {
-    console.log(composition);
-  }, []);
 
   /*  for handling parent check if childrens are checked
       but doesnt put parent uid into selected array
