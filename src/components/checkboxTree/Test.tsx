@@ -1,4 +1,4 @@
-import * as React from "react";
+/* import * as React from "react";
 import { Comp } from "./types";
 import { getChildrenUids, getParentUids, isAllChildrenSelected } from "./utils";
 
@@ -131,9 +131,9 @@ export function CheckboxTreeTest() {
     );
   };
 
-  /*  React.useEffect(() => {
+  React.useEffect(() => {
     console.log(selected);
-  }, [selected]); */
+  }, [selected]); 
 
   return (
     <div>
@@ -143,3 +143,4 @@ export function CheckboxTreeTest() {
     </div>
   );
 }
+ */

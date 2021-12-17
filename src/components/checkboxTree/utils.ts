@@ -18,7 +18,15 @@ export const getChildrenUids = (comp: Comp): string[] => {
   return [];
 };
 
-export const getParentUids = (currentUid: string, tree: Comp[]): string[] => {
+export const getParentsUids = (comp: Comp): string[] => {
+  const currentIdSpilt = comp.uid.split("->");
+
+  return currentIdSpilt.map((_, index) =>
+    [...currentIdSpilt].splice(0, index + 1).join("->")
+  );
+};
+
+/* export const getParentUids = (currentUid: string, tree: Comp[]): string[] => {
   let uids: string[] = [];
 
   const recursive = (children?: Comp[]) => {
@@ -42,8 +50,8 @@ export const getParentUids = (currentUid: string, tree: Comp[]): string[] => {
   recursive(tree);
 
   return uids;
-};
-
+}; */
+/* 
 export const isAllChildrenSelected = (
   currentSelected: string[],
   targetComposition: Comp
@@ -53,4 +61,17 @@ export const isAllChildrenSelected = (
   return targetsChildren
     ? targetsChildren.every((child) => currentSelected.includes(child.uid))
     : true;
-};
+}; */
+
+/* export const mapTreeUids = (tree: Comp[]): Comp[] & { relation: string } => {
+  const flatTree = [];
+
+  for (let i in tree) {
+      const branch = [];
+
+      const 
+    console.log(tree[i]);
+  }
+
+  return flatTree;
+}; */

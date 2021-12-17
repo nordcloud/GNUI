@@ -5,7 +5,6 @@ export type Comp = {
   uid: string;
   label: string;
   children?: Comp[];
-  parent?: Comp;
 };
 
 //main
