@@ -18,4 +18,9 @@ export const Indentation = styled.div`
 
 export const MinusIcon = styled.div`
   transform: rotate(90deg);
+  padding-left: 5px;
+  padding-right: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

@@ -7,6 +7,7 @@ import { Flex } from "../container";
 import * as Styled from "./styled";
 import { CheckboxTreeProps, Composition } from "./types";
 import { getChildrenUids, getParentsUids } from "./utils";
+import theme from "../../theme";
 
 export function CheckboxTree({
   composition,
@@ -93,20 +94,22 @@ export function CheckboxTree({
       <Styled.Indentation>
         <Styled.TreeItem isTopItem={!!isFirstElement}>
           <Flex>
-            {children ? (
-              <ToggleIcon
-                animate={expanded.includes(uid)}
-                onClick={() => handleExpand(uid)}
-              >
-                <SVGIcon name="down" />
-              </ToggleIcon>
-            ) : (
-              <ToggleIcon>
-                <Styled.MinusIcon>
-                  <SVGIcon name="minus" />
-                </Styled.MinusIcon>
-              </ToggleIcon>
-            )}
+            <div css={{ width: theme.spacing.spacing04 }}>
+              {children ? (
+                <ToggleIcon
+                  animate={expanded.includes(uid)}
+                  onClick={() => handleExpand(uid)}
+                >
+                  <SVGIcon name="down" />
+                </ToggleIcon>
+              ) : (
+                <ToggleIcon>
+                  <Styled.MinusIcon>
+                    <SVGIcon size="sm" name="minus" />
+                  </Styled.MinusIcon>
+                </ToggleIcon>
+              )}
+            </div>
             <Styled.CheckboxWrap>
               <Checkbox
                 isIndeterminate={handleIndeterminate()}
