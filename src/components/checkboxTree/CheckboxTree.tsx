@@ -1,8 +1,8 @@
 import * as React from "react";
 
-import { Flex } from "../container";
 import { Checkbox } from "../checkbox/Checkbox";
 import { HeaderIcon as ToggleIcon, SVGIcon } from "..";
+import { Flex } from "../container";
 
 import * as Styled from "./styled";
 import { CheckboxTreeProps, Composition } from "./types";
@@ -51,11 +51,11 @@ export function CheckboxTree({
       }
     };
 
-    const handleExpand = (uid: string) => {
-      if (expanded.includes(uid)) {
-        setExpanded(expanded.filter((id) => id !== uid));
+    const handleExpand = (clickedUid: string) => {
+      if (expanded.includes(clickedUid)) {
+        setExpanded(expanded.filter((id) => id !== clickedUid));
       } else {
-        setExpanded([...expanded, uid]);
+        setExpanded([...expanded, clickedUid]);
       }
     };
 
