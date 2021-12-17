@@ -18,6 +18,32 @@ export const getChildrenUids = (comp: Comp): string[] => {
   return [];
 };
 
+export const getParentUids = (currentUid: string, tree: Comp[]): string[] => {
+  let uids: string[] = [];
+
+  const recursive = (children?: Comp[]) => {
+    if (children) {
+      for (let i in children) {
+        uids.push(children[i].uid);
+
+        if (children[i].uid === currentUid) {
+          break;
+        } else {
+          if (children[i].children) {
+            recursive(children[i].children);
+          } else {
+            uids = [];
+          }
+        }
+      }
+    }
+  };
+
+  recursive(tree);
+
+  return uids;
+};
+
 export const isAllChildrenSelected = (
   currentSelected: string[],
   targetComposition: Comp

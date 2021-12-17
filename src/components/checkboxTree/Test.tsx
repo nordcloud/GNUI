@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Comp } from "./types";
-import { getChildrenUids, isAllChildrenSelected } from "./utils";
+import { getChildrenUids, getParentUids, isAllChildrenSelected } from "./utils";
 
 export function CheckboxTreeTest() {
   const composition = [
@@ -19,6 +19,12 @@ export function CheckboxTreeTest() {
             {
               uid: "id-bacon",
               label: "Bacon",
+              children: [
+                {
+                  uid: "id-15%",
+                  label: "15%",
+                },
+              ],
             },
           ],
         },
@@ -51,29 +57,39 @@ export function CheckboxTreeTest() {
   const [indeterminate, setIndeterminate] = React.useState<string[]>([]);
 
   const handleSelect = (comp: Comp, parent?: Comp) => {
-    if (comp.children) {
+    if (comp.children && !parent) {
       const uidsForSelection = [comp.uid, ...getChildrenUids(comp)];
       if (selected.includes(comp.uid)) {
         setSelected(selected.filter((id) => !uidsForSelection.includes(id)));
       } else {
         setSelected([...selected, ...uidsForSelection]);
       }
-    } else {
-      if (parent) {
-        if (selected.includes(comp.uid)) {
-          setSelected(
-            selected.filter((id) => id !== comp.uid && id !== parent.uid)
-          );
-        } else {
-          setSelected([...selected, comp.uid]);
-        }
+    }
+    if (parent && !comp.children) {
+      if (selected.includes(comp.uid)) {
+        setSelected(
+          selected.filter((id) => id !== comp.uid && id !== parent.uid)
+        );
+      } else {
+        setSelected([...selected, comp.uid]);
+      }
+    }
+    if (parent && comp.children) {
+      const uidsForSelection = [
+        comp.uid,
+        ...getChildrenUids(comp),
+        ...getParentUids(comp.uid, composition),
+      ];
+      //console.log(uidsForSelection);
+
+      if (selected.includes(comp.uid)) {
+        console.log(selected.filter((id) => !uidsForSelection.includes(id)));
+        setSelected(selected.filter((id) => !uidsForSelection.includes(id)));
+      } else {
+        setSelected([...selected, comp.uid, ...getChildrenUids(comp)]);
       }
     }
   };
-
-  React.useEffect(() => {
-    console.log(selected);
-  }, [selected]);
 
   const RenderComposition = ({
     uid,
@@ -81,6 +97,15 @@ export function CheckboxTreeTest() {
     children,
     parent,
   }: Comp): JSX.Element => {
+    React.useEffect(() => {
+      const isAllChildrenSelected =
+        children && children.every((child) => selected.includes(child.uid));
+
+      if (isAllChildrenSelected && !selected.includes(uid)) {
+        setSelected([...selected, uid]);
+      }
+    }, []);
+
     return (
       <div style={{ marginLeft: "2rem" }}>
         <div css={{ display: "flex" }}>
