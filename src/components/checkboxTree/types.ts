@@ -1,14 +1,5 @@
 import { HeaderIconProps } from "../accordion";
 
-// test
-export type Comp = {
-  uid: string;
-  label: string;
-  children?: Comp[];
-};
-
-//main
-
 export type CheckboxTreeProps = {
   composition: Composition[];
   preSelected?: string[];
@@ -22,17 +13,3 @@ export type Composition = {
   label: string;
   children?: Composition[];
 };
-
-export type RecursiveCheckboxesProps = {
-  composition: Composition;
-  parent: Composition | null;
-  selected: string[];
-  expanded: string[];
-  indeterminate: string[];
-  isFirstElement?: boolean;
-  setSelected: React.Dispatch<React.SetStateAction<string[]>>;
-  setExpanded: React.Dispatch<React.SetStateAction<string[]>>;
-  setIndeterminate: React.Dispatch<React.SetStateAction<string[]>>;
-};
-
-export type ExpandableCheckboxProps = HeaderIconProps;

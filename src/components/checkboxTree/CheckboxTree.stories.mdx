@@ -1,7 +1,7 @@
 import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
-import { CheckboxTreeTest } from "./Tree.tsx";
+import { CheckboxTree } from "./CheckboxTree.tsx";
 
-<Meta title="Forms/CheckboxTree" component={CheckboxTreeTest} />
+<Meta title="Forms/CheckboxTree" component={CheckboxTree} />
 
 # CheckboxTree
 
@@ -21,6 +21,56 @@ import { CheckboxTreeTest } from "./Tree.tsx";
 
 <Preview>
   <Story name="simple">
-    <CheckboxTreeTest />
+    <CheckboxTree
+      preExpanded={["meat", "meat->pork", "meat->pork->bacon"]}
+      composition={[
+        {
+          uid: "meat",
+          label: "Meat",
+          children: [
+            {
+              uid: "meat->pork",
+              label: "Pork",
+              children: [
+                {
+                  uid: "meat->pork->ham",
+                  label: "Ham",
+                },
+                {
+                  uid: "meat->pork->bacon",
+                  label: "Bacon",
+                  children: [
+                    {
+                      uid: "meat->pork->bacon->15%",
+                      label: "15%",
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              uid: "meat->chicken",
+              label: "Chicken",
+              children: [
+                {
+                  uid: "meat->chicken->breast",
+                  label: "Breast",
+                },
+              ],
+            },
+            {
+              uid: "meat->turkey",
+              label: "Turkey",
+              children: [
+                {
+                  uid: "meat->turkey->breast",
+                  label: "Breast",
+                },
+              ],
+            },
+          ],
+        },
+      ]}
+    />
   </Story>
 </Preview>
