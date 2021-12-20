@@ -18,8 +18,8 @@ export const getChildrenUids = (composition: Composition): string[] => {
   return [];
 };
 
-export const getParentsUids = (composition: Composition): string[] => {
-  const currentIdSpilt = composition.uid.split("->");
+export const getParentsUids = (compositionUid: string): string[] => {
+  const currentIdSpilt = compositionUid.split("->");
 
   return currentIdSpilt.map((_, index) =>
     [...currentIdSpilt].splice(0, index + 1).join("->")

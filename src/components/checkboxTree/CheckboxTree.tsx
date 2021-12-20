@@ -32,6 +32,13 @@ export function CheckboxTree({
     }
   }, [expanded, onExpand]);
 
+  React.useEffect(() => {
+    const allUids = selected.map((id) => getParentsUids(id)).flat();
+
+    console.log(allUids);
+    setIndeterminate(allUids);
+  }, [selected]);
+
   const RenderComposition = ({
     uid,
     label,
@@ -46,7 +53,7 @@ export function CheckboxTree({
         const uids = [
           treeItem.uid,
           ...getChildrenUids(treeItem),
-          ...getParentsUids(treeItem),
+          ...getParentsUids(treeItem.uid),
         ];
         setSelected(selected.filter((id) => !uids.includes(id)));
       }
@@ -66,8 +73,8 @@ export function CheckboxTree({
         const someChildrenChecked = children.some(({ uid }) =>
           selected.includes(uid)
         );
-        const notAllChildrenSelected = !children.every(({ uid }) =>
-          selected.includes(uid)
+        const notAllChildrenSelected = !children.every(({ uid: childId }) =>
+          selected.includes(childId)
         );
         if (
           checkboxNotSelected &&
@@ -112,7 +119,7 @@ export function CheckboxTree({
             </div>
             <Styled.CheckboxWrap>
               <Checkbox
-                isIndeterminate={handleIndeterminate()}
+                isIndeterminate={indeterminate.includes(uid)}
                 checked={selected.includes(uid)}
                 id={uid}
                 labelText={label}
