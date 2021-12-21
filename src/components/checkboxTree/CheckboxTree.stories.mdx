@@ -12,10 +12,10 @@ import { CheckboxTree } from "./CheckboxTree.tsx";
 |         properties | required |     type      | description                                                                                                                                         |
 | -----------------: | :------: | :-----------: | :-------------------------------------------------------------------------------------------------------------------------------------------------- |
 |        composition |   true   | Composition[] | Composition of how Checkboxes and its childrens should be displayed                                                                                 |
-|           onChange |  false   |  () => void   | Returns array with all checked `uid` values.                                                                                                        |
-|        preSelected |  false   |   string[]    | Array of `uid` values that should be pre selected. Values should be passed with relations to parents: meat->chicken for chicken to be pre-selected. |
+|           onChange |  false   |  () => void   | Returns array with all selected `uid` values.                                                                                                       |
+|           selected |  false   |   string[]    | Array of `uid` values that should be pre selected. Values should be passed with relations to parents: meat->chicken for chicken to be pre-selected. |
 |           onExpand |  false   |  () => void   | Returns array with all expanded `uid` values.                                                                                                       |
-|        preExpanded |  false   |   string[]    | Array of `uid` values that should be pre expanded. Values should be passed with relations to parents: meat->chicken for chicken to be pre-expanded. |
+|           expanded |  false   |   string[]    | Array of `uid` values that should be pre expanded. Values should be passed with relations to parents: meat->chicken for chicken to be pre-expanded. |
 | preferredSeperator |  false   |    string     | Sets seperator for checkbox relationships on onChange ids retrieval. Default: "->"                                                                  |
 
 ### Default
@@ -23,7 +23,7 @@ import { CheckboxTree } from "./CheckboxTree.tsx";
 <Preview>
   <Story name="simple">
     <CheckboxTree
-      preExpanded={["meat", "meat->pork"]}
+      expanded={["meat", "meat->pork"]}
       composition={[
         {
           uid: "meat",

@@ -11,8 +11,8 @@ import { getChildrenUids, getParentsUids, preProcessTree } from "./utils";
 
 export function CheckboxTree({
   composition,
-  preExpanded,
-  preSelected,
+  expanded,
+  selected,
   onChange,
   onExpand,
   preferredSeperator = "->",
@@ -26,29 +26,33 @@ export function CheckboxTree({
     [composition, preferredSeperator]
   );
 
-  const [selected, setSelected] = React.useState<string[]>(preSelected ?? []);
-  const [expanded, setExpanded] = React.useState<string[]>(preExpanded ?? []);
+  const [selectedList, setSelectedList] = React.useState<string[]>(
+    selected ?? []
+  );
+  const [expandedList, setExpandedList] = React.useState<string[]>(
+    expanded ?? []
+  );
   const [indeterminate, setIndeterminate] = React.useState<string[]>([]);
 
   React.useEffect(() => {
     if (onChange) {
-      onChange(selected);
+      onChange(selectedList);
     }
-  }, [selected, onChange]);
+  }, [selectedList, onChange]);
 
   React.useEffect(() => {
     if (onExpand) {
-      onExpand(expanded);
+      onExpand(expandedList);
     }
-  }, [expanded, onExpand]);
+  }, [expandedList, onExpand]);
 
   React.useEffect(() => {
-    const allUids = selected
+    const allUids = selectedList
       .map((id) => getParentsUids(id, preferredSeperator))
       .flat();
 
     setIndeterminate(allUids);
-  }, [selected]);
+  }, [selectedList]);
 
   const RenderComposition = ({
     uid,
@@ -57,33 +61,33 @@ export function CheckboxTree({
     isFirstElement,
   }: Composition & { isFirstElement?: boolean }): JSX.Element => {
     const handleSelect = (treeItem: Composition) => {
-      if (!selected.includes(treeItem.uid)) {
+      if (!selectedList.includes(treeItem.uid)) {
         const uids = [treeItem.uid, ...getChildrenUids(treeItem)];
-        setSelected([...selected, ...uids]);
+        setSelectedList([...selectedList, ...uids]);
       } else {
         const uids = [
           treeItem.uid,
           ...getChildrenUids(treeItem),
           ...getParentsUids(treeItem.uid, preferredSeperator),
         ];
-        setSelected(selected.filter((id) => !uids.includes(id)));
+        setSelectedList(selectedList.filter((id) => !uids.includes(id)));
       }
     };
 
     const handleExpand = (clickedUid: string) => {
-      if (expanded.includes(clickedUid)) {
-        setExpanded(expanded.filter((id) => id !== clickedUid));
+      if (expandedList.includes(clickedUid)) {
+        setExpandedList(expandedList.filter((id) => id !== clickedUid));
       } else {
-        setExpanded([...expanded, clickedUid]);
+        setExpandedList([...expandedList, clickedUid]);
       }
     };
 
     React.useEffect(() => {
       if (
-        children?.every((child) => selected.includes(child.uid)) &&
-        !selected.includes(uid)
+        children?.every((child) => selectedList.includes(child.uid)) &&
+        !selectedList.includes(uid)
       ) {
-        setSelected([...selected, uid]);
+        setSelectedList([...selectedList, uid]);
       }
     }, []);
 
@@ -94,7 +98,7 @@ export function CheckboxTree({
             <div css={{ width: theme.spacing.spacing04 }}>
               {children ? (
                 <ToggleIcon
-                  animate={expanded.includes(uid)}
+                  animate={expandedList.includes(uid)}
                   onClick={() => handleExpand(uid)}
                 >
                   <SVGIcon name="down" />
@@ -110,7 +114,7 @@ export function CheckboxTree({
             <Styled.CheckboxWrap>
               <Checkbox
                 isIndeterminate={indeterminate.includes(uid)}
-                checked={selected.includes(uid)}
+                checked={selectedList.includes(uid)}
                 id={uid}
                 labelText={label}
                 onChange={() => handleSelect({ uid, label, children })}
@@ -118,7 +122,7 @@ export function CheckboxTree({
             </Styled.CheckboxWrap>
           </Flex>
         </Styled.TreeItem>
-        {expanded.includes(uid) &&
+        {expandedList.includes(uid) &&
           children &&
           children.map((child) => (
             <RenderComposition key={child.uid} {...child} />

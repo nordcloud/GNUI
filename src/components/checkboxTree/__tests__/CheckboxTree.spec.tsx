@@ -58,24 +58,24 @@ const data = [
 
 const renderComponent = ({
   composition,
-  preSelected,
-  preExpanded,
+  selected,
+  expanded,
 }: CheckboxTreeProps) =>
   render(
     <CheckboxTree
       onChange={(selected) => console.log(selected)}
       composition={composition}
-      preSelected={preSelected}
-      preExpanded={preExpanded}
+      selected={selected}
+      expanded={expanded}
     />
   );
 
 test("preSelect works", async () => {
   const component = renderComponent({
     composition: data,
-    preSelected: ["meat"],
+    selected: ["meat"],
   });
   const checkbox = component.container.querySelector("#meat");
 
-  expect(checkbox?.getAttribute("checked")).toEqual("true");
+  expect(checkbox?.getAttribute("value")).toEqual(true);
 });
