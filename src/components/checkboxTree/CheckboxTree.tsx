@@ -17,9 +17,13 @@ export function CheckboxTree({
   onExpand,
   preferredSeperator = "->",
 }: CheckboxTreeProps) {
-  const processedTree = preProcessTree(
-    JSON.parse(JSON.stringify(composition)),
-    preferredSeperator
+  const processedTree = React.useMemo(
+    () =>
+      preProcessTree(
+        JSON.parse(JSON.stringify(composition)),
+        preferredSeperator
+      ),
+    [composition, preferredSeperator]
   );
 
   const [selected, setSelected] = React.useState<string[]>(preSelected ?? []);

@@ -4,28 +4,30 @@ export const preProcessTree = (
   tree: Composition[],
   preferredSeperator: string
 ): Composition[] => {
-  const preservedTree = JSON.parse(JSON.stringify(tree));
+  const treeClone = JSON.parse(JSON.stringify(tree));
   const mappedUids = getRelations(tree, preferredSeperator);
 
-  return attachRelations(preservedTree, mappedUids, preferredSeperator);
+  return attachRelations(treeClone, mappedUids, preferredSeperator);
 };
 
 export const getChildrenUids = (composition: Composition): string[] => {
   const uids: string[] = [];
-  if (composition.children) {
-    const recursive = (children: Composition[]) => {
-      children.forEach((child) => {
-        uids.push(child.uid);
-        if (child.children) {
-          recursive(child.children);
-        }
-      });
-    };
-    recursive(composition.children);
-    return uids;
+
+  if (!composition.children) {
+    return [];
   }
 
-  return [];
+  const recursive = (children: Composition[]) => {
+    children.forEach((child) => {
+      uids.push(child.uid);
+      if (child.children) {
+        recursive(child.children);
+      }
+    });
+  };
+  recursive(composition.children);
+
+  return uids;
 };
 
 export const getParentsUids = (
@@ -73,7 +75,6 @@ export const getRelations = (
 };
 
 const removeObject = (tree: Composition[], uid: string) => {
-  const treeCopy = [...tree];
   const loop = (childsArray: Composition[] | undefined) => {
     if (childsArray) {
       for (let index in childsArray) {
@@ -87,8 +88,9 @@ const removeObject = (tree: Composition[], uid: string) => {
       }
     }
   };
-  loop(treeCopy);
-  return treeCopy;
+  loop(tree);
+
+  return tree;
 };
 
 const attachRelations = (
