@@ -9,39 +9,40 @@ import { CheckboxTree } from "./CheckboxTree.tsx";
 
 ### CheckboxTree properties
 
-|  properties | required |       type        | description                                                         |
-| ----------: | :------: | :---------------: | :------------------------------------------------------------------ |
-| composition |   true   | CheckboxTreeProps | Composition of how Checkboxes and its childrens should be displayed |
-|    onChange |  false   |    () => void     | Returns array with all checked `uid` values                         |
-| preSelected |  false   |     string[]      | Array of `uid` values that should be pre selected                   |
-|    onExpand |  false   |    () => void     | Returns array with all expanded `uid` values                        |
-| preExpanded |  false   |     string[]      | Array of `uid` values that should be pre expanded                   |
+|         properties | required |     type      | description                                                                                                                                         |
+| -----------------: | :------: | :-----------: | :-------------------------------------------------------------------------------------------------------------------------------------------------- |
+|        composition |   true   | Composition[] | Composition of how Checkboxes and its childrens should be displayed                                                                                 |
+|           onChange |  false   |  () => void   | Returns array with all checked `uid` values.                                                                                                        |
+|        preSelected |  false   |   string[]    | Array of `uid` values that should be pre selected. Values should be passed with relations to parents: meat->chicken for chicken to be pre-selected. |
+|           onExpand |  false   |  () => void   | Returns array with all expanded `uid` values.                                                                                                       |
+|        preExpanded |  false   |   string[]    | Array of `uid` values that should be pre expanded. Values should be passed with relations to parents: meat->chicken for chicken to be pre-expanded. |
+| preferredSeperator |  false   |    string     | Sets seperator for checkbox relationships on onChange ids retrieval. Default: "->"                                                                  |
 
 ### Default
 
 <Preview>
   <Story name="simple">
     <CheckboxTree
-      preExpanded={["meat", "meat->pork", "meat->pork->bacon"]}
+      preExpanded={["meat", "meat->pork"]}
       composition={[
         {
           uid: "meat",
           label: "Meat",
           children: [
             {
-              uid: "meat->pork",
+              uid: "pork",
               label: "Pork",
               children: [
                 {
-                  uid: "meat->pork->ham",
+                  uid: "ham",
                   label: "Ham",
                 },
                 {
-                  uid: "meat->pork->bacon",
+                  uid: "bacon",
                   label: "Bacon",
                   children: [
                     {
-                      uid: "meat->pork->bacon->15%",
+                      uid: "15%",
                       label: "15%",
                     },
                   ],
@@ -49,21 +50,21 @@ import { CheckboxTree } from "./CheckboxTree.tsx";
               ],
             },
             {
-              uid: "meat->chicken",
+              uid: "chicken",
               label: "Chicken",
               children: [
                 {
-                  uid: "meat->chicken->breast",
+                  uid: "cbreast",
                   label: "Breast",
                 },
               ],
             },
             {
-              uid: "meat->turkey",
+              uid: "turkey",
               label: "Turkey",
               children: [
                 {
-                  uid: "meat->turkey->breast",
+                  uid: "tbreast",
                   label: "Breast",
                 },
               ],

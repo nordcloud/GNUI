@@ -6,7 +6,7 @@ import { Flex } from "../container";
 
 import * as Styled from "./styled";
 import { CheckboxTreeProps, Composition } from "./types";
-import { getChildrenUids, getParentsUids } from "./utils";
+import { getChildrenUids, getParentsUids, preProcessTree } from "./utils";
 import theme from "../../theme";
 
 export function CheckboxTree({
@@ -15,7 +15,13 @@ export function CheckboxTree({
   preSelected,
   onChange,
   onExpand,
+  preferredSeperator = "->",
 }: CheckboxTreeProps) {
+  const processedTree = preProcessTree(
+    JSON.parse(JSON.stringify(composition)),
+    preferredSeperator
+  );
+
   const [selected, setSelected] = React.useState<string[]>(preSelected ?? []);
   const [expanded, setExpanded] = React.useState<string[]>(preExpanded ?? []);
   const [indeterminate, setIndeterminate] = React.useState<string[]>([]);
@@ -33,7 +39,9 @@ export function CheckboxTree({
   }, [expanded, onExpand]);
 
   React.useEffect(() => {
-    const allUids = selected.map((id) => getParentsUids(id)).flat();
+    const allUids = selected
+      .map((id) => getParentsUids(id, preferredSeperator))
+      .flat();
 
     setIndeterminate(allUids);
   }, [selected]);
@@ -52,7 +60,7 @@ export function CheckboxTree({
         const uids = [
           treeItem.uid,
           ...getChildrenUids(treeItem),
-          ...getParentsUids(treeItem.uid),
+          ...getParentsUids(treeItem.uid, preferredSeperator),
         ];
         setSelected(selected.filter((id) => !uids.includes(id)));
       }
@@ -64,27 +72,6 @@ export function CheckboxTree({
       } else {
         setExpanded([...expanded, clickedUid]);
       }
-    };
-
-    const handleIndeterminate = (): boolean => {
-      if (children) {
-        const checkboxNotSelected = !selected.includes(uid);
-        const someChildrenChecked = children.some(({ uid }) =>
-          selected.includes(uid)
-        );
-        const notAllChildrenSelected = !children.every(({ uid: childId }) =>
-          selected.includes(childId)
-        );
-        if (
-          checkboxNotSelected &&
-          someChildrenChecked &&
-          notAllChildrenSelected
-        ) {
-          return true;
-        }
-      }
-
-      return false;
     };
 
     React.useEffect(() => {
@@ -138,7 +125,7 @@ export function CheckboxTree({
 
   return (
     <>
-      {composition.map((comp, index) => (
+      {processedTree.map((comp, index) => (
         <RenderComposition
           isFirstElement={index === 0}
           key={comp.uid}
