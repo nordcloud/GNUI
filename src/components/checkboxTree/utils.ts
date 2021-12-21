@@ -6,13 +6,8 @@ export const preProcessTree = (
 ): Composition[] => {
   const preservedTree = JSON.parse(JSON.stringify(tree));
   const mappedUids = getRelations(tree, preferredSeperator);
-  const treeWithMappedUids = attachRelations(
-    preservedTree,
-    mappedUids,
-    preferredSeperator
-  );
 
-  return treeWithMappedUids;
+  return attachRelations(preservedTree, mappedUids, preferredSeperator);
 };
 
 export const getChildrenUids = (composition: Composition): string[] => {
@@ -99,7 +94,7 @@ const removeObject = (tree: Composition[], uid: string) => {
 const attachRelations = (
   tree: Composition[],
   relations: string[],
-  preferredSeperator: string = "->"
+  preferredSeperator = "->"
 ) => {
   const recursive = (children: Composition[]) => {
     children.forEach((child) => {

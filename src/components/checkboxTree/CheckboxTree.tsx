@@ -1,13 +1,14 @@
 import * as React from "react";
 
-import { Checkbox } from "../checkbox/Checkbox";
 import { HeaderIcon as ToggleIcon, SVGIcon } from "..";
+import theme from "../../theme";
 import { Flex } from "../container";
 
 import * as Styled from "./styled";
 import { CheckboxTreeProps, Composition } from "./types";
 import { getChildrenUids, getParentsUids, preProcessTree } from "./utils";
-import theme from "../../theme";
+
+import { Checkbox } from "../checkbox/Checkbox";
 
 export function CheckboxTree({
   composition,
