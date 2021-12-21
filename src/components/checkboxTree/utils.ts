@@ -2,12 +2,12 @@ import { Composition } from "./types";
 
 export const preProcessTree = (
   tree: Composition[],
-  preferredSeperator: string
+  seperator: string
 ): Composition[] => {
   const treeClone = JSON.parse(JSON.stringify(tree));
-  const mappedUids = getRelations(tree, preferredSeperator);
+  const mappedUids = getRelations(tree, seperator);
 
-  return attachRelations(treeClone, mappedUids, preferredSeperator);
+  return attachRelations(treeClone, mappedUids, seperator);
 };
 
 export const getChildrenUids = (composition: Composition): string[] => {
@@ -32,19 +32,16 @@ export const getChildrenUids = (composition: Composition): string[] => {
 
 export const getParentsUids = (
   compositionUid: string,
-  preferredSeperator: string
+  seperator: string
 ): string[] => {
-  const currentIdSpilt = compositionUid.split(preferredSeperator);
+  const currentIdSpilt = compositionUid.split(seperator);
 
   return currentIdSpilt.map((_, index) =>
-    [...currentIdSpilt].splice(0, index + 1).join(preferredSeperator)
+    [...currentIdSpilt].splice(0, index + 1).join(seperator)
   );
 };
 
-export const getRelations = (
-  tree: Composition[],
-  preferredSeperator = "->"
-) => {
+export const getRelations = (tree: Composition[], seperator = "->") => {
   const allRelations = [];
 
   let branch: string[] = [];
@@ -66,7 +63,7 @@ export const getRelations = (
 
   while (!isTreeEmpty) {
     firstChildOfItem(treeCopy);
-    allRelations.push([...new Set(branch)].join(preferredSeperator));
+    allRelations.push([...new Set(branch)].join(seperator));
     branch = [];
     isTreeEmpty = treeCopy.length === 0;
   }
@@ -96,12 +93,12 @@ const removeObject = (tree: Composition[], uid: string) => {
 const attachRelations = (
   tree: Composition[],
   relations: string[],
-  preferredSeperator = "->"
+  seperator = "->"
 ) => {
   const recursive = (children: Composition[]) => {
     children.forEach((child) => {
       relations.forEach((relation) => {
-        const relationUids = relation.split(preferredSeperator);
+        const relationUids = relation.split(seperator);
         const lastUid = relationUids[relationUids.length - 1];
 
         if (lastUid === child.uid) {
