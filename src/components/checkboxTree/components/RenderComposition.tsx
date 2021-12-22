@@ -45,7 +45,9 @@ export function RenderComposition({
 
   React.useEffect(() => {
     if (
-      children?.every((child) => selectedList.includes(child.uid)) &&
+      children &&
+      children.length > 0 &&
+      children.every((child) => selectedList.includes(child.uid)) &&
       !selectedList.includes(uid)
     ) {
       setSelectedList([...selectedList, uid]);
@@ -57,10 +59,11 @@ export function RenderComposition({
       <Styled.TreeItem isTopItem={!!isFirstElement}>
         <Flex>
           <div css={{ width: theme.spacing.spacing04 }}>
-            {children ? (
+            {children && children.length > 0 ? (
               <ToggleIcon
                 animate={expandedList.includes(uid)}
                 onClick={() => handleExpand(uid)}
+                cursor="pointer"
               >
                 <SVGIcon name="down" />
               </ToggleIcon>
@@ -85,6 +88,7 @@ export function RenderComposition({
       </Styled.TreeItem>
       {expandedList.includes(uid) &&
         children &&
+        children.length > 0 &&
         children.map((child) => (
           <RenderComposition
             setSelectedList={setSelectedList}

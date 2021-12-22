@@ -14,11 +14,7 @@ export function CheckboxTree({
   preferredSeparator = "->",
 }: CheckboxTreeProps) {
   const processedTree = React.useMemo(
-    () =>
-      preProcessTree(
-        JSON.parse(JSON.stringify(composition)),
-        preferredSeparator
-      ),
+    () => preProcessTree(composition, preferredSeparator),
     [composition, preferredSeparator]
   );
 
