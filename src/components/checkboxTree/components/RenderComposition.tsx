@@ -1,12 +1,13 @@
 import React from "react";
 
+import { HeaderIcon as ToggleIcon, SVGIcon, Flex, Checkbox } from "../..";
+
 import { theme } from "../../..";
 
-import * as Styled from "./../styled";
-
 import { Composition, RenderCompositionProps } from "../types";
-import { HeaderIcon as ToggleIcon, SVGIcon, Flex, Checkbox } from "../..";
 import { getChildrenUids, getParentsUids } from "../utils";
+
+import * as Styled from "./../styled";
 
 export function RenderComposition({
   uid,
