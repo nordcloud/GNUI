@@ -1,8 +1,10 @@
 import React from "react";
 
-import { HeaderIcon as ToggleIcon, SVGIcon, Flex, Checkbox } from "../..";
-
-import { theme } from "../../..";
+import theme from "../../../theme";
+import { HeaderIcon as ToggleIcon } from "../../accordion";
+import { Checkbox } from "../../checkbox";
+import { Flex } from "../../container";
+import { SVGIcon } from "../../svgicon";
 
 import { Composition, RenderCompositionProps } from "../types";
 import { getChildrenUids, getParentsUids } from "../utils";

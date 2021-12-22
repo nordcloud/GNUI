@@ -1,10 +1,12 @@
+import cloneDeep from "lodash/cloneDeep";
+
 import { Composition } from "./types";
 
 export const preProcessTree = (
   tree: Composition[],
   separator = "->"
 ): Composition[] => {
-  const treeClone = JSON.parse(JSON.stringify(tree));
+  const treeClone = cloneDeep(tree);
   const mappedUids = getRelations(tree, separator);
 
   return attachRelations(treeClone, mappedUids, separator);
@@ -45,7 +47,7 @@ export const getRelations = (tree: Composition[], separator = "->") => {
   const allRelations = [];
 
   let branch: string[] = [];
-  let treeCopy = [...tree];
+  let treeCopy = cloneDeep(tree);
   let isTreeEmpty = false;
 
   const firstChildOfItem = (childs: Composition[]) => {
