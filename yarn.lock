@@ -1570,23 +1570,6 @@
     "eslint-plugin-sonarjs" "^0.10.0"
     "eslint-plugin-testing-library" "^3.10.0"
 
-"@nordcloud/gnui@file:nordcloud-gnui-4.3.0.tgz":
-  "integrity" "sha512-6IAeYHHqaNSuIJy37vnqBe/pj0yxo8ZceSLZiC7VbBZp0q9pGGIQK2Tyr1b/f5VhrpxRkf3+R1Lfl+Y9FHlYyQ=="
-  "resolved" "file:nordcloud-gnui-4.3.0.tgz"
-  "version" "4.3.0"
-  dependencies:
-    "@types/react-date-range" "^0.94.4"
-    "@types/react-select" "^4.0.18"
-    "@types/styled-system" "^5.1.7"
-    "lodash" "^4.17.21"
-    "polished" "^3.4.4"
-    "react-awesome-styled-grid" "^3.0.12"
-    "react-date-range" "^1.0.3"
-    "react-helmet" "^6.1.0"
-    "react-select" "^4.3.0"
-    "styled-components-breakpoint" "^3.0.0-preview.20"
-    "styled-system" "^5.1.5"
-
 "@npmcli/move-file@^1.0.1":
   "integrity" "sha512-Uv6h1sT+0DrblvIrolFtbvM1FgWm+/sy4B3pvLp67Zys+thcukzS5ekn7HsZFGpWP4Q3fYJCljbWQE/XivMRLw=="
   "resolved" "https://registry.npmjs.org/@npmcli/move-file/-/move-file-1.0.1.tgz"
@@ -3073,7 +3056,14 @@
   "resolved" "https://registry.npmjs.org/@types/json5/-/json5-0.0.29.tgz"
   "version" "0.0.29"
 
-"@types/lodash@^4.14.178":
+"@types/lodash.clonedeep@^4.5.6":
+  "integrity" "sha512-cE1jYr2dEg1wBImvXlNtp0xDoS79rfEdGozQVgliDZj1uERH4k+rmEMTudP9b4VQ8O6nRb5gPqft0QzEQGMQgA=="
+  "resolved" "https://registry.npmjs.org/@types/lodash.clonedeep/-/lodash.clonedeep-4.5.6.tgz"
+  "version" "4.5.6"
+  dependencies:
+    "@types/lodash" "*"
+
+"@types/lodash@*":
   "integrity" "sha512-0d5Wd09ItQWH1qFbEyQ7oTQ3GZrMfth5JkbN3EvTKLXcHLRDSXeLnlvlOn0wvxVIwK5o2M8JzP/OWz7T3NRsbw=="
   "resolved" "https://registry.npmjs.org/@types/lodash/-/lodash-4.14.178.tgz"
   "version" "4.14.178"
@@ -12361,7 +12351,7 @@
     "node-dir" "^0.1.10"
     "strip-indent" "^3.0.0"
 
-"react-dom@*", "react-dom@^16.13.0", "react-dom@^16.13.1", "react-dom@^16.8.0 || ^17.0.0", "react-dom@^16.8.3", "react-dom@>= 16.8.0":
+"react-dom@*", "react-dom@^16.13.1", "react-dom@^16.8.0 || ^17.0.0", "react-dom@^16.8.3", "react-dom@>= 16.8.0":
   "integrity" "sha512-81PIMmVLnCNLO/fFOQxdQkvEq/+Hfpv24XNJfpyZhTRfO0QcmQIF/PgCa1zCOj2w1hrn12MFLyaJ/G0+Mxtfag=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-16.13.1.tgz"
   "version" "16.13.1"
@@ -12587,7 +12577,7 @@
     "loose-envify" "^1.4.0"
     "prop-types" "^15.6.2"
 
-"react@*", "react@^15.3.0 || ^16.0.0", "react@^16.13.0", "react@^16.13.1", "react@^16.3.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0", "react@^16.8.3", "react@>= 16.8.0", "react@>=16.3.0", "react@>=16.8.0":
+"react@*", "react@^15.3.0 || ^16.0.0", "react@^16.13.1", "react@^16.3.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0", "react@^16.8.3", "react@>= 16.8.0", "react@>=16.3.0", "react@>=16.8.0":
   "integrity" "sha512-YMZQQq32xHLX0bz5Mnibv1/LHb3Sqzngu7xstSM+vrkE5Kzr9xE0yMByK5kMoTK30YVJE61WfbxIFFvfeDKT1w=="
   "resolved" "https://registry.npmjs.org/react/-/react-16.13.1.tgz"
   "version" "16.13.1"
@@ -14088,7 +14078,7 @@
   "resolved" "https://registry.npmjs.org/styled-components-breakpoint/-/styled-components-breakpoint-3.0.0-preview.20.tgz"
   "version" "3.0.0-preview.20"
 
-"styled-components@^5.0.0", "styled-components@^5.0.1", "styled-components@>= 2":
+"styled-components@^5.0.1", "styled-components@>= 2":
   "integrity" "sha512-E0xKTRIjTs4DyvC1MHu/EcCXIj6+ENCP8hP01koyoADF++WdBUOrSGwU1scJRw7/YaYOhDvvoad6VlMG+0j53A=="
   "resolved" "https://registry.npmjs.org/styled-components/-/styled-components-5.0.1.tgz"
   "version" "5.0.1"
