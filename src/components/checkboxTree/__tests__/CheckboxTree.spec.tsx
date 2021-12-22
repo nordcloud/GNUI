@@ -68,16 +68,6 @@ const renderComponent = ({
     />
   );
 
-test("setting pre-selected items", async () => {
-  const component = renderComponent({
-    composition: data,
-    selected: ["meat"],
-  });
-  const checkbox = component.container.querySelector("#meat");
-
-  expect(checkbox).toHaveProperty("checked", true);
-});
-
 test("setting pre-expanded items", async () => {
   renderComponent({
     composition: data,
@@ -86,4 +76,14 @@ test("setting pre-expanded items", async () => {
 
   await screen.findByText("Pork");
   await screen.findByText("Ham");
+});
+
+test("setting pre-selected items", async () => {
+  const component = renderComponent({
+    composition: data,
+    selected: ["meat"],
+  });
+  const checkbox = component.container.querySelector("#meat");
+
+  expect(checkbox).toHaveProperty("checked", true);
 });
