@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import "@testing-library/jest-dom/extend-expect";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { CheckboxTree } from "../CheckboxTree";
 import { CheckboxTreeProps } from "../types";
@@ -63,19 +63,28 @@ const renderComponent = ({
 }: CheckboxTreeProps) =>
   render(
     <CheckboxTree
-      onChange={(selected) => console.log(selected)}
       composition={composition}
       selected={selected}
       expanded={expanded}
     />
   );
 
-test("preSelect works", async () => {
+test("setting pre-selected items", async () => {
   const component = renderComponent({
     composition: data,
     selected: ["meat"],
   });
   const checkbox = component.container.querySelector("#meat");
 
-  expect(checkbox?.getAttribute("value")).toEqual(true);
+  expect(checkbox).toHaveProperty("checked", true);
+});
+
+test("setting pre-expanded items", async () => {
+  renderComponent({
+    composition: data,
+    expanded: ["meat", "meat->pork"],
+  });
+
+  await screen.findByText("Pork");
+  await screen.findByText("Ham");
 });
