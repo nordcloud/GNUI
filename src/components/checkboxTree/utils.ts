@@ -1,10 +1,11 @@
 import { Composition } from "./types";
+import * as _ from "lodash";
 
 export const preProcessTree = (
   tree: Composition[],
   separator = "->"
 ): Composition[] => {
-  const treeClone = JSON.parse(JSON.stringify(tree));
+  const treeClone = _.cloneDeep(tree);
   const mappedUids = getRelations(tree, separator);
 
   return attachRelations(treeClone, mappedUids, separator);
@@ -45,7 +46,7 @@ export const getRelations = (tree: Composition[], separator = "->") => {
   const allRelations = [];
 
   let branch: string[] = [];
-  let treeCopy = [...tree];
+  let treeCopy = _.cloneDeep(tree);
   let isTreeEmpty = false;
 
   const firstChildOfItem = (childs: Composition[]) => {
