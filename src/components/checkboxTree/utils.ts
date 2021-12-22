@@ -37,7 +37,7 @@ export const getParentsUids = (
 ): string[] => {
   const currentIdSpilt = compositionUid.split(separator);
 
-  return currentIdSpilt.map((_, index) =>
+  return currentIdSpilt.map((item, index) =>
     [...currentIdSpilt].splice(0, index + 1).join(separator)
   );
 };
