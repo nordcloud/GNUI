@@ -2,12 +2,12 @@ import { Composition } from "./types";
 
 export const preProcessTree = (
   tree: Composition[],
-  seperator: string
+  separator: string
 ): Composition[] => {
   const treeClone = JSON.parse(JSON.stringify(tree));
-  const mappedUids = getRelations(tree, seperator);
+  const mappedUids = getRelations(tree, separator);
 
-  return attachRelations(treeClone, mappedUids, seperator);
+  return attachRelations(treeClone, mappedUids, separator);
 };
 
 export const getChildrenUids = (composition: Composition): string[] => {
@@ -17,31 +17,31 @@ export const getChildrenUids = (composition: Composition): string[] => {
     return [];
   }
 
-  const recursive = (children: Composition[]) => {
+  const recursivelyIterateChildren = (children: Composition[]) => {
     children.forEach((child) => {
       uids.push(child.uid);
       if (child.children) {
-        recursive(child.children);
+        recursivelyIterateChildren(child.children);
       }
     });
   };
-  recursive(composition.children);
+  recursivelyIterateChildren(composition.children);
 
   return uids;
 };
 
 export const getParentsUids = (
   compositionUid: string,
-  seperator: string
+  separator: string
 ): string[] => {
-  const currentIdSpilt = compositionUid.split(seperator);
+  const currentIdSpilt = compositionUid.split(separator);
 
   return currentIdSpilt.map((_, index) =>
-    [...currentIdSpilt].splice(0, index + 1).join(seperator)
+    [...currentIdSpilt].splice(0, index + 1).join(separator)
   );
 };
 
-export const getRelations = (tree: Composition[], seperator = "->") => {
+export const getRelations = (tree: Composition[], separator = "->") => {
   const allRelations = [];
 
   let branch: string[] = [];
@@ -63,7 +63,7 @@ export const getRelations = (tree: Composition[], seperator = "->") => {
 
   while (!isTreeEmpty) {
     firstChildOfItem(treeCopy);
-    allRelations.push([...new Set(branch)].join(seperator));
+    allRelations.push([...new Set(branch)].join(separator));
     branch = [];
     isTreeEmpty = treeCopy.length === 0;
   }
@@ -93,12 +93,12 @@ const removeObject = (tree: Composition[], uid: string) => {
 const attachRelations = (
   tree: Composition[],
   relations: string[],
-  seperator = "->"
+  separator = "->"
 ) => {
-  const recursive = (children: Composition[]) => {
+  const recursivelyIterateChildren = (children: Composition[]) => {
     children.forEach((child) => {
       relations.forEach((relation) => {
-        const relationUids = relation.split(seperator);
+        const relationUids = relation.split(separator);
         const lastUid = relationUids[relationUids.length - 1];
 
         if (lastUid === child.uid) {
@@ -106,11 +106,11 @@ const attachRelations = (
         }
       });
       if (child.children) {
-        recursive(child.children);
+        recursivelyIterateChildren(child.children);
       }
     });
   };
-  recursive(tree);
+  recursivelyIterateChildren(tree);
 
   return tree;
 };
