@@ -2,7 +2,7 @@ import { Composition } from "./types";
 
 export const preProcessTree = (
   tree: Composition[],
-  separator: string
+  separator = "->"
 ): Composition[] => {
   const treeClone = JSON.parse(JSON.stringify(tree));
   const mappedUids = getRelations(tree, separator);
@@ -32,7 +32,7 @@ export const getChildrenUids = (composition: Composition): string[] => {
 
 export const getParentsUids = (
   compositionUid: string,
-  separator: string
+  separator = "->"
 ): string[] => {
   const currentIdSpilt = compositionUid.split(separator);
 
