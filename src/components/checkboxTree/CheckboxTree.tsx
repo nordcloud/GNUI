@@ -49,9 +49,7 @@ export function CheckboxTree({
   );
 
   React.useEffect(() => {
-    const allUids = selectedList
-      .map((id) => getParentsUids(id, preferredSeparator))
-      .flat();
+    const allUids = getParentsUidsMemo;
 
     setIndeterminate(allUids);
   }, [selectedList]);
