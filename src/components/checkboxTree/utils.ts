@@ -1,5 +1,6 @@
-import { Composition } from "./types";
 import cloneDeep from "lodash/cloneDeep";
+
+import { Composition } from "./types";
 
 export const preProcessTree = (
   tree: Composition[],
