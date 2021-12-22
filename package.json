@@ -72,7 +72,6 @@
     "styled-components": "^5.0.0"
   },
   "dependencies": {
-    "@types/lodash": "^4.14.178",
     "@types/react-date-range": "^0.94.4",
     "@types/react-select": "^4.0.18",
     "@types/styled-system": "^5.1.7",
@@ -86,6 +85,7 @@
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.178",
     "@nordcloud/eslint-config-pat": "^2.0.0",
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.0.6",

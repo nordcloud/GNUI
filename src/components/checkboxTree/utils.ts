@@ -1,11 +1,11 @@
 import { Composition } from "./types";
-import * as _ from "lodash";
+import cloneDeep from "lodash/cloneDeep";
 
 export const preProcessTree = (
   tree: Composition[],
   separator = "->"
 ): Composition[] => {
-  const treeClone = _.cloneDeep(tree);
+  const treeClone = cloneDeep(tree);
   const mappedUids = getRelations(tree, separator);
 
   return attachRelations(treeClone, mappedUids, separator);
@@ -37,7 +37,7 @@ export const getParentsUids = (
 ): string[] => {
   const currentIdSpilt = compositionUid.split(separator);
 
-  return currentIdSpilt.map((item, index) =>
+  return currentIdSpilt.map((_, index) =>
     [...currentIdSpilt].splice(0, index + 1).join(separator)
   );
 };
@@ -46,7 +46,7 @@ export const getRelations = (tree: Composition[], separator = "->") => {
   const allRelations = [];
 
   let branch: string[] = [];
-  let treeCopy = _.cloneDeep(tree);
+  let treeCopy = cloneDeep(tree);
   let isTreeEmpty = false;
 
   const firstChildOfItem = (childs: Composition[]) => {
