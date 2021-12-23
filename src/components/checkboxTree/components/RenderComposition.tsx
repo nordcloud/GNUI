@@ -47,12 +47,14 @@ export function RenderComposition({
   };
 
   React.useEffect(() => {
+    console.log("aa");
     if (
       parentUid &&
       selectedList.includes(parentUid) &&
       !selectedList.includes(uid)
     ) {
       setSelectedList([...selectedList, uid]);
+      return;
     }
 
     if (
@@ -63,7 +65,7 @@ export function RenderComposition({
     ) {
       setSelectedList([...selectedList, uid]);
     }
-  });
+  }, [selectedList, setSelectedList, parentUid, uid]);
 
   return (
     <Styled.Indentation>
