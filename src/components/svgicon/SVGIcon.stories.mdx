@@ -83,103 +83,6 @@ import { Text } from "../text";
   </Story>
 </Preview>
 
-### UI Icons
-
-###### Click on Icon to copy Icon Name to the clipboard
-
-<Preview>
-  <Story name="ui">
-    <Flex justifyContent="space-evenly" style={{ flexWrap: "wrap" }}>
-      <CopyToClipboard text="budget">
-        <SVGIcon name="budget" />
-      </CopyToClipboard>
-      <CopyToClipboard text="forecastUp">
-        <SVGIcon name="forecastUp" />
-      </CopyToClipboard>
-      <CopyToClipboard text="forecastDown">
-        <SVGIcon name="forecastDown" />
-      </CopyToClipboard>
-      <CopyToClipboard text="down">
-        <SVGIcon name="down" />
-      </CopyToClipboard>
-      <CopyToClipboard text="cloudError">
-        <SVGIcon name="cloudError" />
-      </CopyToClipboard>
-      <CopyToClipboard text="cloudSuccess">
-        <SVGIcon name="cloudSuccess" />
-      </CopyToClipboard>
-      <CopyToClipboard text="gear">
-        <SVGIcon name="gear" />
-      </CopyToClipboard>
-      <CopyToClipboard text="spinningGear">
-        <SVGIcon name="spinningGear" />
-      </CopyToClipboard>
-    </Flex>
-  </Story>
-</Preview>
-
-### Commerce
-
-###### Click on Icon to copy Icon Name to the clipboard
-
-<Preview>
-  <Story name="commerce">
-    <Flex justifyContent="space-evenly">
-      <CopyToClipboard text="dollar">
-        <Flex flexDirection="column">
-          <SVGIcon name="dollar" />
-          <Text size="xs" mt=".25rem">
-            dollar
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="euro">
-        <Flex flexDirection="column">
-          <SVGIcon name="euro" />
-          <Text size="xs" mt=".25rem">
-            euro
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-    </Flex>
-  </Story>
-</Preview>
-
-### Controls
-
-###### Click on Icon to copy Icon Name to the clipboard
-
-<Preview>
-  <Story name="controls">
-    <Flex justifyContent="space-evenly">
-      <CopyToClipboard text="adjustments">
-        <Flex flexDirection="column">
-          <SVGIcon name="adjustments" />
-          <Text size="xs" mt=".25rem">
-            adjustments
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="dashboard">
-        <Flex flexDirection="column">
-          <SVGIcon name="dashboard" />
-          <Text size="xs" mt=".25rem">
-            dashboard
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="settings">
-        <Flex flexDirection="column">
-          <SVGIcon name="settings" />
-          <Text size="xs" mt=".25rem">
-            settings
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-    </Flex>
-  </Story>
-</Preview>
-
 ### Data
 
 ###### Click on Icon to copy Icon Name to the clipboard
@@ -259,6 +162,24 @@ import { Text } from "../text";
           </Text>
         </Flex>
       </CopyToClipboard>
+      <CopyToClipboard text="chartAscending">
+        <Flex flexDirection="column">
+          <SVGIcon name="chartAscending" />
+          <Text size="xs" mt=".25rem">
+            chartAscending
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+    </Flex>
+    <Flex justifyContent="space-evenly">
+      <CopyToClipboard text="chartDescending">
+        <Flex flexDirection="column">
+          <SVGIcon name="chartDescending" />
+          <Text size="xs" mt=".25rem">
+            chartDescending
+          </Text>
+        </Flex>
+      </CopyToClipboard>
       <CopyToClipboard text="cloudWaste">
         <Flex flexDirection="column">
           <SVGIcon name="cloudWaste" />
@@ -323,49 +244,6 @@ import { Text } from "../text";
           </Text>
         </Flex>
       </CopyToClipboard>
-    </Flex>
-  </Story>
-</Preview>
-
-### File
-
-###### Click on Icon to copy Icon Name to the clipboard
-
-<Preview>
-  <Story name="file">
-    <Flex justifyContent="space-evenly">
-      <CopyToClipboard text="checkList">
-        <Flex flexDirection="column">
-          <SVGIcon name="checkList" />
-          <Text size="xs" mt=".25rem">
-            checkList
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="api">
-        <Flex flexDirection="column">
-          <SVGIcon name="api" />
-          <Text size="xs" mt=".25rem">
-            api
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="application">
-        <Flex flexDirection="column">
-          <SVGIcon name="application" />
-          <Text size="xs" mt=".25rem">
-            application
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="copy">
-        <Flex flexDirection="column">
-          <SVGIcon name="copy" />
-          <Text size="xs" mt=".25rem">
-            copy
-          </Text>
-        </Flex>
-      </CopyToClipboard>
       <CopyToClipboard text="database">
         <Flex flexDirection="column">
           <SVGIcon name="database" />
@@ -374,6 +252,8 @@ import { Text } from "../text";
           </Text>
         </Flex>
       </CopyToClipboard>
+    </Flex>
+    <Flex justifyContent="space-evenly">
       <CopyToClipboard text="detailsView">
         <Flex flexDirection="column">
           <SVGIcon name="detailsView" />
@@ -398,17 +278,155 @@ import { Text } from "../text";
           </Text>
         </Flex>
       </CopyToClipboard>
+      <CopyToClipboard text="application">
+        <Flex flexDirection="column">
+          <SVGIcon name="application" />
+          <Text size="xs" mt=".25rem">
+            application
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="dashboard">
+        <Flex flexDirection="column">
+          <SVGIcon name="dashboard" />
+          <Text size="xs" mt=".25rem">
+            dashboard
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="briefcase">
+        <Flex flexDirection="column">
+          <SVGIcon name="briefcase" />
+          <Text size="xs" mt=".25rem">
+            briefcase
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="checkList">
+        <Flex flexDirection="column">
+          <SVGIcon name="checkList" />
+          <Text size="xs" mt=".25rem">
+            checkList
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="api">
+        <Flex flexDirection="column">
+          <SVGIcon name="api" />
+          <Text size="xs" mt=".25rem">
+            api
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="dollar">
+        <Flex flexDirection="column">
+          <SVGIcon name="dollar" />
+          <Text size="xs" mt=".25rem">
+            dollar
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="euro">
+        <Flex flexDirection="column">
+          <SVGIcon name="euro" />
+          <Text size="xs" mt=".25rem">
+            euro
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+    </Flex>
+    <Flex justifyContent="space-evenly">
+      <CopyToClipboard text="mailInformation">
+        <Flex flexDirection="column">
+          <SVGIcon name="mailInformation" />
+          <Text size="xs" mt=".25rem">
+            mailInformation
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="mappingRules">
+        <Flex flexDirection="column">
+          <SVGIcon name="mappingRules" />
+          <Text size="xs" mt=".25rem">
+            mappingRules
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="otherType">
+        <Flex flexDirection="column">
+          <SVGIcon name="otherType" />
+          <Text size="xs" mt=".25rem">
+            otherType
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="resource">
+        <Flex flexDirection="column">
+          <SVGIcon name="resource" />
+          <Text size="xs" mt=".25rem">
+            resource
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="integration">
+        <Flex flexDirection="column">
+          <SVGIcon name="integration" />
+          <Text size="xs" mt=".25rem">
+            integration
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="reservedInstances">
+        <Flex flexDirection="column">
+          <SVGIcon name="reservedInstances" />
+          <Text size="xs" mt=".25rem">
+            reservedInstances
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="storage">
+        <Flex flexDirection="column">
+          <SVGIcon name="storage" />
+          <Text size="xs" mt=".25rem">
+            storage
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="budget">
+        <Flex flexDirection="column">
+          <SVGIcon name="budget" />
+          <Text size="xs" mt=".25rem">
+            budget
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="budgetEuro">
+        <Flex flexDirection="column">
+          <SVGIcon name="budgetEuro" />
+          <Text size="xs" mt=".25rem">
+            budgetEuro
+          </Text>
+        </Flex>
+      </CopyToClipboard>
     </Flex>
   </Story>
 </Preview>
 
-### Formatting
+### Operation
 
 ###### Click on Icon to copy Icon Name to the clipboard
 
 <Preview>
   <Story name="formatting">
     <Flex justifyContent="space-evenly">
+      <CopyToClipboard text="adjustments">
+        <Flex flexDirection="column">
+          <SVGIcon name="adjustments" />
+          <Text size="xs" mt=".25rem">
+            adjustments
+          </Text>
+        </Flex>
+      </CopyToClipboard>
       <CopyToClipboard text="link">
         <Flex flexDirection="column">
           <SVGIcon name="link" />
@@ -433,6 +451,14 @@ import { Text } from "../text";
           </Text>
         </Flex>
       </CopyToClipboard>
+      <CopyToClipboard text="copy">
+        <Flex flexDirection="column">
+          <SVGIcon name="copy" />
+          <Text size="xs" mt=".25rem">
+            copy
+          </Text>
+        </Flex>
+      </CopyToClipboard>
       <CopyToClipboard text="trash">
         <Flex flexDirection="column">
           <SVGIcon name="trash" />
@@ -441,22 +467,234 @@ import { Text } from "../text";
           </Text>
         </Flex>
       </CopyToClipboard>
+      <CopyToClipboard text="save">
+        <Flex flexDirection="column">
+          <SVGIcon name="save" />
+          <Text size="xs" mt=".25rem">
+            save
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="filter">
+        <Flex flexDirection="column">
+          <SVGIcon name="filter" />
+          <Text size="xs" mt=".25rem">
+            filter
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="search">
+        <Flex flexDirection="column">
+          <SVGIcon name="search" />
+          <Text size="xs" mt=".25rem">
+            search
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="scan">
+        <Flex flexDirection="column">
+          <SVGIcon name="scan" />
+          <Text size="xs" mt=".25rem">
+            scan
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+    </Flex>
+    <Flex justifyContent="space-evenly">
+      <CopyToClipboard text="sortAscending">
+        <Flex flexDirection="column">
+          <SVGIcon name="sortAscending" />
+          <Text size="xs" mt=".25rem">
+            sortAscending
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="sortDescending">
+        <Flex flexDirection="column">
+          <SVGIcon name="sortDescending" />
+          <Text size="xs" mt=".25rem">
+            sortDescending
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="recalculate">
+        <Flex flexDirection="column">
+          <SVGIcon name="recalculate" />
+          <Text size="xs" mt=".25rem">
+            recalculate
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="exchange">
+        <Flex flexDirection="column">
+          <SVGIcon name="exchange" />
+          <Text size="xs" mt=".25rem">
+            exchange
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="export">
+        <Flex flexDirection="column">
+          <SVGIcon name="export" />
+          <Text size="xs" mt=".25rem">
+            export
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="star">
+        <Flex flexDirection="column">
+          <SVGIcon name="star" />
+          <Text size="xs" mt=".25rem">
+            star
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="starFilled">
+        <Flex flexDirection="column">
+          <SVGIcon name="starFilled" />
+          <Text size="xs" mt=".25rem">
+            starFilled
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="bell">
+        <Flex flexDirection="column">
+          <SVGIcon name="bell" />
+          <Text size="xs" mt=".25rem">
+            bell
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="bellActive">
+        <Flex flexDirection="column">
+          <SVGIcon name="bellActive" />
+          <Text size="xs" mt=".25rem">
+            bellActive
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="bellActiveRed">
+        <Flex flexDirection="column">
+          <SVGIcon name="bellActiveRed" />
+          <Text size="xs" mt=".25rem">
+            bellActiveRed
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+    </Flex>
+    <Flex justifyContent="space-evenly">
+      <CopyToClipboard text="logout">
+        <Flex flexDirection="column">
+          <SVGIcon name="logout" />
+          <Text size="xs" mt=".25rem">
+            logout
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="settings">
+        <Flex flexDirection="column">
+          <SVGIcon name="settings" />
+          <Text size="xs" mt=".25rem">
+            settings
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="cancel">
+        <Flex flexDirection="column">
+          <SVGIcon name="cancel" />
+          <Text size="xs" mt=".25rem">
+            cancel
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="danger">
+        <Flex flexDirection="column">
+          <SVGIcon name="danger" />
+          <Text size="xs" mt=".25rem">
+            danger
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="success">
+        <Flex flexDirection="column">
+          <SVGIcon name="success" />
+          <Text size="xs" mt=".25rem">
+            success
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="helpCenter">
+        <Flex flexDirection="column">
+          <SVGIcon name="helpCenter" />
+          <Text size="xs" mt=".25rem">
+            helpCenter
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="help">
+        <Flex flexDirection="column">
+          <SVGIcon name="help" />
+          <Text size="xs" mt=".25rem">
+            help
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="info">
+        <Flex flexDirection="column">
+          <SVGIcon name="info" />
+          <Text size="xs" mt=".25rem">
+            info
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="countdown">
+        <Flex flexDirection="column">
+          <SVGIcon name="countdown" />
+          <Text size="xs" mt=".25rem">
+            countdown
+          </Text>
+        </Flex>
+      </CopyToClipboard>
     </Flex>
   </Story>
 </Preview>
 
-### Instrument
+### User
 
 ###### Click on Icon to copy Icon Name to the clipboard
 
 <Preview>
-  <Story name="instrument">
+  <Story name="user">
     <Flex justifyContent="space-evenly">
-      <CopyToClipboard text="briefcase">
+      <CopyToClipboard text="contactPersons">
         <Flex flexDirection="column">
-          <SVGIcon name="briefcase" />
+          <SVGIcon name="contactPersons" />
           <Text size="xs" mt=".25rem">
-            briefcase
+            contactPersons
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="userList">
+        <Flex flexDirection="column">
+          <SVGIcon name="userList" />
+          <Text size="xs" mt=".25rem">
+            userList
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="user">
+        <Flex flexDirection="column">
+          <SVGIcon name="user" />
+          <Text size="xs" mt=".25rem">
+            user
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="userAccess">
+        <Flex flexDirection="column">
+          <SVGIcon name="userAccess" />
+          <Text size="xs" mt=".25rem">
+            userAccess
           </Text>
         </Flex>
       </CopyToClipboard>
@@ -551,6 +789,8 @@ import { Text } from "../text";
           </Text>
         </Flex>
       </CopyToClipboard>
+    </Flex>
+    <Flex justifyContent="space-evenly">
       <CopyToClipboard text="doubleChevronLeft">
         <Flex flexDirection="column">
           <SVGIcon name="doubleChevronLeft" />
@@ -567,8 +807,6 @@ import { Text } from "../text";
           </Text>
         </Flex>
       </CopyToClipboard>
-    </Flex>
-    <Flex justifyContent="space-evenly">
       <CopyToClipboard text="dragAndDrop">
         <Flex flexDirection="column">
           <SVGIcon name="dragAndDrop" />
@@ -633,6 +871,8 @@ import { Text } from "../text";
           </Text>
         </Flex>
       </CopyToClipboard>
+    </Flex>
+    <Flex justifyContent="space-evenly">
       <CopyToClipboard text="slash">
         <Flex flexDirection="column">
           <SVGIcon name="slash" />
@@ -692,38 +932,6 @@ import { Text } from "../text";
 <Preview>
   <Story name="operation">
     <Flex justifyContent="space-evenly">
-      <CopyToClipboard text="exchange">
-        <Flex flexDirection="column">
-          <SVGIcon name="exchange" />
-          <Text size="xs" mt=".25rem">
-            exchange
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="filter">
-        <Flex flexDirection="column">
-          <SVGIcon name="filter" />
-          <Text size="xs" mt=".25rem">
-            filter
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="logout">
-        <Flex flexDirection="column">
-          <SVGIcon name="logout" />
-          <Text size="xs" mt=".25rem">
-            logout
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="mappingRules">
-        <Flex flexDirection="column">
-          <SVGIcon name="mappingRules" />
-          <Text size="xs" mt=".25rem">
-            mappingRules
-          </Text>
-        </Flex>
-      </CopyToClipboard>
       <CopyToClipboard text="production">
         <Flex flexDirection="column">
           <SVGIcon name="production" />
@@ -737,54 +945,6 @@ import { Text } from "../text";
           <SVGIcon name="qa" />
           <Text size="xs" mt=".25rem">
             qa
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="recalculate">
-        <Flex flexDirection="column">
-          <SVGIcon name="recalculate" />
-          <Text size="xs" mt=".25rem">
-            recalculate
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="save">
-        <Flex flexDirection="column">
-          <SVGIcon name="save" />
-          <Text size="xs" mt=".25rem">
-            save
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="scan">
-        <Flex flexDirection="column">
-          <SVGIcon name="scan" />
-          <Text size="xs" mt=".25rem">
-            scan
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="search">
-        <Flex flexDirection="column">
-          <SVGIcon name="search" />
-          <Text size="xs" mt=".25rem">
-            search
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="sortAscending">
-        <Flex flexDirection="column">
-          <SVGIcon name="sortAscending" />
-          <Text size="xs" mt=".25rem">
-            sortAscending
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="sortDescending">
-        <Flex flexDirection="column">
-          <SVGIcon name="sortDescending" />
-          <Text size="xs" mt=".25rem">
-            sortDescending
           </Text>
         </Flex>
       </CopyToClipboard>
@@ -844,223 +1004,6 @@ import { Text } from "../text";
           <SVGIcon name="statusOnHold" />
           <Text size="xs" mt=".25rem">
             statusOnHold
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="cancel">
-        <Flex flexDirection="column">
-          <SVGIcon name="cancel" />
-          <Text size="xs" mt=".25rem">
-            cancel
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="danger">
-        <Flex flexDirection="column">
-          <SVGIcon name="danger" />
-          <Text size="xs" mt=".25rem">
-            danger
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="success">
-        <Flex flexDirection="column">
-          <SVGIcon name="success" />
-          <Text size="xs" mt=".25rem">
-            success
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="helpCenter">
-        <Flex flexDirection="column">
-          <SVGIcon name="helpCenter" />
-          <Text size="xs" mt=".25rem">
-            helpCenter
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="help">
-        <Flex flexDirection="column">
-          <SVGIcon name="help" />
-          <Text size="xs" mt=".25rem">
-            help
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="info">
-        <Flex flexDirection="column">
-          <SVGIcon name="info" />
-          <Text size="xs" mt=".25rem">
-            info
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="countdown">
-        <Flex flexDirection="column">
-          <SVGIcon name="countdown" />
-          <Text size="xs" mt=".25rem">
-            countdown
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-    </Flex>
-  </Story>
-</Preview>
-
-### Technology
-
-###### Click on Icon to copy Icon Name to the clipboard
-
-<Preview>
-  <Story name="technology">
-    <Flex justifyContent="space-evenly">
-      <CopyToClipboard text="export">
-        <Flex flexDirection="column">
-          <SVGIcon name="export" />
-          <Text size="xs" mt=".25rem">
-            export
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="mailInformation">
-        <Flex flexDirection="column">
-          <SVGIcon name="mailInformation" />
-          <Text size="xs" mt=".25rem">
-            mailInformation
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="otherType">
-        <Flex flexDirection="column">
-          <SVGIcon name="otherType" />
-          <Text size="xs" mt=".25rem">
-            otherType
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="resource">
-        <Flex flexDirection="column">
-          <SVGIcon name="resource" />
-          <Text size="xs" mt=".25rem">
-            resource
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="integration">
-        <Flex flexDirection="column">
-          <SVGIcon name="integration" />
-          <Text size="xs" mt=".25rem">
-            integration
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="reservedInstances">
-        <Flex flexDirection="column">
-          <SVGIcon name="reservedInstances" />
-          <Text size="xs" mt=".25rem">
-            reservedInstances
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="storage">
-        <Flex flexDirection="column">
-          <SVGIcon name="storage" />
-          <Text size="xs" mt=".25rem">
-            storage
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-    </Flex>
-  </Story>
-</Preview>
-
-### Toggle
-
-###### Click on Icon to copy Icon Name to the clipboard
-
-<Preview>
-  <Story name="toggle">
-    <Flex justifyContent="space-evenly">
-      <CopyToClipboard text="bell">
-        <Flex flexDirection="column">
-          <SVGIcon name="bell" />
-          <Text size="xs" mt=".25rem">
-            bell
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="bellActive">
-        <Flex flexDirection="column">
-          <SVGIcon name="bellActive" />
-          <Text size="xs" mt=".25rem">
-            bellActive
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="bellActiveRed">
-        <Flex flexDirection="column">
-          <SVGIcon name="bellActiveRed" />
-          <Text size="xs" mt=".25rem">
-            bellActiveRed
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="star">
-        <Flex flexDirection="column">
-          <SVGIcon name="star" />
-          <Text size="xs" mt=".25rem">
-            star
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="starFilled">
-        <Flex flexDirection="column">
-          <SVGIcon name="starFilled" />
-          <Text size="xs" mt=".25rem">
-            starFilled
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-    </Flex>
-  </Story>
-</Preview>
-
-### User
-
-###### Click on Icon to copy Icon Name to the clipboard
-
-<Preview>
-  <Story name="user">
-    <Flex justifyContent="space-evenly">
-      <CopyToClipboard text="contactPersons">
-        <Flex flexDirection="column">
-          <SVGIcon name="contactPersons" />
-          <Text size="xs" mt=".25rem">
-            contactPersons
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="userList">
-        <Flex flexDirection="column">
-          <SVGIcon name="userList" />
-          <Text size="xs" mt=".25rem">
-            userList
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="user">
-        <Flex flexDirection="column">
-          <SVGIcon name="user" />
-          <Text size="xs" mt=".25rem">
-            user
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="userAccess">
-        <Flex flexDirection="column">
-          <SVGIcon name="userAccess" />
-          <Text size="xs" mt=".25rem">
-            userAccess
           </Text>
         </Flex>
       </CopyToClipboard>
@@ -1191,6 +1134,66 @@ import { Text } from "../text";
   </Story>
 </Preview>
 
+### NC Icons
+
+###### Click on Icon to copy Icon Name to the clipboard
+
+<Preview>
+  <Story name="ncIcons">
+    <Flex justifyContent="space-evenly">
+      <CopyToClipboard text="bulb">
+        <Flex flexDirection="column">
+          <SVGIcon size="xxl" name="bulb" />
+          <Text size="xs" mt=".25rem">
+            bulb
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="documentation">
+        <Flex flexDirection="column">
+          <SVGIcon size="xxl" name="documentation" />
+          <Text size="xs" mt=".25rem">
+            documentation
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="rocket">
+        <Flex flexDirection="column">
+          <SVGIcon size="xxl" name="rocket" />
+          <Text size="xs" mt=".25rem">
+            rocket
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+      <CopyToClipboard text="emptyData">
+        <Flex flexDirection="column">
+          <SVGIcon size="xxl" name="emptyData" />
+          <Text size="xs" mt=".25rem">
+            emptyData
+          </Text>
+        </Flex>
+      </CopyToClipboard>
+    </Flex>
+  </Story>
+</Preview>
+
+### Klarity Resource Type
+
+###### Click on Icon to copy Icon Name to the clipboard
+
+<Preview>
+  <Story name="klarityResources">
+    <Flex justifyContent="space-evenly">
+      <CopyToClipboard text="externalIntegration">
+        <SVGIcon name="externalIntegration" />
+      </CopyToClipboard>
+      <CopyToClipboard text="reservedInstance">
+        <SVGIcon name="reservedInstance" />
+      </CopyToClipboard>
+    </Flex>
+  </Story>
+</Preview>
+
 ### AWS Resource Type
 
 ###### Click on Icon to copy Icon Name to the clipboard
@@ -1310,56 +1313,13 @@ import { Text } from "../text";
   </Story>
 </Preview>
 
-### NC Icons
+### Deprecated Icons
 
 ###### Click on Icon to copy Icon Name to the clipboard
 
 <Preview>
-  <Story name="ncIcons">
-    <Flex justifyContent="space-evenly">
-      <CopyToClipboard text="bulb">
-        <Flex flexDirection="column">
-          <SVGIcon size="xxl" name="bulb" />
-          <Text size="xs" mt=".25rem">
-            bulb
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="documentation">
-        <Flex flexDirection="column">
-          <SVGIcon size="xxl" name="documentation" />
-          <Text size="xs" mt=".25rem">
-            documentation
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="rocket">
-        <Flex flexDirection="column">
-          <SVGIcon size="xxl" name="rocket" />
-          <Text size="xs" mt=".25rem">
-            rocket
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-      <CopyToClipboard text="emptyData">
-        <Flex flexDirection="column">
-          <SVGIcon size="xxl" name="emptyData" />
-          <Text size="xs" mt=".25rem">
-            emptyData
-          </Text>
-        </Flex>
-      </CopyToClipboard>
-    </Flex>
-  </Story>
-</Preview>
-
-### Klarity Resource Type
-
-###### Click on Icon to copy Icon Name to the clipboard
-
-<Preview>
-  <Story name="klarityResources">
-    <Flex justifyContent="space-evenly">
+  <Story name="ui">
+    <Flex justifyContent="space-evenly" style={{ flexWrap: "wrap" }}>
       <CopyToClipboard text="networking">
         <SVGIcon name="networking" />
       </CopyToClipboard>
@@ -1369,11 +1329,26 @@ import { Text } from "../text";
       <CopyToClipboard text="other">
         <SVGIcon name="other" />
       </CopyToClipboard>
-      <CopyToClipboard text="externalIntegration">
-        <SVGIcon name="externalIntegration" />
+      <CopyToClipboard text="forecastUp">
+        <SVGIcon name="forecastUp" />
       </CopyToClipboard>
-      <CopyToClipboard text="reservedInstance">
-        <SVGIcon name="reservedInstance" />
+      <CopyToClipboard text="forecastDown">
+        <SVGIcon name="forecastDown" />
+      </CopyToClipboard>
+      <CopyToClipboard text="down">
+        <SVGIcon name="down" />
+      </CopyToClipboard>
+      <CopyToClipboard text="cloudError">
+        <SVGIcon name="cloudError" />
+      </CopyToClipboard>
+      <CopyToClipboard text="cloudSuccess">
+        <SVGIcon name="cloudSuccess" />
+      </CopyToClipboard>
+      <CopyToClipboard text="gear">
+        <SVGIcon name="gear" />
+      </CopyToClipboard>
+      <CopyToClipboard text="spinningGear">
+        <SVGIcon name="spinningGear" />
       </CopyToClipboard>
     </Flex>
   </Story>
