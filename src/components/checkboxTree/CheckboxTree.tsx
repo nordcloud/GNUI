@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import { RenderComposition } from "./components/RenderComposition";
+import { TreeWrap } from "./styled";
 
 import { CheckboxTreeProps } from "./types";
 import { getParentsUids, preProcessTree } from "./utils";
@@ -12,6 +13,7 @@ export function CheckboxTree({
   onChange,
   onExpand,
   preferredSeparator = "->",
+  disabled,
 }: CheckboxTreeProps) {
   const processedTree = React.useMemo(
     () => preProcessTree(composition, preferredSeparator),
@@ -19,10 +21,10 @@ export function CheckboxTree({
   );
 
   const [selectedList, setSelectedList] = React.useState<string[]>(
-    selected ?? []
+    selected && !disabled ? selected : []
   );
   const [expandedList, setExpandedList] = React.useState<string[]>(
-    expanded ?? []
+    expanded && !disabled ? expanded : []
   );
   const [indeterminate, setIndeterminate] = React.useState<string[]>([]);
 
@@ -51,7 +53,7 @@ export function CheckboxTree({
   }, [selectedList]);
 
   return (
-    <>
+    <TreeWrap disabled={disabled}>
       {processedTree.map((comp, index) => (
         <RenderComposition
           selectedList={selectedList}
@@ -65,6 +67,6 @@ export function CheckboxTree({
           {...comp}
         />
       ))}
-    </>
+    </TreeWrap>
   );
 }
