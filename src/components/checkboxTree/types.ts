@@ -5,7 +5,7 @@ export type CheckboxTreeProps = {
   onChange?: (selected: string[]) => void;
   onExpand?: (expanded: string[]) => void;
   preferredSeparator?: string;
-  disabled: boolean;
+  disabled?: boolean;
 };
 
 export type Composition = {
