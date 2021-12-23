@@ -21,6 +21,7 @@ type AccordionItemProps = {
 
 type HeaderIconProps = {
   animate?: boolean;
+  cursor?: string;
 };
 
 type StyledHeaderProps = {
@@ -88,6 +89,7 @@ const HeaderDescription = styled.div`
 
 export const HeaderIcon = styled.div<HeaderIconProps>`
   display: flex;
+  cursor: ${(props) => props.cursor ?? "default"};
   svg {
     transition: ${theme.transition};
     transform-origin: center;

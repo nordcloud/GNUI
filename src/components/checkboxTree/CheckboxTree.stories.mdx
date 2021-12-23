@@ -1,0 +1,77 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { CheckboxTree } from "./CheckboxTree.tsx";
+
+<Meta title="Forms/CheckboxTree" component={CheckboxTree} />
+
+# CheckboxTree
+
+> The `CheckboxTree` component accepts an array of `Composition` objects and renders it as a tree of checkboxes.
+
+### CheckboxTree properties
+
+|         properties | required |     type      | description                                                                                                                                         |
+| -----------------: | :------: | :-----------: | :-------------------------------------------------------------------------------------------------------------------------------------------------- |
+|        composition |   true   | Composition[] | Composition of how Checkboxes and its childrens should be displayed                                                                                 |
+|           onChange |  false   |  () => void   | Returns array with all selected `uid` values.                                                                                                       |
+|           selected |  false   |   string[]    | Array of `uid` values that should be pre selected. Values should be passed with relations to parents: meat->chicken for chicken to be pre-selected. |
+|           onExpand |  false   |  () => void   | Returns array with all expanded `uid` values.                                                                                                       |
+|           expanded |  false   |   string[]    | Array of `uid` values that should be pre expanded. Values should be passed with relations to parents: meat->chicken for chicken to be pre-expanded. |
+| preferredSeparator |  false   |    string     | Sets separator for checkbox relationships on onChange ids retrieval. Default: "->"                                                                  |
+
+### Default
+
+<Preview>
+  <Story name="simple">
+    <CheckboxTree
+      expanded={["meat", "meat->pork"]}
+      composition={[
+        {
+          uid: "meat",
+          label: "Meat",
+          children: [
+            {
+              uid: "pork",
+              label: "Pork",
+              children: [
+                {
+                  uid: "ham",
+                  label: "Ham",
+                },
+                {
+                  uid: "bacon",
+                  label: "Bacon",
+                  children: [
+                    {
+                      uid: "15%",
+                      label: "15%",
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              uid: "chicken",
+              label: "Chicken",
+              children: [
+                {
+                  uid: "cbreast",
+                  label: "Breast",
+                },
+              ],
+            },
+            {
+              uid: "turkey",
+              label: "Turkey",
+              children: [
+                {
+                  uid: "tbreast",
+                  label: "Breast",
+                },
+              ],
+            },
+          ],
+        },
+      ]}
+    />
+  </Story>
+</Preview>

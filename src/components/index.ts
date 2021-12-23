@@ -4,6 +4,7 @@ export * from "./button";
 export * from "./box";
 export * from "./breadcrumbs";
 export * from "./checkbox";
+export * from "./checkboxTree";
 export * from "./container";
 export * from "./datepicker";
 export * from "./dropdown";
