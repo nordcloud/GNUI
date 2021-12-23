@@ -47,7 +47,6 @@ export function RenderComposition({
   };
 
   React.useEffect(() => {
-    console.log("aa");
     if (
       parentUid &&
       selectedList.includes(parentUid) &&
