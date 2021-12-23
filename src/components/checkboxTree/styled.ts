@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme } from "../..";
+import theme from "../../theme";
 
 export const CheckboxWrap = styled.div`
   padding: ${theme.spacing.spacing01};
