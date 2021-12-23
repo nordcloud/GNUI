@@ -14,6 +14,7 @@ export type Composition = {
 };
 
 export type ParentStateHandling = {
+  parentUid?: string;
   isFirstElement?: boolean;
   selectedList: string[];
   setSelectedList: React.Dispatch<React.SetStateAction<string[]>>;

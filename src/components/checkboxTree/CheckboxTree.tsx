@@ -3,7 +3,7 @@ import * as React from "react";
 import { RenderComposition } from "./components/RenderComposition";
 
 import { CheckboxTreeProps } from "./types";
-import { getParentsUids, preProcessTree } from "./utils";
+import { getChildrenUids, getParentsUids, preProcessTree } from "./utils";
 
 export function CheckboxTree({
   composition,

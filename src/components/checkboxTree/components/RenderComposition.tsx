@@ -20,6 +20,7 @@ export function RenderComposition({
   setExpandedList,
   indeterminate,
   preferredSeparator,
+  parentUid,
 }: RenderCompositionProps): JSX.Element {
   const handleSelect = (treeItem: Composition) => {
     if (!selectedList.includes(treeItem.uid)) {
@@ -44,6 +45,14 @@ export function RenderComposition({
   };
 
   React.useEffect(() => {
+    if (
+      parentUid &&
+      selectedList.includes(parentUid) &&
+      !selectedList.includes(uid)
+    ) {
+      setSelectedList([...selectedList, uid]);
+    }
+
     if (
       children &&
       children.length > 0 &&
@@ -91,6 +100,7 @@ export function RenderComposition({
         children.length > 0 &&
         children.map((child) => (
           <RenderComposition
+            parentUid={uid}
             setSelectedList={setSelectedList}
             setExpandedList={setExpandedList}
             selectedList={selectedList}
