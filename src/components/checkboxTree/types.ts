@@ -15,9 +15,9 @@ export type Composition = {
 };
 
 export type ParentStateHandling = {
-  parentUid?: string;
-  isFirstElement?: boolean;
   selectedList: string[];
+  parent?: Composition;
+  isFirstElement?: boolean;
   setSelectedList: React.Dispatch<React.SetStateAction<string[]>>;
   expandedList: string[];
   setExpandedList: React.Dispatch<React.SetStateAction<string[]>>;

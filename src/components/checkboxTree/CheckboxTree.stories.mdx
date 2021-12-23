@@ -24,9 +24,9 @@ import { CheckboxTree } from "./CheckboxTree.tsx";
 <Preview>
   <Story name="simple">
     <CheckboxTree
-      disabled
+      onChange={console.log}
       expanded={["meat", "meat->pork"]}
-      selected={["meat->pork", "fish", "meat->pork->ham"]}
+      selected={["meat"]}
       composition={[
         {
           uid: "fish",

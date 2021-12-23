@@ -21,10 +21,10 @@ export function CheckboxTree({
   );
 
   const [selectedList, setSelectedList] = React.useState<string[]>(
-    selected && !disabled ? selected : []
+    selected ?? []
   );
   const [expandedList, setExpandedList] = React.useState<string[]>(
-    expanded && !disabled ? expanded : []
+    expanded ?? []
   );
   const [indeterminate, setIndeterminate] = React.useState<string[]>([]);
 
@@ -41,23 +41,22 @@ export function CheckboxTree({
   }, [expandedList, onExpand]);
 
   const getParentsUidsMemo = React.useMemo(
-    () =>
-      selectedList.map((id) => getParentsUids(id, preferredSeparator)).flat(),
-    [selectedList]
+    () => selected?.map((id) => getParentsUids(id, preferredSeparator)).flat(),
+    [selected]
   );
 
   React.useEffect(() => {
-    const allUids = getParentsUidsMemo;
+    const allUids = getParentsUidsMemo ?? [];
 
     setIndeterminate(allUids);
-  }, [selectedList]);
+  }, [selected]);
 
   return (
     <TreeWrap disabled={disabled}>
       {processedTree.map((comp, index) => (
         <RenderComposition
-          selectedList={selectedList}
-          expandedList={expandedList}
+          selectedList={selected ?? []}
+          expandedList={expanded ?? []}
           setSelectedList={setSelectedList}
           setExpandedList={setExpandedList}
           indeterminate={indeterminate}
