@@ -5,7 +5,7 @@ import { CheckboxTree } from "./CheckboxTree.tsx";
 
 # CheckboxTree
 
-> The `CheckboxTree` component accepts an array of `Composition` objects and renders it as a tree of checkboxes.
+> The `CheckboxTree` component accepts an array of `Composition` objects and renders it as a tree of checkboxes. It has to be connected to state (controlled component).
 
 ### CheckboxTree properties
 
@@ -24,7 +24,6 @@ import { CheckboxTree } from "./CheckboxTree.tsx";
 <Preview>
   <Story name="simple">
     <CheckboxTree
-      onChange={console.log}
       expanded={["meat", "meat->pork"]}
       selected={["meat"]}
       composition={[
