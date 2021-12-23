@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import theme from "../../theme";
 
-export const TreeWrap = styled.div<{ disabled: boolean }>`
+export const TreeWrap = styled.div<{ disabled?: boolean }>`
   pointer-events: ${(props) => (props.disabled ? "none" : "auto")};
   opacity: ${(props) => (props.disabled ? 0.3 : 1)};
 `;
