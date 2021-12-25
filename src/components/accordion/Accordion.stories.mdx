@@ -1,4 +1,4 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 import { Accordion, AccordionHeader, AccordionItem } from "./";
 
 <Meta title="Components/Accordion" component={Accordion} />
@@ -13,14 +13,14 @@ import { Accordion, AccordionHeader, AccordionItem } from "./";
 | ---------: | :------: | :------------------------- | :---------- |
 |   children |   true   | AccordionHeader components |             |
 
-<Preview>
+<Canvas>
   <Story name="accordion">
     <Accordion>
       <AccordionHeader title="Header 1" description="description..." />
       <AccordionHeader title="Header 2" description="description..." />
     </Accordion>
   </Story>
-</Preview>
+</Canvas>
 
 # AccordionHeader
 
@@ -40,7 +40,7 @@ import { Accordion, AccordionHeader, AccordionItem } from "./";
 | ---------: | :------: | :--- | :---------- |
 |   children |   true   | any  |             |
 
-<Preview>
+<Canvas>
   <Story name="accordion header">
     <Accordion>
       <AccordionHeader title="Header 1" description="description...">
@@ -54,4 +54,4 @@ import { Accordion, AccordionHeader, AccordionItem } from "./";
       </AccordionHeader>
     </Accordion>
   </Story>
-</Preview>
+</Canvas>

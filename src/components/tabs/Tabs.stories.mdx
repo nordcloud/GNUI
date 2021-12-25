@@ -1,4 +1,4 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 import { Tabs, Tab } from ".";
 import { Button } from "../button";
 import { Text } from "../text";
@@ -38,7 +38,7 @@ import { Flex } from "../container";
 
 ## Default
 
-<Preview>
+<Canvas>
   <Story name="default">
     {() => {
       const [currentStep, setCurrentStep] = React.useState(0);
@@ -66,11 +66,11 @@ import { Flex } from "../container";
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## No Caption
 
-<Preview>
+<Canvas>
   <Story name="nocaption">
     {() => {
       const [currentStep, setCurrentStep] = React.useState(0);
@@ -89,11 +89,11 @@ import { Flex } from "../container";
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Custom Label
 
-<Preview>
+<Canvas>
   <Story name="Custom Label">
     {() => {
       const [currentStep, setCurrentStep] = React.useState(0);
@@ -121,7 +121,7 @@ import { Flex } from "../container";
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Wizard With Buttons
 
@@ -131,7 +131,7 @@ import { Flex } from "../container";
 
 > `buttonsJustify?: string;` - Buttons justify, default: "space-between"
 
-<Preview>
+<Canvas>
   <Story name="With Buttons">
     {() => {
       const [currentStep, setCurrentStep] = React.useState(0);
@@ -185,13 +185,13 @@ import { Flex } from "../container";
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Disabled tab
 
 > `disabled`: `boolean` — Disables switching to a tab by clicking on it
 
-<Preview>
+<Canvas>
   <Story name="disabled tab">
     {() => {
       const [currentStep, setCurrentStep] = React.useState(0);
@@ -233,11 +233,11 @@ import { Flex } from "../container";
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Tab width
 
-<Preview>
+<Canvas>
   <Story name="width">
     {() => {
       const [currentStep, setCurrentStep] = React.useState(0);
@@ -261,4 +261,4 @@ import { Flex } from "../container";
       );
     }}
   </Story>
-</Preview>
+</Canvas>

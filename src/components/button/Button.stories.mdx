@@ -1,4 +1,4 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 import { Button } from ".";
 import { GnuiContainer, Flex } from "../container";
 
@@ -25,30 +25,30 @@ import { GnuiContainer, Flex } from "../container";
 
 ## default button
 
-<Preview>
+<Canvas>
   <Story name="default">
     <Button>Default button</Button>
   </Story>
-</Preview>
+</Canvas>
 
 ## severity
 
 > severity: `medium` | `low`
 
-<Preview>
+<Canvas>
   <Story name="button/severity">
     <Flex justifyContent="space-evenly">
       <Button severity="medium">Secondary button</Button>
       <Button severity="low">Button for use as an icon</Button>
     </Flex>
   </Story>
-</Preview>
+</Canvas>
 
 ## size
 
 > size: `sm` | `md`
 
-<Preview>
+<Canvas>
   <Story name="size">
     <Flex justifyContent="space-evenly">
       <Button size="sm">Size SM</Button>
@@ -56,13 +56,13 @@ import { GnuiContainer, Flex } from "../container";
       <Button>Size Default</Button>
     </Flex>
   </Story>
-</Preview>
+</Canvas>
 
 ## icon
 
 > `icon`: `string`
 
-<Preview>
+<Canvas>
   <Story name="icons">
     <Flex justifyContent="space-evenly">
       <Button icon="plus" severity="low">
@@ -71,13 +71,13 @@ import { GnuiContainer, Flex } from "../container";
       <Button icon="plus" severity="low" />
     </Flex>
   </Story>
-</Preview>
+</Canvas>
 
 ## iconRight
 
 > `iconRight`: `boolean`
 
-<Preview>
+<Canvas>
   <Story name="iconRight">
     <Flex justifyContent="space-evenly">
       <Button iconRight severity="low" icon="trash">
@@ -85,13 +85,13 @@ import { GnuiContainer, Flex } from "../container";
       </Button>
     </Flex>
   </Story>
-</Preview>
+</Canvas>
 
 ## initialState
 
 > `initialState`: `success` | `error` | `loading`
 
-<Preview>
+<Canvas>
   <Story name="initialState">
     <Flex justifyContent="space-evenly">
       <Button initialState="loading">Save changes</Button>
@@ -102,13 +102,13 @@ import { GnuiContainer, Flex } from "../container";
       <Button initialState="error" />
     </Flex>
   </Story>
-</Preview>
+</Canvas>
 
 ## color
 
 > `color`: `string`
 
-<Preview>
+<Canvas>
   <Story name="color">
     <Flex justifyContent="space-evenly">
       <Button color="danger" icon="danger">
@@ -123,23 +123,23 @@ import { GnuiContainer, Flex } from "../container";
       <Button color="#FF1493">HEX color</Button>
     </Flex>
   </Story>
-</Preview>
+</Canvas>
 
 ## disabled
 
 > `disabled`: `boolean`
 
-<Preview>
+<Canvas>
   <Story name="disabled">
     <Button disabled icon="save">
       Disabled button
     </Button>
   </Story>
-</Preview>
+</Canvas>
 
 ## Custom spacing
 
-<Preview>
+<Canvas>
   <Story name="custom-spacing">
     <GnuiContainer>
       <p>
@@ -149,25 +149,25 @@ import { GnuiContainer, Flex } from "../container";
       </p>
     </GnuiContainer>
   </Story>
-</Preview>
+</Canvas>
 
 ## linkTo
 
 > linkTo: `string`
 
-<Preview>
+<Canvas>
   <Story name="button link">
     <Button linkTo="http://google.com" target="_blank">
       Link to
     </Button>
   </Story>
-</Preview>
+</Canvas>
 
 ## display
 
 > display: `flex` | `inline-flex`
 
-<Preview>
+<Canvas>
   <Story name="button link flex">
     <Button display="flex" linkTo="http://google.com" target="_blank">
       Button
@@ -181,4 +181,4 @@ import { GnuiContainer, Flex } from "../container";
       Button
     </Button>
   </Story>
-</Preview>
+</Canvas>

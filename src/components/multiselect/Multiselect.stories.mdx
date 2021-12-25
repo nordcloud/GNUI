@@ -1,4 +1,4 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 import { Select } from ".";
 import theme from "../../theme";
 
@@ -16,7 +16,7 @@ export type SelectProps = {
 
 ### Basic Select
 
-<Preview>
+<Canvas>
   <Story name="basic modal">
     {() => {
       const options = [
@@ -31,11 +31,11 @@ export type SelectProps = {
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ### Multiselect
 
-<Preview>
+<Canvas>
   <Story name="multiselect">
     {() => {
       const options = [
@@ -54,11 +54,11 @@ export type SelectProps = {
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ### Multiselect: colors
 
-<Preview>
+<Canvas>
   <Story name="colors">
     {() => {
       const options = [
@@ -95,4 +95,4 @@ export type SelectProps = {
       );
     }}
   </Story>
-</Preview>
+</Canvas>

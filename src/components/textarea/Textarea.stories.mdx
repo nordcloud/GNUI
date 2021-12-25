@@ -1,4 +1,4 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 import { Textarea } from ".";
 import { GnuiContainer } from "../container";
 import { Spacer } from "../spacer";
@@ -18,25 +18,25 @@ import theme from "../../theme";
 
 ## default
 
-<Preview>
+<Canvas>
   <Story name="default">
     <Textarea />
   </Story>
-</Preview>
+</Canvas>
 
 ## small
 
-<Preview>
+<Canvas>
   <Story name="small">
     <Textarea small />
   </Story>
-</Preview>
+</Canvas>
 
 ## status
 
 > `status`: `success | error`
 
-<Preview>
+<Canvas>
   <Story name="status">
     {() => {
       const [status, setStatus] = React.useState("success");
@@ -61,4 +61,4 @@ import theme from "../../theme";
       );
     }}
   </Story>
-</Preview>
+</Canvas>
