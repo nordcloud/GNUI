@@ -45,6 +45,16 @@ export function RenderComposition({
       setExpandedList([...expandedList, clickedUid]);
     }
   };
+  React.useEffect(() => {
+    if (
+      children &&
+      children.length > 0 &&
+      children.every((child) => selectedList.includes(child.uid)) &&
+      !selectedList.includes(uid)
+    ) {
+      setSelectedList([...selectedList, uid]);
+    }
+  }, [selectedList, setSelectedList, parent, uid]);
 
   React.useEffect(() => {
     if (
