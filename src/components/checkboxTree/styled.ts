@@ -1,13 +1,8 @@
 import styled from "styled-components";
 import theme from "../../theme";
 
-export const TreeWrap = styled.div<{ disabled?: boolean }>`
-  pointer-events: ${(props) => (props.disabled ? "none" : "auto")};
-  opacity: ${(props) => (props.disabled ? 0.3 : 1)};
-`;
-
 export const CheckboxWrap = styled.div`
-  padding: ${theme.spacing.spacing02};
+  padding: ${theme.spacing.spacing01};
 `;
 
 export const TreeItem = styled.div<{ isTopItem: boolean }>`
@@ -17,9 +12,8 @@ export const TreeItem = styled.div<{ isTopItem: boolean }>`
   padding: ${theme.spacing.spacing02};
 `;
 
-export const Indentation = styled.div<{ isRootElement?: boolean }>`
-  padding-left: ${(props) =>
-    props.isRootElement ? theme.spacing.spacing00 : theme.spacing.spacing07};
+export const Indentation = styled.div`
+  padding-left: ${theme.spacing.spacing04};
 `;
 
 export const MinusIcon = styled.div`
