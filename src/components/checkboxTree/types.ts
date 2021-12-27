@@ -5,7 +5,6 @@ export type CheckboxTreeProps = {
   onChange?: (selected: string[]) => void;
   onExpand?: (expanded: string[]) => void;
   preferredSeparator?: string;
-  disabled?: boolean;
 };
 
 export type Composition = {
@@ -15,9 +14,8 @@ export type Composition = {
 };
 
 export type ParentStateHandling = {
-  selectedList: string[];
-  parent?: Composition;
   isFirstElement?: boolean;
+  selectedList: string[];
   setSelectedList: React.Dispatch<React.SetStateAction<string[]>>;
   expandedList: string[];
   setExpandedList: React.Dispatch<React.SetStateAction<string[]>>;
