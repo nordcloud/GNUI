@@ -94,7 +94,7 @@ export function RenderComposition({
         children.length > 0 &&
         children.map((child) => (
           <RenderComposition
-          parent={{ uid, label, children }}
+            parent={{ uid, label, children }}
             setSelectedList={setSelectedList}
             setExpandedList={setExpandedList}
             selectedList={selectedList}

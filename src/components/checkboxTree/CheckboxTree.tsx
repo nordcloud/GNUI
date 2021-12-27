@@ -55,8 +55,8 @@ export function CheckboxTree({
     <TreeWrap disabled={disabled}>
       {processedTree.map((comp, index) => (
         <RenderComposition
-        selectedList={selected ?? []}
-        expandedList={expanded ?? []}
+          selectedList={selected ?? []}
+          expandedList={expanded ?? []}
           setSelectedList={setSelectedList}
           setExpandedList={setExpandedList}
           indeterminate={indeterminate}
