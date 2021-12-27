@@ -22,7 +22,7 @@ export function RenderComposition({
   setExpandedList,
   indeterminate,
   preferredSeparator,
-  parent
+  parent,
 }: RenderCompositionProps): JSX.Element {
   const handleSelect = (treeItem: Composition) => {
     if (!selectedList.includes(treeItem.uid)) {
@@ -58,7 +58,9 @@ export function RenderComposition({
   }, [selectedList]);
 
   return (
-    <Styled.Indentation isRootElement={uid.split(preferredSeparator).length === 1}>
+    <Styled.Indentation
+      isRootElement={uid.split(preferredSeparator).length === 1}
+    >
       <Styled.TreeItem isTopItem={!!isFirstElement}>
         <Flex>
           <div css={{ width: theme.spacing.spacing04 }}>

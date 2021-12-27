@@ -19,7 +19,8 @@ export const TreeItem = styled.div<{ isTopItem: boolean }>`
 
 export const Indentation = styled.div<{ isRootElement?: boolean }>`
   padding-left: ${(props) =>
-    props.isRootElement ? theme.spacing.spacing00 : theme.spacing.spacing07};`;
+    props.isRootElement ? theme.spacing.spacing00 : theme.spacing.spacing07};
+`;
 
 export const MinusIcon = styled.div`
   transform: rotate(90deg);
