@@ -1,4 +1,4 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 import { Checkbox, CheckboxGroup } from ".";
 import { IndeterminateCheckbox } from ".";
 
@@ -16,29 +16,29 @@ import { IndeterminateCheckbox } from ".";
 
 ### Default
 
-<Preview>
+<Canvas>
   <Story name="simple">
     <Checkbox id="checkbox-1" labelText="GNUI Checkbox" />
   </Story>
-</Preview>
+</Canvas>
 
 ### withoutLabel
 
 > Default input type `checkbox` without Label with larger clickable surface.
 
-<Preview>
+<Canvas>
   <Story name="withoutLabel">
     <Checkbox withoutLabel id="checkbox-5" />
   </Story>
-</Preview>
+</Canvas>
 
 ### isIndeterminate
 
-<Preview>
+<Canvas>
   <Story name="isIndeterminate">
     <IndeterminateCheckbox id="321312" indeterminate={true} />
   </Story>
-</Preview>
+</Canvas>
 
 # CheckboxGroup
 
@@ -48,7 +48,7 @@ import { IndeterminateCheckbox } from ".";
 | ---------: | :------: | :------------------ | :---------- |
 |   children |  false   | `ReactElement<any>` |             |
 
-<Preview>
+<Canvas>
   <Story name="group">
     {() => {
       const [value, setValue] = React.useState({
@@ -73,4 +73,4 @@ import { IndeterminateCheckbox } from ".";
       );
     }}
   </Story>
-</Preview>
+</Canvas>

@@ -1,4 +1,4 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 import { PaginationBox } from ".";
 
 <Meta title="Components/Pagination" component={PaginationBox} />
@@ -19,15 +19,15 @@ import { PaginationBox } from ".";
 
 ## default
 
-<Preview>
+<Canvas>
   <Story name="default">
     <PaginationBox count={400} from={0} size={20} setPage={0} setSize={20} />
   </Story>
-</Preview>
+</Canvas>
 
 ## small
 
-<Preview>
+<Canvas>
   <Story name="small">
     <PaginationBox
       small
@@ -38,4 +38,4 @@ import { PaginationBox } from ".";
       setSize={20}
     />
   </Story>
-</Preview>
+</Canvas>

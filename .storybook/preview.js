@@ -7,7 +7,9 @@ import "./global.css";
 
 addParameters({
   options: {
-    showRoots: true,
+    sidebar: {
+      showRoots: true,
+    },
     storySort: {
       order: [
         "Foundation",

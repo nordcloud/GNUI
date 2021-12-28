@@ -1,4 +1,4 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 import { Text } from "../text";
 import { Flex } from "../container";
 import { PieChart } from ".";
@@ -20,7 +20,7 @@ import { SVGIcon } from "../svgicon";
 
 ## Default
 
-<Preview>
+<Canvas>
   <Story name="default">
     <PieChart progress={33} size={96} strokeWidth={15}>
       <Text className="chartValue" size="lg" tag="span" weight="medium">
@@ -31,11 +31,11 @@ import { SVGIcon } from "../svgicon";
       </Text>
     </PieChart>
   </Story>
-</Preview>
+</Canvas>
 
 ## Stroke Width
 
-<Preview>
+<Canvas>
   <Story name="strokeWidth">
     <Flex justifyContent="space-evenly">
       <PieChart progress={33} size={96} strokeWidth={5}>
@@ -56,13 +56,13 @@ import { SVGIcon } from "../svgicon";
       </PieChart>
     </Flex>
   </Story>
-</Preview>
+</Canvas>
 
 ## Color
 
 - You can change color using `color` props: `danger` | `warning` | `success` | `notification`;
 
-<Preview>
+<Canvas>
   <Story name="color">
     <Flex justifyContent="space-evenly">
       <PieChart progress={13} size={96} strokeWidth={15} color="danger">
@@ -105,4 +105,4 @@ import { SVGIcon } from "../svgicon";
       </PieChart>
     </Flex>
   </Story>
-</Preview>
+</Canvas>

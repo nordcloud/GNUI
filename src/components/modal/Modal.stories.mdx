@@ -1,4 +1,4 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 import { Modal, ModalConfirm } from ".";
 import { Button } from "../button";
 
@@ -30,7 +30,7 @@ import { Button } from "../button";
 
 ### Basic modal
 
-<Preview>
+<Canvas>
   <Story name="basic modal">
     {() => {
       const [isOpen, setOpen] = React.useState(false);
@@ -53,11 +53,11 @@ import { Button } from "../button";
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ### Modal with actions
 
-<Preview>
+<Canvas>
   <Story name="modal with actions">
     {() => {
       const [isOpen, setOpen] = React.useState(false);
@@ -93,11 +93,11 @@ import { Button } from "../button";
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ### Modal Confirm
 
-<Preview>
+<Canvas>
   <Story name="confirm modal">
     {() => {
       const [isOpen, setOpen] = React.useState(false);
@@ -119,4 +119,4 @@ import { Button } from "../button";
       );
     }}
   </Story>
-</Preview>
+</Canvas>

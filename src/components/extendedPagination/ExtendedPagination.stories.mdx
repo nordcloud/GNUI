@@ -1,4 +1,4 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 import { ExtendedPaginationBox } from ".";
 
 <Meta title="Components/ExtendedPagination" component={ExtendedPaginationBox} />
@@ -20,58 +20,58 @@ import { ExtendedPaginationBox } from ".";
 
 ### first page
 
-<Preview>
+<Canvas>
   <Story name="first-page">
     <ExtendedPaginationBox count={400} from={0} size={20} setPage={0} setSize={20} />
   </Story>
-</Preview>
+</Canvas>
 
 ### second page
 
-<Preview>
+<Canvas>
   <Story name="second-page">
     <ExtendedPaginationBox count={400} from={20} size={20} setPage={0} setSize={20} />
   </Story>
-</Preview>
+</Canvas>
 
 ### middle
 
-<Preview>
+<Canvas>
   <Story name="middle">
     <ExtendedPaginationBox count={400} from={240} size={20} setPage={0} setSize={20} />
   </Story>
-</Preview>
+</Canvas>
 
 ### second to last page
 
-<Preview>
+<Canvas>
   <Story name="second-to-last-page">
     <ExtendedPaginationBox count={400} from={360} size={20} setPage={0} setSize={20} />
   </Story>
-</Preview>
+</Canvas>
 
 ### last page
 
-<Preview>
+<Canvas>
   <Story name="last-page">
     <ExtendedPaginationBox count={400} from={380} size={20} setPage={0} setSize={20} />
   </Story>
-</Preview>
+</Canvas>
 
 ### different edge cases in the middle of the pagination
 
-<Preview>
+<Canvas>
   <Story name="edge-cases">
     <ExtendedPaginationBox count={400} from={80} size={20} setPage={0} setSize={20} />
     <ExtendedPaginationBox count={400} from={100} size={20} setPage={0} setSize={20} />
     <ExtendedPaginationBox count={400} from={280} size={20} setPage={0} setSize={20} />
     <ExtendedPaginationBox count={400} from={300} size={20} setPage={0} setSize={20} />
   </Story>
-</Preview>
+</Canvas>
 
 ### short pagination
 
-<Preview>
+<Canvas>
   <Story name="short">
     <ExtendedPaginationBox count={60} from={0} size={20} setPage={0} setSize={20} />
     <ExtendedPaginationBox count={60} from={40} size={20} setPage={0} setSize={20} />
@@ -85,11 +85,11 @@ import { ExtendedPaginationBox } from ".";
     <ExtendedPaginationBox count={140} from={20} size={20} setPage={0} setSize={20} />
     <ExtendedPaginationBox count={140} from={60} size={20} setPage={0} setSize={20} />
   </Story>
-</Preview>
+</Canvas>
 
 ## small
 
-<Preview>
+<Canvas>
   <Story name="small">
     <ExtendedPaginationBox
       small
@@ -100,4 +100,4 @@ import { ExtendedPaginationBox } from ".";
       setSize={20}
     />
   </Story>
-</Preview>
+</Canvas>

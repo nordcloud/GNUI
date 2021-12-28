@@ -1,4 +1,4 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 import { Table } from ".";
 import { Box } from "../box";
 import { Input } from "../input";
@@ -20,7 +20,7 @@ import { Flex } from "../container";
 
 ### Simple Table
 
-<Preview>
+<Canvas>
   <Story name="Simple">
     <Table>
       <Table.thead>
@@ -49,11 +49,11 @@ import { Flex } from "../container";
       </Table.tbody>
     </Table>
   </Story>
-</Preview>
+</Canvas>
 
 ### Striped Table
 
-<Preview>
+<Canvas>
   <Story name="Striped">
     <Table striped>
       <Table.thead>
@@ -82,11 +82,11 @@ import { Flex } from "../container";
       </Table.tbody>
     </Table>
   </Story>
-</Preview>
+</Canvas>
 
 ### Small Table
 
-<Preview>
+<Canvas>
   <Story name="Small">
     <Table small>
       <Table.thead>
@@ -115,11 +115,11 @@ import { Flex } from "../container";
       </Table.tbody>
     </Table>
   </Story>
-</Preview>
+</Canvas>
 
 ### Small Table with small font (tiny)
 
-<Preview>
+<Canvas>
   <Story name="Small font (tiny)">
     <Table tiny>
       <Table.thead>
@@ -148,11 +148,11 @@ import { Flex } from "../container";
       </Table.tbody>
     </Table>
   </Story>
-</Preview>
+</Canvas>
 
 ### Hoverline Table
 
-<Preview>
+<Canvas>
   <Story name="Hoverline">
     <Table hoverline>
       <Table.thead>
@@ -181,11 +181,11 @@ import { Flex } from "../container";
       </Table.tbody>
     </Table>
   </Story>
-</Preview>
+</Canvas>
 
 ### Table with Header box and Pagination
 
-<Preview>
+<Canvas>
   <Story name="table-with-header">
     <Box boxStyle="lightGrey" innerSpacing="spacing03" spacing="spacing04">
       <Flex>
@@ -232,4 +232,4 @@ import { Flex } from "../container";
       </Table.tbody>
     </Table>
   </Story>
-</Preview>
+</Canvas>

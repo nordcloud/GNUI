@@ -1,4 +1,4 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 import { Col, Row } from "react-awesome-styled-grid";
 import theme from "../theme";
 import { Flex } from "../components/container";
@@ -10,7 +10,7 @@ import { Spacer } from "../components/spacer";
 
 <Meta title="Pages/OU Details" />
 
-<Preview>
+<Canvas>
   <Story name="default">
     <Box spacing={"spacing02"} style={{ maxWidth: "1440px" }}>
       <Text weight="medium">Environments attached to Organization Unit</Text>
@@ -110,4 +110,4 @@ import { Spacer } from "../components/spacer";
       </Box>
     </Box>
   </Story>
-</Preview>
+</Canvas>
