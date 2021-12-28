@@ -1,4 +1,4 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 import { BarChart } from "./";
 import theme from "../../theme";
 
@@ -24,7 +24,7 @@ import theme from "../../theme";
 
 ## Default
 
-<Preview>
+<Canvas>
   <Story name="default">
     {() => {
       const values = [
@@ -44,4 +44,4 @@ import theme from "../../theme";
       return <BarChart values={values} />;
     }}
   </Story>
-</Preview>
+</Canvas>

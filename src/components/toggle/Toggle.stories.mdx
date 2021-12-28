@@ -1,4 +1,4 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 import { Toggle } from ".";
 import { Spacer } from "../spacer";
 
@@ -19,7 +19,7 @@ import { Spacer } from "../spacer";
 
 ### Default
 
-<Preview>
+<Canvas>
   <Story name="default">
     {() => {
       const [toggle, setToggle] = React.useState(false);
@@ -32,13 +32,13 @@ import { Spacer } from "../spacer";
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ### Small
 
 > - `size`: `small`
 
-<Preview>
+<Canvas>
   <Story name="small">
     {() => {
       const [toggle, setToggle] = React.useState(false);
@@ -53,13 +53,13 @@ import { Spacer } from "../spacer";
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ### Color Status
 
 > - `status`: `success`, `danger`, `warning`, `notification`
 
-<Preview>
+<Canvas>
   <Story name="status">
     {() => {
       const [toggle, setToggle] = React.useState(false);
@@ -108,4 +108,4 @@ import { Spacer } from "../spacer";
       );
     }}
   </Story>
-</Preview>
+</Canvas>

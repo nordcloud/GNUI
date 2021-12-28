@@ -1,4 +1,4 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 import { CheckboxTree } from "./CheckboxTree.tsx";
 
 <Meta title="Forms/CheckboxTree" component={CheckboxTree} />
@@ -21,7 +21,7 @@ import { CheckboxTree } from "./CheckboxTree.tsx";
 
 ### Default
 
-<Preview>
+<Canvas>
   <Story name="simple">
     <CheckboxTree
       expanded={["meat", "meat->pork"]}
@@ -80,4 +80,4 @@ import { CheckboxTree } from "./CheckboxTree.tsx";
       ]}
     />
   </Story>
-</Preview>
+</Canvas>

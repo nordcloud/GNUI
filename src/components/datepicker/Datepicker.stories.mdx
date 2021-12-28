@@ -1,4 +1,4 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 import { addDays } from "date-fns";
 import { Datepicker } from ".";
 import { Calendar, DateRangePicker } from "react-date-range";
@@ -17,7 +17,7 @@ type DatepickerProps = {
 
 > Primary button is default as well.
 
-<Preview>
+<Canvas>
   <Story name="datepicker">
     {() => {
       const handleSelect = (date) => {
@@ -30,9 +30,9 @@ type DatepickerProps = {
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
-<Preview>
+<Canvas>
   <Story name="daterangepicker">
     {() => {
       const handleSelect = (ranges) => {
@@ -59,4 +59,4 @@ type DatepickerProps = {
       );
     }}
   </Story>
-</Preview>
+</Canvas>

@@ -1,4 +1,4 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 import { PageTitle, PageTitleBreadcrumbs } from ".";
 
 <Meta title="Patterns/PageTitleBreadcrumbs" component={PageTitleBreadcrumbs} />
@@ -11,11 +11,11 @@ import { PageTitle, PageTitleBreadcrumbs } from ".";
 | ---------: | :------: | :----- | :---------- |
 |      title |   true   | string |             |
 
-<Preview>
+<Canvas>
   <Story name="pagetitle">
     <PageTitle title="Page Heading" />
   </Story>
-</Preview>
+</Canvas>
 
 # Page Title with Breadcrumbs
 
@@ -33,7 +33,7 @@ import { PageTitle, PageTitleBreadcrumbs } from ".";
 |      label |   true   | string |             |
 |        uri |   true   | string |             |
 
-<Preview>
+<Canvas>
   <Story name="breadcrumbs">
     <PageTitleBreadcrumbs
       title="Page Heading"
@@ -44,4 +44,4 @@ import { PageTitle, PageTitleBreadcrumbs } from ".";
       ]}
     />
   </Story>
-</Preview>
+</Canvas>

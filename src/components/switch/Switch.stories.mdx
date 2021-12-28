@@ -1,4 +1,4 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 import { Switch } from ".";
 import { GnuiContainer } from "../container";
 import { Spacer } from "../spacer";
@@ -20,15 +20,15 @@ import theme from "../../theme";
 
 ## default
 
-<Preview>
+<Canvas>
   <Story name="default">
     <Switch labelText="My Switch Button" />
   </Story>
-</Preview>
+</Canvas>
 
 ## position
 
-<Preview>
+<Canvas>
   <Story name="position">
     <GnuiContainer>
       <Switch name="label-left" position="left" labelText="My Switch Button" />
@@ -40,7 +40,7 @@ import theme from "../../theme";
       />
     </GnuiContainer>
   </Story>
-</Preview>
+</Canvas>
 
 ## severity
 
@@ -48,7 +48,7 @@ import theme from "../../theme";
 >
 > - `severity`: `string` — [`success`, `danger`, `warning`, `notification`]
 
-<Preview>
+<Canvas>
   <Story name="severity">
     {() => {
       const [toggle, setToggle] = React.useState(true);
@@ -93,4 +93,4 @@ import theme from "../../theme";
       );
     }}
   </Story>
-</Preview>
+</Canvas>

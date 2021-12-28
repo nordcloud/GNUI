@@ -1,4 +1,4 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 import { Tooltip } from ".";
 import { Text } from "../text";
 import {  Flex } from "../container";
@@ -21,7 +21,7 @@ import { Input } from "../input";
 
 > `caption: string;` - caption for the tooltip
 
-<Preview>
+<Canvas>
   <Story name="default">
     <Flex
       justifyContent="space-evenly"
@@ -32,13 +32,13 @@ import { Input } from "../input";
       </Tooltip>
     </Flex>
   </Story>
-</Preview>
+</Canvas>
 
 ## Bottom Tooltip
 
 > `bottom: boolean;` - positioning tooltip at the bottom
 
-<Preview>
+<Canvas>
   <Story name="bottom">
     <Flex
       justifyContent="space-evenly"
@@ -49,13 +49,13 @@ import { Input } from "../input";
       </Tooltip>
     </Flex>
   </Story>
-</Preview>
+</Canvas>
 
 ## Tooltip Position
 
 > - `position`: `left` | `right` - you can align the tooltip to the right side or to the left side of your child element
 
-<Preview>
+<Canvas>
   <Story name="position">
     <Flex
       justifyContent="space-evenly"
@@ -79,13 +79,13 @@ import { Input } from "../input";
       </div>
     </Flex>
   </Story>
-</Preview>
+</Canvas>
 
 ## Tooltip Status
 
 > - `status`: `danger` | `warning` | `success` | `notification`
 
-<Preview>
+<Canvas>
   <Story name="status">
     <Flex
       justifyContent="space-evenly"
@@ -113,11 +113,11 @@ import { Input } from "../input";
       </div>
     </Flex>
   </Story>
-</Preview>
+</Canvas>
 
 ## Tooltip with other Components
 
-<Preview>
+<Canvas>
   <Story name="components">
     <Flex
       justifyContent="space-evenly"
@@ -146,4 +146,4 @@ import { Input } from "../input";
       </div>
     </Flex>
   </Story>
-</Preview>
+</Canvas>

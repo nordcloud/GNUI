@@ -1,4 +1,4 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 import { List } from ".";
 
 <Meta title="Components/List" component={List} />
@@ -21,35 +21,35 @@ import { List } from ".";
 
 > Basic unstyled list. Takes a string or number array
 
-<Preview>
+<Canvas>
   <Story name="default">
     <List items={["List item", "Second list item"]} />
   </Story>
-</Preview>
+</Canvas>
 
 ### spacing
 
 > Default list with custom spacing
 
-<Preview>
+<Canvas>
   <Story name="spacing">
     <List spacing="0 0 1.15rem 0" items={["List item", "Second list item"]} />
   </Story>
-</Preview>
+</Canvas>
 
 ### horizontal
 
 > Horizontal list. Takes a string or number array
 
-<Preview>
+<Canvas>
   <Story name="horizontal">
     <List horizontal items={["List item", "Second list item"]} />
   </Story>
-</Preview>
+</Canvas>
 
 ### unordered
 
-<Preview>
+<Canvas>
   <Story name="unordered">
     <List
       unordered
@@ -59,13 +59,13 @@ import { List } from ".";
       ]}
     />
   </Story>
-</Preview>
+</Canvas>
 
 ### hasDescription
 
 > List with description.
 
-<Preview>
+<Canvas>
   <Story name="hasDescription">
     <List
       hasDescription
@@ -78,4 +78,4 @@ import { List } from ".";
       ]}
     />
   </Story>
-</Preview>
+</Canvas>

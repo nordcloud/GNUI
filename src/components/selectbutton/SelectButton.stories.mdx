@@ -1,4 +1,4 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 import { MultipleSelect, SelectButton } from ".";
 import { Text } from "../text";
 
@@ -26,7 +26,7 @@ import { Text } from "../text";
 
 ### Default
 
-<Preview>
+<Canvas>
   <Story name="default">
     {() => {
       const [value, setValue] = React.useState();
@@ -57,13 +57,13 @@ import { Text } from "../text";
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ### Small
 
 > - `size`: `string` — [`small`]
 
-<Preview>
+<Canvas>
   <Story name="small">
     {() => {
       const [value, setValue] = React.useState();
@@ -94,13 +94,13 @@ import { Text } from "../text";
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ### Color Status
 
 > - `status`: `string` — [`success`, `danger`, `warning`, `notification`]
 
-<Preview>
+<Canvas>
   <Story name="status">
     {() => {
       const [value, setValue] = React.useState();
@@ -206,4 +206,4 @@ import { Text } from "../text";
       );
     }}
   </Story>
-</Preview>
+</Canvas>
