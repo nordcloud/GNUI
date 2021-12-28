@@ -1,7 +1,7 @@
 import {
   Meta,
   Story,
-  Preview,
+  Canvas,
   Title,
   Description,
 } from "@storybook/addon-docs/blocks";
@@ -32,7 +32,7 @@ import { PaginationBox } from "../pagination/Pagination.tsx";
 
 ### default
 
-<Preview>
+<Canvas>
   <Story name="default">
     {() => {
       const [isOpen, setIsOpen] = React.useState(false);
@@ -55,13 +55,13 @@ import { PaginationBox } from "../pagination/Pagination.tsx";
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ### footer
 
 You can pass Buttons to footer, and it will displayed at the bottom of the Sidebar.
 
-<Preview>
+<Canvas>
   <Story name="footer">
     {() => {
       const [isOpen, setIsOpen] = React.useState(false);
@@ -90,13 +90,13 @@ You can pass Buttons to footer, and it will displayed at the bottom of the Sideb
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ### footer with pagination
 
 You can pass PaginationBox, and it will displayed at the bottom of the Sidebar.
 
-<Preview>
+<Canvas>
   <Story name="footer pagination">
     {() => {
       const [isOpen, setIsOpen] = React.useState(false);
@@ -129,13 +129,13 @@ You can pass PaginationBox, and it will displayed at the bottom of the Sidebar.
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ### side
 
 Sidebar in default is displayed on the right side, but optionally you can change this behaviour with simple prop `side='onLeft'`.
 
-<Preview>
+<Canvas>
   <Story name="side">
     {() => {
       const [isOpen, setIsOpen] = React.useState(false);
@@ -176,13 +176,13 @@ Sidebar in default is displayed on the right side, but optionally you can change
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ### width
 
 > If you don't need default breakpoints and needs just to hardcode `width` value you can provide it with `width` prop.
 
-<Preview>
+<Canvas>
   <Story name="custom width">
     {() => {
       const [isOpen20, setIsOpen20] = React.useState(false);
@@ -236,4 +236,4 @@ Sidebar in default is displayed on the right side, but optionally you can change
       );
     }}
   </Story>
-</Preview>
+</Canvas>

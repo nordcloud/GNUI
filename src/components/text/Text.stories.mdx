@@ -1,4 +1,4 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 import { Text } from ".";
 import { GnuiContainer } from "../container";
 
@@ -24,17 +24,17 @@ import { GnuiContainer } from "../container";
 |     nowrap |  false   | boolean                                                                                               |                                                                                                                                                             |
 |    isTitle |  false   | boolean                                                                                               |                                                                                                                                                             |
 
-<Preview>
+<Canvas>
   <Story name="simple">
     <Text>Default paragraph.</Text>
   </Story>
-</Preview>
+</Canvas>
 
 ### size
 
 > `size`: `string` — ["xs" | "sm" | "md" | "lg" | "xl" | "xxl"]
 
-<Preview>
+<Canvas>
   <Story name="size">
     <GnuiContainer>
       <Text size="xs">(xs) Extra Small size (10px)</Text>
@@ -45,13 +45,13 @@ import { GnuiContainer } from "../container";
       <Text size="xxl">(xxl) Extra Large size (32px)</Text>
     </GnuiContainer>
   </Story>
-</Preview>
+</Canvas>
 
 ### tag
 
 > `tag`: `string` — `Text` can can be rendered as any other HTML tag instead of `p` (i.e. can be rendered as a `span`). Check this in your dev-tools (<kbd>CTRL</kbd> + <kbd>C</kbd> in Chrome). Uses `as` prop from `styled-components` under the hood.
 
-<Preview>
+<Canvas>
   <Story name="tag">
     <GnuiContainer>
       <Text tag="div">
@@ -59,13 +59,13 @@ import { GnuiContainer } from "../container";
       </Text>
     </GnuiContainer>
   </Story>
-</Preview>
+</Canvas>
 
 ### weight
 
 > `weight`: `string` - ["regular" | "medium" | "bold"]
 
-<Preview>
+<Canvas>
   <Story name="weight">
     <GnuiContainer>
       <Text weight="regular">Lorem ipsum solor domet.</Text>
@@ -73,13 +73,13 @@ import { GnuiContainer } from "../container";
       <Text weight="bold">Lorem ipsum solor domet.</Text>
     </GnuiContainer>
   </Story>
-</Preview>
+</Canvas>
 
 ### color
 
 > `color`: `string` - GNUI as first looks for the value in `theme.colors` and if color doesn't exist there `color` will be used as is.
 
-<Preview>
+<Canvas>
   <Story name="color">
     <GnuiContainer>
       <Text color="danger">Lorem ipsum solor domet.</Text>
@@ -89,26 +89,26 @@ import { GnuiContainer } from "../container";
       <Text color="#ccc">Lorem ipsum solor domet.</Text>
     </GnuiContainer>
   </Story>
-</Preview>
+</Canvas>
 
 ### textStyle
 
 > `textStyle`: `string` - ["normal" | "italic"]
 
-<Preview>
+<Canvas>
   <Story name="textStyle">
     <GnuiContainer>
       <Text textStyle="normal">Lorem ipsum solor domet.</Text>
       <Text textStyle="italic">Lorem ipsum solor domet.</Text>
     </GnuiContainer>
   </Story>
-</Preview>
+</Canvas>
 
 ### align
 
 > `align`: `boolean`
 
-<Preview>
+<Canvas>
   <Story name="align">
     <GnuiContainer>
       <Text align="left">Lorem ipsum solor domet.</Text>
@@ -116,16 +116,16 @@ import { GnuiContainer } from "../container";
       <Text align="right">Lorem ipsum solor domet.</Text>
     </GnuiContainer>
   </Story>
-</Preview>
+</Canvas>
 
 ### isTitle
 
 > `isTitle`: `boolean`
 
-<Preview>
+<Canvas>
   <Story name="isTitle">
     <GnuiContainer>
       <Text isTitle="true">Lorem ipsum solor domet.</Text>
     </GnuiContainer>
   </Story>
-</Preview>
+</Canvas>

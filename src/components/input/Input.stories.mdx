@@ -1,4 +1,4 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 import { Input, Label, Description, Upload } from ".";
 import { GnuiContainer } from "../container";
 import { Button } from "../button";
@@ -11,11 +11,11 @@ import { InputSearch } from "./InputSearch.tsx";
 
 > Inputs type defaults to `text`.
 
-<Preview>
+<Canvas>
   <Story name="input">
     <Input name="input" placeholder="Placeholder" title="Title" />
   </Story>
-</Preview>
+</Canvas>
 
 ## Input properties
 
@@ -40,11 +40,11 @@ import { InputSearch } from "./InputSearch.tsx";
 
 > `name`: `string`
 
-<Preview>
+<Canvas>
   <Story name="name">
     <Input name="Thats my name" title="That's my title" />
   </Story>
-</Preview>
+</Canvas>
 
 ### type
 
@@ -52,7 +52,7 @@ import { InputSearch } from "./InputSearch.tsx";
 
 For now it works good for two types: default `text` and `search`. The second one displays an icon before text. **TBC**
 
-<Preview>
+<Canvas>
   <Story name="type">
     <Input
       name="search-input"
@@ -61,7 +61,7 @@ For now it works good for two types: default `text` and `search`. The second one
       title="Search input"
     />
   </Story>
-</Preview>
+</Canvas>
 
 ### placeholder
 
@@ -73,17 +73,17 @@ Placeholder text inside input element
 
 > `disabled`: `boolean`
 
-<Preview>
+<Canvas>
   <Story name="disabled">
     <Input name="disabled-input" placeholder="Disabled input" disabled />
   </Story>
-</Preview>
+</Canvas>
 
 ### required
 
 > `required`: `boolean`
 
-<Preview>
+<Canvas>
   <Story name="required">
     <>
       <Label name="Label" htmlFor="required-id" required />
@@ -94,45 +94,45 @@ Placeholder text inside input element
       />
     </>
   </Story>
-</Preview>
+</Canvas>
 
 ### small
 
-<Preview>
+<Canvas>
   <Story name="small">
     <>
       <Label name="Label" htmlFor="small-id" required />
       <Input name="required-input" id="small-id" placeholder="Small" small />
     </>
   </Story>
-</Preview>
+</Canvas>
 
 ### upload
 
-<Preview>
+<Canvas>
   <Story name="upload">
     <>
       <Upload name="upload" placeholder="Select a file to upload" />
     </>
   </Story>
-</Preview>
+</Canvas>
 
 ### icon
 
-<Preview>
+<Canvas>
   <Story name="icon">
     <>
       <Label name="Label" htmlFor="icon-id" required />
       <Input name="required-input" id="icon-id" placeholder="" icon="sidebar" />
     </>
   </Story>
-</Preview>
+</Canvas>
 
 ### status
 
 > `status`: `success | error`
 
-<Preview>
+<Canvas>
   <Story name="status">
     {() => {
       const [status, setStatus] = React.useState("success");
@@ -161,13 +161,13 @@ Placeholder text inside input element
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## Label and description
 
 > You can add `Label` before `Input` and `Description` after it. Labels name is what exactly will be displayed as a text above `Input`.
 
-<Preview>
+<Canvas>
   <Story name="label & description">
     <GnuiContainer>
       <Label name="Label" htmlFor="description-id" />
@@ -179,11 +179,11 @@ Placeholder text inside input element
       <Description>Inputs description</Description>
     </GnuiContainer>
   </Story>
-</Preview>
+</Canvas>
 
 ### clear
 
-<Preview>
+<Canvas>
   <Story name="clear">
     <>
       <Label name="Label" htmlFor="clear-id" required />
@@ -199,11 +199,11 @@ Placeholder text inside input element
       />
     </>
   </Story>
-</Preview>
+</Canvas>
 
 ### search
 
-<Preview>
+<Canvas>
   <Story name="search">
     <>
       <InputSearch
@@ -213,4 +213,4 @@ Placeholder text inside input element
       />
     </>
   </Story>
-</Preview>
+</Canvas>

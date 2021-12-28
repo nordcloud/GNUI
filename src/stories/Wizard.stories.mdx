@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 import { Tabs, Tab, ButtonPrevious, ButtonNext } from "../components/tabs";
 import { Text } from "../components/text";
 import { Button } from "../components/button";
@@ -43,7 +43,7 @@ type TabsProps = {
 > `nextButton?: string;` - label for Next button
 > `submitButton?: string;` - label for Submit button
 
-<Preview>
+<Canvas>
   <Story name="default">
     {() => {
       const [isCurrentStep, setCurrentStep] = React.useState(0);
@@ -140,11 +140,11 @@ type TabsProps = {
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 > `disabled?: boolean;` - makes the step non-clickable
 
-<Preview>
+<Canvas>
   <Story name="disabled">
     {() => {
       const [isCurrentStep, setCurrentStep] = React.useState(0);
@@ -240,4 +240,4 @@ type TabsProps = {
       );
     }}
   </Story>
-</Preview>
+</Canvas>

@@ -1,4 +1,4 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 import { Radio, RadioGroup } from ".";
 
 <Meta title="Forms/Radiobutton" component={Radio} />
@@ -13,11 +13,11 @@ import { Radio, RadioGroup } from ".";
 | ---------: | :------: | :----- | :------------------------- |
 |  labelText |   true   | string | label for the radio button |
 
-<Preview>
+<Canvas>
   <Story name="simple">
     <Radio id="radiobutton" labelText="GNUI Radio button" />
   </Story>
-</Preview>
+</Canvas>
 
 ## RadioGroup
 
@@ -29,7 +29,7 @@ import { Radio, RadioGroup } from ".";
 | ---------: | :------: | :----- | :---------- |
 |       name |   true   | string |             |
 
-<Preview>
+<Canvas>
   <Story name="group">
     <RadioGroup name="radiogroup">
       <Radio id="button1" labelText="New York" value="ny" />
@@ -37,4 +37,4 @@ import { Radio, RadioGroup } from ".";
       <Radio id="button3" labelText="Los Angeles" value="la" />
     </RadioGroup>
   </Story>
-</Preview>
+</Canvas>

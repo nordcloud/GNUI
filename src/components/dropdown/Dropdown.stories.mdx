@@ -1,4 +1,4 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 import { Dropdown } from ".";
 import { GnuiContainer } from "../container";
 import { Spacer } from "../spacer";
@@ -25,7 +25,7 @@ import { Text } from "../text";
 
 ## dropdown with search
 
-<Preview>
+<Canvas>
   <Story name="dropdown">
     {() => {
       const options = [
@@ -58,11 +58,11 @@ import { Text } from "../text";
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ## dropdown without search
 
-<Preview>
+<Canvas>
   <Story name="dropdown without search">
     {() => {
       const options = [
@@ -96,4 +96,4 @@ import { Text } from "../text";
       );
     }}
   </Story>
-</Preview>
+</Canvas>

@@ -5,7 +5,7 @@ I decide to wrote this short guide, because I'd love if we will write consistent
 ### Add JavaScript imports
 
 ```javascript
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 import { COMPONENT_NAME } from "../components/COMPONENT_NAME";
 ```
 
@@ -16,11 +16,11 @@ Add main header as COMPONENT_NAME and then write shortest and easiest variant of
 ```markdown
 # COMPONENT_NAME
 
-<Preview>
-  <Story name="DEFAULT_COMPONENT>
+<Canvas>
+  <Story name="DEFAULT_COMPONENT">
     <COMPONENT_NAME />
   </Story>
-</Preview>
+</Canvas>
 ```
 
 ### Props
@@ -46,11 +46,11 @@ Describe all props in verbose way with examples if needed.
 
 > `prop: type` — <Provide some description if needed>
 
-<Preview>
+<Canvas>
   <Story name='default'>
     <COMPONENT_NAME prop='PROP_NAME' />
   </Story>
-</Preview>
+</Canvas>
 ```
 
 #### Example:
@@ -60,7 +60,7 @@ Describe all props in verbose way with examples if needed.
 
 > `color?: string` — color takes value from `theme` if exists or use provided value as is.
 
-<Preview>
+<Canvas>
   <Story name='color'>
     <Box color='danger'>
       This text will get color from theme.
@@ -69,5 +69,5 @@ Describe all props in verbose way with examples if needed.
       As crimson doesn't exist in theme text will be #DC143C.
     </Box>
   </Story>
-</Preview>
+</Canvas>
 ```
