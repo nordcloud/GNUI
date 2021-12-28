@@ -1,4 +1,4 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 import { Spacer } from ".";
 import { GnuiContainer, Flex } from "../container";
 import { Text } from "../text";
@@ -21,7 +21,7 @@ import theme from "../../theme";
 |     border |  false   | string         | border styles                          |
 |     margin |  false   | number, string |                                        |
 
-<Preview>
+<Canvas>
   <Story name="default">
     <Flex>
       <GnuiContainer
@@ -47,9 +47,9 @@ import theme from "../../theme";
       </GnuiContainer>
     </Flex>
   </Story>
-</Preview>
+</Canvas>
 
-<Preview>
+<Canvas>
   <Story name="margin">
     <GnuiContainer>
       <GnuiContainer
@@ -77,4 +77,4 @@ import theme from "../../theme";
       </GnuiContainer>
     </GnuiContainer>
   </Story>
-</Preview>
+</Canvas>

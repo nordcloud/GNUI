@@ -1,4 +1,4 @@
-import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 import { Message } from ".";
 import { Text } from "../text";
 import { Spacer } from "../spacer";
@@ -19,7 +19,7 @@ import { Spacer } from "../spacer";
 
 ## default
 
-<Preview>
+<Canvas>
   <Story name="default">
     <Message>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -29,11 +29,11 @@ import { Spacer } from "../spacer";
       velit esse cillum dolore eu fugiat nulla pariatur.
     </Message>
   </Story>
-</Preview>
+</Canvas>
 
 ## status
 
-<Preview>
+<Canvas>
   <Story name="status">
     <>
       <Message status="success" image="success">
@@ -53,4 +53,4 @@ import { Spacer } from "../spacer";
       </Message>
     </>
   </Story>
-</Preview>
+</Canvas>

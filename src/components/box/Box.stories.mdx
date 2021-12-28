@@ -2,7 +2,7 @@ import {
   Meta,
   Title,
   Story,
-  Preview,
+  Canvas,
   Description,
   Props,
 } from "@storybook/addon-docs/blocks";
@@ -41,17 +41,17 @@ import theme from "../../theme";
 
 ### default
 
-<Preview>
+<Canvas>
   <Story name="box">
     <Box>Default box</Box>
   </Story>
-</Preview>
+</Canvas>
 
 ### boxStyle
 
 > boxStyle: `lightGrey` | `grey`
 
-<Preview>
+<Canvas>
   <Story name="boxStyle">
     <Flex justifyContent="space-evenly">
       <Box boxStyle="lightGrey">Light grey box</Box>
@@ -60,23 +60,23 @@ import theme from "../../theme";
       <Box boxStyle="grey">Grey box</Box>
     </Flex>
   </Story>
-</Preview>
+</Canvas>
 
 ### dark
 
 > dark: `boolean`
 
-<Preview>
+<Canvas>
   <Story name="dark">
     <Box dark>Dark box</Box>
   </Story>
-</Preview>
+</Canvas>
 
 ### border
 
 > `border`: `string` - [`default`, `medium`, `bold`, `grey`, `disabled`, `darkenGrey`, `dark`, `success`, `danger`, `warning`, `notification`, `transparent`] or a custom border
 
-<Preview>
+<Canvas>
   <Story name="border">
     <GnuiContainer>
       <Box border="default">Default border</Box>
@@ -90,13 +90,13 @@ import theme from "../../theme";
       <Box border="1px solid violet">Custom border</Box>
     </GnuiContainer>
   </Story>
-</Preview>
+</Canvas>
 
 ### radius
 
 > `radius`: `string` — [`small`, `default`, `large`]
 
-<Preview>
+<Canvas>
   <Story name="radius">
     <GnuiContainer>
       <Box radius="small" border="disabled">
@@ -112,13 +112,13 @@ import theme from "../../theme";
       </Box>
     </GnuiContainer>
   </Story>
-</Preview>
+</Canvas>
 
 ### innerSpacing
 
 > `innerSpacing`: `string` — [`spacing01`, `spacing02`, `spacing03`, `spacing04`, `spacing05`, `spacing06`, `spacing07`]
 
-<Preview>
+<Canvas>
   <Story name="innerSpacing">
     <GnuiContainer>
       <Box innerSpacing="spacing04">Box with spacing04 innerSpacing prop</Box>
@@ -126,13 +126,13 @@ import theme from "../../theme";
       <Box innerSpacing="spacing07">Box with spacing07 innerSpacing prop</Box>
     </GnuiContainer>
   </Story>
-</Preview>
+</Canvas>
 
 ### shadow
 
 > `shadow`: `string` — [`shadow01`, `shadow02`, `shadow03`, `shadow04`]
 
-<Preview>
+<Canvas>
   <Story name="shadow">
     <GnuiContainer>
       <Box shadow="shadow01">Box with shadow01 shadow prop</Box>
@@ -144,13 +144,13 @@ import theme from "../../theme";
       <Box shadow="shadow04">Box with shadow04 shadow prop</Box>
     </GnuiContainer>
   </Story>
-</Preview>
+</Canvas>
 
 ### color
 
 > `color`: `string` — GNUI as first looks for the value in `theme.colors` and if color doesn't exist there `color` will be used as is.
 
-<Preview>
+<Canvas>
   <Story name="color">
     <GnuiContainer>
       <Box color={theme.color.text.error}>Danger color (from theme)</Box>
@@ -164,13 +164,13 @@ import theme from "../../theme";
       <Box color="#5ead9d">#5ead9d color</Box>
     </GnuiContainer>
   </Story>
-</Preview>
+</Canvas>
 
 ### backgroundColor
 
 > `backgroundColor`: `string` — GNUI as first looks for the value in `theme.colors` and if color doesn't exist there `color` will be used as is.
 
-<Preview>
+<Canvas>
   <Story name="background">
     <GnuiContainer>
       <Box backgroundColor={theme.color.background.error} color="white">
@@ -190,4 +190,4 @@ import theme from "../../theme";
       </Box>
     </GnuiContainer>
   </Story>
-</Preview>
+</Canvas>
