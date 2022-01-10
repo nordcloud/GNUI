@@ -18,7 +18,7 @@ export const useClickOutside = <E extends Event = Event>(
     if (active) {
       const handler = (event: E) => {
         const { current: el } = ref;
-        if (el instanceof HTMLElement && event.target instanceof HTMLElement) {
+        if (el instanceof Element && event.target instanceof Element) {
           !el.contains(event.target) && savedCallback.current(event);
         }
       };
