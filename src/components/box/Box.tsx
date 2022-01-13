@@ -49,7 +49,6 @@ const StyledBox = styled(GnuiContainer)<BoxProps & SpaceProps>`
   font-weight: ${theme.fontWeights.regular};
   transition: ${theme.transition};
   line-height: ${theme.lineHeight};
-  margin-bottom: ${theme.spacing.spacing02};
   ${({ boxStyle }) =>
     boxStyle &&
     css`
