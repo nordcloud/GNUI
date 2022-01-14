@@ -155,3 +155,10 @@ function getVerticalAlignmentToEnd(
     wrapperDimensions.top - tooltipDimensions.height + wrapperDimensions.height
   );
 }
+
+export const DEFAULT_MARGIN = {
+  top: 5,
+  bottom: 5,
+  left: 5,
+  right: 5,
+};

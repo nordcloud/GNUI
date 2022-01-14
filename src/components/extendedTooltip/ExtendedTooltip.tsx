@@ -1,7 +1,14 @@
 import * as React from "react";
 import styled, { css } from "styled-components";
 import { theme } from "../..";
-import { getStyle, Margin, Placement, Position } from "../../utils/position";
+import { useHideOnScroll } from "../../hooks";
+import {
+  DEFAULT_MARGIN,
+  getStyle,
+  Margin,
+  Placement,
+  Position,
+} from "../../utils/position";
 import { setColor } from "../../utils/setcolor";
 import { useTooltipHover } from "../tooltip/hooks";
 
@@ -27,12 +34,7 @@ export function ExtendedTooltip({
   status,
   showTimeout = 0,
   hideTimeout = 0,
-  margin = {
-    top: 5,
-    bottom: 5,
-    left: 5,
-    right: 5,
-  },
+  margin = DEFAULT_MARGIN,
 }: Props) {
   const wrapperRef = React.useRef<HTMLDivElement>(null);
   const tooltipRef = React.useRef<HTMLDivElement>(null);
@@ -46,7 +48,9 @@ export function ExtendedTooltip({
 
   const handleScroll = React.useCallback(() => {
     updateIsHovered(false, 0);
-  }, []);
+  }, [updateIsHovered]);
+
+  useHideOnScroll({ handleScroll });
 
   React.useEffect(() => {
     if (
@@ -59,16 +63,7 @@ export function ExtendedTooltip({
     }
   }, [isHovered]);
 
-  React.useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [handleScroll]);
-
   if (caption == null) {
-    console.warn(`Cannot render tooltip without caption prop.`);
     return <>{children}</>;
   }
 
