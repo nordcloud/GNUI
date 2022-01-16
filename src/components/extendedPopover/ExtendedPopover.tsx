@@ -1,8 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
-import { SVGIcon } from "..";
-import { theme } from "../..";
 import { useHideOnScroll, useHandleClickOutside } from "../../hooks";
+import theme from "../../theme";
 import {
   Placement,
   Position,
@@ -11,6 +10,7 @@ import {
   DEFAULT_MARGIN,
 } from "../../utils/position";
 import { Button } from "../button";
+import { SVGIcon } from "../svgicon";
 
 type Props = {
   trigger: React.ReactNode;

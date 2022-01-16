@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled, { css } from "styled-components";
-import { theme } from "../..";
 import { useHideOnScroll } from "../../hooks";
+import theme from "../../theme";
 import {
   DEFAULT_MARGIN,
   getStyle,
