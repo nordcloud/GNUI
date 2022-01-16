@@ -47,7 +47,7 @@ export function getStyle({
     return { top, left };
   }
 
-  return {};
+  return { top: 0, left: 0 };
 }
 
 function getTop({

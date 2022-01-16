@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as ReactDOM from "react-dom";
 import styled, { css } from "styled-components";
 import { useHideOnScroll } from "../../hooks";
 import theme from "../../theme";
@@ -67,30 +68,55 @@ export function ExtendedTooltip({
     return <>{children}</>;
   }
 
+  const style = getStyle({
+    wrapperDimensions,
+    tooltipDimensions,
+    placement,
+    position,
+    margin,
+  });
+
   return (
     <TooltipWrapper
       ref={wrapperRef}
       onMouseEnter={() => updateIsHovered(true, showTimeout)}
       onMouseLeave={() => updateIsHovered(false, hideTimeout)}
     >
-      {isHovered && (
-        <StyledTooltip
-          ref={tooltipRef}
-          status={status}
-          style={getStyle({
-            wrapperDimensions,
-            tooltipDimensions,
-            placement,
-            position,
-            margin,
-          })}
-        >
-          {caption}
-        </StyledTooltip>
-      )}
+      <Tooltip
+        isHovered={isHovered}
+        caption={caption}
+        tooltipRef={tooltipRef}
+        status={status}
+        style={style}
+      />
       {children}
     </TooltipWrapper>
   );
+}
+
+type TooltipProps = {
+  caption: React.ReactNode;
+  isHovered: boolean;
+  tooltipRef: React.RefObject<HTMLDivElement>;
+  style: { top: number; left: number };
+  status?: "danger" | "warning" | "success" | "notification";
+};
+
+function Tooltip({
+  caption,
+  isHovered,
+  tooltipRef,
+  status,
+  style,
+}: TooltipProps) {
+  return isHovered
+    ? ReactDOM.createPortal(
+        <StyledTooltip ref={tooltipRef} status={status} style={style}>
+          {caption}
+        </StyledTooltip>,
+        document.body
+      )
+    : null;
 }
 
 type StyledTooltipProps = Pick<Props, "status">;
