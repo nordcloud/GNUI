@@ -1,5 +1,5 @@
 import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
-import { ExtendedPopover } from "./ExtendedPopover";
+import { ExtendedPopover, ExtendedPopoverAction } from "./ExtendedPopover";
 import { SVGIcon } from "../svgicon";
 
 <Meta title="Components/ExtendedPopover" component={ExtendedPopover} />
@@ -8,12 +8,12 @@ import { SVGIcon } from "../svgicon";
 
 ## properties
 
-> - `content`: `ReactNode` — **required** - (popover content)
-> - `trigger`: `ReactNode` — **optional** - (popover trigger element, default to `<Button><SVGIcon name="burgerMenu" /></Button>`)
-> - `placement`: `top | bottom | right | left` - **optional** (default is `right`)
-> - `position`: `start | end | center` - **optional** (default is `start`)
-> - `margin`: `{ top?: number, bottom?: number, left?: number, right?: number }` - **optional** (margin around tooltip)
-> - `clickOutsideToClose`: `boolean` - **optional** (should popover be clicked when clicked outside, default to `true`)
+> - `content`: `ReactNode` {required} popover content
+> - `trigger`: `ReactNode` {optional} popover trigger element, default to `<Button><SVGIcon name="burgerMenu" /></Button>`)
+> - `placement`: `top | bottom | right | left` {optional} relative placement of popover compared to parent element, default is `right`
+> - `position`: `start | end | center` {optional} relative shift of popover placement compared to parent element, default is `start`
+> - `margin`: `{ top?: number, bottom?: number, left?: number, right?: number }` {optional} margin around popover, default to `5px` around
+> - `clickOutsideToClose`: `boolean` {optional} should popover be closed when clicked outside, default to `true`
 
 ## default Hamburger trigger
 
@@ -625,5 +625,127 @@ import { SVGIcon } from "../svgicon";
         </ul>
       }
     />
+  </Story>
+</Canvas>
+
+## trigger on hover
+
+<Canvas>
+  <Story name="hover">
+    <p style={{ color: "black", marginBottom: "2rem" }}>
+      When{" "}
+      <code style={{ color: "red", fontFamily: "monospace" }}>triggerOn</code>{" "}
+      prop is set to{" "}
+      <code style={{ color: "red", fontFamily: "monospace" }}>
+        ExtendedPopoverAction.HOVER
+      </code>{" "}
+      popover is being triggered on hover action.
+    </p>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-around",
+        marginBottom: "1rem",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ color: "black", marginBottom: "2rem" }}>
+          click outside to close
+        </span>
+        <ExtendedPopover
+          placement="top"
+          position="center"
+          trigger={
+            <p style={{ fontFamily: "monospace", color: "black" }}>
+              Hover to open!
+            </p>
+          }
+          triggerOn={ExtendedPopoverAction.HOVER}
+          content={
+            <ul
+              style={{
+                backgroundColor: "grey",
+                padding: "0.5rem",
+                border: "solid 1px black",
+              }}
+            >
+              <li>one</li>
+              <li>two</li>
+            </ul>
+          }
+        />
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ color: "black", marginBottom: "2rem" }}>
+          hover outside to close
+        </span>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            columnGap: "3rem",
+          }}
+        >
+          <ExtendedPopover
+            placement="top"
+            position="center"
+            trigger={
+              <p style={{ fontFamily: "monospace", color: "black" }}>
+                Hover to open!
+              </p>
+            }
+            triggerOn={ExtendedPopoverAction.HOVER}
+            closeOn={ExtendedPopoverAction.HOVER}
+            content={
+              <ul
+                style={{
+                  backgroundColor: "grey",
+                  padding: "0.5rem",
+                  border: "solid 1px black",
+                }}
+              >
+                <li>one</li>
+                <li>two</li>
+              </ul>
+            }
+          />
+          <ExtendedPopover
+            placement="right"
+            position="center"
+            trigger={
+              <p style={{ fontFamily: "monospace", color: "black" }}>
+                Hover to open!
+              </p>
+            }
+            triggerOn={ExtendedPopoverAction.HOVER}
+            closeOn={ExtendedPopoverAction.HOVER}
+            content={
+              <ul
+                style={{
+                  backgroundColor: "grey",
+                  padding: "0.5rem",
+                  border: "solid 1px black",
+                }}
+              >
+                <li>one</li>
+                <li>two</li>
+              </ul>
+            }
+          />
+        </div>
+      </div>
+    </div>
   </Story>
 </Canvas>

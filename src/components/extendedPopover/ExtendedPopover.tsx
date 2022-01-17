@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as ReactDOM from "react-dom";
 import styled from "styled-components";
 import { useHideOnScroll, useHandleClickOutside } from "../../hooks";
 import theme from "../../theme";
@@ -8,6 +9,7 @@ import {
   getStyle,
   Margin,
   DEFAULT_MARGIN,
+  MarginWrapper,
 } from "../../utils/position";
 import { Button } from "../button";
 import { SVGIcon } from "../svgicon";
@@ -19,6 +21,8 @@ type Props = {
   position?: Position;
   margin?: Margin;
   clickOutsideToClose?: boolean;
+  triggerOn?: ExtendedPopoverAction;
+  closeOn?: ExtendedPopoverAction;
 };
 
 export function ExtendedPopover({
@@ -32,6 +36,8 @@ export function ExtendedPopover({
   position = "start",
   clickOutsideToClose = true,
   margin = DEFAULT_MARGIN,
+  triggerOn = ExtendedPopoverAction.CLICK,
+  closeOn = ExtendedPopoverAction.CLICK,
 }: Props) {
   const triggerRef = React.useRef<HTMLDivElement>(null);
   const contentRef = React.useRef<HTMLDivElement>(null);
@@ -79,39 +85,82 @@ export function ExtendedPopover({
     return null;
   }
 
+  const triggerProps = {
+    ...(triggerOn === ExtendedPopoverAction.CLICK
+      ? {
+          onClick: () => setOpen(!open),
+        }
+      : {
+          onMouseEnter: () => setOpen(true),
+          onMouseLeave: () => {
+            if (closeOn === ExtendedPopoverAction.HOVER) {
+              setOpen(false);
+            }
+          },
+        }),
+  };
+
+  const style = getStyle({
+    wrapperDimensions: triggerDimensions,
+    tooltipDimensions: contentDimensions,
+    placement,
+    position,
+  });
+
   return (
-    <>
-      <TriggerWrapper ref={triggerRef} onClick={() => setOpen(!open)}>
-        {trigger}
-      </TriggerWrapper>
-      <ContentWrapper
-        ref={contentRef}
+    <TriggerWrapper ref={triggerRef} {...triggerProps}>
+      {trigger}
+      <Popover
+        content={content}
+        contentRef={contentRef}
         visible={open}
-        style={getStyle({
-          wrapperDimensions: triggerDimensions,
-          tooltipDimensions: contentDimensions,
-          placement,
-          position,
-          margin,
-        })}
-      >
-        {content}
-      </ContentWrapper>
-    </>
+        style={style}
+        margin={margin}
+        placement={placement}
+      />
+    </TriggerWrapper>
   );
+}
+
+type PopoverProps = {
+  content: React.ReactNode;
+  contentRef: React.RefObject<HTMLDivElement>;
+  visible: boolean;
+  style: { top?: number; left?: number };
+  margin: Margin;
+  placement: Placement;
+};
+
+function Popover({
+  contentRef,
+  visible,
+  style,
+  margin,
+  content,
+  placement,
+}: PopoverProps) {
+  return visible
+    ? ReactDOM.createPortal(
+        <ContentWrapper ref={contentRef} style={style}>
+          <MarginWrapper {...margin} placement={placement}>
+            {content}
+          </MarginWrapper>
+        </ContentWrapper>,
+        document.body
+      )
+    : null;
 }
 
 const TriggerWrapper = styled.div`
   display: inline-block;
 `;
 
-type ContentProps = {
-  visible: boolean;
-};
-
-const ContentWrapper = styled.div<ContentProps>`
+const ContentWrapper = styled.div`
   position: fixed;
-  z-index: ${({ visible }) => (visible ? theme.zindex.sticky : 0)};
-  transition: opacity 0.2s ease-in-out;
-  opacity: ${({ visible }) => (visible ? 1 : 0)};
+  z-index: ${theme.zindex.sticky};
 `;
+
+export const enum ExtendedPopoverAction {
+  HOVER = "hover",
+  CLICK = "click",
+}

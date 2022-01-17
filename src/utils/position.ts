@@ -1,3 +1,5 @@
+import styled from "styled-components";
+
 export type Placement = "top" | "bottom" | "right" | "left";
 export type Position = "start" | "end" | "center";
 
@@ -13,7 +15,7 @@ type StyleProps = {
   tooltipDimensions: DOMRect | null;
   placement: Placement;
   position: Position;
-  margin: Margin;
+  margin?: Margin;
 };
 
 type ReqiuredStyleProps = StyleProps & {
@@ -47,7 +49,7 @@ export function getStyle({
     return { top, left };
   }
 
-  return { top: 0, left: 0 };
+  return {};
 }
 
 function getTop({
@@ -59,13 +61,13 @@ function getTop({
 }: ReqiuredStyleProps) {
   if (placement === "top") {
     return (
-      wrapperDimensions.top - tooltipDimensions.height - (margin?.top ?? 5)
+      wrapperDimensions.top - tooltipDimensions.height - (margin?.top ?? 0)
     );
   }
 
   if (placement === "bottom") {
     return (
-      wrapperDimensions.top + wrapperDimensions.height + (margin?.bottom ?? 5)
+      wrapperDimensions.top + wrapperDimensions.height + (margin?.bottom ?? 0)
     );
   }
 
@@ -89,13 +91,13 @@ function getLeft({
 }: ReqiuredStyleProps) {
   if (placement === "left") {
     return (
-      wrapperDimensions.left - tooltipDimensions.width - (margin?.left ?? 5)
+      wrapperDimensions.left - tooltipDimensions.width - (margin?.left ?? 0)
     );
   }
 
   if (placement === "right") {
     return (
-      wrapperDimensions.left + wrapperDimensions.width + (margin?.right ?? 5)
+      wrapperDimensions.left + wrapperDimensions.width + (margin?.right ?? 0)
     );
   }
 
@@ -162,3 +164,14 @@ export const DEFAULT_MARGIN = {
   left: 5,
   right: 5,
 };
+
+export const MarginWrapper = styled.div<Margin & { placement: Placement }>`
+  padding-top: ${({ top, placement }) =>
+    placement === "bottom" && top ? `${top}px` : "0"};
+  padding-bottom: ${({ bottom, placement }) =>
+    placement === "top" && bottom ? `${bottom}px` : "0"};
+  padding-left: ${({ left, placement }) =>
+    placement === "right" && left ? `${left}px` : "0"};
+  padding-right: ${({ right, placement }) =>
+    placement === "left" && right ? `${right}px` : "0"};
+`;

@@ -98,7 +98,7 @@ type TooltipProps = {
   caption: React.ReactNode;
   isHovered: boolean;
   tooltipRef: React.RefObject<HTMLDivElement>;
-  style: { top: number; left: number };
+  style: { top?: number; left?: number };
   status?: "danger" | "warning" | "success" | "notification";
 };
 
