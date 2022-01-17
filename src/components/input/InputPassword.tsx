@@ -3,9 +3,9 @@ import { SpaceProps } from "styled-system";
 import { Spinner } from "../spinner";
 import { SVGIcon } from "../svgicon";
 import { Clear, InputGroup, StyledInput } from "./styles";
-import { StyledInputGroupProps, StyledInputProps } from "./types";
+import { StyledInputGroupProps, StyledInputProps, InputPasswordProps } from "./types";
 
-type Props = StyledInputGroupProps & StyledInputProps & SpaceProps;
+type Props = StyledInputGroupProps & StyledInputProps & SpaceProps & InputPasswordProps;
 
 export const InputPassword = React.forwardRef<HTMLInputElement, Props>(
     (
@@ -20,11 +20,12 @@ export const InputPassword = React.forwardRef<HTMLInputElement, Props>(
             onClear = () => undefined,
             icon,
             children,
+            showPasswordOnInit = false,
             ...props
         },
         ref
     ) => {
-        const [showPassword, setShowPassword] = React.useState(false);
+        const [showPassword, setShowPassword] = React.useState(showPasswordOnInit);
 
         return (
             <InputGroup status={status} noBorder={noBorder} popup={popup}>
