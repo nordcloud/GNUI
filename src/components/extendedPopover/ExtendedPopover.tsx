@@ -36,8 +36,8 @@ export function ExtendedPopover({
   position = "start",
   clickOutsideToClose = true,
   margin = DEFAULT_MARGIN,
-  triggerOn = ExtendedPopoverAction.CLICK,
-  closeOn = ExtendedPopoverAction.CLICK,
+  triggerOn = "click",
+  closeOn = "click",
 }: Props) {
   const triggerRef = React.useRef<HTMLDivElement>(null);
   const contentRef = React.useRef<HTMLDivElement>(null);
@@ -86,14 +86,14 @@ export function ExtendedPopover({
   }
 
   const triggerProps = {
-    ...(triggerOn === ExtendedPopoverAction.CLICK
+    ...(triggerOn === "click"
       ? {
           onClick: () => setOpen(!open),
         }
       : {
           onMouseEnter: () => setOpen(true),
           onMouseLeave: () => {
-            if (closeOn === ExtendedPopoverAction.HOVER) {
+            if (closeOn === "hover") {
               setOpen(false);
             }
           },
@@ -160,7 +160,4 @@ const ContentWrapper = styled.div`
   z-index: ${theme.zindex.sticky};
 `;
 
-export const enum ExtendedPopoverAction {
-  HOVER = "hover",
-  CLICK = "click",
-}
+export type ExtendedPopoverAction = "hover" | "click";

@@ -1,5 +1,5 @@
 import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
-import { ExtendedPopover, ExtendedPopoverAction } from "./ExtendedPopover";
+import { ExtendedPopover } from "./ExtendedPopover";
 import { SVGIcon } from "../svgicon";
 
 <Meta title="Components/ExtendedPopover" component={ExtendedPopover} />
@@ -636,9 +636,7 @@ import { SVGIcon } from "../svgicon";
       When{" "}
       <code style={{ color: "red", fontFamily: "monospace" }}>triggerOn</code>{" "}
       prop is set to{" "}
-      <code style={{ color: "red", fontFamily: "monospace" }}>
-        ExtendedPopoverAction.HOVER
-      </code>{" "}
+      <code style={{ color: "red", fontFamily: "monospace" }}>"hover"</code>{" "}
       popover is being triggered on hover action.
     </p>
     <div
@@ -666,7 +664,7 @@ import { SVGIcon } from "../svgicon";
               Hover to open!
             </p>
           }
-          triggerOn={ExtendedPopoverAction.HOVER}
+          triggerOn="hover"
           content={
             <ul
               style={{
@@ -706,8 +704,8 @@ import { SVGIcon } from "../svgicon";
                 Hover to open!
               </p>
             }
-            triggerOn={ExtendedPopoverAction.HOVER}
-            closeOn={ExtendedPopoverAction.HOVER}
+            triggerOn="hover"
+            closeOn="hover"
             content={
               <ul
                 style={{
@@ -729,8 +727,8 @@ import { SVGIcon } from "../svgicon";
                 Hover to open!
               </p>
             }
-            triggerOn={ExtendedPopoverAction.HOVER}
-            closeOn={ExtendedPopoverAction.HOVER}
+            triggerOn="hover"
+            closeOn="hover"
             content={
               <ul
                 style={{
