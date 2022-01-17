@@ -135,15 +135,7 @@ const StyledTooltip = styled.div<StyledTooltipProps>`
   opacity: 0;
   animation: 0.2s ease-in-out both fadeIn;
 
-  ${({ status }) =>
-    status &&
-    css`
-      background-color: ${setColor(status)};
-      color: ${theme.color.text.text01};
-      &:after {
-        border-top-color: ${setColor(status)};
-      }
-    `}
+  ${({ status }) => status && getColor(status)}
 
   @keyframes fadeIn {
     to {
@@ -155,3 +147,13 @@ const StyledTooltip = styled.div<StyledTooltipProps>`
 const TooltipWrapper = styled.div`
   display: inline-block;
 `;
+
+function getColor(status: "danger" | "warning" | "success" | "notification") {
+  return css`
+    background-color: ${setColor(status)};
+    color: ${theme.color.text.text01};
+    &:after {
+      border-top-color: ${setColor(status)};
+    }
+  `;
+}

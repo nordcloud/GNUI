@@ -9,7 +9,7 @@ import {
   getStyle,
   Margin,
   DEFAULT_MARGIN,
-  MarginWrapper,
+  PaddingWrapper,
 } from "../../utils/position";
 import { Button } from "../button";
 import { SVGIcon } from "../svgicon";
@@ -142,9 +142,9 @@ function Popover({
   return visible
     ? ReactDOM.createPortal(
         <ContentWrapper ref={contentRef} style={style}>
-          <MarginWrapper {...margin} placement={placement}>
+          <PaddingWrapper {...margin} placement={placement}>
             {content}
-          </MarginWrapper>
+          </PaddingWrapper>
         </ContentWrapper>,
         document.body
       )
