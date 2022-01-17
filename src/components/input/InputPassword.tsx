@@ -1,6 +1,5 @@
 import * as React from "react";
 import { SpaceProps } from "styled-system";
-import { Spinner } from "../spinner";
 import { SVGIcon } from "../svgicon";
 import { Clear, InputGroup, StyledInput } from "./styles";
 import {
@@ -20,13 +19,8 @@ export const InputPassword = React.forwardRef<HTMLInputElement, Props>(
       noBorder,
       popup,
       status,
-      loading,
       onClick,
       small,
-      showClearButton,
-      onClear = () => undefined,
-      icon,
-      children,
       showPasswordOnInit = false,
       ...props
     },
