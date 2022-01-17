@@ -19,4 +19,4 @@ export type StyledInputGroupProps = {
 
 export type InputPasswordProps = {
   showPasswordOnInit: boolean;
-}
+};
