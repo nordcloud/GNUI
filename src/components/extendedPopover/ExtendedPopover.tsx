@@ -15,8 +15,8 @@ import { Button } from "../button";
 import { SVGIcon } from "../svgicon";
 
 type Props = {
-  trigger: React.ReactNode;
   content: React.ReactNode;
+  trigger?: React.ReactNode;
   placement?: Placement;
   position?: Position;
   margin?: Margin;
