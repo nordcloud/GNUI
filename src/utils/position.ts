@@ -168,27 +168,24 @@ export const DEFAULT_MARGIN = {
 type PaddingWrapperProps = Margin & { placement: Placement };
 
 export const PaddingWrapper = styled.div<PaddingWrapperProps>`
-  padding-top: ${(props) => getPaddingValue(props)};
-  padding-bottom: ${(props) => getPaddingValue(props)};
-  padding-left: ${(props) => getPaddingValue(props)};
-  padding-right: ${(props) => getPaddingValue(props)};
+  padding: ${(props) => getPaddingValue(props)};
 `;
 
 function getPaddingValue({
-  top,
-  bottom,
-  left,
-  right,
+  top = 0,
+  bottom = 0,
+  left = 0,
+  right = 0,
   placement,
 }: PaddingWrapperProps) {
   switch (placement) {
     case "bottom":
-      return top ? `${top}px` : "0";
+      return `${top}px 0 0 0`;
     case "top":
-      return bottom ? `${bottom}px` : "0";
+      return `0 0 ${bottom}px 0`;
     case "right":
-      return left ? `${left}px` : "0";
+      return `0 0 0 ${left}px`;
     case "left":
-      return right ? `${right}px` : "0";
+      return `0 ${right}px 0 0`;
   }
 }
