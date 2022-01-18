@@ -4,7 +4,7 @@ type Listener = {
   addEventListener(name: string, handler: (event?: Event) => void): void;
 
   removeEventListener(name: string, handler: (event?: Event) => void): void;
-}
+};
 
 type AddEventListener<T> = T extends Listener ? T["addEventListener"] : never;
 
