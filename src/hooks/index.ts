@@ -1,3 +1,2 @@
 export * from "./useClickOutside";
-export * from "./useHideOnScroll";
-export * from "./useHandleClickOutside";
+export * from "./useEvent";

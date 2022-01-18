@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import styled, { css } from "styled-components";
-import { useHideOnScroll } from "../../hooks";
+import { useEvent } from "../../hooks";
 import theme from "../../theme";
 import {
   DEFAULT_MARGIN,
@@ -18,13 +18,15 @@ type Timeout = {
   hideTimeout?: number;
 };
 
+type Status = "danger" | "warning" | "success" | "notification";
+
 type Props = Timeout & {
   caption: React.ReactNode;
   children: React.ReactNode;
   placement?: Placement;
   position?: Position;
   margin?: Margin;
-  status?: "danger" | "warning" | "success" | "notification";
+  status?: Status;
 };
 
 export function ExtendedTooltip({
@@ -51,7 +53,7 @@ export function ExtendedTooltip({
     updateIsHovered(false, 0);
   }, [updateIsHovered]);
 
-  useHideOnScroll({ handleScroll });
+  useEvent({ name: "scroll", handler: handleScroll });
 
   React.useEffect(() => {
     if (
@@ -99,7 +101,7 @@ type TooltipProps = {
   isHovered: boolean;
   tooltipRef: React.RefObject<HTMLDivElement>;
   style: { top?: number; left?: number };
-  status?: "danger" | "warning" | "success" | "notification";
+  status?: Status;
 };
 
 function Tooltip({
@@ -148,7 +150,7 @@ const TooltipWrapper = styled.div`
   display: inline-block;
 `;
 
-function getColor(status: "danger" | "warning" | "success" | "notification") {
+function getColor(status: Status) {
   return css`
     background-color: ${setColor(status)};
     color: ${theme.color.text.text01};

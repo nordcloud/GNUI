@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import styled from "styled-components";
-import { useHideOnScroll, useHandleClickOutside } from "../../hooks";
+import { useEvent } from "../../hooks";
 import theme from "../../theme";
 import {
   Placement,
@@ -62,6 +62,7 @@ export function ExtendedPopover({
   const handleClickOutside = React.useCallback(
     (event) => {
       if (
+        clickOutsideToClose &&
         contentRef.current &&
         triggerRef.current &&
         !contentRef.current.contains(event.target) &&
@@ -70,16 +71,16 @@ export function ExtendedPopover({
         setOpen(false);
       }
     },
-    [contentRef, triggerRef]
+    [contentRef, triggerRef, clickOutsideToClose]
   );
 
-  useHandleClickOutside({ handleClickOutside, clickOutsideToClose });
+  useEvent({ name: "click", handler: handleClickOutside, target: document });
 
   const handleScroll = React.useCallback(() => {
     setOpen(false);
   }, []);
 
-  useHideOnScroll({ handleScroll });
+  useEvent({ name: "scroll", handler: handleScroll });
 
   if (content == null) {
     return null;
@@ -88,7 +89,7 @@ export function ExtendedPopover({
   const triggerProps = {
     ...(triggerOn === "click"
       ? {
-          onClick: () => setOpen(!open),
+          onClick: () => setOpen((prevState) => !prevState),
         }
       : {
           onMouseEnter: () => setOpen(true),
