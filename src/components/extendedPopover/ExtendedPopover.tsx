@@ -11,6 +11,7 @@ import {
   DEFAULT_MARGIN,
   PaddingWrapper,
 } from "../../utils/position";
+import { throttle } from "../../utils/throttle";
 import { Button } from "../button";
 import { SVGIcon } from "../svgicon";
 
@@ -76,9 +77,12 @@ export function ExtendedPopover({
 
   useEvent({ name: "click", handler: handleClickOutside, target: document });
 
-  const handleScroll = React.useCallback(() => {
-    setOpen(false);
-  }, []);
+  const handleScroll = throttle(
+    React.useCallback(() => {
+      console.log("asd");
+      setOpen(false);
+    }, [])
+  );
 
   useEvent({ name: "scroll", handler: handleScroll });
 
