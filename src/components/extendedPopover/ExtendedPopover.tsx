@@ -79,7 +79,6 @@ export function ExtendedPopover({
 
   const handleScroll = throttle(
     React.useCallback(() => {
-      console.log("asd");
       setOpen(false);
     }, [])
   );
