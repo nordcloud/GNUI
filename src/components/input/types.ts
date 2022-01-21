@@ -16,3 +16,7 @@ export type StyledInputGroupProps = {
   noBorder?: boolean;
   icon?: SVGIconProps["name"];
 };
+
+export type InputPasswordProps = {
+  showPasswordOnInit: boolean;
+};
