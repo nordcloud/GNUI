@@ -1,0 +1,437 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+import { ExtendedTooltip } from "./ExtendedTooltip";
+import { SVGIcon } from "../svgicon";
+
+<Meta title="Components/ExtendedTooltip" component={ExtendedTooltip} />
+
+# Extended Tooltip
+
+## properties
+
+> - `caption`: `ReactNode` {required} tooltip content
+> - `placement`: `top | bottom | right | left` {optional} relative placement of tooltip compared to parent element, defaults to `top`
+> - `position`: `start | end | center` {optional} relative shift of tooltip placement compared to parent element, defaults to `center`
+> - `status`: `danger | warning | success | notification` {optional} background color of tooltip
+> - `margin`: `{ top?: number, bottom?: number, left?: number, right?: number }` {optional} margin around tooltip, defaults to `5px` for all properties
+> - `showTimeout`: `number` {optional} delay time in miliseconds for opening of tooltip
+> - `hideTimeout`: `number` {optional} delay time in miliseconds for closing of tooltip
+
+## top
+
+<Canvas>
+  <Story name="top">
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        marginBottom: "1rem",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ color: "black", marginBottom: "2rem" }}>Start</span>
+        <ExtendedTooltip
+          caption="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin."
+          position="start"
+        >
+          <button type="button">Hover Me!</button>
+        </ExtendedTooltip>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ color: "black", marginBottom: "2rem" }}>Center</span>
+        <ExtendedTooltip
+          caption="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin."
+          position="center"
+        >
+          <button type="button">Hover Me!</button>
+        </ExtendedTooltip>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ color: "black", marginBottom: "2rem" }}>End</span>
+        <ExtendedTooltip
+          caption="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin."
+          position="end"
+        >
+          <button type="button">Hover Me!</button>
+        </ExtendedTooltip>
+      </div>
+    </div>
+  </Story>
+</Canvas>
+
+## bottom
+
+<Canvas>
+  <Story name="bottom">
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        marginBottom: "1rem",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ color: "black", marginBottom: "2rem" }}>Start</span>
+        <ExtendedTooltip
+          caption="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin."
+          position="start"
+          placement="bottom"
+        >
+          <button type="button">Hover Me!</button>
+        </ExtendedTooltip>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ color: "black", marginBottom: "2rem" }}>Center</span>
+        <ExtendedTooltip
+          caption="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin."
+          position="center"
+          placement="bottom"
+        >
+          <button type="button">Hover Me!</button>
+        </ExtendedTooltip>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ color: "black", marginBottom: "2rem" }}>End</span>
+        <ExtendedTooltip
+          caption="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin."
+          position="end"
+          placement="bottom"
+        >
+          <button type="button">Hover Me!</button>
+        </ExtendedTooltip>
+      </div>
+    </div>
+  </Story>
+</Canvas>
+
+## left
+
+<Canvas>
+  <Story name="left">
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        marginBottom: "5rem",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ color: "black", marginBottom: "2rem" }}>Start</span>
+        <ExtendedTooltip
+          caption="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin."
+          position="start"
+          placement="left"
+        >
+          <button style={{ height: "5rem" }} type="button">
+            Hover Me!
+          </button>
+        </ExtendedTooltip>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ color: "black", marginBottom: "2rem" }}>Center</span>
+        <ExtendedTooltip
+          caption="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin."
+          position="center"
+          placement="left"
+        >
+          <button style={{ height: "5rem" }} type="button">
+            Hover Me!
+          </button>
+        </ExtendedTooltip>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ color: "black", marginBottom: "2rem" }}>End</span>
+        <ExtendedTooltip
+          caption="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin."
+          position="end"
+          placement="left"
+        >
+          <button style={{ height: "5rem" }} type="button">
+            Hover Me!
+          </button>
+        </ExtendedTooltip>
+      </div>
+    </div>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        marginBottom: "1rem",
+      }}
+    >
+      <ExtendedTooltip
+        caption="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin."
+        placement="left"
+        position="start"
+      >
+        <button type="button">Hover Me!</button>
+      </ExtendedTooltip>
+      <ExtendedTooltip
+        caption="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin."
+        placement="left"
+        position="center"
+      >
+        <button type="button">Hover Me!</button>
+      </ExtendedTooltip>
+      <ExtendedTooltip
+        caption="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin."
+        placement="left"
+        position="end"
+      >
+        <button type="button">Hover Me!</button>
+      </ExtendedTooltip>
+    </div>
+  </Story>
+</Canvas>
+
+## right
+
+<Canvas>
+  <Story name="right">
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        marginBottom: "5rem",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ color: "black", marginBottom: "2rem" }}>Start</span>
+        <ExtendedTooltip
+          caption="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin."
+          position="start"
+          placement="right"
+        >
+          <button style={{ height: "5rem" }} type="button">
+            Hover Me!
+          </button>
+        </ExtendedTooltip>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ color: "black", marginBottom: "2rem" }}>Center</span>
+        <ExtendedTooltip
+          caption="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin."
+          position="center"
+          placement="right"
+        >
+          <button style={{ height: "5rem" }} type="button">
+            Hover Me!
+          </button>
+        </ExtendedTooltip>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ color: "black", marginBottom: "2rem" }}>End</span>
+        <ExtendedTooltip
+          caption="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin."
+          position="end"
+          placement="right"
+        >
+          <button style={{ height: "5rem" }} type="button">
+            Hover Me!
+          </button>
+        </ExtendedTooltip>
+      </div>
+    </div>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        marginBottom: "1rem",
+      }}
+    >
+      <ExtendedTooltip
+        caption="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin."
+        placement="right"
+        position="start"
+      >
+        <button type="button">Hover Me!</button>
+      </ExtendedTooltip>
+      <ExtendedTooltip
+        caption="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin."
+        placement="right"
+        position="center"
+      >
+        <button type="button">Hover Me!</button>
+      </ExtendedTooltip>
+      <ExtendedTooltip
+        caption="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin."
+        placement="right"
+        position="end"
+      >
+        <button type="button">Hover Me!</button>
+      </ExtendedTooltip>
+    </div>
+  </Story>
+</Canvas>
+
+## status
+
+<Canvas>
+  <Story name="status">
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        marginBottom: "1rem",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ color: "red", marginBottom: "2rem" }}>Danger</span>
+        <ExtendedTooltip
+          caption="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin."
+          status="danger"
+        >
+          <button type="button">Hover Me!</button>
+        </ExtendedTooltip>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ color: "orange", marginBottom: "2rem" }}>Warning</span>
+        <ExtendedTooltip
+          caption="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin."
+          status="warning"
+        >
+          <button type="button">Hover Me!</button>
+        </ExtendedTooltip>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ color: "green", marginBottom: "2rem" }}>Success</span>
+        <ExtendedTooltip
+          caption="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin."
+          status="success"
+        >
+          <button type="button">Hover Me!</button>
+        </ExtendedTooltip>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ color: "blue", marginBottom: "2rem" }}>
+          Notification
+        </span>
+        <ExtendedTooltip
+          caption="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin."
+          status="notification"
+        >
+          <button type="button">Hover Me!</button>
+        </ExtendedTooltip>
+      </div>
+    </div>
+  </Story>
+</Canvas>
+
+## tooltip with other components
+
+<Canvas>
+  <Story name="otherComponents">
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        marginBottom: "1rem",
+      }}
+    >
+      <ExtendedTooltip caption="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin.">
+        <button type="button">Hover Me!</button>
+      </ExtendedTooltip>
+      <ExtendedTooltip caption="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin.">
+        <SVGIcon name="help" color="primary" />
+      </ExtendedTooltip>
+      <ExtendedTooltip caption="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin.">
+        <input name="Name" placeholder="Name" />
+      </ExtendedTooltip>
+    </div>
+  </Story>
+</Canvas>
