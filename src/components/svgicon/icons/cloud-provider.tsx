@@ -157,7 +157,7 @@ export const cloudIcons = {
     <>
       <defs>
         <linearGradient
-          id="a"
+          id="ibmCloudGradient"
           x1="6.78"
           y1="22.6"
           x2="17.04"
@@ -179,7 +179,7 @@ export const cloudIcons = {
         strokeLinecap="round"
         strokeMiterlimit="10"
         strokeWidth="1.25px"
-        stroke="url(#a)"
+        stroke="url(#ibmCloudGradient)"
       />
     </>
   ),

@@ -37,7 +37,7 @@ export const osComponentsIcons = {
     <>
       <defs>
         <mask
-          id="a"
+          id="datadogMask"
           x="2.03"
           y="2"
           width="20.22"
