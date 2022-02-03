@@ -41,7 +41,7 @@ export const InputPassword = React.forwardRef<HTMLInputElement, Props>(
         <Clear
           onClick={() => setShowPassword((prev) => !prev)}
           title={showPassword ? "Hide password" : "Show password"}
-          role="button"
+          type="button"
         >
           <SVGIcon size="md" name={showPassword ? "eye" : "eyeClose"} />
         </Clear>
