@@ -5,13 +5,17 @@ import { SVGIcon } from "../svgicon";
 
 type Props = {
   position?: string;
+  height?: string;
   expandable?: boolean;
   backgroundColor?: string;
+  items: (JSX.Element | null)[];
 };
 
 export function NavigationBar({
+  items,
   position = "fixed",
   expandable = true,
+  height = "100vh",
   backgroundColor = theme.color.background.ui01,
 }: Props) {
   const [expanded, setExpanded] = React.useState(false);
@@ -34,6 +38,7 @@ export function NavigationBar({
       // }}
       position={position}
       backgroundColor={backgroundColor}
+      height={height}
     >
       {expandable ? (
         <BurgerWrapper expanded={expanded}>
@@ -45,6 +50,7 @@ export function NavigationBar({
           {expandedDone ? "Main Menu" : ""}
         </BurgerWrapper>
       ) : null}
+      <ItemWrapper>{items}</ItemWrapper>
     </NavigationBarWrapper>
   );
 }
@@ -53,18 +59,17 @@ type ExpandableProps = {
   expanded: boolean;
 };
 
-const NavigationBarWrapper = styled.div<Props & ExpandableProps>`
+const NavigationBarWrapper = styled.div<Omit<Props, "items"> & ExpandableProps>`
   display: flex;
   flex-wrap: no-wrap;
   justify-content: flex-start;
   margin: 0;
   flex-direction: column;
-  position: ${({ position }) => position ?? "fixed"};
+  position: ${({ position }) => position};
   top: 0;
   width: ${({ expanded }) => (expanded ? "14rem" : theme.spacing.spacing07)};
-  background-color: ${({ backgroundColor }) =>
-    backgroundColor ?? theme.color.background.ui01};
-  height: 100vh;
+  background-color: ${({ backgroundColor }) => backgroundColor};
+  height: ${({ height }) => height};
   padding: ${theme.spacing.spacing05} ${theme.spacing.spacing03}
     ${theme.spacing.spacing04};
   row-gap: ${theme.spacing.spacing07};
@@ -82,4 +87,12 @@ const BurgerWrapper = styled.div<ExpandableProps>`
   align-items: center;
   column-gap: ${theme.spacing.spacing02};
   justify-content: ${({ expanded }) => (expanded ? "start" : "center")};
+`;
+
+const ItemWrapper = styled.div`
+  display: flex;
+  flex-wrap: no-wrap;
+  flex-direction: column;
+  row-gap: ${theme.spacing.spacing04};
+  width: 100%;
 `;

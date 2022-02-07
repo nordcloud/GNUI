@@ -11,6 +11,18 @@ import { NavigationBar } from "./NavigationBar";
 
 <Canvas>
   <Story name="default" height="450px">
-    <NavigationBar position="absolute" />
+    <div style={{ height: "400px", position: "relative" }}>
+      <NavigationBar position="absolute" height="100%" />
+    </div>
+  </Story>
+</Canvas>
+
+## NavigationBar not expandable
+
+<Canvas>
+  <Story name="not-expandable" height="450px">
+    <div style={{ height: "400px", position: "relative" }}>
+      <NavigationBar position="absolute" height="100%" expandable={false} />
+    </div>
   </Story>
 </Canvas>
