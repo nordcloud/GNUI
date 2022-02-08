@@ -1,22 +1,29 @@
 import * as React from "react";
 import styled from "styled-components";
 import theme from "../../theme";
+import { Flex } from "../container";
+import { ExtendedPopover } from "../extendedPopover";
+import { ExtendedTooltip } from "../extendedTooltip";
 import { SVGIcon } from "../svgicon";
-
-type Props = {
-  position?: string;
-  height?: string;
-  expandable?: boolean;
-  backgroundColor?: string;
-  items: (JSX.Element | null)[];
-};
+import {
+  BurgerWrapper,
+  ItemsWrapper,
+  NavigationBarWrapper,
+  StyledTriggerWrapper,
+} from "./styles";
+import { Trigger } from "./Trigger";
+import { MenuItemProps, Props } from "./types";
 
 export function NavigationBar({
-  items,
   position = "fixed",
   expandable = true,
   height = "100vh",
   backgroundColor = theme.color.background.ui01,
+  closeOnLeave = false,
+  popoverConfig = {
+    triggerOn: "hover",
+    closeOn: "hover",
+  },
 }: Props) {
   const [expanded, setExpanded] = React.useState(false);
   const [expandedDone, setExpandedDone] = React.useState(false);
@@ -32,10 +39,12 @@ export function NavigationBar({
     <NavigationBarWrapper
       expanded={expanded}
       onTransitionEnd={() => setExpandedDone(expanded)}
-      // onMouseLeave={() => {
-      //   setExpanded(false);
-      //   setExpandedDone(false);
-      // }}
+      onMouseLeave={() => {
+        if (closeOnLeave) {
+          setExpanded(false);
+          setExpandedDone(false);
+        }
+      }}
       position={position}
       backgroundColor={backgroundColor}
       height={height}
@@ -50,49 +59,110 @@ export function NavigationBar({
           {expandedDone ? "Main Menu" : ""}
         </BurgerWrapper>
       ) : null}
-      <ItemWrapper>{items}</ItemWrapper>
+      <ItemsWrapper>
+        {ITEMS.map((item, index) => (
+          <MenuItem
+            key={`${item.caption}-${index}`}
+            expanded={expanded}
+            expandedDone={expandedDone}
+            popoverConfig={popoverConfig}
+            {...item}
+          />
+        ))}
+      </ItemsWrapper>
     </NavigationBarWrapper>
   );
 }
 
-type ExpandableProps = {
-  expanded: boolean;
-};
+function MenuItem({
+  caption,
+  icon,
+  children,
+  expanded,
+  popoverConfig,
+  expandedDone,
+}: MenuItemProps & { expandedDone: boolean }) {
+  if (children != null) {
+    const triggerEl = (
+      <Flex justifyContent={expanded ? "start" : "center"}>
+        <Trigger expanded={expandedDone} icon={icon} caption={caption} />
+      </Flex>
+    );
 
-const NavigationBarWrapper = styled.div<Omit<Props, "items"> & ExpandableProps>`
-  display: flex;
-  flex-wrap: no-wrap;
-  justify-content: flex-start;
-  margin: 0;
-  flex-direction: column;
-  position: ${({ position }) => position};
-  top: 0;
-  width: ${({ expanded }) => (expanded ? "14rem" : theme.spacing.spacing07)};
-  background-color: ${({ backgroundColor }) => backgroundColor};
-  height: ${({ height }) => height};
-  padding: ${theme.spacing.spacing05} ${theme.spacing.spacing03}
-    ${theme.spacing.spacing04};
-  row-gap: ${theme.spacing.spacing07};
-  border-right: solid 1px ${theme.color.border.border01};
-  transition: ${({ expanded }) => (expanded ? "width 0.15s linear" : "unset")};
-  align-items: ${({ expanded }) => (expanded ? "start" : "center")};
-  z-index: ${theme.zindex.sticky};
+    return (
+      <StyledTriggerWrapper>
+        <ExtendedPopover
+          trigger={triggerEl}
+          position="start"
+          triggerOn={popoverConfig?.triggerOn}
+          closeOn={popoverConfig?.closeOn}
+          margin={{ left: 18 }}
+          content={children}
+        />
+      </StyledTriggerWrapper>
+    );
+  }
+
+  return (
+    <StyledTriggerWrapper>
+      <ExtendedTooltip
+        caption={expanded ? null : caption}
+        placement="right"
+        margin={{ right: 20 }}
+      >
+        <Flex justifyContent={expanded ? "start" : "center"}>
+          <SVGIcon name={icon} css={{ padding: theme.spacing.spacing01 }} />
+          {expandedDone ? caption : ""}
+        </Flex>
+      </ExtendedTooltip>
+    </StyledTriggerWrapper>
+  );
+}
+
+// TODO: remove
+const SubmenuWrapper = styled.div`
+  background-color: ${theme.color.background.ui01};
+  border: solid 1px ${theme.color.background.ui04};
+  border-radius: ${theme.radiusDefault};
+  box-shadow: rgb(31 30 47 / 10%) 12px 0 22px;
+  padding: ${theme.spacing.spacing02} ${theme.spacing.spacing04};
+
+  li {
+    margin-bottom: ${theme.spacing.spacing01};
+
+    > * {
+      padding: ${theme.spacing.spacing01} ${theme.spacing.spacing03};
+      width: 100%;
+    }
+
+    a {
+      box-sizing: border-box;
+      display: inline-block;
+      width: 100%;
+    }
+  }
 `;
 
-const BurgerWrapper = styled.div<ExpandableProps>`
-  display: flex;
-  flex-wrap: no-wrap;
-  margin: 0;
-  width: 100%;
-  align-items: center;
-  column-gap: ${theme.spacing.spacing02};
-  justify-content: ${({ expanded }) => (expanded ? "start" : "center")};
-`;
-
-const ItemWrapper = styled.div`
-  display: flex;
-  flex-wrap: no-wrap;
-  flex-direction: column;
-  row-gap: ${theme.spacing.spacing04};
-  width: 100%;
-`;
+// TODO: remove
+const ITEMS: Omit<MenuItemProps, "expanded">[] = [
+  {
+    caption: "Dashboard",
+    icon: "dashboard",
+  },
+  {
+    caption: "Applications",
+    icon: "application",
+  },
+  {
+    caption: "Settings",
+    icon: "settings",
+    children: (
+      <SubmenuWrapper>
+        <ul>
+          <li>User settings</li>
+          <li>Application settings</li>
+        </ul>
+      </SubmenuWrapper>
+    ),
+  },
+];
