@@ -7,22 +7,151 @@ import { NavigationBar } from "./NavigationBar";
 
 ## NavigationBar properties
 
-## NavigationBar visual
+## default
 
 <Canvas>
   <Story name="default" height="450px">
-    <div style={{ height: "400px", position: "relative" }}>
-      <NavigationBar position="absolute" height="100%" />
-    </div>
+    {() => {
+      return (
+        <div style={{ height: "400px", position: "relative" }}>
+          <NavigationBar
+            position="absolute"
+            height="100%"
+            items={[
+              {
+                caption: "Dashboard",
+                icon: "dashboard",
+              },
+              {
+                caption: "Applications",
+                icon: "application",
+              },
+              {
+                caption: "Settings",
+                icon: "settings",
+                children: (
+                  <ul
+                    style={{
+                      backgroundColor: "green",
+                      padding: "0.5rem 1rem",
+                      border: "solid 1px black",
+                    }}
+                  >
+                    <li>User settings</li>
+                    <li>Application settings</li>
+                  </ul>
+                ),
+              },
+              {
+                caption: "Archive",
+                icon: "archive",
+              },
+            ]}
+          />
+        </div>
+      );
+    }}
   </Story>
 </Canvas>
 
-## NavigationBar not expandable
+## not expandable
 
 <Canvas>
   <Story name="not-expandable" height="450px">
-    <div style={{ height: "400px", position: "relative" }}>
-      <NavigationBar position="absolute" height="100%" expandable={false} />
-    </div>
+    {() => {
+      return (
+        <div style={{ height: "400px", position: "relative" }}>
+          <NavigationBar
+            position="absolute"
+            height="100%"
+            expandable={false}
+            items={[
+              {
+                caption: "Dashboard",
+                icon: "dashboard",
+              },
+              {
+                caption: "Applications",
+                icon: "application",
+              },
+              {
+                caption: "Settings",
+                icon: "settings",
+                children: (
+                  <ul
+                    style={{
+                      backgroundColor: "green",
+                      padding: "0.5rem 1rem",
+                      border: "solid 1px black",
+                    }}
+                  >
+                    <li>User settings</li>
+                    <li>Application settings</li>
+                  </ul>
+                ),
+              },
+              {
+                caption: "Archive",
+                icon: "archive",
+              },
+            ]}
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### items stick to bottom
+
+<Canvas>
+  <Story name="items-to-bottom" height="450px">
+    {() => {
+      return (
+        <div style={{ height: "400px", position: "relative" }}>
+          <NavigationBar
+            position="absolute"
+            height="100%"
+            items={[
+              {
+                caption: "Dashboard",
+                icon: "dashboard",
+              },
+              {
+                caption: "Applications",
+                icon: "application",
+              },
+              {
+                caption: "Notifications",
+                icon: "bell",
+                stickToBottom: true,
+              },
+              {
+                caption: "Archive",
+                icon: "archive",
+                stickToBottom: true,
+              },
+              {
+                caption: "Settings",
+                icon: "settings",
+                children: (
+                  <ul
+                    style={{
+                      backgroundColor: "green",
+                      padding: "0.5rem 1rem",
+                      border: "solid 1px black",
+                    }}
+                  >
+                    <li>User settings</li>
+                    <li>Application settings</li>
+                  </ul>
+                ),
+                stickToBottom: true,
+              },
+            ]}
+          />
+        </div>
+      );
+    }}
   </Story>
 </Canvas>

@@ -1,5 +1,4 @@
 import * as React from "react";
-import styled from "styled-components";
 import theme from "../../theme";
 import { Flex } from "../container";
 import { ExtendedPopover } from "../extendedPopover";
@@ -24,6 +23,11 @@ export function NavigationBar({
     triggerOn: "hover",
     closeOn: "hover",
   },
+  expandableConfig = {
+    timingFunction: "linear",
+    duration: "0.2s",
+  },
+  items,
 }: Props) {
   const [expanded, setExpanded] = React.useState(false);
   const [expandedDone, setExpandedDone] = React.useState(false);
@@ -34,6 +38,15 @@ export function NavigationBar({
     }
     setExpanded((prevState) => !prevState);
   };
+
+  if (items == null) {
+    return null;
+  }
+
+  const topItems = items.filter((item) => !item.stickToBottom);
+  const bottomItems = items.filter((item) => item.stickToBottom);
+
+  const hasBottomItems = bottomItems.length > 0;
 
   return (
     <NavigationBarWrapper
@@ -48,6 +61,7 @@ export function NavigationBar({
       position={position}
       backgroundColor={backgroundColor}
       height={height}
+      expandableConfig={expandableConfig}
     >
       {expandable ? (
         <BurgerWrapper expanded={expanded}>
@@ -60,16 +74,30 @@ export function NavigationBar({
         </BurgerWrapper>
       ) : null}
       <ItemsWrapper>
-        {ITEMS.map((item, index) => (
+        {topItems.map((item, index) => (
           <MenuItem
             key={`${item.caption}-${index}`}
+            {...item}
             expanded={expanded}
             expandedDone={expandedDone}
             popoverConfig={popoverConfig}
-            {...item}
           />
         ))}
       </ItemsWrapper>
+      {hasBottomItems ? (
+        <ItemsWrapper stickToBottom>
+          {bottomItems.map((item, index) => (
+            <MenuItem
+              key={`${item.caption}-${index}`}
+              {...item}
+              expanded={expanded}
+              stickToBottom
+              expandedDone={expandedDone}
+              popoverConfig={popoverConfig}
+            />
+          ))}
+        </ItemsWrapper>
+      ) : null}
     </NavigationBarWrapper>
   );
 }
@@ -81,7 +109,8 @@ function MenuItem({
   expanded,
   popoverConfig,
   expandedDone,
-}: MenuItemProps & { expandedDone: boolean }) {
+  stickToBottom,
+}: MenuItemProps) {
   if (children != null) {
     const triggerEl = (
       <Flex justifyContent={expanded ? "start" : "center"}>
@@ -93,7 +122,7 @@ function MenuItem({
       <StyledTriggerWrapper>
         <ExtendedPopover
           trigger={triggerEl}
-          position="start"
+          position={stickToBottom ? "end" : "start"}
           triggerOn={popoverConfig?.triggerOn}
           closeOn={popoverConfig?.closeOn}
           margin={{ left: 18 }}
@@ -118,51 +147,3 @@ function MenuItem({
     </StyledTriggerWrapper>
   );
 }
-
-// TODO: remove
-const SubmenuWrapper = styled.div`
-  background-color: ${theme.color.background.ui01};
-  border: solid 1px ${theme.color.background.ui04};
-  border-radius: ${theme.radiusDefault};
-  box-shadow: rgb(31 30 47 / 10%) 12px 0 22px;
-  padding: ${theme.spacing.spacing02} ${theme.spacing.spacing04};
-
-  li {
-    margin-bottom: ${theme.spacing.spacing01};
-
-    > * {
-      padding: ${theme.spacing.spacing01} ${theme.spacing.spacing03};
-      width: 100%;
-    }
-
-    a {
-      box-sizing: border-box;
-      display: inline-block;
-      width: 100%;
-    }
-  }
-`;
-
-// TODO: remove
-const ITEMS: Omit<MenuItemProps, "expanded">[] = [
-  {
-    caption: "Dashboard",
-    icon: "dashboard",
-  },
-  {
-    caption: "Applications",
-    icon: "application",
-  },
-  {
-    caption: "Settings",
-    icon: "settings",
-    children: (
-      <SubmenuWrapper>
-        <ul>
-          <li>User settings</li>
-          <li>Application settings</li>
-        </ul>
-      </SubmenuWrapper>
-    ),
-  },
-];
