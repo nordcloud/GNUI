@@ -155,3 +155,132 @@ import { NavigationBar } from "./NavigationBar";
     }}
   </Story>
 </Canvas>
+
+### scrollable
+
+<Canvas>
+  <Story name="scrollable" height="400px">
+    {() => {
+      return (
+        <div style={{ height: "400px", position: "relative" }}>
+          <NavigationBar
+            position="absolute"
+            height="100%"
+            items={[
+              {
+                caption: "Dashboard",
+                icon: "dashboard",
+              },
+              {
+                caption: "Applications",
+                icon: "application",
+              },
+              {
+                caption: "KPIs",
+                icon: "chartAscending",
+              },
+              {
+                caption: "Reserved Instances",
+                icon: "reservedInstances",
+              },
+              {
+                caption: "Estate Records",
+                icon: "resource",
+              },
+              {
+                caption: "Cloud Accounts",
+                icon: "cloud",
+              },
+              {
+                caption: "Settings",
+                icon: "settings",
+                children: (
+                  <ul
+                    style={{
+                      backgroundColor: "green",
+                      padding: "0.5rem 1rem",
+                      border: "solid 1px black",
+                    }}
+                  >
+                    <li>User settings</li>
+                    <li>Application settings</li>
+                  </ul>
+                ),
+              },
+              {
+                caption: "Archive",
+                icon: "archive",
+              },
+            ]}
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### scrollable-stick-to-bottom
+
+<Canvas>
+  <Story name="scrollable-stick-to-bottom" height="400px">
+    {() => {
+      return (
+        <div style={{ height: "400px", position: "relative" }}>
+          <NavigationBar
+            position="absolute"
+            height="100%"
+            items={[
+              {
+                caption: "Dashboard",
+                icon: "dashboard",
+              },
+              {
+                caption: "Applications",
+                icon: "application",
+              },
+              {
+                caption: "KPIs",
+                icon: "chartAscending",
+                stickToBottom: true,
+              },
+              {
+                caption: "Reserved Instances",
+                icon: "reservedInstances",
+              },
+              {
+                caption: "Estate Records",
+                icon: "resource",
+              },
+              {
+                caption: "Cloud Accounts",
+                icon: "cloud",
+              },
+              {
+                caption: "Settings",
+                icon: "settings",
+                stickToBottom: true,
+                children: (
+                  <ul
+                    style={{
+                      backgroundColor: "green",
+                      padding: "0.5rem 1rem",
+                      border: "solid 1px black",
+                    }}
+                  >
+                    <li>User settings</li>
+                    <li>Application settings</li>
+                  </ul>
+                ),
+              },
+              {
+                caption: "Archive",
+                icon: "archive",
+                stickToBottom: true,
+              },
+            ]}
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>

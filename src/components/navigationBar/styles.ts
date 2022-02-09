@@ -27,6 +27,7 @@ export const NavigationBarWrapper = styled.nav<
       : "unset"};
   align-items: ${({ expanded }) => (expanded ? "start" : "center")};
   z-index: ${theme.zindex.sticky};
+  overflow: scroll;
 `;
 
 export const BurgerWrapper = styled.div<ExpandedProps>`
