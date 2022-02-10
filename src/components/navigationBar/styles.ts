@@ -12,9 +12,10 @@ export const NavigationBarWrapper = styled.nav<
   flex-direction: column;
   position: ${({ position }) => position};
   top: 0;
+  bottom: 0;
+  left: 0;
   width: ${({ expanded }) => (expanded ? "14rem" : theme.spacing.spacing07)};
   background-color: ${({ backgroundColor }) => backgroundColor};
-  height: ${({ height }) => height};
   padding: ${theme.spacing.spacing05}
     ${({ expanded }) =>
       expanded ? theme.spacing.spacing04 : theme.spacing.spacing03}
@@ -27,7 +28,7 @@ export const NavigationBarWrapper = styled.nav<
       : "unset"};
   align-items: ${({ expanded }) => (expanded ? "start" : "center")};
   z-index: ${theme.zindex.sticky};
-  overflow: scroll;
+  overflow-x: scroll;
 `;
 
 export const BurgerWrapper = styled.div<ExpandedProps>`
