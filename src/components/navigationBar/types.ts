@@ -14,6 +14,16 @@ export type Props = {
   items?: Item[];
 };
 
+export type ExpandedProps = {
+  expanded: boolean;
+};
+
+export type MenuItemProps = Item & {
+  expanded: boolean;
+  expandedDone: boolean;
+  popoverConfig?: PopoverConfig;
+};
+
 type Item = {
   caption: string;
   icon: PathName;
@@ -21,26 +31,12 @@ type Item = {
   stickToBottom?: boolean;
 };
 
-export type PopoverConfig = {
-  triggerOn: ExtendedPopoverAction;
-  closeOn: ExtendedPopoverAction;
-};
-
 type ExpandableConfig = {
   timingFunction?: "linear" | "ease" | "ease-in" | "ease-out" | "ease-in-out";
   duration?: string;
 };
 
-export type ExpandedProps = {
-  expanded: boolean;
-};
-
-export type MenuItemProps = {
-  caption: string;
-  icon: PathName;
-  expanded: boolean;
-  expandedDone: boolean;
-  children?: React.ReactNode;
-  popoverConfig?: PopoverConfig;
-  stickToBottom?: boolean;
+type PopoverConfig = {
+  triggerOn: ExtendedPopoverAction;
+  closeOn: ExtendedPopoverAction;
 };

@@ -6,7 +6,8 @@ import { ExtendedTooltip } from "../extendedTooltip";
 import { SVGIcon } from "../svgicon";
 import {
   BurgerWrapper,
-  ItemsWrapper,
+  ItemsContainer,
+  ItemsSection,
   NavigationBarWrapper,
   StyledTriggerWrapper,
 } from "./styles";
@@ -73,31 +74,33 @@ export function NavigationBar({
           {expandedDone ? "Main Menu" : ""}
         </BurgerWrapper>
       ) : null}
-      <ItemsWrapper>
-        {topItems.map((item, index) => (
-          <MenuItem
-            key={`${item.caption}-${index}`}
-            {...item}
-            expanded={expanded}
-            expandedDone={expandedDone}
-            popoverConfig={popoverConfig}
-          />
-        ))}
-      </ItemsWrapper>
-      {hasBottomItems ? (
-        <ItemsWrapper stickToBottom>
-          {bottomItems.map((item, index) => (
+      <ItemsContainer>
+        <ItemsSection>
+          {topItems.map((item, index) => (
             <MenuItem
               key={`${item.caption}-${index}`}
               {...item}
               expanded={expanded}
-              stickToBottom
               expandedDone={expandedDone}
               popoverConfig={popoverConfig}
             />
           ))}
-        </ItemsWrapper>
-      ) : null}
+        </ItemsSection>
+        {hasBottomItems ? (
+          <ItemsSection stickToBottom>
+            {bottomItems.map((item, index) => (
+              <MenuItem
+                key={`${item.caption}-${index}`}
+                {...item}
+                expanded={expanded}
+                stickToBottom
+                expandedDone={expandedDone}
+                popoverConfig={popoverConfig}
+              />
+            ))}
+          </ItemsSection>
+        ) : null}
+      </ItemsContainer>
     </NavigationBarWrapper>
   );
 }
@@ -125,7 +128,7 @@ function MenuItem({
           position={stickToBottom ? "end" : "start"}
           triggerOn={popoverConfig?.triggerOn}
           closeOn={popoverConfig?.closeOn}
-          margin={{ left: 18 }}
+          margin={{ left: 20 }}
           content={children}
         />
       </StyledTriggerWrapper>
