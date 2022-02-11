@@ -14,10 +14,11 @@ import {
   DropdownMenu,
   DropdownWrapper,
   Inner,
+  SizeProps,
 } from "./styles";
 import { Option } from "./types";
 
-type DropdownProps = SpaceProps & {
+type DropdownProps = SpaceProps & SizeProps & {
   name: string;
   options: Option[];
   onChange: (value: string) => void;
@@ -42,6 +43,7 @@ export function Dropdown({
   onChange,
   onClear,
   minNumOfOptionsToShowSearchBox = 4,
+  size,
   ...props
 }: DropdownProps) {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -76,6 +78,7 @@ export function Dropdown({
         disabled={disabled}
         title={title}
         type="button"
+        size={size}
       >
         <Inner>{innerText}</Inner>
         {showClearButton && (
@@ -84,11 +87,11 @@ export function Dropdown({
             title={`Clear ${name} value`}
             role="button"
           >
-            <SVGIcon size="sm" name="close" />
+            <SVGIcon size="sm" name="close" size={size && "sm"}/>
           </Clear>
         )}
         <DropdownIcon animate={isOpen}>
-          <SVGIcon name="chevronDown" />
+          <SVGIcon name="chevronDown" size={size && "sm"}/>
         </DropdownIcon>
       </DropdownButton>
       {showMenu && (
@@ -131,6 +134,7 @@ export function Dropdown({
                       setSearch("");
                     }}
                     type="button"
+                    size={size}
                   >
                     {getOptionValue(option, "label") || optionValue}
                   </DropdownItem>
