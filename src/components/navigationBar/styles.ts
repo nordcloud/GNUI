@@ -2,6 +2,28 @@ import styled from "styled-components";
 import theme from "../../theme";
 import { ExpandedProps, Props } from "./types";
 
+export const ItemsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+`;
+
+export const ItemsSection = styled.div<{ stickToBottom?: boolean }>`
+  display: flex;
+  flex-wrap: no-wrap;
+  flex-direction: column;
+  row-gap: ${theme.spacing.spacing04};
+  width: 100%;
+  border-top: ${({ stickToBottom }) =>
+    stickToBottom ? `solid 1px ${theme.color.border.border01}` : "inherit"};
+  padding-top: ${({ stickToBottom }) =>
+    stickToBottom ? theme.spacing.spacing03 : "0"};
+  margin-top: ${({ stickToBottom }) =>
+    stickToBottom ? theme.spacing.spacing06 : "0"};
+`;
+
 export const NavigationBarWrapper = styled.nav<
   Omit<Props, "items"> & ExpandedProps
 >`
@@ -41,28 +63,6 @@ export const BurgerWrapper = styled.div<ExpandedProps>`
   align-items: center;
   column-gap: ${theme.spacing.spacing02};
   justify-content: ${({ expanded }) => (expanded ? "start" : "center")};
-`;
-
-export const ItemsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
-  height: 100%;
-`;
-
-export const ItemsSection = styled.div<{ stickToBottom?: boolean }>`
-  display: flex;
-  flex-wrap: no-wrap;
-  flex-direction: column;
-  row-gap: ${theme.spacing.spacing04};
-  width: 100%;
-  border-top: ${({ stickToBottom }) =>
-    stickToBottom ? `solid 1px ${theme.color.border.border01}` : "inherit"};
-  padding-top: ${({ stickToBottom }) =>
-    stickToBottom ? theme.spacing.spacing03 : "0"};
-  margin-top: ${({ stickToBottom }) =>
-    stickToBottom ? theme.spacing.spacing06 : "0"};
 `;
 
 export const StyledPopoverTrigger = styled.div`

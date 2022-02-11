@@ -1,53 +1,37 @@
 import * as React from "react";
 import theme from "../../theme";
-import { Flex } from "../container";
-import { ExtendedPopover } from "../extendedPopover";
-import { ExtendedTooltip } from "../extendedTooltip";
 import { SVGIcon } from "../svgicon";
-import {
-  BurgerWrapper,
-  ItemsContainer,
-  ItemsSection,
-  NavigationBarWrapper,
-  StyledTriggerWrapper,
-} from "./styles";
-import { Trigger } from "./Trigger";
-import { MenuItemProps, Props } from "./types";
+import { BurgerWrapper, NavigationBarWrapper } from "./styles";
+import { Props } from "./types";
+import { useExpanded } from "./utils/hooks";
+import { NavigationBarProvider } from "./utils/provider";
 
-export function NavigationBar({
+export function NavigationBar(props: Props) {
+  return (
+    <NavigationBarProvider popoverConfig={props.popoverConfig}>
+      <NavigationBarVisual {...props} />
+    </NavigationBarProvider>
+  );
+}
+
+function NavigationBarVisual({
   position = "fixed",
   expandable = true,
   height = "100vh",
   backgroundColor = theme.color.background.ui01,
   closeOnLeave = false,
-  popoverConfig = {
-    triggerOn: "hover",
-    closeOn: "hover",
-  },
   expandableConfig = {
     timingFunction: "linear",
     duration: "0.2s",
   },
-  items,
+  children,
 }: Props) {
-  const [expanded, setExpanded] = React.useState(false);
-  const [expandedDone, setExpandedDone] = React.useState(false);
+  const { expanded, expandedDone, handleExpand, setExpanded, setExpandedDone } =
+    useExpanded();
 
-  const handleExpand = () => {
-    if (expanded) {
-      setExpandedDone(false);
-    }
-    setExpanded((prevState) => !prevState);
-  };
-
-  if (items == null) {
+  if (children == null) {
     return null;
   }
-
-  const topItems = items.filter((item) => !item.stickToBottom);
-  const bottomItems = items.filter((item) => item.stickToBottom);
-
-  const hasBottomItems = bottomItems.length > 0;
 
   return (
     <NavigationBarWrapper
@@ -65,88 +49,15 @@ export function NavigationBar({
       expandableConfig={expandableConfig}
     >
       {expandable ? (
-        <BurgerWrapper expanded={expanded}>
+        <BurgerWrapper expanded={expanded} onClick={handleExpand}>
           <SVGIcon
             name={expandedDone ? "close" : "burgerMenu"}
             css={{ padding: theme.spacing.spacing01, cursor: "pointer" }}
-            onClick={handleExpand}
           />
           {expandedDone ? "Main Menu" : ""}
         </BurgerWrapper>
       ) : null}
-      <ItemsContainer>
-        <ItemsSection>
-          {topItems.map((item, index) => (
-            <MenuItem
-              key={`${item.caption}-${index}`}
-              {...item}
-              expanded={expanded}
-              expandedDone={expandedDone}
-              popoverConfig={popoverConfig}
-            />
-          ))}
-        </ItemsSection>
-        {hasBottomItems ? (
-          <ItemsSection stickToBottom>
-            {bottomItems.map((item, index) => (
-              <MenuItem
-                key={`${item.caption}-${index}`}
-                {...item}
-                expanded={expanded}
-                stickToBottom
-                expandedDone={expandedDone}
-                popoverConfig={popoverConfig}
-              />
-            ))}
-          </ItemsSection>
-        ) : null}
-      </ItemsContainer>
+      {children}
     </NavigationBarWrapper>
-  );
-}
-
-function MenuItem({
-  caption,
-  icon,
-  children,
-  expanded,
-  popoverConfig,
-  expandedDone,
-  stickToBottom,
-}: MenuItemProps) {
-  if (children != null) {
-    const triggerEl = (
-      <Flex justifyContent={expanded ? "start" : "center"}>
-        <Trigger expanded={expandedDone} icon={icon} caption={caption} />
-      </Flex>
-    );
-
-    return (
-      <StyledTriggerWrapper>
-        <ExtendedPopover
-          trigger={triggerEl}
-          position={stickToBottom ? "end" : "start"}
-          triggerOn={popoverConfig?.triggerOn}
-          closeOn={popoverConfig?.closeOn}
-          margin={{ left: 20 }}
-          content={children}
-        />
-      </StyledTriggerWrapper>
-    );
-  }
-
-  return (
-    <StyledTriggerWrapper>
-      <ExtendedTooltip
-        caption={expanded ? null : caption}
-        placement="right"
-        margin={{ right: 20 }}
-      >
-        <Flex justifyContent={expanded ? "start" : "center"}>
-          <SVGIcon name={icon} css={{ padding: theme.spacing.spacing01 }} />
-          {expandedDone ? caption : ""}
-        </Flex>
-      </ExtendedTooltip>
-    </StyledTriggerWrapper>
   );
 }

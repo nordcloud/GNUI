@@ -1,8 +1,8 @@
 import * as React from "react";
-import theme from "../../theme";
-import { SVGIcon } from "../svgicon";
-import { StyledPopoverTrigger } from "./styles";
-import { MenuItemProps } from "./types";
+import theme from "../../../theme";
+import { SVGIcon } from "../../svgicon";
+import { StyledPopoverTrigger } from "../styles";
+import { MenuItemProps } from "../types";
 
 export function Trigger({
   expanded,

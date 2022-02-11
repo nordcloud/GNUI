@@ -3,6 +3,7 @@ import { ExtendedPopoverAction } from "../extendedPopover";
 import { PathName } from "../svgicon/paths";
 
 export type Props = {
+  children: React.ReactNode[];
   position?: string;
   height?: string;
   expandable?: boolean;
@@ -11,11 +12,16 @@ export type Props = {
   closeOnLeave?: boolean;
   pushPopoverOutside?: boolean;
   popoverConfig?: PopoverConfig;
-  items?: Item[];
 };
 
 export type ExpandedProps = {
   expanded: boolean;
+};
+
+export type Item = {
+  caption: string;
+  icon: PathName;
+  children?: React.ReactNode;
 };
 
 export type MenuItemProps = Item & {
@@ -24,19 +30,12 @@ export type MenuItemProps = Item & {
   popoverConfig?: PopoverConfig;
 };
 
-type Item = {
-  caption: string;
-  icon: PathName;
-  children?: React.ReactNode;
-  stickToBottom?: boolean;
+export type PopoverConfig = {
+  triggerOn: ExtendedPopoverAction;
+  closeOn: ExtendedPopoverAction;
 };
 
 type ExpandableConfig = {
   timingFunction?: "linear" | "ease" | "ease-in" | "ease-out" | "ease-in-out";
   duration?: string;
-};
-
-type PopoverConfig = {
-  triggerOn: ExtendedPopoverAction;
-  closeOn: ExtendedPopoverAction;
 };
