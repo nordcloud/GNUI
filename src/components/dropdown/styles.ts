@@ -16,8 +16,7 @@ export const DropdownWrapper = styled(GnuiContainer)<DropdownWrapperProps>`
 
 export type SizeProps = {
   size: "sm" | "xs";
-}
-
+};
 
 export const DropdownButton = styled.button<SizeProps>`
   width: 100%;
@@ -62,12 +61,12 @@ export const DropdownButton = styled.button<SizeProps>`
         color: ${theme.color.text.text03};
       }
     `}
-  
-    ${({ size }) =>
-      size &&
-      css`
-        padding: ${getPadding(size)};
-        font-size: ${theme.fontSizes.sm};
+
+  ${({ size }) =>
+    size &&
+    css`
+      padding: ${getPadding(size)};
+      font-size: ${theme.fontSizes.sm};
     `}
 `;
 
@@ -172,5 +171,5 @@ export const DropdownItem = styled.button<SizeProps>`
     css`
       padding: 0;
       font-size: ${theme.fontSizes.sm};
-  `}
+    `}
 `;

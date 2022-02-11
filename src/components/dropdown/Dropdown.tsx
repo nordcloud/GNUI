@@ -18,21 +18,22 @@ import {
 } from "./styles";
 import { Option } from "./types";
 
-type DropdownProps = SpaceProps & SizeProps & {
-  name: string;
-  options: Option[];
-  onChange: (value: string) => void;
-  width?: string;
-  value?: string;
-  isOpen?: boolean;
-  disabled?: boolean;
-  children?: React.ReactNode;
-  title?: string;
-  minNumOfOptionsToShowSearchBox?: number;
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  onMouseLeave?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  onClear?: () => void;
-};
+type DropdownProps = SpaceProps &
+  SizeProps & {
+    name: string;
+    options: Option[];
+    onChange: (value: string) => void;
+    width?: string;
+    value?: string;
+    isOpen?: boolean;
+    disabled?: boolean;
+    children?: React.ReactNode;
+    title?: string;
+    minNumOfOptionsToShowSearchBox?: number;
+    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    onMouseLeave?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    onClear?: () => void;
+  };
 
 export function Dropdown({
   value = "",
@@ -87,11 +88,11 @@ export function Dropdown({
             title={`Clear ${name} value`}
             role="button"
           >
-            <SVGIcon size="sm" name="close" size={size && "sm"}/>
+            <SVGIcon size="sm" name="close" size={size && "sm"} />
           </Clear>
         )}
         <DropdownIcon animate={isOpen}>
-          <SVGIcon name="chevronDown" size={size && "sm"}/>
+          <SVGIcon name="chevronDown" size={size && "sm"} />
         </DropdownIcon>
       </DropdownButton>
       {showMenu && (
