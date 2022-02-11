@@ -3,7 +3,7 @@ import theme from "../../theme";
 import { SVGIcon } from "../svgicon";
 import { BurgerWrapper, NavigationBarWrapper } from "./styles";
 import { Props } from "./types";
-import { useExpanded } from "./utils/hooks";
+import { useMenuBarConfiguration } from "./utils/hooks";
 import { NavigationBarProvider } from "./utils/provider";
 
 export function NavigationBar(props: Props) {
@@ -27,7 +27,7 @@ function NavigationBarVisual({
   children,
 }: Props) {
   const { expanded, expandedDone, handleExpand, setExpanded, setExpandedDone } =
-    useExpanded();
+    useMenuBarConfiguration();
 
   if (children == null) {
     return null;

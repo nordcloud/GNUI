@@ -1,7 +1,7 @@
 import * as React from "react";
 import { NavigationBarContext } from "./context";
 
-export function useExpanded() {
+export function useMenuBarConfiguration() {
   const context = React.useContext(NavigationBarContext);
 
   if (context === undefined) {

@@ -7,10 +7,10 @@ import { SVGIcon } from "../svgicon";
 import { Trigger } from "./components/Trigger";
 import { StyledTriggerWrapper } from "./styles";
 import { MenuItemProps } from "./types";
-import { useExpanded } from "./utils/hooks";
+import { useMenuBarConfiguration } from "./utils/hooks";
 
 export function MenuItem({ caption, icon, children }: MenuItemProps) {
-  const { expanded, expandedDone, popoverConfig } = useExpanded();
+  const { expanded, expandedDone, popoverConfig } = useMenuBarConfiguration();
 
   if (children != null) {
     const triggerEl = (
