@@ -6,10 +6,10 @@ import { ExtendedTooltip } from "../extendedTooltip";
 import { SVGIcon } from "../svgicon";
 import { Trigger } from "./components/Trigger";
 import { StyledTriggerWrapper } from "./styles";
-import { MenuItemProps } from "./types";
+import { Item } from "./types";
 import { useMenuBarConfiguration } from "./utils/hooks";
 
-export function MenuItem({ caption, icon, children }: MenuItemProps) {
+export function MenuItem({ caption, icon, children }: Item) {
   const { expanded, expandedDone, popoverConfig } = useMenuBarConfiguration();
 
   if (children != null) {

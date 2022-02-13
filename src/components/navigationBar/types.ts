@@ -3,7 +3,7 @@ import { ExtendedPopoverAction } from "../extendedPopover";
 import { PathName } from "../svgicon/paths";
 
 export type Props = {
-  children: React.ReactNode[];
+  children: React.ReactNode | React.ReactNode[];
   position?: string;
   height?: string;
   expandable?: boolean;
