@@ -7,10 +7,9 @@ export type Props = {
   position?: string;
   height?: string;
   expandable?: boolean;
-  expandableConfig?: ExpandableConfig;
   backgroundColor?: string;
   closeOnLeave?: boolean;
-  pushPopoverOutside?: boolean;
+  expandableConfig?: ExpandableConfig;
   popoverConfig?: PopoverConfig;
 };
 
