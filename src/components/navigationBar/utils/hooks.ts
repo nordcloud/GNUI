@@ -6,7 +6,7 @@ export function useMenuBarConfiguration() {
 
   if (context === undefined) {
     throw new Error(
-      "useExpanded must be used within a NavigationBarContextProvider"
+      "useMenuBarConfiguration must be used within a NavigationBarContextProvider"
     );
   }
   return context;
