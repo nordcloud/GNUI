@@ -169,7 +169,7 @@ export const DropdownItem = styled.button<SizeProps>`
   ${({ size }) =>
     size &&
     css`
-      padding: 0;
+      padding: 0 ${theme.spacing.spacing01};
       font-size: ${theme.fontSizes.sm};
     `}
 `;
