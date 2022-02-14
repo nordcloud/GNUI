@@ -14,7 +14,11 @@ export const DropdownWrapper = styled(GnuiContainer)<DropdownWrapperProps>`
   ${space}
 `;
 
-export const DropdownButton = styled.button`
+export type SizeProps = {
+  size: "sm" | "xs";
+};
+
+export const DropdownButton = styled.button<SizeProps>`
   width: 100%;
   display: flex;
   align-items: center;
@@ -57,7 +61,25 @@ export const DropdownButton = styled.button`
         color: ${theme.color.text.text03};
       }
     `}
+
+  ${({ size }) =>
+    size &&
+    css`
+      padding: ${getPadding(size)};
+      font-size: ${theme.fontSizes.sm};
+    `}
 `;
+
+const getPadding = (size: string) => {
+  switch (size) {
+    case "sm":
+      return `5px ${theme.spacing.spacing02}`;
+    case "xs":
+      return `1px ${theme.spacing.spacing01}`;
+    default:
+      return `1px ${theme.spacing.spacing01}`;
+  }
+};
 
 type DropdownIconProps = {
   animate?: boolean;
@@ -121,7 +143,7 @@ export const Clear = styled.span<IClear>`
   appearance: button;
 `;
 
-export const DropdownItem = styled.button`
+export const DropdownItem = styled.button<SizeProps>`
   border: 0;
   width: 100%;
   box-sizing: border-box;
@@ -143,4 +165,11 @@ export const DropdownItem = styled.button`
     cursor: pointer;
     background: ${theme.color.interactive.secondary};
   }
+
+  ${({ size }) =>
+    size &&
+    css`
+      padding: 0;
+      font-size: ${theme.fontSizes.sm};
+    `}
 `;
