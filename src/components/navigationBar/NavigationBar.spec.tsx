@@ -45,10 +45,7 @@ test("renders MenutItems as icons with text when unfolded", async () => {
 
 function renderDummyNavBar(showHamburger = true) {
   return render(
-    <NavigationBar
-      expandable={showHamburger}
-      expandableConfig={{ duration: "0" }}
-    >
+    <NavigationBar expandable={showHamburger}>
       <a href="https://www.nordcloud.com" target="_blank" rel="noreferrer">
         Link
       </a>
