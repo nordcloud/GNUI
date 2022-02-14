@@ -34,6 +34,9 @@ function NavigationBarVisual({
     return null;
   }
 
+  const icon = expandedDone ? "close" : "burgerMenu";
+  const caption = expandedDone ? "Main Menu" : "";
+
   return (
     <NavigationBarWrapper
       expanded={expanded}
@@ -52,10 +55,10 @@ function NavigationBarVisual({
       {expandable ? (
         <BurgerWrapper expanded={expanded} onClick={handleExpand}>
           <SVGIcon
-            name={expandedDone ? "close" : "burgerMenu"}
+            name={icon}
             css={{ padding: theme.spacing.spacing01, cursor: "pointer" }}
           />
-          {expandedDone ? "Main Menu" : ""}
+          {caption}
         </BurgerWrapper>
       ) : null}
       {children}

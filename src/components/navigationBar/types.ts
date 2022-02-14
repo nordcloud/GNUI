@@ -34,7 +34,7 @@ export type PopoverConfig = {
   closeOn: ExtendedPopoverAction;
 };
 
-type ExpandableConfig = {
+export type ExpandableConfig = {
   timingFunction?: "linear" | "ease" | "ease-in" | "ease-out" | "ease-in-out";
   duration?: string;
 };

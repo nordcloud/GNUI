@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import theme from "../../theme";
-import { ExpandedProps, Props } from "./types";
+import { ExpandableConfig, ExpandedProps, Props } from "./types";
 
 export const ItemsContainer = styled.div`
   display: flex;
@@ -16,13 +16,18 @@ export const ItemsSection = styled.div<{ stickToBottom?: boolean }>`
   flex-direction: column;
   row-gap: ${theme.spacing.spacing04};
   width: 100%;
-  border-top: ${({ stickToBottom }) =>
-    stickToBottom ? `solid 1px ${theme.color.border.border01}` : "inherit"};
+  ${({ stickToBottom }) => stickToBottom && getBorder()}
   padding-top: ${({ stickToBottom }) =>
     stickToBottom ? theme.spacing.spacing03 : "0"};
   margin-top: ${({ stickToBottom }) =>
     stickToBottom ? theme.spacing.spacing06 : "0"};
 `;
+
+function getBorder() {
+  return css`
+    border-top: solid 1px ${theme.color.border.border01};
+  `;
+}
 
 export const NavigationBarWrapper = styled.nav<
   Omit<Props, "items"> & ExpandedProps
@@ -46,14 +51,26 @@ export const NavigationBarWrapper = styled.nav<
     expanded ? theme.spacing.spacing04 : theme.spacing.spacing03};
   row-gap: ${theme.spacing.spacing07};
   border-right: solid 1px ${theme.color.border.border01};
-  transition: ${({ expanded, expandableConfig }) =>
-    expanded
-      ? `width ${expandableConfig?.duration} ${expandableConfig?.timingFunction}`
-      : "unset"};
+  ${({ expanded, expandableConfig }) =>
+    getTransition({ expanded, expandableConfig })}
   align-items: ${({ expanded }) => (expanded ? "start" : "center")};
   z-index: ${theme.zindex.sticky};
   overflow-x: scroll;
 `;
+
+function getTransition({
+  expanded,
+  expandableConfig,
+}: {
+  expanded: boolean;
+  expandableConfig?: ExpandableConfig;
+}) {
+  return css`
+    transition: ${expanded
+      ? `width ${expandableConfig?.duration} ${expandableConfig?.timingFunction}`
+      : "unset"};
+  `;
+}
 
 export const BurgerWrapper = styled.div<ExpandedProps>`
   cursor: pointer;
