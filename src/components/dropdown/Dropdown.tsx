@@ -88,7 +88,7 @@ export function Dropdown({
             title={`Clear ${name} value`}
             role="button"
           >
-            <SVGIcon size="sm" name="close" size={size && "sm"} />
+            <SVGIcon size="sm" name="close" />
           </Clear>
         )}
         <DropdownIcon animate={isOpen}>
