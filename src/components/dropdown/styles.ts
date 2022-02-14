@@ -73,11 +73,11 @@ export const DropdownButton = styled.button<SizeProps>`
 const getPadding = (size: string) => {
   switch (size) {
     case "sm":
-      return "5px 0.5rem";
+      return `5px ${theme.spacing.spacing02}`;
     case "xs":
-      return "1px 0.25rem";
+      return `1px ${theme.spacing.spacing01}`;
     default:
-      return "1px 0.25rem";
+      return `1px ${theme.spacing.spacing01}`;
   }
 };
 
