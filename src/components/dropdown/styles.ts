@@ -15,7 +15,7 @@ export const DropdownWrapper = styled(GnuiContainer)<DropdownWrapperProps>`
 `;
 
 export type SizeProps = {
-  size: "sm" | "xs";
+  size?: "sm" | "xs";
 };
 
 export const DropdownButton = styled.button<SizeProps>`
