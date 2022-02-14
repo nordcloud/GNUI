@@ -30,6 +30,7 @@ function NavigationBarVisual({
     useMenuBarConfiguration();
 
   if (children == null) {
+    console.warn("Children is not provided. Component will not be rendered.");
     return null;
   }
 

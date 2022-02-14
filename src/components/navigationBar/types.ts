@@ -17,13 +17,13 @@ export type ExpandedProps = {
   expanded: boolean;
 };
 
-export type Item = {
+export type MenuItemProps = {
   caption: string;
   icon: PathName;
   children?: React.ReactNode;
 };
 
-export type MenuItemProps = Item & {
+export type TriggerProps = {
   expanded: boolean;
   expandedDone: boolean;
   popoverConfig?: PopoverConfig;

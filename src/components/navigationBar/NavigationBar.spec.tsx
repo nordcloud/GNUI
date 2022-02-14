@@ -31,10 +31,12 @@ test("renders MenutItems as icons with text when unfolded", async () => {
 
   const hamburger = container.querySelector("svg");
 
+  expect(hamburger).toBeDefined();
   if (hamburger) {
     userEvent.click(hamburger);
   }
 
+  expect(container.firstChild).toBeDefined();
   if (container.firstChild) {
     fireEvent.transitionEnd(container.firstChild);
   }

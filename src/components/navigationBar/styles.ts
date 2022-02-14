@@ -38,10 +38,12 @@ export const NavigationBarWrapper = styled.nav<
   left: 0;
   width: ${({ expanded }) => (expanded ? "14rem" : theme.spacing.spacing07)};
   background-color: ${({ backgroundColor }) => backgroundColor};
-  padding: ${theme.spacing.spacing05}
-    ${({ expanded }) =>
-      expanded ? theme.spacing.spacing04 : theme.spacing.spacing03}
-    ${theme.spacing.spacing04};
+  padding-top: ${theme.spacing.spacing05};
+  padding-bottom: ${theme.spacing.spacing04};
+  padding-left: ${({ expanded }) =>
+    expanded ? theme.spacing.spacing04 : theme.spacing.spacing03};
+  padding-right: ${({ expanded }) =>
+    expanded ? theme.spacing.spacing04 : theme.spacing.spacing03};
   row-gap: ${theme.spacing.spacing07};
   border-right: solid 1px ${theme.color.border.border01};
   transition: ${({ expanded, expandableConfig }) =>
