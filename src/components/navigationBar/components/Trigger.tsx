@@ -1,14 +1,17 @@
 import * as React from "react";
 import theme from "../../../theme";
 import { SVGIcon } from "../../svgicon";
+import { PathName } from "../../svgicon/paths";
 import { StyledPopoverTrigger } from "../styles";
 import { MenuItemProps } from "../types";
 
-export function Trigger({
-  expanded,
-  icon,
-  caption,
-}: Pick<MenuItemProps, "expanded" | "icon" | "caption">) {
+type Props = {
+  caption: string;
+  icon: PathName;
+  expanded: boolean;
+};
+
+export function Trigger({ expanded, icon, caption }: Props) {
   return expanded ? (
     <StyledPopoverTrigger>
       <TriggerIcon icon={icon} />

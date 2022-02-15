@@ -23,12 +23,6 @@ export type MenuItemProps = {
   children?: React.ReactNode;
 };
 
-export type TriggerProps = {
-  expanded: boolean;
-  expandedDone: boolean;
-  popoverConfig?: PopoverConfig;
-};
-
 export type PopoverConfig = {
   triggerOn: ExtendedPopoverAction;
   closeOn: ExtendedPopoverAction;
