@@ -65,10 +65,11 @@ function getTransition({
   expanded: boolean;
   expandableConfig?: ExpandableConfig;
 }) {
+  const transition = expanded
+    ? `width ${expandableConfig?.duration} ${expandableConfig?.timingFunction}`
+    : "unset";
   return css`
-    transition: ${expanded
-      ? `width ${expandableConfig?.duration} ${expandableConfig?.timingFunction}`
-      : "unset"};
+    transition: ${transition};
   `;
 }
 
