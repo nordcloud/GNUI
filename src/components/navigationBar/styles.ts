@@ -55,7 +55,7 @@ export const NavigationBarWrapper = styled.nav<
     getTransition({ expanded, expandableConfig })}
   align-items: ${({ expanded }) => (expanded ? "start" : "center")};
   z-index: ${theme.zindex.sticky};
-  overflow-x: scroll;
+  overflow-x: auto;
 `;
 
 function getTransition({
