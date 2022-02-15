@@ -87,6 +87,7 @@ export function Dropdown({
             onClick={() => onClear && onClear()}
             title={`Clear ${name} value`}
             role="button"
+            size={size}
           >
             <SVGIcon size="sm" name="close" />
           </Clear>
