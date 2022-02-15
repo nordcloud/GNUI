@@ -15,7 +15,7 @@ export const DropdownWrapper = styled(GnuiContainer)<DropdownWrapperProps>`
 `;
 
 export type SizeProps = {
-  size: "sm" | "xs";
+  size?: "sm" | "xs";
 };
 
 export const DropdownButton = styled.button<SizeProps>`
@@ -169,7 +169,7 @@ export const DropdownItem = styled.button<SizeProps>`
   ${({ size }) =>
     size &&
     css`
-      padding: 0;
+      padding: 0 ${theme.spacing.spacing01};
       font-size: ${theme.fontSizes.sm};
     `}
 `;
