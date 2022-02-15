@@ -14,24 +14,26 @@ import {
   DropdownMenu,
   DropdownWrapper,
   Inner,
+  SizeProps,
 } from "./styles";
 import { Option } from "./types";
 
-type DropdownProps = SpaceProps & {
-  name: string;
-  options: Option[];
-  onChange: (value: string) => void;
-  width?: string;
-  value?: string;
-  isOpen?: boolean;
-  disabled?: boolean;
-  children?: React.ReactNode;
-  title?: string;
-  minNumOfOptionsToShowSearchBox?: number;
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  onMouseLeave?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  onClear?: () => void;
-};
+type DropdownProps = SpaceProps &
+  SizeProps & {
+    name: string;
+    options: Option[];
+    onChange: (value: string) => void;
+    width?: string;
+    value?: string;
+    isOpen?: boolean;
+    disabled?: boolean;
+    children?: React.ReactNode;
+    title?: string;
+    minNumOfOptionsToShowSearchBox?: number;
+    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    onMouseLeave?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    onClear?: () => void;
+  };
 
 export function Dropdown({
   value = "",
@@ -42,6 +44,7 @@ export function Dropdown({
   onChange,
   onClear,
   minNumOfOptionsToShowSearchBox = 4,
+  size,
   ...props
 }: DropdownProps) {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -76,6 +79,7 @@ export function Dropdown({
         disabled={disabled}
         title={title}
         type="button"
+        size={size}
       >
         <Inner>{innerText}</Inner>
         {showClearButton && (
@@ -88,7 +92,7 @@ export function Dropdown({
           </Clear>
         )}
         <DropdownIcon animate={isOpen}>
-          <SVGIcon name="chevronDown" />
+          <SVGIcon name="chevronDown" size={size && "sm"} />
         </DropdownIcon>
       </DropdownButton>
       {showMenu && (
@@ -131,6 +135,7 @@ export function Dropdown({
                       setSearch("");
                     }}
                     type="button"
+                    size={size}
                   >
                     {getOptionValue(option, "label") || optionValue}
                   </DropdownItem>
