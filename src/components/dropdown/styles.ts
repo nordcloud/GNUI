@@ -33,6 +33,13 @@ export const DropdownButton = styled.button<SizeProps>`
   cursor: pointer;
   transition: ${theme.transition};
 
+  & > span {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-right: ${theme.spacing.spacing01};
+  }
+
   &:focus {
     outline: none;
     border: 1px solid ${theme.color.border.focus};
@@ -125,7 +132,7 @@ export const Inner = styled.span`
   margin-right: 1rem;
 `;
 
-type IClear = {
+type IClear = SizeProps & {
   onClick: () => void;
 };
 
@@ -141,6 +148,12 @@ export const Clear = styled.span<IClear>`
   border: none;
   margin-left: auto;
   appearance: button;
+
+  ${({ size }) =>
+    size &&
+    css`
+      right: 1.25rem;
+    `}
 `;
 
 export const DropdownItem = styled.button<SizeProps>`
