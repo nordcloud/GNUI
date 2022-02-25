@@ -7,3 +7,4 @@ export { osComponentsIcons } from "./os-components";
 export { osProviderIcons } from "./os-provider";
 export { NCIcons } from "./nc";
 export { uiIcons } from "./ui";
+export { resourceCategories } from "./resource-categories";
