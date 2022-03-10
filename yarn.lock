@@ -3009,10 +3009,10 @@
     "@types/moment-timezone" "*"
     "@types/react" "*"
 
-"@types/react-dom@*", "@types/react-dom@^16.9.0":
-  "integrity" "sha512-OL2lk7LYGjxn4b0efW3Pvf2KBVP0y1v3wip1Bp7nA79NkOpElH98q3WdCEdDj93b2b0zaeBG9DvriuKjIK5xDA=="
-  "resolved" "https://registry.npmjs.org/@types/react-dom/-/react-dom-16.9.0.tgz"
-  "version" "16.9.0"
+"@types/react-dom@*", "@types/react-dom@^16.9.8":
+  "integrity" "sha512-ykkPQ+5nFknnlU6lDd947WbQ6TE3NNzbQAkInC2EKY1qeYdTKp7onFusmYZb+ityzx2YviqT6BXSu+LyWWJwcA=="
+  "resolved" "https://registry.npmjs.org/@types/react-dom/-/react-dom-16.9.8.tgz"
+  "version" "16.9.8"
   dependencies:
     "@types/react" "*"
 
@@ -3054,12 +3054,13 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^16.9.51":
-  "integrity" "sha512-lQa12IyO+DMlnSZ3+AGHRUiUcpK47aakMMoBG8f7HGxJT8Yfe+WE128HIXaHOHVPReAW0oDS3KAI0JI2DDe1PQ=="
-  "resolved" "https://registry.npmjs.org/@types/react/-/react-16.9.51.tgz"
-  "version" "16.9.51"
+"@types/react@*", "@types/react@^16.14.23":
+  "integrity" "sha512-WngBZLuSkP4IAgPi0HOsGCHo6dn3CcuLQnCfC17VbA7YBgipZiZoTOhObwl/93DsFW0Y2a/ZXeonpW4DxirEJg=="
+  "resolved" "https://registry.npmjs.org/@types/react/-/react-16.14.23.tgz"
+  "version" "16.14.23"
   dependencies:
     "@types/prop-types" "*"
+    "@types/scheduler" "*"
     "csstype" "^3.0.2"
 
 "@types/resolve@1.17.1":
@@ -3068,6 +3069,11 @@
   "version" "1.17.1"
   dependencies:
     "@types/node" "*"
+
+"@types/scheduler@*":
+  "integrity" "sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew=="
+  "resolved" "https://registry.npmjs.org/@types/scheduler/-/scheduler-0.16.2.tgz"
+  "version" "0.16.2"
 
 "@types/semver@^7.3.9":
   "integrity" "sha512-L/TMpyURfBkf+o/526Zb6kd/tchUP3iBDEPjqjb+U2MAJhVRxxrmr2fwpe08E7QsV7YLcpq0tUaQ9O9x97ZIxQ=="
@@ -11038,10 +11044,10 @@
     "node-dir" "^0.1.10"
     "strip-indent" "^3.0.0"
 
-"react-dom@*", "react-dom@^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1", "react-dom@^16.13.1", "react-dom@^16.6.0 || ^17.0.0", "react-dom@^16.8.0 || ^17.0.0", "react-dom@>= 16.8.0", "react-dom@>=16.8", "react-dom@>=16.8.0":
-  "integrity" "sha512-81PIMmVLnCNLO/fFOQxdQkvEq/+Hfpv24XNJfpyZhTRfO0QcmQIF/PgCa1zCOj2w1hrn12MFLyaJ/G0+Mxtfag=="
-  "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-16.13.1.tgz"
-  "version" "16.13.1"
+"react-dom@*", "react-dom@^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1", "react-dom@^16.14.0", "react-dom@^16.6.0 || ^17.0.0", "react-dom@^16.8.0 || ^17.0.0", "react-dom@>= 16.8.0", "react-dom@>=16.8", "react-dom@>=16.8.0":
+  "integrity" "sha512-1gCeQXDLoIqMgqD3IO2Ah9bnf0w9kzhwN5q4FGnHZ67hBm9yePzB5JJAIQCc8x3pFnNlwFq4RidZggNAAkzWWw=="
+  "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-16.14.0.tgz"
+  "version" "16.14.0"
   dependencies:
     "loose-envify" "^1.1.0"
     "object-assign" "^4.1.1"
@@ -11248,10 +11254,10 @@
     "loose-envify" "^1.4.0"
     "prop-types" "^15.6.2"
 
-"react@*", "react@^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1", "react@^15.3.0 || ^16.0.0", "react@^16.13.1", "react@^16.13.1 || ^17.0.0", "react@^16.3.0 || ^17.0.0", "react@^16.6.0 || ^17.0.0", "react@^16.8.0 || ^17", "react@^16.8.0 || ^17.0.0", "react@^16.8.4 || ^17.0.0", "react@>= 0.14.0", "react@>= 16.8.0", "react@>=16.12.0", "react@>=16.3.0", "react@>=16.8", "react@>=16.8.0":
-  "integrity" "sha512-YMZQQq32xHLX0bz5Mnibv1/LHb3Sqzngu7xstSM+vrkE5Kzr9xE0yMByK5kMoTK30YVJE61WfbxIFFvfeDKT1w=="
-  "resolved" "https://registry.npmjs.org/react/-/react-16.13.1.tgz"
-  "version" "16.13.1"
+"react@*", "react@^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1", "react@^15.3.0 || ^16.0.0", "react@^16.13.1 || ^17.0.0", "react@^16.14.0", "react@^16.3.0 || ^17.0.0", "react@^16.6.0 || ^17.0.0", "react@^16.8.0 || ^17", "react@^16.8.0 || ^17.0.0", "react@^16.8.4 || ^17.0.0", "react@>= 0.14.0", "react@>= 16.8.0", "react@>=16.12.0", "react@>=16.3.0", "react@>=16.8", "react@>=16.8.0":
+  "integrity" "sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g=="
+  "resolved" "https://registry.npmjs.org/react/-/react-16.14.0.tgz"
+  "version" "16.14.0"
   dependencies:
     "loose-envify" "^1.1.0"
     "object-assign" "^4.1.1"
