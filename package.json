@@ -73,7 +73,7 @@
   },
   "dependencies": {
     "@types/react-date-range": "^0.94.4",
-    "@types/react-select": "^4.0.18",
+    "@types/react-select": "^5.0.1",
     "@types/styled-system": "^5.1.7",
     "polished": "^3.4.4",
     "react-awesome-styled-grid": "^3.0.12",
