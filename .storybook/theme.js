@@ -1,4 +1,5 @@
 import { create } from "@storybook/theming/create";
+import logo from "../assets/nclogo.png";
 
 export default create({
   base: "light",
@@ -33,6 +34,5 @@ export default create({
 
   brandTitle: "GNUI",
 
-  brandImage:
-    "https://nordcloud.com/wp-content/themes/nordcloud/images/logo.svg",
+  brandImage: logo,
 });

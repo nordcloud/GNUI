@@ -1,5 +1,3 @@
-/* Copyright (c) 2021 Nordcloud Oy or its affiliates. All Rights Reserved. */
-
 // Display some of the warnings only while developing, prevent CI build from failing
 const isProd = process.env.NODE_ENV === "production";
 
