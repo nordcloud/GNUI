@@ -1,5 +1,10 @@
 import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
-import { Select } from ".";
+import {
+  Select,
+  customMultiColorStyles,
+  SelectColoredOption,
+  SelectInstance,
+} from ".";
 import theme from "../../theme";
 
 <Meta title="Forms/Select" component={Select} />
@@ -8,11 +13,7 @@ import theme from "../../theme";
 
 #### Props
 
-```typescript
-export type SelectProps = {
-  options?: any;
-};
-```
+https://react-select.com/props
 
 ### Basic Select
 
@@ -58,39 +59,96 @@ export type SelectProps = {
 
 ### Multiselect: colors
 
+https://github.com/JedWatson/react-select/blob/master/docs/examples/StyledMulti.tsx
+
+In TypeScript options need to be properly typed
+
+```tsx
+const colorOptions: SelectColoredOption[] = [
+  ...
+];
+```
+
+Custom styles can also be specified:
+
+```tsx
+const colorStyles = {
+  multiValue: (styles, { data }) => {
+    const color = data.color;
+    return {
+      ...styles,
+      backgroundColor: color ? color : theme.color.interactive.primary,
+    };
+  },
+};
+
+return (
+  <Select
+    isMulti
+    defaultValue={[colorOptions[1], colorOptions[2]]}
+    options={colorOptions}
+    styles={colorStyles}
+  />
+);
+```
+
 <Canvas>
   <Story name="colors">
     {() => {
+      const colorOptions = [
+        { value: "ocean", label: "Ocean", color: "#00B8D9", isFixed: true },
+        { value: "blue", label: "Blue", color: "#0052CC", isDisabled: true },
+        { value: "purple", label: "Purple", color: "#5243AA" },
+        { value: "red", label: "Red", color: "#FF5630", isFixed: true },
+        { value: "orange", label: "Orange", color: "#FF8B00" },
+        { value: "yellow", label: "Yellow", color: "#FFC400" },
+        { value: "green", label: "Green", color: "#36B37E" },
+        { value: "forest", label: "Forest", color: "#00875A" },
+        { value: "slate", label: "Slate", color: "#253858" },
+        { value: "silver", label: "Silver", color: "#666666" },
+      ];
+      return (
+        <div style={{ height: "150px" }}>
+          <Select
+            isMulti
+            defaultValue={[colorOptions[1], colorOptions[2]]}
+            options={colorOptions}
+            styles={customMultiColorStyles}
+          ></Select>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Multiselect: ref
+
+In TypeScript Ref needs to be properly typed
+
+```tsx
+const selectRef = React.useRef<SelectInstance<typeof options[number]> | null>(
+  null
+);
+```
+
+<Canvas>
+  <Story name="ref">
+    {() => {
       const options = [
         { value: "chocolate", label: "Chocolate" },
-        {
-          value: "strawberry",
-          label: "Strawberry",
-          color: `${theme.color.interactive.info}`,
-        },
-        {
-          value: "vanilla",
-          label: "Vanilla",
-          color: `${theme.color.interactive.error}`,
-        },
+        { value: "strawberry", label: "Strawberry" },
+        { value: "vanilla", label: "Vanilla" },
       ];
-      const colorStyles = {
-        multiValue: (styles, { data }) => {
-          const color = data.color;
-          return {
-            ...styles,
-            backgroundColor: color ? color : theme.color.interactive.primary,
-          };
-        },
-      };
+      const selectRef = React.useRef(null);
       return (
         <div style={{ height: "150px" }}>
           <Select
             isMulti
             defaultValue={[options[1], options[2]]}
             options={options}
-            styles={colorStyles}
+            ref={selectRef}
           ></Select>
+          <button onClick={() => selectRef.current.focus()}>Focus</button>
         </div>
       );
     }}
