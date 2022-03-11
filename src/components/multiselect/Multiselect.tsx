@@ -177,7 +177,7 @@ export const customMultiColorStyles: StylesConfig<SelectColoredOption, true> = {
   },
 };
 
-// Redecalare forwardRef
+// Redeclare forwardRef to handle generics
 declare module "react" {
   function forwardRef<T, P = Record<string, unknown>>(
     render: (props: P, ref: React.Ref<T>) => React.ReactElement | null
