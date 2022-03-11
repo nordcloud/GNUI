@@ -119,40 +119,59 @@ function getDefaultStyles<
   };
 }
 
+function getOptionBgColor(
+  isDisabled: boolean,
+  isSelected: boolean,
+  isFocused: boolean
+) {
+  return (color: string) => {
+    if (isDisabled) {
+      return undefined;
+    }
+
+    if (isSelected) {
+      return color;
+    }
+
+    if (isFocused) {
+      return rgba(color, 0.1);
+    }
+
+    return undefined;
+  };
+}
+
 /* taken from https://github.com/JedWatson/react-select/blob/master/docs/examples/StyledMulti.tsx */
 /* eslint-disable no-nested-ternary */
 export const customMultiColorStyles: StylesConfig<SelectColoredOption, true> = {
   ...getDefaultStyles(),
   control: (styles) => ({ ...styles, backgroundColor: "white" }),
   option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-    const color = data.color ?? theme.color.text.text01;
-    const selectedColor = data.color ?? theme.color.interactive.secondary;
+    const baseColor = data.color ?? theme.color.text.text01;
+
+    const contrastingColor =
+      getContrast(baseColor, "white") > 2 ? "white" : "black";
+    const color = isSelected ? contrastingColor : baseColor;
+
+    const activeSelectedBgColor =
+      data.color ?? theme.color.interactive.secondary;
+    const activeBgColor = isSelected
+      ? activeSelectedBgColor
+      : rgba(baseColor, 0.3);
 
     return {
       ...styles,
-      backgroundColor: isDisabled
-        ? undefined
-        : isSelected
-        ? color
-        : isFocused
-        ? rgba(color, 0.1)
-        : undefined,
-      color: isDisabled
-        ? theme.color.interactive.disabled
-        : isSelected
-        ? getContrast(color, "white") > 2
-          ? "white"
-          : "black"
-        : color,
+      backgroundColor: getOptionBgColor(
+        isDisabled,
+        isSelected,
+        isFocused
+      )(color),
+      color: isDisabled ? theme.color.interactive.disabled : color,
       cursor: isDisabled ? "not-allowed" : "default",
 
       ":active": {
         ...styles[":active"],
-        backgroundColor: !isDisabled
-          ? isSelected
-            ? selectedColor
-            : rgba(color, 0.3)
-          : undefined,
+        backgroundColor: isDisabled ? undefined : activeBgColor,
       },
     };
   },
