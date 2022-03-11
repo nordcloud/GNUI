@@ -89,8 +89,6 @@ export type SelectColoredOption = SelectOption & {
   color: string;
 };
 
-// There's no way to pass a generic gere
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function getDefaultStyles<
   Option = unknown,
   IsMulti extends boolean = false,
