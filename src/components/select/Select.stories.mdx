@@ -9,16 +9,16 @@ import theme from "../../theme";
 
 <Meta title="Forms/Select" component={Select} />
 
-# Multiselect
+# Select
 
 #### Props
 
 https://react-select.com/props
 
-### Basic Select
+## Basic Select
 
 <Canvas>
-  <Story name="basic modal">
+  <Story name="basic">
     {() => {
       const options = [
         { value: "chocolate", label: "Chocolate" },
@@ -34,7 +34,7 @@ https://react-select.com/props
   </Story>
 </Canvas>
 
-### Multiselect
+## Multiselect
 
 <Canvas>
   <Story name="multiselect">
@@ -93,7 +93,7 @@ return (
 ```
 
 <Canvas>
-  <Story name="colors">
+  <Story name="multiselect-colors">
     {() => {
       const colorOptions = [
         { value: "ocean", label: "Ocean", color: "#00B8D9", isFixed: true },
@@ -121,7 +121,7 @@ return (
   </Story>
 </Canvas>
 
-### Multiselect: ref
+## Using ref
 
 In TypeScript, Ref needs to be properly typed:
 
