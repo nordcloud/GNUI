@@ -15,7 +15,7 @@ export * from "./list";
 export * from "./loader";
 export * from "./message";
 export * from "./modal";
-export * from "./multiselect";
+export * from "./select";
 export * from "./navigation";
 export * from "./pagetitle";
 export * from "./pagination";
