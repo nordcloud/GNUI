@@ -9,6 +9,7 @@ import {
   uiIcons,
   NCIcons,
   resourceCategories,
+  externalServices,
 } from "./icons";
 
 export const paths = {
@@ -21,6 +22,7 @@ export const paths = {
   ...osComponentsIcons,
   ...NCIcons,
   ...resourceCategories,
+  ...externalServices,
   default: <path />,
 } as const;
 
