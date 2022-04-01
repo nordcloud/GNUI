@@ -69,6 +69,10 @@ export const TabContainer = styled.div<{
   &:first-child {
     border-top-left-radius: ${theme.radiusDefault};
   }
+  
+  &:last-child {
+    border-top-right-radius: ${theme.radiusDefault};
+  }
 
   &.tab-active {
     background-color: ${theme.color.background.ui01};
