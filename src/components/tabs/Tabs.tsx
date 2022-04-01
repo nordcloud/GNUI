@@ -40,7 +40,6 @@ export const TabContainer = styled.div<{
 
   &:last-child {
     border-right-color: transparent;
-    border-top-right-radius: ${theme.radiusDefault};
     &.tab-active {
       border-right: 1px solid ${theme.color.border.border01};
     }
