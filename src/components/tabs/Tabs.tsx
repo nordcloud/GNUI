@@ -74,6 +74,8 @@ export const TabContainer = styled.div<{
     background-color: ${theme.color.background.ui01};
     border-bottom: 1px solid ${theme.color.background.ui01};
     z-index: ${theme.zindex.default};
+    border-top: 4px solid ${theme.color.interactive.primary};
+    margin-top: -4px;
   }
 
   &.tab,
@@ -90,10 +92,12 @@ export const TabContainer = styled.div<{
 const TabsList = styled.div`
   background-color: ${theme.color.background.ui03};
   display: flex;
-  overflow-x: auto;
   padding: 0;
   margin: 0;
   position: relative;
+  border-top: 4px solid ${theme.color.border.input};
+  border-top-left-radius: ${theme.radiusDefault};
+  border-top-right-radius: ${theme.radiusDefault};
 
   &::after {
     content: "";
