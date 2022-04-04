@@ -1,6 +1,6 @@
 import React from "react";
 import { addDecorator, addParameters } from "@storybook/react";
-import { DocsPage, DocsContainer } from "@storybook/addon-docs/blocks";
+import { DocsPage, DocsContainer } from "@storybook/addon-docs";
 import { GnuiContainer } from "../src/components/container";
 import { SetGlobalStyle } from "../src/theme/globals";
 import "./global.css";

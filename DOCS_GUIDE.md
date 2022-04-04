@@ -5,7 +5,7 @@ I decide to wrote this short guide, because I'd love if we will write consistent
 ### Add JavaScript imports
 
 ```javascript
-import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { COMPONENT_NAME } from "../components/COMPONENT_NAME";
 ```
 
@@ -34,7 +34,7 @@ type BoxProps = {
   color: string;
   width?: number;
   margin?: Array<string | number>;
-}
+};
 ```
 
 ### Describe props
