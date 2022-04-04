@@ -115,7 +115,7 @@ const TabsList = styled.div`
     height: 4px;
     position: absolute;
     left: 0;
-    top: -4px;
+    top: 0;
     background-color: ${theme.color.border.input};
   }
 
