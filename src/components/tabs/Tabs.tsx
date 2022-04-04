@@ -74,7 +74,6 @@ export const TabContainer = styled.div<{
     background-color: ${theme.color.background.ui01};
     border-bottom: 1px solid ${theme.color.background.ui01};
     z-index: ${theme.zindex.default};
-    position: relative;
 
     &::before {
       content: "";
