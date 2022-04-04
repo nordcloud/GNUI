@@ -82,7 +82,7 @@ export const TabContainer = styled.div<{
       height: 4px;
       position: absolute;
       left: 0;
-      top: 0;
+      top: -4px;
       background-color: ${theme.color.interactive.primary};
     }
   }
@@ -107,7 +107,7 @@ const TabsList = styled.div`
   overflow-x: auto;
   border-top-left-radius: ${theme.radiusDefault};
   border-top-right-radius: ${theme.radiusDefault};
-  margin-top: 4px;
+  padding-top: 4px;
 
   &::before {
     content: "";
@@ -115,7 +115,7 @@ const TabsList = styled.div`
     height: 4px;
     position: absolute;
     left: 0;
-    top: 0;
+    top: -4px;
     background-color: ${theme.color.border.input};
   }
 
