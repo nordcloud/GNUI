@@ -74,8 +74,17 @@ export const TabContainer = styled.div<{
     background-color: ${theme.color.background.ui01};
     border-bottom: 1px solid ${theme.color.background.ui01};
     z-index: ${theme.zindex.default};
-    border-top: 4px solid ${theme.color.interactive.primary};
-    margin-top: -4px;
+    position: relative;
+
+    &::before {
+      content: "";
+      width: 100%;
+      height: 4px;
+      position: absolute;
+      left: 0;
+      top: -4px;
+      background-color: ${theme.color.interactive.primary};
+    }
   }
 
   &.tab,
@@ -95,9 +104,20 @@ const TabsList = styled.div`
   padding: 0;
   margin: 0;
   position: relative;
-  border-top: 4px solid ${theme.color.border.input};
+  overflow-x: auto;
   border-top-left-radius: ${theme.radiusDefault};
   border-top-right-radius: ${theme.radiusDefault};
+  padding-top: 4px;
+
+  &::before {
+    content: "";
+    width: 100%;
+    height: 4px;
+    position: absolute;
+    left: 0;
+    top: -4px;
+    background-color: ${theme.color.border.input};
+  }
 
   &::after {
     content: "";
