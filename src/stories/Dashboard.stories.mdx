@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { Col, Row, Visible } from "react-awesome-styled-grid";
 import theme from "../theme";
 import { Flex } from "../components/container";
@@ -11,7 +11,7 @@ import { Spacer } from "../components/spacer";
 
 <Canvas>
   <Story name="default">
-    <Box style={{maxWidth: "1440px"}}>
+    <Box style={{ maxWidth: "1440px" }}>
       <Row>
         <Col lg={4} md={4} xs={4}>
           <Flex>
@@ -84,7 +84,9 @@ import { Spacer } from "../components/spacer";
           </Flex>
         </Col>
         <Col lg={4} md={8} xs={4}>
-          <Visible md><Spacer height="2rem" /></Visible>
+          <Visible md>
+            <Spacer height="2rem" />
+          </Visible>
           3
         </Col>
       </Row>

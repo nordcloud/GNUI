@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { Col, Row } from "react-awesome-styled-grid";
 import theme from "../theme";
 import { Flex } from "../components/container";
@@ -14,37 +14,32 @@ import { Spacer } from "../components/spacer";
   <Story name="default">
     <Box spacing={"spacing02"} style={{ maxWidth: "1440px" }}>
       <Text weight="medium">Environments attached to Organization Unit</Text>
-      <Box
-        boxStyle="lightGrey"
-        spacing="spacing02"
-      >
+      <Box boxStyle="lightGrey" spacing="spacing02">
         <Row>
-        <Col>
-          <Flex>
-            <SVGIcon name="chevronRight" />
-            <div>
-              <Text
-                size="lg"
-                weight="medium"
-                tag="div"
-                mb={theme.spacing.spacing01}
-                ml={theme.spacing.spacing04}
-              >
-                ApplicationName
-              </Text>
-              <Flex>
-                <Text size="sm" tag="span" ml={theme.spacing.spacing04}>
-                  2/4 environments attached to this OU
+          <Col>
+            <Flex>
+              <SVGIcon name="chevronRight" />
+              <div>
+                <Text
+                  size="lg"
+                  weight="medium"
+                  tag="div"
+                  mb={theme.spacing.spacing01}
+                  ml={theme.spacing.spacing04}
+                >
+                  ApplicationName
                 </Text>
-              </Flex>
-            </div>
-          </Flex>
-        </Col>
-      </Row>
+                <Flex>
+                  <Text size="sm" tag="span" ml={theme.spacing.spacing04}>
+                    2/4 environments attached to this OU
+                  </Text>
+                </Flex>
+              </div>
+            </Flex>
+          </Col>
+        </Row>
       </Box>
-      <Box
-        boxStyle="lightGrey"
-      >
+      <Box boxStyle="lightGrey">
         <Row>
           <Col>
             <Flex>

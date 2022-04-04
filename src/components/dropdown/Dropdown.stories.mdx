@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { Dropdown } from ".";
 import { GnuiContainer } from "../container";
 import { Spacer } from "../spacer";
@@ -22,7 +22,7 @@ import { Text } from "../text";
 |                          title |  false   | string                                   |                                              |
 | minNumOfOptionsToShowSearchBox |  false   | number                                   | minimum number of options to show search box |
 |                        onClear |  false   | `() => void`                             | taken from Reacts `useState()`               |
-|                        size    |  false   | <code>sm</code>,<code>xs</code>          |                                              |
+|                           size |  false   | <code>sm</code>,<code>xs</code>          |                                              |
 
 ## dropdown with search
 
@@ -114,9 +114,7 @@ import { Text } from "../text";
       const [value2, setValue2] = React.useState("");
       return (
         <GnuiContainer>
-          <Text mb="0.25rem">
-            Size sm:
-          </Text>
+          <Text mb="0.25rem">Size sm:</Text>
           <Dropdown
             name="Select an option"
             options={options}

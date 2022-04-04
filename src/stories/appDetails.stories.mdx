@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { Col, Row, Hidden } from "react-awesome-styled-grid";
 import theme from "../theme";
 import { Flex } from "../components/container";
@@ -17,10 +17,7 @@ import { Navigation } from "../components/navigation";
 <Canvas>
   <Story name="default">
     <Box spacing={"spacing04"} style={{ maxWidth: "1440px" }}>
-      <Box
-        boxStyle="lightGrey"
-        spacing="spacing02"
-      >
+      <Box boxStyle="lightGrey" spacing="spacing02">
         <Row>
           <Col sm={5} md={4} lg={6}>
             <Flex>
@@ -154,21 +151,24 @@ import { Navigation } from "../components/navigation";
                     href="http://google.com"
                     target="_blank"
                   >
-                    <SVGIcon name="edit"/><Text tag="span">Edit Environment</Text>
+                    <SVGIcon name="edit" />
+                    <Text tag="span">Edit Environment</Text>
                   </Navigation.Item>
                   <Navigation.Item
                     as="a"
                     href="http://google.com"
                     target="_blank"
                   >
-                    <SVGIcon name="target"/><Text tag="span">Discovery Rules</Text>
+                    <SVGIcon name="target" />
+                    <Text tag="span">Discovery Rules</Text>
                   </Navigation.Item>
                   <Navigation.Item
                     as="a"
                     href="http://google.com"
                     target="_blank"
                   >
-                    <SVGIcon name="trash" /><Text tag="span">Delete</Text>
+                    <SVGIcon name="trash" />
+                    <Text tag="span">Delete</Text>
                   </Navigation.Item>
                 </Navigation.Container>
               </Popover>
@@ -176,10 +176,7 @@ import { Navigation } from "../components/navigation";
           </Col>
         </Row>
       </Box>
-      <Box
-        boxStyle="lightGrey"
-        spacing="spacing02"
-      >
+      <Box boxStyle="lightGrey" spacing="spacing02">
         <Row>
           <Col sm={5} md={4} lg={6}>
             <Flex>
@@ -313,21 +310,24 @@ import { Navigation } from "../components/navigation";
                     href="http://google.com"
                     target="_blank"
                   >
-                    <SVGIcon name="edit"/><Text tag="span">Edit Environment</Text>
+                    <SVGIcon name="edit" />
+                    <Text tag="span">Edit Environment</Text>
                   </Navigation.Item>
                   <Navigation.Item
                     as="a"
                     href="http://google.com"
                     target="_blank"
                   >
-                    <SVGIcon name="target"/><Text tag="span">Discovery Rules</Text>
+                    <SVGIcon name="target" />
+                    <Text tag="span">Discovery Rules</Text>
                   </Navigation.Item>
                   <Navigation.Item
                     as="a"
                     href="http://google.com"
                     target="_blank"
                   >
-                    <SVGIcon name="trash" /><Text tag="span">Delete</Text>
+                    <SVGIcon name="trash" />
+                    <Text tag="span">Delete</Text>
                   </Navigation.Item>
                 </Navigation.Container>
               </Popover>
