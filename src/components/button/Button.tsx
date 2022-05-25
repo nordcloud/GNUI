@@ -248,78 +248,35 @@ export function Button<T extends React.ElementType = "button">({
   display,
   ...props
 }: ButtonProps<T> & SpaceProps) {
+  return (
+    <StyledButton
+      as={linkTo ? "a" : "button"}
+      display={display}
+      href={linkTo}
+      linkTo={linkTo}
+      {...props}
+    >
+      <ButtonIcon {...{ initialState, icon }} />
+      {children && <span>{children}</span>}
+    </StyledButton>
+  );
+}
+
+type ButtonIconProps = Pick<ButtonProps, "initialState" | "icon">;
+
+function ButtonIcon({ initialState, icon }: ButtonIconProps) {
   switch (initialState) {
     case "success":
-      return (
-        <StyledButton
-          as={linkTo ? "a" : "button"}
-          display={display}
-          href={linkTo}
-          linkTo={linkTo}
-          {...props}
-        >
-          <SVGIcon name="success" />
-          {children && <span>{children}</span>}
-        </StyledButton>
-      );
+      return <SVGIcon name="success" />;
     case "error":
-      return (
-        <>
-          <StyledButton
-            as={linkTo ? "a" : "button"}
-            display={display}
-            href={linkTo}
-            linkTo={linkTo}
-            {...props}
-          >
-            <SVGIcon name="danger" />
-            {children && <span>{children}</span>}
-          </StyledButton>
-        </>
-      );
+      return <SVGIcon name="danger" />;
     case "loading":
       return (
-        <>
-          <StyledButton
-            as={linkTo ? "a" : "button"}
-            display={display}
-            href={linkTo}
-            linkTo={linkTo}
-            {...props}
-          >
-            <div className="spinner">
-              <Spinner size="sm" />
-            </div>
-            {children && <span>{children}</span>}
-          </StyledButton>
-        </>
+        <div className="spinner">
+          <Spinner size="sm" />
+        </div>
       );
     default:
-      return (
-        <>
-          {icon ? (
-            <StyledButton
-              as={linkTo ? "a" : "button"}
-              display={display}
-              href={linkTo}
-              linkTo={linkTo}
-              {...props}
-            >
-              <SVGIcon name={icon} />
-              {children && <span>{children}</span>}
-            </StyledButton>
-          ) : (
-            <StyledButton
-              as={linkTo ? "a" : "button"}
-              display={display}
-              linkTo={linkTo}
-              href={linkTo}
-              {...props}
-            >
-              <span>{children}</span>
-            </StyledButton>
-          )}
-        </>
-      );
+      return icon ? <SVGIcon name={icon} /> : null;
   }
 }
