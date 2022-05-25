@@ -245,13 +245,11 @@ export function Button<T extends React.ElementType = "button">({
   icon,
   initialState,
   linkTo,
-  display,
   ...props
 }: ButtonProps<T> & SpaceProps) {
   return (
     <StyledButton
       as={linkTo ? "a" : "button"}
-      display={display}
       href={linkTo}
       linkTo={linkTo}
       {...props}
