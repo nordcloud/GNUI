@@ -8,7 +8,7 @@ import { setColor } from "../../utils/setcolor";
 import { Spinner } from "../spinner";
 import { SVGIcon, SVGIconProps } from "../svgicon";
 
-export type ButtonProps<T extends React.ElementType> =
+export type ButtonProps<T extends React.ElementType = "button"> =
   React.ButtonHTMLAttributes<HTMLButtonElement> & {
     children?: string | React.ReactNode;
     severity?: "high" | "medium" | "low";
@@ -21,7 +21,7 @@ export type ButtonProps<T extends React.ElementType> =
     select?: boolean;
     className?: string;
     onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-    as?: T | "a" | "button";
+    as?: T;
     linkTo?: string;
     display?: "flex" | "inline-flex";
     outline?: boolean;
@@ -240,7 +240,7 @@ const StyledButton = styled.button<ButtonProps<React.ElementType>>`
   ${space}
 `;
 
-export function Button<T extends React.ElementType>({
+export function Button<T extends React.ElementType = "button">({
   children,
   icon,
   initialState,
