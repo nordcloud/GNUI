@@ -8,24 +8,25 @@ import { setColor } from "../../utils/setcolor";
 import { Spinner } from "../spinner";
 import { SVGIcon, SVGIconProps } from "../svgicon";
 
-export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  children?: string | React.ReactNode;
-  severity?: "high" | "medium" | "low";
-  size?: "sm" | "md";
-  icon?: SVGIconProps["name"];
-  iconRight?: boolean;
-  initialState?: string;
-  color?: SingleColors;
-  form?: string;
-  select?: boolean;
-  className?: string;
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  as?: React.ElementType | "a" | "button";
-  linkTo?: string;
-  display?: "flex" | "inline-flex";
-  outline?: boolean;
-  secondary?: boolean;
-};
+export type ButtonProps<T extends React.ElementType> =
+  React.ButtonHTMLAttributes<HTMLButtonElement> & {
+    children?: string | React.ReactNode;
+    severity?: "high" | "medium" | "low";
+    size?: "sm" | "md";
+    icon?: SVGIconProps["name"];
+    iconRight?: boolean;
+    initialState?: string;
+    color?: SingleColors;
+    form?: string;
+    select?: boolean;
+    className?: string;
+    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    as?: T | "a" | "button";
+    linkTo?: string;
+    display?: "flex" | "inline-flex";
+    outline?: boolean;
+    secondary?: boolean;
+  } & React.ComponentProps<T>;
 
 const changeSize = (size: string) => {
   switch (size) {
@@ -104,7 +105,7 @@ const changeSeverity = (severity: string) => {
 };
 
 /* eslint-disable sonarjs/no-identical-functions */
-const StyledButton = styled.button<ButtonProps>`
+const StyledButton = styled.button<ButtonProps<React.ElementType>>`
   background: ${theme.color.interactive.primary};
   white-space: nowrap;
   font-family: ${theme.fonts.body};
@@ -118,7 +119,7 @@ const StyledButton = styled.button<ButtonProps>`
   text-decoration: none;
   display: ${({ display, linkTo }) =>
     !display && linkTo ? "inline-flex" : display || "flex"};
-  flex-direction: ${(props: ButtonProps) =>
+  flex-direction: ${(props: ButtonProps<React.ElementType>) =>
     props.iconRight ? "row-reverse" : "row"};
   align-items: center;
   text-transform: ${theme.typography.titleCase};
@@ -197,9 +198,9 @@ const StyledButton = styled.button<ButtonProps>`
   ${({ color }) =>
     color &&
     css`
-      background-color: ${(props: ButtonProps) =>
+      background-color: ${(props: ButtonProps<React.ElementType>) =>
         props.severity === "medium" ? "transparent" : setColor(color)};
-      color: ${(props: ButtonProps) =>
+      color: ${(props: ButtonProps<React.ElementType>) =>
         props.severity === "medium"
           ? setColor(color)
           : theme.color.text.text04};
@@ -212,7 +213,7 @@ const StyledButton = styled.button<ButtonProps>`
       }
       .spinner {
         div {
-          border-color: ${(props: ButtonProps) =>
+          border-color: ${(props: ButtonProps<React.ElementType>) =>
               props.severity === "medium"
                 ? setColor(color)
                 : theme.color.text.text04}
@@ -220,17 +221,17 @@ const StyledButton = styled.button<ButtonProps>`
         }
       }
       &:hover {
-        color: ${(props: ButtonProps) =>
+        color: ${(props: ButtonProps<React.ElementType>) =>
           props.severity === "medium"
             ? setColor(color)
             : theme.color.text.text04};
-        background-color: ${(props: ButtonProps) =>
+        background-color: ${(props: ButtonProps<React.ElementType>) =>
           props.severity === "medium"
             ? lighten(0.35, setColor(color))
             : darken(0.1, setColor(color))};
       }
       &:active {
-        background: ${(props: ButtonProps) =>
+        background: ${(props: ButtonProps<React.ElementType>) =>
           props.severity === "medium"
             ? lighten(0.25, setColor(color))
             : darken(0.2, setColor(color))};
@@ -239,14 +240,14 @@ const StyledButton = styled.button<ButtonProps>`
   ${space}
 `;
 
-export function Button({
+export function Button<T extends React.ElementType>({
   children,
   icon,
   initialState,
   linkTo,
   display,
   ...props
-}: ButtonProps & SpaceProps) {
+}: ButtonProps<T> & SpaceProps) {
   switch (initialState) {
     case "success":
       return (
