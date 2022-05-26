@@ -119,7 +119,7 @@ const StyledButton = styled.button<ButtonProps<React.ElementType>>`
   text-decoration: none;
   display: ${({ display, linkTo }) =>
     !display && linkTo ? "inline-flex" : display || "flex"};
-  flex-direction: ${(props: ButtonProps<React.ElementType>) =>
+  flex-direction: ${(props: ButtonProps) =>
     props.iconRight ? "row-reverse" : "row"};
   align-items: center;
   text-transform: ${theme.typography.titleCase};
@@ -198,9 +198,9 @@ const StyledButton = styled.button<ButtonProps<React.ElementType>>`
   ${({ color }) =>
     color &&
     css`
-      background-color: ${(props: ButtonProps<React.ElementType>) =>
+      background-color: ${(props: ButtonProps) =>
         props.severity === "medium" ? "transparent" : setColor(color)};
-      color: ${(props: ButtonProps<React.ElementType>) =>
+      color: ${(props: ButtonProps) =>
         props.severity === "medium"
           ? setColor(color)
           : theme.color.text.text04};
@@ -213,7 +213,7 @@ const StyledButton = styled.button<ButtonProps<React.ElementType>>`
       }
       .spinner {
         div {
-          border-color: ${(props: ButtonProps<React.ElementType>) =>
+          border-color: ${(props: ButtonProps) =>
               props.severity === "medium"
                 ? setColor(color)
                 : theme.color.text.text04}
@@ -221,17 +221,17 @@ const StyledButton = styled.button<ButtonProps<React.ElementType>>`
         }
       }
       &:hover {
-        color: ${(props: ButtonProps<React.ElementType>) =>
+        color: ${(props: ButtonProps) =>
           props.severity === "medium"
             ? setColor(color)
             : theme.color.text.text04};
-        background-color: ${(props: ButtonProps<React.ElementType>) =>
+        background-color: ${(props: ButtonProps) =>
           props.severity === "medium"
             ? lighten(0.35, setColor(color))
             : darken(0.1, setColor(color))};
       }
       &:active {
-        background: ${(props: ButtonProps<React.ElementType>) =>
+        background: ${(props: ButtonProps) =>
           props.severity === "medium"
             ? lighten(0.25, setColor(color))
             : darken(0.2, setColor(color))};
