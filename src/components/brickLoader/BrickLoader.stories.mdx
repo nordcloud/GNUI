@@ -1,0 +1,54 @@
+import styled from "styled-components";
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { BrickLoader } from ".";
+import { Spacer } from "../spacer";
+import { GnuiContainer, Flex } from "../container";
+import theme from "../../theme";
+
+<Meta title="Components/BrickLoader" component={BrickLoader} />
+
+# BrickLoader
+
+Basing on react-content-loader: https://github.com/danilowoz/react-content-loader
+
+## BrickLoader properties
+
+| properties | required | type   | description                 |
+| ---------: | :------: | :----- | :-------------------------- |
+|     height |  false   | string | css height value for loader |
+
+As this loader is based on react-content-loader it supports also SVGAttributes and react-content-loader props: https://github.com/danilowoz/react-content-loader#options
+
+## Default
+
+<Canvas>
+  <Story name="default">
+    <GnuiContainer>
+      <BrickLoader />
+    </GnuiContainer>
+  </Story>
+</Canvas>
+
+## Custom height
+
+> `height`: `string` — **optional**
+
+<Canvas>
+  <Story name="height">
+    <GnuiContainer>
+      <BrickLoader height="30rem"/>
+    </GnuiContainer>
+  </Story>
+</Canvas>
+
+## Custom viewBox
+
+> `viewBox`: `string` — **optional**
+
+<Canvas>
+  <Story name="viewBox">
+    <GnuiContainer>
+      <BrickLoader viewBox="0 0 10 1"/>
+    </GnuiContainer>
+  </Story>
+</Canvas>

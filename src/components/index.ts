@@ -1,5 +1,6 @@
 export * from "./accordion";
 export * from "./barchart";
+export * from "./brickLoader";
 export * from "./button";
 export * from "./box";
 export * from "./breadcrumbs";
@@ -12,6 +13,7 @@ export * from "./form";
 export * from "./heading";
 export * from "./input";
 export * from "./list";
+export * from "./listLoader";
 export * from "./loader";
 export * from "./message";
 export * from "./modal";
