@@ -22,6 +22,7 @@ import { GnuiContainer, Flex } from "../container";
 |     disabled |  false   | boolean                                                        |                                                                                                                                                                                                                                        |
 |       linkTo |  false   | string                                                         | displays button as a link                                                                                                                                                                                                              |
 |      display |  false   | <code>flex</code>, <code>inline-flex</code>                    | you might want to change the display value when using linkTo prop                                                                                                                                                                      |
+|           as |  false   | React.ElementType                                              | any valid HTML element or React component                                                                                                                                                                                              |
 
 ## default button
 
@@ -179,6 +180,18 @@ import { GnuiContainer, Flex } from "../container";
       target="_blank"
     >
       Button
+    </Button>
+  </Story>
+</Canvas>
+
+## as
+
+> as: `React.ElementType`
+
+<Canvas>
+  <Story name="as">
+    <Button as="a" href="http://google.com" target="_blank">
+      Link to
     </Button>
   </Story>
 </Canvas>
