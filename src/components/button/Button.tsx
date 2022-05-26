@@ -8,25 +8,24 @@ import { setColor } from "../../utils/setcolor";
 import { Spinner } from "../spinner";
 import { SVGIcon, SVGIconProps } from "../svgicon";
 
-export type ButtonProps<T extends React.ElementType = "button"> =
-  React.ButtonHTMLAttributes<HTMLButtonElement> & {
-    children?: string | React.ReactNode;
-    severity?: "high" | "medium" | "low";
-    size?: "sm" | "md";
-    icon?: SVGIconProps["name"];
-    iconRight?: boolean;
-    initialState?: string;
-    color?: SingleColors;
-    form?: string;
-    select?: boolean;
-    className?: string;
-    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-    as?: T;
-    linkTo?: string;
-    display?: "flex" | "inline-flex";
-    outline?: boolean;
-    secondary?: boolean;
-  } & React.ComponentProps<T>;
+export type ButtonProps<T extends React.ElementType = "button"> = {
+  children?: string | React.ReactNode;
+  severity?: "high" | "medium" | "low";
+  size?: "sm" | "md";
+  icon?: SVGIconProps["name"];
+  iconRight?: boolean;
+  initialState?: string;
+  color?: SingleColors;
+  form?: string;
+  select?: boolean;
+  className?: string;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  as?: T;
+  linkTo?: string;
+  display?: "flex" | "inline-flex";
+  outline?: boolean;
+  secondary?: boolean;
+} & React.ComponentProps<T>;
 
 const changeSize = (size: string) => {
   switch (size) {
