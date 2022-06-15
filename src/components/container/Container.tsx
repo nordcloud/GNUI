@@ -47,3 +47,63 @@ export const Flex = styled(Container)<FlexProps>`
 
   ${space}
 `;
+
+// New implementation of Flex container to replace Flex in future.
+type FlexContainerProps = {
+  alignItems?:
+    | "stretch"
+    | "flex-start"
+    | "flex-end"
+    | "center"
+    | "baseline"
+    | "first baseline"
+    | "last baseline"
+    | "start"
+    | "end"
+    | "self-start"
+    | "self-end";
+  alignContent?:
+    | "stretch"
+    | "flex-start"
+    | "flex-end"
+    | "center"
+    | "baseline"
+    | "first baseline"
+    | "last baseline"
+    | "start"
+    | "end"
+    | "self-start"
+    | "self-end";
+  justifyContent?:
+    | "flex-start"
+    | "flex-end"
+    | "center"
+    | "space-between"
+    | "space-around"
+    | "space-evenly"
+    | "start"
+    | "end"
+    | "left"
+    | "right";
+  grow?: number;
+  wrap?: "nowrap" | "wrap" | "wrap-reverse";
+  direction?: "row" | "row-reverse" | "column" | "column-reverse";
+  gap?: string;
+};
+
+function getFlexCss(props: FlexContainerProps) {
+  return css`
+    align-items: ${props.alignItems || "center"};
+    align-content: ${props.alignContent || "center"};
+    justify-content: ${props.justifyContent || "flex-start"};
+    flex-wrap: ${props.wrap || "no-wrap"};
+    flex-direction: ${props.direction || "row"};
+    flex-grow: ${props.grow || 0};
+    gap: ${props.gap || "0"};
+  `;
+}
+
+export const FlexContainer = styled.div<FlexContainerProps>`
+  display: flex;
+  ${getFlexCss}
+`;
