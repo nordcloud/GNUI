@@ -1,7 +1,7 @@
 import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { Tooltip } from ".";
 import { Text } from "../text";
-import { FlexContainer } from "../container";
+import { FlexContainer, Flex } from "../container";
 import { Button } from "../button";
 import { SVGIcon } from "../svgicon";
 import { Input } from "../input";
@@ -25,12 +25,12 @@ import { Input } from "../input";
   <Story name="default">
     <FlexContainer
       justifyContent="space-evenly"
-      css={{ paddingTop: "3rem", paddingBottom: "3rem" }}
+      style={{ paddingTop: "3rem", paddingBottom: "3rem" }}
     >
       <Tooltip caption="Lorem Ipsum is simply dummy text of the printing and typesetting industry.">
         <Text>Tooltip</Text>
       </Tooltip>
-    </Flex>
+    </FlexContainer>
   </Story>
 </Canvas>
 
@@ -50,7 +50,7 @@ import { Input } from "../input";
       >
         <Text>Tooltip</Text>
       </Tooltip>
-    </Flex>
+    </FlexContainer>
   </Story>
 </Canvas>
 
@@ -80,7 +80,7 @@ import { Input } from "../input";
           <Text>Align to the Right</Text>
         </Tooltip>
       </div>
-    </Flex>
+    </FlexContainer>
   </Story>
 </Canvas>
 
@@ -114,7 +114,7 @@ import { Input } from "../input";
           <Text>Notification</Text>
         </Tooltip>
       </div>
-    </Flex>
+    </FlexContainer>
   </Story>
 </Canvas>
 
@@ -147,6 +147,6 @@ import { Input } from "../input";
           <Input name="Name" placeholder="Name" />
         </Tooltip>
       </div>
-    </Flex>
+    </FlexContainer>
   </Story>
 </Canvas>
