@@ -36,6 +36,9 @@ type FlexProps = {
   margin?: string;
 } & SpaceProps;
 
+/**
+ * @deprecated Please use FlexContainer
+ */
 export const Flex = styled(Container)<FlexProps>`
   display: flex;
 
