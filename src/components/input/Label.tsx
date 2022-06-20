@@ -31,6 +31,6 @@ export function Label({ name = "Label", required = false, ...props }: Props) {
       <StyledLabel required={required} {...props}>
         {name}
       </StyledLabel>
-    </FlexCon>
+    </FlexContainer>
   );
 }
