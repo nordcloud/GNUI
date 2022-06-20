@@ -1,6 +1,6 @@
 import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { Text } from "../components/text";
-import { Flex } from "../components/container";
+import { FlexContainer } from "../components/container";
 import theme from "../theme";
 import { Box } from "../components/box";
 import { PieChart } from "../components/piechart";
@@ -11,7 +11,7 @@ import { PieChart } from "../components/piechart";
 
 <Canvas>
   <Story name="default">
-    <Flex>
+    <FlexContainer>
       <div>
         <PieChart
           progress={88}
@@ -45,6 +45,6 @@ import { PieChart } from "../components/piechart";
           </Text>
         </Text>
       </Box>
-    </Flex>
+    </FlexContainer>
   </Story>
 </Canvas>

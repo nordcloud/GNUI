@@ -1,6 +1,6 @@
 import * as React from "react";
 import theme from "../../theme";
-import { Flex } from "../container";
+import { FlexContainer } from "../container/Container";
 import { ExtendedPopover } from "../extendedPopover";
 import { ExtendedTooltip } from "../extendedTooltip";
 import { SVGIcon } from "../svgicon";
@@ -14,9 +14,9 @@ export function MenuItem({ caption, icon, children }: MenuItemProps) {
 
   if (children != null) {
     const triggerEl = (
-      <Flex justifyContent={expanded ? "start" : "center"}>
+      <FlexContainer justifyContent={expanded ? "start" : "center"}>
         <Trigger expanded={expandedDone} icon={icon} caption={caption} />
-      </Flex>
+      </FlexContainer>
     );
 
     return (
@@ -40,10 +40,10 @@ export function MenuItem({ caption, icon, children }: MenuItemProps) {
         placement="right"
         margin={{ right: 20 }}
       >
-        <Flex justifyContent={expanded ? "start" : "center"}>
+        <FlexContainer justifyContent={expanded ? "start" : "center"}>
           <SVGIcon name={icon} css={{ padding: theme.spacing.spacing01 }} />
           {expandedDone ? caption : ""}
-        </Flex>
+        </FlexContainer>
       </ExtendedTooltip>
     </StyledTriggerWrapper>
   );

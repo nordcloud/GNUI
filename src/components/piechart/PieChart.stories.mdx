@@ -1,6 +1,6 @@
 import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { Text } from "../text";
-import { Flex } from "../container";
+import { FlexContainer } from "../container";
 import { PieChart } from ".";
 import { SVGIcon } from "../svgicon";
 
@@ -37,7 +37,7 @@ import { SVGIcon } from "../svgicon";
 
 <Canvas>
   <Story name="strokeWidth">
-    <Flex justifyContent="space-evenly">
+    <FlexContainer justifyContent="space-evenly">
       <PieChart progress={33} size={96} strokeWidth={5}>
         <Text className="chartValue" size="lg" tag="span" weight="medium">
           33%
@@ -54,7 +54,7 @@ import { SVGIcon } from "../svgicon";
           progress
         </Text>
       </PieChart>
-    </Flex>
+    </FlexContainer>
   </Story>
 </Canvas>
 

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { Spinner } from ".";
 import { Spacer } from "../spacer";
-import { Flex } from "../container";
+import { FlexContainer } from "../container";
 import theme from "../../theme";
 
 <Meta title="Components/Spinner" component={Spinner} />
@@ -41,12 +41,12 @@ import theme from "../../theme";
 
 <Canvas>
   <Story name="color">
-    <Flex justifyContent="space-evenly">
+    <FlexContainer justifyContent="space-evenly">
       <Spinner color="success" />
       <Spinner color="danger" />
       <Spinner color="warning" />
       <Spinner color="notification" />
-    </Flex>
+    </FlexContainer>
   </Story>
 </Canvas>
 
@@ -56,24 +56,24 @@ import theme from "../../theme";
 
 <Canvas>
   <Story name="size">
-    <Flex justifyContent="space-evenly">
+    <FlexContainer justifyContent="space-evenly">
       <Spinner size="sm" />
       <Spinner size="md" />
       <Spinner size="lg" />
       <Spinner size="xl" />
       <Spinner size="xxl" />
-    </Flex>
+    </FlexContainer>
   </Story>
 </Canvas>
 
 <Canvas>
   <Story name="sizeNinja">
-    <Flex justifyContent="space-evenly">
+    <FlexContainer justifyContent="space-evenly">
       <Spinner ninja size="sm" />
       <Spinner ninja size="md" />
       <Spinner ninja size="lg" />
       <Spinner ninja size="xl" />
       <Spinner ninja size="xxl" />
-    </Flex>
+    </FlexContainer>
   </Story>
 </Canvas>

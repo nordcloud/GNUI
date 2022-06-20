@@ -2,7 +2,7 @@ import * as React from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { Box } from "../box";
-import { Flex } from "../container";
+import { FlexContainer } from "../container";
 import { Spinner } from "../spinner";
 import { Text } from "../text";
 
@@ -86,16 +86,16 @@ export function Loader({ inContent, isBackground, ...props }: LoaderProps) {
   return (
     <>
       {inContent ? (
-        <Flex>
+        <FlexContainer>
           <Spinner />
           <Text weight="medium" tag="div" style={{ marginLeft: "1rem" }}>
             Loading ...
           </Text>
-        </Flex>
+        </FlexContainer>
       ) : (
         <LoaderPosition {...props}>
           <Box shadow="shadow04">
-            <Flex>
+            <FlexContainer>
               <Spinner ninja size="xl" />
               <div style={{ marginLeft: "1rem" }}>
                 <Text size="sm" tag="div">
@@ -105,7 +105,7 @@ export function Loader({ inContent, isBackground, ...props }: LoaderProps) {
                   Loading ...
                 </Text>
               </div>
-            </Flex>
+            </FlexContainer>
           </Box>
         </LoaderPosition>
       )}
@@ -113,7 +113,7 @@ export function Loader({ inContent, isBackground, ...props }: LoaderProps) {
         <LoaderOverlay isBackground={isBackground}>
           <LoaderPosition {...props}>
             <Box shadow="shadow04">
-              <Flex>
+              <FlexContainer>
                 <Spinner ninja size="xl" />
                 <div style={{ marginLeft: "1rem" }}>
                   <Text size="sm" tag="div">
@@ -123,7 +123,7 @@ export function Loader({ inContent, isBackground, ...props }: LoaderProps) {
                     Loading ...
                   </Text>
                 </div>
-              </Flex>
+              </FlexContainer>
             </Box>
           </LoaderPosition>
         </LoaderOverlay>

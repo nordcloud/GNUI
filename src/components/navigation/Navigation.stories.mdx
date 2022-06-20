@@ -6,7 +6,7 @@ import { Box } from "../box";
 import { Text } from "../text";
 import theme from "../../theme";
 import { Button } from "../button";
-import { Flex } from "../container";
+import { FlexContainer } from "../container";
 
 <Meta title="Components/Navigation" component={Navigation.Item} />
 
@@ -140,11 +140,11 @@ import { Flex } from "../container";
               ></div>Charging Units <SVGIcon name="arrowRight" />
             </Navigation.Item>
           </Navigation.Container>
-          <Flex justifyContent="center">
+          <FlexContainer justifyContent="center">
             <Button severity="low" mt={theme.spacing.spacing04} icon="plus">
               Add new Business Context
             </Button>
-          </Flex>
+          </FlexContainer>
         </Box>
       );
     }}

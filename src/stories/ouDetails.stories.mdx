@@ -1,7 +1,7 @@
 import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { Col, Row } from "react-awesome-styled-grid";
 import theme from "../theme";
-import { Flex } from "../components/container";
+import { FlexContainer } from "../components/container";
 import { Box } from "../components/box";
 import { Text } from "../components/text";
 import { SVGIcon } from "../components/svgicon";
@@ -17,7 +17,7 @@ import { Spacer } from "../components/spacer";
       <Box boxStyle="lightGrey" spacing="spacing02">
         <Row>
           <Col>
-            <Flex>
+            <FlexContainer>
               <SVGIcon name="chevronRight" />
               <div>
                 <Text
@@ -29,20 +29,20 @@ import { Spacer } from "../components/spacer";
                 >
                   ApplicationName
                 </Text>
-                <Flex>
+                <FlexContainer>
                   <Text size="sm" tag="span" ml={theme.spacing.spacing04}>
                     2/4 environments attached to this OU
                   </Text>
-                </Flex>
+                </FlexContainer>
               </div>
-            </Flex>
+            </FlexContainer>
           </Col>
         </Row>
       </Box>
       <Box boxStyle="lightGrey">
         <Row>
           <Col>
-            <Flex>
+            <FlexContainer>
               <SVGIcon name="chevronDown" />
               <div>
                 <Text
@@ -54,13 +54,13 @@ import { Spacer } from "../components/spacer";
                 >
                   ApplicationName
                 </Text>
-                <Flex>
+                <FlexContainer>
                   <Text size="sm" tag="span" ml={theme.spacing.spacing04}>
                     3/4 environments attached to this OU
                   </Text>
-                </Flex>
+                </FlexContainer>
               </div>
-            </Flex>
+            </FlexContainer>
           </Col>
         </Row>
         <Row>

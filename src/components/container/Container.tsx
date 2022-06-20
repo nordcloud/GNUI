@@ -2,6 +2,7 @@ import * as React from "react";
 import styled, { css } from "styled-components";
 import { space, SpaceProps } from "styled-system";
 import theme from "../../theme";
+import { LengthUnitSuffix, Unit } from "./types";
 
 type StyledContainerProps = {
   width?: string;
@@ -88,8 +89,10 @@ type FlexContainerProps = {
   grow?: number;
   wrap?: "nowrap" | "wrap" | "wrap-reverse";
   direction?: "row" | "row-reverse" | "column" | "column-reverse";
-  gap?: string;
-};
+  gap?: Unit<LengthUnitSuffix> | "0";
+  columnGap?: Unit<LengthUnitSuffix> | "0";
+  rowGap?: Unit<LengthUnitSuffix> | "0";
+} & SpaceProps;
 
 function getFlexCss(props: FlexContainerProps) {
   return css`
@@ -100,10 +103,14 @@ function getFlexCss(props: FlexContainerProps) {
     flex-direction: ${props.direction || "row"};
     flex-grow: ${props.grow || 0};
     gap: ${props.gap || "0"};
+    column-gap: ${props.columnGap || "0"};
+    row-gap: ${props.rowGap || "0"};
   `;
 }
 
 export const FlexContainer = styled.div<FlexContainerProps>`
   display: flex;
   ${getFlexCss}
+
+  ${space}
 `;
