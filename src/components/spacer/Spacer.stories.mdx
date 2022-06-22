@@ -1,6 +1,6 @@
 import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { Spacer } from ".";
-import { GnuiContainer, Flex } from "../container";
+import { GnuiContainer, FlexContainer } from "../container";
 import { Text } from "../text";
 import theme from "../../theme";
 
@@ -23,7 +23,7 @@ import theme from "../../theme";
 
 <Canvas>
   <Story name="default">
-    <Flex>
+    <FlexContainer>
       <GnuiContainer
         style={{
           background: theme.color.background.ui05,
@@ -45,7 +45,7 @@ import theme from "../../theme";
       >
         <Text color="white">GnuiContainer</Text>
       </GnuiContainer>
-    </Flex>
+    </FlexContainer>
   </Story>
 </Canvas>
 

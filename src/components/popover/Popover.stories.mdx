@@ -2,7 +2,7 @@ import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { Popover } from ".";
 import { Button } from "../button";
 import { Spacer } from "../spacer";
-import { Flex } from "../container";
+import { FlexContainer } from "../container";
 
 <Meta title="Components/Popover" component={Popover} />
 
@@ -36,7 +36,7 @@ import { Flex } from "../container";
 
 <Canvas>
   <Story name="alignRight">
-    <Flex justifyContent="flex-end">
+    <FlexContainer justifyContent="flex-end">
       <Popover
         alignRight
         trigger={<Button severity="low" icon="menu" size="md" />}
@@ -48,7 +48,7 @@ import { Flex } from "../container";
           Edit
         </Button>
       </Popover>
-    </Flex>
+    </FlexContainer>
     <Spacer height="8rem" />
   </Story>
 </Canvas>

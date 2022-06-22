@@ -1,6 +1,6 @@
 import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { Button } from ".";
-import { GnuiContainer, Flex } from "../container";
+import { GnuiContainer, FlexContainer } from "../container";
 
 <Meta title="Components/Button" component={Button} />
 
@@ -38,10 +38,10 @@ import { GnuiContainer, Flex } from "../container";
 
 <Canvas>
   <Story name="button/severity">
-    <Flex justifyContent="space-evenly">
+    <FlexContainer justifyContent="space-evenly">
       <Button severity="medium">Secondary button</Button>
       <Button severity="low">Button for use as an icon</Button>
-    </Flex>
+    </FlexContainer>
   </Story>
 </Canvas>
 
@@ -51,11 +51,11 @@ import { GnuiContainer, Flex } from "../container";
 
 <Canvas>
   <Story name="size">
-    <Flex justifyContent="space-evenly">
+    <FlexContainer justifyContent="space-evenly">
       <Button size="sm">Size SM</Button>
       <Button size="md">Size MD</Button>
       <Button>Size Default</Button>
-    </Flex>
+    </FlexContainer>
   </Story>
 </Canvas>
 
@@ -65,12 +65,12 @@ import { GnuiContainer, Flex } from "../container";
 
 <Canvas>
   <Story name="icons">
-    <Flex justifyContent="space-evenly">
+    <FlexContainer justifyContent="space-evenly">
       <Button icon="plus" severity="low">
         Label
       </Button>
       <Button icon="plus" severity="low" />
-    </Flex>
+    </FlexContainer>
   </Story>
 </Canvas>
 
@@ -80,11 +80,11 @@ import { GnuiContainer, Flex } from "../container";
 
 <Canvas>
   <Story name="iconRight">
-    <Flex justifyContent="space-evenly">
+    <FlexContainer justifyContent="space-evenly">
       <Button iconRight severity="low" icon="trash">
         Delete Item
       </Button>
-    </Flex>
+    </FlexContainer>
   </Story>
 </Canvas>
 
@@ -94,14 +94,14 @@ import { GnuiContainer, Flex } from "../container";
 
 <Canvas>
   <Story name="initialState">
-    <Flex justifyContent="space-evenly">
+    <FlexContainer justifyContent="space-evenly">
       <Button initialState="loading">Save changes</Button>
       <Button initialState="success">Save changes</Button>
       <Button initialState="error">Save changes</Button>
       <Button initialState="loading" />
       <Button initialState="success" />
       <Button initialState="error" />
-    </Flex>
+    </FlexContainer>
   </Story>
 </Canvas>
 
@@ -111,7 +111,7 @@ import { GnuiContainer, Flex } from "../container";
 
 <Canvas>
   <Story name="color">
-    <Flex justifyContent="space-evenly">
+    <FlexContainer justifyContent="space-evenly">
       <Button color="danger" icon="danger">
         Danger color
       </Button>
@@ -122,7 +122,7 @@ import { GnuiContainer, Flex } from "../container";
       <Button color="warning">Warning color</Button>
       <Button color="notification">Notification color</Button>
       <Button color="#FF1493">HEX color</Button>
-    </Flex>
+    </FlexContainer>
   </Story>
 </Canvas>
 

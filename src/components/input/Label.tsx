@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
-import { Flex } from "../container";
+import { FlexContainer } from "../container";
 
 type Props = React.LabelHTMLAttributes<HTMLLabelElement> & {
   required?: boolean;
@@ -27,10 +27,10 @@ const StyledLabel = styled.label<Pick<Props, "required">>`
 
 export function Label({ name = "Label", required = false, ...props }: Props) {
   return (
-    <Flex>
+    <FlexContainer>
       <StyledLabel required={required} {...props}>
         {name}
       </StyledLabel>
-    </Flex>
+    </FlexContainer>
   );
 }

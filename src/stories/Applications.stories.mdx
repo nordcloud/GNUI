@@ -1,7 +1,7 @@
 import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { Col, Row, Hidden } from "react-awesome-styled-grid";
 import theme from "../theme";
-import { Flex } from "../components/container";
+import { FlexContainer } from "../components/container";
 import { Box } from "../components/box";
 import { Text } from "../components/text";
 import { PieChart } from "../components/piechart";
@@ -21,7 +21,7 @@ import { Navigation } from "../components/navigation";
       <Box boxStyle="lightGrey">
         <Row>
           <Col sm={5} md={4} lg={7}>
-            <Flex>
+            <FlexContainer>
               <Hidden xs>
                 <Tooltip
                   status="danger"
@@ -49,7 +49,7 @@ import { Navigation } from "../components/navigation";
                 >
                   Unallocated Costs
                 </Text>
-                <Flex>
+                <FlexContainer>
                   <Text
                     size="sm"
                     tag="span"
@@ -58,12 +58,12 @@ import { Navigation } from "../components/navigation";
                   >
                     86 estate records
                   </Text>
-                </Flex>
+                </FlexContainer>
               </div>
-            </Flex>
+            </FlexContainer>
           </Col>
           <Col sm={3} md={4} lg={5}>
-            <Flex justifyContent="flex-end">
+            <FlexContainer justifyContent="flex-end">
               <div
                 style={{
                   width: "13rem",
@@ -97,7 +97,7 @@ import { Navigation } from "../components/navigation";
                     marginRight: "3rem",
                   }}
                 >
-                  <Flex py={theme.spacing.spacing01}>
+                  <FlexContainer py={theme.spacing.spacing01}>
                     <Text
                       size="sm"
                       tag="div"
@@ -115,8 +115,8 @@ import { Navigation } from "../components/navigation";
                     >
                       $ 1,846.71
                     </Text>
-                  </Flex>
-                  <Flex py={theme.spacing.spacing01}>
+                  </FlexContainer>
+                  <FlexContainer py={theme.spacing.spacing01}>
                     <Text
                       size="sm"
                       tag="div"
@@ -134,10 +134,10 @@ import { Navigation } from "../components/navigation";
                     >
                       $ 2,146.71
                     </Text>
-                  </Flex>
+                  </FlexContainer>
                 </div>
               </Hidden>
-            </Flex>
+            </FlexContainer>
           </Col>
         </Row>
       </Box>
@@ -145,7 +145,7 @@ import { Navigation } from "../components/navigation";
     <Box spacing={"spacing02"} style={{ maxWidth: "1440px" }}>
       <Row>
         <Col sm={5} md={4} lg={7}>
-          <Flex>
+          <FlexContainer>
             <SVGIcon name="chevronRight" />
             <Hidden xs>
               <Tooltip
@@ -174,19 +174,19 @@ import { Navigation } from "../components/navigation";
               >
                 ApplicationName
               </Text>
-              <Flex>
+              <FlexContainer>
                 <Text size="sm" tag="span" ml={theme.spacing.spacing04}>
                   3 environments
                 </Text>
                 <Text size="sm" tag="span" ml={theme.spacing.spacing04}>
                   86 estate records
                 </Text>
-              </Flex>
+              </FlexContainer>
             </div>
-          </Flex>
+          </FlexContainer>
         </Col>
         <Col sm={3} md={4} lg={5}>
-          <Flex justifyContent="flex-end">
+          <FlexContainer justifyContent="flex-end">
             <div
               style={{
                 width: "13rem",
@@ -210,7 +210,7 @@ import { Navigation } from "../components/navigation";
                   marginRight: theme.spacing.spacing07,
                 }}
               >
-                <Flex py={theme.spacing.spacing01}>
+                <FlexContainer py={theme.spacing.spacing01}>
                   <Text size="sm" tag="div" width="7rem">
                     Monthly Forecast:
                   </Text>
@@ -222,8 +222,8 @@ import { Navigation } from "../components/navigation";
                   >
                     $ 1,846.71
                   </Text>
-                </Flex>
-                <Flex py={theme.spacing.spacing01}>
+                </FlexContainer>
+                <FlexContainer py={theme.spacing.spacing01}>
                   <Text size="sm" tag="div" width="7rem">
                     Previous Month:
                   </Text>
@@ -235,7 +235,7 @@ import { Navigation } from "../components/navigation";
                   >
                     $ 2,146.71
                   </Text>
-                </Flex>
+                </FlexContainer>
               </div>
             </Hidden>
             <Popover
@@ -261,14 +261,14 @@ import { Navigation } from "../components/navigation";
                 </Navigation.Item>
               </Navigation.Container>
             </Popover>
-          </Flex>
+          </FlexContainer>
         </Col>
       </Row>
     </Box>
     <Box spacing={"spacing02"} style={{ maxWidth: "1440px" }}>
       <Row>
         <Col sm={5} md={4} lg={7}>
-          <Flex>
+          <FlexContainer>
             <SVGIcon name="chevronDown" />
             <Hidden xs>
               <Tooltip
@@ -297,19 +297,19 @@ import { Navigation } from "../components/navigation";
               >
                 ApplicationName
               </Text>
-              <Flex>
+              <FlexContainer>
                 <Text size="sm" tag="span" ml={theme.spacing.spacing04}>
                   3 environments
                 </Text>
                 <Text size="sm" tag="span" ml={theme.spacing.spacing04}>
                   86 estate records
                 </Text>
-              </Flex>
+              </FlexContainer>
             </div>
-          </Flex>
+          </FlexContainer>
         </Col>
         <Col sm={3} md={4} lg={5}>
-          <Flex justifyContent="flex-end">
+          <FlexContainer justifyContent="flex-end">
             <div
               style={{
                 width: "13rem",
@@ -333,7 +333,7 @@ import { Navigation } from "../components/navigation";
                   marginRight: theme.spacing.spacing07,
                 }}
               >
-                <Flex py={theme.spacing.spacing01}>
+                <FlexContainer py={theme.spacing.spacing01}>
                   <Text size="sm" tag="div" width="7rem">
                     Monthly Forecast:
                   </Text>
@@ -345,8 +345,8 @@ import { Navigation } from "../components/navigation";
                   >
                     $ 1,846.71
                   </Text>
-                </Flex>
-                <Flex py={theme.spacing.spacing01}>
+                </FlexContainer>
+                <FlexContainer py={theme.spacing.spacing01}>
                   <Text size="sm" tag="div" width="7rem">
                     Previous Month:
                   </Text>
@@ -358,7 +358,7 @@ import { Navigation } from "../components/navigation";
                   >
                     $ 2,146.71
                   </Text>
-                </Flex>
+                </FlexContainer>
               </div>
             </Hidden>
             <Popover
@@ -384,7 +384,7 @@ import { Navigation } from "../components/navigation";
                 </Navigation.Item>
               </Navigation.Container>
             </Popover>
-          </Flex>
+          </FlexContainer>
         </Col>
       </Row>
       <Row>
