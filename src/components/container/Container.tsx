@@ -92,9 +92,9 @@ type FlexContainerProps = {
   grow?: number;
   wrap?: "nowrap" | "wrap" | "wrap-reverse";
   direction?: "row" | "row-reverse" | "column" | "column-reverse";
-  gap?: Unit<LengthUnitSuffix> | "0";
-  columnGap?: Unit<LengthUnitSuffix> | "0";
-  rowGap?: Unit<LengthUnitSuffix> | "0";
+  gap?: Unit<LengthUnitSuffix> | "0" | 0;
+  columnGap?: Unit<LengthUnitSuffix> | "0" | 0;
+  rowGap?: Unit<LengthUnitSuffix> | "0" | 0;
 } & SpaceProps;
 
 function getFlexCss(props: FlexContainerProps) {
