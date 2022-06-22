@@ -105,9 +105,9 @@ function getFlexCss(props: FlexContainerProps) {
     flex-wrap: ${props.wrap ?? "no-wrap"};
     flex-direction: ${props.direction ?? "row"};
     flex-grow: ${props.grow ?? 0};
-    gap: ${props.gap ?? "0"};
-    column-gap: ${props.columnGap ?? "0"};
-    row-gap: ${props.rowGap ?? "0"};
+    gap: ${props.gap ?? 0};
+    column-gap: ${props.columnGap ?? 0};
+    row-gap: ${props.rowGap ?? 0};
   `;
 }
 

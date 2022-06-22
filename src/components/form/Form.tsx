@@ -49,7 +49,7 @@ type FormButtonsProps = {
 export function FormButtons({ children, ...props }: FormButtonsProps) {
   return (
     <FlexContainer
-      css={{ margin: "1rem 0" }}
+      css={{ margin: `${theme.spacing.spacing04} 0` }}
       justifyContent="flex-end"
       {...props}
     >
