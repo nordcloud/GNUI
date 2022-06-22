@@ -52,7 +52,7 @@ export const Flex = styled(Container)<FlexProps>`
   ${space}
 `;
 
-// New implementation of Flex container to replace Flex in future.
+// New implementation of FlexContainer to replace Flex in the future.
 type FlexContainerProps = {
   alignItems?:
     | "stretch"
@@ -99,15 +99,15 @@ type FlexContainerProps = {
 
 function getFlexCss(props: FlexContainerProps) {
   return css`
-    align-items: ${props.alignItems || "center"};
-    align-content: ${props.alignContent || "center"};
-    justify-content: ${props.justifyContent || "flex-start"};
-    flex-wrap: ${props.wrap || "no-wrap"};
-    flex-direction: ${props.direction || "row"};
-    flex-grow: ${props.grow || 0};
-    gap: ${props.gap || "0"};
-    column-gap: ${props.columnGap || "0"};
-    row-gap: ${props.rowGap || "0"};
+    align-items: ${props.alignItems ?? "center"};
+    align-content: ${props.alignContent ?? "center"};
+    justify-content: ${props.justifyContent ?? "flex-start"};
+    flex-wrap: ${props.wrap ?? "no-wrap"};
+    flex-direction: ${props.direction ?? "row"};
+    flex-grow: ${props.grow ?? 0};
+    gap: ${props.gap ?? "0"};
+    column-gap: ${props.columnGap ?? "0"};
+    row-gap: ${props.rowGap ?? "0"};
   `;
 }
 
