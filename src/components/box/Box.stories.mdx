@@ -8,7 +8,7 @@ import {
 } from "@storybook/addon-docs";
 import { Box } from ".";
 import { Spacer } from "../spacer";
-import { GnuiContainer, Flex } from "../container";
+import { GnuiContainer, FlexContainer } from "../container";
 import theme from "../../theme";
 
 <Meta title="Components/Box" component={Box} />
@@ -53,12 +53,12 @@ import theme from "../../theme";
 
 <Canvas>
   <Story name="boxStyle">
-    <Flex justifyContent="space-evenly">
+    <FlexContainer justifyContent="space-evenly">
       <Box boxStyle="lightGrey">Light grey box</Box>
-    </Flex>
-    <Flex justifyContent="space-evenly" mt="1rem">
+    </FlexContainer>
+    <FlexContainer justifyContent="space-evenly" mt="1rem">
       <Box boxStyle="grey">Grey box</Box>
-    </Flex>
+    </FlexContainer>
   </Story>
 </Canvas>
 

@@ -3,7 +3,7 @@ import { Tabs, Tab } from ".";
 import { Button } from "../button";
 import { Text } from "../text";
 import { SVGIcon } from "../svgicon";
-import { Flex } from "../container";
+import { FlexContainer } from "../container";
 
 <Meta title="Components/Tabs" component={Tabs} />
 
@@ -101,12 +101,12 @@ import { Flex } from "../container";
         <Tabs step={currentStep} handleTab={setCurrentStep}>
           <Tab
             label={
-              <Flex as="span">
+              <FlexContainer as="span">
                 <SVGIcon name="aws" />
                 <Text mb={0} ml="0.5rem">
                   AWS resources
                 </Text>
-              </Flex>
+              </FlexContainer>
             }
           >
             <Text>Tab 1 Content.</Text>

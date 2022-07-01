@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 import theme from "../../theme";
 import { Button, ButtonProps } from "../button";
-import { GnuiContainer, Flex, GnuiContainerProps } from "../container";
+import { GnuiContainer, FlexContainer, GnuiContainerProps } from "../container";
 import { StyledInputProps } from "../input/types";
 
 const StyledSubmit = styled.input`
@@ -48,9 +48,13 @@ type FormButtonsProps = {
 
 export function FormButtons({ children, ...props }: FormButtonsProps) {
   return (
-    <Flex margin="1rem 0" justifyContent="flex-end" {...props}>
+    <FlexContainer
+      css={{ margin: `${theme.spacing.spacing04} 0` }}
+      justifyContent="flex-end"
+      {...props}
+    >
       {children}
-    </Flex>
+    </FlexContainer>
   );
 }
 

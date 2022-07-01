@@ -3,7 +3,7 @@ import React from "react";
 import theme from "../../../theme";
 import { HeaderIcon as ToggleIcon } from "../../accordion";
 import { Checkbox } from "../../checkbox";
-import { Flex } from "../../container";
+import { FlexContainer } from "../../container";
 import { SVGIcon } from "../../svgicon";
 
 import { Composition, RenderCompositionProps } from "../types";
@@ -72,7 +72,7 @@ export function RenderComposition({
       isRootElement={uid.split(preferredSeparator).length === 1}
     >
       <Styled.TreeItem isTopItem={!!isFirstElement}>
-        <Flex>
+        <FlexContainer>
           <div css={{ width: theme.spacing.spacing04 }}>
             {children && children.length > 0 ? (
               <ToggleIcon
@@ -99,7 +99,7 @@ export function RenderComposition({
               onChange={() => handleSelect({ uid, label, children })}
             />
           </Styled.CheckboxWrap>
-        </Flex>
+        </FlexContainer>
       </Styled.TreeItem>
       {expandedList.includes(uid) &&
         children &&

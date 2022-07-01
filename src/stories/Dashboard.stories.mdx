@@ -1,7 +1,7 @@
 import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { Col, Row, Visible } from "react-awesome-styled-grid";
 import theme from "../theme";
-import { Flex } from "../components/container";
+import { FlexContainer } from "../components/container";
 import { Box } from "../components/box";
 import { PieChart } from "../components/piechart";
 import { Text } from "../components/text";
@@ -14,7 +14,7 @@ import { Spacer } from "../components/spacer";
     <Box style={{ maxWidth: "1440px" }}>
       <Row>
         <Col lg={4} md={4} xs={4}>
-          <Flex>
+          <FlexContainer>
             <PieChart
               progress={88}
               size={96}
@@ -46,10 +46,10 @@ import { Spacer } from "../components/spacer";
                 </Text>
               </Text>
             </Box>
-          </Flex>
+          </FlexContainer>
         </Col>
         <Col lg={4} md={4} xs={4}>
-          <Flex>
+          <FlexContainer>
             <PieChart
               progress={20}
               size={96}
@@ -81,7 +81,7 @@ import { Spacer } from "../components/spacer";
                 </Text>
               </Text>
             </Box>
-          </Flex>
+          </FlexContainer>
         </Col>
         <Col lg={4} md={8} xs={4}>
           <Visible md>

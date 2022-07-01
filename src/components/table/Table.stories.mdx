@@ -3,7 +3,7 @@ import { Table } from ".";
 import { Box } from "../box";
 import { Input } from "../input";
 import { Button } from "../button";
-import { Flex } from "../container";
+import { FlexContainer } from "../container";
 
 <Meta title="Components/Table" component={Table} />
 
@@ -188,22 +188,22 @@ import { Flex } from "../container";
 <Canvas>
   <Story name="table-with-header">
     <Box boxStyle="lightGrey" innerSpacing="spacing03" spacing="spacing04">
-      <Flex>
+      <FlexContainer>
         <Input
           name="input"
           placeholder="Tag, application name, environment name, description etc"
           title="Title"
           size="md"
         />
-        <Flex justifyContent="flex-end">
+        <FlexContainer justifyContent="flex-end">
           <Button severity="low" size="md" icon="filter" mr={"1rem"}>
             Show Filters
           </Button>
           <Button severity="low" size="md" icon="download">
             Download CSV
           </Button>
-        </Flex>
-      </Flex>
+        </FlexContainer>
+      </FlexContainer>
     </Box>
     <Table>
       <Table.thead>
