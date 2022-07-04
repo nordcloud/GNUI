@@ -118,5 +118,6 @@ export const StyledTriggerWrapper = styled.div`
     height: 100%;
     display: flex;
     column-gap: ${theme.spacing.spacing02};
+    justify-content: center;
   }
 `;
