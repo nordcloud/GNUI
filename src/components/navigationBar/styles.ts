@@ -12,7 +12,7 @@ export const ItemsContainer = styled.div`
 
 export const ItemsSection = styled.div<{ stickToBottom?: boolean }>`
   display: flex;
-  flex-wrap: no-wrap;
+  flex-wrap: nowrap;
   flex-direction: column;
   row-gap: ${theme.spacing.spacing04};
   width: 100%;
@@ -33,7 +33,7 @@ export const NavigationBarWrapper = styled.nav<
   Omit<Props, "items"> & ExpandedProps
 >`
   display: flex;
-  flex-wrap: no-wrap;
+  flex-wrap: nowrap;
   justify-content: flex-start;
   margin: 0;
   flex-direction: column;
@@ -54,6 +54,11 @@ export const NavigationBarWrapper = styled.nav<
   align-items: ${({ expanded }) => (expanded ? "start" : "center")};
   z-index: ${theme.zindex.sticky};
   overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+
+  &::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
 `;
 
 function getTransition({
@@ -74,7 +79,7 @@ function getTransition({
 export const BurgerWrapper = styled.div<ExpandedProps>`
   cursor: pointer;
   display: flex;
-  flex-wrap: no-wrap;
+  flex-wrap: nowrap;
   margin: 0;
   width: 100%;
   height: 2rem;

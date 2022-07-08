@@ -87,7 +87,7 @@ const ItemsContainer = styled.div`
 ```js
 const ItemsSection = styled.div<{ stickToBottom?: boolean }>`
   display: flex;
-  flex-wrap: no-wrap;
+  flex-wrap: nowrap;
   flex-direction: column;
   row-gap: ${theme.spacing.spacing04};
   width: 100%;
@@ -223,7 +223,7 @@ const ItemsSection = styled.div<{ stickToBottom?: boolean }>`
   <Story name="scrollable" height="450px">
     {() => {
       return (
-        <div style={{ height: "400px", position: "relative" }}>
+        <div style={{ height: "400px", width: "200px", position: "relative" }}>
           <NavigationBar position="absolute" height="100%">
             <ItemsContainer>
               <ItemsSection>
