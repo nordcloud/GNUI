@@ -46,7 +46,8 @@ export const NavigationBarWrapper = styled.nav<
   padding-top: ${theme.spacing.spacing05};
   padding-bottom: ${theme.spacing.spacing04};
   padding-left: ${theme.spacing.spacing03};
-  padding-right: ${theme.spacing.spacing03};
+  padding-right: ${({ expanded }) =>
+    expanded ? theme.spacing.spacing04 : theme.spacing.spacing03};
   row-gap: ${theme.spacing.spacing07};
   border-right: solid 1px ${theme.color.border.border01};
   ${({ expanded, expandableConfig }) =>
