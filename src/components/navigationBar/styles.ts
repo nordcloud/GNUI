@@ -93,7 +93,7 @@ export const StyledPopoverTrigger = styled.div`
   column-gap: ${theme.spacing.spacing02};
 `;
 
-export const StyledTriggerWrapper = styled.div`
+export const StyledTriggerWrapper = styled.div<ExpandedProps>`
   display: flex;
   align-items: center;
   border-radius: ${theme.radius.md};
@@ -118,6 +118,6 @@ export const StyledTriggerWrapper = styled.div`
     height: 100%;
     display: flex;
     column-gap: ${theme.spacing.spacing02};
-    justify-content: center;
+    justify-content: ${({ expanded }) => (expanded ? "start" : "center")};
   }
 `;
