@@ -20,7 +20,7 @@ export function MenuItem({ caption, icon, children }: MenuItemProps) {
     );
 
     return (
-      <StyledTriggerWrapper expanded={expanded}>
+      <StyledTriggerWrapper>
         <ExtendedPopover
           trigger={triggerEl}
           position="start"
@@ -34,7 +34,7 @@ export function MenuItem({ caption, icon, children }: MenuItemProps) {
   }
 
   return (
-    <StyledTriggerWrapper expanded={expanded}>
+    <StyledTriggerWrapper>
       <ExtendedTooltip
         caption={expanded ? null : caption}
         placement="right"

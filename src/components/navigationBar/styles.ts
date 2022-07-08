@@ -12,7 +12,7 @@ export const ItemsContainer = styled.div`
 
 export const ItemsSection = styled.div<{ stickToBottom?: boolean }>`
   display: flex;
-  flex-wrap: no-wrap;
+  flex-wrap: nowrap;
   flex-direction: column;
   row-gap: ${theme.spacing.spacing04};
   width: 100%;
@@ -33,7 +33,7 @@ export const NavigationBarWrapper = styled.nav<
   Omit<Props, "items"> & ExpandedProps
 >`
   display: flex;
-  flex-wrap: no-wrap;
+  flex-wrap: nowrap;
   justify-content: flex-start;
   margin: 0;
   flex-direction: column;
@@ -45,10 +45,8 @@ export const NavigationBarWrapper = styled.nav<
   background-color: ${({ backgroundColor }) => backgroundColor};
   padding-top: ${theme.spacing.spacing05};
   padding-bottom: ${theme.spacing.spacing04};
-  padding-left: ${({ expanded }) =>
-    expanded ? theme.spacing.spacing04 : theme.spacing.spacing03};
-  padding-right: ${({ expanded }) =>
-    expanded ? theme.spacing.spacing04 : theme.spacing.spacing03};
+  padding-left: ${theme.spacing.spacing03};
+  padding-right: ${theme.spacing.spacing03};
   row-gap: ${theme.spacing.spacing07};
   border-right: solid 1px ${theme.color.border.border01};
   ${({ expanded, expandableConfig }) =>
@@ -56,6 +54,11 @@ export const NavigationBarWrapper = styled.nav<
   align-items: ${({ expanded }) => (expanded ? "start" : "center")};
   z-index: ${theme.zindex.sticky};
   overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+
+  &::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
 `;
 
 function getTransition({
@@ -76,13 +79,15 @@ function getTransition({
 export const BurgerWrapper = styled.div<ExpandedProps>`
   cursor: pointer;
   display: flex;
-  flex-wrap: no-wrap;
+  flex-wrap: nowrap;
   margin: 0;
   width: 100%;
   height: 2rem;
   align-items: center;
   column-gap: ${theme.spacing.spacing02};
   justify-content: ${({ expanded }) => (expanded ? "start" : "center")};
+  padding-left: ${({ expanded }) => (expanded ? theme.spacing.spacing01 : 0)};
+  box-sizing: border-box;
 `;
 
 export const StyledPopoverTrigger = styled.div`
@@ -93,7 +98,7 @@ export const StyledPopoverTrigger = styled.div`
   column-gap: ${theme.spacing.spacing02};
 `;
 
-export const StyledTriggerWrapper = styled.div<ExpandedProps>`
+export const StyledTriggerWrapper = styled.div`
   display: flex;
   align-items: center;
   border-radius: ${theme.radius.md};
@@ -118,6 +123,6 @@ export const StyledTriggerWrapper = styled.div<ExpandedProps>`
     height: 100%;
     display: flex;
     column-gap: ${theme.spacing.spacing02};
-    justify-content: ${({ expanded }) => (expanded ? "start" : "center")};
+    padding-left: ${theme.spacing.spacing01};
   }
 `;
