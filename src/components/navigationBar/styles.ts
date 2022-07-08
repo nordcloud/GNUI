@@ -45,10 +45,8 @@ export const NavigationBarWrapper = styled.nav<
   background-color: ${({ backgroundColor }) => backgroundColor};
   padding-top: ${theme.spacing.spacing05};
   padding-bottom: ${theme.spacing.spacing04};
-  padding-left: ${({ expanded }) =>
-    expanded ? theme.spacing.spacing04 : theme.spacing.spacing03};
-  padding-right: ${({ expanded }) =>
-    expanded ? theme.spacing.spacing04 : theme.spacing.spacing03};
+  padding-left: ${theme.spacing.spacing03};
+  padding-right: ${theme.spacing.spacing03};
   row-gap: ${theme.spacing.spacing07};
   border-right: solid 1px ${theme.color.border.border01};
   ${({ expanded, expandableConfig }) =>
@@ -83,6 +81,7 @@ export const BurgerWrapper = styled.div<ExpandedProps>`
   align-items: center;
   column-gap: ${theme.spacing.spacing02};
   justify-content: ${({ expanded }) => (expanded ? "start" : "center")};
+  padding-left: ${({ expanded }) => (expanded ? theme.spacing.spacing01 : 0)};
 `;
 
 export const StyledPopoverTrigger = styled.div`
@@ -118,6 +117,7 @@ export const StyledTriggerWrapper = styled.div<ExpandedProps>`
     height: 100%;
     display: flex;
     column-gap: ${theme.spacing.spacing02};
+    padding-left: ${({ expanded }) => (expanded ? theme.spacing.spacing01 : 0)};
     justify-content: ${({ expanded }) => (expanded ? "start" : "center")};
   }
 `;
