@@ -46,8 +46,7 @@ export const NavigationBarWrapper = styled.nav<
   padding-top: ${theme.spacing.spacing05};
   padding-bottom: ${theme.spacing.spacing04};
   padding-left: ${theme.spacing.spacing03};
-  padding-right: ${({ expanded }) =>
-    expanded ? theme.spacing.spacing04 : theme.spacing.spacing03};
+  padding-right: ${theme.spacing.spacing03};
   row-gap: ${theme.spacing.spacing07};
   border-right: solid 1px ${theme.color.border.border01};
   ${({ expanded, expandableConfig }) =>
@@ -83,6 +82,7 @@ export const BurgerWrapper = styled.div<ExpandedProps>`
   column-gap: ${theme.spacing.spacing02};
   justify-content: ${({ expanded }) => (expanded ? "start" : "center")};
   padding-left: ${({ expanded }) => (expanded ? theme.spacing.spacing01 : 0)};
+  box-sizing: border-box;
 `;
 
 export const StyledPopoverTrigger = styled.div`
@@ -93,7 +93,7 @@ export const StyledPopoverTrigger = styled.div`
   column-gap: ${theme.spacing.spacing02};
 `;
 
-export const StyledTriggerWrapper = styled.div<ExpandedProps>`
+export const StyledTriggerWrapper = styled.div`
   display: flex;
   align-items: center;
   border-radius: ${theme.radius.md};
@@ -118,7 +118,6 @@ export const StyledTriggerWrapper = styled.div<ExpandedProps>`
     height: 100%;
     display: flex;
     column-gap: ${theme.spacing.spacing02};
-    padding-left: ${({ expanded }) => (expanded ? theme.spacing.spacing01 : 0)};
-    justify-content: ${({ expanded }) => (expanded ? "start" : "center")};
+    padding-left: ${theme.spacing.spacing01};
   }
 `;
