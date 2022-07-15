@@ -3,6 +3,7 @@ import { Tag } from ".";
 import { Heading } from "../heading";
 import { Flex } from "../container";
 import { Breadcrumbs } from "../breadcrumbs";
+import theme from "../../theme";
 
 <Meta title="Components/Tag" component={Tag} />
 
@@ -33,12 +34,13 @@ import { Breadcrumbs } from "../breadcrumbs";
     <Tag icon="edit" onClick={() => alert("clicked")} />
     <Tag isTransparent icon="edit" onClick={() => alert("clicked")} />
     <Tag icon="plus" onClick={() => alert("clicked")} />
+    <Tag text="Theme color" color="purple" colorText="white" />
   </Story>
 </Canvas>
 
 ## Colored Tag with close button
 
-> `color` props can be used in two ways: as an action colors build with `theme` (`accent`, `danger`, `success`, `warning`, `notification`, `primary`) or just in HEX/named color formats according to [X11 Colors](https://en.wikipedia.org/wiki/X11_color_names)
+> `color` props can be used in two ways: as an action colors build with `theme` (`accent`, `danger`, `success`, `warning`, `notification`, `primary` "red", `redInverse`, `pink`, `purple`, `indigo`, `blue`, `blueInverse`, `grey`, `greyInverse`, `cyan`, `teal`, `green`, `greenInverse`, `lightGreen`, `yellow`, `orange`,`orangeInverse`)
 
 <Canvas>
   <Story name="close button">
@@ -66,6 +68,19 @@ import { Breadcrumbs } from "../breadcrumbs";
       showClose
       onClick={() => alert("clicked")}
     />
+    <Tag
+      color="purple"
+      text="Purple"
+      showClose
+      onClick={() => alert("clicked")}
+    />
+    <Tag
+      color="indigo"
+      text="Indigo"
+      showClose
+      onClick={() => alert("clicked")}
+    />
+    <Tag color="cyan" text="Cyan" showClose onClick={() => alert("clicked")} />
   </Story>
 </Canvas>
 

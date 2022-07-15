@@ -104,6 +104,8 @@ export type SingleColors =
   | "white"
   | "snowWhite";
 
+export type ThemeColors = keyof typeof color.support;
+
 export const typography = {
   fonts: {
     body: "Rubik, sans-serif",
