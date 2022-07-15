@@ -5,6 +5,7 @@ import { space } from "styled-system";
 import theme from "../../theme";
 import { SingleColors, ThemeColors } from "../../theme/config";
 import { SVGIcon, SVGIconProps } from "../svgicon";
+import { checkColor, checkColorForPolished } from "./utils";
 
 type TagProps = {
   color?: SingleColors | ThemeColors;
@@ -15,45 +16,6 @@ type TagProps = {
   showClose?: boolean;
   isTransparent?: boolean;
 };
-
-function isSingleColor(
-  value: SingleColors | ThemeColors
-): value is SingleColors {
-  return [
-    "primary",
-    "accent",
-    "danger",
-    "success",
-    "warning",
-    "notification",
-    "black",
-    "white",
-    "snowWhite",
-  ].includes(value);
-}
-function isSingleThemeColor(
-  value: SingleColors | ThemeColors
-): value is ThemeColors {
-  return [
-    "red",
-    "redInverse",
-    "pink",
-    "purple",
-    "indigo",
-    "blue",
-    "blueInverse",
-    "grey",
-    "greyInverse",
-    "cyan",
-    "teal",
-    "green",
-    "greenInverse",
-    "lightGreen",
-    "yellow",
-    "orange",
-    "orangeInverse",
-  ].includes(value);
-}
 
 export const StyledTag = styled.div<TagProps>`
   display: flex;
@@ -126,44 +88,25 @@ export const StyledTag = styled.div<TagProps>`
       }
     `}
     
-  ${({ color }) => {
-    const checkColor = (c: SingleColors | ThemeColors) => {
-      if (c && isSingleColor(c)) {
-        return theme.colors[c];
+  ${({ color }) =>
+    color &&
+    css`
+      background: ${checkColor(color)};
+      color: ${theme.color.text.text04};
+      svg {
+        fill: ${theme.color.text.text04};
       }
-      if (c && isSingleThemeColor(c)) {
-        return theme.color.support[c];
+      .tag-close-button {
+        background: ${darken(0.1, checkColorForPolished(color))};
       }
-      return c;
-    };
-    const checkColorForPolished = (
-      polishedColor: SingleColors | ThemeColors
-    ) => {
-      return isSingleColor(polishedColor)
-        ? checkColor(polishedColor)
-        : polishedColor;
-    };
-    return (
-      color &&
-      css`
-        background: ${checkColor(color)};
-        color: ${theme.color.text.text04};
-        svg {
-          fill: ${theme.color.text.text04};
-        }
-        .tag-close-button {
-          background: ${darken(0.1, checkColorForPolished(color))};
-        }
 
-        &:hover {
-          background: ${darken(0.05, checkColorForPolished(color))};
-        }
-        &:active {
-          background: ${darken(0.1, checkColorForPolished(color))};
-        }
-      `
-    );
-  }}
+      &:hover {
+        background: ${darken(0.05, checkColorForPolished(color))};
+      }
+      &:active {
+        background: ${darken(0.1, checkColorForPolished(color))};
+      }
+    `}
   ${({ colorText }) =>
     colorText &&
     css`
