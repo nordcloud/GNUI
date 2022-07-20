@@ -49,11 +49,3 @@ export const checkColor = (color: SingleColors | ThemeColors) => {
   }
   return color;
 };
-
-export const checkColorForPolished = (
-  polishedColor: SingleColors | ThemeColors
-) => {
-  return isSingleColor(polishedColor)
-    ? checkColor(polishedColor)
-    : polishedColor;
-};

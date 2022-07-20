@@ -1,11 +1,10 @@
 import * as React from "react";
-import { darken } from "polished";
 import styled, { css } from "styled-components";
 import { space } from "styled-system";
 import theme from "../../theme";
 import { SingleColors, ThemeColors } from "../../theme/config";
 import { SVGIcon, SVGIconProps } from "../svgicon";
-import { checkColor, checkColorForPolished } from "./utils";
+import { checkColor } from "./utils";
 
 type TagProps = {
   color?: SingleColors | ThemeColors;
@@ -97,14 +96,17 @@ export const StyledTag = styled.div<TagProps>`
         fill: ${theme.color.text.text04};
       }
       .tag-close-button {
-        background: ${darken(0.1, checkColorForPolished(color))};
+        filter: brightness(90%);
+        background: ${checkColor(color)};
       }
 
       &:hover {
-        background: ${darken(0.05, checkColorForPolished(color))};
+        filter: brightness(95%);
+        background: ${checkColor(color)};
       }
       &:active {
-        background: ${darken(0.1, checkColorForPolished(color))};
+        filter: brightness(90%);
+        background: ${checkColor(color)};
       }
     `}
   ${({ colorText }) =>
