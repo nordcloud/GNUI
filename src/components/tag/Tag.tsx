@@ -1,13 +1,13 @@
 import * as React from "react";
-import { darken } from "polished";
 import styled, { css } from "styled-components";
 import { space } from "styled-system";
 import theme from "../../theme";
-import { SingleColors } from "../../theme/config";
+import { SingleColors, ThemeColors } from "../../theme/config";
 import { SVGIcon, SVGIconProps } from "../svgicon";
+import { checkColor } from "./utils";
 
 type TagProps = {
-  color?: SingleColors;
+  color?: SingleColors | ThemeColors;
   colorText?: SingleColors;
   text?: string;
   icon?: SVGIconProps["name"];
@@ -90,20 +90,23 @@ export const StyledTag = styled.div<TagProps>`
   ${({ color }) =>
     color &&
     css`
-      background: ${theme.colors[color] || color};
+      background: ${checkColor(color)};
       color: ${theme.color.text.text04};
       svg {
         fill: ${theme.color.text.text04};
       }
       .tag-close-button {
-        background: ${darken(0.1, theme.colors[color] || color)};
+        filter: brightness(90%);
+        background: ${checkColor(color)};
       }
 
       &:hover {
-        background: ${darken(0.05, theme.colors[color] || color)};
+        filter: brightness(95%);
+        background: ${checkColor(color)};
       }
       &:active {
-        background: ${darken(0.1, theme.colors[color] || color)};
+        filter: brightness(90%);
+        background: ${checkColor(color)};
       }
     `}
   ${({ colorText }) =>
