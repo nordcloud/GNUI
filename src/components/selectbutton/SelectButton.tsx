@@ -8,12 +8,13 @@ import { setColor } from "../../utils/setcolor";
 export type SelectButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
   name: string;
   value: string;
-  labelText: string;
+  labelText: string | React.ReactNode;
   isActive?: boolean;
   onClick: (value: SelectButtonProps["value"]) => void;
 };
 
 export type SelectButtonListProps = {
+  className?: string;
   children: React.ReactNode;
   status?: SingleColors;
   size?: string;
@@ -126,12 +127,13 @@ export function SelectButton({
 }
 
 export function MultipleSelect({
+  className,
   status,
   children,
   size,
 }: SelectButtonListProps) {
   return (
-    <StyledSelectButtons status={status} size={size}>
+    <StyledSelectButtons status={status} size={size} className={className}>
       {children}
     </StyledSelectButtons>
   );
