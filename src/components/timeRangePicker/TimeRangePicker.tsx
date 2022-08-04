@@ -90,7 +90,7 @@ export function TimeRangePicker({
   // Submit timeRange change when selectedDate changed,
   useEffect(() => {
     submit();
-  }, [selectedDate]); // eslint-disable-line
+  }, [selectedDate.toLocaleDateString()]); // eslint-disable-line
 
   // Submit timeRange change when selectedTimeRange changed,
   // except for custom timeRange change, which will be handled separately
