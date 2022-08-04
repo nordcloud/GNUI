@@ -61,9 +61,13 @@ export const UnifiedMultipleSelect = styled(MultipleSelect)`
       width: 100%;
       height: 100%;
 
-      &:hover {
+      &:not(.active):hover {
         background: ${theme.color.interactive.secondary};
         color: ${theme.color.text.text01};
+      }
+
+      &.active:hover {
+        cursor: default;
       }
     }
   }
