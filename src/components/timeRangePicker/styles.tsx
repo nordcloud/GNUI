@@ -34,7 +34,7 @@ export const Row = styled(FlexContainer)`
 
       .date-value {
         font-size: ${theme.fontSizes.md};
-        font-weight: ${theme.fontWeights.bold};
+        font-weight: ${theme.fontWeights.medium};
         line-height: ${theme.lineHeight};
       }
     }
