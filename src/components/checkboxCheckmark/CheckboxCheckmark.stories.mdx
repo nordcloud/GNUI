@@ -1,5 +1,6 @@
 import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { CheckboxCheckmark, CheckboxCheckmarkGroup } from ".";
+import { FlexContainer } from "../container";
 
 <Meta title="Forms/CheckboxCheckmark" component={CheckboxCheckmark} />
 
@@ -16,7 +17,13 @@ import { CheckboxCheckmark, CheckboxCheckmarkGroup } from ".";
 
 <Canvas>
   <Story name="simple">
-    <CheckboxCheckmark id="checkbox-1" labelText="GNUI Checkbox" />
+    <FlexContainer
+      style={{
+        padding: "3rem",
+      }}
+    >
+      <CheckboxCheckmark id="checkbox-1" labelText="GNUI Checkbox" />
+    </FlexContainer>
   </Story>
 </Canvas>
 
@@ -24,18 +31,28 @@ import { CheckboxCheckmark, CheckboxCheckmarkGroup } from ".";
 
 <Canvas>
   <Story name="double">
-    <CheckboxCheckmark id="checkbox-1" labelText="GNUI Checkbox" double />
+    <FlexContainer
+      style={{
+        padding: "3rem",
+      }}
+    >
+      <CheckboxCheckmark id="checkbox-2" labelText="GNUI Checkbox" double />
+    </FlexContainer>
   </Story>
 </Canvas>
 
 
 ### withoutLabel
 
-> Default input type `checkbox` without Label with larger clickable surface.
-
 <Canvas>
   <Story name="withoutLabel">
-    <CheckboxCheckmark withoutLabel id="checkbox-5" />
+    <FlexContainer
+      style={{
+        padding: "3rem",
+      }}
+    >
+      <CheckboxCheckmark withoutLabel id="checkbox-5" />
+    </FlexContainer>
   </Story>
 </Canvas>
 
@@ -49,27 +66,34 @@ import { CheckboxCheckmark, CheckboxCheckmarkGroup } from ".";
 
 <Canvas>
   <Story name="group">
-    {() => {
-      const [value, setValue] = React.useState({
-        0: false,
-        1: false,
-        2: false,
-      });
-      const handleCheckbox = (index) =>
-        setValue({ ...value, [index]: !value[index] });
-      const labels = ["New York", "San Francisco", "Los Angeles"];
-      const names = ["checkbox-1", "checkbox-2", "checkbox-3"];
-      return (
-        <CheckboxGroup name="gnui-checkbox-group">
-          {names.map((names, index) => (
-            <CheckboxCheckmark
-              id={names[index]}
-              onChange={() => handleCheckbox(index)}
-              labelText={labels[index]}
-            />
-          ))}
-        </CheckboxGroup>
-      );
-    }}
+      {() => {
+        const [value, setValue] = React.useState({
+          0: false,
+          1: false,
+          2: false,
+        });
+        const handleCheckbox = (index) =>
+          setValue({ ...value, [index]: !value[index] });
+        const labels = ["New York", "San Francisco", "Los Angeles"];
+        const names = ["checkbox-1", "checkbox-2", "checkbox-3"];
+        return (
+          <FlexContainer
+            just
+            style={{
+              padding: "3rem",
+            }}
+          >
+            <CheckboxGroup name="gnui-checkbox-group">
+              {names.map((names, index) => (
+                <CheckboxCheckmark
+                  id={names[index]}
+                  onChange={() => handleCheckbox(index)}
+                  labelText={labels[index]}
+                />
+              ))}
+            </CheckboxGroup>
+          </FlexContainer>
+        );
+      }}
   </Story>
 </Canvas>

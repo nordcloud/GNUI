@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { Flex } from "../container";
 import { SVGIcon } from "../svgicon";
+import { Tooltip } from "../tooltip/Tooltip";
 
 const SingleCheckWrapper = styled(Flex)`
   margin-bottom: ${theme.spacing.spacing04};
@@ -58,8 +59,8 @@ const CheckboxContainer = styled.div`
 
 const Fill = styled(SVGIcon)`
   fill: ${theme.color.background.ui05};
-  width: 0;
-  height: 0;
+  width: 1rem;
+  height: 1rem;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -81,8 +82,23 @@ const CheckboxInput = styled.input`
 
   &:checked {
     & ~ ${Fill} {
-      width: 1rem;
-      height: 1rem;
+      border-radius: 2px;
+      fill: ${theme.color.background.ui01};
+      background: ${theme.color.background.ui05};
+    }
+  }
+  &:disabled {
+    & ~ ${Fill} {
+      border-radius: 2px;
+      fill: ${theme.color.text.text03};
+    }
+  }
+
+  &:checked:disabled {
+    & ~ ${Fill} {
+      border-radius: 2px;
+      fill: ${theme.color.text.text03};
+      background: ${theme.color.background.ui04};
     }
   }
 `;
@@ -98,14 +114,39 @@ export type CheckboxCheckmarkProps =
 export const CheckboxCheckmark = React.forwardRef<
   HTMLInputElement,
   CheckboxCheckmarkProps
->(({ id, labelText, withoutLabel, double, ...props }, ref) => (
-  <SingleCheckWrapper withoutLabel={withoutLabel}>
+>(({ id, labelText, withoutLabel, double, ...props }, ref) => {
+  const [isChecked, setIsChecked] = React.useState(props.checked ?? false)
+
+  const captionSelect = double ? "Select All" : "Select This";
+  const captionDeselect = double ? "Deselect All" : "Deselect This";
+  const caption = isChecked ? captionDeselect : captionSelect;
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setIsChecked((prevState) => !prevState);
+    props.onChange?.(e);
+  };
+
+  const checkboxInput = (
     <CheckboxContainer>
-      <CheckboxInput type="checkbox" id={id} ref={ref} {...props} />
+      <CheckboxInput type="checkbox" id={id} ref={ref} {...props} onChange={handleChange} />
       <Fill name={double ? "checkmarkDouble" : "checkmark"} />
     </CheckboxContainer>
-    <CheckboxLabel withoutLabel={withoutLabel} htmlFor={id}>
-      {labelText}
-    </CheckboxLabel>
-  </SingleCheckWrapper>
-));
+  );
+
+  const checkbox = props.disabled
+    ? checkboxInput
+    : (
+      <Tooltip caption={caption} minWidth="5rem">
+        {checkboxInput}
+      </Tooltip>
+    );
+
+  return (
+    <SingleCheckWrapper withoutLabel={withoutLabel}>
+      {checkbox}
+      <CheckboxLabel withoutLabel={withoutLabel} htmlFor={id}>
+        {labelText}
+      </CheckboxLabel>
+    </SingleCheckWrapper>
+  )
+});
