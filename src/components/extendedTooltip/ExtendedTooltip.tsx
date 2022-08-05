@@ -113,11 +113,11 @@ function Tooltip({
 }: TooltipProps) {
   return isHovered
     ? ReactDOM.createPortal(
-      <StyledTooltip ref={tooltipRef} status={status} style={style}>
-        {caption}
-      </StyledTooltip>,
-      document.body
-    )
+        <StyledTooltip ref={tooltipRef} status={status} style={style}>
+          {caption}
+        </StyledTooltip>,
+        document.body
+      )
     : null;
 }
 

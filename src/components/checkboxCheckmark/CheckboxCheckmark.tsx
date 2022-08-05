@@ -2,7 +2,10 @@ import * as React from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { Flex } from "../container";
-import { ExtendedTooltip, ExtendedTooltipProps } from "../extendedTooltip/ExtendedTooltip";
+import {
+  ExtendedTooltip,
+  ExtendedTooltipProps,
+} from "../extendedTooltip/ExtendedTooltip";
 import { SVGIcon } from "../svgicon";
 
 const SingleCheckWrapper = styled(Flex)`
@@ -116,7 +119,7 @@ export const CheckboxCheckmark = React.forwardRef<
   HTMLInputElement,
   CheckboxCheckmarkProps
 >(({ id, labelText, withoutLabel, double, tooltipProps, ...props }, ref) => {
-  const [isChecked, setIsChecked] = React.useState(props.checked ?? false)
+  const [isChecked, setIsChecked] = React.useState(props.checked ?? false);
 
   const captionSelect = double ? "Select All" : "Select This";
   const captionDeselect = double ? "Deselect All" : "Deselect This";
@@ -129,18 +132,24 @@ export const CheckboxCheckmark = React.forwardRef<
 
   const checkboxInput = (
     <CheckboxContainer>
-      <CheckboxInput type="checkbox" id={id} ref={ref} {...props} onChange={handleChange} />
+      <CheckboxInput
+        type="checkbox"
+        id={id}
+        ref={ref}
+        {...props}
+        onChange={handleChange}
+      />
       <Fill name={double ? "checkmarkDouble" : "checkmark"} />
     </CheckboxContainer>
   );
 
-  const checkbox = props.disabled
-    ? checkboxInput
-    : (
-      <ExtendedTooltip caption={caption} showTimeout={500} {...tooltipProps}>
-        {checkboxInput}
-      </ExtendedTooltip>
-    );
+  const checkbox = props.disabled ? (
+    checkboxInput
+  ) : (
+    <ExtendedTooltip caption={caption} showTimeout={500} {...tooltipProps}>
+      {checkboxInput}
+    </ExtendedTooltip>
+  );
 
   return (
     <SingleCheckWrapper withoutLabel={withoutLabel}>
@@ -149,5 +158,5 @@ export const CheckboxCheckmark = React.forwardRef<
         {labelText}
       </CheckboxLabel>
     </SingleCheckWrapper>
-  )
+  );
 });
