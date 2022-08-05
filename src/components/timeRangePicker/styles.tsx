@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import theme from "../../theme";
 import { Button } from "../button";
-import { MultipleSelect } from "../selectbutton";
 import { FlexContainer } from "../container";
+import { MultipleSelect } from "../selectbutton";
 
 export const Row = styled(FlexContainer)`
   align-items: stretch;
@@ -22,6 +22,14 @@ export const Row = styled(FlexContainer)`
     margin-bottom: 0;
   }
 
+  &.time-range-picker {
+    font-size: ${theme.fontSizes.sm};
+
+    ul {
+      flex: 1;
+    }
+  }
+
   &.date-picker {
     .date-options {
       flex: 1;
@@ -39,38 +47,10 @@ export const Row = styled(FlexContainer)`
       }
     }
   }
-
-  &.time-range-picker {
-    font-size: ${theme.fontSizes.sm};
-
-    ul {
-      flex: 1;
-    }
-  }
 `;
 
 export const IconButton = styled(Button)`
   padding: 16px 8px;
-`;
-
-export const UnifiedMultipleSelect = styled(MultipleSelect)`
-  li {
-    flex: 1;
-
-    button {
-      width: 100%;
-      height: 100%;
-
-      &:not(.active):hover {
-        background: ${theme.color.interactive.secondary};
-        color: ${theme.color.text.text01};
-      }
-
-      &.active:hover {
-        cursor: default;
-      }
-    }
-  }
 `;
 
 export const DatepickerContainer = styled.div`
@@ -107,5 +87,25 @@ export const CustomTimeRangeSelector = styled(Row)<{ isVisible: boolean }>`
   button {
     font-size: ${theme.fontSizes.sm};
     padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
+  }
+`;
+
+export const UnifiedMultipleSelect = styled(MultipleSelect)`
+  li {
+    flex: 1;
+
+    button {
+      width: 100%;
+      height: 100%;
+
+      &:not(.active):hover {
+        background: ${theme.color.interactive.secondary};
+        color: ${theme.color.text.text01};
+      }
+
+      &.active:hover {
+        cursor: default;
+      }
+    }
   }
 `;

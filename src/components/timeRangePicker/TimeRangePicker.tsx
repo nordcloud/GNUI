@@ -1,5 +1,5 @@
+import * as React from "react";
 import { useState, useRef, useEffect, ReactNode } from "react";
-import { Calendar } from "react-date-range";
 import {
   Interval,
   isSameDay,
@@ -7,11 +7,12 @@ import {
   previousMonday,
   nextMonday,
 } from "date-fns";
+import { Calendar } from "react-date-range";
 import { useClickOutside } from "../../hooks";
 import { Button } from "../button";
-import { SelectButton } from "../selectbutton";
 import { Datepicker } from "../datepicker";
 import { Label } from "../input";
+import { SelectButton } from "../selectbutton";
 import {
   Row,
   UnifiedMultipleSelect,
