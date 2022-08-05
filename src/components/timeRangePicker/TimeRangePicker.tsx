@@ -152,24 +152,22 @@ export function TimeRangePicker({
           severity="medium"
           icon="chevronRight"
         />
-        <DatepickerContainer>
+        <DatepickerContainer ref={calendarWrapper}>
           <IconButton
             onClick={() => setIsCalendarActive((prev) => !prev)}
             severity="medium"
             icon="calendar"
           />
-          <div ref={calendarWrapper}>
-            <Datepicker>
-              {isCalendarActive && (
-                <Calendar
-                  className="calendar-panel"
-                  date={selectedDate}
-                  weekStartsOn={1}
-                  onChange={(date) => handleDateSelection(date)}
-                />
-              )}
-            </Datepicker>
-          </div>
+          <Datepicker>
+            {isCalendarActive && (
+              <Calendar
+                className="calendar-panel"
+                date={selectedDate}
+                weekStartsOn={1}
+                onChange={(date) => handleDateSelection(date)}
+              />
+            )}
+          </Datepicker>
         </DatepickerContainer>
       </Row>
       <Row className="time-range-picker">
