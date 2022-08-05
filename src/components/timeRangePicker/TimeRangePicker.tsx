@@ -156,7 +156,7 @@ export function TimeRangePicker({
           <IconButton
             onClick={() => setIsCalendarActive((prev) => !prev)}
             severity="medium"
-            icon="eventList"
+            icon="calendar"
           />
           <div ref={calendarWrapper}>
             <Datepicker>
