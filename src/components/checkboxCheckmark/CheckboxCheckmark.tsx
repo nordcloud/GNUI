@@ -2,8 +2,8 @@ import * as React from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { Flex } from "../container";
+import { ExtendedTooltip, ExtendedTooltipProps } from "../extendedTooltip/ExtendedTooltip";
 import { SVGIcon } from "../svgicon";
-import { Tooltip } from "../tooltip/Tooltip";
 
 const SingleCheckWrapper = styled(Flex)`
   margin-bottom: ${theme.spacing.spacing04};
@@ -109,12 +109,13 @@ export type CheckboxCheckmarkProps =
     withoutLabel?: boolean;
     ref?: React.Ref<HTMLInputElement>;
     double?: boolean;
+    tooltipProps?: ExtendedTooltipProps;
   };
 
 export const CheckboxCheckmark = React.forwardRef<
   HTMLInputElement,
   CheckboxCheckmarkProps
->(({ id, labelText, withoutLabel, double, ...props }, ref) => {
+>(({ id, labelText, withoutLabel, double, tooltipProps, ...props }, ref) => {
   const [isChecked, setIsChecked] = React.useState(props.checked ?? false)
 
   const captionSelect = double ? "Select All" : "Select This";
@@ -136,9 +137,9 @@ export const CheckboxCheckmark = React.forwardRef<
   const checkbox = props.disabled
     ? checkboxInput
     : (
-      <Tooltip caption={caption} minWidth="5rem">
+      <ExtendedTooltip caption={caption} showTimeout={500} {...tooltipProps}>
         {checkboxInput}
-      </Tooltip>
+      </ExtendedTooltip>
     );
 
   return (
