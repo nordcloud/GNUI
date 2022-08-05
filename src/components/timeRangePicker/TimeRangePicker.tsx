@@ -205,7 +205,7 @@ export function TimeRangePicker({
           <div>From</div>
           <input
             type="time"
-            name="appt"
+            name="time-range-start"
             value={selectedTimeRange.start}
             onChange={(e) => {
               e.persist();
@@ -220,7 +220,7 @@ export function TimeRangePicker({
           <div>to</div>
           <input
             type="time"
-            name="appt"
+            name="time-range-end"
             value={selectedTimeRange.end}
             min={selectedTimeRange.start}
             onChange={(e) => {
