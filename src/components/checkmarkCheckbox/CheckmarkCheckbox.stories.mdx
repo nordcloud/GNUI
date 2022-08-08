@@ -1,12 +1,12 @@
 import { Meta, Story, Canvas } from "@storybook/addon-docs";
-import { CheckboxCheckmark, CheckboxCheckmarkGroup } from ".";
+import { CheckmarkCheckbox, CheckmarkCheckboxGroup } from ".";
 import { FlexContainer } from "../container";
 
-<Meta title="Forms/CheckboxCheckmark" component={CheckboxCheckmark} />
+<Meta title="Forms/CheckmarkCheckbox" component={CheckmarkCheckbox} />
 
-# CheckboxCheckmark
+# CheckmarkCheckbox
 
-### CheckboxCheckmark properties
+### CheckmarkCheckbox properties
 
 |      properties | required | type                 | description                                          |
 | --------------: | :------: | :------------------- | :--------------------------------------------------- |
@@ -23,7 +23,7 @@ import { FlexContainer } from "../container";
         padding: "3rem",
       }}
     >
-      <CheckboxCheckmark id="checkbox-1" labelText="GNUI Checkbox" />
+      <CheckmarkCheckbox id="checkbox-1" labelText="GNUI Checkbox" tooltipProps={{showTimeout: 400}} />
     </FlexContainer>
   </Story>
 </Canvas>
@@ -37,7 +37,7 @@ import { FlexContainer } from "../container";
         padding: "3rem",
       }}
     >
-      <CheckboxCheckmark id="checkbox-2" labelText="GNUI Checkbox" double />
+      <CheckmarkCheckbox id="checkbox-2" labelText="GNUI Checkbox" double tooltipProps={{showTimeout: 400}} />
     </FlexContainer>
   </Story>
 </Canvas>
@@ -52,7 +52,7 @@ import { FlexContainer } from "../container";
         padding: "3rem",
       }}
     >
-      <CheckboxCheckmark withoutLabel id="checkbox-5" />
+      <CheckmarkCheckbox withoutLabel id="checkbox-5" tooltipProps={{showTimeout: 400}} />
     </FlexContainer>
   </Story>
 </Canvas>
@@ -86,7 +86,7 @@ import { FlexContainer } from "../container";
           >
             <CheckboxGroup name="gnui-checkbox-group">
               {names.map((names, index) => (
-                <CheckboxCheckmark
+                <CheckmarkCheckbox
                   id={names[index]}
                   onChange={() => handleCheckbox(index)}
                   labelText={labels[index]}

@@ -1,21 +1,12 @@
 import * as React from "react";
 import styled, { css } from "styled-components";
 import theme from "../../theme";
-import { Flex } from "../container";
+import { FlexContainer } from "../container";
 import {
   ExtendedTooltip,
   ExtendedTooltipProps,
 } from "../extendedTooltip/ExtendedTooltip";
 import { SVGIcon } from "../svgicon";
-
-const SingleCheckWrapper = styled(Flex)`
-  margin-bottom: ${theme.spacing.spacing04};
-  position: ${({ withoutLabel }) => (withoutLabel ? "relative" : "static")};
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-`;
 
 type CheckboxLabelProps = {
   withoutLabel?: boolean;
@@ -90,6 +81,7 @@ const CheckboxInput = styled.input`
       background: ${theme.color.background.ui05};
     }
   }
+
   &:disabled {
     & ~ ${Fill} {
       border-radius: 2px;
@@ -106,7 +98,7 @@ const CheckboxInput = styled.input`
   }
 `;
 
-export type CheckboxCheckmarkProps =
+export type CheckmarkCheckboxProps =
   React.InputHTMLAttributes<HTMLInputElement> & {
     labelText?: string;
     withoutLabel?: boolean;
@@ -115,15 +107,22 @@ export type CheckboxCheckmarkProps =
     tooltipProps?: ExtendedTooltipProps;
   };
 
-export const CheckboxCheckmark = React.forwardRef<
+export const CheckmarkCheckbox = React.forwardRef<
   HTMLInputElement,
-  CheckboxCheckmarkProps
+  CheckmarkCheckboxProps
 >(({ id, labelText, withoutLabel, double, tooltipProps, ...props }, ref) => {
   const [isChecked, setIsChecked] = React.useState(props.checked ?? false);
 
   const captionSelect = double ? "Select All" : "Select This";
   const captionDeselect = double ? "Deselect All" : "Deselect This";
   const caption = isChecked ? captionDeselect : captionSelect;
+
+  const tooltipProperties = tooltipProps
+    ? {
+        ...tooltipProps,
+        caption: tooltipProps?.caption ?? caption,
+      }
+    : null;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsChecked((prevState) => !prevState);
@@ -143,20 +142,19 @@ export const CheckboxCheckmark = React.forwardRef<
     </CheckboxContainer>
   );
 
-  const checkbox = props.disabled ? (
-    checkboxInput
-  ) : (
-    <ExtendedTooltip caption={caption} showTimeout={500} {...tooltipProps}>
-      {checkboxInput}
-    </ExtendedTooltip>
-  );
+  const checkbox =
+    tooltipProperties ? (
+      <ExtendedTooltip {...tooltipProperties}>{checkboxInput}</ExtendedTooltip>
+    ) : (
+      checkboxInput
+    );
 
   return (
-    <SingleCheckWrapper withoutLabel={withoutLabel}>
+    <FlexContainer>
       {checkbox}
       <CheckboxLabel withoutLabel={withoutLabel} htmlFor={id}>
         {labelText}
       </CheckboxLabel>
-    </SingleCheckWrapper>
+    </FlexContainer>
   );
 });
