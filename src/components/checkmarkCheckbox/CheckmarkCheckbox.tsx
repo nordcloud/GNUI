@@ -142,12 +142,11 @@ export const CheckmarkCheckbox = React.forwardRef<
     </CheckboxContainer>
   );
 
-  const checkbox =
-    tooltipProperties ? (
-      <ExtendedTooltip {...tooltipProperties}>{checkboxInput}</ExtendedTooltip>
-    ) : (
-      checkboxInput
-    );
+  const checkbox = tooltipProperties ? (
+    <ExtendedTooltip {...tooltipProperties}>{checkboxInput}</ExtendedTooltip>
+  ) : (
+    checkboxInput
+  );
 
   return (
     <FlexContainer>
