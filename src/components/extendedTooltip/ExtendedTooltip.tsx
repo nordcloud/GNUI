@@ -20,7 +20,7 @@ type Timeout = {
 
 type Status = "danger" | "warning" | "success" | "notification";
 
-type Props = Timeout & {
+export type ExtendedTooltipProps = Timeout & {
   caption: React.ReactNode;
   children: React.ReactNode;
   placement?: Placement;
@@ -38,7 +38,7 @@ export function ExtendedTooltip({
   showTimeout = 0,
   hideTimeout = 0,
   margin = DEFAULT_MARGIN,
-}: Props) {
+}: ExtendedTooltipProps) {
   const wrapperRef = React.useRef<HTMLDivElement>(null);
   const tooltipRef = React.useRef<HTMLDivElement>(null);
 
@@ -121,7 +121,7 @@ function Tooltip({
     : null;
 }
 
-type StyledTooltipProps = Pick<Props, "status">;
+type StyledTooltipProps = Pick<ExtendedTooltipProps, "status">;
 
 const StyledTooltip = styled.div<StyledTooltipProps>`
   position: fixed;
