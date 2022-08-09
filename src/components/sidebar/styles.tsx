@@ -9,6 +9,7 @@ import {
   CloseLayerProps,
   InnerProps,
   HeaderProps,
+  ContainerProps,
 } from "./types";
 
 export const Header = styled.div<HeaderProps>`
@@ -24,11 +25,17 @@ export const Header = styled.div<HeaderProps>`
   border-bottom: 1px solid ${theme.color.border.border01};
   background-color: ${theme.color.background.ui01};
   line-height: ${theme.lineHeight};
-  padding: ${theme.spacing.spacing04};
   margin: 0 auto;
   box-sizing: border-box;
   justify-content: ${({ reverse }) => (reverse ? "flex-end" : "space-between")};
   flex-direction: ${({ reverse }) => (reverse ? "row-reverse" : "row")};
+  padding-top: ${({ padding }) =>
+    padding?.top ? padding.top : theme.spacing.spacing04};
+  padding-right: ${({ padding }) =>
+    padding?.right ? padding.right : theme.spacing.spacing04};
+  padding-bottom: ${theme.spacing.spacing04};
+  padding-left: ${({ padding }) =>
+    padding?.left ? padding.left : theme.spacing.spacing04};
 `;
 
 export const Title = styled(Text)`
@@ -124,8 +131,13 @@ export const Inner = styled.div<InnerProps>`
   z-index: 2;
 `;
 
-export const Container = styled.div`
-  padding: 0 ${theme.spacing.spacing04};
+export const Container = styled.div<ContainerProps>`
+  padding-right: ${({ padding }) =>
+    padding?.right ? padding.right : theme.spacing.spacing04};
+  padding-left: ${({ padding }) =>
+    padding?.left ? padding.left : theme.spacing.spacing04};
+  padding-bottom: ${({ padding }) =>
+    padding?.bottom ? padding.bottom : theme.spacing.spacing04};
   flex: 1;
 `;
 
