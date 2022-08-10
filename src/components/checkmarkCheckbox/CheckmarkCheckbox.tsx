@@ -39,7 +39,8 @@ const CheckboxContainer = styled.div`
     content: "";
     border-radius: 2px;
     border: 1px solid ${theme.color.border.input};
-    background: ${theme.color.field.default};
+    background-color: ${theme.color.field.default};
+    transition: all 0.2s linear;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -52,7 +53,9 @@ const CheckboxContainer = styled.div`
 `;
 
 const Fill = styled(SVGIcon)`
+  border-radius: 2px;
   fill: ${theme.color.background.ui05};
+  transition: all 0.2s linear;
   width: 1rem;
   height: 1rem;
   position: absolute;
@@ -60,7 +63,7 @@ const Fill = styled(SVGIcon)`
   left: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
-  z-index: 1;
+  z-index: 0;
 `;
 
 const CheckboxInput = styled.input`
@@ -78,7 +81,8 @@ const CheckboxInput = styled.input`
     & ~ ${Fill} {
       border-radius: 2px;
       fill: ${theme.color.background.ui01};
-      background: ${theme.color.background.ui05};
+      transition: all 0.2s linear;
+      background-color: ${theme.color.background.ui05};
     }
   }
 
@@ -86,6 +90,7 @@ const CheckboxInput = styled.input`
     & ~ ${Fill} {
       border-radius: 2px;
       fill: ${theme.color.text.text03};
+      transition: all 0.2s linear;
     }
   }
 
@@ -93,7 +98,8 @@ const CheckboxInput = styled.input`
     & ~ ${Fill} {
       border-radius: 2px;
       fill: ${theme.color.text.text03};
-      background: ${theme.color.background.ui04};
+      transition: all 0.2s linear;
+      background-color: ${theme.color.background.ui04};
     }
   }
 `;
