@@ -27,6 +27,7 @@ export type ExtendedTooltipProps = Timeout & {
   position?: Position;
   margin?: Margin;
   status?: Status;
+  zIndex?: number;
 };
 
 export function ExtendedTooltip({
@@ -38,6 +39,7 @@ export function ExtendedTooltip({
   showTimeout = 0,
   hideTimeout = 0,
   margin = DEFAULT_MARGIN,
+  zIndex = theme.zindex.sticky,
 }: ExtendedTooltipProps) {
   const wrapperRef = React.useRef<HTMLDivElement>(null);
   const tooltipRef = React.useRef<HTMLDivElement>(null);
@@ -90,6 +92,7 @@ export function ExtendedTooltip({
         tooltipRef={tooltipRef}
         status={status}
         style={style}
+        zIndex={zIndex}
       />
       {children}
     </TooltipWrapper>
@@ -102,6 +105,7 @@ type TooltipProps = {
   tooltipRef: React.RefObject<HTMLDivElement>;
   style: { top?: number; left?: number };
   status?: Status;
+  zIndex?: number;
 };
 
 function Tooltip({
@@ -110,10 +114,16 @@ function Tooltip({
   tooltipRef,
   status,
   style,
+  zIndex = theme.zindex.sticky,
 }: TooltipProps) {
   return isHovered
     ? ReactDOM.createPortal(
-        <StyledTooltip ref={tooltipRef} status={status} style={style}>
+        <StyledTooltip
+          ref={tooltipRef}
+          status={status}
+          style={style}
+          zIndex={zIndex}
+        >
           {caption}
         </StyledTooltip>,
         document.body
@@ -121,7 +131,7 @@ function Tooltip({
     : null;
 }
 
-type StyledTooltipProps = Pick<ExtendedTooltipProps, "status">;
+type StyledTooltipProps = Pick<ExtendedTooltipProps, "status" | "zIndex">;
 
 const StyledTooltip = styled.div<StyledTooltipProps>`
   position: fixed;
@@ -133,7 +143,7 @@ const StyledTooltip = styled.div<StyledTooltipProps>`
   background-color: ${theme.color.background.ui05};
   color: ${theme.color.text.text04};
   border-radius: ${theme.radius.md};
-  z-index: ${theme.zindex.sticky};
+  z-index: ${({ zIndex }) => zIndex ?? theme.zindex.sticky};
   opacity: 0;
   animation: 0.2s ease-in-out both fadeIn;
 
