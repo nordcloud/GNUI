@@ -35,6 +35,8 @@ export function Sidebar({
   side,
   isOpen,
   footer,
+  headerStyles,
+  contentStyles,
   onClick = () => undefined,
   ...props
 }: SidebarProps) {
@@ -61,7 +63,7 @@ export function Sidebar({
         <Inner isOpen={isOpen} {...props}>
           {isOpen && (
             <>
-              <Header reverse={side === "onLeft"}>
+              <Header reverse={side === "onLeft"} style={headerStyles}>
                 <header>
                   <Title
                     tag="span"
@@ -80,7 +82,7 @@ export function Sidebar({
                   type="button"
                 />
               </Header>
-              <Container>
+              <Container style={contentStyles}>
                 <Content tag="div">{children}</Content>
               </Container>
               {footer && <FooterSidebar>{footer}</FooterSidebar>}
