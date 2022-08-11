@@ -242,22 +242,15 @@ export function TimeRangePicker({
 }
 
 const getMonday = (date: Date): Date => {
-  const result = new Date(date);
+  const currentDate = new Date(date);
 
-  if (isMonday(result)) return result;
-  else return previousMonday(result);
+  return isMonday(currentDate) ? currentDate : previousMonday(currentDate);
 };
 
 const getInitSelectedDate = (initRange: Interval): Date => {
-  let initDate: Date;
-
-  if (isSameDay(initRange.start, initRange.end)) {
-    initDate = new Date(initRange.start);
-  } else {
-    initDate = new Date();
-  }
-
-  return initDate;
+  return isSameDay(initRange.start, initRange.end)
+    ? new Date(initRange.start)
+    : new Date();
 };
 
 const getDateOptions = (monday: Date): DateOption[] => {
