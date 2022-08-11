@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useState, useRef, useEffect, ReactNode } from "react";
 import {
   Interval,
   isSameDay,
@@ -64,38 +63,38 @@ export function TimeRangePicker({
   initTimeRange = DEFAULT_TIME_RANGE,
   onChange,
 }: TimeRangePickerProps) {
-  const [selectedDate, setSelectedDate] = useState<Date>(
+  const [selectedDate, setSelectedDate] = React.useState<Date>(
     getInitSelectedDate(initTimeRange)
   );
-  const [selectedTimeRange, setSelectedTimeRange] = useState(
+  const [selectedTimeRange, setSelectedTimeRange] = React.useState(
     DEFAULT_TIME_RANGE_OPTIONS[0]
   );
-  const [dateOptions, setDateOptions] = useState<DateOption[]>(
+  const [dateOptions, setDateOptions] = React.useState<DateOption[]>(
     getInitDateOptions(selectedDate)
   );
-  const [isCalendarActive, setIsCalendarActive] = useState(false);
+  const [isCalendarActive, setIsCalendarActive] = React.useState(false);
 
   const showCustomTimeRange = selectedTimeRange.id === "custom";
 
-  const calendarWrapper = useRef<HTMLDivElement>(null);
+  const calendarWrapper = React.useRef<HTMLDivElement>(null);
 
   useClickOutside(calendarWrapper, isCalendarActive, () => {
     setIsCalendarActive(false);
   });
 
   // Update dateOptions when Monday of the selectedDate is changed
-  useEffect(() => {
+  React.useEffect(() => {
     setDateOptions(() => getDateOptions(getMonday(selectedDate)));
   }, [getMonday(selectedDate).toLocaleDateString()]); // eslint-disable-line
 
   // Submit timeRange change when selectedDate changed,
-  useEffect(() => {
+  React.useEffect(() => {
     submit();
   }, [selectedDate.toLocaleDateString()]); // eslint-disable-line
 
   // Submit timeRange change when selectedTimeRange changed,
   // except for custom timeRange change, which will be handled separately
-  useEffect(() => {
+  React.useEffect(() => {
     if (selectedTimeRange.id !== "custom") {
       submit();
     }
@@ -276,7 +275,7 @@ const getInitDateOptions = (selectedDate: Date): DateOption[] => {
   return getDateOptions(getMonday(selectedDate));
 };
 
-const getLabelContent = (dateOption: DateOption): ReactNode => {
+const getLabelContent = (dateOption: DateOption): React.ReactNode => {
   return (
     <>
       <label>{dateOption.weekday}</label>
