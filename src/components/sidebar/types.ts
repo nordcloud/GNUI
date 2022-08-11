@@ -18,7 +18,8 @@ export type SidebarProps = {
   reverse?: boolean;
   onClick?: () => void;
   footer?: React.ReactNode;
-  padding?: PaddingProps;
+  headerProps?: HeaderProps;
+  containerProps?: ContainerProps;
 };
 
 export type BackgroundProps = {

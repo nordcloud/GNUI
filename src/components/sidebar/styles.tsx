@@ -33,7 +33,8 @@ export const Header = styled.div<HeaderProps>`
     padding?.top ? padding.top : theme.spacing.spacing04};
   padding-right: ${({ padding }) =>
     padding?.right ? padding.right : theme.spacing.spacing04};
-  padding-bottom: ${theme.spacing.spacing04};
+  padding-bottom: ${({ padding }) =>
+    padding?.bottom ? padding.bottom : theme.spacing.spacing04};
   padding-left: ${({ padding }) =>
     padding?.left ? padding.left : theme.spacing.spacing04};
 `;
@@ -132,12 +133,14 @@ export const Inner = styled.div<InnerProps>`
 `;
 
 export const Container = styled.div<ContainerProps>`
+  padding-top: ${({ padding }) =>
+    padding?.top ? padding.top : theme.spacing.spacing04};
   padding-right: ${({ padding }) =>
     padding?.right ? padding.right : theme.spacing.spacing04};
-  padding-left: ${({ padding }) =>
-    padding?.left ? padding.left : theme.spacing.spacing04};
   padding-bottom: ${({ padding }) =>
     padding?.bottom ? padding.bottom : theme.spacing.spacing04};
+  padding-left: ${({ padding }) =>
+    padding?.left ? padding.left : theme.spacing.spacing04};
   flex: 1;
 `;
 
