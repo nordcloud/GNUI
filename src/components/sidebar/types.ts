@@ -1,13 +1,6 @@
 import { ButtonProps } from "../button";
 import { SVGIconProps } from "../svgicon";
 
-export type PaddingProps = {
-  top?: string;
-  right?: string;
-  bottom?: string;
-  left?: string;
-};
-
 export type SidebarProps = {
   children?: React.ReactNode;
   title?: string;
