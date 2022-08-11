@@ -72,13 +72,16 @@ export function ExtendedTooltip({
     return <>{children}</>;
   }
 
-  const style = getStyle({
-    wrapperDimensions,
-    tooltipDimensions,
-    placement,
-    position,
-    margin,
-  });
+  const style = {
+    ...getStyle({
+      wrapperDimensions,
+      tooltipDimensions,
+      placement,
+      position,
+      margin,
+    }),
+    zIndex,
+  };
 
   return (
     <TooltipWrapper
@@ -92,7 +95,6 @@ export function ExtendedTooltip({
         tooltipRef={tooltipRef}
         status={status}
         style={style}
-        zIndex={zIndex}
       />
       {children}
     </TooltipWrapper>
@@ -103,9 +105,8 @@ type TooltipProps = {
   caption: React.ReactNode;
   isHovered: boolean;
   tooltipRef: React.RefObject<HTMLDivElement>;
-  style: { top?: number; left?: number };
+  style: { top?: number; left?: number; zIndex?: number };
   status?: Status;
-  zIndex?: number;
 };
 
 function Tooltip({
@@ -114,8 +115,8 @@ function Tooltip({
   tooltipRef,
   status,
   style,
-  zIndex = theme.zindex.sticky,
 }: TooltipProps) {
+  const { zIndex = theme.zindex.sticky } = style;
   return isHovered
     ? ReactDOM.createPortal(
         <StyledTooltip
@@ -143,7 +144,7 @@ const StyledTooltip = styled.div<StyledTooltipProps>`
   background-color: ${theme.color.background.ui05};
   color: ${theme.color.text.text04};
   border-radius: ${theme.radius.md};
-  z-index: ${({ zIndex }) => zIndex ?? theme.zindex.sticky};
+  z-index: ${({ zIndex }) => zIndex};
   opacity: 0;
   animation: 0.2s ease-in-out both fadeIn;
 
