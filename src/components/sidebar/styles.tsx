@@ -48,7 +48,6 @@ export const Content = styled(Text)`
   font-weight: ${theme.fontWeights.regular};
   line-height: ${theme.lineHeight};
   font-size: ${theme.fontSizes.md};
-  padding: ${theme.spacing.spacing04} 0;
   margin-bottom: 0;
 `;
 
@@ -125,7 +124,7 @@ export const Inner = styled.div<InnerProps>`
 `;
 
 export const Container = styled.div`
-  padding: 0 ${theme.spacing.spacing04};
+  padding: ${theme.spacing.spacing04};
   flex: 1;
 `;
 
