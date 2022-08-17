@@ -7,6 +7,7 @@ import {
   nextMonday,
 } from "date-fns";
 import { Calendar } from "react-date-range";
+import { addDays } from "date-fns";
 import { useClickOutside } from "../../hooks";
 import { Button } from "../button";
 import { Datepicker } from "../datepicker";
@@ -106,7 +107,9 @@ export function TimeRangePicker({
       setDateOptions((prev) => {
         return getDateOptions(previousMonday(new Date(prev[0].id)));
       });
-    } else if (direction === "forward") {
+    }
+
+    if (direction === "forward") {
       setDateOptions((prev) => {
         return getDateOptions(nextMonday(new Date(prev[0].id)));
       });
@@ -253,22 +256,19 @@ const getInitSelectedDate = (initRange: Interval): Date => {
 };
 
 const getDateOptions = (monday: Date): DateOption[] => {
-  let result: DateOption[] = [];
-  let current = new Date(monday.getTime());
+  const mondayTime = new Date(monday.getTime());
 
-  WEEKDAYS.forEach((weekday) => {
-    result.push({
-      id: current.toDateString(),
+  return WEEKDAYS.map((weekday, index) => {
+    const currentDate = addDays(new Date(mondayTime), index);
+
+    return {
+      id: currentDate.toDateString(),
       weekday: weekday,
-      day: current.getDate(),
-      month: current.getMonth() + 1,
-      year: current.getFullYear(),
-    });
-
-    current.setDate(current.getDate() + 1);
+      day: currentDate.getDate(),
+      month: currentDate.getMonth() + 1,
+      year: currentDate.getFullYear(),
+    };
   });
-
-  return result;
 };
 
 const getInitDateOptions = (selectedDate: Date): DateOption[] => {
