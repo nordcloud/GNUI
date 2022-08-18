@@ -10,4 +10,4 @@ export {
   Hidden,
   Visible,
 } from "react-awesome-styled-grid";
-export { DayPicker } from 'react-day-picker';
+export { DayPicker } from "react-day-picker";
