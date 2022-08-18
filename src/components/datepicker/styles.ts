@@ -39,7 +39,7 @@ export const mainCss = css`
     margin: 0;
     padding: 0;
     cursor: default;
-    color: inherit;
+    color: ${theme.color.text};
     outline: none;
     background: none;
     font: inherit;
@@ -62,12 +62,13 @@ export const mainCss = css`
 
   .rdp-button:focus:not([disabled]),
   .rdp-button:active:not([disabled]) {
-    color: inherit;
+    color: ${theme.colors.lights[0]};
     border: var(--rdp-outline);
     background-color: var(--rdp-background-color);
   }
 
   .rdp-button:hover:not([disabled]) {
+    color: ${theme.colors.lights[0]};
     background-color: var(--rdp-background-color);
   }
 
@@ -267,7 +268,7 @@ export const mainCss = css`
   .rdp-day_selected:focus:not([disabled]),
   .rdp-day_selected:active:not([disabled]),
   .rdp-day_selected:hover:not([disabled]) {
-    color: white;
+    color: ${theme.colors.lights[0]};
     background-color: var(--rdp-accent-color);
   }
 
