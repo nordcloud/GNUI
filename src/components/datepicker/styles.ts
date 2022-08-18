@@ -123,7 +123,7 @@ export const mainCss = css`
     display: inline-flex;
     align-items: center;
     margin: 0;
-    padding: 0  ${theme.spacing.spacing01};
+    padding: 0 ${theme.spacing.spacing01};
     white-space: nowrap;
     color: currentColor;
     border: 2px solid transparent;
@@ -275,22 +275,22 @@ export const mainCss = css`
     border: var(--rdp-outline-selected);
   }
 
-  .rdp:not([dir='rtl']) .rdp-day_range_start:not(.rdp-day_range_end) {
+  .rdp:not([dir="rtl"]) .rdp-day_range_start:not(.rdp-day_range_end) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
 
-  .rdp:not([dir='rtl']) .rdp-day_range_end:not(.rdp-day_range_start) {
+  .rdp:not([dir="rtl"]) .rdp-day_range_end:not(.rdp-day_range_start) {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
 
-  .rdp[dir='rtl'] .rdp-day_range_start:not(.rdp-day_range_end) {
+  .rdp[dir="rtl"] .rdp-day_range_start:not(.rdp-day_range_end) {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
 
-  .rdp[dir='rtl'] .rdp-day_range_end:not(.rdp-day_range_start) {
+  .rdp[dir="rtl"] .rdp-day_range_end:not(.rdp-day_range_start) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
@@ -302,4 +302,4 @@ export const mainCss = css`
   .rdp-day_range_middle {
     border-radius: 0;
   }
-`
+`;
