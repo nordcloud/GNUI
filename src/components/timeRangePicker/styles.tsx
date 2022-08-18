@@ -50,13 +50,13 @@ export const Row = styled(FlexContainer)`
 `;
 
 export const IconButton = styled(Button)`
-  padding: 16px 8px;
+  padding: ${theme.spacing.spacing04} ${theme.spacing.spacing02};
 `;
 
 export const DatepickerContainer = styled.div`
   position: relative;
 
-  .calendar-panel {
+  .daypicker-panel {
     position: absolute;
     transform: translateX(-100%);
     margin-left: 100%;

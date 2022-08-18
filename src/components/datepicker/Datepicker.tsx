@@ -1,17 +1,15 @@
 import * as React from "react";
 import styled from "styled-components";
-import { themeCss, mainCss, customCss } from "./styles";
+import { mainCss } from "./styles";
 
 type DatepickerProps = {
   children?: React.ReactNode;
-};
+} & React.HTMLAttributes<HTMLDivElement>;
 
 const DatepickerWrapper = styled.div`
   ${mainCss}
-  ${themeCss}
-  ${customCss}
 `;
 
-export function Datepicker({ children }: DatepickerProps) {
-  return <DatepickerWrapper>{children}</DatepickerWrapper>;
+export function Datepicker({ children, ...props }: DatepickerProps) {
+  return <DatepickerWrapper {...props}>{children}</DatepickerWrapper>;
 }

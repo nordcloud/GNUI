@@ -7,7 +7,7 @@ import {
   nextMonday,
   addDays,
 } from "date-fns";
-import { Calendar } from "react-date-range";
+import { DayPicker } from "react-day-picker";
 import { useClickOutside } from "../../hooks";
 import { Button } from "../button";
 import { Datepicker } from "../datepicker";
@@ -161,13 +161,14 @@ export function TimeRangePicker({
             severity="medium"
             icon="calendar"
           />
-          <Datepicker>
+          <Datepicker className="daypicker-panel">
             {isCalendarActive && (
-              <Calendar
-                className="calendar-panel"
-                date={selectedDate}
-                weekStartsOn={1}
-                onChange={(date) => handleDateSelection(date)}
+              <DayPicker
+                mode="single"
+                selected={selectedDate}
+                onSelect={(selectedDay: Date) =>
+                  handleDateSelection(selectedDay)
+                }
               />
             )}
           </Datepicker>
