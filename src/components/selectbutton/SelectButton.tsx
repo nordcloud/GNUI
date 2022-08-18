@@ -8,17 +8,18 @@ import { setColor } from "../../utils/setcolor";
 export type SelectButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
   name: string;
   value: string;
-  labelText: string | React.ReactNode;
+  labelText: React.ReactNode;
   isActive?: boolean;
   onClick: (value: SelectButtonProps["value"]) => void;
 };
 
+// Extend props with intrinsic attributes of ul as containerProps
+// ref: https://github.com/kristerkari/react-native-css-modules-with-typescript-example/issues/3#issuecomment-852947240
 export type SelectButtonListProps = {
-  className?: string;
   children: React.ReactNode;
   status?: SingleColors;
   size?: string;
-};
+} & React.HTMLAttributes<HTMLUListElement>;
 
 type StyledSelectButtons = Pick<SelectButtonListProps, "size" | "status">;
 
@@ -127,13 +128,13 @@ export function SelectButton({
 }
 
 export function MultipleSelect({
-  className,
   status,
   children,
   size,
+  ...containerProps
 }: SelectButtonListProps) {
   return (
-    <StyledSelectButtons status={status} size={size} className={className}>
+    <StyledSelectButtons status={status} size={size} {...containerProps}>
       {children}
     </StyledSelectButtons>
   );
