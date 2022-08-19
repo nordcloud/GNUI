@@ -116,9 +116,9 @@ export function TimeRangePicker({
     }
   };
 
-  const handleDateSelection = (newSelectDate: Date) => {
-    if (!isSameDay(newSelectDate, selectedDate)) {
-      setSelectedDate(newSelectDate);
+  const handleDateSelection = (newSelectDate?: Date) => {
+    if (!isSameDay(newSelectDate ?? new Date(), selectedDate)) {
+      setSelectedDate(newSelectDate ?? new Date());
     }
   };
 
@@ -166,7 +166,7 @@ export function TimeRangePicker({
               <DayPicker
                 mode="single"
                 selected={selectedDate}
-                onSelect={(selectedDay: Date) =>
+                onSelect={(selectedDay?: Date) =>
                   handleDateSelection(selectedDay)
                 }
               />
