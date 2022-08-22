@@ -36,6 +36,7 @@ export * from "./tabs";
 export * from "./tag";
 export * from "./table";
 export * from "./text";
+export * from "./timeRangePicker";
 export * from "./toggle";
 export * from "./tooltip";
 export * from "./textarea";

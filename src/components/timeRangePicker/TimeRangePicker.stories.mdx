@@ -1,0 +1,41 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { Spacer } from "../spacer";
+import { TimeRangePicker } from ".";
+
+<Meta title="Forms/TimeRangePicker" component={TimeRangePicker} />
+
+# TimeRangePicker
+
+> The `TimeRangePicker` component accepts a `onChange` function and an optional `initTimeRange` in type of `Interval`, to privode the function of selecting a time range.
+
+## TimeRangePicker properties
+
+|    properties | required | type                                          | description                                                                                               |
+| ------------: | :------: | :-------------------------------------------- | :-------------------------------------------------------------------------------------------------------- |
+| initTimeRange |  false   | Interval                                      | Start date and end date should be within the same day, current date will be used otherwise and by default |
+|      onChange |   true   | <code>(newTimeRange: Interval) => void</code> | Function to handle timeRange change                                                                       |
+
+```typescript
+import { Interval } from "date-fns";
+
+type Interval = {
+  start: Date | number;
+  end: Date | number;
+};
+```
+
+<Canvas>
+  <Story name="timerangepicker">
+    {() => {
+      const handleSelect = (newTimeRange) => {
+        console.log(newTimeRange);
+      };
+      return (
+        <>
+          <TimeRangePicker onChange={handleSelect} />
+          <Spacer height="16rem" />
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
