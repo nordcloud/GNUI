@@ -1,7 +1,7 @@
 {
   "name": "@nordcloud/gnui",
   "description": "Nordcloud Design System - a collection of reusable React components used in Nordcloud's SaaS products",
-  "version": "7.1.0",
+  "version": "7.1.1",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -36,8 +36,8 @@
     "postinstall": "patch-package"
   },
   "engines": {
-    "node": ">=16.13.0",
-    "npm": ">=8.0.0"
+    "node": ">=16.17.0",
+    "npm": ">=8.15.0"
   },
   "browserslist": {
     "production": [
