@@ -6,6 +6,7 @@ frontend:
         - nvm install
         - nvm use
         - npm ci
+        - npm audit signatures
     build:
       commands:
         - npm run build-storybook
