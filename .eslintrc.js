@@ -29,14 +29,6 @@ module.exports = {
       { allowShortCircuit: true },
     ],
 
-    // eslint-plugin-fp
-    "fp/no-mutating-methods": [
-      isProd ? "off" : "warn",
-      {
-        allowedObjects: ["history"],
-      },
-    ],
-
     // eslint-plugin-sonarjs
     "sonarjs/no-nested-template-literals": "off",
   },
