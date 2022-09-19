@@ -91,7 +91,6 @@ function Table(props: React.ComponentProps<typeof StyledTable>) {
   return <StyledTable {...props} />;
 }
 
-/* eslint-disable fp/no-mutation */
 Table.thead = Thead;
 Table.tbody = Tbody;
 Table.tfoot = Tfoot;
