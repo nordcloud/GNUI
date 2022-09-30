@@ -133,7 +133,7 @@
     "tmpl": "~1.0.5",
     "trim": "~0.0.3",
     "y18n": "~4.0.1",
-    "hosted-git": "~2.8.9",
+    "hosted-git-info": "~2.8.9",
     "ssri": "~6.0.2",
     "elliptic": "~6.5.4",
     "path-parse": "~1.0.7"
