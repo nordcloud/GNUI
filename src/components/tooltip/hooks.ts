@@ -1,7 +1,8 @@
 import * as React from "react";
+import { useDisclosure } from "../../hooks";
 
 export function useTooltipHover() {
-  const [isHovered, setIsHovered] = React.useState(false);
+  const { isOpen: isHovered, toggle: setIsHovered } = useDisclosure(false);
   const timerRef = React.useRef(-1);
 
   const updateIsHovered = (value: boolean, timeout: number) => {
