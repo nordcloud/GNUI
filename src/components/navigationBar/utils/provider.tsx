@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useDisclosure } from "../../../hooks";
 import { PopoverConfig } from "../types";
 import { NavigationBarContext } from "./context";
 
@@ -14,14 +15,18 @@ export function NavigationBarProvider({
     closeOn: "hover",
   },
 }: Props) {
-  const [expanded, setExpanded] = React.useState(false);
-  const [expandedDone, setExpandedDone] = React.useState(false);
+  const { isOpen: expanded, toggle: setExpanded } = useDisclosure(false);
+  const {
+    isOpen: expandedDone,
+    close: closeExpandedDone,
+    toggle: setExpandedDone,
+  } = useDisclosure(false);
 
   const handleExpand = () => {
     if (expanded) {
-      setExpandedDone(false);
+      closeExpandedDone();
     }
-    setExpanded((prevState) => !prevState);
+    setExpanded();
   };
 
   const value = {
