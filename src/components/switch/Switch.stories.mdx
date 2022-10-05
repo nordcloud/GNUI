@@ -1,4 +1,5 @@
 import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { useDisclosure } from "../../hooks";
 import { Switch } from ".";
 import { GnuiContainer } from "../container";
 import { Spacer } from "../spacer";
@@ -51,14 +52,14 @@ import theme from "../../theme";
 <Canvas>
   <Story name="severity">
     {() => {
-      const [toggle, setToggle] = React.useState(true);
+      const { isOpen: toggle, toggle: setToggle } = useDisclosure(true);
       return (
         <GnuiContainer>
           <Switch
             name="label1"
             severity="warning"
             labelText="My Switch Button Warning"
-            onClick={() => setToggle((prevState) => !prevState)}
+            onClick={() => setToggle()}
             checked={toggle}
             readOnly
           />
@@ -67,7 +68,7 @@ import theme from "../../theme";
             name="label2"
             severity="danger"
             labelText="My Switch Button Danger"
-            onClick={() => setToggle((prevState) => !prevState)}
+            onClick={() => setToggle()}
             checked={toggle}
             readOnly
           />
@@ -76,7 +77,7 @@ import theme from "../../theme";
             name="label3"
             severity="success"
             labelText="My Switch Button Success"
-            onClick={() => setToggle((prevState) => !prevState)}
+            onClick={() => setToggle()}
             checked={toggle}
             readOnly
           />
@@ -85,7 +86,7 @@ import theme from "../../theme";
             name="label4"
             severity="notification"
             labelText="My Switch Button Notification"
-            onClick={() => setToggle((prevState) => !prevState)}
+            onClick={() => setToggle()}
             checked={toggle}
             readOnly
           />
