@@ -77,7 +77,7 @@ export function TimeRangePicker({
     isOpen: isCalendarActive,
     close: closeCalendar,
     toggle: toggleCalendar,
-  } = useDisclosure();
+  } = useDisclosure(false);
 
   const showCustomTimeRange = selectedTimeRange.id === "custom";
 
