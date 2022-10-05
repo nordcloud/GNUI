@@ -1,6 +1,6 @@
 import * as React from "react";
 import { SpaceProps } from "styled-system";
-import { useClickOutside } from "../../hooks";
+import { useClickOutside, useDisclosure } from "../../hooks";
 import theme from "../../theme";
 import { Input } from "../input";
 import { Spacer } from "../spacer";
@@ -47,12 +47,12 @@ export function Dropdown({
   size,
   ...props
 }: DropdownProps) {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const { isOpen, close, toggle } = useDisclosure(false);
   const [search, setSearch] = React.useState("");
   const wrapper = React.useRef<HTMLDivElement>(null);
 
   useClickOutside(wrapper, isOpen, () => {
-    setIsOpen(false);
+    close();
   });
 
   const displayValue: Option | undefined = options.find((option) => {
@@ -75,7 +75,7 @@ export function Dropdown({
     <DropdownWrapper value={value} ref={wrapper} {...props}>
       <DropdownButton
         name={name}
-        onClick={() => !disabled && setIsOpen(!isOpen)}
+        onClick={() => !disabled && toggle()}
         disabled={disabled}
         title={title}
         type="button"
@@ -132,7 +132,7 @@ export function Dropdown({
                     onClick={() => {
                       // default empty string is used to satisfy typescript, we're lacking proper typing in props and getOptionValue
                       onChange(optionValue ?? "");
-                      setIsOpen(!isOpen);
+                      toggle();
                       setSearch("");
                     }}
                     type="button"
