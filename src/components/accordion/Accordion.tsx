@@ -1,6 +1,7 @@
 import * as React from "react";
 import styled, { css } from "styled-components";
 import { space, SpaceProps } from "styled-system";
+import { useDisclosure } from "../../hooks";
 import theme from "../../theme";
 import { SVGIcon } from "../svgicon";
 
@@ -116,11 +117,11 @@ export function AccordionHeader({
   children,
   small,
 }: AccordionHeaderProps) {
-  const [isOpen, toggleIsOpen] = React.useState(false);
+  const { isOpen, toggle } = useDisclosure(false);
   return (
     <>
       <StyledHeader
-        onClick={() => children && toggleIsOpen(!isOpen)}
+        onClick={() => children && toggle()}
         isOpen={isOpen}
         small={small}
       >
