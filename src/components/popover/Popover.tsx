@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import { useClickOutside } from "../../hooks";
+import { useClickOutside, useDisclosure } from "../../hooks";
 import theme from "../../theme";
 import { Box } from "../box";
 
@@ -46,14 +46,18 @@ const StyledTrigger = styled.div`
 `;
 
 export function Popover({ children, trigger, alignRight }: PopoverProps) {
-  const [isVisible, setIsVisible] = React.useState(false);
+  const {
+    isOpen: isVisible,
+    close,
+    toggle: toggleVisibility,
+  } = useDisclosure();
   const toggle = () => {
-    setIsVisible(!isVisible);
+    toggleVisibility();
   };
   const wrapper = React.useRef<HTMLDivElement>(null);
 
   useClickOutside(wrapper, isVisible, () => {
-    setIsVisible(false);
+    close();
   });
 
   return (
