@@ -52,15 +52,15 @@ import theme from "../../theme";
 <Canvas>
   <Story name="severity">
     {() => {
-      const { isOpen: toggle, toggle: setToggle } = useDisclosure(true);
+      const { isOpen: checked, toggle } = useDisclosure(true);
       return (
         <GnuiContainer>
           <Switch
             name="label1"
             severity="warning"
             labelText="My Switch Button Warning"
-            onClick={() => setToggle()}
-            checked={toggle}
+            onClick={() => toggle()}
+            checked={checked}
             readOnly
           />
           <Spacer height="1rem" />
@@ -68,8 +68,8 @@ import theme from "../../theme";
             name="label2"
             severity="danger"
             labelText="My Switch Button Danger"
-            onClick={() => setToggle()}
-            checked={toggle}
+            onClick={() => toggle()}
+            checked={checked}
             readOnly
           />
           <Spacer height="1rem" />
@@ -77,8 +77,8 @@ import theme from "../../theme";
             name="label3"
             severity="success"
             labelText="My Switch Button Success"
-            onClick={() => setToggle()}
-            checked={toggle}
+            onClick={() => toggle()}
+            checked={checked}
             readOnly
           />
           <Spacer height="1rem" />
@@ -86,8 +86,8 @@ import theme from "../../theme";
             name="label4"
             severity="notification"
             labelText="My Switch Button Notification"
-            onClick={() => setToggle()}
-            checked={toggle}
+            onClick={() => toggle()}
+            checked={checked}
             readOnly
           />
         </GnuiContainer>
