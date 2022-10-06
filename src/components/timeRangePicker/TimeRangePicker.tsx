@@ -8,7 +8,7 @@ import {
   addDays,
 } from "date-fns";
 import { DayPicker } from "react-day-picker";
-import { useClickOutside } from "../../hooks";
+import { useClickOutside, useDisclosure } from "../../hooks";
 import { Button } from "../button";
 import { Datepicker } from "../datepicker";
 import { Label } from "../input";
@@ -73,15 +73,17 @@ export function TimeRangePicker({
   const [dateOptions, setDateOptions] = React.useState<DateOption[]>(
     getInitDateOptions(selectedDate)
   );
-  const [isCalendarActive, setIsCalendarActive] = React.useState(false);
+  const {
+    isOpen: isCalendarActive,
+    close: closeCalendar,
+    toggle: toggleCalendar,
+  } = useDisclosure();
 
   const showCustomTimeRange = selectedTimeRange.id === "custom";
 
   const calendarWrapper = React.useRef<HTMLDivElement>(null);
 
-  useClickOutside(calendarWrapper, isCalendarActive, () => {
-    setIsCalendarActive(false);
-  });
+  useClickOutside(calendarWrapper, isCalendarActive, closeCalendar);
 
   // Update dateOptions when Monday of the selectedDate is changed
   React.useEffect(() => {
@@ -157,7 +159,7 @@ export function TimeRangePicker({
         />
         <DatepickerContainer ref={calendarWrapper}>
           <IconButton
-            onClick={() => setIsCalendarActive((prev) => !prev)}
+            onClick={toggleCalendar}
             severity="medium"
             icon="calendar"
           />
