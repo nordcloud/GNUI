@@ -24,9 +24,7 @@ import { Spacer } from "../spacer";
   <Story name="default">
     {() => {
       const { isOpen: value, toggle } = useDisclosure();
-      return (
-        <Toggle labelText="Default" value={value} onChange={() => toggle()} />
-      );
+      return <Toggle labelText="Default" value={value} onChange={toggle} />;
     }}
   </Story>
 </Canvas>
@@ -45,7 +43,7 @@ import { Spacer } from "../spacer";
           labelText="Small"
           name="small"
           value={value}
-          onChange={() => toggle()}
+          onChange={toggle}
         />
       );
     }}
@@ -68,7 +66,7 @@ import { Spacer } from "../spacer";
               labelText="Success!"
               name="success"
               value={value}
-              onChange={() => toggle()}
+              onChange={toggle}
             />
           </p>
           <Spacer height="1rem" />
@@ -78,7 +76,7 @@ import { Spacer } from "../spacer";
               labelText="Danger"
               name="danger"
               value={value}
-              onChange={() => toggle()}
+              onChange={toggle}
             />
           </p>
           <Spacer height="1rem" />
@@ -88,7 +86,7 @@ import { Spacer } from "../spacer";
               labelText="Warning"
               name="warning"
               value={value}
-              onChange={() => toggle()}
+              onChange={toggle}
             />
           </p>
           <Spacer height="1rem" />
@@ -98,7 +96,7 @@ import { Spacer } from "../spacer";
               labelText="Notification"
               name="notification"
               value={value}
-              onChange={() => toggle()}
+              onChange={toggle}
             />
           </p>
         </div>

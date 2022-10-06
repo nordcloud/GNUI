@@ -83,9 +83,7 @@ export function TimeRangePicker({
 
   const calendarWrapper = React.useRef<HTMLDivElement>(null);
 
-  useClickOutside(calendarWrapper, isCalendarActive, () => {
-    closeCalendar();
-  });
+  useClickOutside(calendarWrapper, isCalendarActive, closeCalendar);
 
   // Update dateOptions when Monday of the selectedDate is changed
   React.useEffect(() => {
@@ -161,7 +159,7 @@ export function TimeRangePicker({
         />
         <DatepickerContainer ref={calendarWrapper}>
           <IconButton
-            onClick={() => toggleCalendar()}
+            onClick={toggleCalendar}
             severity="medium"
             icon="calendar"
           />
