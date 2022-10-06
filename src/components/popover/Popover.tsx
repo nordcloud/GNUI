@@ -51,9 +51,6 @@ export function Popover({ children, trigger, alignRight }: PopoverProps) {
     close,
     toggle: toggleVisibility,
   } = useDisclosure();
-  const toggle = () => {
-    toggleVisibility();
-  };
   const wrapper = React.useRef<HTMLDivElement>(null);
 
   useClickOutside(wrapper, isVisible, () => {
@@ -62,7 +59,10 @@ export function Popover({ children, trigger, alignRight }: PopoverProps) {
 
   return (
     <StyledPopover ref={wrapper}>
-      <StyledTrigger className="Popover-trigger" onClick={toggle}>
+      <StyledTrigger
+        className="Popover-trigger"
+        onClick={() => toggleVisibility()}
+      >
         {trigger}
       </StyledTrigger>
       <Content isVisible={isVisible} alignRight={alignRight}>
