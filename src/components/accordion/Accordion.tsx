@@ -117,7 +117,7 @@ export function AccordionHeader({
   children,
   small,
 }: AccordionHeaderProps) {
-  const { isOpen, toggle } = useDisclosure(false);
+  const { isOpen, toggle } = useDisclosure();
   return (
     <>
       <StyledHeader

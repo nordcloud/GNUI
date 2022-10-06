@@ -15,12 +15,12 @@ export function NavigationBarProvider({
     closeOn: "hover",
   },
 }: Props) {
-  const { isOpen: expanded, toggle: setExpanded } = useDisclosure(false);
+  const { isOpen: expanded, toggle: setExpanded } = useDisclosure();
   const {
     isOpen: expandedDone,
     close: closeExpandedDone,
     toggle: setExpandedDone,
-  } = useDisclosure(false);
+  } = useDisclosure();
 
   const handleExpand = () => {
     if (expanded) {

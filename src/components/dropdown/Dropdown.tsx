@@ -47,7 +47,7 @@ export function Dropdown({
   size,
   ...props
 }: DropdownProps) {
-  const { isOpen, close, toggle } = useDisclosure(false);
+  const { isOpen, close, toggle } = useDisclosure();
   const [search, setSearch] = React.useState("");
   const wrapper = React.useRef<HTMLDivElement>(null);
 

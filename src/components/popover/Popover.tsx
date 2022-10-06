@@ -50,7 +50,7 @@ export function Popover({ children, trigger, alignRight }: PopoverProps) {
     isOpen: isVisible,
     close,
     toggle: toggleVisibility,
-  } = useDisclosure(false);
+  } = useDisclosure();
   const toggle = () => {
     toggleVisibility();
   };

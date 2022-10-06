@@ -43,7 +43,7 @@ export function ExtendedPopover({
   const triggerRef = React.useRef<HTMLDivElement>(null);
   const contentRef = React.useRef<HTMLDivElement>(null);
 
-  const { isOpen, close, open, toggle } = useDisclosure(false);
+  const { isOpen, close, open, toggle } = useDisclosure();
   const [contentDimensions, setContentDimensions] =
     React.useState<DOMRect | null>(null);
   const [triggerDimensions, setTriggerDimensions] =

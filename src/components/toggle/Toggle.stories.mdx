@@ -23,7 +23,7 @@ import { Spacer } from "../spacer";
 <Canvas>
   <Story name="default">
     {() => {
-      const { isOpen: toggle, toggle: setToggle } = useDisclosure(false);
+      const { isOpen: toggle, toggle: setToggle } = useDisclosure();
       return (
         <Toggle
           labelText="Default"
@@ -42,7 +42,7 @@ import { Spacer } from "../spacer";
 <Canvas>
   <Story name="small">
     {() => {
-      const { isOpen: toggle, toggle: setToggle } = useDisclosure(false);
+      const { isOpen: toggle, toggle: setToggle } = useDisclosure();
       return (
         <Toggle
           size="small"
@@ -63,7 +63,7 @@ import { Spacer } from "../spacer";
 <Canvas>
   <Story name="status">
     {() => {
-      const { isOpen: toggle, toggle: setToggle } = useDisclosure(false);
+      const { isOpen: toggle, toggle: setToggle } = useDisclosure();
       return (
         <div>
           <p>

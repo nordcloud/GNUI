@@ -34,7 +34,7 @@ import { Button } from "../button";
 <Canvas>
   <Story name="basic modal">
     {() => {
-      const { isOpen, toggle } = useDisclosure(false);
+      const { isOpen, toggle } = useDisclosure();
       const update = () => toggle();
       return (
         <>
@@ -61,7 +61,7 @@ import { Button } from "../button";
 <Canvas>
   <Story name="modal with actions">
     {() => {
-      const { isOpen, toggle } = useDisclosure(false);
+      const { isOpen, toggle } = useDisclosure();
       const update = () => toggle();
       return (
         <>
@@ -101,7 +101,7 @@ import { Button } from "../button";
 <Canvas>
   <Story name="confirm modal">
     {() => {
-      const { isOpen, toggle } = useDisclosure(false);
+      const { isOpen, toggle } = useDisclosure();
       const update = () => toggle();
       const action = () => alert("Deleted");
       return (
