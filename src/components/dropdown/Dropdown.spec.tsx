@@ -7,6 +7,22 @@ import { Dropdown } from "./Dropdown";
 const TEST_LABEL = "Option 1";
 const SEARCH_VALUE = "Option";
 
+function DropdownTestComponent() {
+  const options = [TEST_LABEL];
+  const [value, setValue] = React.useState("");
+  return (
+    <Dropdown
+      name="Select an option"
+      options={options}
+      value={value}
+      width="15rem"
+      minNumOfOptionsToShowSearchBox={4}
+      onChange={(val) => setValue(val)}
+      title="Example title"
+    />
+  );
+}
+
 const getSearchComponentAndReturnSearchBox = () => {
   const options = [
     { value: "test", label: TEST_LABEL },
@@ -31,28 +47,11 @@ const getSearchComponentAndReturnSearchBox = () => {
 };
 
 test("selects option and displays it", async () => {
-  const TEST_VALUE = "test";
-  let value = "";
-
-  const options = [{ value: TEST_VALUE, label: TEST_LABEL }];
-
-  render(
-    <Dropdown
-      name="Select an option"
-      options={options}
-      value={value}
-      width="15rem"
-      minNumOfOptionsToShowSearchBox={4}
-      onChange={(val) => {
-        value = val;
-      }}
-      title="Example title"
-    />
-  );
+  render(<DropdownTestComponent />);
 
   userEvent.click(screen.getByRole("button"));
   userEvent.click(screen.getAllByText(TEST_LABEL, { selector: "button" })[0]);
-  expect(value).toBe(TEST_VALUE);
+  expect(screen.queryByText(TEST_LABEL)).toBeInTheDocument();
 });
 
 test("shows no options if no option matches", async () => {
