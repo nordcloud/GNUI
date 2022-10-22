@@ -1,6 +1,6 @@
 import React from "react";
 import "@testing-library/jest-dom/extend-expect";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Dropdown } from "./Dropdown";
 
@@ -58,7 +58,7 @@ test("selects option and displays it", async () => {
 test("shows no options if no option matches", async () => {
   const filterInput = getSearchComponentAndReturnSearchBox();
 
-  fireEvent.change(filterInput, { target: { value: "randomgibberishvalue" } });
+  userEvent.type(filterInput, "randomgibberishvalue");
   expect(screen.queryByText(TEST_LABEL)).not.toBeInTheDocument();
   expect(screen.queryAllByRole("button")).toHaveLength(1);
 });
@@ -66,7 +66,7 @@ test("shows no options if no option matches", async () => {
 test("shows all possible matching options", async () => {
   const filterInput = getSearchComponentAndReturnSearchBox();
 
-  fireEvent.change(filterInput, { target: { value: SEARCH_VALUE } });
+  userEvent.type(filterInput, SEARCH_VALUE);
   expect(
     screen.queryAllByText((content) => content.startsWith(SEARCH_VALUE))
   ).toHaveLength(4);
@@ -75,7 +75,7 @@ test("shows all possible matching options", async () => {
 test("filters options properly by value", async () => {
   const filterInput = getSearchComponentAndReturnSearchBox();
 
-  fireEvent.change(filterInput, { target: { value: "test" } });
+  userEvent.type(filterInput, "test");
   expect(screen.queryByText(TEST_LABEL)).toBeInTheDocument();
   expect(
     screen.queryAllByText((content) => content.startsWith(SEARCH_VALUE))
