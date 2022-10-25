@@ -8,8 +8,14 @@ const TEST_LABEL = "Option 1";
 const SEARCH_VALUE = "Option";
 
 function DropdownTestComponent() {
-  const options = [TEST_LABEL];
+  const options = [
+    { value: "test", label: TEST_LABEL },
+    { value: "Option 2" },
+    "Option 3",
+    "Option 4",
+  ];
   const [value, setValue] = React.useState("");
+
   return (
     <Dropdown
       name="Select an option"
@@ -22,26 +28,8 @@ function DropdownTestComponent() {
     />
   );
 }
-
 const getSearchComponentAndReturnSearchBox = () => {
-  const options = [
-    { value: "test", label: TEST_LABEL },
-    { value: "Option 2" },
-    "Option 3",
-    "Option 4",
-  ];
-
-  render(
-    <Dropdown
-      name="Select an option"
-      options={options}
-      width="15rem"
-      minNumOfOptionsToShowSearchBox={4}
-      onChange={() => {}}
-      title="Example title"
-    />
-  );
-
+  render(<DropdownTestComponent />);
   userEvent.click(screen.getByRole("button"));
   return screen.getByRole("searchbox");
 };
