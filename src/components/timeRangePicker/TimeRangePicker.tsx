@@ -282,11 +282,16 @@ const getLabelContent = (dateOption: DateOption): React.ReactNode => {
   return (
     <>
       <label>{dateOption.weekday}</label>
-      <div className="date-value">
-        {dateOption.day}.{dateOption.month}
-      </div>
+      <div className="date-value">{getDateString(new Date(dateOption.id))}</div>
     </>
   );
+};
+
+const getDateString = (date: Date): string => {
+  return date.toLocaleDateString(undefined, {
+    day: "2-digit",
+    month: "2-digit",
+  });
 };
 
 const getDateWithTime = (date: Date, time: string): Date => {
