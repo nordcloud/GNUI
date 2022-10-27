@@ -78,7 +78,8 @@ test("custom label is rendered properly", () => {
     </Tabs>
   );
 
-  // expect(screen.queryByText(TAB1_LABEL, { selector: "button" })).toBeInTheDocument;
+  const customLabel = screen.queryByText(TAB1_LABEL, { selector: "button" });
+  expect(customLabel).toBeInTheDocument();
 });
 
 test("captions are rendered inside label", () => {
