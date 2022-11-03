@@ -34,7 +34,6 @@ import {
   TimeRangeOption,
   TimeRangePickerProps,
   RANGE_TYPE,
-  TIME_TYPE,
 } from "./types";
 
 const dateFormat = "dd MMM yyyy";
@@ -103,7 +102,7 @@ const DEFAULT_TIME_RANGE: Interval = {
 
 export function TimeRangePicker({
   initTimeRange = DEFAULT_TIME_RANGE,
-  type = TIME_TYPE.HOURS,
+  type = "Hours",
   onChange,
 }: TimeRangePickerProps) {
   const [selectedDate, setSelectedDate] = React.useState<Date>(
@@ -192,59 +191,57 @@ export function TimeRangePicker({
     onChange({ start: timeStart, end: timeEnd });
   };
 
-  if (type === TIME_TYPE.DAYS) {
+  if (type === "Days") {
     return (
-      <>
-        <FlexContainer alignContent="center">
-          <SelectWrap>
-            <UnifiedMultipleSelect size="small">
-              {DEFAULT_RANGE_OPTIONS.map((timeRangeOption) => (
-                <SelectButton
-                  key={timeRangeOption.id}
-                  name={timeRangeOption.id}
-                  value={timeRangeOption.id}
-                  labelText={timeRangeOption.label}
-                  onClick={() => {
-                    setSelectedDaysRange(timeRangeOption);
-                    submit();
-                  }}
-                  isActive={timeRangeOption.id === selectedDaysRange.id}
-                />
-              ))}
-            </UnifiedMultipleSelect>
-          </SelectWrap>
-          <Row css={{ alignItems: "center" }}>
-            <StyledButton
-              onClick={() => updateCurrentTime("backward")}
-              icon="chevronLeft"
-            />
-            <div className="date-options">
-              <DatepickerContainer ref={calendarWrapper}>
-                <StyledButton onClick={toggleCalendar}>
-                  <Text size="sm" tag="span" color={theme.color.text.text04}>
-                    {getDateWithDays(selectedDate, selectedDaysRange.label)}
-                  </Text>
-                </StyledButton>
-                <Datepicker className="daypicker-panel">
-                  {isCalendarActive && (
-                    <DayPicker
-                      mode="single"
-                      selected={selectedDate}
-                      onSelect={(selectedDay?: Date) =>
-                        handleDateSelection(selectedDay)
-                      }
-                    />
-                  )}
-                </Datepicker>
-              </DatepickerContainer>
-            </div>
-            <StyledButton
-              onClick={() => updateCurrentTime("forward")}
-              icon="chevronRight"
-            />
-          </Row>
-        </FlexContainer>
-      </>
+      <FlexContainer alignContent="center">
+        <SelectWrap>
+          <UnifiedMultipleSelect size="small">
+            {DEFAULT_RANGE_OPTIONS.map((timeRangeOption) => (
+              <SelectButton
+                key={timeRangeOption.id}
+                name={timeRangeOption.id}
+                value={timeRangeOption.id}
+                labelText={timeRangeOption.label}
+                onClick={() => {
+                  setSelectedDaysRange(timeRangeOption);
+                  submit();
+                }}
+                isActive={timeRangeOption.id === selectedDaysRange.id}
+              />
+            ))}
+          </UnifiedMultipleSelect>
+        </SelectWrap>
+        <Row css={{ alignItems: "center" }}>
+          <StyledButton
+            onClick={() => updateCurrentTime("backward")}
+            icon="chevronLeft"
+          />
+          <div className="date-options">
+            <DatepickerContainer ref={calendarWrapper}>
+              <StyledButton onClick={toggleCalendar}>
+                <Text size="sm" tag="span" color={theme.color.text.text04}>
+                  {getDateWithDays(selectedDate, selectedDaysRange.label)}
+                </Text>
+              </StyledButton>
+              <Datepicker className="daypicker-panel">
+                {isCalendarActive && (
+                  <DayPicker
+                    mode="single"
+                    selected={selectedDate}
+                    onSelect={(selectedDay?: Date) =>
+                      handleDateSelection(selectedDay)
+                    }
+                  />
+                )}
+              </Datepicker>
+            </DatepickerContainer>
+          </div>
+          <StyledButton
+            onClick={() => updateCurrentTime("forward")}
+            icon="chevronRight"
+          />
+        </Row>
+      </FlexContainer>
     );
   }
   return (

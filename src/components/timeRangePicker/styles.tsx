@@ -99,6 +99,7 @@ export const CustomTimeRangeSelector = styled(Row)<{ isVisible: boolean }>`
     font-size: ${theme.fontSizes.sm};
     padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
   }
+
   .daypicker-panel {
     border: 1px solid ${theme.color.border.border01};
   }
@@ -127,6 +128,7 @@ export const UnifiedMultipleSelect = styled(MultipleSelect)`
 
 export const StyledButton = styled(Button)`
   padding: 0.15rem ${theme.spacing.spacing01};
+
   span {
     padding: 0.15rem ${theme.spacing.spacing06};
   }

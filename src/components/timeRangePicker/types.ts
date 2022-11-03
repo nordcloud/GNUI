@@ -14,14 +14,9 @@ export type TimeRangeOption = {
 
 export type TimeRangePickerProps = {
   initTimeRange?: Interval;
-  type?: TIME_TYPE;
+  type?: "Days" | "Hours";
   onChange: (newTimeRange: Interval) => void;
 };
-
-export const enum TIME_TYPE {
-  DAYS = "Days",
-  HOURS = "Hours",
-}
 
 export const enum RANGE_TYPE {
   DAY = "Day",
