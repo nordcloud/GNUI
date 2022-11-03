@@ -14,7 +14,6 @@ import { TimeRangePicker } from ".";
 | ------------: | :------: | :-------------------------------------------- | :-------------------------------------------------------------------------------------------------------- |
 | initTimeRange |  false   | Interval                                      | Start date and end date should be within the same day, current date will be used otherwise and by default |
 |      onChange |   true   | <code>(newTimeRange: Interval) => void</code> | Function to handle timeRange change                                                                       |
-|          type |  false   | "Hours" or "Days"                             | Provide type of time range picker                                                                         |
 
 ```typescript
 import { Interval } from "date-fns";
@@ -29,7 +28,7 @@ type Interval = {
   <Story name="timerangepicker">
     {() => {
       const handleSelect = (newTimeRange) => {
-          console.log({ newTimeRange });
+        console.log(newTimeRange);
       };
       return (
         <>
@@ -38,9 +37,9 @@ type Interval = {
           <Spacer height="1rem" />
           type: Hours
           <TimeRangePicker onChange={handleSelect} />
+          <Spacer height="2rem" />
         </>
       );
     }}
-
   </Story>
 </Canvas>

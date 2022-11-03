@@ -27,12 +27,14 @@ import {
   DatepickerContainer,
   CustomTimeRangeSelector,
   StyledButton,
+  SelectWrap,
 } from "./styles";
 import {
   DateOption,
   TimeRangeOption,
   TimeRangePickerProps,
   RANGE_TYPE,
+  TIME_TYPE,
 } from "./types";
 
 const dateFormat = "dd MMM yyyy";
@@ -101,7 +103,7 @@ const DEFAULT_TIME_RANGE: Interval = {
 
 export function TimeRangePicker({
   initTimeRange = DEFAULT_TIME_RANGE,
-  type = "Hours",
+  type = TIME_TYPE.HOURS,
   onChange,
 }: TimeRangePickerProps) {
   const [selectedDate, setSelectedDate] = React.useState<Date>(
@@ -149,7 +151,7 @@ export function TimeRangePicker({
   }, [selectedTimeRange]); // eslint-disable-line
 
   // Function to update dateOptions when arrows are clicked
-  const updateDateOptions = (direction: string) => {
+  const updateDateOptions = (direction: "forward" | "backward") => {
     if (direction === "backward") {
       setDateOptions((prev) => {
         return getDateOptions(previousMonday(new Date(prev[0].id)));
@@ -164,7 +166,7 @@ export function TimeRangePicker({
   };
 
   // Function to update date range when arrows are clicked
-  const updateCurrentTime = (direction: string) => {
+  const updateCurrentTime = (direction: "forward" | "backward") => {
     if (direction === "backward") {
       setSelectedDate((prev) => {
         return getDate(selectedDaysRange.label, prev, -1) ?? new Date();
@@ -190,11 +192,11 @@ export function TimeRangePicker({
     onChange({ start: timeStart, end: timeEnd });
   };
 
-  if (type === "Days") {
+  if (type === TIME_TYPE.DAYS) {
     return (
       <>
         <FlexContainer alignContent="center">
-          <FlexContainer grow={1} style={{ marginRight: "1rem" }}>
+          <SelectWrap>
             <UnifiedMultipleSelect size="small">
               {DEFAULT_RANGE_OPTIONS.map((timeRangeOption) => (
                 <SelectButton
@@ -210,7 +212,7 @@ export function TimeRangePicker({
                 />
               ))}
             </UnifiedMultipleSelect>
-          </FlexContainer>
+          </SelectWrap>
           <Row css={{ alignItems: "center" }}>
             <StyledButton
               onClick={() => updateCurrentTime("backward")}
@@ -411,26 +413,34 @@ const getDateWithTime = (date: Date, time: string): Date => {
   return new Date(copiedDate.setHours(timeNumbers[0], timeNumbers[1], 0));
 };
 
-const getDateWithDays = (date: Date, rangeType: RANGE_TYPE): string => {
+const getDateWithDays = (
+  date: Date,
+  rangeType: RANGE_TYPE
+): string | undefined => {
   if (rangeType === RANGE_TYPE.WEEK) {
     return `${format(new Date(date), dateFormat)} - ${format(
       addWeeks(date, 1),
       dateFormat
     )}`;
   }
+
   if (rangeType === RANGE_TYPE.MONTH) {
     return `${format(new Date(date), dateFormat)} - ${format(
       addMonths(date, 1),
       dateFormat
     )}`;
   }
+
   if (rangeType === RANGE_TYPE.YEAR) {
     return `${format(new Date(date), dateFormat)} - ${format(
       addYears(date, 1),
       dateFormat
     )}`;
   }
-  return format(new Date(date), dateFormat);
+
+  if (rangeType === RANGE_TYPE.DAY) {
+    return format(new Date(date), dateFormat);
+  }
 };
 
 const getDate = (
@@ -441,12 +451,15 @@ const getDate = (
   if (selectedType === RANGE_TYPE.DAY) {
     return addDays(date, number);
   }
+
   if (selectedType === RANGE_TYPE.WEEK) {
     return addWeeks(date, number);
   }
+
   if (selectedType === RANGE_TYPE.MONTH) {
     return addMonths(date, number);
   }
+
   if (selectedType === RANGE_TYPE.YEAR) {
     return addYears(date, number);
   }

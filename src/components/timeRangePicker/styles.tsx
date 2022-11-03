@@ -49,6 +49,11 @@ export const Row = styled(FlexContainer)`
   }
 `;
 
+export const SelectWrap = styled(FlexContainer)`
+  margin-right: ${theme.spacing.spacing04};
+  flex: 1;
+`;
+
 export const IconButton = styled(Button)`
   padding: ${theme.spacing.spacing04} ${theme.spacing.spacing02};
 `;
