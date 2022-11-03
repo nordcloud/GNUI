@@ -163,6 +163,7 @@ export function TimeRangePicker({
     }
   };
 
+  // Function to update date range when arrows are clicked
   const updateCurrentTime = (direction: string) => {
     if (direction === "backward") {
       setSelectedDate((prev) => {
