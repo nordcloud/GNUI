@@ -3,8 +3,7 @@ frontend:
   phases:
     preBuild:
       commands:
-        - nvm install
-        - nvm use
+        - nvm install lts/gallium
         - npm ci
         - npm audit signatures
     build:
