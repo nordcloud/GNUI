@@ -3,7 +3,7 @@ frontend:
   phases:
     preBuild:
       commands:
-        - sudo apt-get remove nodejs
+        - apt-get remove nodejs
         - nvm install
         - npm ci
         - npm audit signatures
