@@ -3,7 +3,7 @@ frontend:
   phases:
     preBuild:
       commands:
-        - nvm install 16
+        - nvm use $VERSION_NODE_16
         - npm ci
         - npm audit signatures
     build:
