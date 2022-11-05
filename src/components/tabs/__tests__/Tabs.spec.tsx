@@ -5,8 +5,6 @@ import userEvent from "@testing-library/user-event";
 import { Button } from "../../button";
 import { Tab, Tabs } from "../Tabs";
 import {
-  ACTIVE_TAB_CLASSNAME,
-  INACTIVE_TAB_CLASSNAME,
   NEXT_BUTTON_LABEL,
   PREVIOUS_BUTTON_LABEL,
   TAB1_CAPTION,
@@ -36,22 +34,19 @@ function TabsTestComponent() {
   );
 }
 
-test("active styles are applied via classname on click", () => {
+test("accessibility attributes are applied to the active & inactive tabs accordingly", () => {
   render(<TabsTestComponent />);
 
-  const firstTab = screen.getByText(TAB1_LABEL);
+  expect(screen.queryByRole("tab", { selected: true })).toHaveTextContent(
+    TAB1_LABEL
+  );
+
   const secondTab = screen.getByText(TAB2_LABEL);
-  const firstTabContainer = firstTab.parentElement;
-  const secondTabContainer = secondTab.parentElement;
-
-  expect(firstTabContainer).toHaveClass(ACTIVE_TAB_CLASSNAME);
-  expect(firstTabContainer).not.toHaveClass(INACTIVE_TAB_CLASSNAME);
-
   userEvent.click(secondTab);
-  expect(firstTabContainer).not.toHaveClass(ACTIVE_TAB_CLASSNAME);
-  expect(secondTabContainer).toHaveClass(ACTIVE_TAB_CLASSNAME);
-  expect(firstTabContainer).toHaveClass(INACTIVE_TAB_CLASSNAME);
-  expect(secondTabContainer).not.toHaveClass(INACTIVE_TAB_CLASSNAME);
+
+  expect(screen.queryByRole("tab", { selected: true })).toHaveTextContent(
+    TAB2_LABEL
+  );
 });
 
 test("tab content is rendered according to active tab", () => {
@@ -86,10 +81,16 @@ test("captions are rendered inside label", () => {
   render(<TabsTestComponent />);
 
   const captionContainer1 = screen.getByText(TAB1_CAPTION, { selector: "p" });
-  expect(captionContainer1.parentElement).toHaveClass(ACTIVE_TAB_CLASSNAME);
+  expect(captionContainer1.parentElement).toHaveAttribute(
+    "aria-selected",
+    "true"
+  );
 
   const captionContainer2 = screen.getByText(TAB2_CAPTION, { selector: "p" });
-  expect(captionContainer2.parentElement).toHaveClass(INACTIVE_TAB_CLASSNAME);
+  expect(captionContainer2.parentElement).toHaveAttribute(
+    "aria-selected",
+    "false"
+  );
 });
 
 test("disabled tabs are not interactive", () => {
@@ -103,8 +104,7 @@ test("disabled tabs are not interactive", () => {
   expect(screen.queryByText(TAB1_CONTENT)).toBeInTheDocument();
   expect(screen.queryByText(TAB3_CONTENT)).toBeNull();
 
-  expect(thirdTab.parentElement).toHaveClass(INACTIVE_TAB_CLASSNAME);
-  expect(thirdTab.parentElement).not.toHaveClass(ACTIVE_TAB_CLASSNAME);
+  expect(thirdTab.parentElement).toHaveAttribute("aria-selected", "false");
 });
 
 test("button actions are executed on click", () => {

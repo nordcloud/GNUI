@@ -7,7 +7,5 @@ export const TAB3_CONTENT = "This is a disabled tab";
 export const TAB1_CAPTION =
   "Lorem ipsum for Tab 1. Lorem Ipsum is simply dummy text";
 export const TAB2_CAPTION = "Lorem ipsum for Tab 2";
-export const INACTIVE_TAB_CLASSNAME = "tab";
-export const ACTIVE_TAB_CLASSNAME = "tab-active";
 export const PREVIOUS_BUTTON_LABEL = "Previous";
 export const NEXT_BUTTON_LABEL = "Next";
