@@ -15,7 +15,7 @@ import {
   TAB2_LABEL,
   TAB3_CONTENT,
   TAB3_LABEL,
-} from "../testConstants";
+} from "./testConstants";
 
 function TabsTestComponent() {
   const [currentStep, setCurrentStep] = React.useState(0);
