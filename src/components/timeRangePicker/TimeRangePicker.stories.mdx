@@ -32,8 +32,12 @@ type Interval = {
       };
       return (
         <>
+          type: Days
+          <TimeRangePicker type="Days" onChange={handleSelect} />
+          <Spacer height="1rem" />
+          type: Hours
           <TimeRangePicker onChange={handleSelect} />
-          <Spacer height="16rem" />
+          <Spacer height="2rem" />
         </>
       );
     }}
