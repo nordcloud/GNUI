@@ -240,11 +240,15 @@ export function Tab({
 }: TabProps) {
   const className = activeTab === index ? "tab-active" : "tab";
   const isActive = activeTab && index;
+  const ariaSelected = activeTab === index ? "true" : "false";
 
   return (
     <TabContainer
       className={className}
       onClick={onClick}
+      role="tab"
+      aria-selected={ariaSelected}
+      aria-controls={`tabpanel-${index + 1}`}
       key={index}
       width={width}
       disabled={disabled}
