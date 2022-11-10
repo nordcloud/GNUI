@@ -108,8 +108,8 @@ export type ThemeColors = keyof typeof color.support;
 
 export const typography = {
   fonts: {
-    body: "Rubik, sans-serif",
-    heading: "Rubik, sans-serif",
+    body: "Roboto, sans-serif",
+    heading: "Roboto, sans-serif",
   },
   fontSizes: ["0.625rem", "0.75rem", "1rem", "1.25rem", "1.5rem", "2rem"],
   fontWeights: [400, 500, 700],
