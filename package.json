@@ -1,7 +1,7 @@
 {
   "name": "@nordcloud/gnui",
   "description": "Nordcloud Design System - a collection of reusable React components used in Nordcloud's SaaS products",
-  "version": "7.4.0",
+  "version": "7.6.0",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -36,8 +36,8 @@
     "postinstall": "patch-package"
   },
   "engines": {
-    "node": ">=16.17.0",
-    "npm": ">=8.15.0"
+    "node": "^16.18.0 || ^18.12.0",
+    "npm": ">=8.19.2"
   },
   "browserslist": {
     "production": [
@@ -80,7 +80,7 @@
     "react-content-loader": "^6.2.0",
     "react-day-picker": "^8.1.0",
     "react-helmet": "^6.1.0",
-    "react-select": "^5.4.0",
+    "react-select": "^5.5.9",
     "styled-components-breakpoint": "^3.0.0-preview.20",
     "styled-system": "^5.1.5"
   },
@@ -88,15 +88,15 @@
     "@nordcloud/eslint-config-pat": "^3.0.0",
     "@rollup/plugin-commonjs": "^21.0.2",
     "@rollup/plugin-node-resolve": "^13.1.3",
-    "@storybook/addon-docs": "^6.5.12",
-    "@storybook/addons": "^6.5.12",
-    "@storybook/react": "^6.5.12",
+    "@storybook/addon-docs": "^6.5.13",
+    "@storybook/addons": "^6.5.13",
+    "@storybook/react": "^6.5.13",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.0.3",
     "@types/lodash.clonedeep": "^4.5.7",
-    "@types/node": "^14.14.37",
+    "@types/node": "^18.11.9",
     "@types/react": "^16.14.23",
     "@types/react-dom": "^16.9.8",
     "@types/react-helmet": "^6.1.5",
