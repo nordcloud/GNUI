@@ -20,6 +20,7 @@
   "scripts": {
     "storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 9009 -s public",
     "build-storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider build-storybook -s public",
+    "build-storybook:legacy-node": "build-storybook -s public",
     "build": "rollup -c",
     "test": "jest",
     "test:watch": "npm run test -- --watch",
