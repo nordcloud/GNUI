@@ -18,8 +18,8 @@
     "dist/**"
   ],
   "scripts": {
-    "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public",
+    "storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 9009 -s public",
+    "build-storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider build-storybook -s public",
     "build": "rollup -c",
     "test": "jest",
     "test:watch": "npm run test -- --watch",
@@ -101,6 +101,7 @@
     "@types/react-dom": "^16.9.8",
     "@types/react-helmet": "^6.1.5",
     "@types/styled-components": "^5.1.1",
+    "cross-env": "^7.0.3",
     "date-fns": "^2.29.3",
     "eslint": "^8.28.0",
     "husky": "^4.2.5",
