@@ -25,7 +25,7 @@
     "test:watch": "npm run test -- --watch",
     "test:commit": "npm run test -- -o --silent --watchAll=false",
     "test:all": "npm run test -- --silent --watchAll=false",
-    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx)\"",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx|md|mdx)\"",
     "check:types": "tsc",
     "check:format": "prettier --check \"**/*.+(js|json|ts|tsx)\"",
     "lint": "eslint --ignore-path .gitignore --ext .ts,.tsx .",
