@@ -18,14 +18,15 @@
     "dist/**"
   ],
   "scripts": {
-    "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public",
+    "storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 9009 -s public",
+    "build-storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider build-storybook -s public",
+    "build-storybook:legacy-node": "build-storybook -s public",
     "build": "rollup -c",
     "test": "jest",
     "test:watch": "npm run test -- --watch",
     "test:commit": "npm run test -- -o --silent --watchAll=false",
     "test:all": "npm run test -- --silent --watchAll=false",
-    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx)\"",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx|md|mdx)\"",
     "check:types": "tsc",
     "check:format": "prettier --check \"**/*.+(js|json|ts|tsx)\"",
     "lint": "eslint --ignore-path .gitignore --ext .ts,.tsx .",
@@ -85,7 +86,7 @@
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
-    "@nordcloud/eslint-config-pat": "^3.0.0",
+    "@nordcloud/eslint-config-pat": "^4.3.0",
     "@rollup/plugin-commonjs": "^21.0.2",
     "@rollup/plugin-node-resolve": "^13.1.3",
     "@storybook/addon-docs": "^6.5.13",
@@ -101,7 +102,9 @@
     "@types/react-dom": "^16.9.8",
     "@types/react-helmet": "^6.1.5",
     "@types/styled-components": "^5.1.1",
+    "cross-env": "^7.0.3",
     "date-fns": "^2.29.3",
+    "eslint": "^8.28.0",
     "husky": "^4.2.5",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1",
@@ -109,7 +112,7 @@
     "lint-staged": "^10.3.0",
     "npm-run-all": "^4.1.5",
     "patch-package": "^6.4.7",
-    "prettier": "^2.7.1",
+    "prettier": "^2.8.0",
     "react": "^16.14.0",
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^16.14.0",
@@ -124,7 +127,7 @@
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.10.0",
     "ts-jest": "^27.1.3",
-    "typescript": "^4.2.2"
+    "typescript": "^4.9.3"
   },
   "overrides": {
     "minimist": "~1.2.6",
