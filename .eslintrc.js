@@ -18,10 +18,10 @@ module.exports = {
 
   settings: {
     react: {
-      version: "16.13.1", // React version. "detect" automatically picks the version you have installed.
+      version: "16.14.0", // React version. "detect" automatically picks the version you have installed.
     },
     jest: {
-      version: "27",
+      version: "29",
     },
   },
 
