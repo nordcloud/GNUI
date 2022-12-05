@@ -21,8 +21,7 @@ function Pagination({
   const nPages = Math.ceil(count / size);
 
   const isFirstPageZero = firstPage === 0;
-
-  const minusNPages = isFirstPageZero ? nPages - 1 : nPages;
+  const lastPage = isFirstPageZero ? nPages - 1 : nPages;
 
   // 6 & 7 pages make a lot of problem with dots so shrinking base number of visible
   // pages to 4 to avoid overlaps (problem: rendering dots and direct page at the same time)
@@ -119,8 +118,8 @@ function Pagination({
           </li>
           <li>
             <button
-              onClick={() => setPage(minusNPages)}
-              onKeyDown={() => setPage(minusNPages)}
+              onClick={() => setPage(lastPage)}
+              onKeyDown={() => setPage(lastPage)}
               type="button"
               className="pagination-link"
               data-testid="last-page"
