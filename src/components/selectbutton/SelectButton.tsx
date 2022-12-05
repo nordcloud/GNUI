@@ -11,7 +11,7 @@ export type SelectButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
   labelText: React.ReactNode;
   isActive?: boolean;
   onClick: (value: SelectButtonProps["value"]) => void;
-  disabled: boolean;
+  disabled?: boolean;
 };
 
 // Extend props with intrinsic attributes of ul as containerProps
