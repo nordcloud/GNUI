@@ -102,12 +102,12 @@ function getFlexCss(props: FlexContainerProps) {
     align-items: ${props.alignItems ?? "center"};
     align-content: ${props.alignContent ?? "center"};
     justify-content: ${props.justifyContent ?? "flex-start"};
-    flex-wrap: ${props.wrap ?? "no-wrap"};
+    flex-wrap: ${props.wrap ?? "nowrap"};
     flex-direction: ${props.direction ?? "row"};
-    flex-grow: ${props.grow ?? 0};
-    gap: ${props.gap ?? 0};
-    column-gap: ${props.columnGap ?? 0};
-    row-gap: ${props.rowGap ?? 0};
+    flex-grow: ${props.grow};
+    gap: ${props.gap};
+    column-gap: ${props.columnGap};
+    row-gap: ${props.rowGap};
   `;
 }
 

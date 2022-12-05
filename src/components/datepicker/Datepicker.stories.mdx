@@ -1,21 +1,21 @@
 import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { addDays } from "date-fns";
 import { Datepicker } from ".";
-import { Calendar, DateRangePicker } from "react-date-range";
+import { DayPicker } from "react-day-picker";
 
 <Meta title="Forms/Datepicker" component={Datepicker} />
 
 # Datepicker
 
+Datepicker uses `React DayPicker` component. For more information please look at the official docs [https://react-day-picker.js.org/](https://react-day-picker.js.org/)
+
 ## Props
 
 ```typescript
 type DatepickerProps = {
-  children?: any;
+  children?: React.ReactNode;
 };
 ```
-
-> Primary button is default as well.
 
 <Canvas>
   <Story name="datepicker">
@@ -25,36 +25,7 @@ type DatepickerProps = {
       };
       return (
         <Datepicker>
-          <Calendar date={new Date()} onChange={(date) => handleSelect(date)} />
-        </Datepicker>
-      );
-    }}
-  </Story>
-</Canvas>
-
-<Canvas>
-  <Story name="daterangepicker">
-    {() => {
-      const handleSelect = (ranges) => {
-        console.log(ranges);
-      };
-      const [state, setState] = React.useState([
-        {
-          startDate: new Date(),
-          endDate: addDays(new Date(), 7),
-          key: "selection",
-        },
-      ]);
-      return (
-        <Datepicker>
-          <DateRangePicker
-            onChange={(item) => setState([item.selection])}
-            showSelectionPreview={true}
-            moveRangeOnFirstSelection={false}
-            months={2}
-            ranges={state}
-            direction="horizontal"
-          />
+          <DayPicker mode="single" onSelect={handleSelect} />
         </Datepicker>
       );
     }}

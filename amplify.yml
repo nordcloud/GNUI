@@ -3,12 +3,12 @@ frontend:
   phases:
     preBuild:
       commands:
-        - nvm install
-        - nvm use
+        - nvm install lts/gallium
         - npm ci
+        - npm audit signatures
     build:
       commands:
-        - npm run build-storybook
+        - npm run build-storybook:legacy-node
   artifacts:
     baseDirectory: storybook-static
     files:
