@@ -13,13 +13,15 @@ export function PaginationAmount({ from, size, count, firstPage = 0 }: Props) {
   const s = Number(size);
   const c = firstPage * s;
 
-  const maxCurrentPage =
-      count < s ? count : Math.min(from + 1 + s) - c - 1;
   const minCurrentPage = count < s ? 1 : from + 1 - (isFirstPageZero ? 0 : s);
+  const maxCurrentPage = count < s ? count : Math.min(from + 1 + s) - c - 1;
+
+  const min = minCurrentPage < 1 ? 1 : minCurrentPage;
+  const max = maxCurrentPage < 1 ? size : maxCurrentPage;
+
   return (
     <div className="pagination-result">
-      {minCurrentPage} -{maxCurrentPage > count ? count : maxCurrentPage} of{" "}
-      {count}
+      {min} -{max > count ? count : max} of {count}
     </div>
   );
 }
