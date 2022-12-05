@@ -182,7 +182,9 @@ test("renders without number of results and `per page` for small screens", async
   );
 
   expect(screen.queryByText(/show/i)).not.toBeInTheDocument();
-  expect(screen.queryByText(`1 -${params.size} of ${params.count}`)).not.toBeInTheDocument();
+  expect(
+    screen.queryByText(`1 -${params.size} of ${params.count}`)
+  ).not.toBeInTheDocument();
 });
 
 test("renders without number of results and `per page` for small screens for start index 1", async () => {
@@ -200,5 +202,7 @@ test("renders without number of results and `per page` for small screens for sta
   );
 
   expect(screen.queryByText(/show/i)).not.toBeInTheDocument();
-  expect(screen.queryByText(`1 -${params.size} of ${params.count}`)).not.toBeInTheDocument();
+  expect(
+    screen.queryByText(`1 -${params.size} of ${params.count}`)
+  ).not.toBeInTheDocument();
 });
