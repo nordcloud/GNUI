@@ -14,7 +14,7 @@ export function PaginationAmount({ from, size, count, firstPage = 0 }: Props) {
   const c = firstPage * s;
 
   const maxCurrentPage =
-    count < s ? count : Math.min(from + 1 + s) - c - firstPage;
+      count < s ? count : Math.min(from + 1 + s) - c - 1;
   const minCurrentPage = count < s ? 1 : from + 1 - (isFirstPageZero ? 0 : s);
   return (
     <div className="pagination-result">

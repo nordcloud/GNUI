@@ -128,7 +128,7 @@ function Pagination({
             </button>
           </li>
         </When>
-        <When condition={currentPage < nPages}>
+        <When condition={currentPage < nPages - (isFirstPageZero ? 1 : 0)}>
           <li>
             <button
               onClick={() => setPage(currentPage + 1)}
