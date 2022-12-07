@@ -11,6 +11,7 @@ export type SelectButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
   labelText: React.ReactNode;
   isActive?: boolean;
   onClick: (value: SelectButtonProps["value"]) => void;
+  disabled?: boolean;
 };
 
 // Extend props with intrinsic attributes of ul as containerProps
@@ -97,6 +98,13 @@ const StyledSelectButtons = styled.ul<StyledSelectButtons>`
           line-height: initial;
           padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
         `}
+
+      &:disabled {
+        cursor: not-allowed;
+        background: ${theme.color.interactive.disabled};
+        border-color: transparent;
+        color: ${theme.color.text.text03};
+      }
     }
   }
 
@@ -109,6 +117,7 @@ export function SelectButton({
   labelText,
   isActive = false,
   onClick,
+  disabled = false,
   ...props
 }: SelectButtonProps) {
   return (
@@ -119,6 +128,7 @@ export function SelectButton({
         name={name}
         className={isActive ? "active" : ""}
         onClick={() => onClick(value)}
+        disabled={disabled}
         {...props}
       >
         {labelText}
