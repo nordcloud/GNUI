@@ -59,7 +59,7 @@ export function SetGlobalStyle({ customScrollbars = false }: Props) {
           crossOrigin=""
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
           rel="stylesheet"
         />
       </Helmet>
