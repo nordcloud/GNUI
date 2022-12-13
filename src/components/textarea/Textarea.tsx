@@ -84,13 +84,18 @@ const StyledTextarea = styled.textarea<TextareaProps>`
 const Counter = styled.p<TextareaGroupProps>`
   font-size: ${theme.fontSizes.sm};
   text-align: right;
-  padding-top: ${theme.spacing.spacing01};
   ${({ status }) =>
     status &&
     status === "danger" &&
     css`
       color: ${theme.color.text.error};
     `};
+`;
+
+const TextareaFlexContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: ${theme.spacing.spacing01};
 `;
 
 type Props = TextareaGroupProps & TextareaProps;
@@ -106,7 +111,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, Props>(
 
     if (typeof maxCharCount === "number" && maxCharCount > 0) {
       return (
-        <div>
+        <TextareaFlexContainer>
           <TextareaGroup status={status}>
             <StyledTextarea
               ref={ref}
@@ -118,7 +123,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, Props>(
           <Counter status={status}>
             {charCount}&nbsp;&#47;&nbsp;{maxCharCount}
           </Counter>
-        </div>
+        </TextareaFlexContainer>
       );
     }
 
