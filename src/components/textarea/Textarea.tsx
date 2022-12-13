@@ -82,10 +82,10 @@ const StyledTextarea = styled.textarea<TextareaProps>`
 `;
 
 const Counter = styled.p<TextareaGroupProps>`
+  color: ${theme.color.text.text03};
   font-size: ${theme.fontSizes.sm};
   text-align: right;
   ${({ status }) =>
-    status &&
     status === "danger" &&
     css`
       color: ${theme.color.text.error};
@@ -121,7 +121,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, Props>(
             />
           </TextareaGroup>
           <Counter status={status}>
-            {charCount}&nbsp;&#47;&nbsp;{maxCharCount}
+            {maxCharCount - charCount}&nbsp;&#47;&nbsp;{maxCharCount}
           </Counter>
         </TextareaFlexContainer>
       );
