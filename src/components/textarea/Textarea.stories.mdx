@@ -11,10 +11,11 @@ import theme from "../../theme";
 
 ## Textarea properties
 
-| properties | required | type                                         | description                             |
-| ---------: | :------: | :------------------------------------------- | :-------------------------------------- |
-|     status |  false   | <code>`success`</code>, <code>`error`</code> | color indicator status for SelectButton |
-|      small |  false   | boolean                                      | small size styles                       |
+|   properties | required | type                                         | description                             |
+| -----------: | :------: | :------------------------------------------- | :-------------------------------------- |
+|       status |  false   | <code>`success`</code>, <code>`error`</code> | color indicator status for SelectButton |
+|        small |  false   | boolean                                      | small size styles                       |
+| maxCharCount |  false   | number                                       | char counter limit                      |
 
 ## default
 
@@ -44,6 +45,37 @@ import theme from "../../theme";
         <GnuiContainer>
           <GnuiContainer>
             <Textarea status={status} />
+          </GnuiContainer>
+          <Spacer height="1rem" />
+          <GnuiContainer>
+            <Button
+              size="small"
+              color={status === "error" ? "danger" : "success"}
+              onClick={() =>
+                setStatus(status === "danger" ? "success" : "danger")
+              }
+            >
+              Change status
+            </Button>
+          </GnuiContainer>
+        </GnuiContainer>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## maxCharCount
+
+> `status`: `success | error` > `maxCharCount`: `100`
+
+<Canvas>
+  <Story name="maxCharCount">
+    {() => {
+      const [status, setStatus] = React.useState("success");
+      return (
+        <GnuiContainer>
+          <GnuiContainer>
+            <Textarea status={status} maxCharCount={100} />
           </GnuiContainer>
           <Spacer height="1rem" />
           <GnuiContainer>
