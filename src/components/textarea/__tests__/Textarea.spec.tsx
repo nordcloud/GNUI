@@ -4,7 +4,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Textarea } from "../Textarea";
 
-test("displays corrent character count", () => {
+test("displays correct character count", () => {
   render(<Textarea maxCharCount={20} />);
 
   expect(screen.getByText("20 / 20")).toBeInTheDocument();
