@@ -6,6 +6,7 @@ import { Status } from "../input/types";
 
 export type TextareaGroupProps = {
   status?: Status;
+  maxCharCount?: number;
 };
 
 export type TextareaProps = React.InputHTMLAttributes<HTMLTextAreaElement> & {
@@ -80,10 +81,52 @@ const StyledTextarea = styled.textarea<TextareaProps>`
   }
 `;
 
+const Counter = styled.p<TextareaGroupProps>`
+  color: ${theme.color.text.text03};
+  font-size: ${theme.fontSizes.sm};
+  text-align: right;
+  ${({ status }) =>
+    status === "danger" &&
+    css`
+      color: ${theme.color.text.error};
+    `};
+`;
+
+const TextareaFlexContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: ${theme.spacing.spacing01};
+`;
+
 type Props = TextareaGroupProps & TextareaProps;
 
 export const Textarea = React.forwardRef<HTMLTextAreaElement, Props>(
-  ({ status, ...props }, ref) => {
+  ({ status, maxCharCount, ...props }, ref) => {
+    const [charCount, setCharCount] = React.useState(0);
+
+    function handleChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
+      setCharCount(event.target.value.length);
+      props.onChange?.(event);
+    }
+
+    if (typeof maxCharCount === "number" && maxCharCount > 0) {
+      return (
+        <TextareaFlexContainer>
+          <TextareaGroup status={status}>
+            <StyledTextarea
+              ref={ref}
+              maxLength={maxCharCount}
+              {...props}
+              onChange={handleChange}
+            />
+          </TextareaGroup>
+          <Counter status={status}>
+            {maxCharCount - charCount}&nbsp;&#47;&nbsp;{maxCharCount}
+          </Counter>
+        </TextareaFlexContainer>
+      );
+    }
+
     return (
       <TextareaGroup status={status}>
         <StyledTextarea ref={ref} {...props} />
