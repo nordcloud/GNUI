@@ -104,9 +104,9 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, Props>(
   ({ status, maxCharCount, ...props }, ref) => {
     const [charCount, setCharCount] = React.useState(0);
 
-    function handleChange(event_: React.ChangeEvent<HTMLTextAreaElement>) {
-      setCharCount(event_.target.value.length);
-      props.onChange?.(event_);
+    function handleChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
+      setCharCount(event.target.value.length);
+      props.onChange?.(event);
     }
 
     if (typeof maxCharCount === "number" && maxCharCount > 0) {
