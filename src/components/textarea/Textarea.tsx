@@ -100,9 +100,29 @@ const TextareaFlexContainer = styled.div`
 
 type Props = TextareaGroupProps & TextareaProps;
 
+function getDefaultCharCount(props: Props) {
+  if (typeof props.value === "string") {
+    return props.value.length;
+  }
+
+  if (typeof props.defaultValue === "string") {
+    return props.defaultValue.length;
+  }
+
+  return 0;
+}
+
 export const Textarea = React.forwardRef<HTMLTextAreaElement, Props>(
   ({ status, maxCharCount, ...props }, ref) => {
-    const [charCount, setCharCount] = React.useState(0);
+    const [charCount, setCharCount] = React.useState(
+      getDefaultCharCount(props)
+    );
+
+    React.useEffect(() => {
+      if (typeof props.value === "string") {
+        setCharCount(props.value.length);
+      }
+    }, [props.value]);
 
     function handleChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
       setCharCount(event.target.value.length);
