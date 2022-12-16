@@ -19,8 +19,6 @@ export const mainCss = css`
     box-sizing: border-box;
     margin: 0;
     background: transparent;
-    -moz-appearance: none;
-    -webkit-appearance: none;
     appearance: none;
     position: absolute !important;
     top: 0;
@@ -43,9 +41,6 @@ export const mainCss = css`
     outline: none;
     background: none;
     font: inherit;
-
-    -moz-appearance: none;
-    -webkit-appearance: none;
   }
 
   .rdp-button {
