@@ -94,7 +94,15 @@ export const colors = {
 } as const;
 
 export type SingleColors =
-  "accent" | "black" | "danger" | "notification" | "primary" | "snowWhite" | "success" | "warning" | "white";
+  | "accent"
+  | "black"
+  | "danger"
+  | "notification"
+  | "primary"
+  | "snowWhite"
+  | "success"
+  | "warning"
+  | "white";
 
 export type ThemeColors = keyof typeof color.support;
 
