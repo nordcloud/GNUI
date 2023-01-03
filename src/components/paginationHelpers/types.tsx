@@ -10,14 +10,13 @@ export type IPaginationBoxProps = {
 };
 
 export type IPaginationProps = {
-  set(start: number): void;
+  set: (start: number) => void;
   current: number;
   count: number;
   size: number;
   firstPage?: number;
 };
 
-export type IExtendedPaginationProps = { from: number } & Omit<
-  IPaginationProps,
-  "current"
->;
+export type IExtendedPaginationProps = Omit<IPaginationProps, "current"> & {
+  from: number;
+};

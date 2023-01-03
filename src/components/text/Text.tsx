@@ -5,14 +5,15 @@ import theme from "../../theme";
 import { SingleColors } from "../../theme/config";
 
 type TextProps = React.HTMLAttributes<HTMLElement> & {
-  size?: "xs" | "sm" | "md" | "lg" | "xl" | "xxl";
+  size?: "lg" | "md" | "sm" | "xl" | "xs" | "xxl";
   display?: string;
+  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
   color?: SingleColors | string;
   tag?: keyof JSX.IntrinsicElements;
   as?: React.ElementType | keyof JSX.IntrinsicElements;
-  weight?: "regular" | "medium" | "bold";
-  textStyle?: "normal" | "italic";
-  align?: "left" | "center" | "right";
+  weight?: "bold" | "medium" | "regular";
+  textStyle?: "italic" | "normal";
+  align?: "center" | "left" | "right";
   lineHeight?: string;
   width?: string;
   nowrap?: boolean;
@@ -108,7 +109,7 @@ export function Text({
   tag = "p",
   children,
   ...props
-}: TextProps & SpaceProps) {
+}: SpaceProps & TextProps) {
   return (
     <StyledText as={tag} tag={tag} {...props}>
       {children}

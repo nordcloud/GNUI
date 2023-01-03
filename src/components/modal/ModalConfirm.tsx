@@ -18,17 +18,13 @@ const ModalHeading = styled(Heading)`
 
 type ModalProps = {
   isOpen: boolean;
-  onClose?: (
-    event: React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>
-  ) => void;
-  confirm?: (
-    event: React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>
-  ) => void;
+  onClose?: (event: React.KeyboardEvent | React.MouseEvent) => void;
+  confirm?: (event: React.KeyboardEvent | React.MouseEvent) => void;
   contentLabel: string;
   actionLabel: string;
   children: React.ReactNode;
   customStyles?: { [key: string]: string };
-  alignText?: "left" | "right" | "center";
+  alignText?: "center" | "left" | "right";
 };
 
 export function ModalConfirm({
@@ -52,16 +48,16 @@ export function ModalConfirm({
                 severity="low"
                 size="md"
                 icon="close"
-                onClick={onClose}
                 title="Close"
+                onClick={onClose}
               />
             </ModalHeader>
             <ModalContent alignText={alignText}>{children}</ModalContent>
             <ModalActions>
-              <ModalAction onClick={onClose} severity="medium" type="button">
+              <ModalAction severity="medium" type="button" onClick={onClose}>
                 Cancel
               </ModalAction>
-              <ModalAction onClick={confirm} type="button">
+              <ModalAction type="button" onClick={confirm}>
                 {actionLabel}
               </ModalAction>
             </ModalActions>

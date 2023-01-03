@@ -26,13 +26,9 @@ declare global {
   }
 }
 
-const getChildren = (element: React.ReactElement<any>): React.ReactNode =>
-  element.props.children;
+const getChildren = (element: React.ReactElement) => element.props.children;
 const getTypes = (children: ReturnType<typeof React.Children.toArray>) =>
-  React.Children.map(
-    children,
-    (child) => (child as React.ReactElement<any>).type
-  );
+  React.Children.map(children, (child) => (child as React.ReactElement).type);
 
 describe("flattenChildren", () => {
   it("should convert child to array", () => {

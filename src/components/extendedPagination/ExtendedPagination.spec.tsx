@@ -1,5 +1,3 @@
-import * as React from "react";
-import "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { ExtendedPaginationBox } from "./ExtendedPagination";
@@ -144,13 +142,13 @@ test("shows only `prev` button for start index 1", () => {
 
 test("shows `prev` and 'next' button", () => {
   getComponent(getParams(0, 100));
-  expect(screen.queryByTestId("next-page")).toBeInTheDocument();
+  expect(screen.getByTestId("next-page")).toBeInTheDocument();
   expect(screen.getByTestId("prev-page")).toBeInTheDocument();
 });
 
 test("shows `prev` and 'next' button for start index 1", () => {
   getComponent(getParams(1, 100));
-  expect(screen.queryByTestId("next-page")).toBeInTheDocument();
+  expect(screen.getByTestId("next-page")).toBeInTheDocument();
   expect(screen.getByTestId("prev-page")).toBeInTheDocument();
 });
 
@@ -168,7 +166,7 @@ test("notifies about changing page for start index 1", () => {
   expect(setPage).toHaveBeenCalledWith(expect.anything());
 });
 
-test("renders without number of results and `per page` for small screens", async () => {
+test("renders without number of results and `per page` for small screens", () => {
   const params = getParams();
   render(
     <ExtendedPaginationBox
@@ -187,7 +185,7 @@ test("renders without number of results and `per page` for small screens", async
   ).not.toBeInTheDocument();
 });
 
-test("renders without number of results and `per page` for small screens for start index 1", async () => {
+test("renders without number of results and `per page` for small screens for start index 1", () => {
   const params = getParams(1);
   render(
     <ExtendedPaginationBox

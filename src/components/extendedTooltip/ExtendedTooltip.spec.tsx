@@ -1,4 +1,3 @@
-import * as React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Button } from "../button";
@@ -16,7 +15,7 @@ const getComponent = () =>
 
 test("shows on hover", async () => {
   getComponent();
-  expect(screen.queryByText(caption)).toBeNull();
+  expect(screen.queryByText(caption)).not.toBeInTheDocument();
   const button = screen.getByRole("button");
   userEvent.hover(button);
   await screen.findByText(caption);

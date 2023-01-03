@@ -1,4 +1,3 @@
-import * as React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Accordion, AccordionHeader, AccordionItem } from "../Accordion";
@@ -19,8 +18,8 @@ test("accordion shows and hides content", () => {
   );
 
   userEvent.click(screen.getByText(data.title));
-  screen.getByText(data.username);
+  expect(screen.getByText(data.username)).toBeInTheDocument();
 
   userEvent.click(screen.getByText(data.description));
-  expect(screen.queryByText(data.username)).toBeNull();
+  expect(screen.queryByText(data.username)).not.toBeInTheDocument();
 });

@@ -16,13 +16,11 @@ export type SelectButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
 
 // Extend props with intrinsic attributes of ul as containerProps
 // ref: https://github.com/kristerkari/react-native-css-modules-with-typescript-example/issues/3#issuecomment-852947240
-export type SelectButtonListProps = {
+export type SelectButtonListProps = React.HTMLAttributes<HTMLUListElement> & {
   children: React.ReactNode;
   status?: SingleColors;
   size?: string;
-} & React.HTMLAttributes<HTMLUListElement>;
-
-type StyledSelectButtons = Pick<SelectButtonListProps, "size" | "status">;
+};
 
 /* stylelint-disable no-descending-specificity */
 function getStatusCss(status: SingleColors) {
@@ -56,7 +54,9 @@ function getStatusCss(status: SingleColors) {
   `;
 }
 
-const StyledSelectButtons = styled.ul<StyledSelectButtons>`
+type StyledSelectButtonsProps = Pick<SelectButtonListProps, "size" | "status">;
+
+const StyledSelectButtons = styled.ul<StyledSelectButtonsProps>`
   margin: 0;
   padding: 0;
   display: inline-flex;
@@ -127,8 +127,8 @@ export function SelectButton({
         value={value}
         name={name}
         className={isActive ? "active" : ""}
-        onClick={() => onClick(value)}
         disabled={disabled}
+        onClick={() => onClick(value)}
         {...props}
       >
         {labelText}
