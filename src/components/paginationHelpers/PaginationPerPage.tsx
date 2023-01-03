@@ -2,7 +2,7 @@ import * as React from "react";
 
 type Props = {
   size: number;
-  set(perPage: number): void;
+  set: (perPage: number) => void;
 };
 
 export function PerPage({ size, set }: Props) {
@@ -13,15 +13,16 @@ export function PerPage({ size, set }: Props) {
       aria-label="pagination"
     >
       <div className="pagination-show">Show:</div>
-      {[10, 20, 50].map((el) => (
+      {[10, 20, 50].map((element) => (
         <button
-          key={el}
-          onClick={() => set(el)}
+          key={element}
+          type="button"
           className={`pagination-link ${
-            el.toString() === size.toString() && `current`
+            element.toString() === size.toString() ? `current` : ""
           }`}
+          onClick={() => set(element)}
         >
-          <span>{el}</span>
+          <span>{element}</span>
         </button>
       ))}
     </nav>

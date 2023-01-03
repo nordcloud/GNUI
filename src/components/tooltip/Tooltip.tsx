@@ -6,7 +6,7 @@ export type Props = {
   caption: React.ReactNode;
   position?: "left" | "right";
   bottom?: boolean;
-  status?: "danger" | "warning" | "success" | "notification";
+  status?: "danger" | "notification" | "success" | "warning";
   children?: React.ReactNode;
   showTimeout?: number;
   hideTimeout?: number;

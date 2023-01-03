@@ -1,5 +1,4 @@
 import React from "react";
-import "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Dropdown } from "./Dropdown";
@@ -23,8 +22,8 @@ function DropdownTestComponent() {
       value={value}
       width="15rem"
       minNumOfOptionsToShowSearchBox={4}
-      onChange={(val) => setValue(val)}
       title="Example title"
+      onChange={(newValue) => setValue(newValue)}
     />
   );
 }
@@ -34,23 +33,23 @@ const getSearchComponentAndReturnSearchBox = () => {
   return screen.getByRole("searchbox");
 };
 
-test("selects option and displays it", async () => {
+test("selects option and displays it", () => {
   render(<DropdownTestComponent />);
 
   userEvent.click(screen.getByRole("button"));
   userEvent.click(screen.getAllByText(TEST_LABEL, { selector: "button" })[0]);
-  expect(screen.queryByText(TEST_LABEL)).toBeInTheDocument();
+  expect(screen.getByText(TEST_LABEL)).toBeInTheDocument();
 });
 
-test("shows no options if no option matches", async () => {
+test("shows no options if no option matches", () => {
   const filterInput = getSearchComponentAndReturnSearchBox();
 
   userEvent.type(filterInput, "randomgibberishvalue");
   expect(screen.queryByText(TEST_LABEL)).not.toBeInTheDocument();
-  expect(screen.queryAllByRole("button")).toHaveLength(1);
+  expect(screen.getByRole("button")).toBeInTheDocument();
 });
 
-test("shows all possible matching options", async () => {
+test("shows all possible matching options", () => {
   const filterInput = getSearchComponentAndReturnSearchBox();
 
   userEvent.type(filterInput, SEARCH_VALUE);
@@ -59,12 +58,12 @@ test("shows all possible matching options", async () => {
   ).toHaveLength(4);
 });
 
-test("filters options properly by value", async () => {
+test("filters options properly by value", () => {
   const filterInput = getSearchComponentAndReturnSearchBox();
 
   userEvent.type(filterInput, "test");
-  expect(screen.queryByText(TEST_LABEL)).toBeInTheDocument();
+  expect(screen.getByText(TEST_LABEL)).toBeInTheDocument();
   expect(
-    screen.queryAllByText((content) => content.startsWith(SEARCH_VALUE))
-  ).toHaveLength(1);
+    screen.getByText((content) => content.startsWith(SEARCH_VALUE))
+  ).toBeInTheDocument();
 });

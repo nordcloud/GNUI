@@ -1,5 +1,4 @@
 import React from "react";
-import "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Button } from "../../button";
@@ -20,14 +19,14 @@ import {
 function TabsTestComponent() {
   const [currentStep, setCurrentStep] = React.useState(0);
   return (
-    <Tabs step={currentStep} handleTab={setCurrentStep} wizard>
+    <Tabs wizard step={currentStep} handleTab={setCurrentStep}>
       <Tab heading={TAB1_LABEL} caption={TAB1_CAPTION}>
         {TAB1_CONTENT}
       </Tab>
       <Tab heading={TAB2_LABEL} caption={TAB2_CAPTION}>
         {TAB2_CONTENT}
       </Tab>
-      <Tab heading={TAB3_LABEL} disabled>
+      <Tab disabled heading={TAB3_LABEL}>
         {TAB3_CONTENT}
       </Tab>
     </Tabs>
@@ -55,21 +54,21 @@ test("tab content is rendered according to active tab", () => {
   const firstTab = screen.getByText(TAB1_LABEL);
   const secondTab = screen.getByText(TAB2_LABEL);
 
-  expect(screen.queryByText(TAB1_CONTENT)).toBeInTheDocument();
+  expect(screen.getByText(TAB1_CONTENT)).toBeInTheDocument();
 
   userEvent.click(secondTab);
-  expect(screen.queryByText(TAB1_CONTENT)).toBeNull();
-  expect(screen.queryByText(TAB2_CONTENT)).toBeInTheDocument();
+  expect(screen.queryByText(TAB1_CONTENT)).not.toBeInTheDocument();
+  expect(screen.getByText(TAB2_CONTENT)).toBeInTheDocument();
 
   userEvent.click(firstTab);
-  expect(screen.queryByText(TAB1_CONTENT)).toBeInTheDocument();
-  expect(screen.queryByText(TAB2_CONTENT)).toBeNull();
+  expect(screen.getByText(TAB1_CONTENT)).toBeInTheDocument();
+  expect(screen.queryByText(TAB2_CONTENT)).not.toBeInTheDocument();
 });
 
 test("custom label is rendered properly", () => {
   render(
     <Tabs step={1} handleTab={() => {}}>
-      <Tab label={<button>{TAB1_LABEL}</button>} />
+      <Tab label={<button type="button">{TAB1_LABEL}</button>} />
     </Tabs>
   );
 
@@ -98,11 +97,11 @@ test("disabled tabs are not interactive", () => {
 
   const thirdTab = screen.getByText(TAB3_LABEL);
 
-  expect(screen.queryByText(TAB1_CONTENT)).toBeInTheDocument();
+  expect(screen.getByText(TAB1_CONTENT)).toBeInTheDocument();
 
   userEvent.click(thirdTab);
-  expect(screen.queryByText(TAB1_CONTENT)).toBeInTheDocument();
-  expect(screen.queryByText(TAB3_CONTENT)).toBeNull();
+  expect(screen.getByText(TAB1_CONTENT)).toBeInTheDocument();
+  expect(screen.queryByText(TAB3_CONTENT)).not.toBeInTheDocument();
 
   expect(thirdTab.parentElement).toHaveAttribute("aria-selected", "false");
 });
@@ -159,7 +158,7 @@ test("button actions are executed on click", () => {
 test("wizard buttons are displayed", () => {
   render(<TabsTestComponent />);
 
-  expect(screen.queryByText("1")).toBeInTheDocument();
-  expect(screen.queryByText("2")).toBeInTheDocument();
-  expect(screen.queryByText("3")).toBeInTheDocument();
+  expect(screen.getByText("1")).toBeInTheDocument();
+  expect(screen.getByText("2")).toBeInTheDocument();
+  expect(screen.getByText("3")).toBeInTheDocument();
 });

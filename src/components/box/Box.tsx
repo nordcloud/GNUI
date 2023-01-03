@@ -18,7 +18,7 @@ type BoxProps = {
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
   children?: React.ReactNode;
-  boxStyle?: "lightGrey" | "grey";
+  boxStyle?: "grey" | "lightGrey";
 };
 
 const changeBoxStyle = (boxStyle: string) => {
@@ -36,6 +36,8 @@ const changeBoxStyle = (boxStyle: string) => {
       padding: ${theme.spacing.spacing03};
       box-shadow: ${theme.shadow.shadow00};
       `;
+    default:
+      return "";
   }
 };
 

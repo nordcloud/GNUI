@@ -8,27 +8,23 @@ export type StyledModalProps = {
 
 export type ModalContentProps = {
   contentMaxHeight?: string;
-  alignText?: "left" | "right" | "center";
+  alignText?: "center" | "left" | "right";
 };
 
 export type ModalAction = {
-  onAction: (
-    event: React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>
-  ) => void;
+  onAction: (event: React.KeyboardEvent | React.MouseEvent) => void;
   label: string;
   disabled?: boolean;
-  severity: "low" | "medium" | "high";
+  severity: "high" | "low" | "medium";
   order: number;
 };
 export type BackgroundProps = {
   isOpen?: boolean;
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 export type ModalProps = {
   isOpen: boolean;
-  onClose?: (
-    event: React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>
-  ) => void;
+  onClose?: (event: React.KeyboardEvent | React.MouseEvent) => void;
   actions: ModalAction[];
   contentLabel: string;
   children: React.ReactNode;

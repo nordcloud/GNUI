@@ -76,13 +76,11 @@ export const getRelations = (tree: Composition[], separator = "->") => {
 const removeObject = (tree: Composition[], uid: string) => {
   const loop = (childsArray: Composition[] | undefined) => {
     if (childsArray) {
-      for (let index in childsArray) {
+      for (const [index] of childsArray.entries()) {
         if (childsArray[index].uid === uid) {
           childsArray.splice(Number(index), 1);
-        } else {
-          if (childsArray[index].children) {
-            loop(childsArray[index].children);
-          }
+        } else if (childsArray[index].children) {
+          loop(childsArray[index].children);
         }
       }
     }
@@ -101,7 +99,7 @@ const attachRelations = (
     children.forEach((child) => {
       relations.forEach((relation) => {
         const relationUids = relation.split(separator);
-        const lastUid = relationUids[relationUids.length - 1];
+        const lastUid = relationUids.at(-1);
 
         if (lastUid === child.uid) {
           child.uid = relation;

@@ -1,4 +1,4 @@
-const AbsoluteLengthUnitSuffix = {
+const absoluteLengthUnitSuffix = {
   Pixel: "px",
   Centimeter: "cm",
   Millimeter: "mm",
@@ -7,10 +7,8 @@ const AbsoluteLengthUnitSuffix = {
   Pica: "pc",
   Point: "pt",
 } as const;
-type AbsoluteLengthUnitSuffix =
-  typeof AbsoluteLengthUnitSuffix[keyof typeof AbsoluteLengthUnitSuffix];
 
-const RelativeLengthUnitSuffix = {
+const relativeLengthUnitSuffix = {
   REM: "rem",
   EM: "em",
   ViewWidth: "vw",
@@ -18,27 +16,23 @@ const RelativeLengthUnitSuffix = {
   ViewMin: "vmin",
   ViewMax: "vmax",
 } as const;
-type RelativeLengthUnitSuffix =
-  typeof RelativeLengthUnitSuffix[keyof typeof RelativeLengthUnitSuffix];
 
-const MultiplicationUnitSuffix = {
+const multiplicationUnitSuffix = {
   Percent: "%",
   Magnification: "",
 } as const;
-type MultiplicationUnitSuffix =
-  typeof MultiplicationUnitSuffix[keyof typeof MultiplicationUnitSuffix];
 
-const LengthUnitSuffix = {
-  ...AbsoluteLengthUnitSuffix,
-  ...RelativeLengthUnitSuffix,
+const lengthUnitSuffix = {
+  ...absoluteLengthUnitSuffix,
+  ...relativeLengthUnitSuffix,
 };
 export type LengthUnitSuffix =
-  typeof LengthUnitSuffix[keyof typeof LengthUnitSuffix];
+  typeof lengthUnitSuffix[keyof typeof lengthUnitSuffix];
 
-const UnitSuffix = {
-  ...LengthUnitSuffix,
-  ...MultiplicationUnitSuffix,
+const unitSuffix = {
+  ...lengthUnitSuffix,
+  ...multiplicationUnitSuffix,
 };
-type UnitSuffix = typeof UnitSuffix[keyof typeof UnitSuffix];
+type UnitSuffix = typeof unitSuffix[keyof typeof unitSuffix];
 
 export type Unit<Suffix extends UnitSuffix> = `${number}${Suffix}`;

@@ -5,7 +5,7 @@ import { SVGIcon } from "../svgicon";
 import { Clear, InputGroup, StyledInput } from "./styles";
 import { StyledInputGroupProps, StyledInputProps } from "./types";
 
-type Props = StyledInputGroupProps & StyledInputProps & SpaceProps;
+type Props = SpaceProps & StyledInputGroupProps & StyledInputProps;
 
 export const Input = React.forwardRef<HTMLInputElement, Props>(
   (
@@ -29,18 +29,18 @@ export const Input = React.forwardRef<HTMLInputElement, Props>(
         {type === "search" && !loading && <SVGIcon name="search" size="smd" />}
         {type === "search" && loading && <Spinner />}
         <StyledInput
+          ref={ref}
           type={type}
-          onClick={onClick}
           popup={popup}
           small={small}
-          ref={ref}
+          onClick={onClick}
           {...props}
         />
         {showClearButton && (
           <Clear
-            onClick={onClear}
-            title={`Clear ${props.name} value`}
+            title={`Clear ${props.name ?? ""} value`}
             role="button"
+            onClick={onClear}
           >
             <SVGIcon size="sm" name="close" />
           </Clear>

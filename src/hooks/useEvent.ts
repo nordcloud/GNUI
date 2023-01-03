@@ -1,17 +1,17 @@
 import * as React from "react";
 
 type Listener = {
-  addEventListener(name: string, handler: (event?: Event) => void): void;
+  addEventListener: (name: string, handler: (event?: Event) => void) => void;
 
-  removeEventListener(name: string, handler: (event?: Event) => void): void;
+  removeEventListener: (name: string, handler: (event?: Event) => void) => void;
 };
 
 type AddEventListener<T> = T extends Listener ? T["addEventListener"] : never;
 
 type UseEventProps<T> = {
   name: Parameters<AddEventListener<T>>[0];
-  handler?: null | Parameters<AddEventListener<T>>[1];
-  target?: null | T | Window;
+  handler?: Parameters<AddEventListener<T>>[1] | null;
+  target?: T | Window | null;
 };
 
 export function useEvent<T extends Listener>({

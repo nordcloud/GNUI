@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export type Placement = "top" | "bottom" | "right" | "left";
-export type Position = "start" | "end" | "center";
+export type Placement = "bottom" | "left" | "right" | "top";
+export type Position = "center" | "end" | "start";
 
 export type Margin = {
   top?: number;
@@ -119,11 +119,9 @@ function getHorizontalAlignmentToCenter(
   const translation = wrapperDimensions.width - tooltipDimensions.width;
   const absoluteTranslation = Math.abs(translation);
 
-  if (translation > 0) {
-    return wrapperDimensions.left + absoluteTranslation / 2;
-  } else {
-    return wrapperDimensions.left - absoluteTranslation / 2;
-  }
+  return translation > 0
+    ? wrapperDimensions.left + absoluteTranslation / 2
+    : wrapperDimensions.left - absoluteTranslation / 2;
 }
 
 function getHorizontalAlignmentToEnd(
@@ -142,11 +140,9 @@ function getVerticalAlignmentToCenter(
   const translation = wrapperDimensions.height - tooltipDimensions.height;
   const absoluteTranslation = Math.abs(translation);
 
-  if (translation > 0) {
-    return wrapperDimensions.top + absoluteTranslation / 2;
-  } else {
-    return wrapperDimensions.top - absoluteTranslation / 2;
-  }
+  return translation > 0
+    ? wrapperDimensions.top + absoluteTranslation / 2
+    : wrapperDimensions.top - absoluteTranslation / 2;
 }
 
 function getVerticalAlignmentToEnd(
@@ -187,5 +183,7 @@ function getPaddingValue({
       return `0 0 0 ${left}px`;
     case "left":
       return `0 ${right}px 0 0`;
+    default:
+      return "";
   }
 }

@@ -1,7 +1,6 @@
 import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { setColor } from "../../utils/setcolor";
-import { Props as TooltipProps } from "./Tooltip";
 
 function setArrowPosition(position: string) {
   switch (position) {
@@ -30,10 +29,12 @@ export const TooltipWrapper = styled.div`
   display: inline-block;
 `;
 
-type StyledTooltipProps = Pick<
-  TooltipProps,
-  "position" | "status" | "minWidth" | "bottom"
->;
+type StyledTooltipProps = {
+  position?: "left" | "right";
+  bottom?: boolean;
+  status?: "danger" | "notification" | "success" | "warning";
+  minWidth?: string;
+};
 
 export const StyledTooltip = styled.div<StyledTooltipProps>`
   position: absolute;

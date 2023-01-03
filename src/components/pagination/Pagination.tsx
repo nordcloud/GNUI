@@ -16,50 +16,50 @@ function Pagination({ set, current, count, size }: IPaginationProps) {
       <ul className="pagination-list">
         <li>
           <button
-            onClick={() => set(0)}
-            onKeyDown={() => set(0)}
             type="button"
             className="pagination-first"
             disabled={current <= 0}
+            onClick={() => set(0)}
+            onKeyDown={() => set(0)}
           >
             <SVGIcon name="chevronLeft" /> <span>First</span>
           </button>
         </li>
 
-        {[...Array(Math.min(Math.ceil(count / size), 5))]
-          .map((_, i) => currentPage + i)
-          .map((i) => {
+        {new Array(Math.min(Math.ceil(count / size), 5))
+          .map((_, index) => currentPage + index)
+          .map((index) => {
             if (currentPage === nPages) {
-              return i - 4;
+              return index - 4;
             }
 
-            return current > 3 ? i - 1 : i;
+            return current > 3 ? index - 1 : index;
           })
-          .filter((i) => i < nPages)
-          .map((i) => {
+          .filter((index) => index < nPages)
+          .map((index) => {
             return (
-              <li key={`p${i}`}>
+              <li key={`p${index}`}>
                 <button
-                  onClick={() => set(size * i)}
-                  onKeyDown={() => set(size * i)}
                   type="button"
-                  disabled={i < 0}
+                  disabled={index < 0}
                   className={`pagination-link ${
-                    i === currentPage && `current`
+                    index === currentPage ? `current` : ""
                   }`}
+                  onClick={() => set(size * index)}
+                  onKeyDown={() => set(size * index)}
                 >
-                  <span>{i < 0 ? "1" : i + 1}</span>
+                  <span>{index < 0 ? "1" : index + 1}</span>
                 </button>
               </li>
             );
           })}
         <li>
           <button
-            onClick={() => set((nPages - 1) * size)}
-            onKeyDown={() => set((nPages - 1) * size)}
             type="button"
             className="pagination-last"
             disabled={currentPage === nPages - 1}
+            onClick={() => set((nPages - 1) * size)}
+            onKeyDown={() => set((nPages - 1) * size)}
           >
             <span>Last</span> <SVGIcon name="chevronRight" />
           </button>

@@ -53,9 +53,7 @@ export function Popover({ children, trigger, alignRight }: PopoverProps) {
   } = useDisclosure();
   const wrapper = React.useRef<HTMLDivElement>(null);
 
-  useClickOutside(wrapper, isVisible, () => {
-    close();
-  });
+  useClickOutside({ ref: wrapper, active: isVisible, onClickAway: close });
 
   return (
     <StyledPopover ref={wrapper}>

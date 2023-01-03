@@ -8,24 +8,25 @@ import { setColor } from "../../utils/setcolor";
 import { Spinner } from "../spinner";
 import { SVGIcon, SVGIconProps } from "../svgicon";
 
-export type ButtonProps<T extends React.ElementType = "button"> = {
-  children?: string | React.ReactNode;
-  severity?: "high" | "medium" | "low";
-  size?: "sm" | "md";
-  icon?: SVGIconProps["name"];
-  iconRight?: boolean;
-  initialState?: string;
-  color?: SingleColors;
-  form?: string;
-  select?: boolean;
-  className?: string;
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  as?: T;
-  linkTo?: string;
-  display?: "flex" | "inline-flex";
-  outline?: boolean;
-  secondary?: boolean;
-} & React.ComponentProps<T>;
+export type ButtonProps<T extends React.ElementType = "button"> =
+  React.ComponentProps<T> & {
+    children?: React.ReactNode | string;
+    severity?: "high" | "low" | "medium";
+    size?: "md" | "sm";
+    icon?: SVGIconProps["name"];
+    iconRight?: boolean;
+    initialState?: string;
+    color?: SingleColors;
+    form?: string;
+    select?: boolean;
+    className?: string;
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    as?: T;
+    linkTo?: string;
+    display?: "flex" | "inline-flex";
+    outline?: boolean;
+    secondary?: boolean;
+  };
 
 const changeSize = (size: string) => {
   switch (size) {
@@ -57,6 +58,8 @@ const changeSize = (size: string) => {
         height: 1rem;
       }
       `;
+    default:
+      return "";
   }
 };
 
@@ -100,6 +103,8 @@ const changeSeverity = (severity: string) => {
         background: ${theme.color.interactive.secondaryActive};
       }
       `;
+    default:
+      return "";
   }
 };
 
@@ -259,7 +264,7 @@ export function Button<T extends React.ElementType = "button">({
   );
 }
 
-type ButtonIconProps = Pick<ButtonProps, "initialState" | "icon">;
+type ButtonIconProps = Pick<ButtonProps, "icon" | "initialState">;
 
 function ButtonIcon({ initialState, icon }: ButtonIconProps) {
   switch (initialState) {

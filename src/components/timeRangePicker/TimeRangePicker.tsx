@@ -129,17 +129,21 @@ export function TimeRangePicker({
 
   const calendarWrapper = React.useRef<HTMLDivElement>(null);
 
-  useClickOutside(calendarWrapper, isCalendarActive, closeCalendar);
+  useClickOutside({
+    ref: calendarWrapper,
+    active: isCalendarActive,
+    onClickAway: closeCalendar,
+  });
 
   // Update dateOptions when Monday of the selectedDate is changed
   React.useEffect(() => {
     setDateOptions(() => getDateOptions(getMonday(selectedDate)));
-  }, [getMonday(selectedDate).toLocaleDateString()]); // eslint-disable-line
+  }, [getMonday(selectedDate).toLocaleDateString()]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Submit timeRange change when selectedDate changed,
   React.useEffect(() => {
     submit();
-  }, [selectedDate.toLocaleDateString()]); // eslint-disable-line
+  }, [selectedDate.toLocaleDateString()]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Submit timeRange change when selectedTimeRange changed,
   // except for custom timeRange change, which will be handled separately
@@ -147,10 +151,10 @@ export function TimeRangePicker({
     if (selectedTimeRange.id !== "custom") {
       submit();
     }
-  }, [selectedTimeRange]); // eslint-disable-line
+  }, [selectedTimeRange]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Function to update dateOptions when arrows are clicked
-  const updateDateOptions = (direction: "forward" | "backward") => {
+  const updateDateOptions = (direction: "backward" | "forward") => {
     if (direction === "backward") {
       setDateOptions((prev) => {
         return getDateOptions(previousMonday(new Date(prev[0].id)));
@@ -165,7 +169,7 @@ export function TimeRangePicker({
   };
 
   // Function to update date range when arrows are clicked
-  const updateCurrentTime = (direction: "forward" | "backward") => {
+  const updateCurrentTime = (direction: "backward" | "forward") => {
     if (direction === "backward") {
       setSelectedDate((prev) => {
         return getDate(selectedDaysRange.label, prev, -1) ?? new Date();
@@ -202,19 +206,19 @@ export function TimeRangePicker({
                 name={timeRangeOption.id}
                 value={timeRangeOption.id}
                 labelText={timeRangeOption.label}
+                isActive={timeRangeOption.id === selectedDaysRange.id}
                 onClick={() => {
                   setSelectedDaysRange(timeRangeOption);
                   submit();
                 }}
-                isActive={timeRangeOption.id === selectedDaysRange.id}
               />
             ))}
           </UnifiedMultipleSelect>
         </SelectWrap>
         <Row css={{ alignItems: "center" }}>
           <StyledButton
-            onClick={() => updateCurrentTime("backward")}
             icon="chevronLeft"
+            onClick={() => updateCurrentTime("backward")}
           />
           <div className="date-options">
             <DatepickerContainer ref={calendarWrapper}>
@@ -237,8 +241,8 @@ export function TimeRangePicker({
             </DatepickerContainer>
           </div>
           <StyledButton
-            onClick={() => updateCurrentTime("forward")}
             icon="chevronRight"
+            onClick={() => updateCurrentTime("forward")}
           />
         </Row>
       </FlexContainer>
@@ -248,9 +252,9 @@ export function TimeRangePicker({
     <>
       <Row className="date-picker">
         <IconButton
-          onClick={() => updateDateOptions("backward")}
           severity="medium"
           icon="chevronLeft"
+          onClick={() => updateDateOptions("backward")}
         />
         <div className="date-options">
           <UnifiedMultipleSelect size="small">
@@ -260,22 +264,22 @@ export function TimeRangePicker({
                 name={dateOption.id}
                 value={dateOption.id}
                 labelText={getLabelContent(dateOption)}
-                onClick={() => setSelectedDate(() => new Date(dateOption.id))}
                 isActive={dateOption.id === selectedDate.toDateString()}
+                onClick={() => setSelectedDate(() => new Date(dateOption.id))}
               />
             ))}
           </UnifiedMultipleSelect>
         </div>
         <IconButton
-          onClick={() => updateDateOptions("forward")}
           severity="medium"
           icon="chevronRight"
+          onClick={() => updateDateOptions("forward")}
         />
         <DatepickerContainer ref={calendarWrapper}>
           <IconButton
-            onClick={toggleCalendar}
             severity="medium"
             icon="calendar"
+            onClick={toggleCalendar}
           />
           <Datepicker className="daypicker-panel">
             {isCalendarActive && (
@@ -299,8 +303,8 @@ export function TimeRangePicker({
               name={timeRangeOption.id}
               value={timeRangeOption.id}
               labelText={`${timeRangeOption.start} - ${timeRangeOption.end}`}
-              onClick={() => setSelectedTimeRange(() => timeRangeOption)}
               isActive={timeRangeOption.id === selectedTimeRange.id}
+              onClick={() => setSelectedTimeRange(() => timeRangeOption)}
             />
           ))}
           <SelectButton
@@ -308,6 +312,7 @@ export function TimeRangePicker({
             name="custom"
             value="custom"
             labelText="custom"
+            isActive={selectedTimeRange.id === "custom"}
             onClick={() =>
               setSelectedTimeRange((prev) => {
                 return {
@@ -316,7 +321,6 @@ export function TimeRangePicker({
                 };
               })
             }
-            isActive={selectedTimeRange.id === "custom"}
           />
         </UnifiedMultipleSelect>
         <CustomTimeRangeSelector isVisible={showCustomTimeRange}>
@@ -351,7 +355,7 @@ export function TimeRangePicker({
               });
             }}
           />
-          <Button severity="high" onClick={submit} size="sm">
+          <Button severity="high" size="sm" onClick={submit}>
             Apply
           </Button>
         </CustomTimeRangeSelector>
@@ -380,7 +384,7 @@ const getDateOptions = (monday: Date): DateOption[] => {
 
     return {
       id: currentDate.toDateString(),
-      weekday: weekday,
+      weekday,
       day: currentDate.getDate(),
       month: currentDate.getMonth() + 1,
       year: currentDate.getFullYear(),
@@ -410,7 +414,7 @@ const getDateString = (date: Date): string => {
 
 const getDateWithTime = (date: Date, time: string): Date => {
   const copiedDate = new Date(date);
-  const timeNumbers = time.split(":").map((val) => parseInt(val));
+  const timeNumbers = time.split(":").map((value) => parseInt(value, 10));
 
   return new Date(copiedDate.setHours(timeNumbers[0], timeNumbers[1], 0));
 };

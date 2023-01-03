@@ -11,7 +11,7 @@ type PageTitleProps = {
 
 type PageTitleBreadcrumbsProps = {
   title: string;
-  list: Array<BreadcrumbsList>;
+  list: BreadcrumbsList[];
 };
 
 const PageTitleWrapper = styled.div`

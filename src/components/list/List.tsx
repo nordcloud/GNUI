@@ -10,17 +10,17 @@ type StyledListProps = {
   spacing?: string;
 };
 
-type INestedListItem = {
-  description?: string | number;
-  title: string | number;
+type INestedListItem = StyledListProps & {
+  description?: number | string;
+  title: number | string;
   rowChildren?: IListItem[];
-} & StyledListProps;
+};
 
-type IListItem = Array<string | number> | INestedListItem;
+type IListItem = (number | string)[] | INestedListItem;
 
-type IListProps = {
+type IListProps = StyledListProps & {
   items?: IListItem[];
-} & StyledListProps;
+};
 
 const StyledListItemTitle = styled.span`
   width: 11.25rem;
@@ -47,10 +47,10 @@ const StyledList = styled.ul`
 
 const getListSpacing = (props: StyledListProps): string => {
   if (props.horizontal) {
-    return props.spacing ? props.spacing : `0 ${theme.spacing.spacing04} 0 0`;
+    return props.spacing ?? `0 ${theme.spacing.spacing04} 0 0`;
   }
 
-  return props.spacing ? props.spacing : `0 0 ${theme.spacing.spacing02} 0`;
+  return props.spacing ?? `0 0 ${theme.spacing.spacing02} 0`;
 };
 
 const StyledListItem = styled.li`
@@ -76,29 +76,28 @@ const isNested = (item: IListItem): item is INestedListItem =>
 export function List(props: IListProps & SpaceProps) {
   return (
     <StyledList {...props}>
-      {props.items &&
-        props.items.map((item, idx) => {
-          // Nested object
-          if (isNested(item)) {
-            return (
-              <React.Fragment key={`id-${idx}`}>
-                <ListItem {...props} {...item} key={idx} />
-                <List
-                  horizontal={props.horizontal}
-                  unordered={props.unordered}
-                  items={item.rowChildren}
-                />
-              </React.Fragment>
-            );
-          }
-
-          // List of strings or numbers
+      {props.items?.map((item, index) => {
+        // Nested object
+        if (isNested(item)) {
           return (
-            <StyledListItem key={idx} {...props}>
-              {item}
-            </StyledListItem>
+            <React.Fragment key={`id-${index}`}>
+              <ListItem {...props} {...item} key={index} />
+              <List
+                horizontal={props.horizontal}
+                unordered={props.unordered}
+                items={item.rowChildren}
+              />
+            </React.Fragment>
           );
-        })}
+        }
+
+        // List of strings or numbers
+        return (
+          <StyledListItem key={index} {...props}>
+            {item}
+          </StyledListItem>
+        );
+      })}
     </StyledList>
   );
 }
