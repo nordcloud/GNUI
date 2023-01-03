@@ -195,11 +195,13 @@ export const customMultiColorStyles: StylesConfig<SelectColoredOption, true> = {
   },
 };
 
+// Removing `React.` breaks the Typecheck
+/* eslint-disable @typescript-eslint/no-unnecessary-qualifier */
 // Redeclare forwardRef to handle generics
 declare module "react" {
   function forwardRef<T, P = Record<string, unknown>>(
-    render: (props: P, ref: Ref<T>) => ReactElement | null
-  ): (props: P & RefAttributes<T>) => ReactElement | null;
+    render: (props: P, ref: React.Ref<T>) => React.ReactElement | null
+  ): (props: P & React.RefAttributes<T>) => React.ReactElement | null;
 }
 
 function SelectInner<
