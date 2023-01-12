@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", ":separateMultipleMajorReleases", ":label(renovate)", "schedule:monthly"],
+  "extends": ["config:base", ":separateMultipleMajorReleases", "schedule:monthly"],
   "enabledManagers": ["npm"],
   "labels": ["dependencies"],
   "node": {
