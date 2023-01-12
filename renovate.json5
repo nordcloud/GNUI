@@ -6,6 +6,9 @@
   "node": {
     "enabled": false
   },
+  "npm": {
+    "enabled": false
+  },
   "pin": {
     "enabled": false
   },
