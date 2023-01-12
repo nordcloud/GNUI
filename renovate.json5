@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", ":separateMultipleMajorReleases", "schedule:monthly"],
+  "extends": ["config:base", ":separateMultipleMajorReleases", "schedule:monthly", ":automergeDisabled"],
   "enabledManagers": ["npm"],
   "labels": ["dependencies"],
   "node": {
@@ -70,9 +70,16 @@
       ]
     },
     {
+      "groupName": "Styled Components",
+      "matchPackageNames": [
+        "styled-components",
+        "@types/styled-components"
+      ]
+    },
+    {
       "matchDepTypes": ["devDependencies"],
       "matchPackagePatterns": ["eslint", "prettier"],
-      "automerge": true
+      "groupName": "ESLint and Prettier"
     }
   ],
   "ignoreDeps": [
