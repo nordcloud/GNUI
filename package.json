@@ -119,7 +119,6 @@
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^16.14.0",
     "rollup": "^3.10.0",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-typescript2": "^0.34.1",
     "storybook": "^6.5.12",
     "storybook-addon-turbo-build": "^1.1.0",

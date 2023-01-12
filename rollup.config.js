@@ -1,9 +1,13 @@
-import peerDepsExternal from "rollup-plugin-peer-deps-external";
+import * as fs from "fs";
+import * as path from "path";
+
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "rollup-plugin-typescript2";
 
-const packageJson = require("./package.json");
+const packageJson = JSON.parse(
+  fs.readFileSync(path.join(__dirname, "package.json"))
+);
 
 /** @type {import("rollup").RollupOptions} */
 export default {
@@ -32,8 +36,11 @@ export default {
         ],
       },
     }),
-    peerDepsExternal(),
     resolve(),
     commonjs(),
+  ],
+  external: [
+    ...Object.keys(packageJson.dependencies ?? {}),
+    ...Object.keys(packageJson.peerDependencies ?? {}),
   ],
 };
