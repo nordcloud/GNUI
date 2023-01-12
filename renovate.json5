@@ -1,0 +1,94 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:base", ":separateMultipleMajorReleases", ":label(renovate)", "schedule:monthly"],
+  "enabledManagers": ["npm"],
+  "labels": ["dependencies"],
+  "node": {
+    "enabled": false
+  },
+  "pin": {
+    "enabled": false
+  },
+  "prConcurrentLimit": 8,
+  "rangeStrategy": "bump",
+  "rebaseWhen": "conflicted",
+  "reviewers": ["@nordcloud/core-frontend-reviewers"],
+  "packageRules": [
+    {
+      "depTypeList": ["peerDependencies"],
+      "enabled": false
+    },
+    {
+      "packageNames": ["node"],
+      "enabled": false
+    },
+    {
+      "matchUpdateTypes": ["patch"],
+      "excludePackagePatterns": ["@storybook", "storybook"],
+      "extends": ["schedule:monthly"],
+      "groupName": "Monthly patch updates"
+    },
+    {
+      "matchPackagePatterns": ["@storybook", "storybook"],
+      "extends": ["schedule:monthly"],
+      "groupName": "Storybook updates"
+    },
+    {
+      "groupName": "Styled System",
+      "matchPackageNames": [
+        "styled-system",
+        "@types/styled-system"
+      ]
+    },
+    {
+      "groupName": "Jest",
+      "matchPackageNames": [
+        "@types/jest",
+        "jest",
+        "jest-environment-jsdom",
+        "ts-jest"
+      ]
+    },
+    {
+      "groupName": "Rollup",
+      "matchPackageNames": [
+        "@rollup/plugin-commonjs",
+        "@rollup/plugin-node-resolve",
+        "rollup",
+        "rollup-plugin-peer-deps-external",
+        "rollup-plugin-typescript2"
+      ]
+    },
+    {
+      "groupName": "React Helmet",
+      "matchPackageNames": [
+        "react-helmet",
+        "@types/react-helmet"
+      ]
+    },
+    {
+      "matchDepTypes": ["devDependencies"],
+      "matchPackagePatterns": ["eslint", "prettier"],
+      "automerge": true
+    }
+  ],
+  "ignoreDeps": [
+    // Major effort required to upgrade to latest Stylelint, need to wait for `eslint-config-pat`
+    "stylelint",
+    "stylelint-config-recommended",
+    "stylelint-config-styled-components",
+    "stylelint-processor-styled-components",
+
+    // manually bumping
+    "node",
+    "typescript",
+
+    // dep updates blocked by React 18
+    "@testing-library/react",
+    "@testing-library/user-event",
+    "@types/react",
+    "@types/react-dom",
+    "react",
+    "react-dom"
+  ]
+}
