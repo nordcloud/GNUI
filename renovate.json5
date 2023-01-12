@@ -6,9 +6,6 @@
   "node": {
     "enabled": false
   },
-  "npm": {
-    "enabled": false
-  },
   "pin": {
     "enabled": false
   },
@@ -91,6 +88,7 @@
 
     // manually bumping
     "node",
+    "npm",
     "typescript",
 
     // dep updates blocked by React 18
