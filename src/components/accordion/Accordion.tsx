@@ -121,9 +121,9 @@ export function AccordionHeader({
   return (
     <>
       <StyledHeader
-        onClick={() => children && toggle()}
         isOpen={isOpen}
         small={small}
+        onClick={() => children && toggle()}
       >
         {children && (
           <HeaderIcon animate={isOpen}>

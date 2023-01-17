@@ -164,4 +164,4 @@ const ContentWrapper = styled.div`
   z-index: ${theme.zindex.sticky};
 `;
 
-export type ExtendedPopoverAction = "hover" | "click";
+export type ExtendedPopoverAction = "click" | "hover";

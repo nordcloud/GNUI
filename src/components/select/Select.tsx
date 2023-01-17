@@ -63,6 +63,7 @@ const SelectContainer = styled.div`
     }
     &__menu {
       box-shadow: ${theme.shadow.shadow04};
+      z-index: ${theme.zindex.dropdown};
     }
     &__option {
       &--is-selected {

@@ -244,15 +244,15 @@ export function Tab({
 
   return (
     <TabContainer
+      key={index}
       className={className}
-      onClick={onClick}
       role="tab"
       aria-selected={ariaSelected}
       aria-controls={`tabpanel-${index + 1}`}
-      key={index}
       width={width}
       disabled={disabled}
       wizard={wizard}
+      onClick={onClick}
     >
       {wizard ? (
         <Step {...(isActive && index <= activeTab && { className: "dark" })}>
@@ -271,7 +271,7 @@ type TabsProps = {
   name?: string;
   caption?: string;
   width?: string;
-  children: TabsChild | (TabsChild | TabsChild[])[];
+  children: (TabsChild | TabsChild[])[] | TabsChild;
   handleTab: (key: number) => void;
   step: number;
 };
@@ -299,8 +299,8 @@ export function Tabs({ name, wizard, children, handleTab, step }: TabsProps) {
               caption={caption}
               disabled={disabled}
               buttonsJustify={buttonsJustify}
-              onClick={disabled ? undefined : () => handleTab(key)}
               label={label}
+              onClick={disabled ? undefined : () => handleTab(key)}
             />
           );
         })}
