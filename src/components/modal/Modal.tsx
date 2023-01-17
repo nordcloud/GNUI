@@ -12,6 +12,7 @@ import {
   StyledModalProps,
   BackgroundProps,
 } from "./types";
+
 const MODAL_ACTION_HEIGHT = "5.625rem";
 
 export const StyledModal = styled.div<StyledModalProps>`
@@ -116,7 +117,7 @@ export const ModalHeader = styled.div`
   }
 `;
 
-type Props = ModalProps & ModalBoxProps & ModalContentProps;
+type Props = ModalBoxProps & ModalContentProps & ModalProps;
 
 export function Modal({
   children,
@@ -144,8 +145,8 @@ export function Modal({
                 severity="low"
                 size="md"
                 icon="close"
-                onClick={onClose}
                 title="Close"
+                onClick={onClose}
               />
             </ModalHeader>
             <ModalContent
@@ -158,13 +159,13 @@ export function Modal({
               <ModalActions>
                 {actions
                   .sort((a, b) => a.order || 0 - b.order || 0)
-                  .map((action, idx) => (
+                  .map((action, index) => (
                     <ModalAction
+                      key={`modal-action-${index}`}
                       title={action.label}
-                      key={`modal-action-${idx}`}
                       severity={action.severity}
-                      onClick={action.onAction}
                       disabled={action.disabled}
+                      onClick={action.onAction}
                     >
                       {action.label}
                     </ModalAction>

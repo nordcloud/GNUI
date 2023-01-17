@@ -30,7 +30,7 @@ function getBorder() {
 }
 
 export const NavigationBarWrapper = styled.nav<
-  Omit<Props, "items"> & ExpandedProps
+  ExpandedProps & Omit<Props, "items">
 >`
   display: flex;
   flex-wrap: nowrap;
@@ -69,7 +69,9 @@ function getTransition({
   expandableConfig?: ExpandableConfig;
 }) {
   const transition = expanded
-    ? `width ${expandableConfig?.duration} ${expandableConfig?.timingFunction}`
+    ? `width ${expandableConfig?.duration ?? ""} ${
+        expandableConfig?.timingFunction ?? ""
+      }`
     : "unset";
   return css`
     transition: ${transition};

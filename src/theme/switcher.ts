@@ -8,8 +8,7 @@ export enum THEME_OPTIONS {
 }
 
 function getPreferredBrowserTheme() {
-  return window.matchMedia &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches
+  return window.matchMedia?.("(prefers-color-scheme: dark)").matches
     ? THEME_OPTIONS.DARK
     : THEME_OPTIONS.LIGHT;
 }
@@ -30,8 +29,8 @@ export const useThemeSwitcher = () => {
   React.useEffect(() => {
     const newTheme = currentTheme === THEME_OPTIONS.DARK ? dark : light;
 
-    newTheme.forEach((el) => {
-      document.documentElement.style.setProperty(el[0], el[1]);
+    newTheme.forEach((element) => {
+      document.documentElement.style.setProperty(element[0], element[1]);
     });
   }, [currentTheme]);
 

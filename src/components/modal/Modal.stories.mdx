@@ -1,4 +1,5 @@
 import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { useDisclosure } from "../../hooks";
 import { Modal, ModalConfirm } from ".";
 import { Button } from "../button";
 
@@ -33,14 +34,13 @@ import { Button } from "../button";
 <Canvas>
   <Story name="basic modal">
     {() => {
-      const [isOpen, setOpen] = React.useState(false);
-      const update = () => setOpen(!isOpen);
+      const { isOpen, open, close } = useDisclosure();
       return (
         <>
-          <Button onClick={update}>Open modal</Button>
+          <Button onClick={open}>Open modal</Button>
           <Modal
             isOpen={isOpen}
-            onClose={update}
+            onClose={close}
             contentLabel={"Modal title"}
             appId="#root"
             alignText="center"
@@ -60,26 +60,25 @@ import { Button } from "../button";
 <Canvas>
   <Story name="modal with actions">
     {() => {
-      const [isOpen, setOpen] = React.useState(false);
-      const update = () => setOpen(!isOpen);
+      const { isOpen, open, close } = useDisclosure();
       return (
         <>
-          <Button onClick={update}>Open modal</Button>
+          <Button onClick={open}>Open modal</Button>
           <Modal
             isOpen={isOpen}
-            onClose={update}
+            onClose={close}
             contentLabel={"Modal title"}
             appId="#root"
             actions={[
               {
                 order: 0,
-                onAction: update,
+                onAction: close,
                 label: "Second action",
                 severity: "low",
               },
               {
                 order: 1,
-                onAction: update,
+                onAction: close,
                 label: "Primary action",
                 severity: "high",
               },
@@ -100,17 +99,16 @@ import { Button } from "../button";
 <Canvas>
   <Story name="confirm modal">
     {() => {
-      const [isOpen, setOpen] = React.useState(false);
-      const update = () => setOpen(!isOpen);
+      const { isOpen, open, close } = useDisclosure();
       const action = () => alert("Deleted");
       return (
         <>
-          <Button onClick={update}>Open modal</Button>
+          <Button onClick={open}>Open modal</Button>
           <ModalConfirm
             contentLabel="Account"
             isOpen={isOpen}
             confirm={action}
-            onClose={update}
+            onClose={close}
             actionLabel="Delete"
           >
             Do you really want to delete account?

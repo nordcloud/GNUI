@@ -1,8 +1,3 @@
-import theme from "./theme";
-import { useThemeSwitcher, THEME_OPTIONS } from "./theme/switcher";
-export * from "./components";
-export * from "./theme/globals";
-export { theme, useThemeSwitcher, THEME_OPTIONS };
 export {
   Container,
   Row,
@@ -11,3 +6,9 @@ export {
   Visible,
 } from "react-awesome-styled-grid";
 export { DayPicker } from "react-day-picker";
+
+export * from "./components";
+export * from "./theme/globals";
+
+export { default as theme } from "./theme";
+export { useThemeSwitcher, THEME_OPTIONS } from "./theme/switcher";

@@ -18,11 +18,7 @@ import { SidebarProps, SidebarButtonProps } from "./types";
 
 export function CloseButton({ onClick, icon, children }: SidebarButtonProps) {
   return (
-    <SidebarCloseButton
-      severity="low"
-      onClick={onClick}
-      title={"Close sidebar"}
-    >
+    <SidebarCloseButton severity="low" title="Close sidebar" onClick={onClick}>
       {children ? children : <SVGIcon name={icon || "close"} />}
     </SidebarCloseButton>
   );
@@ -42,8 +38,8 @@ export function Sidebar({
 }: SidebarProps) {
   React.useEffect(() => {
     if (isOpen) {
-      const handleKeyDown = (e: KeyboardEvent) => {
-        if (e.key === "Escape") {
+      const handleKeyDown = (event: KeyboardEvent) => {
+        if (event.key === "Escape") {
           onClick();
         }
       };
@@ -58,7 +54,7 @@ export function Sidebar({
 
   return (
     <>
-      <Background onClick={onClick} isOpen={isOpen} />
+      <Background isOpen={isOpen} onClick={onClick} />
       <SidebarMenu isOpen={isOpen} side={side} reverse={side === "onLeft"}>
         <Inner isOpen={isOpen} {...props}>
           {isOpen && (
@@ -77,9 +73,9 @@ export function Sidebar({
                   severity="low"
                   size="md"
                   icon="close"
-                  onClick={onClick}
                   title="Close sidebar"
                   type="button"
+                  onClick={onClick}
                 />
               </Header>
               <Container style={contentStyles}>
@@ -89,7 +85,7 @@ export function Sidebar({
             </>
           )}
         </Inner>
-        {isOpen && <CloseLayer onClick={onClick} isOpen={isOpen} {...props} />}
+        {isOpen && <CloseLayer isOpen={isOpen} onClick={onClick} {...props} />}
       </SidebarMenu>
     </>
   );

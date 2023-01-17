@@ -1,5 +1,3 @@
-import * as React from "react";
-import "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Button } from "../button";
@@ -46,7 +44,7 @@ const isPopoverShown = (
   } else {
     userEvent.click(button);
   }
-  expect(screen.queryByText(TEST_LABEL)).toBeInTheDocument();
+  expect(screen.getByText(TEST_LABEL)).toBeInTheDocument();
 
   return { button };
 };

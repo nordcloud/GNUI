@@ -6,16 +6,17 @@ export type IPaginationBoxProps = {
   setPage: (page: number) => void;
   small?: boolean;
   sidebar?: boolean;
+  firstPage?: number;
 };
 
 export type IPaginationProps = {
-  set(start: number): void;
+  set: (start: number) => void;
   current: number;
   count: number;
   size: number;
+  firstPage?: number;
 };
 
-export type IExtendedPaginationProps = { from: number } & Omit<
-  IPaginationProps,
-  "current"
->;
+export type IExtendedPaginationProps = Omit<IPaginationProps, "current"> & {
+  from: number;
+};

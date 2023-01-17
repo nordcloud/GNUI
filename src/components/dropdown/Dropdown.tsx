@@ -1,6 +1,6 @@
 import * as React from "react";
 import { SpaceProps } from "styled-system";
-import { useClickOutside } from "../../hooks";
+import { useClickOutside, useDisclosure } from "../../hooks";
 import theme from "../../theme";
 import { Input } from "../input";
 import { Spacer } from "../spacer";
@@ -18,8 +18,8 @@ import {
 } from "./styles";
 import { Option } from "./types";
 
-type DropdownProps = SpaceProps &
-  SizeProps & {
+type DropdownProps = SizeProps &
+  SpaceProps & {
     name: string;
     options: Option[];
     onChange: (value: string) => void;
@@ -30,8 +30,8 @@ type DropdownProps = SpaceProps &
     children?: React.ReactNode;
     title?: string;
     minNumOfOptionsToShowSearchBox?: number;
-    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-    onMouseLeave?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    onMouseLeave?: (event: React.MouseEvent<HTMLButtonElement>) => void;
     onClear?: () => void;
   };
 
@@ -47,13 +47,11 @@ export function Dropdown({
   size,
   ...props
 }: DropdownProps) {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const { isOpen, close, toggle } = useDisclosure();
   const [search, setSearch] = React.useState("");
   const wrapper = React.useRef<HTMLDivElement>(null);
 
-  useClickOutside(wrapper, isOpen, () => {
-    setIsOpen(false);
-  });
+  useClickOutside({ ref: wrapper, active: isOpen, onClickAway: close });
 
   const displayValue: Option | undefined = options.find((option) => {
     if (typeof option === "string") {
@@ -72,22 +70,22 @@ export function Dropdown({
     options && options.length >= minNumOfOptionsToShowSearchBox;
 
   return (
-    <DropdownWrapper value={value} ref={wrapper} {...props}>
+    <DropdownWrapper ref={wrapper} value={value} {...props}>
       <DropdownButton
         name={name}
-        onClick={() => !disabled && setIsOpen(!isOpen)}
         disabled={disabled}
         title={title}
         type="button"
         size={size}
+        onClick={() => !disabled && toggle()}
       >
         <Inner>{innerText}</Inner>
         {showClearButton && (
           <Clear
-            onClick={() => onClear && onClear()}
             title={`Clear ${name} value`}
             role="button"
             size={size}
+            onClick={() => onClear?.()}
           >
             <SVGIcon size="sm" name="close" />
           </Clear>
@@ -102,46 +100,45 @@ export function Dropdown({
             <>
               <Input
                 type="search"
+                value={search}
                 name="filter"
+                onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                  setSearch(event.target.value)
+                }
+                small
                 // eslint-disable-next-line jsx-a11y/no-autofocus
                 autoFocus
-                small
-                value={search}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                  setSearch(e.target.value)
-                }
               />
               <Spacer height={theme.spacing.spacing02} />
             </>
           )}
-          {options &&
-            options
-              .filter((option) =>
-                JSON.stringify(option)
-                  .toLowerCase()
-                  .includes(search.toLowerCase())
-              )
-              .map((option: Option) => {
-                const optionValue = getOptionValue(option);
+          {options
+            ?.filter((option) =>
+              JSON.stringify(option)
+                .toLowerCase()
+                .includes(search.toLowerCase())
+            )
+            .map((option: Option) => {
+              const optionValue = getOptionValue(option);
 
-                return (
-                  <DropdownItem
-                    title={optionValue}
-                    value={optionValue}
-                    key={optionValue}
-                    onClick={() => {
-                      // default empty string is used to satisfy typescript, we're lacking proper typing in props and getOptionValue
-                      onChange(optionValue ?? "");
-                      setIsOpen(!isOpen);
-                      setSearch("");
-                    }}
-                    type="button"
-                    size={size}
-                  >
-                    {getOptionValue(option, "label") || optionValue}
-                  </DropdownItem>
-                );
-              })}
+              return (
+                <DropdownItem
+                  key={optionValue}
+                  title={optionValue}
+                  value={optionValue}
+                  type="button"
+                  size={size}
+                  onClick={() => {
+                    // default empty string is used to satisfy typescript, we're lacking proper typing in props and getOptionValue
+                    onChange(optionValue ?? "");
+                    toggle();
+                    setSearch("");
+                  }}
+                >
+                  {getOptionValue(option, "label") || optionValue}
+                </DropdownItem>
+              );
+            })}
         </DropdownMenu>
       )}
     </DropdownWrapper>

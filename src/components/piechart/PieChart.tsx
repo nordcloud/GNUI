@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import { space, SpaceProps } from "styled-system";
 import theme from "../../theme";
 
-type Color = "danger" | "warning" | "success" | "notification";
+type Color = "danger" | "notification" | "success" | "warning";
 
 const setColorBgr = (color: Color) => {
   switch (color) {
@@ -15,6 +15,8 @@ const setColorBgr = (color: Color) => {
       return theme.color.support.greenInverse;
     case "notification":
       return theme.color.support.blueInverse;
+    default:
+      return "currentcolor";
   }
 };
 
@@ -28,6 +30,8 @@ const setColorProgress = (color: Color) => {
       return theme.color.support.green;
     case "notification":
       return theme.color.support.blue;
+    default:
+      return "currentcolor";
   }
 };
 
@@ -107,13 +111,13 @@ const StyledCircleProgress = styled.circle<{ color?: Color; size?: number }>`
     `}
 `;
 
-type Props = {
+type Props = SpaceProps & {
   size: number;
   progress: number;
   strokeWidth: number;
   color?: Color;
   children?: React.ReactNode;
-} & SpaceProps;
+};
 
 export function PieChart({
   size,

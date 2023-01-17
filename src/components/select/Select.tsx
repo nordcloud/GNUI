@@ -1,11 +1,10 @@
 import * as React from "react";
 import { rgba, getContrast } from "polished";
-import ReactSelect from "react-select";
-import type {
-  SelectInstance,
-  GroupBase,
-  StylesConfig,
-  Props as ReactSelectProps,
+import ReactSelect, {
+  type SelectInstance,
+  type GroupBase,
+  type StylesConfig,
+  type Props as ReactSelectProps,
 } from "react-select";
 import styled from "styled-components";
 import theme from "../../theme";
@@ -188,7 +187,7 @@ export const customMultiColorStyles: StylesConfig<SelectColoredOption, true> = {
 
     return {
       ...styles,
-      color: color,
+      color,
       ":hover": {
         backgroundColor: color,
         color: "white",
@@ -197,6 +196,8 @@ export const customMultiColorStyles: StylesConfig<SelectColoredOption, true> = {
   },
 };
 
+// Removing `React.` breaks the Typecheck
+/* eslint-disable @typescript-eslint/no-unnecessary-qualifier */
 // Redeclare forwardRef to handle generics
 declare module "react" {
   function forwardRef<T, P = Record<string, unknown>>(
@@ -221,13 +222,13 @@ function SelectInner<
         ref={ref}
         className="react-select-container"
         classNamePrefix="react-select"
+        styles={styles}
         theme={(reactSelectTheme) => ({
           ...reactSelectTheme,
           colors: {
             ...reactSelectTheme.colors,
           },
         })}
-        styles={styles}
         {...props}
       />
     </SelectContainer>

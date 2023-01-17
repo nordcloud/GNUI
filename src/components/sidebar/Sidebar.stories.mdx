@@ -1,4 +1,5 @@
 import { Meta, Story, Canvas, Title, Description } from "@storybook/addon-docs";
+import { useDisclosure } from "../../hooks";
 import { Button } from "../button";
 import { Sidebar } from ".";
 import { Container, Row, Col } from "react-awesome-styled-grid";
@@ -13,37 +14,35 @@ import { PaginationBox } from "../pagination/Pagination.tsx";
 
 ## Sidebar properties
 
-| properties         | required | type                                                      | description |
-| -----------------: | :------: | :-------------------------------------------------------- | :---------- |
-|   children         |  false   | <code>`ReactElement<any>`</code>                          |             |
-|      title         |  false   | string                                                    |             |
-|    caption         |  false   | string                                                    |             |
-|     isOpen         |  false   | boolean                                                   |             |
-|       side         |  false   | <code>onLeft</code>, <code>onRight</code>                 |             |
-|      width         |  false   | number, string                                            |             |
-|    onClick         |  false   | <code>(e: any) => void</code>                             |             |
-|     footer         |  false   | <code>`ReactElement<any>`</code>                          |             |
-|     headerStyles   |  false   | JSON object containing desired CSS for the header part    |             |
-|     contentStyles  |  false   | JSON object containing desired CSS for the content part   |             |
+|    properties | required | type                                                    | description |
+| ------------: | :------: | :------------------------------------------------------ | :---------- |
+|      children |  false   | <code>`ReactElement<any>`</code>                        |             |
+|         title |  false   | string                                                  |             |
+|       caption |  false   | string                                                  |             |
+|        isOpen |  false   | boolean                                                 |             |
+|          side |  false   | <code>onLeft</code>, <code>onRight</code>               |             |
+|         width |  false   | number, string                                          |             |
+|       onClick |  false   | <code>(e: any) => void</code>                           |             |
+|        footer |  false   | <code>`ReactElement<any>`</code>                        |             |
+|  headerStyles |  false   | JSON object containing desired CSS for the header part  |             |
+| contentStyles |  false   | JSON object containing desired CSS for the content part |             |
 
 ### default
 
 <Canvas>
   <Story name="default">
     {() => {
-      const [isOpen, setIsOpen] = React.useState(false);
+      const { isOpen, open, close } = useDisclosure();
       return (
         <Container>
           <Row justify="center">
-            <Button onClick={() => setIsOpen(!isOpen)}>
-              Click button to open sidebar
-            </Button>
+            <Button onClick={open}>Click button to open sidebar</Button>
           </Row>
           <Sidebar
             title="Default sidebar"
             caption="Default sidebar caption"
             isOpen={isOpen}
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={close}
           >
             Sidebar Content
           </Sidebar>
@@ -60,24 +59,22 @@ You can pass Buttons to footer, and it will displayed at the bottom of the Sideb
 <Canvas>
   <Story name="footer">
     {() => {
-      const [isOpen, setIsOpen] = React.useState(false);
+      const { isOpen, open, close } = useDisclosure();
       const Footer = () => (
         <>
-          <Button onClick={() => setIsOpen(!isOpen)}>Cancel</Button>
+          <Button onClick={close}>Cancel</Button>
           <Button>Update</Button>
         </>
       );
       return (
         <Container>
           <Row justify="center">
-            <Button onClick={() => setIsOpen(!isOpen)}>
-              Click button to open sidebar
-            </Button>
+            <Button onClick={open}>Click button to open sidebar</Button>
           </Row>
           <Sidebar
             title="Default sidebar"
             isOpen={isOpen}
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={close}
             footer={<Footer />}
           >
             Sidebar Content
@@ -95,18 +92,16 @@ You can pass PaginationBox, and it will displayed at the bottom of the Sidebar.
 <Canvas>
   <Story name="footer pagination">
     {() => {
-      const [isOpen, setIsOpen] = React.useState(false);
+      const { isOpen, open, close } = useDisclosure();
       return (
         <Container>
           <Row justify="center">
-            <Button onClick={() => setIsOpen(!isOpen)}>
-              Click button to open sidebar
-            </Button>
+            <Button onClick={open}>Click button to open sidebar</Button>
           </Row>
           <Sidebar
             title="Default sidebar"
             isOpen={isOpen}
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={close}
             footer={
               <PaginationBox
                 sidebar
@@ -134,8 +129,16 @@ Sidebar in default is displayed on the right side, but optionally you can change
 <Canvas>
   <Story name="side">
     {() => {
-      const [isOpen, setIsOpen] = React.useState(false);
-      const [isOpenLeft, setIsOpenLeft] = React.useState(false);
+      const {
+        isOpen: isOpenLeft,
+        open: openLeft,
+        close: closeLeft,
+      } = useDisclosure();
+      const {
+        isOpen: isOpenRight,
+        open: openRight,
+        close: closeRight,
+      } = useDisclosure();
       return (
         <Container>
           <Row justify="center">
@@ -143,20 +146,16 @@ Sidebar in default is displayed on the right side, but optionally you can change
           </Row>
           <Row justify="space-around">
             <Col md={2}>
-              <Button onClick={() => setIsOpenLeft(!isOpenLeft)}>
-                ← Left sidebar
-              </Button>
+              <Button onClick={openLeft}>← Left sidebar</Button>
             </Col>
             <Col md={2}>
-              <Button onClick={() => setIsOpen(!isOpen)}>
-                Right Sidebar →
-              </Button>
+              <Button onClick={openRight}>Right Sidebar →</Button>
             </Col>
           </Row>
           <Sidebar
             title="Default sidebar"
-            isOpen={isOpen}
-            onClick={() => setIsOpen(!isOpen)}
+            isOpen={isOpenRight}
+            onClick={closeRight}
           >
             Sidebar Content
           </Sidebar>
@@ -164,7 +163,7 @@ Sidebar in default is displayed on the right side, but optionally you can change
             side="onLeft"
             title="Left sidebar"
             isOpen={isOpenLeft}
-            onClick={() => setIsOpenLeft(!isOpenLeft)}
+            onClick={closeLeft}
           >
             Sidebar Content
           </Sidebar>
@@ -181,33 +180,39 @@ Sidebar in default is displayed on the right side, but optionally you can change
 <Canvas>
   <Story name="custom width">
     {() => {
-      const [isOpen20, setIsOpen20] = React.useState(false);
-      const [isOpenRem, setIsOpenRem] = React.useState(false);
-      const [isOpenPx, setIsOpenPx] = React.useState(false);
+      const {
+        isOpen: isOpenPercent,
+        open: openPercent,
+        close: closePercent,
+      } = useDisclosure();
+      const {
+        isOpen: isOpenRem,
+        open: openRem,
+        close: closeRem,
+      } = useDisclosure();
+      const {
+        isOpen: isOpenPx,
+        open: openPx,
+        close: closePx,
+      } = useDisclosure();
       return (
         <Container>
           <Row justify="space-around">
             <Col md={2}>
-              <Button onClick={() => setIsOpen20(!isOpen20)}>
-                50% Sidebar
-              </Button>
+              <Button onClick={openPercent}>50% Sidebar</Button>
             </Col>
             <Col md={2}>
-              <Button onClick={() => setIsOpenRem(!isOpenRem)}>
-                50rem sidebar on Left
-              </Button>
+              <Button onClick={openRem}>50rem sidebar on Left</Button>
             </Col>
             <Col md={2}>
-              <Button onClick={() => setIsOpenPx(!isOpenPx)}>
-                700px sidebar
-              </Button>
+              <Button onClick={openPx}>700px sidebar</Button>
             </Col>
           </Row>
           <Sidebar
             title="Width: 50%"
             width="50%"
-            isOpen={isOpen20}
-            onClick={() => setIsOpen20(!isOpen20)}
+            isOpen={isOpenPercent}
+            onClick={closePercent}
           >
             Sidebar Content
           </Sidebar>
@@ -216,7 +221,7 @@ Sidebar in default is displayed on the right side, but optionally you can change
             width="50rem"
             side="onLeft"
             isOpen={isOpenRem}
-            onClick={() => setIsOpenRem(!isOpenRem)}
+            onClick={closeRem}
           >
             Sidebar Content on Left
           </Sidebar>
@@ -224,7 +229,7 @@ Sidebar in default is displayed on the right side, but optionally you can change
             title="Width: 700px"
             width="700px"
             isOpen={isOpenPx}
-            onClick={() => setIsOpenPx(!isOpenPx)}
+            onClick={closePx}
           >
             Sidebar Content
           </Sidebar>

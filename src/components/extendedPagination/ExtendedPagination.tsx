@@ -1,4 +1,5 @@
 import * as React from "react";
+import { When } from "react-if";
 import {
   IExtendedPaginationProps,
   IPaginationBoxProps,
@@ -9,26 +10,35 @@ import {
 import { SVGIcon } from "../svgicon";
 import { Text } from "../text";
 
-function Pagination({ count, from, set, size }: IExtendedPaginationProps) {
+function Pagination({
+  count,
+  from,
+  set,
+  size,
+  firstPage = 0,
+}: IExtendedPaginationProps) {
   const currentPage = Math.ceil(from / size);
   const nPages = Math.ceil(count / size);
+
+  const isFirstPageZero = firstPage === 0;
+  const lastPage = isFirstPageZero ? nPages - 1 : nPages;
 
   // 6 & 7 pages make a lot of problem with dots so shrinking base number of visible
   // pages to 4 to avoid overlaps (problem: rendering dots and direct page at the same time)
   const baseNumberOfPages = [6, 7].includes(nPages) ? 4 : 5;
 
   const generatePagesItems = (numberOfPages: number, subtract = false) => {
-    return Array.from(Array(numberOfPages), (_, i) => {
+    return Array.from(new Array(numberOfPages), (_, index) => {
       if (subtract) {
-        return nPages - (i + 1);
+        return nPages - (index + 1);
       }
-      return i;
+      return index;
     });
   };
 
   const getPages = () => {
     const endPages = generatePagesItems(baseNumberOfPages, true);
-    if (currentPage < baseNumberOfPages - 1) {
+    if (currentPage < baseNumberOfPages - 1 + firstPage) {
       return generatePagesItems(baseNumberOfPages);
     } else if (endPages.includes(currentPage - 1)) {
       return endPages.reverse();
@@ -44,101 +54,93 @@ function Pagination({ count, from, set, size }: IExtendedPaginationProps) {
   };
 
   const showFirstPageJump =
-    currentPage >= baseNumberOfPages - 1 && nPages > baseNumberOfPages;
+    currentPage >= baseNumberOfPages && nPages > baseNumberOfPages;
   const showLastPageJump =
     currentPage + baseNumberOfPages <= nPages && nPages > baseNumberOfPages;
 
   return (
     <nav className="pagination" role="navigation" aria-label="pagination">
       <ul className="pagination-list">
-        {currentPage > 0 && (
+        <When condition={currentPage > firstPage}>
           <li>
             <button
-              onClick={() => setPage(currentPage - 1)}
-              onKeyDown={() => setPage(currentPage - 1)}
               type="button"
               className="pagination-prev"
               data-testid="prev-page"
+              onClick={() => setPage(currentPage - 1)}
+              onKeyDown={() => setPage(currentPage - 1)}
             >
               <SVGIcon name="chevronLeft" />
             </button>
           </li>
-        )}
-
-        {showFirstPageJump && (
-          <>
-            <li>
-              <button
-                onClick={() => setPage(0)}
-                onKeyDown={() => setPage(0)}
-                type="button"
-                className="pagination-link"
-                data-testid="first-page"
-              >
-                <span>1</span>
-              </button>
-            </li>
-            <li className="dots" data-testid="first-page-dots">
-              <Text tag="div">...</Text>
-            </li>
-          </>
-        )}
+        </When>
+        <When condition={showFirstPageJump}>
+          <li>
+            <button
+              type="button"
+              className="pagination-link"
+              data-testid="first-page"
+              onClick={() => setPage(firstPage)}
+              onKeyDown={() => setPage(firstPage)}
+            >
+              <span>1</span>
+            </button>
+          </li>
+          <li className="dots" data-testid="first-page-dots">
+            <Text tag="div">...</Text>
+          </li>
+        </When>
 
         {[...getPages()]
-          .filter((i) => i < nPages)
-          .map((i) => {
+          .filter((index) => index < nPages)
+          .map((index) => {
             return (
-              <li key={`p${i}`}>
+              <li key={`p${index + firstPage}`}>
                 <button
-                  onClick={() => setPage(i)}
-                  onKeyDown={() => setPage(i)}
                   type="button"
-                  disabled={i < 0}
+                  disabled={index < 0}
+                  data-testid={`button-${index + firstPage}`}
                   className={`pagination-link ${
-                    i === currentPage && `current`
+                    index + firstPage === currentPage ? `current` : ""
                   }`}
-                  data-testid={`button-${i}`}
+                  onClick={() => setPage(index + firstPage)}
+                  onKeyDown={() => setPage(index + firstPage)}
                 >
-                  <span>{i + 1}</span>
+                  <span>{index + 1}</span>
                 </button>
               </li>
             );
           })}
 
-        {showLastPageJump && (
-          <>
-            <li className="dots" data-testid="last-page-dots">
-              <Text tag="div">...</Text>
-            </li>
-            <li>
-              <button
-                onClick={() => setPage(nPages - 1)}
-                onKeyDown={() => setPage(nPages - 1)}
-                type="button"
-                className="pagination-link"
-                data-testid="last-page"
-              >
-                <span>{nPages}</span>
-              </button>
-            </li>
-          </>
-        )}
-
-        {currentPage + 1 < nPages && (
-          <>
-            <li>
-              <button
-                onClick={() => setPage(currentPage + 1)}
-                onKeyDown={() => setPage(currentPage + 1)}
-                type="button"
-                className="pagination-next"
-                data-testid="next-page"
-              >
-                <SVGIcon name="chevronRight" />
-              </button>
-            </li>
-          </>
-        )}
+        <When condition={showLastPageJump}>
+          <li className="dots" data-testid="last-page-dots">
+            <Text tag="div">...</Text>
+          </li>
+          <li>
+            <button
+              type="button"
+              className="pagination-link"
+              data-testid="last-page"
+              onClick={() => setPage(lastPage)}
+              onKeyDown={() => setPage(lastPage)}
+            >
+              <span>{nPages}</span>
+            </button>
+          </li>
+        </When>
+        <When condition={currentPage < nPages - (isFirstPageZero ? 1 : 0)}>
+          <li>
+            <button
+              type="button"
+              className="pagination-next"
+              data-testid="next-page"
+              onClick={() => setPage(currentPage + 1)}
+              onKeyDown={() => setPage(currentPage + 1)}
+            >
+              <SVGIcon name="chevronRight" />
+            </button>
+          </li>
+        </When>
       </ul>
     </nav>
   );
@@ -152,11 +154,25 @@ export function ExtendedPaginationBox({
   setPage,
   small,
   sidebar,
+  firstPage,
 }: IPaginationBoxProps) {
   return (
     <StyledPaginationBox small={small} sidebar={sidebar}>
-      {!small && <PaginationAmount from={from} size={size} count={count} />}
-      <Pagination from={from} set={setPage} size={size} count={count} />
+      {!small && (
+        <PaginationAmount
+          from={from}
+          size={size}
+          count={count}
+          firstPage={firstPage}
+        />
+      )}
+      <Pagination
+        from={from}
+        set={setPage}
+        size={size}
+        count={count}
+        firstPage={firstPage}
+      />
       {!small && <PerPage size={size} set={setSize} />}
     </StyledPaginationBox>
   );

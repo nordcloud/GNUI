@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import styled from "styled-components";
-import { useEvent } from "../../hooks";
+import { useDisclosure, useEvent } from "../../hooks";
 import theme from "../../theme";
 import {
   Placement,
@@ -43,7 +43,7 @@ export function ExtendedPopover({
   const triggerRef = React.useRef<HTMLDivElement>(null);
   const contentRef = React.useRef<HTMLDivElement>(null);
 
-  const [open, setOpen] = React.useState(false);
+  const { isOpen, close, open, toggle } = useDisclosure();
   const [contentDimensions, setContentDimensions] =
     React.useState<DOMRect | null>(null);
   const [triggerDimensions, setTriggerDimensions] =
@@ -51,14 +51,14 @@ export function ExtendedPopover({
 
   React.useEffect(() => {
     if (
-      open &&
+      isOpen &&
       contentRef.current instanceof HTMLDivElement &&
       triggerRef.current instanceof HTMLDivElement
     ) {
       setTriggerDimensions(triggerRef.current.getBoundingClientRect());
       setContentDimensions(contentRef.current.getBoundingClientRect());
     }
-  }, [open]);
+  }, [isOpen]);
 
   const handleClickOutside = React.useCallback(
     (event) => {
@@ -69,7 +69,7 @@ export function ExtendedPopover({
         !contentRef.current.contains(event.target) &&
         !triggerRef.current.contains(event.target)
       ) {
-        setOpen(false);
+        close();
       }
     },
     [contentRef, triggerRef, clickOutsideToClose]
@@ -79,7 +79,7 @@ export function ExtendedPopover({
 
   const handleScroll = throttle(
     React.useCallback(() => {
-      setOpen(false);
+      close();
     }, [])
   );
 
@@ -92,13 +92,13 @@ export function ExtendedPopover({
   const triggerProps = {
     ...(triggerOn === "click"
       ? {
-          onClick: () => setOpen((prevState) => !prevState),
+          onClick: () => toggle(),
         }
       : {
-          onMouseEnter: () => setOpen(true),
+          onMouseEnter: () => open(),
           onMouseLeave: () => {
             if (closeOn === "hover") {
-              setOpen(false);
+              close();
             }
           },
         }),
@@ -117,7 +117,7 @@ export function ExtendedPopover({
       <Popover
         content={content}
         contentRef={contentRef}
-        visible={open}
+        visible={isOpen}
         style={style}
         margin={margin}
         placement={placement}
@@ -164,4 +164,4 @@ const ContentWrapper = styled.div`
   z-index: ${theme.zindex.sticky};
 `;
 
-export type ExtendedPopoverAction = "hover" | "click";
+export type ExtendedPopoverAction = "click" | "hover";

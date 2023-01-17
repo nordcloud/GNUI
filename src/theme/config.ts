@@ -94,22 +94,22 @@ export const colors = {
 } as const;
 
 export type SingleColors =
-  | "primary"
   | "accent"
+  | "black"
   | "danger"
+  | "notification"
+  | "primary"
+  | "snowWhite"
   | "success"
   | "warning"
-  | "notification"
-  | "black"
-  | "white"
-  | "snowWhite";
+  | "white";
 
 export type ThemeColors = keyof typeof color.support;
 
 export const typography = {
   fonts: {
-    body: "Rubik, sans-serif",
-    heading: "Rubik, sans-serif",
+    body: "IBM Plex Sans, sans-serif",
+    heading: "IBM Plex Sans, sans-serif",
   },
   fontSizes: ["0.625rem", "0.75rem", "1rem", "1.25rem", "1.5rem", "2rem"],
   fontWeights: [400, 500, 700],

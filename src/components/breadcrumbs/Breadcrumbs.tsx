@@ -8,7 +8,7 @@ export type BreadcrumbsList = {
 };
 
 export type BreadcrumbsListProps = {
-  list: Array<BreadcrumbsList>;
+  list: BreadcrumbsList[];
   Component?: React.FC<{ to: string }>;
 };
 

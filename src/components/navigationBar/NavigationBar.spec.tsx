@@ -1,5 +1,3 @@
-import * as React from "react";
-import "@testing-library/jest-dom/extend-expect";
 import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MenuItem } from "./MenuItem";
@@ -21,13 +19,13 @@ test("renders MenuItems as icons without text when folded", () => {
   const { container } = renderNavBarWithItems();
 
   expect(container.querySelectorAll("svg")).toHaveLength(3);
-  expect(screen.queryByText("Dashboard")).toBeNull();
+  expect(screen.queryByText("Dashboard")).not.toBeInTheDocument();
 });
 
 test("renders MenutItems as icons with text when unfolded", async () => {
   const { container } = renderNavBarWithItems();
 
-  expect(screen.queryByText("Dashboard")).toBeNull();
+  expect(screen.queryByText("Dashboard")).not.toBeInTheDocument();
 
   const hamburger = container.querySelector("svg");
 

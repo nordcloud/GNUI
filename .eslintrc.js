@@ -1,35 +1,115 @@
-// Display some of the warnings only while developing, prevent CI build from failing
-const isProd = process.env.NODE_ENV === "production";
+require("@nordcloud/eslint-config-pat/patch/modern-module-resolution");
 
 module.exports = {
   extends: [
     "@nordcloud/eslint-config-pat/profile/web-app",
-    "@nordcloud/eslint-config-pat/mixins/jest",
     "@nordcloud/eslint-config-pat/mixins/react",
+    "@nordcloud/eslint-config-pat/mixins/react-testing",
+    "@nordcloud/eslint-config-pat/mixins/tsdoc",
+    "@nordcloud/eslint-config-pat/mixins/jest",
   ],
 
   parserOptions: { tsconfigRootDir: __dirname },
 
-  ignorePatterns: ["rollup.config.js"],
+  ignorePatterns: ["*.js"],
 
   settings: {
     react: {
-      version: "16.13.1", // React version. "detect" automatically picks the version you have installed.
+      version: "16.14.0", // React version. "detect" automatically picks the version you have installed.
     },
     jest: {
-      version: "26",
+      version: "29",
     },
   },
 
   rules: {
-    // general
-    "no-console": isProd ? "error" : "warn",
-    "no-unused-expressions": [
-      isProd ? "error" : "warn",
-      { allowShortCircuit: true },
+    "@typescript-eslint/no-unsafe-return": "warn",
+    "@typescript-eslint/no-unsafe-argument": "warn",
+    "@typescript-eslint/no-unsafe-assignment": "warn",
+    "@typescript-eslint/no-unsafe-member-access": "warn",
+    // Should be in sync with https://github.com/nordcloud/eslint-config-pat/blob/master/profile/_common.js#L463
+    "@typescript-eslint/naming-convention": [
+      "warn",
+      {
+        selector: "default",
+        format: null,
+      },
+      // Ignore destructured names
+      {
+        selector: "variable",
+        types: ["array", "boolean", "function", "number", "string"],
+        modifiers: ["destructured"],
+        format: null,
+      },
+      {
+        selector: "variable",
+        types: ["boolean"],
+        format: ["PascalCase"],
+        prefix: [
+          "is",
+          "are",
+          "should",
+          "has",
+          "can",
+          "did",
+          "will",
+          "show",
+          "hide",
+        ],
+      },
+      {
+        selector: "variable",
+        format: ["camelCase", "UPPER_CASE", "PascalCase"],
+      },
+      {
+        selector: "parameter",
+        format: ["camelCase"],
+        leadingUnderscore: "allow",
+        filter: {
+          regex: "^(Component)$",
+          match: false,
+        },
+      },
+      {
+        selector: "memberLike",
+        modifiers: ["private"],
+        format: ["camelCase"],
+        leadingUnderscore: "require",
+      },
+      {
+        selector: ["function"],
+        format: ["camelCase", "PascalCase"],
+        leadingUnderscore: "forbid",
+      },
+      {
+        selector: ["objectLiteralProperty", "objectLiteralMethod"],
+        format: ["camelCase", "PascalCase", "snake_case", "UPPER_CASE"],
+        leadingUnderscore: "allowDouble",
+        filter: {
+          regex: "^(&:)|^[0-9]+$",
+          match: false,
+        },
+      },
+      {
+        selector: ["typeProperty"],
+        format: ["camelCase", "snake_case"],
+        leadingUnderscore: "allowDouble",
+        filter: {
+          regex: "^(Component)$",
+          match: false,
+        },
+      },
+      {
+        selector: ["enumMember"],
+        format: ["PascalCase", "UPPER_CASE"],
+      },
+      {
+        selector: "enum",
+        format: ["PascalCase", "UPPER_CASE"],
+      },
     ],
 
-    // eslint-plugin-sonarjs
-    "sonarjs/no-nested-template-literals": "off",
+    "testing-library/no-node-access": "warn",
+    "testing-library/no-container": "warn",
   },
 };

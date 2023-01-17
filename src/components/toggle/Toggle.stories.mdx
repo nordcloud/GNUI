@@ -1,4 +1,5 @@
 import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { useDisclosure } from "../../hooks";
 import { Toggle } from ".";
 import { Spacer } from "../spacer";
 
@@ -22,14 +23,8 @@ import { Spacer } from "../spacer";
 <Canvas>
   <Story name="default">
     {() => {
-      const [toggle, setToggle] = React.useState(false);
-      return (
-        <Toggle
-          labelText="Default"
-          value={toggle}
-          onChange={() => setToggle((prevState) => !prevState)}
-        />
-      );
+      const { isOpen: value, toggle } = useDisclosure();
+      return <Toggle labelText="Default" value={value} onChange={toggle} />;
     }}
   </Story>
 </Canvas>
@@ -41,14 +36,14 @@ import { Spacer } from "../spacer";
 <Canvas>
   <Story name="small">
     {() => {
-      const [toggle, setToggle] = React.useState(false);
+      const { isOpen: value, toggle } = useDisclosure();
       return (
         <Toggle
           size="small"
           labelText="Small"
           name="small"
-          value={toggle}
-          onChange={() => setToggle((prevState) => !prevState)}
+          value={value}
+          onChange={toggle}
         />
       );
     }}
@@ -62,7 +57,7 @@ import { Spacer } from "../spacer";
 <Canvas>
   <Story name="status">
     {() => {
-      const [toggle, setToggle] = React.useState(false);
+      const { isOpen: value, toggle } = useDisclosure();
       return (
         <div>
           <p>
@@ -70,8 +65,8 @@ import { Spacer } from "../spacer";
               status="success"
               labelText="Success!"
               name="success"
-              value={toggle}
-              onChange={() => setToggle((prevState) => !prevState)}
+              value={value}
+              onChange={toggle}
             />
           </p>
           <Spacer height="1rem" />
@@ -80,8 +75,8 @@ import { Spacer } from "../spacer";
               status="danger"
               labelText="Danger"
               name="danger"
-              value={toggle}
-              onChange={() => setToggle((prevState) => !prevState)}
+              value={value}
+              onChange={toggle}
             />
           </p>
           <Spacer height="1rem" />
@@ -90,8 +85,8 @@ import { Spacer } from "../spacer";
               status="warning"
               labelText="Warning"
               name="warning"
-              value={toggle}
-              onChange={() => setToggle((prevState) => !prevState)}
+              value={value}
+              onChange={toggle}
             />
           </p>
           <Spacer height="1rem" />
@@ -100,8 +95,8 @@ import { Spacer } from "../spacer";
               status="notification"
               labelText="Notification"
               name="notification"
-              value={toggle}
-              onChange={() => setToggle((prevState) => !prevState)}
+              value={value}
+              onChange={toggle}
             />
           </p>
         </div>
