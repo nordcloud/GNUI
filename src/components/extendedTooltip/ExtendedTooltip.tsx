@@ -18,7 +18,7 @@ type Timeout = {
   hideTimeout?: number;
 };
 
-type Status = "danger" | "warning" | "success" | "notification";
+type Status = "danger" | "notification" | "success" | "warning";
 
 export type ExtendedTooltipProps = Timeout & {
   caption: React.ReactNode;
@@ -86,8 +86,8 @@ export function ExtendedTooltip({
   return (
     <TooltipWrapper
       ref={wrapperRef}
-      onMouseEnter={() => updateIsHovered(true, showTimeout)}
-      onMouseLeave={() => updateIsHovered(false, hideTimeout)}
+      onPointerEnter={() => updateIsHovered(true, showTimeout)}
+      onPointerLeave={() => updateIsHovered(false, hideTimeout)}
     >
       <Tooltip
         isHovered={isHovered}
