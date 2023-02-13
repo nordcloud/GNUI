@@ -1,7 +1,7 @@
 import * as React from "react";
 import { SVGIconProps } from "../svgicon";
 
-export type Status = "success" | "danger";
+export type Status = "danger" | "success";
 
 export type StyledInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   small?: boolean;
@@ -9,6 +9,7 @@ export type StyledInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   onClear?: () => void;
   showClearButton?: boolean;
   loading?: boolean;
+  dark?: boolean;
 };
 
 export type StyledInputGroupProps = {

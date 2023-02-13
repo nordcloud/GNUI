@@ -17,7 +17,7 @@ export const setStatusColor = (status: Status) => {
 };
 
 /* eslint-disable sonarjs/no-identical-functions */
-export const InputGroup = styled(Flex)<StyledInputGroupProps & SpaceProps>`
+export const InputGroup = styled(Flex)<SpaceProps & StyledInputGroupProps>`
   position: relative;
   align-items: center;
   border: 1px solid ${theme.color.border.input};
@@ -78,6 +78,7 @@ export const StyledInput = styled.input<StyledInputProps>`
   margin: 0;
   transition: ${theme.transition};
   color: ${theme.color.text.text01};
+  color-scheme: ${({ dark }) => (dark ? "dark" : "light")};
 
   &::placeholder {
     color: ${theme.color.text.text03};
