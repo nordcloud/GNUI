@@ -4,9 +4,9 @@ import { space, SpaceProps } from "styled-system";
 import theme from "../../theme";
 import { LengthUnitSuffix, Unit } from "./types";
 
-type StyledContainerProps = {
+type StyledContainerProps = SpaceProps & {
   width?: string;
-} & SpaceProps;
+};
 
 const StyledContainer = styled.div<StyledContainerProps>`
   box-sizing: border-box;
@@ -29,12 +29,12 @@ export const Container = React.forwardRef<HTMLDivElement, ContainerProps>(
   )
 );
 
-type FlexProps = {
+type FlexProps = SpaceProps & {
   alignItems?: string;
   justifyContent?: string;
   flexDirection?: string;
   margin?: string;
-} & SpaceProps;
+};
 
 /**
  * @deprecated Please use FlexContainer
@@ -53,49 +53,21 @@ export const Flex = styled(Container)<FlexProps>`
 `;
 
 // New implementation of FlexContainer to replace Flex in the future.
-type FlexContainerProps = {
+type FlexContainerProps = SpaceProps & {
   alignItems?:
-    | "stretch"
-    | "flex-start"
-    | "flex-end"
-    | "center"
-    | "baseline"
-    | "first baseline"
-    | "last baseline"
-    | "start"
-    | "end"
-    | "self-start"
-    | "self-end";
+    "baseline" | "center" | "end" | "first baseline" | "flex-end" | "flex-start" | "last baseline" | "self-end" | "self-start" | "start" | "stretch";
   alignContent?:
-    | "stretch"
-    | "flex-start"
-    | "flex-end"
-    | "center"
-    | "baseline"
-    | "first baseline"
-    | "last baseline"
-    | "start"
-    | "end"
-    | "self-start"
-    | "self-end";
+    "baseline" | "center" | "end" | "first baseline" | "flex-end" | "flex-start" | "last baseline" | "self-end" | "self-start" | "start" | "stretch";
   justifyContent?:
-    | "flex-start"
-    | "flex-end"
-    | "center"
-    | "space-between"
-    | "space-around"
-    | "space-evenly"
-    | "start"
-    | "end"
-    | "left"
-    | "right";
+    "center" | "end" | "flex-end" | "flex-start" | "left" | "right" | "space-around" | "space-between" | "space-evenly" | "start";
   grow?: number;
-  wrap?: "nowrap" | "wrap" | "wrap-reverse";
-  direction?: "row" | "row-reverse" | "column" | "column-reverse";
+  wrap?: "nowrap" | "wrap-reverse" | "wrap";
+  direction?: "column-reverse" | "column" | "row-reverse" | "row";
   gap?: Unit<LengthUnitSuffix> | "0" | 0;
   columnGap?: Unit<LengthUnitSuffix> | "0" | 0;
   rowGap?: Unit<LengthUnitSuffix> | "0" | 0;
-} & SpaceProps;
+  popup?: boolean | undefined;
+};
 
 function getFlexCss(props: FlexContainerProps) {
   return css`
