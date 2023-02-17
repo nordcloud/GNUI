@@ -55,11 +55,40 @@ export const Flex = styled(Container)<FlexProps>`
 // New implementation of FlexContainer to replace Flex in the future.
 type FlexContainerProps = SpaceProps & {
   alignItems?:
-    "baseline" | "center" | "end" | "first baseline" | "flex-end" | "flex-start" | "last baseline" | "self-end" | "self-start" | "start" | "stretch";
+    | "baseline"
+    | "center"
+    | "end"
+    | "first baseline"
+    | "flex-end"
+    | "flex-start"
+    | "last baseline"
+    | "self-end"
+    | "self-start"
+    | "start"
+    | "stretch";
   alignContent?:
-    "baseline" | "center" | "end" | "first baseline" | "flex-end" | "flex-start" | "last baseline" | "self-end" | "self-start" | "start" | "stretch";
+    | "baseline"
+    | "center"
+    | "end"
+    | "first baseline"
+    | "flex-end"
+    | "flex-start"
+    | "last baseline"
+    | "self-end"
+    | "self-start"
+    | "start"
+    | "stretch";
   justifyContent?:
-    "center" | "end" | "flex-end" | "flex-start" | "left" | "right" | "space-around" | "space-between" | "space-evenly" | "start";
+    | "center"
+    | "end"
+    | "flex-end"
+    | "flex-start"
+    | "left"
+    | "right"
+    | "space-around"
+    | "space-between"
+    | "space-evenly"
+    | "start";
   grow?: number;
   wrap?: "nowrap" | "wrap-reverse" | "wrap";
   direction?: "column-reverse" | "column" | "row-reverse" | "row";
