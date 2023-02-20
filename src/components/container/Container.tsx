@@ -95,7 +95,7 @@ type FlexContainerProps = SpaceProps & {
   gap?: Unit<LengthUnitSuffix> | "0" | 0;
   columnGap?: Unit<LengthUnitSuffix> | "0" | 0;
   rowGap?: Unit<LengthUnitSuffix> | "0" | 0;
-  popup?: boolean | undefined;
+  popup?: boolean;
 };
 
 function getFlexCss(props: FlexContainerProps) {
