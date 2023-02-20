@@ -1,6 +1,5 @@
 import styled, { keyframes } from "styled-components";
 import theme from "../../theme";
-import { whenIE11 } from "../../utils/browserCompatibility";
 import { Box } from "../box";
 import { Button } from "../button";
 import { Heading } from "../heading";
@@ -51,8 +50,6 @@ export const ModalAction = styled(Button)`
   }
 `;
 
-const MODAL_ACTION_HEIGHT = "5.625rem";
-
 export const ModalActions = styled.div`
   position: sticky;
   bottom: 0;
@@ -62,11 +59,6 @@ export const ModalActions = styled.div`
   width: 100%;
   display: flex;
   padding: ${theme.spacing.spacing07} 0 0 0;
-  ${whenIE11(`
-    position: fixed;
-    height: ${MODAL_ACTION_HEIGHT};
-    padding: ${theme.spacing.spacing07} ${theme.spacing.spacing04} ${theme.spacing.spacing04};
-  `)}
 `;
 
 type BackgroundProps = {
@@ -92,9 +84,6 @@ export const ModalContent = styled.div<ModalContentProps>`
   max-height: ${({ contentMaxHeight }) => contentMaxHeight || "25rem"};
   overflow-y: auto;
   text-align: ${({ alignText }) => alignText || "left"};
-  ${whenIE11(`
-    padding-bottom: ${MODAL_ACTION_HEIGHT};
-  `)}
 `;
 
 export const ModalHeading = styled(Heading)`
@@ -111,6 +100,7 @@ export const ModalHeader = styled.div`
   text-transform: ${theme.typography.titleCase};
   margin-left: -1rem;
   margin-right: -1rem;
+
   ${ModalCloseButton} {
     margin-left: auto;
   }
