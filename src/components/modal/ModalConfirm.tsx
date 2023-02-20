@@ -10,7 +10,7 @@ import {
   ModalHeader,
   ModalActions,
   Background,
-} from "./Modal";
+} from "./styles";
 
 const ModalHeading = styled(Heading)`
   margin: 0;
@@ -38,7 +38,7 @@ export function ModalConfirm({
 }: ModalProps) {
   return (
     <>
-      <Background onClick={onClose} {...props} />
+      <Background zIndex="modal" onClick={onClose} {...props} />
       <StyledModal {...props}>
         {props.isOpen && (
           <ModalBox innerSpacing="spacing04" shadow="shadow04">

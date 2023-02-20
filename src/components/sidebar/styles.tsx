@@ -5,7 +5,6 @@ import { Button } from "../button";
 import { Text } from "../text";
 import {
   SidebarProps,
-  BackgroundProps,
   CloseLayerProps,
   InnerProps,
   HeaderProps,
@@ -68,19 +67,6 @@ export const SidebarMenu = styled.div<SidebarProps>`
   display: flex;
   justify-content: ${({ side }) =>
     side !== "onLeft" ? "flex-end" : "flex-start"};
-`;
-
-export const Background = styled.div<BackgroundProps>`
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  position: fixed;
-  background-color: ${theme.color.background.overlay};
-  pointer-events: ${({ isOpen }) => (isOpen ? "auto" : "none")};
-  transition: ${theme.transition};
-  opacity: ${({ isOpen }) => (isOpen ? 0.7 : 0)};
-  z-index: ${theme.zindex.topoftheworld};
 `;
 
 export const CloseLayer = styled.div<CloseLayerProps>`
