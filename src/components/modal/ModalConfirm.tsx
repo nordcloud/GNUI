@@ -16,7 +16,7 @@ const ModalHeading = styled(Heading)`
   margin: 0;
 `;
 
-type ModalProps = {
+type ModalProps = React.ComponentPropsWithoutRef<typeof StyledModal> & {
   isOpen: boolean;
   onClose?: (event: React.KeyboardEvent | React.MouseEvent) => void;
   confirm?: (event: React.KeyboardEvent | React.MouseEvent) => void;
@@ -38,7 +38,7 @@ export function ModalConfirm({
 }: ModalProps) {
   return (
     <>
-      <Background zIndex="modal" onClick={onClose} {...props} />
+      <Background zIndex="modal" isVisible={props.isOpen} onClick={onClose} />
       <StyledModal {...props}>
         {props.isOpen && (
           <ModalBox innerSpacing="spacing04" shadow="shadow04">

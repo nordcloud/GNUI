@@ -12,7 +12,10 @@ import {
 } from "./styles";
 import { ModalBoxProps, ModalContentProps, ModalProps } from "./types";
 
-type Props = ModalBoxProps & ModalContentProps & ModalProps;
+type Props = ModalBoxProps &
+  ModalContentProps &
+  ModalProps &
+  React.ComponentPropsWithoutRef<typeof StyledModal>;
 
 export function Modal({
   children,
@@ -26,7 +29,7 @@ export function Modal({
 }: Props) {
   return (
     <>
-      <Background zIndex="modal" onClick={onClose} {...props} />
+      <Background zIndex="modal" isVisible={props.isOpen} onClick={onClose} />
       <StyledModal {...props}>
         {props.isOpen && (
           <ModalBox

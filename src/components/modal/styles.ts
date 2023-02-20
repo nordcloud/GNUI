@@ -70,7 +70,7 @@ export const ModalActions = styled.div`
 `;
 
 type BackgroundProps = {
-  isOpen?: boolean;
+  isVisible?: boolean;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   zIndex?: keyof typeof theme.zindex;
 };
@@ -82,9 +82,9 @@ export const Background = styled.div<BackgroundProps>`
   bottom: 0;
   position: fixed;
   background-color: ${theme.color.background.overlay};
-  pointer-events: ${({ isOpen }) => (isOpen ? "auto" : "none")};
+  pointer-events: ${({ isVisible }) => (isVisible ? "auto" : "none")};
   transition: ${theme.transition};
-  opacity: ${({ isOpen }) => (isOpen ? 0.7 : 0)};
+  opacity: ${({ isVisible }) => (isVisible ? 0.7 : 0)};
   z-index: ${({ zIndex = "overlay" }) => theme.zindex[zIndex]};
 `;
 

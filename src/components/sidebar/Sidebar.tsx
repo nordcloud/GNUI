@@ -54,7 +54,7 @@ export function Sidebar({
 
   return (
     <>
-      <Background isOpen={isOpen} zIndex="overlay" onClick={onClick} />
+      <Background isVisible={isOpen} zIndex="overlay" onClick={onClick} />
       <SidebarMenu isOpen={isOpen} side={side} reverse={side === "onLeft"}>
         <Inner isOpen={isOpen} {...props}>
           {isOpen && (
