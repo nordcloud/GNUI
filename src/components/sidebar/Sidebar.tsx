@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Button } from "../button";
+import { Background } from "../modal/styles";
 import { SVGIcon } from "../svgicon";
 import {
-  Background,
   Caption,
   CloseLayer,
   Container,
@@ -54,7 +54,7 @@ export function Sidebar({
 
   return (
     <>
-      <Background isOpen={isOpen} onClick={onClick} />
+      <Background isVisible={isOpen} zIndex="overlay" onClick={onClick} />
       <SidebarMenu isOpen={isOpen} side={side} reverse={side === "onLeft"}>
         <Inner isOpen={isOpen} {...props}>
           {isOpen && (

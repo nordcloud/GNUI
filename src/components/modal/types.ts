@@ -18,10 +18,7 @@ export type ModalAction = {
   severity: "high" | "low" | "medium";
   order: number;
 };
-export type BackgroundProps = {
-  isOpen?: boolean;
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-};
+
 export type ModalProps = {
   isOpen: boolean;
   onClose?: (event: React.KeyboardEvent | React.MouseEvent) => void;

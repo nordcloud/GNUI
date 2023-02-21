@@ -15,14 +15,9 @@ export type SidebarProps = {
   contentStyles?: React.CSSProperties;
 };
 
-export type BackgroundProps = {
-  isOpen?: boolean;
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-};
-
 export type CloseLayerProps = {
   isOpen?: boolean;
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 export type InnerProps = {
@@ -31,9 +26,9 @@ export type InnerProps = {
   isOpen?: boolean;
 };
 
-export type SidebarButtonProps = {
+export type SidebarButtonProps = ButtonProps & {
   icon?: SVGIconProps["name"];
-} & ButtonProps;
+};
 
 export type HeaderProps = {
   reverse?: boolean;

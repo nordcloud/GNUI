@@ -10,12 +10,62 @@ export type LoaderProps = {
   inContent?: boolean;
   isBackground?: boolean;
   position?:
-    | "top-left"
-    | "top-right"
-    | "bottom-right"
     | "bottom-center"
-    | "bottom-left";
+    | "bottom-left"
+    | "bottom-right"
+    | "top-left"
+    | "top-right";
 };
+
+export function Loader({ inContent, isBackground, ...props }: LoaderProps) {
+  return (
+    <>
+      {inContent ? (
+        <FlexContainer>
+          <Spinner />
+          <Text weight="medium" tag="div" style={{ marginLeft: "1rem" }}>
+            Loading ...
+          </Text>
+        </FlexContainer>
+      ) : (
+        <LoaderPosition {...props}>
+          <Box shadow="shadow04">
+            <FlexContainer>
+              <Spinner ninja size="xl" />
+              <div style={{ marginLeft: "1rem" }}>
+                <Text size="sm" tag="div">
+                  Please wait
+                </Text>
+                <Text weight="medium" tag="div">
+                  Loading ...
+                </Text>
+              </div>
+            </FlexContainer>
+          </Box>
+        </LoaderPosition>
+      )}
+      {!inContent && isBackground && (
+        <LoaderOverlay isBackground={isBackground}>
+          <LoaderPosition {...props}>
+            <Box shadow="shadow04">
+              <FlexContainer>
+                <Spinner ninja size="xl" />
+                <div style={{ marginLeft: "1rem" }}>
+                  <Text size="sm" tag="div">
+                    Please wait
+                  </Text>
+                  <Text weight="medium" tag="div">
+                    Loading ...
+                  </Text>
+                </div>
+              </FlexContainer>
+            </Box>
+          </LoaderPosition>
+        </LoaderOverlay>
+      )}
+    </>
+  );
+}
 
 const changePosition = (position: string) => {
   switch (position) {
@@ -72,6 +122,7 @@ const LoaderPosition = styled.div<LoaderProps>`
       ${changePosition(position)}
     `};
 `;
+
 const LoaderOverlay = styled.div<LoaderProps>`
   top: 0;
   right: 0;
@@ -81,53 +132,3 @@ const LoaderOverlay = styled.div<LoaderProps>`
   background-color: rgba(255, 255, 255, 0.5);
   z-index: ${theme.zindex.topoftheworld};
 `;
-
-export function Loader({ inContent, isBackground, ...props }: LoaderProps) {
-  return (
-    <>
-      {inContent ? (
-        <FlexContainer>
-          <Spinner />
-          <Text weight="medium" tag="div" style={{ marginLeft: "1rem" }}>
-            Loading ...
-          </Text>
-        </FlexContainer>
-      ) : (
-        <LoaderPosition {...props}>
-          <Box shadow="shadow04">
-            <FlexContainer>
-              <Spinner ninja size="xl" />
-              <div style={{ marginLeft: "1rem" }}>
-                <Text size="sm" tag="div">
-                  Please wait
-                </Text>
-                <Text weight="medium" tag="div">
-                  Loading ...
-                </Text>
-              </div>
-            </FlexContainer>
-          </Box>
-        </LoaderPosition>
-      )}
-      {!inContent && isBackground && (
-        <LoaderOverlay isBackground={isBackground}>
-          <LoaderPosition {...props}>
-            <Box shadow="shadow04">
-              <FlexContainer>
-                <Spinner ninja size="xl" />
-                <div style={{ marginLeft: "1rem" }}>
-                  <Text size="sm" tag="div">
-                    Please wait
-                  </Text>
-                  <Text weight="medium" tag="div">
-                    Loading ...
-                  </Text>
-                </div>
-              </FlexContainer>
-            </Box>
-          </LoaderPosition>
-        </LoaderOverlay>
-      )}
-    </>
-  );
-}
