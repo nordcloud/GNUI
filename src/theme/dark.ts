@@ -1,7 +1,7 @@
 import { palette } from "./palette";
 
 const DARK_COLORS = [
-  ["--color-theme", "dark"],
+  ["--color-scheme", "dark"],
   ["--background-body", palette.darkGrey.darkGrey500],
   ["--background-overlay", palette.black],
   ["--background-ui01", palette.darkGrey.darkGrey300],
