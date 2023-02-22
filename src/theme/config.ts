@@ -1,4 +1,5 @@
 export const color = {
+  theme: "var(--color-theme)",
   background: {
     body: "var(--background-body)",
     ui01: "var(--background-ui01)",

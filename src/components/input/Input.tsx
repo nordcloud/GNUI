@@ -1,6 +1,5 @@
 import * as React from "react";
 import { SpaceProps } from "styled-system";
-import { THEME_OPTIONS } from "../../theme/switcher";
 import { Spinner } from "../spinner";
 import { SVGIcon } from "../svgicon";
 import { Clear, InputGroup, StyledInput } from "./styles";
@@ -25,8 +24,6 @@ export const Input = React.forwardRef<HTMLInputElement, Props>(
     },
     ref
   ) => {
-    const savedThemeValue = window.localStorage.getItem("NC_GNUI_THEME") ?? "";
-
     return (
       <InputGroup status={status} noBorder={noBorder} popup={popup}>
         {type === "search" && !loading && <SVGIcon name="search" size="smd" />}
@@ -36,7 +33,6 @@ export const Input = React.forwardRef<HTMLInputElement, Props>(
           type={type}
           popup={popup}
           small={small}
-          dark={savedThemeValue === THEME_OPTIONS.DARK}
           onClick={onClick}
           {...props}
         />

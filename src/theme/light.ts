@@ -1,6 +1,7 @@
 import { palette } from "./palette";
 
 const LIGHT_COLORS = [
+  ["--color-theme", "light"],
   ["--background-body", palette.grey.grey300],
   ["--background-overlay", palette.black],
   ["--background-ui01", palette.white],

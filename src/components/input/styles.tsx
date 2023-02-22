@@ -80,7 +80,7 @@ export const StyledInput = styled.input<StyledInputProps>`
   margin: 0;
   transition: ${theme.transition};
   color: ${theme.color.text.text01};
-  color-scheme: ${({ dark }) => (dark ? "dark" : "light")};
+  color-scheme: ${theme.color.theme};
 
   &::placeholder {
     color: ${theme.color.text.text03};
