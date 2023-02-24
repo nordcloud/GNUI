@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { space, SpaceProps } from "styled-system";
 import theme from "../../theme";
-import { Flex } from "../container";
+import { FlexContainer } from "../container";
 import { StyledInputGroupProps, StyledInputProps, Status } from "./types";
 
 export const setStatusColor = (status: Status) => {
@@ -17,7 +17,9 @@ export const setStatusColor = (status: Status) => {
 };
 
 /* eslint-disable sonarjs/no-identical-functions */
-export const InputGroup = styled(Flex)<StyledInputGroupProps & SpaceProps>`
+export const InputGroup = styled(FlexContainer)<
+  SpaceProps & StyledInputGroupProps
+>`
   position: relative;
   align-items: center;
   border: 1px solid ${theme.color.border.input};
@@ -78,6 +80,7 @@ export const StyledInput = styled.input<StyledInputProps>`
   margin: 0;
   transition: ${theme.transition};
   color: ${theme.color.text.text01};
+  color-scheme: ${theme.color.scheme};
 
   &::placeholder {
     color: ${theme.color.text.text03};

@@ -1,4 +1,5 @@
 export const color = {
+  scheme: "var(--color-scheme)",
   background: {
     body: "var(--background-body)",
     ui01: "var(--background-ui01)",
