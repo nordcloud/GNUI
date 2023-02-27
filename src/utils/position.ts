@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export type Placement = "bottom" | "left" | "right" | "top";
 export type Position = "center" | "end" | "start";
+export type Display = "inline-block" | "inline-grid";
 
 export type Margin = {
   top?: number;

@@ -5,6 +5,7 @@ import { useEvent } from "../../hooks";
 import theme from "../../theme";
 import {
   DEFAULT_MARGIN,
+  Display,
   getStyle,
   Margin,
   Placement,
@@ -28,6 +29,7 @@ export type ExtendedTooltipProps = Timeout & {
   margin?: Margin;
   status?: Status;
   zIndex?: number;
+  display?: Display;
 };
 
 export function ExtendedTooltip({
@@ -40,6 +42,7 @@ export function ExtendedTooltip({
   hideTimeout = 0,
   margin = DEFAULT_MARGIN,
   zIndex = theme.zindex.sticky,
+  display,
 }: ExtendedTooltipProps) {
   const wrapperRef = React.useRef<HTMLDivElement>(null);
   const tooltipRef = React.useRef<HTMLDivElement>(null);
@@ -86,6 +89,7 @@ export function ExtendedTooltip({
   return (
     <TooltipWrapper
       ref={wrapperRef}
+      display={display}
       onPointerEnter={() => updateIsHovered(true, showTimeout)}
       onPointerLeave={() => updateIsHovered(false, hideTimeout)}
     >
@@ -157,8 +161,12 @@ const StyledTooltip = styled.div<StyledTooltipProps>`
   }
 `;
 
-const TooltipWrapper = styled.div`
-  display: inline-block;
+export type TooltipWrapperProps = {
+  display?: Display;
+};
+
+const TooltipWrapper = styled.div<TooltipWrapperProps>`
+  display: ${({ display }) => (display ? display : "inline-block")};
 `;
 
 function getColor(status: Status) {
