@@ -31,7 +31,8 @@ const showTranslateY = keyframes`
 
 export const ModalBox = styled(Box)<ModalBoxProps>`
   min-width: ${({ modalMinWidth }) => modalMinWidth || "32rem"};
-  overflow: hidden;
+  max-width: 95vw;
+  overflow: scroll;
   font-family: ${theme.fonts.body};
   line-height: ${theme.lineHeight};
   opacity: 0;

@@ -118,3 +118,32 @@ import { Button } from "../button";
     }}
   </Story>
 </Canvas>
+
+### Modal Confirm with long text and scroll
+
+<Canvas>
+  <Story name="confirm modal long body text">
+    {() => {
+      const { isOpen, open, close } = useDisclosure();
+      const action = () => alert("Confirmed");
+      return (
+        <>
+          <Button onClick={open}>Open modal</Button>
+          <ModalConfirm
+            contentLabel="Account"
+            isOpen={isOpen}
+            confirm={action}
+            onClose={close}
+            actionLabel="Confirm"
+          >
+            Do you really want to delete account{" "}
+            <em>
+              1033195400904dd389a6788ef9de5e141033195400904dd389a6788ef9de5e141033195400904dd389a6788ef9de5e141033195400904dd389a6788ef9de5e141033195400904dd389a6788ef9de5e141033195400904dd389a6788ef9de5e141033195400904dd389a6788ef9de5e141033195400904dd389a6788ef9de5e14
+            </em>
+            ?
+          </ModalConfirm>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
