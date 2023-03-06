@@ -40,6 +40,7 @@ export const palette = {
     red600: "#e53935",
     red700: "#d32f2f",
     red800: "#c62828",
+    redTransparent: "#c6282880",
   },
   pink: {
     pink100: "#f8bbd0",
@@ -80,6 +81,7 @@ export const palette = {
     blue600: "#1e88e5",
     blue700: "#1976d2",
     blue800: "#1565c0",
+    blueTransparent: "#1565c080",
   },
   deepBlue: {
     deepBlue100: "#c0daf8",
@@ -120,6 +122,7 @@ export const palette = {
     green600: "#43a047",
     green700: "#388e3c",
     green800: "#1b5e20",
+    greenTransparent: "#1b5e2080",
   },
   lightGreen: {
     lightGreen100: "#dcedc8",
@@ -150,5 +153,6 @@ export const palette = {
     orange600: "#fb8c00",
     orange700: "#f57c00",
     orange800: "#ef6c00",
+    orangeTransparent: "#ef6c0080",
   },
 } as const;
