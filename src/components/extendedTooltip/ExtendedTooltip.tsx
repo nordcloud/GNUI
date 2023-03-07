@@ -172,7 +172,7 @@ const TooltipWrapper = styled.div<TooltipWrapperProps>`
 function getColor(status: Status) {
   return css`
     background-color: ${setColor(status)};
-    color: ${theme.color.text.text01};
+    color: ${theme.color.text.text04};
     &:after {
       border-top-color: ${setColor(status)};
     }

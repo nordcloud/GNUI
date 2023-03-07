@@ -8,6 +8,7 @@ const StyledSVGIcon = styled.svg<Pick<SVGIconProps, "color" | "size">>`
   fill: ${theme.color.text.text01};
   width: ${theme.iconSize.md};
   height: ${theme.iconSize.md};
+  vertical-align: middle;
 
   ${({ color }) =>
     color &&
