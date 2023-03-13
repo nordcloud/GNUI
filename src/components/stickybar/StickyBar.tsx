@@ -2,10 +2,6 @@ import * as React from "react";
 import styled from "styled-components";
 import theme from "../../theme";
 
-type Props = {
-  children: React.ReactNode;
-};
-
 const Wrapper = styled("div")`
   position: sticky;
   top: 0;
@@ -20,6 +16,11 @@ const Wrapper = styled("div")`
   color: ${theme.color.text.text01};
 `;
 
-export function StickyBar({ children }: Props) {
-  return <Wrapper>{children}</Wrapper>;
+type Props = React.PropsWithChildren<
+  React.ComponentPropsWithoutRef<"div"> &
+    React.ComponentPropsWithoutRef<typeof Wrapper>
+>;
+
+export function StickyBar({ children, ...rest }: Props) {
+  return <Wrapper {...rest}>{children}</Wrapper>;
 }
