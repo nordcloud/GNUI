@@ -27,12 +27,12 @@ const lengthUnitSuffix = {
   ...relativeLengthUnitSuffix,
 };
 export type LengthUnitSuffix =
-  typeof lengthUnitSuffix[keyof typeof lengthUnitSuffix];
+  (typeof lengthUnitSuffix)[keyof typeof lengthUnitSuffix];
 
 const unitSuffix = {
   ...lengthUnitSuffix,
   ...multiplicationUnitSuffix,
 };
-type UnitSuffix = typeof unitSuffix[keyof typeof unitSuffix];
+type UnitSuffix = (typeof unitSuffix)[keyof typeof unitSuffix];
 
 export type Unit<Suffix extends UnitSuffix> = `${number}${Suffix}`;

@@ -3,7 +3,6 @@ import { off, on } from "../utils/listeners";
 
 const defaultEvents = ["mousedown", "touchstart"];
 
-/* eslint-disable max-params */
 export const useClickOutside = <E extends Event = Event>({
   ref,
   active = true,

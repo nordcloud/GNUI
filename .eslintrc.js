@@ -82,17 +82,8 @@ module.exports = {
         leadingUnderscore: "forbid",
       },
       {
-        selector: ["objectLiteralProperty", "objectLiteralMethod"],
-        format: ["camelCase", "PascalCase", "snake_case", "UPPER_CASE"],
-        leadingUnderscore: "allowDouble",
-        filter: {
-          regex: "^(&:)|^[0-9]+$",
-          match: false,
-        },
-      },
-      {
         selector: ["typeProperty"],
-        format: ["camelCase", "snake_case"],
+        format: ["camelCase"],
         leadingUnderscore: "allowDouble",
         filter: {
           regex: "^(Component)$",

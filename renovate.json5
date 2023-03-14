@@ -1,6 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", ":separateMultipleMajorReleases", "schedule:monthly", ":automergeDisabled"],
+  "extends": [
+    "config:base",
+    ":separateMultipleMajorReleases",
+    "schedule:monthly",
+    ":automergeDisabled"
+  ],
   "enabledManagers": ["npm"],
   "labels": ["dependencies"],
   "node": {
@@ -35,10 +40,7 @@
     },
     {
       "groupName": "Styled System",
-      "matchPackageNames": [
-        "styled-system",
-        "@types/styled-system"
-      ]
+      "matchPackageNames": ["styled-system", "@types/styled-system"]
     },
     {
       "groupName": "Jest",
@@ -61,17 +63,11 @@
     },
     {
       "groupName": "React Helmet",
-      "matchPackageNames": [
-        "react-helmet",
-        "@types/react-helmet"
-      ]
+      "matchPackageNames": ["react-helmet", "@types/react-helmet"]
     },
     {
       "groupName": "Styled Components",
-      "matchPackageNames": [
-        "styled-components",
-        "@types/styled-components"
-      ]
+      "matchPackageNames": ["styled-components", "@types/styled-components"]
     },
     {
       "matchDepTypes": ["devDependencies"],

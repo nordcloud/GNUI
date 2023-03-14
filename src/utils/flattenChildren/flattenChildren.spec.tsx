@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/consistent-type-definitions, @typescript-eslint/no-namespace, jest/prefer-strict-equal, @typescript-eslint/no-explicit-any, jsx-a11y/anchor-is-valid, jsx-a11y/anchor-has-content */
+/* eslint-disable @typescript-eslint/consistent-type-definitions, @typescript-eslint/no-namespace, jest/prefer-strict-equal, jsx-a11y/anchor-is-valid, jsx-a11y/anchor-has-content */
 // Code from https://github.com/gregberge/react-flatten-children
 import * as React from "react";
 import { flattenChildren } from "./flattenChildren";
