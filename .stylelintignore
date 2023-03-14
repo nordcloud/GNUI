@@ -1,3 +1,5 @@
-src/generated
-public
 build
+coverage
+dist
+node_modules
+storybook-static

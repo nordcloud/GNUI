@@ -9,14 +9,15 @@ export const setStatusColor = (status: Status) => {
     return css`
       border: 1px solid ${theme.color.border.error};
     `;
-  } else if (status === "success") {
+  }
+
+  if (status === "success") {
     return css`
       border: 1px solid ${theme.color.border.input};
     `;
   }
 };
 
-/* eslint-disable sonarjs/no-identical-functions */
 export const InputGroup = styled(FlexContainer)<
   SpaceProps & StyledInputGroupProps
 >`

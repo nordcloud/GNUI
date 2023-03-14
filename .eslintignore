@@ -1,5 +1,5 @@
 build
-dist
 coverage
-.eslintrc.js
-lint-staged.config.js
+dist
+node_modules
+storybook-static

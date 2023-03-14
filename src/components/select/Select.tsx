@@ -142,7 +142,6 @@ function getOptionBgColor(
 }
 
 /* taken from https://github.com/JedWatson/react-select/blob/master/docs/examples/StyledMulti.tsx */
-/* eslint-disable no-nested-ternary */
 export const customMultiColorStyles: StylesConfig<SelectColoredOption, true> = {
   ...getDefaultStyles(),
   control: (styles) => ({ ...styles, backgroundColor: "white" }),

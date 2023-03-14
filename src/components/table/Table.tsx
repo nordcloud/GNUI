@@ -10,7 +10,6 @@ export type StyledTableProps = {
 };
 
 /* stylelint-disable no-descending-specificity */
-/* eslint-disable sonarjs/no-identical-functions */
 const StyledTable = styled.table<StyledTableProps>`
   width: 100%;
   text-align: left;

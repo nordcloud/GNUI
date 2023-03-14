@@ -36,7 +36,7 @@ jobs:
           filter_mode: added
           level: warning
           fail_on_error: false
-          eslint_flags: '--ignore-path .gitignore .'
+          eslint_flags: '. --report-unused-disable-directives'
 
       - name: Stylelint
         uses: reviewdog/action-stylelint@v1

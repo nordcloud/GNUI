@@ -1,6 +1,6 @@
 build
+coverage
 dist
+node_modules
 storybook-static
 tsconfig.json
-coverage
-.vscode

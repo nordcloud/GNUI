@@ -126,7 +126,7 @@ return (
 In TypeScript, Ref needs to be properly typed:
 
 ```tsx
-const selectRef = React.useRef<SelectInstance<typeof options[number]> | null>(
+const selectRef = React.useRef<SelectInstance<(typeof options)[number]> | null>(
   null
 );
 ```

@@ -108,7 +108,6 @@ const changeSeverity = (severity: string) => {
   }
 };
 
-/* eslint-disable sonarjs/no-identical-functions */
 const StyledButton = styled.button<ButtonProps<React.ElementType>>`
   background: ${theme.color.interactive.primary};
   white-space: nowrap;
