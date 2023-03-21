@@ -19,47 +19,52 @@
   "rebaseWhen": "conflicted",
   "reviewers": ["@nordcloud/core-frontend-reviewers"],
   "packageRules": [
+    /********** Add labels **********/
     {
-      "depTypeList": ["peerDependencies"],
-      "enabled": false
+      "matchUpdateTypes": ["major"],
+      "labels": ["update-major"]
     },
+    /********** Global updates **********/
     {
-      "packageNames": ["node"],
-      "enabled": false
-    },
-    {
+      "groupName": "Weekly devDependency patch updates",
+      "extends": ["schedule:weekly"],
+      "matchDepTypes": ["devDependencies"],
       "matchUpdateTypes": ["patch"],
-      "excludePackagePatterns": ["@storybook", "storybook"],
-      "extends": ["schedule:monthly"],
-      "groupName": "Monthly patch updates"
+      "prPriority": 1
     },
     {
-      "matchPackagePatterns": ["@storybook", "storybook"],
-      "extends": ["schedule:monthly"],
-      "groupName": "Storybook updates"
+      "groupName": "Weekly runtime dependency patch updates",
+      "extends": ["schedule:weekly"],
+      "matchDepTypes": ["dependencies"],
+      "matchUpdateTypes": ["patch"],
+      "prPriority": 2
+    },
+    {
+      "groupName": "Engines",
+      "extends": ["schedule:weekly"],
+      "matchDepTypes": ["engines"],
+      "matchUpdateTypes": ["patch"],
+      "prPriority": 3
+    },
+    {
+      "groupName": "Overrides",
+      "extends": ["schedule:weekly"],
+      "matchDepTypes": ["overrides"],
+      "matchUpdateTypes": ["patch"],
+      "prPriority": 2
+    },
+    /********** Default grouping **********/
+    {
+      "groupName": "Storybook updates",
+      "matchPackagePrefixes": ["@storybook", "storybook"]
     },
     {
       "groupName": "Styled System",
       "matchPackageNames": ["styled-system", "@types/styled-system"]
     },
     {
-      "groupName": "Jest",
-      "matchPackageNames": [
-        "@types/jest",
-        "jest",
-        "jest-environment-jsdom",
-        "ts-jest"
-      ]
-    },
-    {
       "groupName": "Rollup",
-      "matchPackageNames": [
-        "@rollup/plugin-commonjs",
-        "@rollup/plugin-node-resolve",
-        "rollup",
-        "rollup-plugin-peer-deps-external",
-        "rollup-plugin-typescript2"
-      ]
+      "matchPackagePrefixes": ["@rollup", "rollup"]
     },
     {
       "groupName": "React Helmet",
@@ -69,30 +74,79 @@
       "groupName": "Styled Components",
       "matchPackageNames": ["styled-components", "@types/styled-components"]
     },
+    /********** Automerged **********/
     {
-      "matchDepTypes": ["devDependencies"],
-      "matchPackagePatterns": ["eslint", "prettier"],
-      "groupName": "ESLint and Prettier"
+      "groupName": "Testing packages",
+      "matchPackageNames": [
+        "@types/jest",
+        "jest",
+        "jest-environment-jsdom",
+        "ts-jest",
+        "@testing-library/jest-dom",
+        "@testing-library/react-hooks",
+        "@testing-library/user-event",
+        "identity-obj-proxy"
+      ],
+      "automerge": true
+    },
+    {
+      "groupName": "ESLint packages",
+      "matchPackageNames": ["eslint", "@nordcloud/eslint-config-pat"],
+      "automerge": true
+    },
+    {
+      "groupName": "Stylelint packages",
+      "matchPackagePrefixes": ["stylelint"],
+      "automerge": true
+    },
+    {
+      "groupName": "Non-critical tooling packages",
+      "matchPackageNames": [
+        "prettier",
+        "cross-env",
+        "npm-run-all",
+        "patch-package"
+      ],
+      "automerge": true
+    },
+    /********** Restricted **********/
+    {
+      "groupName": "React packages",
+      "matchPackageNames": [
+        "react",
+        "@types/react",
+        "react-dom",
+        "@types/react-dom"
+      ],
+      "allowedVersions": "<18.0.0",
+      "prPriority": 3
+    },
+    {
+      "matchPackageNames": ["@testing-library/react"],
+      "allowedVersions": "<13.0.0"
+    },
+    /********** Disabled **********/
+    // Since node versions come with certain npm version, they should always be in sync and upgraded together with caution
+    {
+      "groupName": "Node/NPM packages",
+      "matchPackageNames": ["node"],
+      "matchUpdateTypes": ["major", "minor"],
+      "enabled": false
+    },
+    {
+      "groupName": "Node/NPM packages",
+      "matchPackageNames": ["npm"],
+      "enabled": false
+    },
+    {
+      "groupName": "Overrides",
+      "matchDepTypes": ["overrides"],
+      "matchUpdateTypes": ["major", "minor"],
+      "enabled": false
+    },
+    {
+      "depTypeList": ["peerDependencies"],
+      "enabled": false
     }
-  ],
-  "ignoreDeps": [
-    // Major effort required to upgrade to latest Stylelint, need to wait for `eslint-config-pat`
-    "stylelint",
-    "stylelint-config-recommended",
-    "stylelint-config-styled-components",
-    "stylelint-processor-styled-components",
-
-    // manually bumping
-    "node",
-    "npm",
-    "typescript",
-
-    // dep updates blocked by React 18
-    "@testing-library/react",
-    "@testing-library/user-event",
-    "@types/react",
-    "@types/react-dom",
-    "react",
-    "react-dom"
   ]
 }
