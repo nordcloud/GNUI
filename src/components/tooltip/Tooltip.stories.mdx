@@ -1,152 +1,569 @@
 import { Meta, Story, Canvas } from "@storybook/addon-docs";
-import { Tooltip } from ".";
-import { Text } from "../text";
-import { FlexContainer, Flex } from "../container";
+import { Tooltip, TooltipContent, TooltipTrigger } from ".";
 import { Button } from "../button";
+import { Text } from "../text";
+import { useDisclosure } from "../../hooks";
 import { SVGIcon } from "../svgicon";
-import { Input } from "../input";
 
 <Meta title="Components/Tooltip" component={Tooltip} />
 
 # Tooltip
 
-#### Props
+## properties
 
-> - `caption`: `ReactNode` — **required** (tooltip content)
-> - `position`: `left` | `right` — **optional** (default position is center)
-> - `bottom`: `boolean` - **optional** (default is false)
-> - `status`: `danger` | `warning` | `success` | `notification` — **optional** (background color of tooltip)
+> - `placement`: `top | bottom | right | left | top-start | top-end | bottom-start | bottom-end | right-start | right-end | left-start | left-end`
+>   **optional** relative placement of tooltip compared to parent element, defaults to `top`
+> - `status`: `danger | warning | success | notification` **optional** background color of tooltip
+> - `offset`: `number` **optional** offset is the distance from trigger to tooltip in pxs, defaults to `10`
+> - `showArrow`: `boolean` **optional** show tooltip arrow, defaults to `true`
+> - `openDelay`: `number` **optional** delay time in milliseconds for opening of tooltip, defaults to `0`
+> - `closeDelay`: `number` **optional** delay time in milliseconds for closing of tooltip, defaults to `0`
+> - `open`: `boolean` **optional** if this parameter is present - tooltip will be controlled instead of uncontrolled
+> - `onOpenChange`: `(state: boolean) => void` **optional** fires on tooltip state change
 
-## Default Tooltip
+## Placement
 
-> `caption: string;` - caption for the tooltip
-
-<Canvas>
-  <Story name="default">
-    <FlexContainer
-      justifyContent="space-evenly"
-      style={{ paddingTop: "3rem", paddingBottom: "3rem" }}
-    >
-      <Tooltip caption="Lorem Ipsum is simply dummy text of the printing and typesetting industry.">
-        <Text>Tooltip</Text>
-      </Tooltip>
-    </FlexContainer>
-  </Story>
-</Canvas>
-
-## Bottom Tooltip
-
-> `bottom: boolean;` - positioning tooltip at the bottom
+> Tooltip positions itself based on `placement` prop. If for any reasons (i.e. missing free space in window or frame) tooltip is not able to position itself in desired position, it will flip sides preferring to be on top.
 
 <Canvas>
-  <Story name="bottom">
-    <FlexContainer
-      justifyContent="space-evenly"
-      css={{ paddingTop: "3rem", paddingBottom: "3rem" }}
-    >
-      <Tooltip
-        bottom
-        caption="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+  <Story name="Placement">
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(1fr, 3)",
+          gap: "1px",
+          gridTemplate: `
+          "top-start top top-end"
+          "left-start . right-start"
+          "left . right"
+          "left-end . right-end"
+          "bottom-start bottom bottom-end"
+          `,
+        }}
       >
-        <Text>Tooltip</Text>
+        <div style={{ gridArea: "top-start" }}>
+          <Tooltip placement="top-start">
+            <TooltipTrigger>
+              <div
+                style={{
+                  height: "3rem",
+                  width: "7rem",
+                  background: "#3498db",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Text mb="0">top-start</Text>
+              </div>
+            </TooltipTrigger>
+            <TooltipContent>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Vestibulum sollicitudin.
+              <br />
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Vestibulum sollicitudin.
+            </TooltipContent>
+          </Tooltip>
+        </div>
+        <div style={{ gridArea: "top" }}>
+          <Tooltip placement="top">
+            <TooltipTrigger>
+              <div
+                style={{
+                  height: "3rem",
+                  width: "7rem",
+                  background: "#3498db",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Text mb="0">top</Text>
+              </div>
+            </TooltipTrigger>
+            <TooltipContent>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Vestibulum sollicitudin.
+              <br />
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Vestibulum sollicitudin.
+            </TooltipContent>
+          </Tooltip>
+        </div>
+        <div style={{ gridArea: "top-end" }}>
+          <Tooltip placement="top-end">
+            <TooltipTrigger>
+              <div
+                style={{
+                  height: "3rem",
+                  width: "7rem",
+                  background: "#3498db",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Text mb="0">top-end</Text>
+              </div>
+            </TooltipTrigger>
+            <TooltipContent>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Vestibulum sollicitudin.
+              <br />
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Vestibulum sollicitudin.
+            </TooltipContent>
+          </Tooltip>
+        </div>
+        <div style={{ gridArea: "left-start" }}>
+          <Tooltip placement="left-start">
+            <TooltipTrigger>
+              <div
+                style={{
+                  height: "3rem",
+                  width: "7rem",
+                  background: "#3498db",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Text mb="0">left-start</Text>
+              </div>
+            </TooltipTrigger>
+            <TooltipContent>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Vestibulum sollicitudin.
+              <br />
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Vestibulum sollicitudin.
+            </TooltipContent>
+          </Tooltip>
+        </div>
+        <div style={{ gridArea: "right-start" }}>
+          <Tooltip placement="right-start">
+            <TooltipTrigger>
+              <div
+                style={{
+                  height: "3rem",
+                  width: "7rem",
+                  background: "#3498db",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Text mb="0">right-start</Text>
+              </div>
+            </TooltipTrigger>
+            <TooltipContent>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Vestibulum sollicitudin.
+              <br />
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Vestibulum sollicitudin.
+            </TooltipContent>
+          </Tooltip>
+        </div>
+        <div style={{ gridArea: "left" }}>
+          <Tooltip placement="left">
+            <TooltipTrigger>
+              <div
+                style={{
+                  height: "3rem",
+                  width: "7rem",
+                  background: "#3498db",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Text mb="0">left</Text>
+              </div>
+            </TooltipTrigger>
+            <TooltipContent>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Vestibulum sollicitudin.
+              <br />
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Vestibulum sollicitudin.
+            </TooltipContent>
+          </Tooltip>
+        </div>
+        <div style={{ gridArea: "right" }}>
+          <Tooltip placement="right">
+            <TooltipTrigger>
+              <div
+                style={{
+                  height: "3rem",
+                  width: "7rem",
+                  background: "#3498db",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Text mb="0">right</Text>
+              </div>
+            </TooltipTrigger>
+            <TooltipContent>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Vestibulum sollicitudin.
+              <br />
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Vestibulum sollicitudin.
+            </TooltipContent>
+          </Tooltip>
+        </div>
+        <div style={{ gridArea: "left-end" }}>
+          <Tooltip placement="left-end">
+            <TooltipTrigger>
+              <div
+                style={{
+                  height: "3rem",
+                  width: "7rem",
+                  background: "#3498db",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Text mb="0">left-end</Text>
+              </div>
+            </TooltipTrigger>
+            <TooltipContent>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Vestibulum sollicitudin.
+              <br />
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Vestibulum sollicitudin.
+            </TooltipContent>
+          </Tooltip>
+        </div>
+        <div style={{ gridArea: "right-end" }}>
+          <Tooltip placement="right-end">
+            <TooltipTrigger>
+              <div
+                style={{
+                  height: "3rem",
+                  width: "7rem",
+                  background: "#3498db",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Text mb="0">right-end</Text>
+              </div>
+            </TooltipTrigger>
+            <TooltipContent>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Vestibulum sollicitudin.
+              <br />
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Vestibulum sollicitudin.
+            </TooltipContent>
+          </Tooltip>
+        </div>
+        <div style={{ gridArea: "bottom-start" }}>
+          <Tooltip placement="bottom-start">
+            <TooltipTrigger>
+              <div
+                style={{
+                  height: "3rem",
+                  width: "7rem",
+                  background: "#3498db",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Text mb="0">bottom-start</Text>
+              </div>
+            </TooltipTrigger>
+            <TooltipContent>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Vestibulum sollicitudin.
+              <br />
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Vestibulum sollicitudin.
+            </TooltipContent>
+          </Tooltip>
+        </div>
+        <div style={{ gridArea: "bottom" }}>
+          <Tooltip placement="bottom">
+            <TooltipTrigger>
+              <div
+                style={{
+                  height: "3rem",
+                  width: "7rem",
+                  background: "#3498db",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Text mb="0">bottom</Text>
+              </div>
+            </TooltipTrigger>
+            <TooltipContent>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Vestibulum sollicitudin.
+              <br />
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Vestibulum sollicitudin.
+            </TooltipContent>
+          </Tooltip>
+        </div>
+        <div style={{ gridArea: "bottom-end" }}>
+          <Tooltip placement="bottom-end">
+            <TooltipTrigger>
+              <div
+                style={{
+                  height: "3rem",
+                  width: "7rem",
+                  background: "#3498db",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Text mb="0">bottom-end</Text>
+              </div>
+            </TooltipTrigger>
+            <TooltipContent>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Vestibulum sollicitudin.
+              <br />
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Vestibulum sollicitudin.
+            </TooltipContent>
+          </Tooltip>
+        </div>
+      </div>
+    </div>
+  </Story>
+</Canvas>
+
+## Status
+
+<Canvas>
+  <Story name="Status">
+    <div style={{ display: "flex", justifyContent: "center", gap: "1rem" }}>
+      <Tooltip status="success">
+        <TooltipTrigger>
+          <Button color="success">Success</Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+          sollicitudin.
+        </TooltipContent>
       </Tooltip>
-    </FlexContainer>
+      <Tooltip status="danger">
+        <TooltipTrigger>
+          <Button color="danger">Danger</Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+          sollicitudin.
+        </TooltipContent>
+      </Tooltip>
+      <Tooltip status="warning">
+        <TooltipTrigger>
+          <Button color="warning">Warning</Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+          sollicitudin.
+        </TooltipContent>
+      </Tooltip>
+      <Tooltip status="notification">
+        <TooltipTrigger>
+          <Button color="notification">Notification</Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+          sollicitudin.
+        </TooltipContent>
+      </Tooltip>
+    </div>
   </Story>
 </Canvas>
 
-## Tooltip Position
-
-> - `position`: `left` | `right` - you can align the tooltip to the right side or to the left side of your child element
+## Offset
 
 <Canvas>
-  <Story name="position">
-    <FlexContainer
-      justifyContent="space-evenly"
-      css={{ paddingTop: "3rem", paddingBottom: "3rem" }}
-    >
-      <div>
-        <Tooltip
-          position="left"
-          caption="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-        >
-          <Text>Align to the Left</Text>
-        </Tooltip>
-      </div>
-      <div>
-        <Tooltip
-          position="right"
-          caption="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-        >
-          <Text>Align to the Right</Text>
-        </Tooltip>
-      </div>
-    </FlexContainer>
+  <Story name="Offset">
+    <div style={{ display: "flex", justifyContent: "center", gap: "1rem" }}>
+      <Tooltip>
+        <TooltipTrigger>
+          <Button>I have default offset</Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+          sollicitudin.
+        </TooltipContent>
+      </Tooltip>
+      <Tooltip offset={30}>
+        <TooltipTrigger>
+          <Button>I have offset of 30px</Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+          sollicitudin.
+        </TooltipContent>
+      </Tooltip>
+      <Tooltip offset={50}>
+        <TooltipTrigger>
+          <Button>I have offset of 50px</Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+          sollicitudin.
+        </TooltipContent>
+      </Tooltip>
+    </div>
   </Story>
 </Canvas>
 
-## Tooltip Status
-
-> - `status`: `danger` | `warning` | `success` | `notification`
+## Hide Arrow
 
 <Canvas>
-  <Story name="status">
-    <FlexContainer
-      justifyContent="space-evenly"
-      css={{ paddingTop: "3rem", paddingBottom: "3rem" }}
-    >
-      <div>
-        <Tooltip status="danger" caption="Error tooltip">
-          <Text>Danger</Text>
-        </Tooltip>
-      </div>
-      <div>
-        <Tooltip status="warning" caption="Warning tooltip">
-          <Text>Warning</Text>
-        </Tooltip>
-      </div>
-      <div>
-        <Tooltip status="success" caption="Success tooltip">
-          <Text>Success</Text>
-        </Tooltip>
-      </div>
-      <div>
-        <Tooltip status="notification" caption="Notification tooltip">
-          <Text>Notification</Text>
-        </Tooltip>
-      </div>
-    </FlexContainer>
+  <Story name="Hide arrow">
+    <div style={{ display: "flex", justifyContent: "center", gap: "1rem" }}>
+      <Tooltip showArrow={false}>
+        <TooltipTrigger>
+          <Button>I'm arrowless</Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+          sollicitudin.
+        </TooltipContent>
+      </Tooltip>
+      <Tooltip>
+        <TooltipTrigger>
+          <Button>I have stylish arrow!</Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+          sollicitudin.
+        </TooltipContent>
+      </Tooltip>
+    </div>
   </Story>
 </Canvas>
 
-## Tooltip with other Components
+## Delays
 
 <Canvas>
-  <Story name="components">
-    <FlexContainer
-      justifyContent="space-evenly"
-      css={{ paddingTop: "3rem", paddingBottom: "3rem" }}
-    >
-      <div>
-        <Tooltip
-          position="left"
-          caption="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+  <Story name="Delays">
+    <div style={{ display: "flex", justifyContent: "center", gap: "1rem" }}>
+      <Tooltip openDelay={1000}>
+        <TooltipTrigger>
+          <Button>My tooltip will open after 1s</Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+          sollicitudin.
+        </TooltipContent>
+      </Tooltip>
+      <Tooltip closeDelay={1000}>
+        <TooltipTrigger>
+          <Button>My tooltip will close after 1s</Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+          sollicitudin.
+        </TooltipContent>
+      </Tooltip>
+      <Tooltip closeDelay={1000} openDelay={1000}>
+        <TooltipTrigger>
+          <Button>I have both delays</Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+          sollicitudin.
+        </TooltipContent>
+      </Tooltip>
+    </div>
+  </Story>
+</Canvas>
+
+## Misc
+
+### Usage over inline elements
+
+<Canvas>
+  <Story name="Inline Tooltip">
+    <span style={{ color: "black" }}>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.{" "}
+      <Tooltip>
+        <TooltipTrigger>
+          <span style={{ color: "#3498db" }}>Vestibulum</span>
+        </TooltipTrigger>
+        <TooltipContent>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+          sollicitudin.
+        </TooltipContent>
+      </Tooltip>{" "}
+      sollicitudin.
+    </span>
+  </Story>
+</Canvas>
+
+### Controlled Tooltip
+
+> It's possible to control tooltip programmatically.
+
+<Canvas>
+  <Story name="Controlled Tooltip">
+    {() => {
+      const { isOpen, toggle } = useDisclosure();
+      return (
+        <div style={{ display: "flex", justifyContent: "center", gap: "5rem" }}>
+          <Tooltip isOpen={isOpen}>
+            <TooltipTrigger>
+              <Button disabled>Tooltip will appear here</Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Vestibulum sollicitudin.
+            </TooltipContent>
+          </Tooltip>
+          <Button onClick={toggle}>Click me!</Button>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Styling Tooltip
+
+> It's possible to apply styles to tooltip either by adding `css` or `$style` (notice `$`) to `TooltipContent`. Styles will be applied to Tooltip container.
+> Applying styles to arrow is possible by `css` property and targeting `svg`, or by using `$arrowProps` (once again, notice `$`). <br/>
+> !!!BEWARE!!! - `style` won't work as we need to pass transient prop to `styled-components`.
+
+<Canvas>
+  <Story name="Styling Tooltip">
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <Tooltip>
+        <TooltipTrigger>
+          <Button>I have stylish tooltip!</Button>
+        </TooltipTrigger>
+        <TooltipContent
+          $style={{
+            maxWidth: "40rem",
+            background:
+              "linear-gradient(90deg, rgba(34,193,195,1) 0%, rgba(92,141,189,1) 21%, rgba(253,187,45,1) 51%, rgba(253,45,224,1) 73%)",
+          }}
+          $arrowProps={{ fill: "pink" }}
         >
-          <Button>Button example</Button>
-        </Tooltip>
-      </div>
-      <div>
-        <Tooltip caption="Lorem Ipsum is simply dummy text of the printing and typesetting industry.">
-          <SVGIcon name="help" />
-        </Tooltip>
-      </div>
-      <div>
-        <Tooltip
-          position="left"
-          caption="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-        >
-          <Input name="Name" placeholder="Name" />
-        </Tooltip>
-      </div>
-    </FlexContainer>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+          sollicitudin.
+        </TooltipContent>
+      </Tooltip>
+    </div>
   </Story>
 </Canvas>

@@ -1,9 +1,8 @@
-import * as React from "react";
 import theme from "../../theme";
-import { FlexContainer } from "../container/Container";
+import { FlexContainer } from "../container";
 import { ExtendedPopover } from "../extendedPopover";
-import { ExtendedTooltip } from "../extendedTooltip";
 import { SVGIcon } from "../svgicon";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../tooltip";
 import { Trigger } from "./components/Trigger";
 import { StyledTriggerWrapper } from "./styles";
 import { MenuItemProps } from "./types";
@@ -13,7 +12,7 @@ export function MenuItem({ caption, icon, children }: MenuItemProps) {
   const { expanded, expandedDone, popoverConfig } = useMenuBarConfiguration();
 
   if (children != null) {
-    const triggerEl = (
+    const triggerElement = (
       <FlexContainer justifyContent={expanded ? "start" : "center"}>
         <Trigger expanded={expandedDone} icon={icon} caption={caption} />
       </FlexContainer>
@@ -22,7 +21,7 @@ export function MenuItem({ caption, icon, children }: MenuItemProps) {
     return (
       <StyledTriggerWrapper>
         <ExtendedPopover
-          trigger={triggerEl}
+          trigger={triggerElement}
           position="start"
           triggerOn={popoverConfig?.triggerOn}
           closeOn={popoverConfig?.closeOn}
@@ -35,16 +34,15 @@ export function MenuItem({ caption, icon, children }: MenuItemProps) {
 
   return (
     <StyledTriggerWrapper>
-      <ExtendedTooltip
-        caption={expanded ? null : caption}
-        placement="right"
-        margin={{ right: 20 }}
-      >
-        <FlexContainer justifyContent={expanded ? "start" : "center"}>
-          <SVGIcon name={icon} css={{ padding: theme.spacing.spacing01 }} />
-          {expandedDone ? caption : ""}
-        </FlexContainer>
-      </ExtendedTooltip>
+      <Tooltip placement="right" showArrow={false} offset={20}>
+        <TooltipTrigger>
+          <FlexContainer justifyContent={expanded ? "start" : "center"}>
+            <SVGIcon name={icon} css={{ padding: theme.spacing.spacing01 }} />
+            {expandedDone ? caption : ""}
+          </FlexContainer>
+        </TooltipTrigger>
+        <TooltipContent>{expanded ? null : caption}</TooltipContent>
+      </Tooltip>
     </StyledTriggerWrapper>
   );
 }
