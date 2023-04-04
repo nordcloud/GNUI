@@ -119,7 +119,7 @@
     "react-dom": "^17.0.2",
     "rollup": "^3.19.1",
     "rollup-plugin-typescript2": "^0.34.1",
-    "storybook": "^6.5.12",
+    "storybook": "^7.0.0",
     "storybook-addon-turbo-build": "^1.1.0",
     "styled-components": "^5.3.6",
     "stylelint": "^13.13.1",
