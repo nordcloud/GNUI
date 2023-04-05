@@ -109,7 +109,7 @@ export function TimeRangePicker({
     getInitSelectedDate(initTimeRange)
   );
   const [selectedTimeRange, setSelectedTimeRange] = React.useState(
-    DEFAULT_TIME_RANGE_OPTIONS[0]
+    getInitSelectedTimeRange()
   );
 
   const [selectedDaysRange, setSelectedDaysRange] = React.useState(
@@ -119,6 +119,7 @@ export function TimeRangePicker({
   const [dateOptions, setDateOptions] = React.useState<DateOption[]>(
     getInitDateOptions(selectedDate)
   );
+
   const {
     isOpen: isCalendarActive,
     close: closeCalendar,
@@ -374,6 +375,11 @@ const getInitSelectedDate = (initRange: Interval): Date => {
   return isSameDay(initRange.start, initRange.end)
     ? new Date(initRange.start)
     : new Date();
+};
+
+const getInitSelectedTimeRange = (): TimeRangeOption => {
+  const rangeId = Math.floor(new Date().getHours() / 6); // Each default time range has 6 hours time span
+  return DEFAULT_TIME_RANGE_OPTIONS[rangeId];
 };
 
 const getDateOptions = (monday: Date): DateOption[] => {
