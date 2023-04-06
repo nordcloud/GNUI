@@ -1,0 +1,25 @@
+# Copyright 2023 Nordcloud Oy or its affiliates. All Rights Reserved.
+
+name: 'Dependency Review'
+on:
+  pull_request:
+    branches: [master]
+
+permissions:
+  contents: read
+
+jobs:
+  dependency-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout Repository'
+        uses: actions/checkout@v3
+      - name: Dependency Review
+        uses: actions/dependency-review-action@v3
+        with:
+          # Possible values: "critical", "high", "moderate", "low"
+          fail-on-severity: high
+
+          # ([String]). Block pull requests that introduce vulnerabilities in the scopes that match this list (optional)
+          # Possible values: "development", "runtime", "unknown"
+          fail-on-scopes: development, runtime
