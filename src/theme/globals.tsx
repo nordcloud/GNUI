@@ -24,6 +24,10 @@ const GlobalStyle = createGlobalStyle<Props>`
      font-weight: ${theme.fontWeights.regular};
      line-height: ${theme.lineHeight};
   }
+  
+  body {
+    --scrollbar-width: calc(100vw - 100%);
+  }
 
   code {
     font-family: ${theme.typography.fonts.body};

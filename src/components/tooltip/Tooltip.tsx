@@ -5,7 +5,6 @@ import {
   HTMLProps,
   isValidElement,
   ReactNode,
-  RefAttributes,
 } from "react";
 import {
   useMergeRefs,
@@ -19,27 +18,16 @@ import { TooltipContext, useTooltipContext } from "./context";
 import { getArrowFillColor, StyledTooltip } from "./styles";
 import { TooltipOptions, useTooltip } from "./useTooltip";
 
-export function Tooltip({
-  children,
-  ...options
-}: TooltipOptions & { children: ReactNode }) {
-  // This can accept any props as options, e.g. `placement`,
-  // or other positioning options.
-  const tooltip = useTooltip(options);
-  return (
-    <TooltipContext.Provider value={tooltip}>
-      {children}
-    </TooltipContext.Provider>
-  );
-}
-
-export const TooltipTrigger = forwardRef<HTMLElement, HTMLProps<HTMLElement>>(
+const TooltipTrigger = forwardRef<HTMLElement, HTMLProps<HTMLElement>>(
   ({ children, ...props }, propertyRef) => {
     const context = useTooltipContext();
-    // Casting, because React types are lacking. Children prop is typed as ReactNode which doesn't allow refs, which is not true
-    const childrenRef =
-      (children as RefAttributes<HTMLElement> | undefined)?.ref ?? null;
-    const ref = useMergeRefs([context.refs.setReference, propertyRef, childrenRef]);
+    // @ts-expect-error -- React types are lacking. Children prop is typed as ReactNode which doesn't allow refs, which is not true
+    const childrenRef = children?.ref ?? null;
+    const ref = useMergeRefs([
+      context.refs.setReference,
+      propertyRef,
+      childrenRef,
+    ]);
 
     if (isValidElement(children) && isForwardRef(children)) {
       return cloneElement(
@@ -66,7 +54,7 @@ export const TooltipTrigger = forwardRef<HTMLElement, HTMLProps<HTMLElement>>(
   }
 );
 
-export const TooltipContent = forwardRef<
+const TooltipContent = forwardRef<
   HTMLDivElement,
   Omit<HTMLProps<HTMLElement>, "style"> & {
     $style?: HTMLProps<HTMLElement>["style"];
@@ -125,3 +113,20 @@ export const TooltipContent = forwardRef<
     </When>
   );
 });
+
+export function Tooltip({
+  children,
+  ...options
+}: TooltipOptions & { children: ReactNode }) {
+  // This can accept any props as options, e.g. `placement`,
+  // or other positioning options.
+  const tooltip = useTooltip(options);
+  return (
+    <TooltipContext.Provider value={tooltip}>
+      {children}
+    </TooltipContext.Provider>
+  );
+}
+
+Tooltip.trigger = TooltipTrigger;
+Tooltip.content = TooltipContent;
