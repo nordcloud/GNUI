@@ -1,2 +1,2 @@
-export { Tooltip, TooltipTrigger, TooltipContent } from "./Tooltip";
+export { Tooltip } from "./Tooltip";
 export { useTooltipContext } from "./context";

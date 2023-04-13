@@ -2,7 +2,7 @@ import theme from "../../theme";
 import { FlexContainer } from "../container";
 import { ExtendedPopover } from "../extendedPopover";
 import { SVGIcon } from "../svgicon";
-import { Tooltip, TooltipContent, TooltipTrigger } from "../tooltip";
+import { Tooltip } from "../tooltip";
 import { Trigger } from "./components/Trigger";
 import { StyledTriggerWrapper } from "./styles";
 import { MenuItemProps } from "./types";
@@ -35,13 +35,13 @@ export function MenuItem({ caption, icon, children }: MenuItemProps) {
   return (
     <StyledTriggerWrapper>
       <Tooltip placement="right" showArrow={false} offset={20}>
-        <TooltipTrigger>
+        <Tooltip.trigger>
           <FlexContainer justifyContent={expanded ? "start" : "center"}>
             <SVGIcon name={icon} css={{ padding: theme.spacing.spacing01 }} />
             {expandedDone ? caption : ""}
           </FlexContainer>
-        </TooltipTrigger>
-        <TooltipContent>{expanded ? null : caption}</TooltipContent>
+        </Tooltip.trigger>
+        <Tooltip.content>{expanded ? null : caption}</Tooltip.content>
       </Tooltip>
     </StyledTriggerWrapper>
   );
