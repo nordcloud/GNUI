@@ -5,6 +5,7 @@ import {
   HTMLProps,
   isValidElement,
   ReactNode,
+  Ref,
 } from "react";
 import {
   useMergeRefs,
@@ -21,8 +22,7 @@ import { TooltipOptions, useTooltip } from "./useTooltip";
 const TooltipTrigger = forwardRef<HTMLElement, HTMLProps<HTMLElement>>(
   ({ children, ...props }, propertyRef) => {
     const context = useTooltipContext();
-    // @ts-expect-error -- React types are lacking. Children prop is typed as ReactNode which doesn't allow refs, which is not true
-    const childrenRef = children?.ref ?? null;
+    const childrenRef = hasRef(children) ? children.ref : null;
     const ref = useMergeRefs([
       context.refs.setReference,
       propertyRef,
@@ -32,6 +32,7 @@ const TooltipTrigger = forwardRef<HTMLElement, HTMLProps<HTMLElement>>(
     if (isValidElement(children) && isForwardRef(children)) {
       return cloneElement(
         children,
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- children.props is `any`. It's fine, because we don't know to need specific prop values
         context.getReferenceProps({
           ref,
           ...props,
@@ -79,7 +80,7 @@ const TooltipContent = forwardRef<
     console.warn("Use $style instead of style in this TooltipContent.");
   }
 
-  const { as: _ignored, $style, $arrowProps, children, ...restOfProps } = props;
+  const { as: ignored, $style, $arrowProps, children, ...restOfProps } = props;
 
   return (
     <When condition={isMounted}>
@@ -113,6 +114,11 @@ const TooltipContent = forwardRef<
     </When>
   );
 });
+
+function hasRef(value: unknown): value is { ref: Ref<unknown> } {
+  // @ts-expect-error -- React types are lacking. Children prop is typed as ReactNode which doesn't allow refs, which is not true
+  return value?.ref != null;
+}
 
 export function Tooltip({
   children,

@@ -39,11 +39,11 @@ export function useTooltip({
   isOpen: controlledOpen,
   onOpenChange: setControlledOpen,
 }: TooltipOptions = {}) {
-  const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen);
+  const [isUncontrolledOpen, setIsUncontrolledOpen] = useState(initialOpen);
   const arrowRef = useRef(null);
 
-  const isOpen = controlledOpen ?? uncontrolledOpen;
-  const setOpen = setControlledOpen ?? setUncontrolledOpen;
+  const isOpen = controlledOpen ?? isUncontrolledOpen;
+  const setOpen = setControlledOpen ?? setIsUncontrolledOpen;
 
   const data = useFloating({
     placement,
@@ -90,6 +90,6 @@ export function useTooltip({
       ...interactions,
       ...data,
     }),
-    [open, setOpen, interactions, data, showArrow]
+    [isOpen, setOpen, status, showArrow, interactions, data]
   );
 }
