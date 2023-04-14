@@ -41,6 +41,5 @@ export * from "./toggle";
 export * from "./tooltip";
 export * from "./textarea";
 export * from "./extendedPagination";
-export * from "./extendedTooltip";
 export * from "./extendedPopover";
 export * from "./navigationBar";

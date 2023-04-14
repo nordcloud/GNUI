@@ -1,99 +1,138 @@
-import * as React from "react";
-import { useTooltipHover } from "./hooks";
-import { StyledTooltip, TooltipWrapper } from "./styles";
+import {
+  cloneElement,
+  ComponentProps,
+  forwardRef,
+  HTMLProps,
+  isValidElement,
+  ReactNode,
+  Ref,
+} from "react";
+import {
+  useMergeRefs,
+  FloatingPortal,
+  useTransitionStyles,
+  FloatingArrow,
+} from "@floating-ui/react";
+import { When } from "react-if";
+import { isForwardRef } from "react-is";
+import { TooltipContext, useTooltipContext } from "./context";
+import { getArrowFillColor, StyledTooltip } from "./styles";
+import { TooltipOptions, useTooltip } from "./useTooltip";
 
-export type Props = {
-  caption: React.ReactNode;
-  position?: "left" | "right";
-  bottom?: boolean;
-  status?: "danger" | "notification" | "success" | "warning";
-  children?: React.ReactNode;
-  showTimeout?: number;
-  hideTimeout?: number;
-  minWidth?: string;
-};
+const TooltipTrigger = forwardRef<HTMLElement, HTMLProps<HTMLElement>>(
+  ({ children, ...props }, propertyRef) => {
+    const context = useTooltipContext();
+    const childrenRef = hasRef(children) ? children.ref : null;
+    const ref = useMergeRefs([
+      context.refs.setReference,
+      propertyRef,
+      childrenRef,
+    ]);
 
-export function Tooltip({
-  status,
-  position,
-  caption,
-  bottom = false,
-  children,
-  hideTimeout = 100,
-  showTimeout = 300,
-  minWidth = "0",
-}: Props) {
-  const tooltipRef = React.useRef<HTMLDivElement>(null);
-  const wrapperRef = React.useRef<HTMLDivElement>(null);
-
-  const [tooltipPosition, setPosition] = React.useState({
-    marginTop: 0,
-    width: 0,
-  });
-
-  const { isHovered, updateIsHovered } = useTooltipHover();
-
-  React.useEffect(() => {
-    if (isHovered && tooltipRef.current instanceof HTMLDivElement) {
-      const tooltipSize = tooltipRef.current.getBoundingClientRect();
-      setPosition({
-        marginTop: bottom
-          ? tooltipSize.height - 12
-          : -(tooltipSize.height + 12),
-        width: tooltipSize.width,
-      });
-    }
-    // Providing refs to dependency array of useEffect may cause unexpected problems
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isHovered]);
-
-  const getStyle = () => {
-    if (wrapperRef.current == null) {
-      return;
+    if (isValidElement(children) && isForwardRef(children)) {
+      return cloneElement(
+        children,
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- children.props is `any`. It's fine, because we don't know to need specific prop values
+        context.getReferenceProps({
+          ref,
+          ...props,
+          ...children.props,
+          "data-state": context.isOpen ? "open" : "closed",
+        })
+      );
     }
 
-    if (position === "left") {
-      return {
-        marginTop: tooltipPosition.marginTop,
-        left: wrapperRef.current.offsetLeft,
-      };
-    }
+    return (
+      <span
+        ref={ref}
+        // The user can style the trigger based on the state
+        data-state={context.isOpen ? "open" : "closed"}
+        {...context.getReferenceProps(props)}
+      >
+        {children}
+      </span>
+    );
+  }
+);
 
-    if (position === "right") {
-      return {
-        marginTop: tooltipPosition.marginTop,
-        left:
-          wrapperRef.current.offsetLeft -
-          (tooltipPosition.width - wrapperRef.current.offsetWidth),
-      };
-    }
+const TooltipContent = forwardRef<
+  HTMLDivElement,
+  Omit<HTMLProps<HTMLElement>, "style"> & {
+    $style?: HTMLProps<HTMLElement>["style"];
+    $arrowProps?: Omit<ComponentProps<typeof FloatingArrow>, "context" | "ref">;
+  }
+>((props, propertyRef) => {
+  const context = useTooltipContext();
+  const ref = useMergeRefs([context.refs.setFloating, propertyRef]);
 
-    return {
-      marginTop: tooltipPosition.marginTop,
-      left: wrapperRef.current.offsetLeft,
-      marginLeft: -(tooltipPosition.width - wrapperRef.current.offsetWidth) / 2,
-    };
-  };
+  const { isMounted, styles: transitionStyles } = useTransitionStyles(
+    context.context,
+    {
+      duration: { open: 300, close: 150 },
+      initial: {
+        opacity: 0,
+        transform: "scale(0.95)",
+      },
+    }
+  );
+
+  if ("style" in props) {
+    console.warn("Use $style instead of style in this TooltipContent.");
+  }
+
+  const { as: ignored, $style, $arrowProps, children, ...restOfProps } = props;
 
   return (
-    <TooltipWrapper
-      ref={wrapperRef}
-      onMouseEnter={() => updateIsHovered(true, showTimeout)}
-      onMouseLeave={() => updateIsHovered(false, hideTimeout)}
-    >
-      {isHovered && (
+    <When condition={isMounted}>
+      <FloatingPortal>
         <StyledTooltip
-          ref={tooltipRef}
-          status={status}
-          position={position}
-          bottom={bottom}
-          minWidth={minWidth}
-          style={getStyle()}
+          {...restOfProps}
+          ref={ref}
+          strategy={context.strategy}
+          status={context.status}
+          style={{
+            position: context.strategy,
+            top: Math.round(context.y ?? 0),
+            left: Math.round(context.x ?? 0),
+            visibility: context.x == null ? "hidden" : "visible",
+            ...transitionStyles,
+            ...$style,
+          }}
+          {...context.getFloatingProps(props)}
         >
-          {caption}
+          {children}
+          <When condition={context.showArrow}>
+            <FloatingArrow
+              ref={context.arrowRef}
+              fill={getArrowFillColor(context.status)}
+              context={context.context}
+              {...$arrowProps}
+            />
+          </When>
         </StyledTooltip>
-      )}
+      </FloatingPortal>
+    </When>
+  );
+});
+
+function hasRef(value: unknown): value is { ref: Ref<unknown> } {
+  // @ts-expect-error -- React types are lacking. Children prop is typed as ReactNode which doesn't allow refs, which is not true
+  return value?.ref != null;
+}
+
+export function Tooltip({
+  children,
+  ...options
+}: TooltipOptions & { children: ReactNode }) {
+  // This can accept any props as options, e.g. `placement`,
+  // or other positioning options.
+  const tooltip = useTooltip(options);
+  return (
+    <TooltipContext.Provider value={tooltip}>
       {children}
-    </TooltipWrapper>
+    </TooltipContext.Provider>
   );
 }
+
+Tooltip.trigger = TooltipTrigger;
+Tooltip.content = TooltipContent;

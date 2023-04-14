@@ -1,102 +1,37 @@
-import styled, { css } from "styled-components";
+import { Strategy } from "@floating-ui/react";
+import styled from "styled-components";
 import theme from "../../theme";
 import { setColor } from "../../utils/setcolor";
 
-function setArrowPosition(position: string) {
-  switch (position) {
-    case "left":
-      return `
-        left: 0.5rem;
-        right: auto;
-        margin-left: 0;
-        `;
-    case "right":
-      return `
-        left: auto;
-        right: 0.5rem;
-        margin-left: 0;
-        `;
-    default:
-      return `
-        left: 50%;
-        margin-left: -0.25rem;
-        right:auto;
-      `;
-  }
-}
-
-export const TooltipWrapper = styled.div`
-  display: inline-block;
-`;
+export const DEFAULT_TOOLTIP_PADDING = 5;
 
 type StyledTooltipProps = {
-  position?: "left" | "right";
-  bottom?: boolean;
+  strategy: Strategy;
   status?: "danger" | "notification" | "success" | "warning";
-  minWidth?: string;
 };
 
+// Don't forward style prop, as we need to add positioning data and passing `style` prop would overwrite it
 export const StyledTooltip = styled.div<StyledTooltipProps>`
-  position: absolute;
-  min-width: ${({ minWidth }) => minWidth};
-  max-width: 16rem;
+  --backgroundColor: ${({ status }) =>
+    status ? setColor(status) : theme.color.background.ui05};
+
+  box-sizing: border-box;
+  width: max-content;
+  /* We want to ensure that padding from 2 sides is accounted for, hence multiplication */
+  max-width: min(
+    calc(100vw - ${DEFAULT_TOOLTIP_PADDING * 2}px - var(--scrollbar-width)),
+    16rem
+  );
   font-size: ${theme.fontSizes.sm};
   line-height: 1rem;
   padding: ${theme.spacing.spacing02};
-  background-color: ${theme.color.background.ui05};
+  background-color: var(--backgroundColor);
+  border-top-color: var(--backgroundColor);
   color: ${theme.color.text.text04};
   border-radius: ${theme.radius.md};
   z-index: ${theme.zindex.sticky};
-  opacity: 0;
-  animation: 0.2s ease-in-out both fadeInUp;
-
-  &:after,
-  &:before {
-    top: 100%;
-    left: 50%;
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-  }
-
-  &:after {
-    border-color: transparent;
-    border-top-color: ${theme.color.background.ui05};
-    border-width: 8px;
-    margin-left: -8px;
-    ${({ position }) =>
-      position &&
-      css`
-        ${setArrowPosition(position)}
-      `}
-
-    ${({ bottom }) =>
-      bottom &&
-      css`
-        top: -16px;
-        transform: rotate(180deg);
-      `}
-  }
-
-  ${({ status }) =>
-    status &&
-    css`
-      background: ${setColor(status)};
-      &:after {
-        border-top-color: ${setColor(status)};
-      }
-    `}
-
-  @keyframes fadeInUp {
-    from {
-      transform: translate3d(0, -8px, 0);
-    }
-    to {
-      transform: translate3d(0, 0, 0);
-      opacity: 1;
-    }
-  }
 `;
+
+export const getArrowFillColor = (
+  status?: "danger" | "notification" | "success" | "warning"
+) => (status ? setColor(status) : theme.color.background.ui05);
