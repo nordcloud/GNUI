@@ -305,6 +305,7 @@ export function TimeRangePicker({
               <DayPicker
                 mode="single"
                 selected={selectedDate}
+                defaultMonth={selectedDate}
                 onSelect={(selectedDay: Date | undefined) => {
                   handleDateSelection(selectedDay);
                   closeCalendar();
