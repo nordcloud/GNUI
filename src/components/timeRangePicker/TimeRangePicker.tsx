@@ -2,14 +2,9 @@ import * as React from "react";
 import {
   Interval,
   isSameDay,
-  isMonday,
   previousMonday,
   nextMonday,
   addDays,
-  format,
-  addWeeks,
-  addMonths,
-  addYears,
 } from "date-fns";
 import { DayPicker } from "react-day-picker";
 import { useClickOutside, useDisclosure } from "../../hooks";
@@ -20,6 +15,14 @@ import { Datepicker } from "../datepicker";
 import { Label } from "../input";
 import { SelectButton } from "../selectbutton";
 import { Text } from "../text";
+import { DateOptionLabel, TimeRangeLabel } from "./components";
+import {
+  WEEKDAYS,
+  DEFAULT_RANGE_OPTIONS,
+  DEFAULT_TIME_RANGE_OPTIONS,
+  DEFAULT_TIME_RANGE,
+  DEFAULT_DAILY_COUNTS,
+} from "./constants";
 import {
   Row,
   UnifiedMultipleSelect,
@@ -33,91 +36,42 @@ import {
   DateOption,
   TimeRangeOption,
   TimeRangePickerProps,
-  RANGE_TYPE,
+  DailyCount,
 } from "./types";
+import {
+  getMonday,
+  getTimeRangeDate,
+  getDateWithDays,
+  getDateWithTime,
+  getDate,
+} from "./utils";
 
 const dateFormat = "dd MMM yyyy";
-
-const WEEKDAYS = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
-];
-
-type RangeOptions = {
-  id: string;
-  label: RANGE_TYPE;
-};
-
-const DEFAULT_RANGE_OPTIONS: RangeOptions[] = [
-  {
-    id: "0",
-    label: RANGE_TYPE.DAY,
-  },
-  {
-    id: "1",
-    label: RANGE_TYPE.WEEK,
-  },
-  {
-    id: "2",
-    label: RANGE_TYPE.MONTH,
-  },
-  {
-    id: "3",
-    label: RANGE_TYPE.YEAR,
-  },
-];
-
-const DEFAULT_TIME_RANGE_OPTIONS: TimeRangeOption[] = [
-  {
-    id: "0",
-    start: "00:00",
-    end: "06:00",
-  },
-  {
-    id: "1",
-    start: "06:00",
-    end: "12:00",
-  },
-  {
-    id: "2",
-    start: "12:00",
-    end: "18:00",
-  },
-  {
-    id: "3",
-    start: "18:00",
-    end: "23:59",
-  },
-];
-
-const DEFAULT_TIME_RANGE: Interval = {
-  start: new Date(),
-  end: new Date(),
-};
 
 export function TimeRangePicker({
   initTimeRange = DEFAULT_TIME_RANGE,
   type = "Hours",
+  weekCounts,
+  countsLoading = false,
   onChange,
+  onWeekChange,
 }: TimeRangePickerProps) {
+  const [dateOptions, setDateOptions] = React.useState<DateOption[]>(
+    getDateOptions(getMonday(initTimeRange.start))
+  );
+  const [timeRangeOptions, setTimeRangeOptions] = React.useState(
+    DEFAULT_TIME_RANGE_OPTIONS
+  );
+
   const [selectedDate, setSelectedDate] = React.useState<Date>(
-    getInitSelectedDate(initTimeRange)
+    getTimeRangeDate(initTimeRange)
   );
   const [selectedTimeRange, setSelectedTimeRange] = React.useState(
-    getInitSelectedTimeRange()
+    getInitSelectedTimeRange(initTimeRange)
   );
 
   const [selectedDaysRange, setSelectedDaysRange] = React.useState(
     DEFAULT_RANGE_OPTIONS[0]
-  );
-
-  const [dateOptions, setDateOptions] = React.useState<DateOption[]>(
-    getInitDateOptions(selectedDate)
   );
 
   const {
@@ -136,36 +90,70 @@ export function TimeRangePicker({
     onClickAway: closeCalendar,
   });
 
-  // Update dateOptions when Monday of the selectedDate is changed
-  React.useEffect(() => {
-    setDateOptions(() => getDateOptions(getMonday(selectedDate)));
-  }, [getMonday(selectedDate).toLocaleDateString()]); // eslint-disable-line react-hooks/exhaustive-deps
+  // // Submit timeRange change when selectedTimeRange changed,
+  // // except for custom timeRange change, which will be handled separately
+  // React.useEffect(() => {
+  //   if (selectedTimeRange.id !== "custom") {
+  //     submit(selectedDate, selectedTimeRange);
+  //   }
+  //   // weekCounts is updated async after week change
+  //   // update date options and time range options when value gets updated
+  //   if (weekCounts) {
+  //     setDateOptions((prev) =>
+  //       getDateOptions(new Date(prev[0].id), weekCounts)
+  //     );
+  //     updateTimeRangeOptions(selectedDate);
+  //   }
+  // }, [selectedTimeRange]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Submit timeRange change when selectedDate changed,
   React.useEffect(() => {
-    submit();
-  }, [selectedDate.toLocaleDateString()]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  // Submit timeRange change when selectedTimeRange changed,
-  // except for custom timeRange change, which will be handled separately
-  React.useEffect(() => {
-    if (selectedTimeRange.id !== "custom") {
-      submit();
+    // weekCounts is updated async after week change
+    // update date options and time range options when value gets updated
+    if (weekCounts) {
+      setDateOptions((prev) =>
+        getDateOptions(new Date(prev[0].id), weekCounts)
+      );
+      updateTimeRangeOptions(selectedDate);
     }
-  }, [selectedTimeRange]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [weekCounts]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Function to update dateOptions when arrows are clicked
   const updateDateOptions = (direction: "backward" | "forward") => {
-    if (direction === "backward") {
-      setDateOptions((prev) => {
-        return getDateOptions(previousMonday(new Date(prev[0].id)));
-      });
+    const currentMonday = new Date(dateOptions[0].id);
+    const newMonday =
+      direction === "backward"
+        ? previousMonday(currentMonday)
+        : nextMonday(currentMonday);
+
+    setDateOptions(getDateOptions(newMonday));
+    updateTimeRangeOptions(selectedDate);
+
+    if (onWeekChange) {
+      onWeekChange(newMonday);
+    }
+  };
+
+  // Function to update time range options
+  const updateTimeRangeOptions = (date: Date) => {
+    if (weekCounts === undefined) {
+      return;
     }
 
-    if (direction === "forward") {
-      setDateOptions((prev) => {
-        return getDateOptions(nextMonday(new Date(prev[0].id)));
-      });
+    const dayCounts = weekCounts.find((item) =>
+      isSameDay(item.date, date)
+    )?.counts;
+
+    if (dayCounts) {
+      setTimeRangeOptions(
+        DEFAULT_TIME_RANGE_OPTIONS.map((item, index) => ({
+          ...item,
+          count: dayCounts[index],
+        }))
+      );
+    } else {
+      // when selected date is not in currently showing week,
+      // reset time range options
+      setTimeRangeOptions(DEFAULT_TIME_RANGE_OPTIONS);
     }
   };
 
@@ -185,14 +173,34 @@ export function TimeRangePicker({
   };
 
   const handleDateSelection = (newSelectDate?: Date) => {
-    if (!isSameDay(newSelectDate ?? new Date(), selectedDate)) {
-      setSelectedDate(newSelectDate ?? new Date());
+    if (newSelectDate === undefined) {
+      return;
+    }
+
+    if (!isSameDay(newSelectDate, selectedDate)) {
+      setSelectedDate(newSelectDate);
+
+      if (type === "Hours") {
+        updateTimeRangeOptions(newSelectDate);
+
+        // Update date options when week changes
+        const newMonday = getMonday(newSelectDate);
+        const currentMonday = new Date(dateOptions[0].id);
+        if (!isSameDay(newMonday, currentMonday)) {
+          if (onWeekChange) {
+            onWeekChange(newMonday);
+          }
+          setDateOptions(getDateOptions(newMonday));
+        }
+      }
+
+      submit(newSelectDate, selectedTimeRange);
     }
   };
 
-  const submit = () => {
-    const timeStart = getDateWithTime(selectedDate, selectedTimeRange.start);
-    const timeEnd = getDateWithTime(selectedDate, selectedTimeRange.end);
+  const submit = (date: Date, timeRange?: TimeRangeOption) => {
+    const timeStart = timeRange ? getDateWithTime(date, timeRange.start) : date;
+    const timeEnd = timeRange ? getDateWithTime(date, timeRange.end) : date;
     onChange({ start: timeStart, end: timeEnd });
   };
 
@@ -210,7 +218,7 @@ export function TimeRangePicker({
                 isActive={timeRangeOption.id === selectedDaysRange.id}
                 onClick={() => {
                   setSelectedDaysRange(timeRangeOption);
-                  submit();
+                  submit(selectedDate);
                 }}
               />
             ))}
@@ -225,7 +233,11 @@ export function TimeRangePicker({
             <DatepickerContainer ref={calendarWrapper}>
               <StyledButton onClick={toggleCalendar}>
                 <Text size="sm" tag="span" color={theme.color.text.text04}>
-                  {getDateWithDays(selectedDate, selectedDaysRange.label)}
+                  {getDateWithDays(
+                    selectedDate,
+                    selectedDaysRange.label,
+                    dateFormat
+                  )}
                 </Text>
               </StyledButton>
               <Datepicker className="daypicker-panel">
@@ -233,7 +245,7 @@ export function TimeRangePicker({
                   <DayPicker
                     mode="single"
                     selected={selectedDate}
-                    onSelect={(selectedDay?: Date) =>
+                    onSelect={(selectedDay: Date | undefined) =>
                       handleDateSelection(selectedDay)
                     }
                   />
@@ -264,9 +276,15 @@ export function TimeRangePicker({
                 key={dateOption.id}
                 name={dateOption.id}
                 value={dateOption.id}
-                labelText={getLabelContent(dateOption)}
                 isActive={dateOption.id === selectedDate.toDateString()}
-                onClick={() => setSelectedDate(() => new Date(dateOption.id))}
+                disabled={countsLoading}
+                labelText={
+                  <DateOptionLabel
+                    dateOption={dateOption}
+                    loading={countsLoading}
+                  />
+                }
+                onClick={() => handleDateSelection(new Date(dateOption.id))}
               />
             ))}
           </UnifiedMultipleSelect>
@@ -287,9 +305,10 @@ export function TimeRangePicker({
               <DayPicker
                 mode="single"
                 selected={selectedDate}
-                onSelect={(selectedDay?: Date) =>
-                  handleDateSelection(selectedDay)
-                }
+                onSelect={(selectedDay: Date | undefined) => {
+                  handleDateSelection(selectedDay);
+                  closeCalendar();
+                }}
               />
             )}
           </Datepicker>
@@ -298,14 +317,22 @@ export function TimeRangePicker({
       <Row className="time-range-picker">
         <Label name="Hours:" />
         <UnifiedMultipleSelect size="small">
-          {DEFAULT_TIME_RANGE_OPTIONS.map((timeRangeOption) => (
+          {timeRangeOptions.map((timeRangeOption) => (
             <SelectButton
               key={timeRangeOption.id}
               name={timeRangeOption.id}
               value={timeRangeOption.id}
-              labelText={`${timeRangeOption.start} - ${timeRangeOption.end}`}
               isActive={timeRangeOption.id === selectedTimeRange.id}
-              onClick={() => setSelectedTimeRange(() => timeRangeOption)}
+              labelText={
+                <TimeRangeLabel
+                  timeRangeOption={timeRangeOption}
+                  hasCounts={weekCounts !== undefined}
+                />
+              }
+              onClick={() => {
+                setSelectedTimeRange(() => timeRangeOption);
+                submit(selectedDate, timeRangeOption);
+              }}
             />
           ))}
           <SelectButton
@@ -315,12 +342,10 @@ export function TimeRangePicker({
             labelText="custom"
             isActive={selectedTimeRange.id === "custom"}
             onClick={() =>
-              setSelectedTimeRange((prev) => {
-                return {
-                  ...prev,
-                  id: "custom",
-                };
-              })
+              setSelectedTimeRange((prev) => ({
+                ...prev,
+                id: "custom",
+              }))
             }
           />
         </UnifiedMultipleSelect>
@@ -332,12 +357,10 @@ export function TimeRangePicker({
             value={selectedTimeRange.start}
             onChange={(e) => {
               e.persist();
-              setSelectedTimeRange((prev) => {
-                return {
-                  ...prev,
-                  start: e.target.value,
-                };
-              });
+              setSelectedTimeRange((prev) => ({
+                ...prev,
+                start: e.target.value,
+              }));
             }}
           />
           <div>to</div>
@@ -348,15 +371,17 @@ export function TimeRangePicker({
             min={selectedTimeRange.start}
             onChange={(e) => {
               e.persist();
-              setSelectedTimeRange((prev) => {
-                return {
-                  ...prev,
-                  end: e.target.value,
-                };
-              });
+              setSelectedTimeRange((prev) => ({
+                ...prev,
+                end: e.target.value,
+              }));
             }}
           />
-          <Button severity="high" size="sm" onClick={submit}>
+          <Button
+            severity="high"
+            size="sm"
+            onClick={() => submit(selectedDate, selectedTimeRange)}
+          >
             Apply
           </Button>
         </CustomTimeRangeSelector>
@@ -365,28 +390,21 @@ export function TimeRangePicker({
   );
 }
 
-const getMonday = (date: Date): Date => {
-  const currentDate = new Date(date);
-
-  return isMonday(currentDate) ? currentDate : previousMonday(currentDate);
-};
-
-const getInitSelectedDate = (initRange: Interval): Date => {
-  return isSameDay(initRange.start, initRange.end)
-    ? new Date(initRange.start)
-    : new Date();
-};
-
-const getInitSelectedTimeRange = (): TimeRangeOption => {
-  const rangeId = Math.floor(new Date().getHours() / 6); // Each default time range has 6 hours time span
+const getInitSelectedTimeRange = (initRange: Interval): TimeRangeOption => {
+  const rangeId = Math.floor(new Date(initRange.start).getHours() / 6); // Each default time range has 6 hours time span
   return DEFAULT_TIME_RANGE_OPTIONS[rangeId];
 };
 
-const getDateOptions = (monday: Date): DateOption[] => {
-  const mondayTime = new Date(monday.getTime());
+const getDateOptions = (
+  monday: Date,
+  weekCounts?: DailyCount[]
+): DateOption[] => {
+  const maxCount = Math.max(
+    ...(weekCounts ?? []).flatMap(({ counts }) => counts)
+  );
 
   return WEEKDAYS.map((weekday, index) => {
-    const currentDate = addDays(new Date(mondayTime), index);
+    const currentDate = addDays(monday, index);
 
     return {
       id: currentDate.toDateString(),
@@ -394,85 +412,15 @@ const getDateOptions = (monday: Date): DateOption[] => {
       day: currentDate.getDate(),
       month: currentDate.getMonth() + 1,
       year: currentDate.getFullYear(),
+      counts: weekCounts
+        ? getDailyCounts(currentDate, weekCounts).map(
+            (count) => count / maxCount
+          )
+        : undefined,
     };
   });
 };
 
-const getInitDateOptions = (selectedDate: Date): DateOption[] => {
-  return getDateOptions(getMonday(selectedDate));
-};
-
-const getLabelContent = (dateOption: DateOption): React.ReactNode => {
-  return (
-    <>
-      <label>{dateOption.weekday}</label>
-      <div className="date-value">{getDateString(new Date(dateOption.id))}</div>
-    </>
-  );
-};
-
-const getDateString = (date: Date): string => {
-  return date.toLocaleDateString(undefined, {
-    day: "2-digit",
-    month: "2-digit",
-  });
-};
-
-const getDateWithTime = (date: Date, time: string): Date => {
-  const copiedDate = new Date(date);
-  const timeNumbers = time.split(":").map((value) => parseInt(value, 10));
-
-  return new Date(copiedDate.setHours(timeNumbers[0], timeNumbers[1], 0));
-};
-
-const getDateWithDays = (
-  date: Date,
-  rangeType: RANGE_TYPE
-): string | undefined => {
-  if (rangeType === RANGE_TYPE.WEEK) {
-    return `${format(new Date(date), dateFormat)} - ${format(
-      addWeeks(date, 1),
-      dateFormat
-    )}`;
-  }
-
-  if (rangeType === RANGE_TYPE.MONTH) {
-    return `${format(new Date(date), dateFormat)} - ${format(
-      addMonths(date, 1),
-      dateFormat
-    )}`;
-  }
-
-  if (rangeType === RANGE_TYPE.YEAR) {
-    return `${format(new Date(date), dateFormat)} - ${format(
-      addYears(date, 1),
-      dateFormat
-    )}`;
-  }
-
-  if (rangeType === RANGE_TYPE.DAY) {
-    return format(new Date(date), dateFormat);
-  }
-};
-
-const getDate = (
-  selectedType: string,
-  date: Date,
-  number: number
-): Date | undefined => {
-  if (selectedType === RANGE_TYPE.DAY) {
-    return addDays(date, number);
-  }
-
-  if (selectedType === RANGE_TYPE.WEEK) {
-    return addWeeks(date, number);
-  }
-
-  if (selectedType === RANGE_TYPE.MONTH) {
-    return addMonths(date, number);
-  }
-
-  if (selectedType === RANGE_TYPE.YEAR) {
-    return addYears(date, number);
-  }
-};
+const getDailyCounts = (date: Date, weekCounts: DailyCount[]) =>
+  weekCounts.find((item) => isSameDay(item.date, date))?.counts ??
+  DEFAULT_DAILY_COUNTS;
