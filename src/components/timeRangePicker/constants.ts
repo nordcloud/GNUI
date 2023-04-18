@@ -45,6 +45,6 @@ export const DEFAULT_TIME_RANGE: Interval = {
   end: new Date(),
 };
 
-export const DEFAULT_DAILY_COUNTS: number[] = new Array(
-  DEFAULT_TIME_RANGE_OPTIONS.length
-).map(() => 0);
+export const DEFAULT_DAILY_COUNTS: number[] = [
+  ...new Array(DEFAULT_TIME_RANGE_OPTIONS.length).keys(),
+].map(() => 0);
