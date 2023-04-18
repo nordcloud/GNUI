@@ -6,7 +6,7 @@ import {
   nextMonday,
   addDays,
 } from "date-fns";
-import { DayPicker, DateRange } from "react-day-picker";
+import { DayPicker, DateRange, isMatch } from "react-day-picker";
 import { useClickOutside, useDisclosure } from "../../hooks";
 import theme from "../../theme";
 import { Button } from "../button";
@@ -54,6 +54,7 @@ export function TimeRangePicker({
   type = "Hours",
   weekCounts,
   countsLoading = false,
+  disabledDays,
   onChange,
   onWeekChange,
 }: TimeRangePickerProps) {
@@ -250,6 +251,7 @@ export function TimeRangePicker({
                     mode="range"
                     selected={selectedDateRange}
                     defaultMonth={selectedDate}
+                    disabled={disabledDays}
                     onSelect={(
                       _: DateRange | undefined,
                       newSelectedDate: Date
@@ -277,22 +279,25 @@ export function TimeRangePicker({
         />
         <div className="date-options">
           <UnifiedMultipleSelect size="small">
-            {dateOptions.map((dateOption) => (
-              <SelectButton
-                key={dateOption.id}
-                name={dateOption.id}
-                value={dateOption.id}
-                isActive={dateOption.id === selectedDate.toDateString()}
-                disabled={countsLoading}
-                labelText={
-                  <DateOptionLabel
-                    dateOption={dateOption}
-                    loading={countsLoading}
-                  />
-                }
-                onClick={() => handleDateSelection(new Date(dateOption.id))}
-              />
-            ))}
+            {dateOptions.map((dateOption) => {
+              const date = new Date(dateOption.id);
+              return (
+                <SelectButton
+                  key={dateOption.id}
+                  name={dateOption.id}
+                  value={dateOption.id}
+                  isActive={dateOption.id === selectedDate.toDateString()}
+                  disabled={isMatch(date, disabledDays ?? []) || countsLoading}
+                  labelText={
+                    <DateOptionLabel
+                      dateOption={dateOption}
+                      loading={countsLoading}
+                    />
+                  }
+                  onClick={() => handleDateSelection(date)}
+                />
+              );
+            })}
           </UnifiedMultipleSelect>
         </div>
         <IconButton
@@ -312,6 +317,7 @@ export function TimeRangePicker({
                 mode="single"
                 selected={selectedDate}
                 defaultMonth={selectedDate}
+                disabled={disabledDays}
                 onSelect={(selectedDay: Date | undefined) => {
                   handleDateSelection(selectedDay);
                   closeCalendar();

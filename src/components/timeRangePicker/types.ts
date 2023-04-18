@@ -1,3 +1,5 @@
+import { Matcher } from "react-day-picker";
+
 export type DateOption = {
   id: string; // Date.toDateString()
   weekday: string;
@@ -24,6 +26,7 @@ export type TimeRangePickerProps = {
   type?: "Days" | "Hours";
   weekCounts?: DailyCount[];
   countsLoading?: boolean;
+  disabledDays?: Matcher[];
   onChange: (newTimeRange: Interval) => void;
   onWeekChange?: (monday: Date) => void;
 };
