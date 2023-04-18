@@ -69,7 +69,7 @@ export const DatepickerContainer = styled.div`
     position: absolute;
     transform: translateX(-100%);
     margin-left: 100%;
-    background-color: ${theme.colors.snowWhite};
+    background-color: ${theme.color.background.ui01};
     border: 1px solid ${theme.color.border.border01};
     border-radius: ${theme.radius.md};
   }
