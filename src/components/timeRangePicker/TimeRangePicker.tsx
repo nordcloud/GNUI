@@ -155,17 +155,15 @@ export function TimeRangePicker({
 
   // Function to update date range when arrows are clicked
   const updateCurrentTime = (direction: "backward" | "forward") => {
-    if (direction === "backward") {
-      setSelectedDate((prev) => {
-        return getDate(selectedRangeType, prev, -1) ?? new Date();
-      });
-    }
+    const newSelectedDate =
+      getDate(
+        selectedRangeType,
+        selectedDate,
+        direction === "forward" ? 1 : -1
+      ) ?? new Date();
 
-    if (direction === "forward") {
-      setSelectedDate((prev) => {
-        return getDate(selectedRangeType, prev, 1) ?? new Date();
-      });
-    }
+    setSelectedDate(newSelectedDate);
+    updateDateRange(newSelectedDate, selectedRangeType);
   };
 
   const handleRangeTypeSelection = (rangeType: RANGE_TYPE) => {
