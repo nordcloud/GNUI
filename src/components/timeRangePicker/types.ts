@@ -28,11 +28,6 @@ export type TimeRangePickerProps = {
   onWeekChange?: (monday: Date) => void;
 };
 
-export type RangeOptions = {
-  id: string;
-  label: RANGE_TYPE;
-};
-
 export const enum RANGE_TYPE {
   DAY = "Day",
   WEEK = "Week",

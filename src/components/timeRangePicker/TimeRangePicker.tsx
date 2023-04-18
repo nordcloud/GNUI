@@ -6,7 +6,7 @@ import {
   nextMonday,
   addDays,
 } from "date-fns";
-import { DayPicker } from "react-day-picker";
+import { DayPicker, DateRange } from "react-day-picker";
 import { useClickOutside, useDisclosure } from "../../hooks";
 import theme from "../../theme";
 import { Button } from "../button";
@@ -18,7 +18,7 @@ import { Text } from "../text";
 import { DateOptionLabel, TimeRangeLabel } from "./components";
 import {
   WEEKDAYS,
-  DEFAULT_RANGE_OPTIONS,
+  DEFAULT_RANGE_TYPES,
   DEFAULT_TIME_RANGE_OPTIONS,
   DEFAULT_TIME_RANGE,
   DEFAULT_DAILY_COUNTS,
@@ -37,6 +37,7 @@ import {
   TimeRangeOption,
   TimeRangePickerProps,
   DailyCount,
+  RANGE_TYPE,
 } from "./types";
 import {
   getMonday,
@@ -56,22 +57,25 @@ export function TimeRangePicker({
   onChange,
   onWeekChange,
 }: TimeRangePickerProps) {
+  const [selectedDate, setSelectedDate] = React.useState<Date>(
+    getTimeRangeDate(initTimeRange)
+  );
+  // States for "Hours" type
   const [dateOptions, setDateOptions] = React.useState<DateOption[]>(
     getDateOptions(getMonday(initTimeRange.start))
   );
   const [timeRangeOptions, setTimeRangeOptions] = React.useState(
     DEFAULT_TIME_RANGE_OPTIONS
   );
-
-  const [selectedDate, setSelectedDate] = React.useState<Date>(
-    getTimeRangeDate(initTimeRange)
-  );
   const [selectedTimeRange, setSelectedTimeRange] = React.useState(
     getInitSelectedTimeRange(initTimeRange)
   );
-
-  const [selectedDaysRange, setSelectedDaysRange] = React.useState(
-    DEFAULT_RANGE_OPTIONS[0]
+  // States for "Days" type
+  const [selectedDateRange, setSelectedDateRange] = React.useState<
+    DateRange | undefined
+  >({ from: new Date() });
+  const [selectedRangeType, setSelectedRangeType] = React.useState(
+    DEFAULT_RANGE_TYPES[0]
   );
 
   const {
@@ -90,22 +94,6 @@ export function TimeRangePicker({
     onClickAway: closeCalendar,
   });
 
-  // // Submit timeRange change when selectedTimeRange changed,
-  // // except for custom timeRange change, which will be handled separately
-  // React.useEffect(() => {
-  //   if (selectedTimeRange.id !== "custom") {
-  //     submit(selectedDate, selectedTimeRange);
-  //   }
-  //   // weekCounts is updated async after week change
-  //   // update date options and time range options when value gets updated
-  //   if (weekCounts) {
-  //     setDateOptions((prev) =>
-  //       getDateOptions(new Date(prev[0].id), weekCounts)
-  //     );
-  //     updateTimeRangeOptions(selectedDate);
-  //   }
-  // }, [selectedTimeRange]); // eslint-disable-line react-hooks/exhaustive-deps
-
   React.useEffect(() => {
     // weekCounts is updated async after week change
     // update date options and time range options when value gets updated
@@ -116,6 +104,14 @@ export function TimeRangePicker({
       updateTimeRangeOptions(selectedDate);
     }
   }, [weekCounts]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Submit timeRange change when selectedTimeRange changed,
+  // except for custom timeRange change, which will be handled separately
+  React.useEffect(() => {
+    if (selectedTimeRange.id !== "custom") {
+      submitDateHour(selectedDate, selectedTimeRange);
+    }
+  }, [selectedTimeRange]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Function to update dateOptions when arrows are clicked
   const updateDateOptions = (direction: "backward" | "forward") => {
@@ -161,15 +157,20 @@ export function TimeRangePicker({
   const updateCurrentTime = (direction: "backward" | "forward") => {
     if (direction === "backward") {
       setSelectedDate((prev) => {
-        return getDate(selectedDaysRange.label, prev, -1) ?? new Date();
+        return getDate(selectedRangeType, prev, -1) ?? new Date();
       });
     }
 
     if (direction === "forward") {
       setSelectedDate((prev) => {
-        return getDate(selectedDaysRange.label, prev, 1) ?? new Date();
+        return getDate(selectedRangeType, prev, 1) ?? new Date();
       });
     }
+  };
+
+  const handleRangeTypeSelection = (rangeType: RANGE_TYPE) => {
+    setSelectedRangeType(rangeType);
+    updateDateRange(selectedDate, rangeType);
   };
 
   const handleDateSelection = (newSelectDate?: Date) => {
@@ -192,15 +193,27 @@ export function TimeRangePicker({
           }
           setDateOptions(getDateOptions(newMonday));
         }
+        submitDateHour(newSelectDate, selectedTimeRange);
+      } else {
+        updateDateRange(newSelectDate, selectedRangeType);
       }
-
-      submit(newSelectDate, selectedTimeRange);
     }
   };
 
-  const submit = (date: Date, timeRange?: TimeRangeOption) => {
-    const timeStart = timeRange ? getDateWithTime(date, timeRange.start) : date;
-    const timeEnd = timeRange ? getDateWithTime(date, timeRange.end) : date;
+  const updateDateRange = (date: Date, rangeType: RANGE_TYPE) => {
+    const newRange = {
+      from: date,
+      to:
+        rangeType === RANGE_TYPE.DAY ? undefined : getDate(rangeType, date, 1),
+    };
+    setSelectedDateRange(newRange);
+    // dateRange.to undefined when range type is day
+    onChange({ start: newRange.from, end: newRange.to ?? newRange.from });
+  };
+
+  const submitDateHour = (date: Date, timeRange: TimeRangeOption) => {
+    const timeStart = getDateWithTime(date, timeRange.start);
+    const timeEnd = getDateWithTime(date, timeRange.end);
     onChange({ start: timeStart, end: timeEnd });
   };
 
@@ -209,17 +222,14 @@ export function TimeRangePicker({
       <FlexContainer alignContent="center">
         <SelectWrap>
           <UnifiedMultipleSelect size="small">
-            {DEFAULT_RANGE_OPTIONS.map((timeRangeOption) => (
+            {DEFAULT_RANGE_TYPES.map((rangeType) => (
               <SelectButton
-                key={timeRangeOption.id}
-                name={timeRangeOption.id}
-                value={timeRangeOption.id}
-                labelText={timeRangeOption.label}
-                isActive={timeRangeOption.id === selectedDaysRange.id}
-                onClick={() => {
-                  setSelectedDaysRange(timeRangeOption);
-                  submit(selectedDate);
-                }}
+                key={rangeType}
+                name={rangeType}
+                value={rangeType}
+                labelText={rangeType}
+                isActive={rangeType === selectedRangeType}
+                onClick={() => handleRangeTypeSelection(rangeType)}
               />
             ))}
           </UnifiedMultipleSelect>
@@ -233,21 +243,19 @@ export function TimeRangePicker({
             <DatepickerContainer ref={calendarWrapper}>
               <StyledButton onClick={toggleCalendar}>
                 <Text size="sm" tag="span" color={theme.color.text.text04}>
-                  {getDateWithDays(
-                    selectedDate,
-                    selectedDaysRange.label,
-                    dateFormat
-                  )}
+                  {getDateWithDays(selectedDate, selectedRangeType, dateFormat)}
                 </Text>
               </StyledButton>
               <Datepicker className="daypicker-panel">
                 {isCalendarActive && (
                   <DayPicker
-                    mode="single"
-                    selected={selectedDate}
-                    onSelect={(selectedDay: Date | undefined) =>
-                      handleDateSelection(selectedDay)
-                    }
+                    mode="range"
+                    selected={selectedDateRange}
+                    defaultMonth={selectedDate}
+                    onSelect={(
+                      _: DateRange | undefined,
+                      newSelectedDate: Date
+                    ) => handleDateSelection(newSelectedDate)}
                   />
                 )}
               </Datepicker>
@@ -331,8 +339,8 @@ export function TimeRangePicker({
                 />
               }
               onClick={() => {
-                setSelectedTimeRange(() => timeRangeOption);
-                submit(selectedDate, timeRangeOption);
+                setSelectedTimeRange(timeRangeOption);
+                submitDateHour(selectedDate, timeRangeOption);
               }}
             />
           ))}
@@ -356,11 +364,11 @@ export function TimeRangePicker({
             type="time"
             name="time-range-start"
             value={selectedTimeRange.start}
-            onChange={(e) => {
-              e.persist();
+            onChange={(error) => {
+              error.persist();
               setSelectedTimeRange((prev) => ({
                 ...prev,
-                start: e.target.value,
+                start: error.target.value,
               }));
             }}
           />
@@ -370,18 +378,18 @@ export function TimeRangePicker({
             name="time-range-end"
             value={selectedTimeRange.end}
             min={selectedTimeRange.start}
-            onChange={(e) => {
-              e.persist();
+            onChange={(error) => {
+              error.persist();
               setSelectedTimeRange((prev) => ({
                 ...prev,
-                end: e.target.value,
+                end: error.target.value,
               }));
             }}
           />
           <Button
             severity="high"
             size="sm"
-            onClick={() => submit(selectedDate, selectedTimeRange)}
+            onClick={() => submitDateHour(selectedDate, selectedTimeRange)}
           >
             Apply
           </Button>

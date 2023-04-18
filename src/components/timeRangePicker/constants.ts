@@ -1,4 +1,4 @@
-import { RangeOptions, TimeRangeOption, RANGE_TYPE } from "./types";
+import { TimeRangeOption, RANGE_TYPE } from "./types";
 
 export const WEEKDAYS = [
   "Monday",
@@ -10,23 +10,11 @@ export const WEEKDAYS = [
   "Sunday",
 ];
 
-export const DEFAULT_RANGE_OPTIONS: RangeOptions[] = [
-  {
-    id: "0",
-    label: RANGE_TYPE.DAY,
-  },
-  {
-    id: "1",
-    label: RANGE_TYPE.WEEK,
-  },
-  {
-    id: "2",
-    label: RANGE_TYPE.MONTH,
-  },
-  {
-    id: "3",
-    label: RANGE_TYPE.YEAR,
-  },
+export const DEFAULT_RANGE_TYPES: RANGE_TYPE[] = [
+  RANGE_TYPE.DAY,
+  RANGE_TYPE.WEEK,
+  RANGE_TYPE.MONTH,
+  RANGE_TYPE.YEAR,
 ];
 
 export const DEFAULT_TIME_RANGE_OPTIONS: TimeRangeOption[] = [
@@ -57,4 +45,6 @@ export const DEFAULT_TIME_RANGE: Interval = {
   end: new Date(),
 };
 
-export const DEFAULT_DAILY_COUNTS: number[] = [0, 0, 0, 0];
+export const DEFAULT_DAILY_COUNTS: number[] = new Array(
+  DEFAULT_TIME_RANGE_OPTIONS.length
+).map(() => 0);
