@@ -1,4 +1,4 @@
-import { TimeRangeOption, RANGE_TYPE } from "./types";
+import { TimeRangeOption, RANGE_TYPE } from "../types";
 
 export const WEEKDAYS = [
   "Monday",
@@ -39,11 +39,6 @@ export const DEFAULT_TIME_RANGE_OPTIONS: TimeRangeOption[] = [
     end: "23:59",
   },
 ];
-
-export const DEFAULT_TIME_RANGE: Interval = {
-  start: new Date(),
-  end: new Date(),
-};
 
 export const DEFAULT_DAILY_COUNTS: number[] = [
   ...new Array(DEFAULT_TIME_RANGE_OPTIONS.length).keys(),

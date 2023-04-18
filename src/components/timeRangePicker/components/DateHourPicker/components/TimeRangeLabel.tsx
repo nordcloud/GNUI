@@ -1,5 +1,5 @@
-import { FlexContainer } from "../../container";
-import { TimeRangeOption } from "../types";
+import { TimeRangeOption } from "../../../types";
+import { FlexContainer } from "../../styles";
 import { CountTag } from "./styles";
 
 type Props = {

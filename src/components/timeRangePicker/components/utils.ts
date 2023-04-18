@@ -9,7 +9,12 @@ import {
   addMonths,
   addYears,
 } from "date-fns";
-import { RANGE_TYPE } from "./types";
+import { RANGE_TYPE, DateOption, TimeRangeOption, DailyCount } from "../types";
+import {
+  WEEKDAYS,
+  DEFAULT_TIME_RANGE_OPTIONS,
+  DEFAULT_DAILY_COUNTS,
+} from "./constants";
 
 export const getMonday = (date: Date | number): Date => {
   const currentDate = new Date(date);
@@ -88,3 +93,42 @@ export const getDate = (
     return addYears(date, number);
   }
 };
+
+export const getInitSelectedTimeRange = (
+  initRange: Interval
+): TimeRangeOption => {
+  const rangeId = Math.floor(new Date(initRange.start).getHours() / 6); // Each default time range has 6 hours time span
+  return DEFAULT_TIME_RANGE_OPTIONS[rangeId];
+};
+
+export const getDateOptions = (
+  monday: Date,
+  weekCounts?: DailyCount[]
+): DateOption[] => {
+  const maxCount = Math.max(
+    ...(weekCounts ?? []).flatMap(({ counts }) => counts)
+  );
+
+  return WEEKDAYS.map((weekday, index) => {
+    const currentDate = addDays(monday, index);
+
+    return {
+      id: currentDate.toDateString(),
+      weekday,
+      day: currentDate.getDate(),
+      month: currentDate.getMonth() + 1,
+      year: currentDate.getFullYear(),
+      counts: weekCounts
+        ? getDailyCounts(currentDate, weekCounts).map(
+            (count) => count / maxCount
+          )
+        : undefined,
+    };
+  });
+};
+
+const getDailyCounts = (date: Date, weekCounts: DailyCount[]) =>
+  weekCounts.find((item) => isSameDay(item.date, date))?.counts ??
+  DEFAULT_DAILY_COUNTS;
+
+export { useClickOutside, useDisclosure } from "../../../hooks";
