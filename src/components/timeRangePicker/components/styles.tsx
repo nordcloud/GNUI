@@ -141,3 +141,4 @@ export { Datepicker } from "../../datepicker";
 export { Label } from "../../input";
 export { SelectButton } from "../../selectbutton";
 export { Text } from "../../text";
+export { Input } from "../../input";

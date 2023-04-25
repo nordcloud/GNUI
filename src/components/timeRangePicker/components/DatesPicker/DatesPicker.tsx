@@ -1,8 +1,9 @@
-import * as React from "react";
+import { useState, useRef } from "react";
 import { isSameDay } from "date-fns";
 import { DayPicker, DateRange } from "react-day-picker";
+import { When } from "react-if";
 import theme from "../../../../theme";
-import { TimeRangePickerProps, RANGE_TYPE } from "../../types";
+import { RANGE_TYPE } from "../../types";
 import { DEFAULT_RANGE_TYPES } from "../constants";
 import {
   Row,
@@ -15,6 +16,7 @@ import {
   SelectButton,
   Text,
 } from "../styles";
+import { DatesPickerProps } from "../types";
 import {
   getDate,
   getDateWithDays,
@@ -25,22 +27,22 @@ import {
 
 const dateFormat = "dd MMM yyyy";
 
-type Props = Pick<TimeRangePickerProps, "disabledDays" | "onChange"> & {
-  initTimeRange: Interval;
-};
-
-export function DatesPicker({ initTimeRange, disabledDays, onChange }: Props) {
-  const [selectedDate, setSelectedDate] = React.useState<Date>(
+export function DatesPicker({
+  initTimeRange,
+  disabledDays,
+  onChange,
+}: DatesPickerProps) {
+  const [selectedDate, setSelectedDate] = useState<Date>(
     getTimeRangeDate(initTimeRange)
   );
-  const [selectedDateRange, setSelectedDateRange] = React.useState<
+  const [selectedDateRange, setSelectedDateRange] = useState<
     DateRange | undefined
   >({ from: new Date() });
-  const [selectedRangeType, setSelectedRangeType] = React.useState(
+  const [selectedRangeType, setSelectedRangeType] = useState<RANGE_TYPE>(
     DEFAULT_RANGE_TYPES[0]
   );
 
-  const calendarWrapper = React.useRef<HTMLDivElement>(null);
+  const calendarWrapper = useRef<HTMLDivElement>(null);
 
   const {
     isOpen: isCalendarActive,
@@ -123,7 +125,7 @@ export function DatesPicker({ initTimeRange, disabledDays, onChange }: Props) {
               </Text>
             </StyledButton>
             <Datepicker className="daypicker-panel">
-              {isCalendarActive && (
+              <When condition={isCalendarActive}>
                 <DayPicker
                   mode="range"
                   selected={selectedDateRange}
@@ -133,7 +135,7 @@ export function DatesPicker({ initTimeRange, disabledDays, onChange }: Props) {
                     handleDateSelection(newSelectedDate)
                   }
                 />
-              )}
+              </When>
             </Datepicker>
           </DatepickerContainer>
         </div>

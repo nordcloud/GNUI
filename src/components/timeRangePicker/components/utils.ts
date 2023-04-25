@@ -9,12 +9,13 @@ import {
   addMonths,
   addYears,
 } from "date-fns";
-import { RANGE_TYPE, DateOption, TimeRangeOption, DailyCount } from "../types";
+import { RANGE_TYPE, DateOption, TimeRangeOption } from "../types";
 import {
   WEEKDAYS,
   DEFAULT_TIME_RANGE_OPTIONS,
   DEFAULT_DAILY_COUNTS,
 } from "./constants";
+import { DailyCount } from "./types";
 
 export const getMonday = (date: Date | number): Date => {
   const currentDate = new Date(date);
@@ -46,51 +47,45 @@ export const getDateWithDays = (
   rangeType: RANGE_TYPE,
   dateFormat: string
 ): string | undefined => {
-  if (rangeType === RANGE_TYPE.WEEK) {
-    return `${format(new Date(date), dateFormat)} - ${format(
-      addWeeks(date, 1),
-      dateFormat
-    )}`;
-  }
-
-  if (rangeType === RANGE_TYPE.MONTH) {
-    return `${format(new Date(date), dateFormat)} - ${format(
-      addMonths(date, 1),
-      dateFormat
-    )}`;
-  }
-
-  if (rangeType === RANGE_TYPE.YEAR) {
-    return `${format(new Date(date), dateFormat)} - ${format(
-      addYears(date, 1),
-      dateFormat
-    )}`;
-  }
-
-  if (rangeType === RANGE_TYPE.DAY) {
-    return format(new Date(date), dateFormat);
+  switch (rangeType) {
+    case RANGE_TYPE.DAY:
+      return format(new Date(date), dateFormat);
+    case RANGE_TYPE.WEEK:
+      return `${format(new Date(date), dateFormat)} - ${format(
+        addWeeks(date, 1),
+        dateFormat
+      )}`;
+    case RANGE_TYPE.MONTH:
+      return `${format(new Date(date), dateFormat)} - ${format(
+        addMonths(date, 1),
+        dateFormat
+      )}`;
+    case RANGE_TYPE.YEAR:
+      return `${format(new Date(date), dateFormat)} - ${format(
+        addYears(date, 1),
+        dateFormat
+      )}`;
+    default:
+      return undefined;
   }
 };
 
 export const getDate = (
-  selectedType: string,
+  selectedType: RANGE_TYPE,
   date: Date,
   number: number
 ): Date | undefined => {
-  if (selectedType === RANGE_TYPE.DAY) {
-    return addDays(date, number);
-  }
-
-  if (selectedType === RANGE_TYPE.WEEK) {
-    return addWeeks(date, number);
-  }
-
-  if (selectedType === RANGE_TYPE.MONTH) {
-    return addMonths(date, number);
-  }
-
-  if (selectedType === RANGE_TYPE.YEAR) {
-    return addYears(date, number);
+  switch (selectedType) {
+    case RANGE_TYPE.DAY:
+      return addDays(date, number);
+    case RANGE_TYPE.WEEK:
+      return addWeeks(date, number);
+    case RANGE_TYPE.MONTH:
+      return addMonths(date, number);
+    case RANGE_TYPE.YEAR:
+      return addYears(date, number);
+    default:
+      return undefined;
   }
 };
 

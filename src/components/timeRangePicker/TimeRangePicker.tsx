@@ -1,5 +1,10 @@
+import { ComponentProps } from "react";
 import { DatesPicker, DateHourPicker } from "./components";
-import { TimeRangePickerProps } from "./types";
+
+type Props = Omit<ComponentProps<typeof DateHourPicker>, "initTimeRange"> & {
+  initTimeRange?: Interval;
+  type?: "Days" | "Hours";
+};
 
 const DEFAULT_TIME_RANGE: Interval = {
   start: new Date(),
@@ -14,7 +19,7 @@ export function TimeRangePicker({
   disabledDays,
   onChange,
   onWeekChange,
-}: TimeRangePickerProps) {
+}: Props) {
   if (type === "Days") {
     return (
       <DatesPicker

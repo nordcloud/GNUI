@@ -1,9 +1,11 @@
-import * as React from "react";
-import { Interval, isSameDay, previousMonday, nextMonday } from "date-fns";
+import { useState, useEffect, useRef } from "react";
+import { isSameDay, previousMonday, nextMonday } from "date-fns";
 import { DayPicker } from "react-day-picker";
-import { TimeRangePickerProps, DateOption, TimeRangeOption } from "../../types";
+import { When } from "react-if";
+import { DateOption, TimeRangeOption } from "../../types";
 import { DEFAULT_TIME_RANGE_OPTIONS } from "../constants";
 import { Row, IconButton, DatepickerContainer, Datepicker } from "../styles";
+import { DateHourPickerProps } from "../types";
 import {
   getDateWithTime,
   getDateOptions,
@@ -15,10 +17,6 @@ import {
 } from "../utils";
 import { DateSelector, HourSelector } from "./components";
 
-type Props = Omit<TimeRangePickerProps, "initTimeRange" | "type"> & {
-  initTimeRange: Interval;
-};
-
 export function DateHourPicker({
   initTimeRange,
   weekCounts,
@@ -26,21 +24,21 @@ export function DateHourPicker({
   disabledDays,
   onChange,
   onWeekChange,
-}: Props) {
-  const [selectedDate, setSelectedDate] = React.useState<Date>(
+}: DateHourPickerProps) {
+  const [selectedDate, setSelectedDate] = useState<Date>(
     getTimeRangeDate(initTimeRange)
   );
-  const [dateOptions, setDateOptions] = React.useState<DateOption[]>(
+  const [dateOptions, setDateOptions] = useState<DateOption[]>(
     getDateOptions(getMonday(initTimeRange.start))
   );
-  const [timeRangeOptions, setTimeRangeOptions] = React.useState(
+  const [timeRangeOptions, setTimeRangeOptions] = useState(
     DEFAULT_TIME_RANGE_OPTIONS
   );
-  const [selectedTimeRange, setSelectedTimeRange] = React.useState(
+  const [selectedTimeRange, setSelectedTimeRange] = useState(
     getInitSelectedTimeRange(initTimeRange)
   );
 
-  const calendarWrapper = React.useRef<HTMLDivElement>(null);
+  const calendarWrapper = useRef<HTMLDivElement>(null);
 
   const {
     isOpen: isCalendarActive,
@@ -54,7 +52,7 @@ export function DateHourPicker({
     onClickAway: closeCalendar,
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     // weekCounts is updated async after week change
     // update date options and time range options when value gets updated
     if (weekCounts) {
@@ -161,7 +159,7 @@ export function DateHourPicker({
             onClick={toggleCalendar}
           />
           <Datepicker className="daypicker-panel">
-            {isCalendarActive && (
+            <When condition={isCalendarActive}>
               <DayPicker
                 mode="single"
                 selected={selectedDate}
@@ -172,7 +170,7 @@ export function DateHourPicker({
                   closeCalendar();
                 }}
               />
-            )}
+            </When>
           </Datepicker>
         </DatepickerContainer>
       </Row>

@@ -1,3 +1,4 @@
+import { When, If, Then, Else } from "react-if";
 import { DateOption } from "../../../types";
 import {
   DEFAULT_DAILY_COUNTS,
@@ -21,36 +22,33 @@ export function DateOptionLabel({ dateOption, loading }: Props) {
       alignItems="stretch"
     >
       <div>
-        <label>{dateOption.weekday}</label>
-        <div className="date-value">
+        <header>{dateOption.weekday}</header>
+        <time className="date-value" dateTime={dateOption.id}>
           {getDateString(new Date(dateOption.id))}
-        </div>
+        </time>
       </div>
-      {hasCounts && loading && (
-        <div style={{ alignSelf: "center" }}>
-          <Spinner />
-        </div>
-      )}
-      {hasCounts &&
-        !loading &&
-        renderCountsGraph(
-          dateOption.counts ?? DEFAULT_DAILY_COUNTS,
-          dateOption.id
-        )}
+      <When condition={hasCounts}>
+        <If condition={loading}>
+          <Then>
+            <div style={{ alignSelf: "center" }}>
+              <Spinner />
+            </div>
+          </Then>
+          <Else>
+            <FlexContainer gap="2px">
+              {(dateOption.counts ?? DEFAULT_DAILY_COUNTS).map(
+                (precentage, index) => (
+                  <CountBarWrapper
+                    key={`${dateOption.id}-${DEFAULT_TIME_RANGE_OPTIONS[index].id}`}
+                  >
+                    <CountBar height={precentage} />
+                  </CountBarWrapper>
+                )
+              )}
+            </FlexContainer>
+          </Else>
+        </If>
+      </When>
     </FlexContainer>
   );
 }
-
-const renderCountsGraph = (precentageArray: number[], dateString: string) => {
-  return (
-    <FlexContainer gap="2px">
-      {precentageArray.map((precentage, index) => (
-        <CountBarWrapper
-          key={`${dateString}-${DEFAULT_TIME_RANGE_OPTIONS[index].id}`}
-        >
-          <CountBar height={precentage} />
-        </CountBarWrapper>
-      ))}
-    </FlexContainer>
-  );
-};

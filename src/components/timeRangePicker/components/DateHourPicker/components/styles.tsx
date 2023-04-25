@@ -1,17 +1,21 @@
 import styled from "styled-components";
 import theme from "../../../../../theme";
+import { Tag } from "../../../../tag";
 
 type CountBarProps = {
   height: number;
 };
 
-const BORDER_RADIUS = "2px";
+const BORDER_RADIUS = theme.radius.sm;
 
-export const CountTag = styled.div`
-  background: ${theme.color.support.blue};
-  color: ${theme.color.text.text04};
-  padding: 0 ${theme.spacing.spacing01};
+export const CountTag = styled(Tag)`
+  margin: 0;
   border-radius: ${BORDER_RADIUS};
+  height: 1.125rem;
+
+  .tag-text {
+    margin: 0 ${theme.spacing.spacing01};
+  }
 `;
 
 export const CountBarWrapper = styled.div`

@@ -1,22 +1,26 @@
+import { When } from "react-if";
 import { TimeRangeOption } from "../../../types";
 import { FlexContainer } from "../../styles";
 import { CountTag } from "./styles";
 
+type Alignment = "center" | "space-between";
+
 type Props = {
   timeRangeOption: TimeRangeOption;
-  hasCounts: boolean;
+  justifyContent: Alignment;
 };
 
-export function TimeRangeLabel({ timeRangeOption, hasCounts }: Props) {
+export function TimeRangeLabel({ timeRangeOption, justifyContent }: Props) {
   return (
-    <FlexContainer
-      justifyContent={hasCounts ? "space-between" : "center"}
-      alignItems="stretch"
-    >
-      <label>{`${timeRangeOption.start} - ${timeRangeOption.end}`}</label>
-      {![undefined, 0].includes(timeRangeOption.count) && (
-        <CountTag>{timeRangeOption.count}</CountTag>
-      )}
+    <FlexContainer justifyContent={justifyContent} alignItems="center">
+      <span>{`${timeRangeOption.start} - ${timeRangeOption.end}`}</span>
+      <When condition={timeRangeOption.count !== 0}>
+        <CountTag
+          text={timeRangeOption.count.toString()}
+          color="blue"
+          colorText="white"
+        />
+      </When>
     </FlexContainer>
   );
 }
