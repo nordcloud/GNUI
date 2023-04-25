@@ -2,7 +2,12 @@ import { useState, useRef } from "react";
 import { isSameDay } from "date-fns";
 import { DayPicker, DateRange } from "react-day-picker";
 import { When } from "react-if";
+import { useClickOutside, useDisclosure } from "../../../../hooks";
 import theme from "../../../../theme";
+import { FlexContainer } from "../../../container";
+import { Datepicker } from "../../../datepicker";
+import { SelectButton } from "../../../selectbutton";
+import { Text } from "../../../text";
 import { RANGE_TYPE } from "../../types";
 import { DEFAULT_RANGE_TYPES } from "../constants";
 import {
@@ -11,19 +16,9 @@ import {
   DatepickerContainer,
   StyledButton,
   SelectWrap,
-  FlexContainer,
-  Datepicker,
-  SelectButton,
-  Text,
 } from "../styles";
 import { DatesPickerProps } from "../types";
-import {
-  getDate,
-  getDateWithDays,
-  getTimeRangeDate,
-  useClickOutside,
-  useDisclosure,
-} from "../utils";
+import { getDate, getDateWithDays, getTimeRangeDate } from "../utils";
 
 const dateFormat = "dd MMM yyyy";
 

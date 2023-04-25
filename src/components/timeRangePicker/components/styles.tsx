@@ -133,12 +133,3 @@ export const StyledButton = styled(Button)`
     padding: 0.15rem ${theme.spacing.spacing06};
   }
 `;
-
-export { FlexContainer } from "../../container";
-export { Spinner } from "../../spinner";
-export { Button } from "../../button";
-export { Datepicker } from "../../datepicker";
-export { Label } from "../../input";
-export { SelectButton } from "../../selectbutton";
-export { Text } from "../../text";
-export { Input } from "../../input";

@@ -125,5 +125,3 @@ export const getDateOptions = (
 const getDailyCounts = (date: Date, weekCounts: DailyCount[]) =>
   weekCounts.find((item) => isSameDay(item.date, date))?.counts ??
   DEFAULT_DAILY_COUNTS;
-
-export { useClickOutside, useDisclosure } from "../../../hooks";

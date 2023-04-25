@@ -1,13 +1,10 @@
 import theme from "../../../../../theme";
+import { Button } from "../../../../button";
+import { FlexContainer } from "../../../../container";
+import { Label } from "../../../../input";
+import { SelectButton } from "../../../../selectbutton";
 import { TimeRangeOption } from "../../../types";
-import {
-  UnifiedMultipleSelect,
-  CustomTimeRangeSelector,
-  Button,
-  Label,
-  SelectButton,
-  FlexContainer,
-} from "../../styles";
+import { UnifiedMultipleSelect, CustomTimeRangeSelector } from "../../styles";
 import { DailyCount } from "../../types";
 import { TimeRangeLabel } from "./TimeRangeLabel";
 

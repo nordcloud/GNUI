@@ -1,6 +1,6 @@
 import { When } from "react-if";
+import { FlexContainer } from "../../../../container";
 import { TimeRangeOption } from "../../../types";
-import { FlexContainer } from "../../styles";
 import { CountTag } from "./styles";
 
 type Alignment = "center" | "space-between";

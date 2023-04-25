@@ -1,10 +1,11 @@
 import { When, If, Then, Else } from "react-if";
+import { FlexContainer } from "../../../../container";
+import { Spinner } from "../../../../spinner";
 import { DateOption } from "../../../types";
 import {
   DEFAULT_DAILY_COUNTS,
   DEFAULT_TIME_RANGE_OPTIONS,
 } from "../../constants";
-import { FlexContainer, Spinner } from "../../styles";
 import { getDateString } from "../../utils";
 import { CountBarWrapper, CountBar } from "./styles";
 
