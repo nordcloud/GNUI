@@ -18,12 +18,23 @@ export const CountTag = styled(Tag)`
   }
 `;
 
+// Opacity on pseudo element as workaround for rgab background color with var
+// ref: https://stackoverflow.com/a/56951626
 export const CountBarWrapper = styled.div`
   position: relative;
   height: 100%;
   width: ${theme.spacing.spacing02};
-  background: rgba(200, 200, 216, 0.6);
   border-radius: ${BORDER_RADIUS};
+
+  &::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    background-color: ${theme.color.support.grey};
+    opacity: 0.6;
+  }
 `;
 
 export const CountBar = styled.div<CountBarProps>`
