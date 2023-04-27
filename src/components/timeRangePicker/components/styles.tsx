@@ -72,6 +72,7 @@ export const DatepickerContainer = styled.div`
     background-color: ${theme.color.background.ui01};
     border: 1px solid ${theme.color.border.border01};
     border-radius: ${theme.radius.md};
+    z-index: ${theme.zindex.default};
   }
 `;
 
@@ -89,19 +90,12 @@ export const CustomTimeRangeSelector = styled(Row)<{ isVisible: boolean }>`
 
   input {
     height: 100%;
-    padding: 0 ${theme.spacing.spacing03};
-    border: 1px solid ${theme.color.border.input};
-    border-radius: ${theme.radius.md};
     box-sizing: border-box;
   }
 
   button {
     font-size: ${theme.fontSizes.sm};
     padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
-  }
-
-  .daypicker-panel {
-    border: 1px solid ${theme.color.border.border01};
   }
 `;
 

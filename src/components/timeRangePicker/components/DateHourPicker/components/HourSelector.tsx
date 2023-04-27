@@ -21,7 +21,7 @@ export function HourSelector({
   weekCounts,
   onSelect,
 }: Props) {
-  const showCustomTimeRange = selectedTimeRange.id === "custom";
+  const isCustomTimeRange = selectedTimeRange.id === "custom";
 
   return (
     <>
@@ -55,7 +55,7 @@ export function HourSelector({
             name="custom"
             value="custom"
             labelText="custom"
-            isActive={selectedTimeRange.id === "custom"}
+            isActive={isCustomTimeRange}
             onClick={() =>
               onSelect({
                 ...selectedTimeRange,
@@ -64,18 +64,18 @@ export function HourSelector({
             }
           />
         </UnifiedMultipleSelect>
-        <CustomTimeRangeSelector isVisible={showCustomTimeRange}>
+        <CustomTimeRangeSelector isVisible={isCustomTimeRange}>
           <Label name="From" htmlFor="time-range-start" />
           <input
             id="time-range-start"
             type="time"
             name="time-range-start"
             value={selectedTimeRange.start}
-            onChange={(error) => {
-              error.persist();
+            onChange={(event) => {
+              event.persist();
               onSelect({
                 ...selectedTimeRange,
-                start: error.target.value,
+                start: event.target.value,
               });
             }}
           />
@@ -86,11 +86,11 @@ export function HourSelector({
             name="time-range-end"
             value={selectedTimeRange.end}
             min={selectedTimeRange.start}
-            onChange={(error) => {
-              error.persist();
+            onChange={(event) => {
+              event.persist();
               onSelect({
                 ...selectedTimeRange,
-                end: error.target.value,
+                end: event.target.value,
               });
             }}
           />

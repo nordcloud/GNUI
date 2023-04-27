@@ -38,11 +38,11 @@ export function DateOptionLabel({ dateOption, loading }: Props) {
           <Else>
             <FlexContainer gap="2px">
               {(dateOption.counts ?? DEFAULT_DAILY_COUNTS).map(
-                (precentage, index) => (
+                (percentage, index) => (
                   <CountBarWrapper
                     key={`${dateOption.id}-${DEFAULT_TIME_RANGE_OPTIONS[index].id}`}
                   >
-                    <CountBar height={precentage} />
+                    <CountBar height={percentage} />
                   </CountBarWrapper>
                 )
               )}

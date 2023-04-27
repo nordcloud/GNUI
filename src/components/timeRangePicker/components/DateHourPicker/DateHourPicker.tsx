@@ -7,7 +7,7 @@ import { Datepicker } from "../../../datepicker";
 import { DateOption, TimeRangeOption } from "../../types";
 import { DEFAULT_TIME_RANGE_OPTIONS } from "../constants";
 import { Row, IconButton, DatepickerContainer } from "../styles";
-import { DateHourPickerProps } from "../types";
+import { DatesPickerProps, DailyCount } from "../types";
 import {
   getDateWithTime,
   getDateOptions,
@@ -17,6 +17,12 @@ import {
 } from "../utils";
 import { DateSelector, HourSelector } from "./components";
 
+type Props = DatesPickerProps & {
+  weekCounts?: DailyCount[];
+  countsLoading?: boolean;
+  onWeekChange?: (monday: Date) => void;
+};
+
 export function DateHourPicker({
   initTimeRange,
   weekCounts,
@@ -24,7 +30,7 @@ export function DateHourPicker({
   disabledDays,
   onChange,
   onWeekChange,
-}: DateHourPickerProps) {
+}: Props) {
   const [selectedDate, setSelectedDate] = useState<Date>(
     getTimeRangeDate(initTimeRange)
   );
@@ -107,10 +113,8 @@ export function DateHourPicker({
       const newMonday = getMonday(newSelectDate);
       const currentMonday = new Date(dateOptions[0].id);
       if (!isSameDay(newMonday, currentMonday)) {
-        if (onWeekChange) {
-          onWeekChange(newMonday);
-        }
         setDateOptions(getDateOptions(newMonday));
+        onWeekChange?.(newMonday);
       }
       submitDateHour(newSelectDate, selectedTimeRange);
     }
