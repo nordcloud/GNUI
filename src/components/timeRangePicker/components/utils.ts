@@ -8,6 +8,7 @@ import {
   addWeeks,
   addMonths,
   addYears,
+  getHours,
 } from "date-fns";
 import { RANGE_TYPE, DateOption, TimeRangeOption } from "../types";
 import {
@@ -74,7 +75,7 @@ export const getDate = (
   selectedType: RANGE_TYPE,
   date: Date,
   number: number
-): Date | undefined => {
+): Date => {
   switch (selectedType) {
     case RANGE_TYPE.DAY:
       return addDays(date, number);
@@ -85,7 +86,7 @@ export const getDate = (
     case RANGE_TYPE.YEAR:
       return addYears(date, number);
     default:
-      return undefined;
+      return date;
   }
 };
 
@@ -125,3 +126,16 @@ export const getDateOptions = (
 const getDailyCounts = (date: Date, weekCounts: DailyCount[]) =>
   weekCounts.find((item) => isSameDay(item.date, date))?.counts ??
   DEFAULT_DAILY_COUNTS;
+
+export const isSameTimeRange = (
+  interval: Interval,
+  timeRangeOption: TimeRangeOption
+) => {
+  const optionStart = parseInt(timeRangeOption.start.split(":")[0], 10);
+  const optionEnd = parseInt(timeRangeOption.start.split(":")[0], 10);
+
+  return (
+    getHours(interval.start) === optionStart &&
+    getHours(interval.end) === optionEnd
+  );
+};

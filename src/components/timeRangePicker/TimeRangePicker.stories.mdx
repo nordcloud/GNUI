@@ -32,29 +32,64 @@ type Interval = {
 
 type DailyCount = {
   date: Date;
-  counts: number[];
+  counts: [number, number, number, number];
 };
 
 type Matcher = (boolean | (date: Date)) => boolean | Date | Date[] | DateRange | DateBefore | DateAfter | DateInterval | DayOfWeek
 // A value or a function that matches a specific day
 ```
 
+### Type "Days"
+
 <Canvas>
-  <Story name="timerangepicker">
+  <Story name="timerangepicker of days">
     {() => {
-      const handleSelect = (newTimeRange) => {
-        console.log(newTimeRange);
+      const initValue = {
+        start: new Date(),
+        end: new Date(),
       };
+      const [value, setValue] = React.useState(initValue);
+      return (
+        <>
+          <TimeRangePicker
+            type="Days"
+            initTimeRange={initValue}
+            onChange={setValue}
+          />
+          <Spacer height="20rem" />
+          <div id="result-days">Current Value: {JSON.stringify(value)}</div>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Type "Hours"
+
+<Canvas>
+  <Story name="timerangepicker of hours ">
+    {() => {
+      const [value, setValue] = React.useState();
+      return (
+        <>
+          <TimeRangePicker onChange={setValue} />
+          <Spacer height="20rem" />
+          <div id="result-hours">Current Value: {JSON.stringify(value)}</div>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Type "Hours" with Histogram
+
+<Canvas>
+  <Story name="timerangepicker of hours with histogram">
+    {() => {
+      const [value, setValue] = React.useState();
       const monday = previousMonday(new Date());
       return (
         <>
-          type: Days
-          <TimeRangePicker type="Days" onChange={handleSelect} />
-          <Spacer height="1rem" />
-          type: Hours
-          <TimeRangePicker onChange={handleSelect} />
-          <Spacer height="2rem" />
-          type: Hours with weekCounts
           <TimeRangePicker
             weekCounts={[
               { date: monday, counts: [1, 2, 3, 4] },
@@ -65,8 +100,12 @@ type Matcher = (boolean | (date: Date)) => boolean | Date | Date[] | DateRange |
               { date: addDays(monday, 5), counts: [0, 0, 0, 0] },
               { date: addDays(monday, 6), counts: [0, 0, 0, 0] },
             ]}
-            onChange={handleSelect}
+            onChange={setValue}
           />
+          <Spacer height="20rem" />
+          <div id="result-hours-with-histogram">
+            Current Value: {JSON.stringify(value)}
+          </div>
         </>
       );
     }}

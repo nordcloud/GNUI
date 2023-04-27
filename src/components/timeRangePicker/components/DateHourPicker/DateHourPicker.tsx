@@ -14,6 +14,7 @@ import {
   getInitSelectedTimeRange,
   getMonday,
   getTimeRangeDate,
+  isSameTimeRange,
 } from "../utils";
 import { DateSelector, HourSelector } from "./components";
 
@@ -43,6 +44,16 @@ export function DateHourPicker({
   const [selectedTimeRange, setSelectedTimeRange] = useState(
     getInitSelectedTimeRange(initTimeRange)
   );
+
+  useEffect(() => {
+    if (
+      !isSameDay(selectedDate, initTimeRange.start) ||
+      !isSameTimeRange(initTimeRange, selectedTimeRange)
+    ) {
+      submitDateHour(selectedDate, selectedTimeRange);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps  -- Submit when initTimeRange and initial selectedData and selectedTimeRange not match
+  }, []);
 
   const calendarWrapper = useRef<HTMLDivElement>(null);
 

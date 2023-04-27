@@ -1,6 +1,6 @@
 /* eslint-disable import/max-dependencies */
 import { useState, useRef } from "react";
-import { isSameDay } from "date-fns";
+import { isSameDay, startOfDay } from "date-fns";
 import { DayPicker, DateRange } from "react-day-picker";
 import { When } from "react-if";
 import { useClickOutside, useDisclosure } from "../../../../hooks";
@@ -83,9 +83,11 @@ export function DatesPicker({
 
   const updateDateRange = (date: Date, rangeType: RANGE_TYPE) => {
     const newRange = {
-      from: date,
+      from: startOfDay(date),
       to:
-        rangeType === RANGE_TYPE.DAY ? undefined : getDate(rangeType, date, 1),
+        rangeType === RANGE_TYPE.DAY
+          ? undefined
+          : startOfDay(getDate(rangeType, date, 1)),
     };
     setSelectedDateRange(newRange);
     // dateRange.to undefined when range type is day
