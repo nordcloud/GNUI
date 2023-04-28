@@ -76,29 +76,6 @@ export const DatepickerContainer = styled.div`
   }
 `;
 
-export const CustomTimeRangeSelector = styled(Row)<{ isVisible: boolean }>`
-  align-items: center;
-  visibility: hidden;
-  opacity: 0;
-
-  ${({ isVisible }) =>
-    isVisible &&
-    `
-  visibility: visible;
-  opacity: 1;
-`}
-
-  input {
-    height: 100%;
-    box-sizing: border-box;
-  }
-
-  button {
-    font-size: ${theme.fontSizes.sm};
-    padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
-  }
-`;
-
 export const UnifiedMultipleSelect = styled(MultipleSelect)`
   width: 100%;
   li {

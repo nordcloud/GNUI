@@ -1,11 +1,12 @@
 import theme from "../../../../../theme";
 import { Button } from "../../../../button";
 import { FlexContainer } from "../../../../container";
-import { Label } from "../../../../input";
+import { Label, Input } from "../../../../input";
 import { SelectButton } from "../../../../selectbutton";
 import { TimeRangeOption } from "../../../types";
-import { UnifiedMultipleSelect, CustomTimeRangeSelector } from "../../styles";
+import { UnifiedMultipleSelect } from "../../styles";
 import { DailyCount } from "../../types";
+import { CustomTimeRangeSelector } from "./styles";
 import { TimeRangeLabel } from "./TimeRangeLabel";
 
 type Props = {
@@ -66,7 +67,7 @@ export function HourSelector({
         </UnifiedMultipleSelect>
         <CustomTimeRangeSelector isVisible={isCustomTimeRange}>
           <Label name="From" htmlFor="time-range-start" />
-          <input
+          <Input
             id="time-range-start"
             type="time"
             name="time-range-start"
@@ -80,7 +81,7 @@ export function HourSelector({
             }}
           />
           <Label name="To" htmlFor="time-range-end" />
-          <input
+          <Input
             id="time-range-end"
             type="time"
             name="time-range-end"

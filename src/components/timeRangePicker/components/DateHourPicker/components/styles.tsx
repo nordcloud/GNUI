@@ -1,12 +1,38 @@
 import styled from "styled-components";
 import theme from "../../../../../theme";
 import { Tag } from "../../../../tag";
+import { Row } from "../../styles";
 
 type CountBarProps = {
   height: number;
 };
 
 const BORDER_RADIUS = theme.radius.sm;
+
+export const CustomTimeRangeSelector = styled(Row)<{ isVisible: boolean }>`
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+
+  ${({ isVisible }) =>
+    isVisible &&
+    `
+  visibility: visible;
+  opacity: 1;
+`}
+
+  input {
+    height: 100%;
+    margin: -0.5rem 0;
+    padding: 1rem 0 0.5rem;
+    font-size: small;
+  }
+
+  button {
+    font-size: ${theme.fontSizes.sm};
+    padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
+  }
+`;
 
 export const CountTag = styled(Tag)`
   margin: 0;
@@ -34,6 +60,7 @@ export const CountBarWrapper = styled.div`
     left: 0;
     background-color: ${theme.color.support.grey};
     opacity: 0.6;
+    border-radius: ${BORDER_RADIUS};
   }
 `;
 

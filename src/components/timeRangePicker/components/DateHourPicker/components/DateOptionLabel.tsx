@@ -1,4 +1,5 @@
 import { When, If, Then, Else } from "react-if";
+import theme from "../../../../../theme";
 import { FlexContainer } from "../../../../container";
 import { Spinner } from "../../../../spinner";
 import { DateOption } from "../../../types";
@@ -21,6 +22,7 @@ export function DateOptionLabel({ dateOption, loading }: Props) {
     <FlexContainer
       justifyContent={hasCounts ? "space-between" : "center"}
       alignItems="stretch"
+      gap={theme.spacing.spacing02}
     >
       <div>
         <header>{dateOption.weekday}</header>
