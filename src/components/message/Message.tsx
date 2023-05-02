@@ -5,7 +5,7 @@ import { SVGIcon, SVGIconProps } from "../svgicon";
 
 export type MessageProps = React.HTMLProps<HTMLDivElement> & {
   image?: SVGIconProps["name"];
-  status?: "success" | "notification" | "danger";
+  status?: "danger" | "discovery" | "notification" | "success" | "warning";
   borderColor?: string;
   background?: string;
   color?: string;
@@ -16,33 +16,51 @@ type MessageWrapperProps = Omit<MessageProps, "children" | "image">;
 
 export const MessageWrapper = styled.div<MessageWrapperProps>`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   border-radius: ${theme.radiusDefault};
-  color: ${theme.color.text.text04};
+  color: ${theme.color.text.text01};
   font-size: ${theme.fontSizes.md};
   padding: ${theme.spacing.spacing03};
-  line-height: 1.5rem;
-  border: 1px solid;
+  line-height: 150%;
+  border: 1px solid ${theme.color.border.border01};
+  border-left-width: 4px;
+  background: ${theme.color.background.ui03};
 
   ${({ status }) =>
     status === "success" &&
     css`
-      background: ${theme.color.background.success};
+      border-color: ${theme.color.border.success};
+      color: ${theme.color.text.success};
     `}
   ${({ status }) =>
     status === "danger" &&
     css`
-      background: ${theme.color.background.error};
+      border-color: ${theme.color.border.error};
+      color: ${theme.color.text.error};
     `}
   ${({ status }) =>
     status === "notification" &&
     css`
-      background: ${theme.color.background.info};
+      border-color: ${theme.color.border.info};
+      color: ${theme.color.text.info};
+    `}
+  ${({ status }) =>
+    status === "warning" &&
+    css`
+      border-color: ${theme.color.border.warning};
+      color: ${theme.color.text.warning};
+    `}
+  ${({ status }) =>
+    status === "discovery" &&
+    css`
+      border-color: ${theme.color.border.border01};
+      color: ${theme.color.text.text01};
     `}
   ${({ borderColor }) =>
     borderColor &&
     css`
       border: 1px solid ${borderColor};
+      border-left-width: 4px;
     `}
   ${({ background }) =>
     background &&

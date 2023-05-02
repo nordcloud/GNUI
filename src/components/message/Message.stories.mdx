@@ -2,6 +2,9 @@ import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { Message } from ".";
 import { Text } from "../text";
 import { Spacer } from "../spacer";
+import { FlexContainer } from "../container";
+import theme from "../../theme";
+import { Button } from "../button";
 
 <Meta title="Components/Message" component={Message} />
 
@@ -9,13 +12,13 @@ import { Spacer } from "../spacer";
 
 #### Message properties
 
-|  properties | required | type                                                                 | description                                                                                       |
-| ----------: | :------: | :------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------ |
-|      status |  false   | <code>success</code>, <code>notification</code>, <code>danger</code> |                                                                                                   |
-|       image |  false   | string                                                               | to get icon names look into <a href="?path=/docs/components-svgicon--size">SVG icon component</a> |
-| borderColor |  false   | string                                                               | border color                                                                                      |
-|  background |  false   | string                                                               | background color                                                                                  |
-|       color |  false   | string                                                               | text color                                                                                        |
+|  properties | required | type                                                                                                               | description                                                                                       |
+| ----------: | :------: | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------ |
+|      status |  false   | <code>success</code>, <code>notification</code>, <code>danger</code>, <code>warning</code>, <code>discovery</code> |                                                                                                   |
+|       image |  false   | string                                                                                                             | to get icon names look into <a href="?path=/docs/components-svgicon--size">SVG icon component</a> |
+| borderColor |  false   | string                                                                                                             | border color                                                                                      |
+|  background |  false   | string                                                                                                             | background color                                                                                  |
+|       color |  false   | string                                                                                                             | text color                                                                                        |
 
 ## default
 
@@ -31,11 +34,23 @@ import { Spacer } from "../spacer";
   </Story>
 </Canvas>
 
-## status
+## Status
 
 <Canvas>
   <Story name="status">
     <>
+      <Message status="discovery" image="help">
+        status: discovery
+      </Message>
+      <Spacer height="1rem" />
+      <Message status="notification" image="info">
+        status: notification
+      </Message>
+      <Spacer height="1rem" />
+      <Message status="warning" image="warning">
+        status: warning
+      </Message>
+      <Spacer height="1rem" />
       <Message status="success" image="success">
         status: success
       </Message>
@@ -43,13 +58,244 @@ import { Spacer } from "../spacer";
       <Message status="danger" image="danger">
         status: danger
       </Message>
-      <Spacer height="1rem" />
-      <Message status="notification" image="info">
-        status: notification
+    </>
+  </Story>
+</Canvas>
+
+## Custom Style
+
+<Canvas>
+  <Story name="custom">
+    <>
+      <Message
+        color={theme.color.support.purple}
+        borderColor={theme.color.support.purple}
+        image="target"
+      >
+        custom border color, text color and icon
       </Message>
-      <Spacer height="1rem" />
-      <Message status="danger" background="#F5B7B1" color="#B03A2E">
-        custom background and color
+    </>
+  </Story>
+</Canvas>
+
+## Discovery
+
+<Canvas>
+  <Story name="Discovery">
+    <>
+      <Message status="discovery" image="help">
+        <FlexContainer direction={"column"} alignItems={"start"}>
+          <Text
+            weight={"medium"}
+            color={"theme.color.text.success"}
+            mb={theme.spacing.spacing00}
+          >
+            Discovery status with additional description and button
+          </Text>
+          <Text
+            mt={theme.spacing.spacing02}
+            mb={theme.spacing.spacing00}
+            color={theme.color.text.text02}
+          >
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book.
+          </Text>
+          <FlexContainer>
+            <Button size={"md"} mt={theme.spacing.spacing04}>
+              Action Button
+            </Button>
+            <Button
+              size={"md"}
+              mt={theme.spacing.spacing04}
+              ml={theme.spacing.spacing04}
+            >
+              Action Button 2
+            </Button>
+          </FlexContainer>
+        </FlexContainer>
+        <Button size={"sm"} severity={"low"} icon="close"></Button>
+      </Message>
+    </>
+  </Story>
+</Canvas>
+
+## Info
+
+<Canvas>
+  <Story name="Notification">
+    <>
+      <Message status="notification" image="info">
+        <FlexContainer direction={"column"} alignItems={"start"}>
+          <Text
+            weight={"medium"}
+            color={"theme.color.text.success"}
+            mb={theme.spacing.spacing00}
+          >
+            Info status with additional description and button
+          </Text>
+          <Text
+            mt={theme.spacing.spacing02}
+            mb={theme.spacing.spacing00}
+            color={theme.color.text.text02}
+          >
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book.
+          </Text>
+          <FlexContainer>
+            <Button
+              size={"md"}
+              mt={theme.spacing.spacing04}
+              color="notification"
+            >
+              Action Button
+            </Button>
+            <Button
+              size={"md"}
+              mt={theme.spacing.spacing04}
+              ml={theme.spacing.spacing04}
+              color="notification"
+            >
+              Action Button 2
+            </Button>
+          </FlexContainer>
+        </FlexContainer>
+        <Button size={"sm"} severity={"low"} icon="close"></Button>
+      </Message>
+    </>
+  </Story>
+</Canvas>
+
+## Warning
+
+<Canvas>
+  <Story name="Warning">
+    <>
+      <Message status="warning" image="warning">
+        <FlexContainer direction={"column"} alignItems={"start"}>
+          <Text
+            weight={"medium"}
+            color={"theme.color.text.success"}
+            mb={theme.spacing.spacing00}
+          >
+            Warning status with additional description and button
+          </Text>
+          <Text
+            mt={theme.spacing.spacing02}
+            mb={theme.spacing.spacing00}
+            color={theme.color.text.text02}
+          >
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book.
+          </Text>
+          <FlexContainer>
+            <Button size={"md"} mt={theme.spacing.spacing04} color="warning">
+              Action Button
+            </Button>
+            <Button
+              size={"md"}
+              mt={theme.spacing.spacing04}
+              ml={theme.spacing.spacing04}
+              color="warning"
+            >
+              Action Button 2
+            </Button>
+          </FlexContainer>
+        </FlexContainer>
+        <Button size={"sm"} severity={"low"} icon="close"></Button>
+      </Message>
+    </>
+  </Story>
+</Canvas>
+
+## Success
+
+<Canvas>
+  <Story name="Success">
+    <>
+      <Message status="success" image="success">
+        <FlexContainer direction={"column"} alignItems={"start"}>
+          <Text
+            weight={"medium"}
+            color={"theme.color.text.success"}
+            mb={theme.spacing.spacing00}
+          >
+            Success status with additional description and button
+          </Text>
+          <Text
+            mt={theme.spacing.spacing02}
+            mb={theme.spacing.spacing00}
+            color={theme.color.text.text02}
+          >
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book.
+          </Text>
+          <FlexContainer>
+            <Button size={"md"} mt={theme.spacing.spacing04} color="success">
+              Action Button
+            </Button>
+            <Button
+              size={"md"}
+              mt={theme.spacing.spacing04}
+              ml={theme.spacing.spacing04}
+              color="success"
+            >
+              Action Button 2
+            </Button>
+          </FlexContainer>
+        </FlexContainer>
+        <Button size={"sm"} severity={"low"} icon="close"></Button>
+      </Message>
+    </>
+  </Story>
+</Canvas>
+
+## Danger
+
+<Canvas>
+  <Story name="Danger">
+    <>
+      <Message status="danger" image="danger">
+        <FlexContainer direction={"column"} alignItems={"start"}>
+          <Text
+            weight={"medium"}
+            color={"theme.color.text.success"}
+            mb={theme.spacing.spacing00}
+          >
+            Danger status with additional description and button
+          </Text>
+          <Text
+            mt={theme.spacing.spacing02}
+            mb={theme.spacing.spacing00}
+            color={theme.color.text.text02}
+          >
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book.
+          </Text>
+          <FlexContainer>
+            <Button size={"md"} mt={theme.spacing.spacing04} color="danger">
+              Action Button
+            </Button>
+            <Button
+              size={"md"}
+              mt={theme.spacing.spacing04}
+              ml={theme.spacing.spacing04}
+              color="danger"
+            >
+              Action Button 2
+            </Button>
+          </FlexContainer>
+        </FlexContainer>
+        <Button size={"sm"} severity={"low"} icon="close"></Button>
       </Message>
     </>
   </Story>

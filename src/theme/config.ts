@@ -33,6 +33,9 @@ export const color = {
     input: "var(--border-input)",
     focus: "var(--border-focus)",
     error: "var(--border-error)",
+    success: "var(--border-success)",
+    info: "var(--border-info)",
+    warning: "var(--border-warning)",
   },
   interactive: {
     primary: "var(--interactive-primary)",
