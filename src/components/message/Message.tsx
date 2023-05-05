@@ -53,7 +53,7 @@ export const MessageWrapper = styled.div<MessageWrapperProps>`
   ${({ status }) =>
     status === "discovery" &&
     css`
-      border-color: ${theme.color.border.border01};
+      border-color: ${theme.color.border.discovery};
       color: ${theme.color.text.text01};
     `}
   ${({ borderColor }) =>

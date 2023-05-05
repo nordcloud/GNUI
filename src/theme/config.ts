@@ -36,6 +36,7 @@ export const color = {
     success: "var(--border-success)",
     info: "var(--border-info)",
     warning: "var(--border-warning)",
+    discovery: "var(--border-discovery)",
   },
   interactive: {
     primary: "var(--interactive-primary)",

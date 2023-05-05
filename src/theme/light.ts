@@ -31,6 +31,7 @@ const LIGHT_COLORS = [
   ["--border-success", palette.green.green700],
   ["--border-info", palette.blue.blue700],
   ["--border-warning", palette.orange.orange700],
+  ["--border-discovery", palette.grey.grey700],
   ["--interactive-primary", palette.darkBlue.darkBlue500],
   ["--interactive-primaryHover", palette.darkBlue.darkBlue700],
   ["--interactive-primaryActive", palette.darkBlue.darkBlue800],
