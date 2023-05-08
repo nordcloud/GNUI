@@ -4,18 +4,14 @@ export type DateOption = {
   day: number;
   month: number;
   year: number;
+  counts?: number[];
 };
 
 export type TimeRangeOption = {
-  id: string;
+  id: string; // might be "custom"
   start: string; // format: "hour:minute"
   end: string; // format: "hour:minute"
-};
-
-export type TimeRangePickerProps = {
-  initTimeRange?: Interval;
-  type?: "Days" | "Hours";
-  onChange: (newTimeRange: Interval) => void;
+  count: number;
 };
 
 export const enum RANGE_TYPE {

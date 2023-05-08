@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import theme from "../../theme";
-import { Button } from "../button";
-import { FlexContainer } from "../container";
-import { MultipleSelect } from "../selectbutton";
+import theme from "../../../theme";
+import { Button } from "../../button";
+import { FlexContainer } from "../../container";
+import { MultipleSelect } from "../../selectbutton";
 
 export const Row = styled(FlexContainer)`
   align-items: stretch;
@@ -69,39 +69,10 @@ export const DatepickerContainer = styled.div`
     position: absolute;
     transform: translateX(-100%);
     margin-left: 100%;
-    background-color: ${theme.colors.snowWhite};
+    background-color: ${theme.color.background.ui01};
     border: 1px solid ${theme.color.border.border01};
     border-radius: ${theme.radius.md};
-  }
-`;
-
-export const CustomTimeRangeSelector = styled(Row)<{ isVisible: boolean }>`
-  align-items: center;
-  visibility: hidden;
-  opacity: 0;
-
-  ${({ isVisible }) =>
-    isVisible &&
-    `
-  visibility: visible;
-  opacity: 1;
-`}
-
-  input {
-    height: 100%;
-    padding: 0 ${theme.spacing.spacing03};
-    border: 1px solid ${theme.color.border.input};
-    border-radius: ${theme.radius.md};
-    box-sizing: border-box;
-  }
-
-  button {
-    font-size: ${theme.fontSizes.sm};
-    padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
-  }
-
-  .daypicker-panel {
-    border: 1px solid ${theme.color.border.border01};
+    z-index: ${theme.zindex.default};
   }
 `;
 
