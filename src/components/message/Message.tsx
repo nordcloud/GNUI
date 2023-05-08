@@ -1,6 +1,5 @@
 import * as React from "react";
 import styled, { css } from "styled-components";
-import theme from "../../theme";
 import { SVGIcon, SVGIconProps } from "../svgicon";
 
 export type MessageProps = React.HTMLProps<HTMLDivElement> & {
@@ -17,45 +16,22 @@ type MessageWrapperProps = Omit<MessageProps, "children" | "image">;
 export const MessageWrapper = styled.div<MessageWrapperProps>`
   display: flex;
   align-items: flex-start;
-  border-radius: ${theme.radiusDefault};
-  color: ${theme.color.text.text01};
-  font-size: ${theme.fontSizes.md};
-  padding: ${theme.spacing.spacing03};
+  border-radius: ${({ theme }) => theme.radiusDefault};
+  font-size: ${({ theme }) => theme.fontSizes.md};
+  padding: ${({ theme }) => theme.spacing.spacing03};
   line-height: 150%;
-  border: 1px solid ${theme.color.border.border01};
+  border: 1px solid;
   border-left-width: 4px;
-  background: ${theme.color.background.ui03};
+  background: ${({ theme }) => theme.color.background.ui03};
 
-  ${({ status }) =>
-    status === "success" &&
-    css`
-      border-color: ${theme.color.border.success};
-      color: ${theme.color.text.success};
-    `}
-  ${({ status }) =>
-    status === "danger" &&
-    css`
-      border-color: ${theme.color.border.error};
-      color: ${theme.color.text.error};
-    `}
-  ${({ status }) =>
-    status === "notification" &&
-    css`
-      border-color: ${theme.color.border.info};
-      color: ${theme.color.text.info};
-    `}
-  ${({ status }) =>
-    status === "warning" &&
-    css`
-      border-color: ${theme.color.border.warning};
-      color: ${theme.color.text.warning};
-    `}
-  ${({ status }) =>
-    status === "discovery" &&
-    css`
-      border-color: ${theme.color.border.discovery};
-      color: ${theme.color.text.text01};
-    `}
+  --borderColor: ${({ status, theme }) =>
+    status ? theme.color.border[status] : theme.color.border.border01};
+  --textColor: ${({ status, theme }) =>
+    status ? theme.color.text[status] : theme.color.text.text01};
+
+  border-color: var(--borderColor);
+  color: var(--textColor);
+
   ${({ borderColor }) =>
     borderColor &&
     css`
@@ -77,8 +53,6 @@ export const MessageWrapper = styled.div<MessageWrapperProps>`
 export const IconBox = styled.div`
   display: flex;
   align-items: center;
-  border-radius: ${theme.radiusDefault};
-  margin-right: ${theme.spacing.spacing03};
 
   svg {
     fill: currentColor;
