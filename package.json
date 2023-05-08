@@ -121,7 +121,7 @@
     "rollup-plugin-typescript2": "^0.34.1",
     "storybook": "^6.5.16",
     "storybook-addon-turbo-build": "^1.1.0",
-    "styled-components": "^5.3.9",
+    "styled-components": "^5.3.10",
     "stylelint": "^13.13.1",
     "stylelint-config-recommended": "^5.0.0",
     "stylelint-config-styled-components": "^0.1.1",
