@@ -71,6 +71,7 @@ export const MessageWrapper = styled.div<MessageWrapperProps>`
 export const IconBox = styled.div`
   display: flex;
   align-items: center;
+  margin-right: ${theme.spacing.spacing03};
 
   svg {
     fill: currentColor;
