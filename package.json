@@ -87,7 +87,7 @@
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
-    "@nordcloud/eslint-config-pat": "^4.16.3",
+    "@nordcloud/eslint-config-pat": "^5.0.0",
     "@rollup/plugin-commonjs": "^24.1.0",
     "@rollup/plugin-node-resolve": "^15.0.2",
     "@storybook/addon-docs": "^6.5.16",
