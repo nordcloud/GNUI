@@ -45,7 +45,8 @@ const GlobalStyle = createGlobalStyle<Props>`
 
 /**
  * Component for setting global styles using GNUI theme.
- * @param {boolean} [customScrollbars=false] - Option to enable GNUI theme based styling for scrollbars.
+ * @param props - properties to configure
+ * @param props.customScrollbars - Option to enable GNUI theme based styling for scrollbars.
  */
 export function SetGlobalStyle({ customScrollbars = false }: Props) {
   useThemeSwitcher();
