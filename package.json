@@ -139,6 +139,8 @@
     "hosted-git-info": "~2.8.9",
     "ssri": "~6.0.2",
     "elliptic": "~6.5.4",
-    "path-parse": "~1.0.7"
+    "path-parse": "~1.0.7",
+    "json5": "^1.0.2",
+    "decode-uri-component": "^0.2.1"
   }
 }
