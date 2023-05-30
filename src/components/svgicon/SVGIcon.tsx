@@ -13,7 +13,7 @@ const StyledSVGIcon = styled.svg<Pick<SVGIconProps, "color" | "size">>`
   ${({ color }) =>
     color &&
     css`
-      fill: ${theme.colors[color] || color};
+      fill: ${theme.colors[color as SingleColors] || color};
     `}
 
   ${({ size }) =>
@@ -28,7 +28,8 @@ const VIEW_BOX = "0 0 24 24";
 
 export type SVGIconProps = React.HTMLAttributes<HTMLOrSVGElement> & {
   name: PathName;
-  color?: SingleColors;
+  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
+  color?: SingleColors | string;
   size?: keyof typeof theme.iconSize;
 };
 
