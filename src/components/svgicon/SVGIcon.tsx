@@ -13,7 +13,7 @@ const StyledSVGIcon = styled.svg<Pick<SVGIconProps, "color" | "size">>`
   ${({ color }) =>
     color &&
     css`
-      fill: ${theme.colors[color] || color};
+      fill: ${theme.colors[color as SingleColors] || color};
     `}
 
   ${({ size }) =>
@@ -26,9 +26,12 @@ const StyledSVGIcon = styled.svg<Pick<SVGIconProps, "color" | "size">>`
 
 const VIEW_BOX = "0 0 24 24";
 
+type AnyString = Record<never, never> & string;
+type SvgColor = AnyString | SingleColors;
+
 export type SVGIconProps = React.HTMLAttributes<HTMLOrSVGElement> & {
   name: PathName;
-  color?: SingleColors;
+  color?: SvgColor;
   size?: keyof typeof theme.iconSize;
 };
 
