@@ -26,9 +26,12 @@ const StyledSVGIcon = styled.svg<Pick<SVGIconProps, "color" | "size">>`
 
 const VIEW_BOX = "0 0 24 24";
 
+type AnyString = Record<never, never> & string;
+type SvgColor = AnyString | SingleColors;
+
 export type SVGIconProps = React.HTMLAttributes<HTMLOrSVGElement> & {
   name: PathName;
-  color?: string;
+  color?: SvgColor;
   size?: keyof typeof theme.iconSize;
 };
 
