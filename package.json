@@ -1,7 +1,7 @@
 {
   "name": "@nordcloud/gnui",
   "description": "Nordcloud Design System - a collection of reusable React components used in Nordcloud's SaaS products",
-  "version": "8.7.0",
+  "version": "8.6.1",
   "license": "MIT",
   "repository": {
     "type": "git",
