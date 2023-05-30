@@ -28,8 +28,7 @@ const VIEW_BOX = "0 0 24 24";
 
 export type SVGIconProps = React.HTMLAttributes<HTMLOrSVGElement> & {
   name: PathName;
-  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-  color?: SingleColors | string;
+  color?: string;
   size?: keyof typeof theme.iconSize;
 };
 
