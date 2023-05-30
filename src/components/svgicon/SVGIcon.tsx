@@ -5,7 +5,7 @@ import { SingleColors } from "../../theme/config";
 import { getPath, PathName } from "./paths";
 
 const StyledSVGIcon = styled.svg<Pick<SVGIconProps, "color" | "size">>`
-  fill: ${theme.color.text.text01};
+  fill: ${(props) => props.color || theme.color.text.text01};
   width: ${theme.iconSize.md};
   height: ${theme.iconSize.md};
   vertical-align: middle;
@@ -13,7 +13,7 @@ const StyledSVGIcon = styled.svg<Pick<SVGIconProps, "color" | "size">>`
   ${({ color }) =>
     color &&
     css`
-      fill: ${theme.colors[color]};
+      fill: ${theme.colors[color] || color};
     `}
 
   ${({ size }) =>
