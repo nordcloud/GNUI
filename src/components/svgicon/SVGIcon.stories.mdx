@@ -3,6 +3,7 @@ import { SVGIcon } from ".";
 import { FlexContainer } from "../container";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { Text } from "../text";
+import { theme } from "../../index";
 
 <Meta title="Components/SVGIcon" component={SVGIcon} />
 
@@ -38,6 +39,7 @@ import { Text } from "../text";
       <SVGIcon name="dashboard" color="danger" />
       <SVGIcon name="dashboard" color="warning" />
       <SVGIcon name="dashboard" color="notification" />
+      <SVGIcon name="dashboard" color={theme.color.support.purple} />
     </FlexContainer>
   </Story>
 </Canvas>
