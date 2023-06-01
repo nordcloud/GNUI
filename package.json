@@ -74,7 +74,7 @@
   },
   "dependencies": {
     "@types/styled-system": "^5.1.16",
-    "date-fns": "^2.29.3",
+    "date-fns": "^2.30.0",
     "lodash.clonedeep": "^4.5.0",
     "polished": "^4.2.2",
     "react-awesome-styled-grid": "^3.1.4",
