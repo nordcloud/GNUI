@@ -89,7 +89,7 @@
   "devDependencies": {
     "@nordcloud/eslint-config-pat": "^5.0.0",
     "@rollup/plugin-commonjs": "^24.1.0",
-    "@rollup/plugin-node-resolve": "^15.0.2",
+    "@rollup/plugin-node-resolve": "^15.1.0",
     "@storybook/addon-docs": "^6.5.16",
     "@storybook/addons": "^6.5.16",
     "@storybook/react": "^6.5.16",
@@ -117,7 +117,7 @@
     "react": "^17.0.2",
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^17.0.2",
-    "rollup": "^3.20.4",
+    "rollup": "^3.23.1",
     "rollup-plugin-typescript2": "^0.34.1",
     "storybook": "^6.5.16",
     "storybook-addon-turbo-build": "^1.1.0",
