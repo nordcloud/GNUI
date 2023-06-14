@@ -8,12 +8,15 @@ type Props = {
   popoverConfig?: PopoverConfig;
 };
 
+const popoverConfigDefault = {
+  triggerOn: "hover",
+  closeOn: "hover",
+  position: "start",
+} as const;
+
 export function NavigationBarProvider({
   children,
-  popoverConfig = {
-    triggerOn: "hover",
-    closeOn: "hover",
-  },
+  popoverConfig = popoverConfigDefault,
 }: Props) {
   const { isOpen: expanded, toggle: setExpanded } = useDisclosure();
   const {

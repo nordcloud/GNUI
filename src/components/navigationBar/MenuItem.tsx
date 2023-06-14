@@ -13,7 +13,7 @@ export function MenuItem({ caption, icon, children }: MenuItemProps) {
   const { expanded, expandedDone, popoverConfig } = useMenuBarConfiguration();
 
   if (children != null) {
-    const triggerEl = (
+    const triggerElement = (
       <FlexContainer justifyContent={expanded ? "start" : "center"}>
         <Trigger expanded={expandedDone} icon={icon} caption={caption} />
       </FlexContainer>
@@ -22,8 +22,8 @@ export function MenuItem({ caption, icon, children }: MenuItemProps) {
     return (
       <StyledTriggerWrapper>
         <ExtendedPopover
-          trigger={triggerEl}
-          position="start"
+          trigger={triggerElement}
+          position={popoverConfig?.position}
           triggerOn={popoverConfig?.triggerOn}
           closeOn={popoverConfig?.closeOn}
           margin={{ left: 20 }}
