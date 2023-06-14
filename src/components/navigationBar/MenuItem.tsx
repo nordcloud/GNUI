@@ -23,11 +23,9 @@ export function MenuItem({ caption, icon, children }: MenuItemProps) {
       <StyledTriggerWrapper>
         <ExtendedPopover
           trigger={triggerElement}
-          position={popoverConfig.position}
-          triggerOn={popoverConfig.triggerOn}
-          closeOn={popoverConfig.closeOn}
           margin={{ left: 20 }}
           content={children}
+          {...popoverConfig}
         />
       </StyledTriggerWrapper>
     );
