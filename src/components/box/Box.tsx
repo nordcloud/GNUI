@@ -41,8 +41,6 @@ const changeBoxStyle = (boxStyle: string) => {
   }
 };
 
-console.log("hehe");
-
 const StyledBox = styled(GnuiContainer)<BoxProps & SpaceProps>`
   box-sizing: border-box;
   min-width: 0;
