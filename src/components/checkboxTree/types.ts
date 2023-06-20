@@ -14,7 +14,7 @@ export type Composition = {
   children?: Composition[];
 };
 
-export type ParentStateHandling = {
+type ParentStateHandling = {
   isFirstElement?: boolean;
   selectedList: string[];
   parent?: Composition;

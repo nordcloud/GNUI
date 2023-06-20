@@ -39,7 +39,7 @@ export const ModalBox = styled(Box)<ModalBoxProps>`
   animation: ${showTranslateY} 0.2s ease-in-out forwards;
 `;
 
-export const ModalCloseButton = styled(Button)`
+const ModalCloseButton = styled(Button)`
   padding: ${theme.spacing.spacing01};
 `;
 
