@@ -12,6 +12,8 @@ export type ButtonProps<T extends React.ElementType = "button"> =
   React.ComponentProps<T> & {
     children?: React.ReactNode | string;
     severity?: "high" | "low" | "medium";
+    status?:
+      "accent" | "danger" | "discovery" | "notification" | "success" | "warning";
     size?: "md" | "sm";
     icon?: SVGIconProps["name"];
     iconRight?: boolean;
@@ -108,6 +110,49 @@ const changeSeverity = (severity: string) => {
   }
 };
 
+const changeStatus = (status?: ButtonProps["status"]) => {
+  switch (status) {
+    case "danger":
+      return {
+        default: theme.color.interactive.error,
+        hover: theme.color.interactive.errorHover,
+        active: theme.color.interactive.errorActive,
+      };
+    case "warning":
+      return {
+        default: theme.color.interactive.warning,
+        hover: theme.color.interactive.warningHover,
+        active: theme.color.interactive.warningActive,
+      };
+    case "success":
+      return {
+        default: theme.color.interactive.success,
+        hover: theme.color.interactive.successHover,
+        active: theme.color.interactive.successActive,
+      };
+    case "notification":
+      return {
+        default: theme.color.interactive.info,
+        hover: theme.color.interactive.infoHover,
+        active: theme.color.interactive.infoActive,
+      };
+    case "discovery":
+      return {
+        default: theme.color.interactive.primary,
+        hover: theme.color.interactive.primaryHover,
+        active: theme.color.interactive.primaryActive,
+      };
+    case "accent":
+      return {
+        default: theme.color.interactive.accent,
+        hover: theme.color.interactive.accentHover,
+        active: theme.color.interactive.accentActive,
+      };
+    default:
+      return null;
+  }
+};
+
 const StyledButton = styled.button<ButtonProps<React.ElementType>>`
   background: ${theme.color.interactive.primary};
   white-space: nowrap;
@@ -190,6 +235,18 @@ const StyledButton = styled.button<ButtonProps<React.ElementType>>`
     severity &&
     css`
       ${changeSeverity(severity)}
+    `}
+
+  ${({ status }) =>
+    status &&
+    css`
+      background: ${changeStatus(status)?.default};
+      &:hover {
+        background: ${changeStatus(status)?.hover};
+      }
+      &:active {
+        background: ${changeStatus(status)?.active};
+      }
     `}
 
   ${({ size }) =>
