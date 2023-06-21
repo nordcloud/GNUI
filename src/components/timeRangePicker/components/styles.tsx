@@ -58,10 +58,6 @@ export const IconButton = styled(Button)`
   padding: ${theme.spacing.spacing04} ${theme.spacing.spacing02};
 `;
 
-export const IconDaysButton = styled(Button)`
-  padding: ${theme.spacing.spacing00} ${theme.spacing.spacing02};
-`;
-
 export const DatepickerContainer = styled.div`
   position: relative;
 

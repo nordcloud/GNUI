@@ -1,0 +1,21 @@
+{
+  "$schema": "https://unpkg.com/knip@next/schema.json",
+  "entry": ["src/index.ts!"],
+  "project": ["src/**/*.{ts,tsx,mdx}!", ".storybook/**/*.js", "jest.config.js"],
+  "ignoreDependencies": [
+    // False-positives
+    "identity-obj-proxy",
+    "react-copy-to-clipboard",
+    "lodash",
+    "lodash.clonedeep",
+    "@types/lodash.clonedeep",
+    "storybook",
+    // Can be listed explicitly in the future
+    "@jest/types",
+    "@types/eslint"
+  ],
+  "rules": {
+    "enumMembers": "warn"
+  },
+  "ignore": ["**/*.d.ts", "**/__mockups__"]
+}

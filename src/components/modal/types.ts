@@ -11,7 +11,7 @@ export type ModalContentProps = {
   alignText?: "center" | "left" | "right";
 };
 
-export type ModalAction = {
+type ModalAction = {
   onAction: (event: React.KeyboardEvent | React.MouseEvent) => void;
   label: string;
   disabled?: boolean;
