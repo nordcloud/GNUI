@@ -23,6 +23,9 @@ export type ButtonProps<T extends React.ElementType = "button"> =
     icon?: SVGIconProps["name"];
     iconRight?: boolean;
     initialState?: string;
+    /**
+     * @deprecated The property should not be used
+     */
     color?: SingleColors;
     form?: string;
     select?: boolean;
