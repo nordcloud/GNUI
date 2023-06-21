@@ -13,7 +13,12 @@ export type ButtonProps<T extends React.ElementType = "button"> =
     children?: React.ReactNode | string;
     severity?: "high" | "low" | "medium";
     status?:
-      "accent" | "danger" | "discovery" | "notification" | "success" | "warning";
+      | "accent"
+      | "danger"
+      | "discovery"
+      | "notification"
+      | "success"
+      | "warning";
     size?: "md" | "sm";
     icon?: SVGIconProps["name"];
     iconRight?: boolean;
