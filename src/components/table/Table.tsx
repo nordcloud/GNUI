@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 import theme from "../../theme";
 
-export type StyledTableProps = {
+type StyledTableProps = {
   hoverline?: boolean;
   striped?: boolean;
   small?: boolean;
