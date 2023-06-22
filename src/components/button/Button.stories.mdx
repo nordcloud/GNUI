@@ -10,19 +10,20 @@ import { GnuiContainer, FlexContainer } from "../container";
 
 ## Button properties
 
-|   properties | required | type                                                           | description                                                                                                                                                                                                                            |
-| -----------: | :------: | :------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|     children |  false   | string                                                         | contents inside button element, it should be plain text                                                                                                                                                                                |
-|     severity |  false   | <code>medium</code>, <code>low</code>                          |                                                                                                                                                                                                                                        |
-|         size |  false   | <code>sm</code>, <code>md</code>                               |                                                                                                                                                                                                                                        |
-|         icon |  false   | string                                                         | to get icon names look into <a href="?path=/docs/components-svgicon--size">SVG icon component</a>                                                                                                                                      |
-|    iconRight |  false   | boolean                                                        | place an icon to the right side of button                                                                                                                                                                                              |
-| initialState |  false   | <code>success</code>, <code>error</code>, <code>loading</code> |                                                                                                                                                                                                                                        |
-|        color |  false   | string                                                         | can be used in two ways: as an action colors build with `theme` (`accent`, `danger`, `success`, `warning`, `notification`) or just in HEX/named color formats according to [X11 Colors](https://en.wikipedia.org/wiki/X11_color_names) |
-|     disabled |  false   | boolean                                                        |                                                                                                                                                                                                                                        |
-|       linkTo |  false   | string                                                         | displays button as a link                                                                                                                                                                                                              |
-|      display |  false   | <code>flex</code>, <code>inline-flex</code>                    | you might want to change the display value when using linkTo prop                                                                                                                                                                      |
-|           as |  false   | React.ElementType                                              | any valid HTML element or React component                                                                                                                                                                                              |
+|         properties | required | type                                                           | description                                                                                                                                                                                                                            |
+| -----------------: | :------: | :------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|           children |  false   | string                                                         | contents inside button element, it should be plain text                                                                                                                                                                                |
+|           severity |  false   | <code>medium</code>, <code>low</code>                          |                                                                                                                                                                                                                                        |
+|               size |  false   | <code>sm</code>, <code>md</code>                               |                                                                                                                                                                                                                                        |
+|               icon |  false   | string                                                         | to get icon names look into <a href="?path=/docs/components-svgicon--size">SVG icon component</a>                                                                                                                                      |
+|          iconRight |  false   | boolean                                                        | place an icon to the right side of button                                                                                                                                                                                              |
+|       initialState |  false   | <code>success</code>, <code>error</code>, <code>loading</code> |                                                                                                                                                                                                                                        |
+|             status |  false   | string                                                         | status: <code>danger</code>, <code>warning</code>, <code>success</code>, <code>notification</code>, <code>discovery</code>, <code>accent</code>                                                                                        |
+|           disabled |  false   | boolean                                                        |                                                                                                                                                                                                                                        |
+|             linkTo |  false   | string                                                         | displays button as a link                                                                                                                                                                                                              |
+|            display |  false   | <code>flex</code>, <code>inline-flex</code>                    | you might want to change the display value when using linkTo prop                                                                                                                                                                      |
+|           asnpm ru |  false   | React.ElementType                                              | any valid HTML element or React component                                                                                                                                                                                              |
+| color - deprecated |  false   | string                                                         | can be used in two ways: as an action colors build with `theme` (`accent`, `danger`, `success`, `warning`, `notification`) or just in HEX/named color formats according to [X11 Colors](https://en.wikipedia.org/wiki/X11_color_names) |
 
 ## default button
 
@@ -105,23 +106,19 @@ import { GnuiContainer, FlexContainer } from "../container";
   </Story>
 </Canvas>
 
-## color
+## Status
 
-> `color`: `string`
+> status: `danger` | `warning` | `success` | `notification` | `discovery` | `accent`
 
 <Canvas>
-  <Story name="color">
+  <Story name="status">
     <FlexContainer justifyContent="space-evenly">
-      <Button color="danger" icon="danger">
-        Danger color
-      </Button>
-      <Button color="danger" icon="danger" severity="medium">
-        Danger color
-      </Button>
-      <Button color="success">Success color</Button>
-      <Button color="warning">Warning color</Button>
-      <Button color="notification">Notification color</Button>
-      <Button color="#FF1493">HEX color</Button>
+      <Button status="danger">danger</Button>
+      <Button status="warning">warning</Button>
+      <Button status="success">success</Button>
+      <Button status="notification">notification</Button>
+      <Button status="discovery">discovery</Button>
+      <Button status="accent">accent</Button>
     </FlexContainer>
   </Story>
 </Canvas>
@@ -193,5 +190,26 @@ import { GnuiContainer, FlexContainer } from "../container";
     <Button as="a" href="http://google.com" target="_blank">
       Link to
     </Button>
+  </Story>
+</Canvas>
+
+## color - deprecated
+
+> `color`: `string`
+
+<Canvas>
+  <Story name="color">
+    <FlexContainer justifyContent="space-evenly">
+      <Button color="danger" icon="danger">
+        Danger color
+      </Button>
+      <Button color="danger" icon="danger" severity="medium">
+        Danger color
+      </Button>
+      <Button color="success">Success color</Button>
+      <Button color="warning">Warning color</Button>
+      <Button color="notification">Notification color</Button>
+      <Button color="#FF1493">HEX color</Button>
+    </FlexContainer>
   </Story>
 </Canvas>
