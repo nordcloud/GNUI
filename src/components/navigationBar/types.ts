@@ -1,6 +1,5 @@
 import * as React from "react";
-import { Position } from "../../utils/position";
-import { ExtendedPopoverAction } from "../extendedPopover";
+import { PopoverOptions } from "../popover/usePopover";
 import { PathName } from "../svgicon/paths";
 
 export type Props = {
@@ -24,11 +23,7 @@ export type MenuItemProps = {
   children?: React.ReactNode;
 };
 
-export type PopoverConfig = {
-  triggerOn: ExtendedPopoverAction;
-  closeOn: ExtendedPopoverAction;
-  position: Position;
-};
+export type PopoverConfig = PopoverOptions;
 
 export type ExpandableConfig = {
   timingFunction?: "ease-in-out" | "ease-in" | "ease-out" | "ease" | "linear";

@@ -10,8 +10,7 @@ type Props = {
 
 const popoverConfigDefault = {
   triggerOn: "hover",
-  closeOn: "hover",
-  position: "start",
+  placement: "right",
 } as const;
 
 export function NavigationBarProvider({
