@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Position } from "../../utils/position";
 import { ExtendedPopoverAction } from "../extendedPopover";
 import { PathName } from "../svgicon/paths";
 
@@ -26,9 +27,10 @@ export type MenuItemProps = {
 export type PopoverConfig = {
   triggerOn: ExtendedPopoverAction;
   closeOn: ExtendedPopoverAction;
+  position: Position;
 };
 
 export type ExpandableConfig = {
-  timingFunction?: "linear" | "ease" | "ease-in" | "ease-out" | "ease-in-out";
+  timingFunction?: "ease-in-out" | "ease-in" | "ease-out" | "ease" | "linear";
   duration?: string;
 };

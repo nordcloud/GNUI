@@ -43,7 +43,7 @@ export const getParentsUids = (
   );
 };
 
-export const getRelations = (tree: Composition[], separator = "->") => {
+const getRelations = (tree: Composition[], separator = "->") => {
   const allRelations = [];
 
   let branch: string[] = [];

@@ -5,44 +5,56 @@ import { SVGIcon, SVGIconProps } from "../svgicon";
 
 export type MessageProps = React.HTMLProps<HTMLDivElement> & {
   image?: SVGIconProps["name"];
-  status?: "success" | "notification" | "danger";
+  status?: "danger" | "discovery" | "notification" | "success" | "warning";
   borderColor?: string;
   background?: string;
   color?: string;
   as?: React.ElementType | keyof JSX.IntrinsicElements;
 };
 
+const getBorderColor = (status?: MessageProps["status"]) => {
+  switch (status) {
+    case "notification":
+      return theme.color.border.info;
+    case "danger":
+      return theme.color.border.error;
+    default:
+      return status ? theme.color.border[status] : theme.color.border.border01;
+  }
+};
+const getTextColor = (status?: MessageProps["status"]) => {
+  switch (status) {
+    case "notification":
+      return theme.color.text.info;
+    case "danger":
+      return theme.color.text.error;
+    case "discovery":
+      return theme.color.text.text01;
+    default:
+      return status ? theme.color.text[status] : theme.color.text.text01;
+  }
+};
+
 type MessageWrapperProps = Omit<MessageProps, "children" | "image">;
 
 export const MessageWrapper = styled.div<MessageWrapperProps>`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   border-radius: ${theme.radiusDefault};
-  color: ${theme.color.text.text04};
   font-size: ${theme.fontSizes.md};
   padding: ${theme.spacing.spacing03};
-  line-height: 1.5rem;
+  line-height: 150%;
   border: 1px solid;
+  border-left-width: 4px;
+  background: ${theme.color.background.ui03};
+  border-color: ${({ status }) => getBorderColor(status)};
+  color: ${({ status }) => getTextColor(status)};
 
-  ${({ status }) =>
-    status === "success" &&
-    css`
-      background: ${theme.color.background.success};
-    `}
-  ${({ status }) =>
-    status === "danger" &&
-    css`
-      background: ${theme.color.background.error};
-    `}
-  ${({ status }) =>
-    status === "notification" &&
-    css`
-      background: ${theme.color.background.info};
-    `}
   ${({ borderColor }) =>
     borderColor &&
     css`
       border: 1px solid ${borderColor};
+      border-left-width: 4px;
     `}
   ${({ background }) =>
     background &&
@@ -59,7 +71,6 @@ export const MessageWrapper = styled.div<MessageWrapperProps>`
 export const IconBox = styled.div`
   display: flex;
   align-items: center;
-  border-radius: ${theme.radiusDefault};
   margin-right: ${theme.spacing.spacing03};
 
   svg {

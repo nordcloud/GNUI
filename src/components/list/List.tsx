@@ -31,6 +31,7 @@ const StyledListMarker = css`
   content: "";
   border-radius: 1px;
   width: 8px;
+  min-width: 8px;
   height: 8px;
   margin: ${theme.spacing.spacing02};
   background-color: ${theme.color.text.text01};

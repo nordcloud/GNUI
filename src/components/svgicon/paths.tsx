@@ -12,7 +12,7 @@ import {
   externalServices,
 } from "./icons";
 
-export const paths = {
+const paths = {
   ...awsIcons,
   ...cloudIcons,
   ...klarityIcons,
@@ -27,7 +27,7 @@ export const paths = {
 } as const;
 
 export const getPath = (name: PathName) => {
-  return paths[name] ?? paths["default"];
+  return paths[name] ?? paths.default;
 };
 
 export type PathName = keyof typeof paths;
