@@ -3,25 +3,25 @@ import {
   arrow,
   autoUpdate,
   flip,
-  inline,
+  limitShift,
   offset,
   Placement,
   safePolygon,
   shift,
+  useClick,
   useDismiss,
   useFloating,
-  useFocus,
   useHover,
   useInteractions,
   useRole,
+  useTransitionStyles,
 } from "@floating-ui/react";
-import { DEFAULT_TOOLTIP_PADDING } from "./styles";
 
-export type TooltipOptions = {
+export type PopoverOptions = {
   initialOpen?: boolean;
   placement?: Placement;
-  status?: "danger" | "notification" | "success" | "warning";
   showArrow?: boolean;
+  triggerOn?: "click" | "hover";
   openDelay?: number;
   closeDelay?: number;
   isOpen?: boolean;
@@ -29,17 +29,17 @@ export type TooltipOptions = {
   offset?: number;
 };
 
-export function useTooltip({
+export function usePopover({
   initialOpen = false,
   placement = "top",
+  triggerOn = "click",
   openDelay = 0,
   closeDelay = 0,
-  offset: tooltipOffset = 10,
+  offset: popoverOffset = 10,
   showArrow = true,
-  status,
   isOpen: controlledOpen,
   onOpenChange: setControlledOpen,
-}: TooltipOptions = {}) {
+}: PopoverOptions = {}) {
   const [isUncontrolledOpen, setIsUncontrolledOpen] = useState(initialOpen);
   const arrowRef = useRef(null);
 
@@ -52,46 +52,71 @@ export function useTooltip({
     onOpenChange: setOpen,
     whileElementsMounted: autoUpdate,
     middleware: [
-      inline(),
-      offset(tooltipOffset),
+      offset(popoverOffset),
       flip({
-        fallbackAxisSideDirection: "start",
-        crossAxis: placement.includes("-"),
+        fallbackAxisSideDirection: "end",
+        crossAxis: false,
       }),
-      shift({ padding: DEFAULT_TOOLTIP_PADDING }),
-      showArrow && arrow({ element: arrowRef }),
+      shift({
+        limiter: limitShift({ offset: popoverOffset * 1.5 }),
+      }),
+      showArrow &&
+        arrow({
+          element: arrowRef,
+          padding: 5,
+        }),
     ],
   });
 
   const context = data.context;
 
+  const click = useClick(context, {
+    enabled: controlledOpen == null && triggerOn === "click",
+  });
   const hover = useHover(context, {
     move: false,
-    enabled: controlledOpen == null,
+    enabled: controlledOpen == null && triggerOn === "hover",
     delay: {
       open: openDelay,
       close: closeDelay,
     },
     handleClose: safePolygon(),
   });
-  const focus = useFocus(context, {
-    enabled: controlledOpen == null,
-  });
   const dismiss = useDismiss(context);
-  const role = useRole(context, { role: "tooltip" });
+  const role = useRole(context);
 
-  const interactions = useInteractions([hover, focus, dismiss, role]);
+  const interactions = useInteractions([click, hover, dismiss, role]);
+
+  const transition = useTransitionStyles(context, {
+    duration: {
+      open: 400,
+      close: 75,
+    },
+    initial: ({ side }) => ({
+      opacity: 0,
+      transform: {
+        top: "translateY(-0.5rem)",
+        right: "translateX(0.5rem)",
+        bottom: "translateY(0.5rem)",
+        left: "translateX(-0.5rem)",
+      }[side],
+    }),
+    close: () => ({
+      opacity: 0,
+      transform: "scale(0.97)",
+    }),
+  });
 
   return useMemo(
     () => ({
       isOpen,
       setOpen,
-      arrowRef,
-      status,
-      showArrow,
       ...interactions,
       ...data,
+      ...transition,
+      showArrow,
+      arrowRef,
     }),
-    [isOpen, setOpen, status, showArrow, interactions, data]
+    [isOpen, setOpen, interactions, data, transition, showArrow]
   );
 }

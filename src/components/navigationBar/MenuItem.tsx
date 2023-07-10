@@ -1,6 +1,6 @@
 import theme from "../../theme";
 import { FlexContainer } from "../container";
-import { ExtendedPopover } from "../extendedPopover";
+import { Popover } from "../popover";
 import { SVGIcon } from "../svgicon";
 import { Tooltip } from "../tooltip";
 import { Trigger } from "./components/Trigger";
@@ -12,20 +12,16 @@ export function MenuItem({ caption, icon, children }: MenuItemProps) {
   const { expanded, expandedDone, popoverConfig } = useMenuBarConfiguration();
 
   if (children != null) {
-    const triggerElement = (
-      <FlexContainer justifyContent={expanded ? "start" : "center"}>
-        <Trigger expanded={expandedDone} icon={icon} caption={caption} />
-      </FlexContainer>
-    );
-
     return (
       <StyledTriggerWrapper>
-        <ExtendedPopover
-          trigger={triggerElement}
-          margin={{ left: 20 }}
-          content={children}
-          {...popoverConfig}
-        />
+        <Popover {...popoverConfig} showArrow={false} offset={15}>
+          <Popover.trigger>
+            <FlexContainer justifyContent={expanded ? "start" : "center"}>
+              <Trigger expanded={expandedDone} icon={icon} caption={caption} />
+            </FlexContainer>
+          </Popover.trigger>
+          <Popover.content>{children}</Popover.content>
+        </Popover>
       </StyledTriggerWrapper>
     );
   }
