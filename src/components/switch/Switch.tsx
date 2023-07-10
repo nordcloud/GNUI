@@ -3,11 +3,11 @@ import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { setColor } from "../../utils/setcolor";
 
-export type SwitchProps = {
+export type SwitchProps = React.ComponentPropsWithoutRef<"input"> & {
   labelText?: string;
-  severity?: "danger" | "notification" | "warning" | "success";
+  severity?: "danger" | "notification" | "primary" | "success" | "warning";
   position?: "left" | "right";
-} & React.ComponentPropsWithoutRef<"input">;
+};
 
 type SwitchInputProps = Pick<SwitchProps, "severity">;
 
@@ -21,7 +21,9 @@ const SwitchInput = styled.input<SwitchInputProps>`
     ${({ severity }) =>
       severity &&
       css`
-        background-color: ${setColor(severity)};
+        background-color: ${severity === "primary"
+          ? theme.color.interactive.primary
+          : setColor(severity)};
       `}
 
     &:before {
