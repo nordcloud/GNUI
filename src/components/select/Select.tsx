@@ -67,8 +67,11 @@ const SelectContainer = styled.div`
     }
     &__option {
       &--is-selected {
+        background-color: ${theme.color.support.grey};
+        color: ${theme.color.text.text01};
         &.react-select__option--is-focused {
-          background-color: ${theme.color.interactive.secondary};
+          background-color: ${theme.color.support.grey};
+          color: ${theme.color.text.text01};
         }
       }
       &--is-focused {
