@@ -12,7 +12,7 @@ import theme from "../../theme";
 const SelectContainer = styled.div`
   .react-select {
     &-container {
-      & > div {
+      & > .react-select__control {
         background: ${theme.color.field.default};
         border: 1px solid ${theme.color.border.input};
         &:hover {
@@ -63,19 +63,36 @@ const SelectContainer = styled.div`
     }
     &__menu {
       box-shadow: ${theme.shadow.shadow04};
+      margin-top: ${theme.spacing.spacing01};
       z-index: ${theme.zindex.dropdown};
+      border-radius: ${theme.radiusDefault};
+      background: ${theme.color.background.ui01};
+      border: 1px solid ${theme.color.border.input};
+
+      &-list {
+        padding: ${theme.spacing.spacing02};
+      }
     }
     &__option {
-      &--is-selected {
-        background-color: ${theme.color.support.grey};
+      margin-top: ${theme.spacing.spacing01};
+      border-radius: ${theme.radius.md};
+      &:active {
+        background: ${theme.color.interactive.secondaryActive};
         color: ${theme.color.text.text01};
-        &.react-select__option--is-focused {
-          background-color: ${theme.color.support.grey};
-          color: ${theme.color.text.text01};
-        }
       }
       &--is-focused {
-        background-color: ${theme.color.interactive.secondary};
+        cursor: pointer;
+        background: ${theme.color.interactive.secondaryHover};
+        color: ${theme.color.text.text01};
+      }
+      &--is-selected {
+        cursor: not-allowed;
+        background: ${theme.color.interactive.secondaryHover};
+        color: ${theme.color.text.text01};
+        &:active {
+          background: ${theme.color.interactive.secondaryHover};
+          color: ${theme.color.text.text01};
+        }
       }
     }
   }
