@@ -1,10 +1,9 @@
 {
   "$schema": "https://unpkg.com/knip@next/schema.json",
   "entry": ["src/index.ts!"],
-  "project": ["src/**/*.{ts,tsx,mdx}!", ".storybook/**/*.js", "jest.config.js"],
+  "project": ["src/**/*.{ts,tsx,mdx}!", ".storybook/**/*.js"],
   "ignoreDependencies": [
     // False-positives
-    "identity-obj-proxy",
     "react-copy-to-clipboard",
     "lodash",
     "lodash.clonedeep",

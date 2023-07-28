@@ -1,4 +1,3 @@
-// jest.config.js
 /** @type {import('@jest/types').Config.InitialOptions} */
 const config = {
   verbose: true,
@@ -9,13 +8,8 @@ const config = {
   testMatch: ["<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"],
   testEnvironment: "jsdom",
   preset: "ts-jest",
-  globals: {
-    "ts-jest": {
-      isolatedModules: true,
-    },
-  },
   transform: {
-    "\\.(ts|js)x?$": "ts-jest",
+    "\\.(ts|js)x?$": ["ts-jest", { isolatedModules: true }],
   },
   transformIgnorePatterns: [
     "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$",
@@ -24,7 +18,6 @@ const config = {
   moduleNameMapper: {
     ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$":
       "identity-obj-proxy",
-    "~(.*)$": "<rootDir>/src/$1",
   },
   moduleDirectories: ["node_modules", "<rootDir>/node_modules", "."],
   watchPlugins: [
