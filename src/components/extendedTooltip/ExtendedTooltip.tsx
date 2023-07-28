@@ -11,7 +11,6 @@ import {
   Placement,
   Position,
 } from "../../utils/position";
-import { setColor } from "../../utils/setcolor";
 import { useTooltipHover } from "../tooltip/hooks";
 
 type Timeout = {
@@ -19,7 +18,7 @@ type Timeout = {
   hideTimeout?: number;
 };
 
-type Status = "danger" | "notification" | "success" | "warning";
+type Status = "accent" | "danger" | "notification" | "success" | "warning";
 
 export type ExtendedTooltipProps = Timeout & {
   caption: React.ReactNode;
@@ -171,10 +170,27 @@ const TooltipWrapper = styled.div<TooltipWrapperProps>`
 
 function getColor(status: Status) {
   return css`
-    background-color: ${setColor(status)};
+    background-color: ${changeStatus(status)};
     color: ${theme.color.text.text04};
     &:after {
-      border-top-color: ${setColor(status)};
+      border-top-color: ${changeStatus(status)};
     }
   `;
 }
+
+const changeStatus = (status?: Status) => {
+  switch (status) {
+    case "danger":
+      return theme.color.interactive.error;
+    case "warning":
+      return theme.color.interactive.warning;
+    case "success":
+      return theme.color.interactive.success;
+    case "notification":
+      return theme.color.interactive.info;
+    case "accent":
+      return theme.color.interactive.accent;
+    default:
+      return theme.color.interactive.primary;
+  }
+};
