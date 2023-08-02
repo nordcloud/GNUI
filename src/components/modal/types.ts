@@ -22,7 +22,7 @@ type ModalAction = {
 export type ModalProps = {
   isOpen: boolean;
   onClose?: (event: React.KeyboardEvent | React.MouseEvent) => void;
-  actions: ModalAction[];
+  actions?: ModalAction[];
   contentLabel: string;
   children: React.ReactNode;
 };

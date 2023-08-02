@@ -53,10 +53,10 @@ export function Modal({
             >
               {children}
             </ModalContent>
-            {actions?.length > 0 && (
+            {actions && (
               <ModalActions>
                 {actions
-                  .sort((a, b) => a.order || 0 - b.order || 0)
+                  ?.sort((a, b) => a.order || 0 - b.order || 0)
                   .map((action, index) => (
                     <ModalAction
                       key={`modal-action-${index}`}
