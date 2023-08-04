@@ -12,6 +12,7 @@ type TagProps = {
   text?: string;
   icon?: SVGIconProps["name"];
   onClick?: () => void;
+  onCloseClick?: () => void;
   showClose?: boolean;
   isTransparent?: boolean;
 };
@@ -125,6 +126,7 @@ export function Tag({
   onClick,
   showClose,
   isTransparent,
+  onCloseClick,
   ...props
 }: TagProps) {
   return (
@@ -132,9 +134,9 @@ export function Tag({
       color={color}
       colorText={colorText}
       icon={icon}
-      onClick={onClick}
       showClose={showClose}
       isTransparent={isTransparent}
+      onClick={onCloseClick ? undefined : onClick}
       {...props}
     >
       {icon && (
@@ -145,7 +147,7 @@ export function Tag({
       {text && <div className="tag-text">{text}</div>}
       {showClose && (
         <div className="tag-close-button">
-          <SVGIcon name="close" size="sm" />
+          <SVGIcon name="close" size="sm" onClick={onCloseClick} />
         </div>
       )}
     </StyledTag>
