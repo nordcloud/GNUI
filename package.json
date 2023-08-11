@@ -74,7 +74,7 @@
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
-    "@nordcloud/eslint-config-pat": "^5.0.0",
+    "@nordcloud/eslint-config-pat": "^5.1.0",
     "@rollup/plugin-commonjs": "^24.1.0",
     "@rollup/plugin-node-resolve": "^15.1.0",
     "@storybook/addon-docs": "^6.5.16",
@@ -92,7 +92,7 @@
     "@types/react-helmet": "^6.1.6",
     "@types/styled-components": "^5.1.26",
     "cross-env": "^7.0.3",
-    "eslint": "^8.31.0",
+    "eslint": "^8.47.0",
     "husky": "^8.0.3",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.6.2",
