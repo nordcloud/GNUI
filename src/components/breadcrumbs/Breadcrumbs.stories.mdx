@@ -16,10 +16,11 @@ import { Breadcrumbs } from ".";
 
 ## BreadcrumbsList properties
 
-| properties | required | type   | description |
-| ---------: | :------: | :----- | :---------- |
-|      label |   true   | string |             |
-|        uri |   true   | string |             |
+| properties | required | type    | description |
+| ---------: | :------: | :------ | :---------- |
+|      label |   true   | string  |             |
+|        uri |   true   | string  |             |
+| isDisabled |  false   | boolean |             |
 
 <Canvas>
   <Story name="default">
@@ -27,6 +28,8 @@ import { Breadcrumbs } from ".";
       list={[
         { label: "Home", uri: `#` },
         { label: "Hosts", uri: `#` },
+        { label: "Disabled", uri: `#`, isDisabled: true },
+        { label: "Hosts 2", uri: `#` },
         { label: "Host Details", uri: `#` },
       ]}
     />

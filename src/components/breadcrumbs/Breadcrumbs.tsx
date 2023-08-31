@@ -5,6 +5,7 @@ import theme from "../../theme";
 export type BreadcrumbsList = {
   label: string;
   uri: string;
+  isDisabled?: boolean;
 };
 
 export type BreadcrumbsListProps = {
@@ -22,24 +23,6 @@ const StyledBreadcrumbs = styled.nav`
       margin-right: ${theme.spacing.spacing02};
       line-height: 1.125rem;
       text-transform: ${theme.typography.titleCase};
-
-      a {
-        line-height: 1.125rem;
-        font-size: ${theme.fontSizes.sm};
-        font-weight: ${theme.fontWeights.regular};
-        font-family: ${theme.fonts.body};
-        color: ${theme.color.interactive.link};
-        text-decoration: none;
-        transition: ${theme.transition};
-        &:hover,
-        &:focus,
-        &:active {
-          opacity: ${theme.opacity};
-        }
-        &:hover {
-          text-decoration: underline;
-        }
-      }
 
       &:after {
         content: "/";
@@ -62,6 +45,31 @@ const StyledBreadcrumbs = styled.nav`
   }
 `;
 
+const StyledLink = styled.a<{ isDisabled?: boolean }>`
+  line-height: 1.125rem;
+  font-size: ${theme.fontSizes.sm};
+  font-weight: ${theme.fontWeights.regular};
+  font-family: ${theme.fonts.body};
+  text-decoration: none;
+  transition: ${theme.transition};
+  color: ${(props) =>
+    props.isDisabled ? theme.color.text.text02 : theme.color.interactive.link};
+  pointer-events: ${(props) => (props.isDisabled ? "none" : "auto")};
+  &:hover,
+  &:focus,
+  &:active {
+    opacity: ${(props) => (props.isDisabled ? 1 : theme.opacity)};
+  }
+  &:hover {
+    cursor: ${(props) => (props.isDisabled ? "default" : "pointer")};
+    color: ${(props) =>
+      props.isDisabled
+        ? theme.color.text.text02
+        : theme.color.interactive.link};
+    text-decoration: ${(props) => (props.isDisabled ? "none" : "underline")};
+  }
+`;
+
 export function Breadcrumbs({ list, Component }: BreadcrumbsListProps) {
   return (
     <StyledBreadcrumbs>
@@ -71,7 +79,9 @@ export function Breadcrumbs({ list, Component }: BreadcrumbsListProps) {
             {Component ? (
               <Component to={br.uri || ""}>{br.label}</Component>
             ) : (
-              <a href={br.uri || ""}>{br.label}</a>
+              <StyledLink isDisabled={br.isDisabled} href={br.uri || ""}>
+                {br.label}
+              </StyledLink>
             )}
           </li>
         ))}
