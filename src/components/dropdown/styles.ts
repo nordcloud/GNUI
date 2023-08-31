@@ -1,11 +1,11 @@
-import styled, { css } from "styled-components";
+import { css, styled } from "styled-components";
 import { space } from "styled-system";
 import theme from "../../theme";
 import { GnuiContainer } from "../container";
 
 type DropdownWrapperProps = {
   value: string;
-  onMouseLeave?: (e: React.MouseEvent) => void;
+  onMouseLeave?: React.MouseEventHandler<HTMLDivElement>;
   onClear?: () => void;
 };
 
@@ -106,7 +106,7 @@ export const DropdownIcon = styled.div<DropdownIconProps>`
 `;
 
 type DropdownMenuProps = {
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 export const DropdownMenu = styled(GnuiContainer)<DropdownMenuProps>`

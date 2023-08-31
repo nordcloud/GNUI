@@ -1,5 +1,5 @@
 import * as React from "react";
-import styled, { css } from "styled-components";
+import { css, styled } from "styled-components";
 import { space, SpaceProps } from "styled-system";
 import theme from "../../theme";
 
@@ -13,7 +13,7 @@ type HeadingProps = {
   as?: React.ElementType | keyof JSX.IntrinsicElements;
 };
 
-const changeAttrs = (level: HeadingLevel) => {
+const changeAttributes = (level: HeadingLevel) => {
   switch (level) {
     case 6:
       return theme.fontSizes.xs;
@@ -48,7 +48,7 @@ const StyledHeading = styled.h1<HeadingProps>`
   ${({ level }) =>
     level &&
     css`
-      font-size: ${changeAttrs(level)};
+      font-size: ${changeAttributes(level)};
     `};
   ${({ marginBottom }) =>
     marginBottom &&

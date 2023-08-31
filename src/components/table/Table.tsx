@@ -1,8 +1,9 @@
 import * as React from "react";
-import styled from "styled-components";
+import { styled } from "styled-components";
+import { space, SpaceProps } from "styled-system";
 import theme from "../../theme";
 
-type StyledTableProps = {
+type StyledTableProps = SpaceProps & {
   hoverline?: boolean;
   striped?: boolean;
   small?: boolean;
@@ -57,6 +58,8 @@ const StyledTable = styled.table<StyledTableProps>`
       line-height: 1.5em;
     }
   }
+
+  ${space}
 `;
 
 const Thead = styled.thead`

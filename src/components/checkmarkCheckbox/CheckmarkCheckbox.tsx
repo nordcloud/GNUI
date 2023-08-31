@@ -1,5 +1,5 @@
 import * as React from "react";
-import styled, { css } from "styled-components";
+import { css, styled } from "styled-components";
 import theme from "../../theme";
 import { FlexContainer } from "../container";
 import { SVGIcon } from "../svgicon";
@@ -120,9 +120,9 @@ export const CheckmarkCheckbox = React.forwardRef<
     <FlexContainer>
       <CheckboxContainer>
         <CheckboxInput
+          ref={ref}
           type="checkbox"
           id={id}
-          ref={ref}
           {...props}
           onChange={handleChange}
         />

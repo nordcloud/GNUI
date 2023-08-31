@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import styled, { css } from "styled-components";
+import { css, styled } from "styled-components";
 import { useEvent } from "../../hooks";
 import theme from "../../theme";
 import {

@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import styled from "styled-components";
+import { styled } from "styled-components";
 import { useDisclosure, useEvent } from "../../hooks";
 import theme from "../../theme";
 import {

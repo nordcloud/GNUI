@@ -1,5 +1,5 @@
 import * as React from "react";
-import styled, { css } from "styled-components";
+import { css, styled } from "styled-components";
 import { space } from "styled-system";
 import theme from "../../theme";
 
@@ -53,8 +53,8 @@ export function BarChart({ values, ...visualProps }: BarProps) {
   return (
     <StyledBarChart {...visualProps}>
       <g>
-        {percentageValues.map(({ size, x, color }, idx) => (
-          <rect x={`${x}%`} width={`${size}%`} fill={color} key={idx} />
+        {percentageValues.map(({ size, x, color }, index) => (
+          <rect key={index} x={`${x}%`} width={`${size}%`} fill={color} />
         ))}
       </g>
     </StyledBarChart>

@@ -1,5 +1,5 @@
 import * as React from "react";
-import styled, { css } from "styled-components";
+import { css, styled } from "styled-components";
 import { space, SpaceProps } from "styled-system";
 import theme from "../../theme";
 
@@ -37,12 +37,11 @@ const StyledListMarker = css`
   background-color: ${theme.color.text.text01};
 `;
 
-const StyledList = styled.ul`
+const StyledList = styled.ul<StyledListProps>`
   list-style: none;
   padding-left: ${theme.spacing.spacing05};
   display: flex;
-  flex-direction: ${(props: StyledListProps) =>
-    props.horizontal ? `row` : `column`};
+  flex-direction: ${(props) => (props.horizontal ? `row` : `column`)};
   ${space}
 `;
 
@@ -54,10 +53,10 @@ const getListSpacing = (props: StyledListProps): string => {
   return props.spacing ?? `0 0 ${theme.spacing.spacing02} 0`;
 };
 
-const StyledListItem = styled.li`
+const StyledListItem = styled.li<StyledListProps>`
   font-family: ${theme.fonts.body};
   display: flex;
-  margin: ${(props: StyledListProps) => getListSpacing(props)};
+  margin: ${(props) => getListSpacing(props)};
   color: ${theme.color.text.text01};
   line-height: ${theme.typography.lineHeight};
 

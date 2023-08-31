@@ -1,5 +1,5 @@
 import * as React from "react";
-import styled, { css } from "styled-components";
+import { css, styled } from "styled-components";
 import theme from "../../theme";
 import { SingleColors } from "../../theme/config";
 import { getPath, PathName } from "./paths";

@@ -1,5 +1,5 @@
 import * as React from "react";
-import styled, { css } from "styled-components";
+import { css, styled } from "styled-components";
 import { space, SpaceProps } from "styled-system";
 import theme from "../../theme";
 import { LengthUnitSuffix, Unit } from "./types";
@@ -19,7 +19,9 @@ const StyledContainer = styled.div<StyledContainerProps>`
   ${space};
 `;
 
-export type ContainerProps = React.ComponentProps<typeof StyledContainer>;
+export type ContainerProps = React.ComponentPropsWithRef<
+  typeof StyledContainer
+>;
 
 export const Container = React.forwardRef<HTMLDivElement, ContainerProps>(
   ({ children, ...props }, ref) => (

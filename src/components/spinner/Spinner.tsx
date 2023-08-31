@@ -1,11 +1,11 @@
 import * as React from "react";
-import styled, { css } from "styled-components";
+import { css, styled } from "styled-components";
 import { color as styledSystemColor } from "styled-system";
 import theme from "../../theme";
 
 export type SpinnerProps = {
-  size?: "sm" | "md" | "lg" | "xl" | "xxl";
-  color?: "success" | "danger" | "warning" | "notification" | "white";
+  size?: "lg" | "md" | "sm" | "xl" | "xxl";
+  color?: "danger" | "notification" | "success" | "warning" | "white";
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
   ninja?: boolean;

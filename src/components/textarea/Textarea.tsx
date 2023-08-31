@@ -1,5 +1,5 @@
 import * as React from "react";
-import styled, { css } from "styled-components";
+import { css, styled } from "styled-components";
 import theme from "../../theme";
 import { setStatusColor } from "../input/styles";
 import { Status } from "../input/types";

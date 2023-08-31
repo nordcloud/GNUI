@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import { css, styled } from "styled-components";
 import { space, SpaceProps } from "styled-system";
 import theme from "../../theme";
 import { FlexContainer } from "../container";
