@@ -11,7 +11,8 @@
     "storybook",
     // Can be listed explicitly in the future
     "@jest/types",
-    "@types/eslint"
+    "@types/eslint",
+    "tslib"
   ],
   "rules": {
     "enumMembers": "warn"
