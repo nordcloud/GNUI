@@ -17,15 +17,22 @@ export function Breadcrumbs({ list, Component }: BreadcrumbsListProps) {
   return (
     <StyledBreadcrumbs>
       <ul>
-        {list.map((br) => (
-          <li key={br.label}>
+        {list.map((breadcrumb) => (
+          <li key={breadcrumb.label}>
             {Component ? (
-              <Component isDisabled={br.isDisabled} css={aStyles} to={br.uri}>
-                {br.label}
+              <Component
+                isDisabled={breadcrumb.isDisabled}
+                css={aStyles}
+                to={breadcrumb.uri}
+              >
+                {breadcrumb.label}
               </Component>
             ) : (
-              <StyledLink isDisabled={br.isDisabled} href={br.uri}>
-                {br.label}
+              <StyledLink
+                isDisabled={breadcrumb.isDisabled}
+                href={breadcrumb.uri}
+              >
+                {breadcrumb.label}
               </StyledLink>
             )}
           </li>
@@ -89,7 +96,7 @@ const StyledBreadcrumbs = styled.nav`
   }
 `;
 
-const disaledLinkStyles = css`
+const disabledLinkStyles = css`
   pointer-events: none;
   color: ${theme.color.text.text02};
 `;
@@ -97,6 +104,6 @@ const disaledLinkStyles = css`
 const StyledLink = styled.a<{ isDisabled?: boolean }>`
   && {
     ${aStyles}
-    ${(props) => (props.isDisabled ? disaledLinkStyles : {})}
+    ${(props) => (props.isDisabled ? disabledLinkStyles : {})}
   }
 `;
