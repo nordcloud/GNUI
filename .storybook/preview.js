@@ -1,7 +1,6 @@
 import React from "react";
 import { addDecorator, addParameters } from "@storybook/react";
 import { DocsPage, DocsContainer } from "@storybook/addon-docs";
-import isPropValid from "@emotion/is-prop-valid";
 import { GnuiContainer } from "../src/components/container";
 import { SetGlobalStyle } from "../src/theme/globals";
 import "./global.css";
