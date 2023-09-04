@@ -1,4 +1,3 @@
-/* eslint-disable import/max-dependencies */
 import { useState, useRef } from "react";
 import { isSameDay, startOfDay } from "date-fns";
 import { DayPicker, DateRange } from "react-day-picker";

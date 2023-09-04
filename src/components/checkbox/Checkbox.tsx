@@ -3,7 +3,37 @@ import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { GnuiContainer, Flex } from "../container";
 
-const SingleCheckWrapper = styled(Flex)`
+export type CheckboxProps = React.InputHTMLAttributes<HTMLInputElement> & {
+  labelText?: string;
+  withoutLabel?: boolean;
+  isIndeterminate?: boolean;
+  ref?: React.Ref<HTMLInputElement>;
+};
+
+export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
+  ({ id, labelText, withoutLabel, isIndeterminate, ...props }, ref) => (
+    <SingleCheckWrapper withoutLabel={withoutLabel}>
+      <CheckboxContainer>
+        <CheckboxInput ref={ref} type="checkbox" id={id} {...props} />
+        <Fill />
+        {isIndeterminate && <FillInter />}
+      </CheckboxContainer>
+      <CheckboxLabel withoutLabel={withoutLabel} htmlFor={id}>
+        {labelText}
+      </CheckboxLabel>
+    </SingleCheckWrapper>
+  )
+);
+
+export type CheckboxGroupProps = Pick<CheckboxProps, "children" | "name">;
+
+export function CheckboxGroup({ name, children }: CheckboxGroupProps) {
+  return <CheckboxWrapper name={name}>{children}</CheckboxWrapper>;
+}
+
+const SingleCheckWrapper = styled(Flex)<{
+  withoutLabel?: boolean;
+}>`
   margin-bottom: ${theme.spacing.spacing04};
   position: ${({ withoutLabel }) => (withoutLabel ? "relative" : "static")};
 
@@ -81,7 +111,7 @@ const Fill = styled.div`
 
 const FillInter = styled(Fill)``;
 
-const CheckboxWrapper = styled(GnuiContainer)`
+const CheckboxWrapper = styled(GnuiContainer)<{ name?: string }>`
   position: relative;
 
   ${SingleCheckWrapper} {
@@ -124,31 +154,3 @@ const CheckboxInput = styled.input`
     }
   }
 `;
-
-export type CheckboxProps = React.InputHTMLAttributes<HTMLInputElement> & {
-  labelText?: string;
-  withoutLabel?: boolean;
-  isIndeterminate?: boolean;
-  ref?: React.Ref<HTMLInputElement>;
-};
-
-export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ id, labelText, withoutLabel, isIndeterminate, ...props }, ref) => (
-    <SingleCheckWrapper withoutLabel={withoutLabel}>
-      <CheckboxContainer>
-        <CheckboxInput type="checkbox" id={id} ref={ref} {...props} />
-        <Fill />
-        {isIndeterminate && <FillInter />}
-      </CheckboxContainer>
-      <CheckboxLabel withoutLabel={withoutLabel} htmlFor={id}>
-        {labelText}
-      </CheckboxLabel>
-    </SingleCheckWrapper>
-  )
-);
-
-export type CheckboxGroupProps = Pick<CheckboxProps, "name" | "children">;
-
-export function CheckboxGroup({ name, children }: CheckboxGroupProps) {
-  return <CheckboxWrapper name={name}>{children}</CheckboxWrapper>;
-}

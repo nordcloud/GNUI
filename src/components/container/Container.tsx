@@ -19,7 +19,9 @@ const StyledContainer = styled.div<StyledContainerProps>`
   ${space};
 `;
 
-export type ContainerProps = React.ComponentProps<typeof StyledContainer>;
+export type ContainerProps = React.ComponentPropsWithRef<
+  typeof StyledContainer
+>;
 
 export const Container = React.forwardRef<HTMLDivElement, ContainerProps>(
   ({ children, ...props }, ref) => (
