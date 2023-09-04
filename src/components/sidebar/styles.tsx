@@ -1,4 +1,4 @@
-import { css, styled } from "styled-components";
+import styled, { css } from "styled-components";
 import { space } from "styled-system";
 import theme, { bp } from "../../theme";
 import { Button } from "../button";

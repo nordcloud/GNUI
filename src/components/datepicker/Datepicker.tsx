@@ -1,5 +1,5 @@
 import * as React from "react";
-import { styled } from "styled-components";
+import styled from "styled-components";
 import { mainCss } from "./styles";
 
 type DatepickerProps = React.HTMLAttributes<HTMLDivElement> & {

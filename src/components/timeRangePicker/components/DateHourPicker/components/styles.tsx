@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 import theme from "../../../../../theme";
 import { Tag } from "../../../../tag";
 import { Row } from "../../styles";

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { css, styled } from "styled-components";
+import styled, { css } from "styled-components";
 import { space, SpaceProps } from "styled-system";
 import { useDisclosure } from "../../hooks";
 import theme from "../../theme";

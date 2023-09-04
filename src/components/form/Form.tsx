@@ -1,5 +1,5 @@
 import * as React from "react";
-import { styled } from "styled-components";
+import styled from "styled-components";
 import theme from "../../theme";
 import { Button, ButtonProps } from "../button";
 import { GnuiContainer, FlexContainer, GnuiContainerProps } from "../container";

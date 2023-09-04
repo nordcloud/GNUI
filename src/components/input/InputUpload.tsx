@@ -1,5 +1,5 @@
 import * as React from "react";
-import { styled } from "styled-components";
+import styled from "styled-components";
 import theme from "../../theme";
 import { SVGIcon } from "../svgicon";
 import { StyledInput } from "./styles";

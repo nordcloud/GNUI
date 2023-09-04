@@ -1,4 +1,4 @@
-import { css, styled } from "styled-components";
+import styled, { css } from "styled-components";
 import theme from "../../theme";
 import { ExpandableConfig, ExpandedProps, Props } from "./types";
 

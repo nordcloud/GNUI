@@ -1,4 +1,4 @@
-import { keyframes, styled } from "styled-components";
+import styled, { keyframes } from "styled-components";
 import theme from "../../theme";
 import { Box } from "../box";
 import { Button } from "../button";

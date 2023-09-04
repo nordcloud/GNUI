@@ -1,5 +1,5 @@
 import * as React from "react";
-import { styled } from "styled-components";
+import styled from "styled-components";
 import { useClickOutside, useDisclosure } from "../../hooks";
 import theme from "../../theme";
 import { Box } from "../box";

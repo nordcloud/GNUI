@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export type Placement = "bottom" | "left" | "right" | "top";
 export type Position = "center" | "end" | "start";

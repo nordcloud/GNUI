@@ -1,6 +1,6 @@
 import * as React from "react";
 import { darken, lighten } from "polished";
-import { css, styled } from "styled-components";
+import styled, { css } from "styled-components";
 import { space, SpaceProps } from "styled-system";
 import theme from "../../theme";
 import { SingleColors } from "../../theme/config";

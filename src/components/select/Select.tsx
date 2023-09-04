@@ -6,7 +6,7 @@ import ReactSelect, {
   type StylesConfig,
   type Props as ReactSelectProps,
 } from "react-select";
-import { styled } from "styled-components";
+import styled from "styled-components";
 import theme from "../../theme";
 
 const SelectContainer = styled.div`
