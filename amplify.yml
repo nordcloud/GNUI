@@ -8,7 +8,7 @@ frontend:
         - npm audit signatures
     build:
       commands:
-        - npm run build-storybook:legacy-node
+        - npm run build-storybook
   artifacts:
     baseDirectory: storybook-static
     files:
