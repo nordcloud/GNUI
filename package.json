@@ -33,7 +33,7 @@
     "lint:quiet": "npm run lint -- --quiet",
     "lint:css": "stylelint '**/*.+(ts|tsx)'",
     "lint:css:quiet": "npm run lint:css -- --quiet",
-    "lint:lockfile": "lockfile-lint --type npm --path package-lock.json --allowed-hosts npm --validate-https",
+    "lint:lockfile": "lockfile-lint",
     "validate:all": "npm-run-all --parallel check:types check:format check:knip lint:quiet lint:css:quiet lint:lockfile test:all",
     "postinstall": "patch-package",
     "prepare": "husky install"
