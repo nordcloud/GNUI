@@ -82,15 +82,16 @@ const SelectContainer = styled.div`
       }
       &--is-focused {
         cursor: pointer;
-        background: ${theme.color.interactive.secondaryHover};
+        background: ${theme.color.interactive.secondary};
         color: ${theme.color.text.text01};
       }
       &--is-selected {
         cursor: not-allowed;
-        background: ${theme.color.interactive.secondaryHover};
+        background: ${theme.color.interactive.secondaryActive};
         color: ${theme.color.text.text01};
+        font-weight: 500;
         &:active {
-          background: ${theme.color.interactive.secondaryHover};
+          background: ${theme.color.interactive.secondaryActive};
           color: ${theme.color.text.text01};
         }
       }
