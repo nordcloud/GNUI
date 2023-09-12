@@ -2,13 +2,13 @@ module.exports = {
   stories: ["../src/**/*.stories.@(js|mdx)"],
   addons: [
     "@storybook/addon-docs",
-    {
-      // https://storybook.js.org/addons/storybook-addon-turbo-build
-      name: "storybook-addon-turbo-build",
-      options: {
-        optimizationLevel: 3,
-      },
-    },
+    // {
+    //   // https://storybook.js.org/addons/storybook-addon-turbo-build
+    //   name: "storybook-addon-turbo-build",
+    //   options: {
+    //     optimizationLevel: 3,
+    //   },
+    // },
   ],
   preLoaders: [
     {
@@ -16,4 +16,13 @@ module.exports = {
       loader: "eslint-loader",
     },
   ],
+  core: {
+    disableTelemetry: true,
+  },
+  core: {
+    builder: "webpack5",
+  },
+  typescript: {
+    reactDocgen: "react-docgen-typescript",
+  },
 };
