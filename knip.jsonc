@@ -9,6 +9,7 @@
     "lodash.clonedeep",
     "@types/lodash.clonedeep",
     "storybook",
+    "webpack",
     // Can be listed explicitly in the future
     "@jest/types",
     "@types/eslint"
