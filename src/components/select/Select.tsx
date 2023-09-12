@@ -113,7 +113,7 @@ export type SelectColoredOption = SelectOption & {
 function getDefaultStyles<
   Option = unknown,
   IsMulti extends boolean = false,
-  Group extends GroupBase<Option> = GroupBase<Option>
+  Group extends GroupBase<Option> = GroupBase<Option>,
 >(): StylesConfig<Option, IsMulti, Group> {
   return {
     multiValue: (styles) => {
@@ -228,7 +228,7 @@ declare module "react" {
 function SelectInner<
   Option = unknown,
   IsMulti extends boolean = false,
-  Group extends GroupBase<Option> = GroupBase<Option>
+  Group extends GroupBase<Option> = GroupBase<Option>,
 >(
   {
     styles = getDefaultStyles(),

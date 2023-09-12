@@ -20,7 +20,9 @@ const Content = styled.div<{ isVisible: boolean; alignRight?: boolean }>`
   opacity: 0;
   position: absolute;
   z-index: ${theme.zindex.dropdown};
-  transition: visibility 0.1s ease-out, opacity 0.1s ease-out;
+  transition:
+    visibility 0.1s ease-out,
+    opacity 0.1s ease-out;
   margin-top: ${theme.spacing.spacing01};
 
   ${({ isVisible }) =>
