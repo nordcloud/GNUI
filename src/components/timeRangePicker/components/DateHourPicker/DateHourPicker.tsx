@@ -100,9 +100,8 @@ export function DateHourPicker({
     if (weekCounts === undefined) {
       return;
     }
-    const dayCounts = weekCounts.find((item) =>
-      isSameDay(item.date, date)
-    )?.counts;
+    const dayCounts = weekCounts.find((item) => isSameDay(item.date, date))
+      ?.counts;
     if (dayCounts) {
       setTimeRangeOptions(
         DEFAULT_TIME_RANGE_OPTIONS.map((item, index) => ({
