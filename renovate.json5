@@ -19,6 +19,10 @@
   "rebaseWhen": "conflicted",
   "reviewers": ["@nordcloud/core-frontend-reviewers"],
   "packageRules": [
+    {
+      "matchDatasources": ["npm"],
+      "minimumReleaseAge": "3 days"
+    },
     /********** Add labels **********/
     {
       "matchUpdateTypes": ["major"],
