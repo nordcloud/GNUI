@@ -2,9 +2,9 @@ import * as React from "react";
 import styled from "styled-components";
 import { mainCss } from "./styles";
 
-type DatepickerProps = {
+type DatepickerProps = React.HTMLAttributes<HTMLDivElement> & {
   children?: React.ReactNode;
-} & React.HTMLAttributes<HTMLDivElement>;
+};
 
 const DatepickerWrapper = styled.div`
   ${mainCss}

@@ -120,9 +120,9 @@ export const CheckmarkCheckbox = React.forwardRef<
     <FlexContainer>
       <CheckboxContainer>
         <CheckboxInput
+          ref={ref}
           type="checkbox"
           id={id}
-          ref={ref}
           {...props}
           onChange={handleChange}
         />

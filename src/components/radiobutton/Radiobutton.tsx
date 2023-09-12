@@ -3,7 +3,53 @@ import styled from "styled-components";
 import theme from "../../theme";
 import { GnuiContainer, Flex } from "../container";
 
-const RadioWrapper = styled(GnuiContainer)`
+export type RadioProps = React.InputHTMLAttributes<HTMLInputElement> & {
+  labelText?: React.ReactNode;
+  ref?: React.Ref<HTMLInputElement>;
+};
+
+export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
+  ({ id, labelText, ...props }, ref) => (
+    <RadioFlexWrapper>
+      <RadioContainer>
+        <RadioInput ref={ref} type="radio" id={id} {...props} />
+        <Fill />
+      </RadioContainer>
+      <label htmlFor={id}>{labelText}</label>
+    </RadioFlexWrapper>
+  )
+);
+
+export type RadioGroupProps = {
+  children: React.ReactElement<React.ComponentProps<typeof Radio>>[];
+  name: string;
+};
+
+export function RadioGroup({ children, name }: RadioGroupProps) {
+  const [isChecked, setIsChecked] = React.useState(
+    Array.isArray(children) && children[0].props.value
+  );
+
+  const hasNoChildren = Array.isArray(children) && children.length === 0;
+
+  if (hasNoChildren) {
+    return null;
+  }
+
+  return (
+    <RadioWrapper role="radiogroup" name={name}>
+      {React.Children.map(children, (element) =>
+        React.cloneElement(element, {
+          ...element.props,
+          checked: isChecked === element.props.value,
+          onChange: () => setIsChecked(element.props.value),
+        })
+      )}
+    </RadioWrapper>
+  );
+}
+
+const RadioWrapper = styled(GnuiContainer)<{ name: string }>`
   position: relative;
 `;
 
@@ -26,7 +72,9 @@ const Fill = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  transition: width 0.2s ease-in, height 0.2s ease-in;
+  transition:
+    width 0.2s ease-in,
+    height 0.2s ease-in;
   pointer-events: none;
   z-index: ${theme.zindex.masked};
 
@@ -62,7 +110,9 @@ const RadioInput = styled.input`
     & ~ ${Fill} {
       width: 0.75rem;
       height: 0.75rem;
-      transition: width 0.2s ease-out, height 0.2s ease-out;
+      transition:
+        width 0.2s ease-out,
+        height 0.2s ease-out;
 
       &::before {
         opacity: 1;
@@ -93,49 +143,3 @@ const RadioContainer = styled.div`
     z-index: ${theme.zindex.zero};
   }
 `;
-
-export type RadioProps = {
-  labelText?: React.ReactNode;
-  ref?: React.Ref<HTMLInputElement>;
-} & React.InputHTMLAttributes<HTMLInputElement>;
-
-export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
-  ({ id, labelText, ...props }, ref) => (
-    <RadioFlexWrapper>
-      <RadioContainer>
-        <RadioInput type="radio" id={id} ref={ref} {...props} />
-        <Fill />
-      </RadioContainer>
-      <label htmlFor={id}>{labelText}</label>
-    </RadioFlexWrapper>
-  )
-);
-
-export type RadioGroupProps = {
-  name: string;
-  children: React.ReactElement<React.ComponentProps<typeof Radio>>[];
-};
-
-export function RadioGroup({ name, children }: RadioGroupProps) {
-  const [isChecked, setIsChecked] = React.useState(
-    Array.isArray(children) && children[0].props.value
-  );
-
-  const hasNoChildren = Array.isArray(children) && children.length === 0;
-
-  if (hasNoChildren) {
-    return null;
-  }
-
-  return (
-    <RadioWrapper role="radiogroup" name={name}>
-      {React.Children.map(children, (element) =>
-        React.cloneElement(element, {
-          ...element.props,
-          checked: isChecked === element.props.value,
-          onChange: () => setIsChecked(element.props.value),
-        })
-      )}
-    </RadioWrapper>
-  );
-}

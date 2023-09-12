@@ -5,7 +5,7 @@ import { GnuiContainer } from "../container";
 
 type DropdownWrapperProps = {
   value: string;
-  onMouseLeave?: (e: React.MouseEvent) => void;
+  onMouseLeave?: React.MouseEventHandler<HTMLDivElement>;
   onClear?: () => void;
 };
 
@@ -106,7 +106,7 @@ export const DropdownIcon = styled.div<DropdownIconProps>`
 `;
 
 type DropdownMenuProps = {
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 export const DropdownMenu = styled(GnuiContainer)<DropdownMenuProps>`
