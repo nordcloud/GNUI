@@ -30,8 +30,8 @@ type DropdownProps = SizeProps &
     children?: React.ReactNode;
     title?: string;
     minNumOfOptionsToShowSearchBox?: number;
-    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-    onMouseLeave?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    onClick?: React.MouseEventHandler<HTMLDivElement>;
+    onMouseLeave?: React.MouseEventHandler<HTMLDivElement>;
     onClear?: () => void;
   };
 

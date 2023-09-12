@@ -105,7 +105,9 @@
         "prettier",
         "cross-env",
         "npm-run-all",
-        "patch-package"
+        "patch-package",
+        "lockfile-lint",
+        "knip"
       ],
       "automerge": true
     },

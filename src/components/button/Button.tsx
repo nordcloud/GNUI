@@ -7,36 +7,86 @@ import { SingleColors } from "../../theme/config";
 import { setColor } from "../../utils/setcolor";
 import { Spinner } from "../spinner";
 import { SVGIcon, SVGIconProps } from "../svgicon";
+import { PolymorphicComponentPropWithRef, PolymorphicRef } from "./typeUtils";
 
-export type ButtonProps<T extends React.ElementType = "button"> =
-  React.ComponentProps<T> & {
-    children?: React.ReactNode | string;
-    severity?: "high" | "low" | "medium";
-    status?:
-      | "accent"
-      | "danger"
-      | "discovery"
-      | "notification"
-      | "success"
-      | "warning";
-    size?: "md" | "sm";
-    icon?: SVGIconProps["name"];
-    iconRight?: boolean;
-    initialState?: string;
-    /**
-     * @deprecated The property should not be used
-     */
-    color?: SingleColors;
-    form?: string;
-    select?: boolean;
-    className?: string;
-    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-    as?: T;
-    linkTo?: string;
-    display?: "flex" | "inline-flex";
-    outline?: boolean;
-    secondary?: boolean;
-  };
+type ButtonPropsInner<C extends React.ElementType> =
+  PolymorphicComponentPropWithRef<
+    C,
+    {
+      severity?: "high" | "low" | "medium";
+      status?:
+        | "accent"
+        | "danger"
+        | "discovery"
+        | "notification"
+        | "success"
+        | "warning";
+      size?: "md" | "sm";
+      icon?: SVGIconProps["name"];
+      iconRight?: boolean;
+      initialState?: string;
+      /**
+       * @deprecated The property should not be used
+       */
+      color?: SingleColors;
+      form?: string;
+      select?: boolean;
+      className?: string;
+      onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+      linkTo?: string;
+      display?: "flex" | "inline-flex";
+      outline?: boolean;
+      secondary?: boolean;
+    }
+  > &
+    SpaceProps;
+
+export type ButtonProps = ButtonPropsInner<"a"> | ButtonPropsInner<"button">;
+
+type ButtonComponent = <C extends React.ElementType = "button">(
+  props: ButtonPropsInner<C>
+) => React.ReactElement | null;
+
+export const Button: ButtonComponent = React.forwardRef(
+  <C extends React.ElementType = "button">(
+    { children, icon, initialState, linkTo, as, ...props }: ButtonPropsInner<C>,
+    ref?: PolymorphicRef<C>
+  ) => {
+    const component = as || linkTo ? "a" : "button";
+
+    return (
+      <StyledButton
+        ref={ref}
+        as={component}
+        href={linkTo}
+        linkTo={linkTo}
+        {...props}
+      >
+        <ButtonIcon {...{ initialState, icon }} />
+        {children && <span>{children}</span>}
+      </StyledButton>
+    );
+  }
+);
+
+type ButtonIconProps = Pick<ButtonProps, "icon" | "initialState">;
+
+function ButtonIcon({ initialState, icon }: ButtonIconProps) {
+  switch (initialState) {
+    case "success":
+      return <SVGIcon name="success" />;
+    case "error":
+      return <SVGIcon name="danger" />;
+    case "loading":
+      return (
+        <div className="spinner">
+          <Spinner size="sm" />
+        </div>
+      );
+    default:
+      return icon ? <SVGIcon name={icon} /> : null;
+  }
+}
 
 const changeSize = (size: string) => {
   switch (size) {
@@ -161,7 +211,8 @@ const changeStatus = (status?: ButtonProps["status"]) => {
   }
 };
 
-const StyledButton = styled.button<ButtonProps<React.ElementType>>`
+/* stylelint-disable no-descending-specificity */
+const StyledButton = styled.button<ButtonProps>`
   background: ${theme.color.interactive.primary};
   white-space: nowrap;
   font-family: ${theme.fonts.body};
@@ -175,8 +226,7 @@ const StyledButton = styled.button<ButtonProps<React.ElementType>>`
   text-decoration: none;
   display: ${({ display, linkTo }) =>
     !display && linkTo ? "inline-flex" : display || "flex"};
-  flex-direction: ${(props: ButtonProps) =>
-    props.iconRight ? "row-reverse" : "row"};
+  flex-direction: ${(props) => (props.iconRight ? "row-reverse" : "row")};
   align-items: center;
   text-transform: ${theme.typography.titleCase};
 
@@ -263,15 +313,15 @@ const StyledButton = styled.button<ButtonProps<React.ElementType>>`
       ${changeSize(size)}
     `};
 
-  ${({ color }) =>
+  ${({ color, severity }) =>
     color &&
     css`
-      background-color: ${(props: ButtonProps) =>
-        props.severity === "medium" ? "transparent" : setColor(color)};
-      color: ${(props: ButtonProps) =>
-        props.severity === "medium"
-          ? setColor(color)
-          : theme.color.text.text04};
+      background-color: ${severity === "medium"
+        ? "transparent"
+        : setColor(color)};
+      color: ${severity === "medium"
+        ? setColor(color)
+        : theme.color.text.text04};
       border: 1px solid ${setColor(color)};
       &:hover,
       &:active,
@@ -281,68 +331,25 @@ const StyledButton = styled.button<ButtonProps<React.ElementType>>`
       }
       .spinner {
         div {
-          border-color: ${(props: ButtonProps) =>
-              props.severity === "medium"
-                ? setColor(color)
-                : theme.color.text.text04}
+          border-color: ${severity === "medium"
+              ? setColor(color)
+              : theme.color.text.text04}
             transparent transparent transparent;
         }
       }
       &:hover {
-        color: ${(props: ButtonProps) =>
-          props.severity === "medium"
-            ? setColor(color)
-            : theme.color.text.text04};
-        background-color: ${(props: ButtonProps) =>
-          props.severity === "medium"
-            ? lighten(0.35, setColor(color))
-            : darken(0.1, setColor(color))};
+        color: ${severity === "medium"
+          ? setColor(color)
+          : theme.color.text.text04};
+        background-color: ${severity === "medium"
+          ? lighten(0.35, setColor(color))
+          : darken(0.1, setColor(color))};
       }
       &:active {
-        background: ${(props: ButtonProps) =>
-          props.severity === "medium"
-            ? lighten(0.25, setColor(color))
-            : darken(0.2, setColor(color))};
+        background: ${severity === "medium"
+          ? lighten(0.25, setColor(color))
+          : darken(0.2, setColor(color))};
       }
     `}
   ${space}
 `;
-
-export function Button<T extends React.ElementType = "button">({
-  children,
-  icon,
-  initialState,
-  linkTo,
-  ...props
-}: ButtonProps<T> & SpaceProps) {
-  return (
-    <StyledButton
-      as={linkTo ? "a" : "button"}
-      href={linkTo}
-      linkTo={linkTo}
-      {...props}
-    >
-      <ButtonIcon {...{ initialState, icon }} />
-      {children && <span>{children}</span>}
-    </StyledButton>
-  );
-}
-
-type ButtonIconProps = Pick<ButtonProps, "icon" | "initialState">;
-
-function ButtonIcon({ initialState, icon }: ButtonIconProps) {
-  switch (initialState) {
-    case "success":
-      return <SVGIcon name="success" />;
-    case "error":
-      return <SVGIcon name="danger" />;
-    case "loading":
-      return (
-        <div className="spinner">
-          <Spinner size="sm" />
-        </div>
-      );
-    default:
-      return icon ? <SVGIcon name={icon} /> : null;
-  }
-}

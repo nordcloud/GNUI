@@ -10,9 +10,9 @@ const ButtonWrapper = styled.div`
   margin: -0.25rem -0.25rem -0.25rem 0;
 `;
 
-type Props = StyledInputGroupProps &
-  StyledInputProps &
-  SpaceProps & {
+type Props = SpaceProps &
+  StyledInputGroupProps &
+  StyledInputProps & {
     onSearch?: () => void;
   };
 
@@ -36,11 +36,11 @@ export const InputSearch = React.forwardRef<HTMLInputElement, Props>(
       <InputGroup status={status} noBorder={noBorder} popup={popup}>
         {loading && <Spinner />}
         <StyledInput
+          ref={ref}
           type={type}
-          onClick={onClick}
           popup={popup}
           small={small}
-          ref={ref}
+          onClick={onClick}
           {...props}
         />
         <ButtonWrapper>

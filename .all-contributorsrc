@@ -3,9 +3,7 @@
   "projectOwner": "nordcloud",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "files": [
-    "README.md"
-  ],
+  "files": ["README.md"],
   "imageSize": 100,
   "commit": true,
   "commitConvention": "eslint",
@@ -20,54 +18,42 @@
       "name": "raczyk",
       "avatar_url": "https://avatars0.githubusercontent.com/u/4233480?v=4",
       "profile": "https://github.com/raczyk",
-      "contributions": [
-        "bug"
-      ]
+      "contributions": ["bug"]
     },
     {
       "login": "nowyDEV",
       "name": "Dominik N",
       "avatar_url": "https://avatars2.githubusercontent.com/u/12304307?v=4",
       "profile": "https://github.com/nowyDEV",
-      "contributions": [
-        "code"
-      ]
+      "contributions": ["code"]
     },
     {
       "login": "janosio-nordcloud",
       "name": "Jan Osio",
       "avatar_url": "https://avatars2.githubusercontent.com/u/58164749?v=4",
       "profile": "https://github.com/janosio-nordcloud",
-      "contributions": [
-        "code"
-      ]
+      "contributions": ["code"]
     },
     {
       "login": "Horay",
       "name": "Horay",
       "avatar_url": "https://avatars3.githubusercontent.com/u/8356411?v=4",
       "profile": "https://github.com/Horay",
-      "contributions": [
-        "code"
-      ]
+      "contributions": ["code"]
     },
     {
       "login": "Bosmanfrx",
       "name": "Przemysław",
       "avatar_url": "https://avatars.githubusercontent.com/u/3169290?v=4",
       "profile": "https://github.com/Bosmanfrx",
-      "contributions": [
-        "code"
-      ]
+      "contributions": ["code"]
     },
     {
       "login": "mrMarshalX",
       "name": "Marcin",
       "avatar_url": "https://avatars.githubusercontent.com/u/2817128?v=4",
       "profile": "https://github.com/mrMarshalX",
-      "contributions": [
-        "code"
-      ]
+      "contributions": ["code"]
     }
   ]
 }

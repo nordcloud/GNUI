@@ -53,8 +53,8 @@ export function BarChart({ values, ...visualProps }: BarProps) {
   return (
     <StyledBarChart {...visualProps}>
       <g>
-        {percentageValues.map(({ size, x, color }, idx) => (
-          <rect x={`${x}%`} width={`${size}%`} fill={color} key={idx} />
+        {percentageValues.map(({ size, x, color }, index) => (
+          <rect key={index} x={`${x}%`} width={`${size}%`} fill={color} />
         ))}
       </g>
     </StyledBarChart>
