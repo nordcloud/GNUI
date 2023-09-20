@@ -1,20 +1,18 @@
 import styled from "styled-components";
-import { Meta, Story, Canvas, Title, Description } from "@storybook/blocks";
-import { StickyBar } from "./";
-import { Spacer } from "../spacer";
-import { Box } from "../box";
-import theme from "../../theme";
+import { Meta, Story, Canvas, Title, Markdown } from "@storybook/blocks";
 import * as StickyBarStories from './StickyBar.stories';
 
 <Meta of={StickyBarStories} />
 
 <Title>Sticky Bar</Title>
 
-<Description>
+<Markdown>
+{`
   Element acts like it is relatively positioned until it is scrolled to a
   certain threshold point (0px from the top of the viewport), after which it
   becomes fixed.
-</Description>
+`}
+</Markdown>
 
 ## Props
 

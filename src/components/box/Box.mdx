@@ -3,24 +3,22 @@ import {
   Title,
   Story,
   Canvas,
-  Description,
+  Markdown,
 } from "@storybook/blocks";
-import { Box } from ".";
-import { Spacer } from "../spacer";
-import { GnuiContainer, FlexContainer } from "../container";
-import theme from "../../theme";
 import * as BoxStories from './Box.stories';
 
 <Meta of={BoxStories} />
 
 <Title>Box</Title>
 
-<Description>
-  By default `Box` has no borders, margins, paddings nor width and height, but
-  all of it (and even more) can be easily styled with `props`. Most of props
-  takes values only from `theme`, but not all of them: i.e. `colors` can be
+<Markdown>
+{`
+  By default **Box** has no borders, margins, paddings nor width and height, but
+  all of it (and even more) can be easily styled with **props**. Most of props
+  takes values only from **theme**, but not all of them: i.e. **colors** can be
   styled in many ways.
-</Description>
+`}
+</Markdown>
 
 ## Box properties
 

@@ -1,12 +1,14 @@
+import { Meta } from "@storybook/react";
 import theme from "../../theme";
 import { GnuiContainer, FlexContainer } from "../container";
 import { Spacer } from "../spacer";
 import { Box } from "./Box";
 
-export default {
+const meta: Meta = {
   title: "Components/Box",
   component: Box,
 };
+export default meta;
 
 export const BoxDefault = {
   render: () => <Box>Default box</Box>,

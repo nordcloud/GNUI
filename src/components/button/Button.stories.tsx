@@ -1,5 +1,5 @@
-import { Button } from ".";
 import { GnuiContainer, FlexContainer } from "../container";
+import { Button } from ".";
 
 export default {
   title: "Components/Button",
@@ -123,9 +123,19 @@ export const ButtonLink = {
 
 export const ButtonLinkFlex = {
   render: () => (
-    <Button display="flex" linkTo="http://google.com" target="_blank">
-      Button
-    </Button>
+    <>
+      <Button display="flex" linkTo="http://google.com" target="_blank">
+        Button
+      </Button>
+      <Button
+        mt="1rem"
+        display="inline-flex"
+        linkTo="http://google.com"
+        target="_blank"
+      >
+        Button
+      </Button>
+    </>
   ),
   name: "button link flex",
 };
