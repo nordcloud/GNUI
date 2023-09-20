@@ -44,12 +44,7 @@ export const InputSearch = React.forwardRef<HTMLInputElement, Props>(
           {...props}
         />
         <ButtonWrapper>
-          <Button
-            size="md"
-            severity="low"
-            icon={icon}
-            onClick={onSearch}
-           />
+          <Button size="md" severity="low" icon={icon} onClick={onSearch} />
         </ButtonWrapper>
       </InputGroup>
     );
