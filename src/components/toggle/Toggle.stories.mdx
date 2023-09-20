@@ -1,9 +1,11 @@
-import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { Meta, Story, Canvas } from "@storybook/blocks";
 import { useDisclosure } from "../../hooks";
 import { Toggle } from ".";
 import { Spacer } from "../spacer";
+import * as ToggleStories from './Toggle.stories';
+import * as ToggleStories from './Toggle_.stories';
 
-<Meta title="Forms/Toggle" component={Toggle} />
+<Meta of={ToggleStories} />
 
 # Toggle
 
@@ -20,87 +22,16 @@ import { Spacer } from "../spacer";
 
 ### Default
 
-<Canvas>
-  <Story name="default">
-    {() => {
-      const { isOpen: value, toggle } = useDisclosure();
-      return <Toggle labelText="Default" value={value} onChange={toggle} />;
-    }}
-  </Story>
-</Canvas>
+<Canvas />
 
 ### Small
 
-> - `size`: `small`
+> *   `size`: `small`
 
-<Canvas>
-  <Story name="small">
-    {() => {
-      const { isOpen: value, toggle } = useDisclosure();
-      return (
-        <Toggle
-          size="small"
-          labelText="Small"
-          name="small"
-          value={value}
-          onChange={toggle}
-        />
-      );
-    }}
-  </Story>
-</Canvas>
+<Canvas />
 
 ### Color Status
 
-> - `status`: `success`, `danger`, `warning`, `notification`
+> *   `status`: `success`, `danger`, `warning`, `notification`
 
-<Canvas>
-  <Story name="status">
-    {() => {
-      const { isOpen: value, toggle } = useDisclosure();
-      return (
-        <div>
-          <p>
-            <Toggle
-              status="success"
-              labelText="Success!"
-              name="success"
-              value={value}
-              onChange={toggle}
-            />
-          </p>
-          <Spacer height="1rem" />
-          <p>
-            <Toggle
-              status="danger"
-              labelText="Danger"
-              name="danger"
-              value={value}
-              onChange={toggle}
-            />
-          </p>
-          <Spacer height="1rem" />
-          <p>
-            <Toggle
-              status="warning"
-              labelText="Warning"
-              name="warning"
-              value={value}
-              onChange={toggle}
-            />
-          </p>
-          <Spacer height="1rem" />
-          <p>
-            <Toggle
-              status="notification"
-              labelText="Notification"
-              name="notification"
-              value={value}
-              onChange={toggle}
-            />
-          </p>
-        </div>
-      );
-    }}
-  </Story>
-</Canvas>
+<Canvas />

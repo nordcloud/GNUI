@@ -1,11 +1,13 @@
-import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { Meta, Story, Canvas } from "@storybook/blocks";
 import { Textarea } from ".";
 import { GnuiContainer } from "../container";
 import { Spacer } from "../spacer";
 import { Button } from "../button";
 import theme from "../../theme";
+import * as TextareaStories from './Textarea.stories';
+import * as TextareaStories from './Textarea_.stories';
 
-<Meta title="Forms/Textarea" component={Textarea} />
+<Meta of={TextareaStories} />
 
 # Textarea
 
@@ -19,78 +21,20 @@ import theme from "../../theme";
 
 ## default
 
-<Canvas>
-  <Story name="default">
-    <Textarea />
-  </Story>
-</Canvas>
+<Canvas />
 
 ## small
 
-<Canvas>
-  <Story name="small">
-    <Textarea small />
-  </Story>
-</Canvas>
+<Canvas />
 
 ## status
 
 > `status`: `success | error`
 
-<Canvas>
-  <Story name="status">
-    {() => {
-      const [status, setStatus] = React.useState("success");
-      return (
-        <GnuiContainer>
-          <GnuiContainer>
-            <Textarea status={status} />
-          </GnuiContainer>
-          <Spacer height="1rem" />
-          <GnuiContainer>
-            <Button
-              size="small"
-              color={status === "error" ? "danger" : "success"}
-              onClick={() =>
-                setStatus(status === "danger" ? "success" : "danger")
-              }
-            >
-              Change status
-            </Button>
-          </GnuiContainer>
-        </GnuiContainer>
-      );
-    }}
-  </Story>
-</Canvas>
+<Canvas />
 
 ## maxCharCount
 
 > `status`: `success | error` > `maxCharCount`: `100`
 
-<Canvas>
-  <Story name="maxCharCount">
-    {() => {
-      const [status, setStatus] = React.useState("success");
-      return (
-        <GnuiContainer>
-          <GnuiContainer>
-            <Textarea status={status} maxCharCount={100} />
-          </GnuiContainer>
-          <Spacer height="1rem" />
-          <GnuiContainer>
-            <Button
-              size="small"
-              color={status === "error" ? "danger" : "success"}
-              onClick={() =>
-                setStatus(status === "danger" ? "success" : "danger")
-              }
-            >
-              Change status
-            </Button>
-          </GnuiContainer>
-        </GnuiContainer>
-      );
-    }}
-  </Story>
-</Canvas>
+<Canvas />

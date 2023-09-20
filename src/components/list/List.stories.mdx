@@ -1,7 +1,9 @@
-import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { Meta, Story, Canvas } from "@storybook/blocks";
 import { List } from ".";
+import * as ListStories from './List.stories';
+import * as ListStories from './List_.stories';
 
-<Meta title="Components/List" component={List} />
+<Meta of={ListStories} />
 
 # List
 
@@ -21,61 +23,26 @@ import { List } from ".";
 
 > Basic unstyled list. Takes a string or number array
 
-<Canvas>
-  <Story name="default">
-    <List items={["List item", "Second list item"]} />
-  </Story>
-</Canvas>
+<Canvas />
 
 ### spacing
 
 > Default list with custom spacing
 
-<Canvas>
-  <Story name="spacing">
-    <List spacing="0 0 1.15rem 0" items={["List item", "Second list item"]} />
-  </Story>
-</Canvas>
+<Canvas />
 
 ### horizontal
 
 > Horizontal list. Takes a string or number array
 
-<Canvas>
-  <Story name="horizontal">
-    <List horizontal items={["List item", "Second list item"]} />
-  </Story>
-</Canvas>
+<Canvas />
 
 ### unordered
 
-<Canvas>
-  <Story name="unordered">
-    <List
-      unordered
-      items={[
-        { title: "List item", rowChildren: [{ title: "List item sub row" }] },
-        { title: "Second list item" },
-      ]}
-    />
-  </Story>
-</Canvas>
+<Canvas />
 
 ### hasDescription
 
 > List with description.
 
-<Canvas>
-  <Story name="hasDescription">
-    <List
-      hasDescription
-      items={[
-        { title: "List item", description: "List item description" },
-        {
-          title: "Second list item",
-          description: "Second list item description",
-        },
-      ]}
-    />
-  </Story>
-</Canvas>
+<Canvas />

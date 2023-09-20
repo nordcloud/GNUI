@@ -1,7 +1,9 @@
-import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { Meta, Story, Canvas } from "@storybook/blocks";
 import { Breadcrumbs } from ".";
+import * as BreadcrumbsStories from './Breadcrumbs.stories';
+import * as BreadcrumbsStories from './Breadcrumbs_.stories';
 
-<Meta title="Components/Breadcrumbs" component={Breadcrumbs} />
+<Meta of={BreadcrumbsStories} />
 
 # Breadcrumbs
 
@@ -22,16 +24,4 @@ import { Breadcrumbs } from ".";
 |        uri |   true   | string  |             |
 | isDisabled |  false   | boolean |             |
 
-<Canvas>
-  <Story name="default">
-    <Breadcrumbs
-      list={[
-        { label: "Home", uri: `#` },
-        { label: "Hosts", uri: `#` },
-        { label: "Disabled", uri: `#`, isDisabled: true },
-        { label: "Hosts 2", uri: `#` },
-        { label: "Host Details", uri: `#` },
-      ]}
-    />
-  </Story>
-</Canvas>
+<Canvas />

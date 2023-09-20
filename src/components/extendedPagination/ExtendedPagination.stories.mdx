@@ -1,7 +1,9 @@
-import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { Meta, Story, Canvas } from "@storybook/blocks";
 import { ExtendedPaginationBox } from ".";
+import * as ExtendedPaginationStories from './ExtendedPagination.stories';
+import * as ExtendedPaginationStories from './ExtendedPagination_.stories';
 
-<Meta title="Components/ExtendedPagination" component={ExtendedPaginationBox} />
+<Meta of={ExtendedPaginationStories} />
 
 # Extended Pagination
 
@@ -21,204 +23,32 @@ import { ExtendedPaginationBox } from ".";
 
 ### first page
 
-<Canvas>
-  <Story name="first-page">
-    <ExtendedPaginationBox
-      count={400}
-      from={0}
-      size={20}
-      setPage={() => undefined}
-      setSize={() => undefined}
-    />
-  </Story>
-</Canvas>
+<Canvas />
 
 ### second page
 
-<Canvas>
-  <Story name="second-page">
-    <ExtendedPaginationBox
-      count={400}
-      from={20}
-      size={20}
-      setPage={() => undefined}
-      setSize={() => undefined}
-    />
-  </Story>
-</Canvas>
+<Canvas />
 
 ### middle
 
-<Canvas>
-  <Story name="middle">
-    <ExtendedPaginationBox
-      count={400}
-      from={240}
-      size={20}
-      setPage={() => undefined}
-      setSize={() => undefined}
-    />
-  </Story>
-</Canvas>
+<Canvas />
 
 ### second to last page
 
-<Canvas>
-  <Story name="second-to-last-page">
-    <ExtendedPaginationBox
-      count={400}
-      from={360}
-      size={20}
-      setPage={() => undefined}
-      setSize={() => undefined}
-    />
-  </Story>
-</Canvas>
+<Canvas />
 
 ### last page
 
-<Canvas>
-  <Story name="last-page">
-    <ExtendedPaginationBox
-      count={400}
-      from={380}
-      size={20}
-      setPage={() => undefined}
-      setSize={() => undefined}
-    />
-  </Story>
-</Canvas>
+<Canvas />
 
 ### different edge cases in the middle of the pagination
 
-<Canvas>
-  <Story name="edge-cases">
-    <ExtendedPaginationBox
-      count={400}
-      from={80}
-      size={20}
-      setPage={() => undefined}
-      setSize={() => undefined}
-    />
-    <ExtendedPaginationBox
-      count={400}
-      from={100}
-      size={20}
-      setPage={() => undefined}
-      setSize={() => undefined}
-    />
-    <ExtendedPaginationBox
-      count={400}
-      from={280}
-      size={20}
-      setPage={() => undefined}
-      setSize={() => undefined}
-    />
-    <ExtendedPaginationBox
-      count={400}
-      from={300}
-      size={20}
-      setPage={() => undefined}
-      setSize={() => undefined}
-    />
-  </Story>
-</Canvas>
+<Canvas />
 
 ### short pagination
 
-<Canvas>
-  <Story name="short">
-    <ExtendedPaginationBox
-      count={60}
-      from={0}
-      size={20}
-      setPage={() => undefined}
-      setSize={() => undefined}
-    />
-    <ExtendedPaginationBox
-      count={60}
-      from={40}
-      size={20}
-      setPage={() => undefined}
-      setSize={() => undefined}
-    />
-    <ExtendedPaginationBox
-      count={20}
-      from={0}
-      size={20}
-      setPage={() => undefined}
-      setSize={() => undefined}
-    />
-    <ExtendedPaginationBox
-      count={60}
-      from={20}
-      size={20}
-      setPage={() => undefined}
-      setSize={() => undefined}
-    />
-    <ExtendedPaginationBox
-      count={40}
-      from={0}
-      size={20}
-      setPage={() => undefined}
-      setSize={() => undefined}
-    />
-    <ExtendedPaginationBox
-      count={40}
-      from={20}
-      size={20}
-      setPage={() => undefined}
-      setSize={() => undefined}
-    />
-    <ExtendedPaginationBox
-      count={100}
-      from={20}
-      size={20}
-      setPage={() => undefined}
-      setSize={() => undefined}
-    />
-    <ExtendedPaginationBox
-      count={100}
-      from={80}
-      size={20}
-      setPage={() => undefined}
-      setSize={() => undefined}
-    />
-    <ExtendedPaginationBox
-      count={120}
-      from={80}
-      size={20}
-      setPage={() => undefined}
-      setSize={() => undefined}
-    />
-    <ExtendedPaginationBox
-      count={140}
-      from={20}
-      size={20}
-      setPage={() => undefined}
-      setSize={() => undefined}
-    />
-    <ExtendedPaginationBox
-      count={140}
-      from={60}
-      size={20}
-      setPage={() => undefined}
-      setSize={() => undefined}
-    />
-  </Story>
-</Canvas>
+<Canvas />
 
 ## small
 
-<Canvas>
-  <Story name="small">
-    <ExtendedPaginationBox
-      small
-      count={400}
-      from={0}
-      size={20}
-      setPage={() => undefined}
-      setSize={() => undefined}
-    />
-  </Story>
-</Canvas>
+<Canvas />

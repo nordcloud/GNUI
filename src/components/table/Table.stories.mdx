@@ -1,12 +1,14 @@
-import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { Meta, Story, Canvas } from "@storybook/blocks";
 import { Table } from ".";
 import { Box } from "../box";
 import { Input } from "../input";
 import { Button } from "../button";
 import { SVGIcon } from "../svgicon";
 import { FlexContainer } from "../container";
+import * as TableStories from './Table.stories';
+import * as TableStories from './Table_.stories';
 
-<Meta title="Components/Table" component={Table} />
+<Meta of={TableStories} />
 
 # Table
 
@@ -21,226 +23,24 @@ import { FlexContainer } from "../container";
 
 ### Simple Table
 
-<Canvas>
-  <Story name="Simple">
-    <Table>
-      <Table.thead>
-        <Table.tr>
-          <Table.th></Table.th>
-          <Table.th>Name</Table.th>
-          <Table.th>Title</Table.th>
-          <Table.th>Phone</Table.th>
-        </Table.tr>
-      </Table.thead>
-      <Table.tbody>
-        <Table.tr>
-          <Table.td>
-            <SVGIcon name="user" />
-          </Table.td>
-          <Table.td>Kathy C. Do</Table.td>
-          <Table.td>Director</Table.td>
-          <Table.td>+48 XXX-XXX-XXX</Table.td>
-        </Table.tr>
-        <Table.tr>
-          <Table.td>
-            <SVGIcon name="user" />
-          </Table.td>
-          <Table.td>James D. Washington</Table.td>
-          <Table.td>Developer</Table.td>
-          <Table.td>+48 XXX-XXX-XXX</Table.td>
-        </Table.tr>
-        <Table.tr>
-          <Table.td>
-            <SVGIcon name="user" />
-          </Table.td>
-          <Table.td>Elaine R. Bean</Table.td>
-          <Table.td>Product Owner</Table.td>
-          <Table.td>+48 XXX-XXX-XXX</Table.td>
-        </Table.tr>
-      </Table.tbody>
-    </Table>
-  </Story>
-</Canvas>
+<Canvas />
 
 ### Striped Table
 
-<Canvas>
-  <Story name="Striped">
-    <Table striped>
-      <Table.thead>
-        <Table.tr>
-          <Table.th>Name</Table.th>
-          <Table.th>Title</Table.th>
-          <Table.th>Phone</Table.th>
-        </Table.tr>
-      </Table.thead>
-      <Table.tbody>
-        <Table.tr>
-          <Table.td>Kathy C. Do</Table.td>
-          <Table.td>Director</Table.td>
-          <Table.td>+48 XXX-XXX-XXX</Table.td>
-        </Table.tr>
-        <Table.tr>
-          <Table.td>James D. Washington</Table.td>
-          <Table.td>Developer</Table.td>
-          <Table.td>+48 XXX-XXX-XXX</Table.td>
-        </Table.tr>
-        <Table.tr>
-          <Table.td>Elaine R. Bean</Table.td>
-          <Table.td>Product Owner</Table.td>
-          <Table.td>+48 XXX-XXX-XXX</Table.td>
-        </Table.tr>
-      </Table.tbody>
-    </Table>
-  </Story>
-</Canvas>
+<Canvas />
 
 ### Small Table
 
-<Canvas>
-  <Story name="Small">
-    <Table small>
-      <Table.thead>
-        <Table.tr>
-          <Table.th>Name</Table.th>
-          <Table.th>Title</Table.th>
-          <Table.th>Phone</Table.th>
-        </Table.tr>
-      </Table.thead>
-      <Table.tbody>
-        <Table.tr>
-          <Table.td>Kathy C. Do</Table.td>
-          <Table.td>Director</Table.td>
-          <Table.td>+48 XXX-XXX-XXX</Table.td>
-        </Table.tr>
-        <Table.tr>
-          <Table.td>James D. Washington</Table.td>
-          <Table.td>Developer</Table.td>
-          <Table.td>+48 XXX-XXX-XXX</Table.td>
-        </Table.tr>
-        <Table.tr>
-          <Table.td>Elaine R. Bean</Table.td>
-          <Table.td>Product Owner</Table.td>
-          <Table.td>+48 XXX-XXX-XXX</Table.td>
-        </Table.tr>
-      </Table.tbody>
-    </Table>
-  </Story>
-</Canvas>
+<Canvas />
 
 ### Small Table with small font (tiny)
 
-<Canvas>
-  <Story name="Small font (tiny)">
-    <Table tiny>
-      <Table.thead>
-        <Table.tr>
-          <Table.th>Name</Table.th>
-          <Table.th>Title</Table.th>
-          <Table.th>Phone</Table.th>
-        </Table.tr>
-      </Table.thead>
-      <Table.tbody>
-        <Table.tr>
-          <Table.td>Kathy C. Do</Table.td>
-          <Table.td>Director</Table.td>
-          <Table.td>+48 XXX-XXX-XXX</Table.td>
-        </Table.tr>
-        <Table.tr>
-          <Table.td>James D. Washington</Table.td>
-          <Table.td>Developer</Table.td>
-          <Table.td>+48 XXX-XXX-XXX</Table.td>
-        </Table.tr>
-        <Table.tr>
-          <Table.td>Elaine R. Bean</Table.td>
-          <Table.td>Product Owner</Table.td>
-          <Table.td>+48 XXX-XXX-XXX</Table.td>
-        </Table.tr>
-      </Table.tbody>
-    </Table>
-  </Story>
-</Canvas>
+<Canvas />
 
 ### Hoverline Table
 
-<Canvas>
-  <Story name="Hoverline">
-    <Table hoverline>
-      <Table.thead>
-        <Table.tr>
-          <Table.th>Name</Table.th>
-          <Table.th>Title</Table.th>
-          <Table.th>Phone</Table.th>
-        </Table.tr>
-      </Table.thead>
-      <Table.tbody>
-        <Table.tr>
-          <Table.td>Kathy C. Do</Table.td>
-          <Table.td>Director</Table.td>
-          <Table.td>+48 XXX-XXX-XXX</Table.td>
-        </Table.tr>
-        <Table.tr>
-          <Table.td>James D. Washington</Table.td>
-          <Table.td>Developer</Table.td>
-          <Table.td>+48 XXX-XXX-XXX</Table.td>
-        </Table.tr>
-        <Table.tr>
-          <Table.td>Elaine R. Bean</Table.td>
-          <Table.td>Product Owner</Table.td>
-          <Table.td>+48 XXX-XXX-XXX</Table.td>
-        </Table.tr>
-      </Table.tbody>
-    </Table>
-  </Story>
-</Canvas>
+<Canvas />
 
 ### Table with Header box and Pagination
 
-<Canvas>
-  <Story name="table-with-header">
-    <Box boxStyle="lightGrey" innerSpacing="spacing03" spacing="spacing04">
-      <FlexContainer>
-        <Input
-          name="input"
-          placeholder="Tag, application name, environment name, description etc"
-          title="Title"
-          size="md"
-        />
-        <FlexContainer justifyContent="flex-end">
-          <Button severity="low" size="md" icon="filter" mr={"1rem"}>
-            Show Filters
-          </Button>
-          <Button severity="low" size="md" icon="download">
-            Download CSV
-          </Button>
-        </FlexContainer>
-      </FlexContainer>
-    </Box>
-    <Table>
-      <Table.thead>
-        <Table.tr>
-          <Table.th>Name</Table.th>
-          <Table.th>Title</Table.th>
-          <Table.th>Phone</Table.th>
-        </Table.tr>
-      </Table.thead>
-      <Table.tbody>
-        <Table.tr>
-          <Table.td>Kathy C. Do</Table.td>
-          <Table.td>Director</Table.td>
-          <Table.td>+48 XXX-XXX-XXX</Table.td>
-        </Table.tr>
-        <Table.tr>
-          <Table.td>James D. Washington</Table.td>
-          <Table.td>Developer</Table.td>
-          <Table.td>+48 XXX-XXX-XXX</Table.td>
-        </Table.tr>
-        <Table.tr>
-          <Table.td>Elaine R. Bean</Table.td>
-          <Table.td>Product Owner</Table.td>
-          <Table.td>+48 XXX-XXX-XXX</Table.td>
-        </Table.tr>
-      </Table.tbody>
-    </Table>
-  </Story>
-</Canvas>
+<Canvas />

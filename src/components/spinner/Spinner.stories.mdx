@@ -1,11 +1,13 @@
 import styled from "styled-components";
-import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { Meta, Story, Canvas } from "@storybook/blocks";
 import { Spinner } from ".";
 import { Spacer } from "../spacer";
 import { FlexContainer } from "../container";
 import theme from "../../theme";
+import * as SpinnerStories from './Spinner.stories';
+import * as SpinnerStories from './Spinner_.stories';
 
-<Meta title="Components/Spinner" component={Spinner} />
+<Meta of={SpinnerStories} />
 
 # Spinner
 
@@ -21,59 +23,22 @@ import theme from "../../theme";
 
 ## Default
 
-<Canvas>
-  <Story name="default">
-    <Spinner />
-  </Story>
-</Canvas>
+<Canvas />
 
 ## Ninja
 
-<Canvas>
-  <Story name="ninja">
-    <Spinner ninja />
-  </Story>
-</Canvas>
+<Canvas />
 
 ## Color
 
 > `color`: `string` — **optional**: `success` | `danger` | `warning` | `notification` | `white`
 
-<Canvas>
-  <Story name="color">
-    <FlexContainer justifyContent="space-evenly">
-      <Spinner color="success" />
-      <Spinner color="danger" />
-      <Spinner color="warning" />
-      <Spinner color="notification" />
-    </FlexContainer>
-  </Story>
-</Canvas>
+<Canvas />
 
 ## Size
 
 > `size`: `string` — **optional**: `sm` | `md` | `lg` | `xl` | `xxl`
 
-<Canvas>
-  <Story name="size">
-    <FlexContainer justifyContent="space-evenly">
-      <Spinner size="sm" />
-      <Spinner size="md" />
-      <Spinner size="lg" />
-      <Spinner size="xl" />
-      <Spinner size="xxl" />
-    </FlexContainer>
-  </Story>
-</Canvas>
+<Canvas />
 
-<Canvas>
-  <Story name="sizeNinja">
-    <FlexContainer justifyContent="space-evenly">
-      <Spinner ninja size="sm" />
-      <Spinner ninja size="md" />
-      <Spinner ninja size="lg" />
-      <Spinner ninja size="xl" />
-      <Spinner ninja size="xxl" />
-    </FlexContainer>
-  </Story>
-</Canvas>
+<Canvas />

@@ -1,8 +1,10 @@
-import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { Meta, Story, Canvas } from "@storybook/blocks";
 import { Button } from ".";
 import { GnuiContainer, FlexContainer } from "../container";
+import * as ButtonStories from './Button.stories';
+import * as ButtonStories from './Button_.stories';
 
-<Meta title="Components/Button" component={Button} />
+<Meta of={ButtonStories} />
 
 # Button
 
@@ -27,189 +29,74 @@ import { GnuiContainer, FlexContainer } from "../container";
 
 ## default button
 
-<Canvas>
-  <Story name="default">
-    <Button>Default button</Button>
-  </Story>
-</Canvas>
+<Canvas />
 
 ## severity
 
 > severity: `medium` | `low`
 
-<Canvas>
-  <Story name="button/severity">
-    <FlexContainer justifyContent="space-evenly">
-      <Button severity="medium">Secondary button</Button>
-      <Button severity="low">Button for use as an icon</Button>
-    </FlexContainer>
-  </Story>
-</Canvas>
+<Canvas />
 
 ## size
 
 > size: `sm` | `md`
 
-<Canvas>
-  <Story name="size">
-    <FlexContainer justifyContent="space-evenly">
-      <Button size="sm">Size SM</Button>
-      <Button size="md">Size MD</Button>
-      <Button>Size Default</Button>
-    </FlexContainer>
-  </Story>
-</Canvas>
+<Canvas />
 
 ## icon
 
 > `icon`: `string`
 
-<Canvas>
-  <Story name="icons">
-    <FlexContainer justifyContent="space-evenly">
-      <Button icon="plus" severity="low">
-        Label
-      </Button>
-      <Button icon="plus" severity="low" />
-    </FlexContainer>
-  </Story>
-</Canvas>
+<Canvas />
 
 ## iconRight
 
 > `iconRight`: `boolean`
 
-<Canvas>
-  <Story name="iconRight">
-    <FlexContainer justifyContent="space-evenly">
-      <Button iconRight severity="low" icon="trash">
-        Delete Item
-      </Button>
-    </FlexContainer>
-  </Story>
-</Canvas>
+<Canvas />
 
 ## initialState
 
 > `initialState`: `success` | `error` | `loading`
 
-<Canvas>
-  <Story name="initialState">
-    <FlexContainer justifyContent="space-evenly">
-      <Button initialState="loading">Save changes</Button>
-      <Button initialState="success">Save changes</Button>
-      <Button initialState="error">Save changes</Button>
-      <Button initialState="loading" />
-      <Button initialState="success" />
-      <Button initialState="error" />
-    </FlexContainer>
-  </Story>
-</Canvas>
+<Canvas />
 
 ## Status
 
 > status: `danger` | `warning` | `success` | `notification` | `discovery` | `accent`
 
-<Canvas>
-  <Story name="status">
-    <FlexContainer justifyContent="space-evenly">
-      <Button status="danger">danger</Button>
-      <Button status="warning">warning</Button>
-      <Button status="success">success</Button>
-      <Button status="notification">notification</Button>
-      <Button status="discovery">discovery</Button>
-      <Button status="accent">accent</Button>
-    </FlexContainer>
-  </Story>
-</Canvas>
+<Canvas />
 
 ## disabled
 
 > `disabled`: `boolean`
 
-<Canvas>
-  <Story name="disabled">
-    <Button disabled icon="save">
-      Disabled button
-    </Button>
-  </Story>
-</Canvas>
+<Canvas />
 
 ## Custom spacing
 
-<Canvas>
-  <Story name="custom-spacing">
-    <GnuiContainer>
-      <p>
-        <Button ml="3rem" mb="10rem" innerSpacing="0">
-          Button with custom spacing
-        </Button>
-      </p>
-    </GnuiContainer>
-  </Story>
-</Canvas>
+<Canvas />
 
 ## linkTo
 
 > linkTo: `string`
 
-<Canvas>
-  <Story name="button link">
-    <Button linkTo="http://google.com" target="_blank">
-      Link to
-    </Button>
-  </Story>
-</Canvas>
+<Canvas />
 
 ## display
 
 > display: `flex` | `inline-flex`
 
-<Canvas>
-  <Story name="button link flex">
-    <Button display="flex" linkTo="http://google.com" target="_blank">
-      Button
-    </Button>
-    <Button
-      mt="1rem"
-      display="inline-flex"
-      linkTo="http://google.com"
-      target="_blank"
-    >
-      Button
-    </Button>
-  </Story>
-</Canvas>
+<Canvas />
 
 ## as
 
 > as: `React.ElementType`
 
-<Canvas>
-  <Story name="as">
-    <Button as="a" href="http://google.com" target="_blank">
-      Link to
-    </Button>
-  </Story>
-</Canvas>
+<Canvas />
 
 ## color - deprecated
 
 > `color`: `string`
 
-<Canvas>
-  <Story name="color">
-    <FlexContainer justifyContent="space-evenly">
-      <Button color="danger" icon="danger">
-        Danger color
-      </Button>
-      <Button color="danger" icon="danger" severity="medium">
-        Danger color
-      </Button>
-      <Button color="success">Success color</Button>
-      <Button color="warning">Warning color</Button>
-      <Button color="notification">Notification color</Button>
-      <Button color="#FF1493">HEX color</Button>
-    </FlexContainer>
-  </Story>
-</Canvas>
+<Canvas />

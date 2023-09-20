@@ -1,11 +1,13 @@
-import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { Meta, Story, Canvas } from "@storybook/blocks";
 import { useDisclosure } from "../../hooks";
 import { Switch } from ".";
 import { GnuiContainer } from "../container";
 import { Spacer } from "../spacer";
 import theme from "../../theme";
+import * as SwitchStories from './Switch.stories';
+import * as SwitchStories from './Switch_.stories';
 
-<Meta title="Forms/Switch" component={Switch} />
+<Meta of={SwitchStories} />
 
 # Switch
 
@@ -21,86 +23,16 @@ import theme from "../../theme";
 
 ## default
 
-<Canvas>
-  <Story name="default">
-    <Switch labelText="My Switch Button" />
-  </Story>
-</Canvas>
+<Canvas />
 
 ## position
 
-<Canvas>
-  <Story name="position">
-    <GnuiContainer>
-      <Switch name="label-left" position="left" labelText="My Switch Button" />
-      <Spacer height="1rem" />
-      <Switch
-        name="label-right"
-        position="right"
-        labelText="My Switch Button"
-      />
-    </GnuiContainer>
-  </Story>
-</Canvas>
+<Canvas />
 
 ## severity
 
 > Adds color indication for severity levels
 >
-> - `severity`: `string` — [`success`, `danger`, `warning`, `notification`]
+> *   `severity`: `string` — \[`success`, `danger`, `warning`, `notification`]
 
-<Canvas>
-  <Story name="severity">
-    {() => {
-      const { isOpen: checked, toggle } = useDisclosure(true);
-      return (
-        <GnuiContainer>
-          <Switch
-            name="label1"
-            severity="warning"
-            labelText="My Switch Button Warning"
-            onClick={toggle}
-            checked={checked}
-            readOnly
-          />
-          <Spacer height="1rem" />
-          <Switch
-            name="label2"
-            severity="danger"
-            labelText="My Switch Button Danger"
-            onClick={toggle}
-            checked={checked}
-            readOnly
-          />
-          <Spacer height="1rem" />
-          <Switch
-            name="label3"
-            severity="success"
-            labelText="My Switch Button Success"
-            onClick={toggle}
-            checked={checked}
-            readOnly
-          />
-          <Spacer height="1rem" />
-          <Switch
-            name="label4"
-            severity="notification"
-            labelText="My Switch Button Notification"
-            onClick={toggle}
-            checked={checked}
-            readOnly
-          />
-          <Spacer height="1rem" />
-          <Switch
-            name="label4"
-            severity="primary"
-            labelText="My Switch Button Notification"
-            onClick={toggle}
-            checked={checked}
-            readOnly
-          />
-        </GnuiContainer>
-      );
-    }}
-  </Story>
-</Canvas>
+<Canvas />
