@@ -1,12 +1,11 @@
 import styled from "styled-components";
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { ListLoader } from ".";
 import { Spacer } from "../spacer";
 import { GnuiContainer, Flex } from "../container";
 import theme from "../../theme";
-import * as ListLoaderStories from './ListLoader.stories';
 
-<Meta of={ListLoaderStories} />
+<Meta title="Components/ListLoader" component={ListLoader} />
 
 # ListLoader
 
@@ -21,13 +20,28 @@ Basing on react-content-loader: https://github.com/danilowoz/react-content-loade
 
 ## Default
 
-<Canvas />
+<Canvas>
+  <Story name="default" height="300px">
+    <GnuiContainer>
+      <ListLoader />
+    </GnuiContainer>
+  </Story>
+</Canvas>
 
 ## itemsNumber
 
 > `itemsNumber`: `number` — **optional**
 
-<Canvas />
+<Canvas>
+  <Story name="itemsNumber" height="300px">
+    <GnuiContainer>
+      1 row:
+      <ListLoader itemsNumber={1} />
+      3 rows:
+      <ListLoader itemsNumber={3} />
+    </GnuiContainer>
+  </Story>
+</Canvas>
 
 ## Custom row format
 
@@ -35,4 +49,20 @@ Basing on react-content-loader: https://github.com/danilowoz/react-content-loade
 
 See other examples of row format definitions: https://github.com/danilowoz/react-content-loader
 
-<Canvas />
+<Canvas>
+  <Story name="children">
+    <GnuiContainer>
+      <ListLoader>
+        <rect x="1%" y="23" rx="0" ry="0" width="1%" height="15" />
+        <rect x="3%" y="10" rx="0" ry="0" width="3%" height="40" />
+        <rect x="7%" y="10" rx="0" ry="0" width="3%" height="40" />
+        <rect x="11%" y="15" rx="5" ry="5" width="33%" height="15" />
+        <rect x="11%" y="39" rx="5" ry="5" width="30%" height="9" />
+        <rect x="45%" y="15" rx="5" ry="5" width="23%" height="15" />
+        <rect x="69%" y="15" rx="5" ry="5" width="13%" height="15" />
+        <rect x="83%" y="15" rx="5" ry="5" width="12%" height="15" />
+        <rect x="97%" y="10" rx="0" ry="0" width="3%" height="40" />
+      </ListLoader>
+    </GnuiContainer>
+  </Story>
+</Canvas>

@@ -1,13 +1,12 @@
-import { Meta, Story, Canvas, Title, Description } from "@storybook/blocks";
+import { Meta, Story, Canvas, Title, Description } from "@storybook/addon-docs";
 import { useDisclosure } from "../../hooks";
 import { Button } from "../button";
 import { Sidebar } from ".";
 import { Container, Row, Col } from "react-awesome-styled-grid";
 import { Text } from "../text";
 import { PaginationBox } from "../pagination/Pagination.tsx";
-import * as SidebarStories from './Sidebar.stories';
 
-<Meta of={SidebarStories} />
+<Meta title="Components/Sidebar" component={Sidebar} id="sidebar" />
 
 # Sidebar
 
@@ -30,28 +29,212 @@ import * as SidebarStories from './Sidebar.stories';
 
 ### default
 
-<Canvas />
+<Canvas>
+  <Story name="default">
+    {() => {
+      const { isOpen, open, close } = useDisclosure();
+      return (
+        <Container>
+          <Row justify="center">
+            <Button onClick={open}>Click button to open sidebar</Button>
+          </Row>
+          <Sidebar
+            title="Default sidebar"
+            caption="Default sidebar caption"
+            isOpen={isOpen}
+            onClick={close}
+          >
+            Sidebar Content
+          </Sidebar>
+        </Container>
+      );
+    }}
+  </Story>
+</Canvas>
 
 ### footer
 
 You can pass Buttons to footer, and it will displayed at the bottom of the Sidebar.
 
-<Canvas />
+<Canvas>
+  <Story name="footer">
+    {() => {
+      const { isOpen, open, close } = useDisclosure();
+      const Footer = () => (
+        <>
+          <Button onClick={close}>Cancel</Button>
+          <Button>Update</Button>
+        </>
+      );
+      return (
+        <Container>
+          <Row justify="center">
+            <Button onClick={open}>Click button to open sidebar</Button>
+          </Row>
+          <Sidebar
+            title="Default sidebar"
+            isOpen={isOpen}
+            onClick={close}
+            footer={<Footer />}
+          >
+            Sidebar Content
+          </Sidebar>
+        </Container>
+      );
+    }}
+  </Story>
+</Canvas>
 
 ### footer with pagination
 
 You can pass PaginationBox, and it will displayed at the bottom of the Sidebar.
 
-<Canvas />
+<Canvas>
+  <Story name="footer pagination">
+    {() => {
+      const { isOpen, open, close } = useDisclosure();
+      return (
+        <Container>
+          <Row justify="center">
+            <Button onClick={open}>Click button to open sidebar</Button>
+          </Row>
+          <Sidebar
+            title="Default sidebar"
+            isOpen={isOpen}
+            onClick={close}
+            footer={
+              <PaginationBox
+                sidebar
+                small
+                count={400}
+                from={0}
+                size={20}
+                setPage={0}
+                setSize={20}
+              />
+            }
+          >
+            Sidebar Content
+          </Sidebar>
+        </Container>
+      );
+    }}
+  </Story>
+</Canvas>
 
 ### side
 
 Sidebar in default is displayed on the right side, but optionally you can change this behaviour with simple prop `side='onLeft'`.
 
-<Canvas />
+<Canvas>
+  <Story name="side">
+    {() => {
+      const {
+        isOpen: isOpenLeft,
+        open: openLeft,
+        close: closeLeft,
+      } = useDisclosure();
+      const {
+        isOpen: isOpenRight,
+        open: openRight,
+        close: closeRight,
+      } = useDisclosure();
+      return (
+        <Container>
+          <Row justify="center">
+            <Text>Click button to open sidebar.</Text>
+          </Row>
+          <Row justify="space-around">
+            <Col md={2}>
+              <Button onClick={openLeft}>← Left sidebar</Button>
+            </Col>
+            <Col md={2}>
+              <Button onClick={openRight}>Right Sidebar →</Button>
+            </Col>
+          </Row>
+          <Sidebar
+            title="Default sidebar"
+            isOpen={isOpenRight}
+            onClick={closeRight}
+          >
+            Sidebar Content
+          </Sidebar>
+          <Sidebar
+            side="onLeft"
+            title="Left sidebar"
+            isOpen={isOpenLeft}
+            onClick={closeLeft}
+          >
+            Sidebar Content
+          </Sidebar>
+        </Container>
+      );
+    }}
+  </Story>
+</Canvas>
 
 ### width
 
 > If you don't need default breakpoints and needs just to hardcode `width` value you can provide it with `width` prop.
 
-<Canvas />
+<Canvas>
+  <Story name="custom width">
+    {() => {
+      const {
+        isOpen: isOpenPercent,
+        open: openPercent,
+        close: closePercent,
+      } = useDisclosure();
+      const {
+        isOpen: isOpenRem,
+        open: openRem,
+        close: closeRem,
+      } = useDisclosure();
+      const {
+        isOpen: isOpenPx,
+        open: openPx,
+        close: closePx,
+      } = useDisclosure();
+      return (
+        <Container>
+          <Row justify="space-around">
+            <Col md={2}>
+              <Button onClick={openPercent}>50% Sidebar</Button>
+            </Col>
+            <Col md={2}>
+              <Button onClick={openRem}>50rem sidebar on Left</Button>
+            </Col>
+            <Col md={2}>
+              <Button onClick={openPx}>700px sidebar</Button>
+            </Col>
+          </Row>
+          <Sidebar
+            title="Width: 50%"
+            width="50%"
+            isOpen={isOpenPercent}
+            onClick={closePercent}
+          >
+            Sidebar Content
+          </Sidebar>
+          <Sidebar
+            title="Width: 50rem"
+            width="50rem"
+            side="onLeft"
+            isOpen={isOpenRem}
+            onClick={closeRem}
+          >
+            Sidebar Content on Left
+          </Sidebar>
+          <Sidebar
+            title="Width: 700px"
+            width="700px"
+            isOpen={isOpenPx}
+            onClick={closePx}
+          >
+            Sidebar Content
+          </Sidebar>
+        </Container>
+      );
+    }}
+  </Story>
+</Canvas>

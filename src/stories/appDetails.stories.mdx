@@ -1,32 +1,22 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { Col, Row, Hidden } from "react-awesome-styled-grid";
-import { Box } from "../components/box";
-import { Button } from "../components/button";
-import { FlexContainer } from "../components/container";
-import { Navigation } from "../components/navigation";
-import { PieChart } from "../components/piechart";
-import { Popover } from "../components/popover";
-import { SVGIcon } from "../components/svgicon";
-import { Tag } from "../components/tag";
-import { Text } from "../components/text";
-import { Tooltip } from "../components/tooltip";
 import theme from "../theme";
+import { FlexContainer } from "../components/container";
+import { Box } from "../components/box";
+import { Text } from "../components/text";
+import { PieChart } from "../components/piechart";
+import { SVGIcon } from "../components/svgicon";
+import { Tooltip } from "../components/tooltip";
+import { Button } from "../components/button";
+import { Tag } from "../components/tag";
+import { Popover } from "../components/popover";
+import { Navigation } from "../components/navigation";
 
-const meta: Meta = {
-  title: "Pages/appDetails",
-};
-export default meta;
+<Meta title="Pages/appDetails" />
 
-type Story = StoryObj;
-
-export const AppDetails: Story = {
-  render: () => (
-    <Box
-      spacing="spacing04"
-      style={{
-        maxWidth: "1440px",
-      }}
-    >
+<Canvas>
+  <Story name="default">
+    <Box spacing={"spacing04"} style={{ maxWidth: "1440px" }}>
       <Box boxStyle="lightGrey" spacing="spacing02">
         <Row>
           <Col sm={5} md={4} lg={6}>
@@ -152,8 +142,8 @@ export const AppDetails: Story = {
                 </div>
               </Hidden>
               <Popover
-                alignRight
                 trigger={<Button severity="low" icon="menu" size="md" />}
+                alignRight
               >
                 <Navigation.Container popoverMenu>
                   <Navigation.Item
@@ -311,8 +301,8 @@ export const AppDetails: Story = {
                 </div>
               </Hidden>
               <Popover
-                alignRight
                 trigger={<Button severity="low" icon="menu" size="md" />}
+                alignRight
               >
                 <Navigation.Container popoverMenu>
                   <Navigation.Item
@@ -346,5 +336,5 @@ export const AppDetails: Story = {
         </Row>
       </Box>
     </Box>
-  ),
-};
+  </Story>
+</Canvas>

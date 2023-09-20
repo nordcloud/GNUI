@@ -1,26 +1,17 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { Col, Row, Visible } from "react-awesome-styled-grid";
-import { Box } from "../components/box";
-import { FlexContainer } from "../components/container";
-import { PieChart } from "../components/piechart";
-import { Spacer } from "../components/spacer";
-import { Text } from "../components/text";
 import theme from "../theme";
+import { FlexContainer } from "../components/container";
+import { Box } from "../components/box";
+import { PieChart } from "../components/piechart";
+import { Text } from "../components/text";
+import { Spacer } from "../components/spacer";
 
-const meta: Meta = {
-  title: "Pages/Dashboard",
-};
-export default meta;
+<Meta title="Pages/Dashboard" />
 
-type Story = StoryObj;
-
-export const Dashboard: Story = {
-  render: () => (
-    <Box
-      style={{
-        maxWidth: "1440px",
-      }}
-    >
+<Canvas>
+  <Story name="default">
+    <Box style={{ maxWidth: "1440px" }}>
       <Row>
         <Col lg={4} md={4} xs={4}>
           <FlexContainer>
@@ -100,5 +91,5 @@ export const Dashboard: Story = {
         </Col>
       </Row>
     </Box>
-  ),
-};
+  </Story>
+</Canvas>

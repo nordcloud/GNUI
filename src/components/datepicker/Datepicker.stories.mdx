@@ -1,10 +1,9 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { addDays } from "date-fns";
 import { Datepicker } from ".";
 import { DayPicker } from "react-day-picker";
-import * as DatepickerStories from './Datepicker.stories';
 
-<Meta of={DatepickerStories} />
+<Meta title="Forms/Datepicker" component={Datepicker} />
 
 # Datepicker
 
@@ -18,4 +17,17 @@ type DatepickerProps = {
 };
 ```
 
-<Canvas />
+<Canvas>
+  <Story name="datepicker">
+    {() => {
+      const handleSelect = (date) => {
+        console.log(date);
+      };
+      return (
+        <Datepicker>
+          <DayPicker mode="single" onSelect={handleSelect} />
+        </Datepicker>
+      );
+    }}
+  </Story>
+</Canvas>

@@ -1,19 +1,22 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { Input, Label, Description, Upload } from ".";
 import { GnuiContainer } from "../container";
 import { Button } from "../button";
 import { Spacer } from "../spacer";
 import { InputSearch } from "./InputSearch.tsx";
 import { InputPassword } from "./InputPassword.tsx";
-import * as InputStories from './Input.stories';
 
-<Meta of={InputStories} />
+<Meta title="Forms/Input" component={Input} />
 
 # Input
 
 > Inputs type defaults to `text`.
 
-<Canvas />
+<Canvas>
+  <Story name="input">
+    <Input name="input" placeholder="Placeholder" title="Title" />
+  </Story>
+</Canvas>
 
 ## Input properties
 
@@ -38,7 +41,11 @@ import * as InputStories from './Input.stories';
 
 > `name`: `string`
 
-<Canvas />
+<Canvas>
+  <Story name="name">
+    <Input name="Thats my name" title="That's my title" />
+  </Story>
+</Canvas>
 
 ### type
 
@@ -46,7 +53,16 @@ import * as InputStories from './Input.stories';
 
 For now it works good for two types: default `text` and `search`. The second one displays an icon before text. **TBC**
 
-<Canvas />
+<Canvas>
+  <Story name="type">
+    <Input
+      name="search-input"
+      placeholder="Search input"
+      type="search"
+      title="Search input"
+    />
+  </Story>
+</Canvas>
 
 ### placeholder
 
@@ -58,50 +74,171 @@ Placeholder text inside input element
 
 > `disabled`: `boolean`
 
-<Canvas />
+<Canvas>
+  <Story name="disabled">
+    <Input name="disabled-input" placeholder="Disabled input" disabled />
+  </Story>
+</Canvas>
 
 ### required
 
 > `required`: `boolean`
 
-<Canvas />
+<Canvas>
+  <Story name="required">
+    <>
+      <Label name="Label" htmlFor="required-id" required />
+      <Input
+        name="required-input"
+        id="required-id"
+        placeholder="Required input"
+      />
+    </>
+  </Story>
+</Canvas>
 
 ### small
 
-<Canvas />
+<Canvas>
+  <Story name="small">
+    <>
+      <Label name="Label" htmlFor="small-id" required />
+      <Input name="required-input" id="small-id" placeholder="Small" small />
+    </>
+  </Story>
+</Canvas>
 
 ### upload
 
-<Canvas />
+<Canvas>
+  <Story name="upload">
+    <>
+      <Upload name="upload" placeholder="Select a file to upload" />
+    </>
+  </Story>
+</Canvas>
 
 ### icon
 
-<Canvas />
+<Canvas>
+  <Story name="icon">
+    <>
+      <Label name="Label" htmlFor="icon-id" required />
+      <Input name="required-input" id="icon-id" placeholder="" icon="sidebar" />
+    </>
+  </Story>
+</Canvas>
 
 ### status
 
 > `status`: `success | error`
 
-<Canvas />
+<Canvas>
+  <Story name="status">
+    {() => {
+      const [status, setStatus] = React.useState("success");
+      return (
+        <GnuiContainer>
+          <GnuiContainer>
+            <Input
+              name="validation-input"
+              value={status === "success" ? "Success!" : "Error!"}
+              readOnly
+              status={status}
+            />
+          </GnuiContainer>
+          <Spacer height="2rem" />
+          <GnuiContainer>
+            <Button
+              size="small"
+              color={status === "error" ? "danger" : "success"}
+              onClick={() =>
+                setStatus(status === "danger" ? "success" : "danger")
+              }
+            >
+              Change status
+            </Button>
+          </GnuiContainer>
+        </GnuiContainer>
+      );
+    }}
+  </Story>
+</Canvas>
 
 ## Label and description
 
 > You can add `Label` before `Input` and `Description` after it. Labels name is what exactly will be displayed as a text above `Input`.
 
-<Canvas />
+<Canvas>
+  <Story name="label & description">
+    <GnuiContainer>
+      <Label name="Label" htmlFor="description-id" />
+      <Input
+        name="labeled-input"
+        id="description-id"
+        placeholder="Labeled input"
+      />
+      <Description>Inputs description</Description>
+    </GnuiContainer>
+  </Story>
+</Canvas>
 
 ### clear
 
-<Canvas />
+<Canvas>
+  <Story name="clear">
+    <>
+      <Label name="Label" htmlFor="clear-id" required />
+      <Input
+        name="required-input"
+        id="clear-id"
+        placeholder=""
+        icon="sidebar"
+        name="testName"
+        showClearButton
+        onClick={() => alert("click")}
+        onClear={() => alert("clear")}
+      />
+    </>
+  </Story>
+</Canvas>
 
 ### password
 
-<Canvas />
+<Canvas>
+  <Story name="password">
+    <>
+      <InputPassword
+        name="required-input"
+        id="password"
+        name="password"
+        value="password123"
+      />
+    </>
+  </Story>
+</Canvas>
 
 ### search
 
-<Canvas />
+<Canvas>
+  <Story name="search">
+    <>
+      <InputSearch
+        placeholder="Search"
+        onSearch={() => alert("search")}
+        name="search"
+      />
+    </>
+  </Story>
+</Canvas>
 
 ### date
 
-<Canvas />
+<Canvas>
+  <Story name="date">
+    <>
+      <Label name="Date" htmlFor="date-id" required />
+      <Input type="date" value={""} placeholder="MM/DD/YYYY" />
+    </>
+  </Story>
+</Canvas>

@@ -1,49 +1,747 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { ExtendedPopover } from "./ExtendedPopover";
 import { SVGIcon } from "../svgicon";
-import * as ExtendedPopoverStories from './ExtendedPopover.stories';
 
-<Meta of={ExtendedPopoverStories} />
+<Meta title="Components/ExtendedPopover" component={ExtendedPopover} />
 
 # Extended Popover
 
 ## properties
 
-> *   `content`: `ReactNode` {required} popover content
-> *   `trigger`: `ReactNode` {optional} popover trigger element, defaults to `<Button><SVGIcon name="burgerMenu" /></Button>`)
-> *   `placement`: `top | bottom | right | left` {optional} relative placement of popover compared to parent element, defaults to `right`
-> *   `position`: `start | end | center` {optional} relative shift of popover placement compared to parent element, defaults to `start`
-> *   `margin`: `{ top?: number, bottom?: number, left?: number, right?: number }` {optional} margin around popover, defaults to `5px` for all properties
-> *   `clickOutsideToClose`: `boolean` {optional} should popover be closed when clicked outside, defaults to `true`
+> - `content`: `ReactNode` {required} popover content
+> - `trigger`: `ReactNode` {optional} popover trigger element, defaults to `<Button><SVGIcon name="burgerMenu" /></Button>`)
+> - `placement`: `top | bottom | right | left` {optional} relative placement of popover compared to parent element, defaults to `right`
+> - `position`: `start | end | center` {optional} relative shift of popover placement compared to parent element, defaults to `start`
+> - `margin`: `{ top?: number, bottom?: number, left?: number, right?: number }` {optional} margin around popover, defaults to `5px` for all properties
+> - `clickOutsideToClose`: `boolean` {optional} should popover be closed when clicked outside, defaults to `true`
 
 ## default Hamburger trigger
 
-<Canvas />
+<Canvas>
+  <Story name="default">
+    <p style={{ color: "black", marginBottom: "2rem" }}>
+      When{" "}
+      <code style={{ color: "red", fontFamily: "monospace" }}>trigger</code>{" "}
+      prop is not provided, default Hamburger icon is rendered
+    </p>
+    <ExtendedPopover
+      content={
+        <ul
+          style={{
+            backgroundColor: "grey",
+            padding: "0.5rem",
+            border: "solid 1px black",
+          }}
+        >
+          <li>one</li>
+          <li>two</li>
+        </ul>
+      }
+    />
+  </Story>
+</Canvas>
 
 ## top
 
-<Canvas />
+<Canvas>
+  <Story name="top">
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        marginBottom: "1rem",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ color: "black", marginBottom: "2rem" }}>Start</span>
+        <ExtendedPopover
+          placement="top"
+          position="start"
+          trigger={<button type="button">Click Me!</button>}
+          content={
+            <ul
+              style={{
+                backgroundColor: "grey",
+                padding: "0.5rem",
+                border: "solid 1px black",
+              }}
+            >
+              <li>one</li>
+              <li>two</li>
+            </ul>
+          }
+        />
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ color: "black", marginBottom: "2rem" }}>Center</span>
+        <ExtendedPopover
+          placement="top"
+          position="center"
+          trigger={<button type="button">Click Me!</button>}
+          content={
+            <ul
+              style={{
+                backgroundColor: "grey",
+                padding: "0.5rem",
+                border: "solid 1px black",
+              }}
+            >
+              <li>one</li>
+              <li>two</li>
+            </ul>
+          }
+        />
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ color: "black", marginBottom: "2rem" }}>End</span>
+        <ExtendedPopover
+          placement="top"
+          position="end"
+          trigger={<button type="button">Click Me!</button>}
+          content={
+            <ul
+              style={{
+                backgroundColor: "grey",
+                padding: "0.5rem",
+                border: "solid 1px black",
+              }}
+            >
+              <li>one</li>
+              <li>two</li>
+            </ul>
+          }
+        />
+      </div>
+    </div>
+  </Story>
+</Canvas>
 
 ## bottom
 
-<Canvas />
+<Canvas>
+  <Story name="bottom">
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        marginBottom: "1rem",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ color: "black", marginBottom: "2rem" }}>Start</span>
+        <ExtendedPopover
+          placement="bottom"
+          position="start"
+          trigger={<button type="button">Click Me!</button>}
+          content={
+            <ul
+              style={{
+                backgroundColor: "grey",
+                padding: "0.5rem",
+                border: "solid 1px black",
+              }}
+            >
+              <li>one</li>
+              <li>two</li>
+            </ul>
+          }
+        />
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ color: "black", marginBottom: "2rem" }}>Center</span>
+        <ExtendedPopover
+          placement="bottom"
+          position="center"
+          trigger={<button type="button">Click Me!</button>}
+          content={
+            <ul
+              style={{
+                backgroundColor: "grey",
+                padding: "0.5rem",
+                border: "solid 1px black",
+              }}
+            >
+              <li>one</li>
+              <li>two</li>
+            </ul>
+          }
+        />
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ color: "black", marginBottom: "2rem" }}>End</span>
+        <ExtendedPopover
+          placement="bottom"
+          position="end"
+          trigger={<button type="button">Click Me!</button>}
+          content={
+            <ul
+              style={{
+                backgroundColor: "grey",
+                padding: "0.5rem",
+                border: "solid 1px black",
+              }}
+            >
+              <li>one</li>
+              <li>two</li>
+            </ul>
+          }
+        />
+      </div>
+    </div>
+  </Story>
+</Canvas>
 
 ## left
 
-<Canvas />
+<Canvas>
+  <Story name="left">
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        marginBottom: "5rem",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ color: "black", marginBottom: "2rem" }}>Start</span>
+        <ExtendedPopover
+          placement="left"
+          position="start"
+          trigger={
+            <button type="button" style={{ height: "5rem" }}>
+              Click Me!
+            </button>
+          }
+          content={
+            <ul
+              style={{
+                backgroundColor: "grey",
+                padding: "0.5rem",
+                border: "solid 1px black",
+              }}
+            >
+              <li>one</li>
+              <li>two</li>
+            </ul>
+          }
+        />
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ color: "black", marginBottom: "2rem" }}>Center</span>
+        <ExtendedPopover
+          placement="left"
+          position="center"
+          trigger={
+            <button type="button" style={{ height: "5rem" }}>
+              Click Me!
+            </button>
+          }
+          content={
+            <ul
+              style={{
+                backgroundColor: "grey",
+                padding: "0.5rem",
+                border: "solid 1px black",
+              }}
+            >
+              <li>one</li>
+              <li>two</li>
+            </ul>
+          }
+        />
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ color: "black", marginBottom: "2rem" }}>End</span>
+        <ExtendedPopover
+          placement="left"
+          position="end"
+          trigger={
+            <button type="button" style={{ height: "5rem" }}>
+              Click Me!
+            </button>
+          }
+          content={
+            <ul
+              style={{
+                backgroundColor: "grey",
+                padding: "0.5rem",
+                border: "solid 1px black",
+              }}
+            >
+              <li>one</li>
+              <li>two</li>
+            </ul>
+          }
+        />
+      </div>
+    </div>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        marginBottom: "1rem",
+      }}
+    >
+      <ExtendedPopover
+        placement="left"
+        position="start"
+        trigger={<button type="button">Click Me!</button>}
+        content={
+          <ul
+            style={{
+              backgroundColor: "grey",
+              padding: "0.5rem",
+              border: "solid 1px black",
+            }}
+          >
+            <li>one</li>
+            <li>two</li>
+          </ul>
+        }
+      />
+      <ExtendedPopover
+        placement="left"
+        position="center"
+        trigger={<button type="button">Click Me!</button>}
+        content={
+          <ul
+            style={{
+              backgroundColor: "grey",
+              padding: "0.5rem",
+              border: "solid 1px black",
+            }}
+          >
+            <li>one</li>
+            <li>two</li>
+          </ul>
+        }
+      />
+      <ExtendedPopover
+        placement="left"
+        position="right"
+        trigger={<button type="button">Click Me!</button>}
+        content={
+          <ul
+            style={{
+              backgroundColor: "grey",
+              padding: "0.5rem",
+              border: "solid 1px black",
+            }}
+          >
+            <li>one</li>
+            <li>two</li>
+          </ul>
+        }
+      />
+    </div>
+  </Story>
+</Canvas>
 
 ## right
 
-<Canvas />
+<Canvas>
+  <Story name="right">
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        marginBottom: "5rem",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ color: "black", marginBottom: "2rem" }}>Start</span>
+        <ExtendedPopover
+          placement="right"
+          position="start"
+          trigger={
+            <button type="button" style={{ height: "5rem" }}>
+              Click Me!
+            </button>
+          }
+          content={
+            <ul
+              style={{
+                backgroundColor: "grey",
+                padding: "0.5rem",
+                border: "solid 1px black",
+              }}
+            >
+              <li>one</li>
+              <li>two</li>
+            </ul>
+          }
+        />
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ color: "black", marginBottom: "2rem" }}>Center</span>
+        <ExtendedPopover
+          placement="right"
+          position="center"
+          trigger={
+            <button type="button" style={{ height: "5rem" }}>
+              Click Me!
+            </button>
+          }
+          content={
+            <ul
+              style={{
+                backgroundColor: "grey",
+                padding: "0.5rem",
+                border: "solid 1px black",
+              }}
+            >
+              <li>one</li>
+              <li>two</li>
+            </ul>
+          }
+        />
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ color: "black", marginBottom: "2rem" }}>End</span>
+        <ExtendedPopover
+          placement="right"
+          position="end"
+          trigger={
+            <button type="button" style={{ height: "5rem" }}>
+              Click Me!
+            </button>
+          }
+          content={
+            <ul
+              style={{
+                backgroundColor: "grey",
+                padding: "0.5rem",
+                border: "solid 1px black",
+              }}
+            >
+              <li>one</li>
+              <li>two</li>
+            </ul>
+          }
+        />
+      </div>
+    </div>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        marginBottom: "1rem",
+      }}
+    >
+      <ExtendedPopover
+        placement="right"
+        position="start"
+        trigger={<button type="button">Click Me!</button>}
+        content={
+          <ul
+            style={{
+              backgroundColor: "grey",
+              padding: "0.5rem",
+              border: "solid 1px black",
+            }}
+          >
+            <li>one</li>
+            <li>two</li>
+          </ul>
+        }
+      />
+      <ExtendedPopover
+        placement="right"
+        position="center"
+        trigger={<button type="button">Click Me!</button>}
+        content={
+          <ul
+            style={{
+              backgroundColor: "grey",
+              padding: "0.5rem",
+              border: "solid 1px black",
+            }}
+          >
+            <li>one</li>
+            <li>two</li>
+          </ul>
+        }
+      />
+      <ExtendedPopover
+        placement="right"
+        position="end"
+        trigger={<button type="button">Click Me!</button>}
+        content={
+          <ul
+            style={{
+              backgroundColor: "grey",
+              padding: "0.5rem",
+              border: "solid 1px black",
+            }}
+          >
+            <li>one</li>
+            <li>two</li>
+          </ul>
+        }
+      />
+    </div>
+  </Story>
+</Canvas>
 
 ## complex content
 
-<Canvas />
+<Canvas>
+  <Story name="complex">
+    <ExtendedPopover
+      placement="top"
+      position="center"
+      content={
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            backgroundColor: "grey",
+            padding: "0.5rem",
+            border: "solid 1px black",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <SVGIcon name="archive" />
+          </div>
+          <p style={{ margin: "0.45rem 0", fontWeight: 700 }}>List inside</p>
+          <ul style={{ padding: "0.15rem 0.25rem" }}>
+            <li>one</li>
+            <li>two</li>
+            <li>three</li>
+            <li>❤️</li>
+          </ul>
+        </div>
+      }
+    />
+  </Story>
+</Canvas>
 
 ## do not close when clicked outside
 
-<Canvas />
+<Canvas>
+  <Story name="keep">
+    <p style={{ color: "black", marginBottom: "2rem" }}>
+      When{" "}
+      <code style={{ color: "red", fontFamily: "monospace" }}>clickOutsideToClose</code>{" "}
+      prop is set to{" "}
+      <code style={{ color: "red", fontFamily: "monospace" }}>false</code>{" "}
+      popover is not being closed when clicked outside.
+    </p>
+    <ExtendedPopover
+      placement="top"
+      position="center"
+      clickOutsideToClose={false}
+      trigger={<button type="button">Click me and keep!</button>}
+      content={
+        <ul
+          style={{
+            backgroundColor: "grey",
+            padding: "0.5rem",
+            border: "solid 1px black",
+          }}
+        >
+          <li>one</li>
+          <li>two</li>
+        </ul>
+      }
+    />
+  </Story>
+</Canvas>
 
 ## trigger on hover
 
-<Canvas />
+<Canvas>
+  <Story name="hover">
+    <p style={{ color: "black", marginBottom: "2rem" }}>
+      When{" "}
+      <code style={{ color: "red", fontFamily: "monospace" }}>triggerOn</code>{" "}
+      prop is set to{" "}
+      <code style={{ color: "red", fontFamily: "monospace" }}>"hover"</code>{" "}
+      popover is being triggered on hover action.
+    </p>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-around",
+        marginBottom: "1rem",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ color: "black", marginBottom: "2rem" }}>
+          click outside to close
+        </span>
+        <ExtendedPopover
+          placement="top"
+          position="center"
+          trigger={
+            <p style={{ fontFamily: "monospace", color: "black" }}>
+              Hover to open!
+            </p>
+          }
+          triggerOn="hover"
+          content={
+            <ul
+              style={{
+                backgroundColor: "grey",
+                padding: "0.5rem",
+                border: "solid 1px black",
+              }}
+            >
+              <li>one</li>
+              <li>two</li>
+            </ul>
+          }
+        />
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ color: "black", marginBottom: "2rem" }}>
+          hover outside to close
+        </span>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            columnGap: "3rem",
+          }}
+        >
+          <ExtendedPopover
+            placement="top"
+            position="center"
+            trigger={
+              <p style={{ fontFamily: "monospace", color: "black" }}>
+                Hover to open!
+              </p>
+            }
+            triggerOn="hover"
+            closeOn="hover"
+            content={
+              <ul
+                style={{
+                  backgroundColor: "grey",
+                  padding: "0.5rem",
+                  border: "solid 1px black",
+                }}
+              >
+                <li>one</li>
+                <li>two</li>
+              </ul>
+            }
+          />
+          <ExtendedPopover
+            placement="right"
+            position="center"
+            trigger={
+              <p style={{ fontFamily: "monospace", color: "black" }}>
+                Hover to open!
+              </p>
+            }
+            triggerOn="hover"
+            closeOn="hover"
+            content={
+              <ul
+                style={{
+                  backgroundColor: "grey",
+                  padding: "0.5rem",
+                  border: "solid 1px black",
+                }}
+              >
+                <li>one</li>
+                <li>two</li>
+              </ul>
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </Story>
+</Canvas>

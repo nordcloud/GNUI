@@ -1,25 +1,24 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { useDisclosure } from "../../hooks";
 import { Modal, ModalConfirm } from ".";
 import { Button } from "../button";
-import * as ModalStories from './Modal.stories';
 
-<Meta of={ModalStories} />
+<Meta title="Components/Modal" component={Modal} />
 
 # Modal
 
 ### Modal properties
 
-|       properties | required | type                                                                  | description            |
-| ---------------: | :------: | :-------------------------------------------------------------------- | :--------------------- |
+|       properties | required | type                                                                | description            |
+| ---------------: | :------: | :------------------------------------------------------------------ | :--------------------- |
 |          onClose |   true   | <code>`(event: React.MouseEvent<Element, MouseEvent>) => void`</code> |                        |
-|     contentLabel |   true   | string                                                                | modal title            |
-|         children |   true   | any                                                                   | modal content          |
-|          actions |  false   | <code>`Array<Action>`</code>                                          | list of action buttons |
-|            appId |  false   | string                                                                |                        |
-| contentMaxHeight |  false   | string                                                                | default: `25rem`       |
-|    modalMinWidth |  false   | string                                                                | default: `18.75rem`    |
-|        alignText |  false   | <code>left</code>, <code>right</code>, <code>center</code>            | default: `left`        |
+|     contentLabel |   true   | string                                                              | modal title            |
+|         children |   true   | any                                                                 | modal content          |
+|          actions |  false   | <code>`Array<Action>`</code>                                        | list of action buttons |
+|            appId |  false   | string                                                              |                        |
+| contentMaxHeight |  false   | string                                                              | default: `25rem`       |
+|    modalMinWidth |  false   | string                                                              | default: `18.75rem`    |
+|        alignText |  false   | <code>left</code>, <code>right</code>, <code>center</code>          | default: `left`        |
 
 ### Action properties
 
@@ -32,16 +31,119 @@ import * as ModalStories from './Modal.stories';
 
 ### Basic modal
 
-<Canvas />
+<Canvas>
+  <Story name="basic modal">
+    {() => {
+      const { isOpen, open, close } = useDisclosure();
+      return (
+        <>
+          <Button onClick={open}>Open modal</Button>
+          <Modal
+            isOpen={isOpen}
+            onClose={close}
+            contentLabel={"Modal title"}
+            appId="#root"
+            alignText="center"
+          >
+            This is modal content
+            <br />
+            Another line of content
+          </Modal>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
 
 ### Modal with actions
 
-<Canvas />
+<Canvas>
+  <Story name="modal with actions">
+    {() => {
+      const { isOpen, open, close } = useDisclosure();
+      return (
+        <>
+          <Button onClick={open}>Open modal</Button>
+          <Modal
+            isOpen={isOpen}
+            onClose={close}
+            contentLabel={"Modal title"}
+            appId="#root"
+            actions={[
+              {
+                order: 0,
+                onAction: close,
+                label: "Second action",
+                severity: "low",
+              },
+              {
+                order: 1,
+                onAction: close,
+                label: "Primary action",
+                severity: "high",
+              },
+            ]}
+          >
+            This is modal content
+            <br />
+            Another line of content
+          </Modal>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
 
 ### Modal Confirm
 
-<Canvas />
+<Canvas>
+  <Story name="confirm modal">
+    {() => {
+      const { isOpen, open, close } = useDisclosure();
+      const action = () => alert("Deleted");
+      return (
+        <>
+          <Button onClick={open}>Open modal</Button>
+          <ModalConfirm
+            contentLabel="Account"
+            isOpen={isOpen}
+            confirm={action}
+            onClose={close}
+            actionLabel="Delete"
+          >
+            Do you really want to delete account?
+          </ModalConfirm>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
 
 ### Modal Confirm with long text and scroll
 
-<Canvas />
+<Canvas>
+  <Story name="confirm modal long body text">
+    {() => {
+      const { isOpen, open, close } = useDisclosure();
+      const action = () => alert("Confirmed");
+      return (
+        <>
+          <Button onClick={open}>Open modal</Button>
+          <ModalConfirm
+            contentLabel="Account"
+            isOpen={isOpen}
+            confirm={action}
+            onClose={close}
+            actionLabel="Confirm"
+          >
+            Do you really want to delete account{" "}
+            <em>
+              1033195400904dd389a6788ef9de5e141033195400904dd389a6788ef9de5e141033195400904dd389a6788ef9de5e141033195400904dd389a6788ef9de5e141033195400904dd389a6788ef9de5e141033195400904dd389a6788ef9de5e141033195400904dd389a6788ef9de5e141033195400904dd389a6788ef9de5e14
+            </em>
+            ?
+          </ModalConfirm>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>

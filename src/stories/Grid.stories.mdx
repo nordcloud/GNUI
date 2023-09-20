@@ -1,14 +1,30 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { Container, Row, Col } from "react-awesome-styled-grid";
 import { Text } from "../components/text";
 import theme from "../theme";
-import * as GridStories from './Grid.stories';
 
-<Meta of={GridStories} />
+<Meta title="Foundation/Grid" component={Container} />
 
 ## Basic usage
 
-<Canvas of={GridStories.JustifyContent} />
+<Canvas>
+  <Story name="justifyContent">
+    {() => {
+      return (
+        <Container>
+          <Row>
+            <Col xs={4} md={2}>
+              Col A
+            </Col>
+            <Col xs={4} md={6}>
+              Col B
+            </Col>
+          </Row>
+        </Container>
+      );
+    }}
+  </Story>
+</Canvas>
 
 We use [React Awesome Styled Grid](https://awesome-styled-grid.netlify.app/usage)
 

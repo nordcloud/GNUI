@@ -1,9 +1,8 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { BarChart } from "./";
 import theme from "../../theme";
-import * as BarChartStories from './BarChart.stories';
 
-<Meta of={BarChartStories} />
+<Meta title="Components/BarChart" component={BarChart} />
 
 # BarChart
 
@@ -25,4 +24,24 @@ import * as BarChartStories from './BarChart.stories';
 
 ## Default
 
-<Canvas />
+<Canvas>
+  <Story name="default">
+    {() => {
+      const values = [
+        {
+          value: 4629.75,
+          color: theme.color.support.red,
+        },
+        {
+          value: 2006.28,
+          color: theme.color.support.blue,
+        },
+        {
+          value: 599.66,
+          color: theme.color.support.orange,
+        },
+      ];
+      return <BarChart values={values} />;
+    }}
+  </Story>
+</Canvas>

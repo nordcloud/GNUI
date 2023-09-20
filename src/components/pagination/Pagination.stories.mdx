@@ -1,8 +1,7 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { PaginationBox } from ".";
-import * as PaginationStories from './Pagination.stories';
 
-<Meta of={PaginationStories} />
+<Meta title="Components/Pagination" component={PaginationBox} />
 
 # Pagination
 
@@ -20,8 +19,23 @@ import * as PaginationStories from './Pagination.stories';
 
 ## default
 
-<Canvas />
+<Canvas>
+  <Story name="default">
+    <PaginationBox count={400} from={0} size={20} setPage={0} setSize={20} />
+  </Story>
+</Canvas>
 
 ## small
 
-<Canvas />
+<Canvas>
+  <Story name="small">
+    <PaginationBox
+      small
+      count={400}
+      from={0}
+      size={20}
+      setPage={0}
+      setSize={20}
+    />
+  </Story>
+</Canvas>

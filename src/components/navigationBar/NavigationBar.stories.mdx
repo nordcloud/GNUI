@@ -1,122 +1,263 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { NavigationBar } from "./NavigationBar";
 import { MenuItem } from "./MenuItem";
 import { ItemsContainer, ItemsSection } from "./styles";
-import * as NavigationBarStories from './NavigationBar.stories';
 
-<Meta of={NavigationBarStories} />
+<Meta title="Components/NavigationBar" component={NavigationBar} />
 
 # NavigationBar
 
 ## properties
 
-> *   `children`: `ReactNode | ReactNode[]` {required} item or items visible in menu bar
-> *   `position`: `string` {optional} CSS position of the element (defaults to `fixed`)
-> *   `height`: `string` {optional} CSS height of the element (defaults to `100vh`)
-> *   `expandable`: `boolean` {optional} whether menu should expand its width (defaults to `true`)
-> *   `backgroundColor`: `string` {optional} background color of the wrapper (defaults to `theme.color.background.ui01`)
-> *   `closeOnLeave`: `boolean` {optional} should element be automatically collapsed when mouse unhovers (defaults to `false`)
-> *   `expandableConfig`: `ExpandableConfig` {optional} visual configuration of the expandable animation (read more below ⬇️ )
-> *   `popoverConfig`: `PopoverConfig` {optional} popover element visual configuration (read more below ⬇️ )
+> - `children`: `ReactNode | ReactNode[]` {required} item or items visible in menu bar
+> - `position`: `string` {optional} CSS position of the element (defaults to `fixed`)
+> - `height`: `string` {optional} CSS height of the element (defaults to `100vh`)
+> - `expandable`: `boolean` {optional} whether menu should expand its width (defaults to `true`)
+> - `backgroundColor`: `string` {optional} background color of the wrapper (defaults to `theme.color.background.ui01`)
+> - `closeOnLeave`: `boolean` {optional} should element be automatically collapsed when mouse unhovers (defaults to `false`)
+> - `expandableConfig`: `ExpandableConfig` {optional} visual configuration of the expandable animation (read more below ⬇️ )
+> - `popoverConfig`: `PopoverConfig` {optional} popover element visual configuration (read more below ⬇️ )
 
 <details>
-  <summary style={{ color: "black" }}>Expandable Config definition and defaults</summary>
+  <summary style={{ color: "black" }}>Expandable Config definition and defaults</summary> 
   <strong style={{ color: "black" }}>definition</strong>
 
-  ```js
-  type ExpandableConfig = {
-    timingFunction?: "linear" | "ease" | "ease-in" | "ease-out" | "ease-in-out",
-    duration?: string,
-  };
-  ```
+```js
+type ExpandableConfig = {
+  timingFunction?: "linear" | "ease" | "ease-in" | "ease-out" | "ease-in-out",
+  duration?: string,
+};
+```
 
-  <strong style={{ color: "black" }}>defaults</strong>
+<strong style={{ color: "black" }}>defaults</strong>
 
-  ```js
-  expandableConfig = {
-    timingFunction: "linear",
-    duration: "0.2s",
-  },
-  ```
+```js
+expandableConfig = {
+  timingFunction: "linear",
+  duration: "0.2s",
+},
+```
+
 </details>
-
 <details>
   <summary style={{ color: "black" }}>Popover Config definition and defaults</summary>
   <strong style={{ color: "black" }}>definition</strong>
 
-  ```js
-  type PopoverConfig = {
-    triggerOn: ExtendedPopoverAction,
-    closeOn: ExtendedPopoverAction,
-    position: Position,
-  };
-  ```
+```js
+type PopoverConfig = {
+  triggerOn: ExtendedPopoverAction,
+  closeOn: ExtendedPopoverAction,
+  position: Position,
+};
+```
 
-  <strong style={{ color: "black" }}>defaults</strong>
+<strong style={{ color: "black" }}>defaults</strong>
 
-  ```js
-  popoverConfig = {
-    triggerOn: "hover",
-    closeOn: "hover",
-    position: "start",
-  };
-  ```
+```js
+popoverConfig = {
+  triggerOn: "hover",
+  closeOn: "hover",
+  position: "start",
+};
+```
+
 </details>
-
 <details>
   <summary style={{ color: "black" }}>Additional helper elements</summary>
   <span style={{ color: "black" }}>For easier style management of the navigation bar we have shared the styling elements used in the demo</span>
 
-  <p style={{ color: "black" }}>Used to style whole layout of the nav bar</p>
+<p style={{ color: "black" }}>Used to style whole layout of the nav bar</p>
 
-  ```js
-  const ItemsContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-    height: 100%;
-  `;
-  ```
+```js
+const ItemsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+`;
+```
 
-  <p style={{ color: "black", marginBottom: 0 }}>
-    Used to style single section that can group buttons in some logical manner
-  </p>
+<p style={{ color: "black", marginBottom: 0 }}>
+  Used to style single section that can group buttons in some logical manner
+</p>
+<p style={{ opacity: 0.75, marginTop: 0 }}>
+  It enables user to push section to the bottom of the navigation bar (it is
+  advised to have single container with `stickToBottom` set to `true`)
+</p>
 
-  <p style={{ opacity: 0.75, marginTop: 0 }}>
-    It enables user to push section to the bottom of the navigation bar (it is
-    advised to have single container with `stickToBottom` set to `true`)
-  </p>
+```js
+const ItemsSection = styled.div<{ stickToBottom?: boolean }>`
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  row-gap: ${theme.spacing.spacing04};
+  width: 100%;
+  border-top: ${({ stickToBottom }) =>
+    stickToBottom ? `solid 1px ${theme.color.border.border01}` : "inherit"};
+  padding-top: ${({ stickToBottom }) =>
+    stickToBottom ? theme.spacing.spacing03 : "0"};
+  margin-top: ${({ stickToBottom }) =>
+    stickToBottom ? theme.spacing.spacing06 : "0"};
+`;
+```
 
-  ```js
-  const ItemsSection = styled.div<{ stickToBottom?: boolean }>`
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: column;
-    row-gap: ${theme.spacing.spacing04};
-    width: 100%;
-    border-top: ${({ stickToBottom }) =>
-      stickToBottom ? `solid 1px ${theme.color.border.border01}` : "inherit"};
-    padding-top: ${({ stickToBottom }) =>
-      stickToBottom ? theme.spacing.spacing03 : "0"};
-    margin-top: ${({ stickToBottom }) =>
-      stickToBottom ? theme.spacing.spacing06 : "0"};
-  `;
-  ```
 </details>
 
 ## default
 
-<Canvas />
+<Canvas>
+  <Story name="default" height="450px">
+    {() => {
+      return (
+        <div style={{ height: "400px", position: "relative" }}>
+          <NavigationBar position="absolute" height="100%">
+            <ItemsContainer>
+              <ItemsSection>
+                <a href="https://www.nordcloud.com" target="_blank">
+                  <MenuItem caption="Go to Nordcloud.com" icon="externalLink" />
+                </a>
+                <MenuItem caption="Dashboard" icon="dashboard" />
+                <MenuItem caption="Applications" icon="application" />
+                <MenuItem caption="Settings" icon="settings">
+                  <ul
+                    style={{
+                      backgroundColor: "green",
+                      padding: "0.5rem 1rem",
+                      border: "solid 1px black",
+                    }}
+                  >
+                    <li>User settings</li>
+                    <li>Application settings</li>
+                  </ul>
+                </MenuItem>
+                <MenuItem caption="Archive" icon="archive" />
+              </ItemsSection>
+            </ItemsContainer>
+          </NavigationBar>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
 
 ## non-expandable
 
-<Canvas />
+<Canvas>
+  <Story name="non-expandable" height="450px">
+    {() => {
+      return (
+        <div style={{ height: "400px", position: "relative" }}>
+          <NavigationBar position="absolute" height="100%" expandable={false}>
+            <ItemsContainer>
+              <ItemsSection>
+                <MenuItem caption="Dashboard" icon="dashboard" />
+                <MenuItem caption="Applications" icon="application" />
+                <MenuItem caption="Settings" icon="settings">
+                  <ul
+                    style={{
+                      backgroundColor: "green",
+                      padding: "0.5rem 1rem",
+                      border: "solid 1px black",
+                    }}
+                  >
+                    <li>User settings</li>
+                    <li>Application settings</li>
+                  </ul>
+                </MenuItem>
+                <MenuItem caption="Archive" icon="archive" />
+              </ItemsSection>
+            </ItemsContainer>
+          </NavigationBar>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
 
 ## multiple sections with stick to bottom
 
-<Canvas />
+<Canvas>
+  <Story name="multiple-sections-with-stick-to-bottom" height="55px">
+    {() => {
+      return (
+        <div style={{ height: "550px", position: "relative" }}>
+          <NavigationBar position="absolute" height="100%">
+            <ItemsContainer>
+              <ItemsSection>
+                <MenuItem caption="Dashboard" icon="dashboard" />
+                <MenuItem caption="Applications" icon="application" />
+                <MenuItem caption="Settings" icon="settings">
+                  <ul
+                    style={{
+                      backgroundColor: "green",
+                      padding: "0.5rem 1rem",
+                      border: "solid 1px black",
+                    }}
+                  >
+                    <li>User settings</li>
+                    <li>Application settings</li>
+                  </ul>
+                </MenuItem>
+              </ItemsSection>
+              <ItemsSection>
+                <MenuItem caption="KPIs" icon="chartAscending" />
+                <MenuItem
+                  caption="Reserved Instances"
+                  icon="reservedInstances"
+                />
+                <MenuItem caption="Estate Records" icon="resource" />
+              </ItemsSection>
+              <ItemsSection stickToBottom>
+                <MenuItem caption="Archive" icon="archive" />
+              </ItemsSection>
+            </ItemsContainer>
+          </NavigationBar>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
 
 ## scrollable
 
-<Canvas />
+<Canvas>
+  <Story name="scrollable" height="450px">
+    {() => {
+      return (
+        <div style={{ height: "400px", position: "relative" }}>
+          <NavigationBar position="absolute" height="100%">
+            <ItemsContainer>
+              <ItemsSection>
+                <MenuItem caption="Dashboard" icon="dashboard" />
+                <MenuItem caption="Applications" icon="application" />
+                <MenuItem caption="Settings" icon="settings">
+                  <ul
+                    style={{
+                      backgroundColor: "green",
+                      padding: "0.5rem 1rem",
+                      border: "solid 1px black",
+                    }}
+                  >
+                    <li>User settings</li>
+                    <li>Application settings</li>
+                  </ul>
+                </MenuItem>
+                <MenuItem caption="KPIs" icon="chartAscending" />
+                <MenuItem
+                  caption="Reserved Instances"
+                  icon="reservedInstances"
+                />
+                <MenuItem caption="Estate Records" icon="resource" />
+                <MenuItem caption="Cloud Accounts" icon="cloud" />
+              </ItemsSection>
+              <ItemsSection stickToBottom>
+                <MenuItem caption="Archive" icon="archive" />
+              </ItemsSection>
+            </ItemsContainer>
+          </NavigationBar>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>

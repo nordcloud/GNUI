@@ -1,8 +1,7 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { CheckboxTree } from "./CheckboxTree.tsx";
-import * as CheckboxTreeStories from './CheckboxTree.stories';
 
-<Meta of={CheckboxTreeStories} />
+<Meta title="Forms/CheckboxTree" component={CheckboxTree} />
 
 # CheckboxTree
 
@@ -12,14 +11,73 @@ import * as CheckboxTreeStories from './CheckboxTree.stories';
 
 |         properties | required |     type      | description                                                                                                                                         |
 | -----------------: | :------: | :-----------: | :-------------------------------------------------------------------------------------------------------------------------------------------------- |
-|        composition |   true   | Composition\[] | Composition of how Checkboxes and its childrens should be displayed                                                                                 |
+|        composition |   true   | Composition[] | Composition of how Checkboxes and its childrens should be displayed                                                                                 |
 |           onChange |  false   |  () => void   | Returns array with all selected `uid` values.                                                                                                       |
-|           selected |  false   |   string\[]    | Array of `uid` values that should be pre selected. Values should be passed with relations to parents: meat->chicken for chicken to be pre-selected. |
+|           selected |  false   |   string[]    | Array of `uid` values that should be pre selected. Values should be passed with relations to parents: meat->chicken for chicken to be pre-selected. |
 |           onExpand |  false   |  () => void   | Returns array with all expanded `uid` values.                                                                                                       |
-|           expanded |  false   |   string\[]    | Array of `uid` values that should be pre expanded. Values should be passed with relations to parents: meat->chicken for chicken to be pre-expanded. |
+|           expanded |  false   |   string[]    | Array of `uid` values that should be pre expanded. Values should be passed with relations to parents: meat->chicken for chicken to be pre-expanded. |
 | preferredSeparator |  false   |    string     | Sets separator for checkbox relationships on onChange ids retrieval. Default: "->"                                                                  |
 |           disabled |  false   |    boolean    | Sets CheckboxTree disabled (tree becomes unusable and gray)                                                                                         |
 
 ### Default
 
-<Canvas />
+<Canvas>
+  <Story name="simple">
+    <CheckboxTree
+      expanded={["meat", "meat->pork"]}
+      selected={["meat"]}
+      composition={[
+        {
+          uid: "fish",
+          label: "Fish",
+        },
+        {
+          uid: "meat",
+          label: "Meat",
+          children: [
+            {
+              uid: "pork",
+              label: "Pork",
+              children: [
+                {
+                  uid: "ham",
+                  label: "Ham",
+                },
+                {
+                  uid: "bacon",
+                  label: "Bacon",
+                  children: [
+                    {
+                      uid: "15%",
+                      label: "15%",
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              uid: "chicken",
+              label: "Chicken",
+              children: [
+                {
+                  uid: "cbreast",
+                  label: "Breast",
+                },
+              ],
+            },
+            {
+              uid: "turkey",
+              label: "Turkey",
+              children: [
+                {
+                  uid: "tbreast",
+                  label: "Breast",
+                },
+              ],
+            },
+          ],
+        },
+      ]}
+    />
+  </Story>
+</Canvas>

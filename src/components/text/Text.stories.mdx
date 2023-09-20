@@ -1,9 +1,8 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { Text } from ".";
 import { GnuiContainer } from "../container";
-import * as TextStories from './Text.stories';
 
-<Meta of={TextStories} />
+<Meta title="Typography/Text" component={Text} />
 
 # Text
 
@@ -25,46 +24,108 @@ import * as TextStories from './Text.stories';
 |     nowrap |  false   | boolean                                                                                               |                                                                                                                                                             |
 |    isTitle |  false   | boolean                                                                                               |                                                                                                                                                             |
 
-<Canvas />
+<Canvas>
+  <Story name="simple">
+    <Text>Default paragraph.</Text>
+  </Story>
+</Canvas>
 
 ### size
 
-> `size`: `string` — \["xs" | "sm" | "md" | "lg" | "xl" | "xxl"]
+> `size`: `string` — ["xs" | "sm" | "md" | "lg" | "xl" | "xxl"]
 
-<Canvas />
+<Canvas>
+  <Story name="size">
+    <GnuiContainer>
+      <Text size="xs">(xs) Extra Small size (10px)</Text>
+      <Text size="sm">(sm) Small size (12px)</Text>
+      <Text size="md">(md) Regular size (16px)</Text>
+      <Text size="lg">(lg) Big size (20px)</Text>
+      <Text size="xl">(xl) Large size (24px)</Text>
+      <Text size="xxl">(xxl) Extra Large size (32px)</Text>
+    </GnuiContainer>
+  </Story>
+</Canvas>
 
 ### tag
 
 > `tag`: `string` — `Text` can can be rendered as any other HTML tag instead of `p` (i.e. can be rendered as a `span`). Check this in your dev-tools (<kbd>CTRL</kbd> + <kbd>C</kbd> in Chrome). Uses `as` prop from `styled-components` under the hood.
 
-<Canvas />
+<Canvas>
+  <Story name="tag">
+    <GnuiContainer>
+      <Text tag="div">
+        This is div. <Text tag="span">This is span.</Text>
+      </Text>
+    </GnuiContainer>
+  </Story>
+</Canvas>
 
 ### weight
 
-> `weight`: `string` - \["regular" | "medium" | "bold"]
+> `weight`: `string` - ["regular" | "medium" | "bold"]
 
-<Canvas />
+<Canvas>
+  <Story name="weight">
+    <GnuiContainer>
+      <Text weight="regular">Lorem ipsum solor domet.</Text>
+      <Text weight="medium">Lorem ipsum solor domet.</Text>
+      <Text weight="bold">Lorem ipsum solor domet.</Text>
+    </GnuiContainer>
+  </Story>
+</Canvas>
 
 ### color
 
 > `color`: `string` - GNUI as first looks for the value in `theme.colors` and if color doesn't exist there `color` will be used as is.
 
-<Canvas />
+<Canvas>
+  <Story name="color">
+    <GnuiContainer>
+      <Text color="danger">Lorem ipsum solor domet.</Text>
+      <Text color="success">Lorem ipsum solor domet.</Text>
+      <Text color="warning">Lorem ipsum solor domet.</Text>
+      <Text color="notification">Lorem ipsum solor domet.</Text>
+      <Text color="#ccc">Lorem ipsum solor domet.</Text>
+    </GnuiContainer>
+  </Story>
+</Canvas>
 
 ### textStyle
 
-> `textStyle`: `string` - \["normal" | "italic"]
+> `textStyle`: `string` - ["normal" | "italic"]
 
-<Canvas />
+<Canvas>
+  <Story name="textStyle">
+    <GnuiContainer>
+      <Text textStyle="normal">Lorem ipsum solor domet.</Text>
+      <Text textStyle="italic">Lorem ipsum solor domet.</Text>
+    </GnuiContainer>
+  </Story>
+</Canvas>
 
 ### align
 
 > `align`: `boolean`
 
-<Canvas />
+<Canvas>
+  <Story name="align">
+    <GnuiContainer>
+      <Text align="left">Lorem ipsum solor domet.</Text>
+      <Text align="center">Lorem ipsum solor domet.</Text>
+      <Text align="right">Lorem ipsum solor domet.</Text>
+    </GnuiContainer>
+  </Story>
+</Canvas>
 
 ### isTitle
 
 > `isTitle`: `boolean`
 
-<Canvas />
+<Canvas>
+  <Story name="isTitle">
+    <GnuiContainer>
+      <Text isTitle="true">Lorem ipsum solor domet.</Text>
+    </GnuiContainer>
+  </Story>
+</Canvas>

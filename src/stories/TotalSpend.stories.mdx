@@ -1,18 +1,16 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { Box } from "../components/box";
-import { FlexContainer } from "../components/container";
-import { PieChart } from "../components/piechart";
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { Text } from "../components/text";
+import { FlexContainer } from "../components/container";
 import theme from "../theme";
+import { Box } from "../components/box";
+import { PieChart } from "../components/piechart";
 
-const meta: Meta = {
-  title: "Widgets/TotalSpend",
-};
+<Meta title="Widgets/TotalSpend" />
 
-export default meta;
+# Total spend Widget
 
-export const Default: StoryObj = {
-  render: () => (
+<Canvas>
+  <Story name="default">
     <FlexContainer>
       <div>
         <PieChart
@@ -48,7 +46,5 @@ export const Default: StoryObj = {
         </Text>
       </Box>
     </FlexContainer>
-  ),
-
-  name: "default",
-};
+  </Story>
+</Canvas>
