@@ -1,0 +1,38 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Tag } from ".";
+import { Heading } from "../heading";
+import { Flex } from "../container";
+import { Breadcrumbs } from "../breadcrumbs";
+import * as TagStories from './Tag.stories';
+
+<Meta of={TagStories} />
+
+# Tag
+
+*   `color`: `string` – *optional*, Default Tag background color is `theme.colors.lights[2]` [list of available colors](?path=/docs/foundation-styleguide--colors)
+*   `colorText`: `string` – *optional*, Default Tag text color is `theme.colors.primary` [list of available colors](?path=/docs/foundation-styleguide--colors)
+*   `text`: `string` — *optional*, Tag content
+*   `icon`: `string` — optional, icon to be placed inside the tag [list of available icons](?path=/docs/components-svgicon--ui)
+*   `onClick`: `function` — *optional*
+*   `showClose`: `boolean` — *optional*, show close button
+*   `isTransparent`: `boolean` — *optional*, this prop makes the tag background transparent
+
+<Canvas>
+  <Story of={TagStories.TagDefault} />
+</Canvas>
+
+## Colored Tag with close button
+
+> `color` props can be used in two ways: as an action colors build with `theme` (`accent`, `danger`, `success`, `warning`, `notification`, `primary` "red", `redInverse`, `pink`, `purple`, `indigo`, `blue`, `blueInverse`, `grey`, `greyInverse`, `cyan`, `teal`, `green`, `greenInverse`, `lightGreen`, `yellow`, `orange`,`orangeInverse`)
+
+<Canvas>
+  <Story of={TagStories.CloseButton} />
+</Canvas>
+
+## Colored Tag with icons
+
+> By default, if you use custom colors text color will be `snowWhite` you can change text color using additional props `textColor`
+
+<Canvas>
+  <Story of={TagStories.TagWithIcon} />
+</Canvas>

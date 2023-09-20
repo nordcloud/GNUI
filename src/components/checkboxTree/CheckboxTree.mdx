@@ -1,0 +1,27 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import { CheckboxTree } from "./CheckboxTree.tsx";
+import * as CheckboxTreeStories from './CheckboxTree.stories';
+
+<Meta of={CheckboxTreeStories} />
+
+# CheckboxTree
+
+> The `CheckboxTree` component accepts an array of `Composition` objects and renders it as a tree of checkboxes. It has to be connected to state (controlled component).
+
+### CheckboxTree properties
+
+|         properties | required |     type      | description                                                                                                                                         |
+| -----------------: | :------: | :-----------: | :-------------------------------------------------------------------------------------------------------------------------------------------------- |
+|        composition |   true   | Composition\[] | Composition of how Checkboxes and its childrens should be displayed                                                                                 |
+|           onChange |  false   |  () => void   | Returns array with all selected `uid` values.                                                                                                       |
+|           selected |  false   |   string\[]    | Array of `uid` values that should be pre selected. Values should be passed with relations to parents: meat->chicken for chicken to be pre-selected. |
+|           onExpand |  false   |  () => void   | Returns array with all expanded `uid` values.                                                                                                       |
+|           expanded |  false   |   string\[]    | Array of `uid` values that should be pre expanded. Values should be passed with relations to parents: meat->chicken for chicken to be pre-expanded. |
+| preferredSeparator |  false   |    string     | Sets separator for checkbox relationships on onChange ids retrieval. Default: "->"                                                                  |
+|           disabled |  false   |    boolean    | Sets CheckboxTree disabled (tree becomes unusable and gray)                                                                                         |
+
+### Default
+
+<Canvas>
+  <Story of={CheckboxTreeStories.Simple} />
+</Canvas>

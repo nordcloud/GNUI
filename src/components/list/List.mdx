@@ -1,0 +1,57 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import { List } from ".";
+import * as ListStories from './List.stories';
+
+<Meta of={ListStories} />
+
+# List
+
+> Shows list of items
+
+### List properties
+
+|     properties | required | type                                                                                                                                        | description                            |
+| -------------: | :------: | :------------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------- |
+|          items |   true   | <code>`Array<{title: string, description: string, rowChildren?: array}>`</code>, <code>`Array<string>`</code>, <code>`Array<number>`</code> |                                        |
+|     horizontal |  false   | boolean                                                                                                                                     | default `false`                        |
+|       unsorted |  false   | boolean                                                                                                                                     | default `false`                        |
+| hasDescription |  false   | boolean                                                                                                                                     | default `false`                        |
+|        spacing |  false   | string                                                                                                                                      | used for custom spacing for list items |
+
+### Default list
+
+> Basic unstyled list. Takes a string or number array
+
+<Canvas>
+  <Story of={ListStories.Default} />
+</Canvas>
+
+### spacing
+
+> Default list with custom spacing
+
+<Canvas>
+  <Story of={ListStories.Spacing} />
+</Canvas>
+
+### horizontal
+
+> Horizontal list. Takes a string or number array
+
+<Canvas>
+  <Story of={ListStories.Horizontal} />
+</Canvas>
+
+### unordered
+
+<Canvas>
+  <Story of={ListStories.Unordered} />
+</Canvas>
+
+### hasDescription
+
+> List with description.
+
+<Canvas>
+  <Story of={ListStories.HasDescription} />
+</Canvas>

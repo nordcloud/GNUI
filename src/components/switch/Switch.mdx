@@ -1,0 +1,43 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import { useDisclosure } from "../../hooks";
+import { Switch } from ".";
+import { GnuiContainer } from "../container";
+import { Spacer } from "../spacer";
+import theme from "../../theme";
+import * as SwitchStories from './Switch.stories';
+
+<Meta of={SwitchStories} />
+
+# Switch
+
+> A switch allows changing a setting between two states.
+
+## Switch properties
+
+| properties | required | type                                                                                          | description                       |
+| ---------: | :------: | :-------------------------------------------------------------------------------------------- | :-------------------------------- |
+|  labelText |  false   | string                                                                                        | text to display in the label      |
+|   severity |  false   | <code>danger</code> , <code>notification</code> , <code>warning</code> , <code>success</code> | color indicator status for switch |
+|   position |  false   | <code>left</code> , <code>right</code>                                                        | switch position                   |
+
+## default
+
+<Canvas>
+  <Story of={SwitchStories.Default} />
+</Canvas>
+
+## position
+
+<Canvas>
+  <Story of={SwitchStories.Position} />
+</Canvas>
+
+## severity
+
+> Adds color indication for severity levels
+>
+> *   `severity`: `string` — \[`success`, `danger`, `warning`, `notification`]
+
+<Canvas>
+  <Story of={SwitchStories.Severity} />
+</Canvas>

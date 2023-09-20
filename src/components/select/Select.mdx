@@ -1,0 +1,82 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import {
+  Select,
+  customMultiColorStyles,
+  SelectColoredOption,
+  SelectInstance,
+} from ".";
+import theme from "../../theme";
+import * as SelectStories from './Select.stories';
+
+<Meta of={SelectStories} />
+
+# Select
+
+#### Props
+
+https://react-select.com/props
+
+## Basic Select
+
+<Canvas>
+  <Story of={SelectStories.Basic} />
+</Canvas>
+
+## Multiselect
+
+<Canvas>
+  <Story of={SelectStories.Multiselect} />
+</Canvas>
+
+### Multiselect: colors
+
+https://github.com/JedWatson/react-select/blob/master/docs/examples/StyledMulti.tsx
+
+In TypeScript, options need to be properly typed:
+
+```tsx
+const colorOptions: SelectColoredOption[] = [
+  ...
+];
+```
+
+Custom styles can also be specified:
+
+```tsx
+const colorStyles = {
+  multiValue: (styles, { data }) => {
+    const color = data.color;
+    return {
+      ...styles,
+      backgroundColor: color ? color : theme.color.interactive.primary,
+    };
+  },
+};
+
+return (
+  <Select
+    isMulti
+    defaultValue={[colorOptions[1], colorOptions[2]]}
+    options={colorOptions}
+    styles={colorStyles}
+  />
+);
+```
+
+<Canvas>
+  <Story of={SelectStories.MultiselectColors} />
+</Canvas>
+
+## Using ref
+
+In TypeScript, Ref needs to be properly typed:
+
+```tsx
+const selectRef = React.useRef<SelectInstance<(typeof options)[number]> | null>(
+  null
+);
+```
+
+<Canvas>
+  <Story of={SelectStories.Ref} />
+</Canvas>

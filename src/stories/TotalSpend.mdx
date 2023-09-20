@@ -1,0 +1,15 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Text } from "../components/text";
+import { FlexContainer } from "../components/container";
+import theme from "../theme";
+import { Box } from "../components/box";
+import { PieChart } from "../components/piechart";
+import * as TotalSpendStories from './TotalSpend.stories';
+
+<Meta of={TotalSpendStories} />
+
+# Total spend Widget
+
+<Canvas>
+  <Story of={TotalSpendStories.Default} />
+</Canvas>

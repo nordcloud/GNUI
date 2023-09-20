@@ -1,0 +1,44 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Dropdown } from ".";
+import { GnuiContainer } from "../container";
+import { Spacer } from "../spacer";
+import { Text } from "../text";
+import * as DropdownStories from './Dropdown.stories';
+
+<Meta of={DropdownStories} />
+
+# Dropdown
+
+> Please take a look at props to understand correctly how `Dropdown` actually works. It was build to specifically work with [React Hooks](https://reactjs.org/docs/hooks-intro.html).
+
+## Dropdown properties
+
+|                     properties | required | type                                     | description                                  |
+| -----------------------------: | :------: | :--------------------------------------- | :------------------------------------------- |
+|                           name |   true   | string                                   |                                              |
+|                        options |   true   | `Array<any>`                             |                                              |
+|                       onChange |   true   | `(e: any) => void`                       | taken from Reacts `useState()`               |
+|                          width |  false   | string                                   | default: `100%`                              |
+|                          value |  false   | <code>string</code>, <code>number</code> | taken from Reacts `useState()`               |
+|                          title |  false   | string                                   |                                              |
+| minNumOfOptionsToShowSearchBox |  false   | number                                   | minimum number of options to show search box |
+|                        onClear |  false   | `() => void`                             | taken from Reacts `useState()`               |
+|                           size |  false   | <code>sm</code>,<code>xs</code>          |                                              |
+
+## dropdown with search
+
+<Canvas>
+  <Story of={DropdownStories.DropdownDefault} />
+</Canvas>
+
+## dropdown without search
+
+<Canvas>
+  <Story of={DropdownStories.DropdownWithoutSearch} />
+</Canvas>
+
+## dropdown other sizes
+
+<Canvas>
+  <Story of={DropdownStories.DropdownOtherSizes} />
+</Canvas>

@@ -1,0 +1,127 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Button } from ".";
+import { GnuiContainer, FlexContainer } from "../container";
+import * as ButtonStories from './Button.stories';
+
+<Meta of={ButtonStories} />
+
+# Button
+
+> Buttons are used to initialize an action. Button labels express what action will occur when the user interacts with it.
+
+## Button properties
+
+|         properties | required | type                                                           | description                                                                                                                                                                                                                            |
+| -----------------: | :------: | :------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|           children |  false   | string                                                         | contents inside button element, it should be plain text                                                                                                                                                                                |
+|           severity |  false   | <code>medium</code>, <code>low</code>                          |                                                                                                                                                                                                                                        |
+|               size |  false   | <code>sm</code>, <code>md</code>                               |                                                                                                                                                                                                                                        |
+|               icon |  false   | string                                                         | to get icon names look into <a href="?path=/docs/components-svgicon--size">SVG icon component</a>                                                                                                                                      |
+|          iconRight |  false   | boolean                                                        | place an icon to the right side of button                                                                                                                                                                                              |
+|       initialState |  false   | <code>success</code>, <code>error</code>, <code>loading</code> |                                                                                                                                                                                                                                        |
+|             status |  false   | string                                                         | status: <code>danger</code>, <code>warning</code>, <code>success</code>, <code>notification</code>, <code>discovery</code>, <code>accent</code>                                                                                        |
+|           disabled |  false   | boolean                                                        |                                                                                                                                                                                                                                        |
+|             linkTo |  false   | string                                                         | displays button as a link                                                                                                                                                                                                              |
+|            display |  false   | <code>flex</code>, <code>inline-flex</code>                    | you might want to change the display value when using linkTo prop                                                                                                                                                                      |
+|           asnpm ru |  false   | React.ElementType                                              | any valid HTML element or React component                                                                                                                                                                                              |
+| color - deprecated |  false   | string                                                         | can be used in two ways: as an action colors build with `theme` (`accent`, `danger`, `success`, `warning`, `notification`) or just in HEX/named color formats according to [X11 Colors](https://en.wikipedia.org/wiki/X11_color_names) |
+
+## default button
+
+<Canvas>
+  <Story of={ButtonStories.Default} />
+</Canvas>
+
+## severity
+
+> severity: `medium` | `low`
+
+<Canvas>
+  <Story of={ButtonStories.ButtonSeverity} />
+</Canvas>
+
+## size
+
+> size: `sm` | `md`
+
+<Canvas>
+  <Story of={ButtonStories.Size} />
+</Canvas>
+
+## icon
+
+> `icon`: `string`
+
+<Canvas>
+  <Story of={ButtonStories.Icons} />
+</Canvas>
+
+## iconRight
+
+> `iconRight`: `boolean`
+
+<Canvas>
+  <Story of={ButtonStories.IconRight} />
+</Canvas>
+
+## initialState
+
+> `initialState`: `success` | `error` | `loading`
+
+<Canvas>
+  <Story of={ButtonStories.InitialState} />
+</Canvas>
+
+## Status
+
+> status: `danger` | `warning` | `success` | `notification` | `discovery` | `accent`
+
+<Canvas>
+  <Story of={ButtonStories.Status} />
+</Canvas>
+
+## disabled
+
+> `disabled`: `boolean`
+
+<Canvas>
+  <Story of={ButtonStories.Disabled} />
+</Canvas>
+
+## Custom spacing
+
+<Canvas>
+  <Story of={ButtonStories.CustomSpacing} />
+</Canvas>
+
+## linkTo
+
+> linkTo: `string`
+
+<Canvas>
+  <Story of={ButtonStories.ButtonLink} />
+</Canvas>
+
+## display
+
+> display: `flex` | `inline-flex`
+
+<Canvas>
+  <Story of={ButtonStories.ButtonLinkFlex} />
+</Canvas>
+
+## as
+
+> as: `React.ElementType`
+
+<Canvas>
+  <Story of={ButtonStories.As} />
+</Canvas>
+
+## color - deprecated
+
+> `color`: `string`
+
+<Canvas>
+  <Story of={ButtonStories.Color} />
+</Canvas>

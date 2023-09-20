@@ -1,0 +1,41 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Accordion, AccordionHeader, AccordionItem } from "./";
+import * as AccordionStories from './Accordion.stories';
+
+<Meta of={AccordionStories} />
+
+# Accordion
+
+> You can build an accordion using a combination of the `Accordion`, `AccordionHeader` and `AccordionItem` components. The Accordion component accepts a list of AccordionHeader components as children and each AccordionHeader accepts a list of AccordionItems that are responsible for displaying content.
+
+## Accordion properties
+
+| properties | required | type                       | description |
+| ---------: | :------: | :------------------------- | :---------- |
+|   children |   true   | AccordionHeader components |             |
+
+<Canvas>
+  <Story of={AccordionStories.AccordionDefault} />
+</Canvas>
+
+# AccordionHeader
+
+## AccordionHeader properties
+
+|  properties | required | type                     | description |
+| ----------: | :------: | :----------------------- | :---------- |
+|       title |   true   | string                   |             |
+| description |  false   | string                   |             |
+|    children |  false   | AccordionItem components |             |
+
+# AccordionItem
+
+## AccordionItem properties
+
+| properties | required | type | description |
+| ---------: | :------: | :--- | :---------- |
+|   children |   true   | any  |             |
+
+<Canvas>
+  <Story of={AccordionStories.AccordionHeaderDefault} />
+</Canvas>

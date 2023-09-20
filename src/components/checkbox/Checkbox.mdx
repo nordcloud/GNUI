@@ -1,0 +1,48 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Checkbox, CheckboxGroup } from ".";
+import { IndeterminateCheckbox } from ".";
+import * as CheckboxStories from './Checkbox.stories';
+
+<Meta of={CheckboxStories} />
+
+# Checkbox
+
+### Checkbox properties
+
+|      properties | required | type    | description                                          |
+| --------------: | :------: | :------ | :--------------------------------------------------- |
+|       labelText |  false   | string  | Checkbox label                                       |
+|    withoutLabel |  false   | boolean | Checkbox without label with larger clickable surface |
+| isIndeterminate |  false   | boolean | Checkbox with third state of indeterminate           |
+
+### Default
+
+<Canvas>
+  <Story of={CheckboxStories.Simple} />
+</Canvas>
+
+### withoutLabel
+
+> Default input type `checkbox` without Label with larger clickable surface.
+
+<Canvas>
+  <Story of={CheckboxStories.WithoutLabel} />
+</Canvas>
+
+### isIndeterminate
+
+<Canvas>
+  <Story of={CheckboxStories.IsIndeterminate} />
+</Canvas>
+
+# CheckboxGroup
+
+### CheckboxGroup properties
+
+| properties | required | type                | description |
+| ---------: | :------: | :------------------ | :---------- |
+|   children |  false   | `ReactElement<any>` |             |
+
+<Canvas>
+  <Story of={CheckboxStories.Group} />
+</Canvas>

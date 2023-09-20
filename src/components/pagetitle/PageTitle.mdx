@@ -1,0 +1,37 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import { PageTitle, PageTitleBreadcrumbs } from ".";
+import * as PageTitleStories from './PageTitle.stories';
+
+<Meta of={PageTitleStories} />
+
+# Page Title
+
+## Page Title properties
+
+| properties | required | type   | description |
+| ---------: | :------: | :----- | :---------- |
+|      title |   true   | string |             |
+
+<Canvas>
+  <Story of={PageTitleStories.Pagetitle} />
+</Canvas>
+
+# Page Title with Breadcrumbs
+
+## Page Title with Breadcrumbs properties
+
+| properties | required | type                                  | description |
+| ---------: | :------: | :------------------------------------ | :---------- |
+|      title |   true   | string                                |             |
+|       list |   true   | <code>`Array<BreadcrumbsList>`</code> |             |
+
+## BreadcrumbsList properties
+
+| properties | required | type   | description |
+| ---------: | :------: | :----- | :---------- |
+|      label |   true   | string |             |
+|        uri |   true   | string |             |
+
+<Canvas>
+  <Story of={PageTitleStories.Breadcrumbs} />
+</Canvas>

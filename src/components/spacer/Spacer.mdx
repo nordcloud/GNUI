@@ -1,0 +1,31 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Spacer } from ".";
+import { GnuiContainer, FlexContainer } from "../container";
+import { Text } from "../text";
+import theme from "../../theme";
+import * as SpacerStories from './Spacer.stories';
+
+<Meta of={SpacerStories} />
+
+# Spacer
+
+> Used for separate elements
+
+## Spacer properties
+
+| properties | required | type           | description                            |
+| ---------: | :------: | :------------- | :------------------------------------- |
+|  className |  false   | string         | custom css class name                  |
+|     height |  false   | number, string | height of element                      |
+|      width |  false   | number, string | width of element                       |
+|    bgColor |  false   | string         | background color, default: transparent |
+|     border |  false   | string         | border styles                          |
+|     margin |  false   | number, string |                                        |
+
+<Canvas>
+  <Story of={SpacerStories.Default} />
+</Canvas>
+
+<Canvas>
+  <Story of={SpacerStories.Margin} />
+</Canvas>

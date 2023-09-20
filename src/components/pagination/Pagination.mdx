@@ -1,0 +1,31 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import { PaginationBox } from ".";
+import * as PaginationStories from './Pagination.stories';
+
+<Meta of={PaginationStories} />
+
+# Pagination
+
+## Pagination properties
+
+| properties | required | type    | description                  |
+| ---------: | :------: | :------ | :--------------------------- |
+|       size |   true   | number  | number of item per page      |
+|      count |   true   | number  | number of all items          |
+|       from |   true   | number  | index of first item on page  |
+|    setPage |   true   | number  | set current page             |
+|    setSize |   true   | number  | set number of items per page |
+|      small |  false   | boolean | small size styles            |
+|    sidebar |  false   | boolean | small size for sidebar usage |
+
+## default
+
+<Canvas>
+  <Story of={PaginationStories.Default} />
+</Canvas>
+
+## small
+
+<Canvas>
+  <Story of={PaginationStories.Small} />
+</Canvas>

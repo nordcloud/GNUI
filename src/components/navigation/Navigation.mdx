@@ -1,0 +1,58 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Navigation } from ".";
+import { Decos } from "./decos.tsx";
+import { SVGIcon } from "../svgicon";
+import { Box } from "../box";
+import { Text } from "../text";
+import theme from "../../theme";
+import { Button } from "../button";
+import { FlexContainer } from "../container";
+import * as NavigationStories from './Navigation.stories';
+
+<Meta of={NavigationStories} />
+
+# Navigation
+
+## Navigation.Container properties
+
+|  properties | required | type                                  | description                                    |
+| ----------: | :------: | :------------------------------------ | :--------------------------------------------- |
+|    children |   true   | <code>`Array<Navigation.Item>`</code> |                                                |
+|   secondary |  false   | boolean                               | display items as full-width rows               |
+| popoverMenu |  false   | boolean                               | display items as full-width rows with svg icon |
+
+## Navigation.Item properties
+
+| properties | required | type                             | description |
+| ---------: | :------: | :------------------------------- | :---------- |
+|   children |   true   | <code>`ReactElement<any>`</code> |             |
+
+### Primary Navigation
+
+<Canvas>
+  <Story of={NavigationStories.Primary} />
+</Canvas>
+
+### Secondary Navigation
+
+<Canvas>
+  <Story of={NavigationStories.Secondary} />
+</Canvas>
+
+### Business Context Navigation
+
+<Canvas>
+  <Story of={NavigationStories.BusinessContext} />
+</Canvas>
+
+### Popover Navigation
+
+<Canvas>
+  <Story of={NavigationStories.Popover} />
+</Canvas>
+
+### Sidebar Navigation
+
+<Canvas>
+  <Story of={NavigationStories.Sidebar} />
+</Canvas>

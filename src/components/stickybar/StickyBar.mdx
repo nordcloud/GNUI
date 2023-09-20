@@ -1,0 +1,27 @@
+import styled from "styled-components";
+import { Meta, Story, Canvas, Title, Description } from "@storybook/blocks";
+import { StickyBar } from "./";
+import { Spacer } from "../spacer";
+import { Box } from "../box";
+import theme from "../../theme";
+import * as StickyBarStories from './StickyBar.stories';
+
+<Meta of={StickyBarStories} />
+
+<Title>Sticky Bar</Title>
+
+<Description>
+  Element acts like it is relatively positioned until it is scrolled to a
+  certain threshold point (0px from the top of the viewport), after which it
+  becomes fixed.
+</Description>
+
+## Props
+
+> *   `children`: `React Node`
+
+## Default
+
+<Canvas>
+  <Story of={StickyBarStories.Default} />
+</Canvas>

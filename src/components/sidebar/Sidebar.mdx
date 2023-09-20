@@ -1,0 +1,67 @@
+import { Meta, Story, Canvas, Title, Description } from "@storybook/blocks";
+import { useDisclosure } from "../../hooks";
+import { Button } from "../button";
+import { Sidebar } from ".";
+import { Container, Row, Col } from "react-awesome-styled-grid";
+import { Text } from "../text";
+import { PaginationBox } from "../pagination/Pagination.tsx";
+import * as SidebarStories from './Sidebar.stories';
+
+<Meta of={SidebarStories} />
+
+# Sidebar
+
+> Sidebars by default will be displayed on the right side of the screen. User needs to provide element (button, link, etc) to open it.
+
+## Sidebar properties
+
+|    properties | required | type                                                    | description |
+| ------------: | :------: | :------------------------------------------------------ | :---------- |
+|      children |  false   | <code>`ReactElement<any>`</code>                        |             |
+|         title |  false   | string                                                  |             |
+|       caption |  false   | string                                                  |             |
+|        isOpen |  false   | boolean                                                 |             |
+|          side |  false   | <code>onLeft</code>, <code>onRight</code>               |             |
+|         width |  false   | number, string                                          |             |
+|       onClick |  false   | <code>(e: any) => void</code>                           |             |
+|        footer |  false   | <code>`ReactElement<any>`</code>                        |             |
+|  headerStyles |  false   | JSON object containing desired CSS for the header part  |             |
+| contentStyles |  false   | JSON object containing desired CSS for the content part |             |
+
+### default
+
+<Canvas>
+  <Story of={SidebarStories.Default} />
+</Canvas>
+
+### footer
+
+You can pass Buttons to footer, and it will displayed at the bottom of the Sidebar.
+
+<Canvas>
+  <Story of={SidebarStories.Footer} />
+</Canvas>
+
+### footer with pagination
+
+You can pass PaginationBox, and it will displayed at the bottom of the Sidebar.
+
+<Canvas>
+  <Story of={SidebarStories.FooterPagination} />
+</Canvas>
+
+### side
+
+Sidebar in default is displayed on the right side, but optionally you can change this behaviour with simple prop `side='onLeft'`.
+
+<Canvas>
+  <Story of={SidebarStories.Side} />
+</Canvas>
+
+### width
+
+> If you don't need default breakpoints and needs just to hardcode `width` value you can provide it with `width` prop.
+
+<Canvas>
+  <Story of={SidebarStories.CustomWidth} />
+</Canvas>

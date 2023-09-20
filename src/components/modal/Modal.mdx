@@ -1,0 +1,55 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import { useDisclosure } from "../../hooks";
+import { Modal, ModalConfirm } from ".";
+import { Button } from "../button";
+import * as ModalStories from './Modal.stories';
+
+<Meta of={ModalStories} />
+
+# Modal
+
+### Modal properties
+
+|       properties | required | type                                                                | description            |
+| ---------------: | :------: | :------------------------------------------------------------------ | :--------------------- |
+|          onClose |   true   | <code>`(event: React.MouseEvent<Element, MouseEvent>) => void`</code> |                        |
+|     contentLabel |   true   | string                                                              | modal title            |
+|         children |   true   | any                                                                 | modal content          |
+|          actions |  false   | <code>`Array<Action>`</code>                                        | list of action buttons |
+|            appId |  false   | string                                                              |                        |
+| contentMaxHeight |  false   | string                                                              | default: `25rem`       |
+|    modalMinWidth |  false   | string                                                              | default: `18.75rem`    |
+|        alignText |  false   | <code>left</code>, <code>right</code>, <code>center</code>          | default: `left`        |
+
+### Action properties
+
+| properties | required | type                                                                | description        |
+| ---------: | :------: | :------------------------------------------------------------------ | :----------------- |
+|      order |   true   | number                                                              | from left to right |
+|   onAction |   true   | <code>`(event: React.MouseEvent<Element, MouseEvent>) => void`</code> |                    |
+|   severity |   true   | <code>low</code>, <code>medium</code>, <code>high</code>            |                    |
+|   disabled |  false   | boolean                                                             |                    |
+
+### Basic modal
+
+<Canvas>
+  <Story of={ModalStories.BasicModal} />
+</Canvas>
+
+### Modal with actions
+
+<Canvas>
+  <Story of={ModalStories.ModalWithActions} />
+</Canvas>
+
+### Modal Confirm
+
+<Canvas>
+  <Story of={ModalStories.ConfirmModal} />
+</Canvas>
+
+### Modal Confirm with long text and scroll
+
+<Canvas>
+  <Story of={ModalStories.ConfirmModalLongBodyText} />
+</Canvas>

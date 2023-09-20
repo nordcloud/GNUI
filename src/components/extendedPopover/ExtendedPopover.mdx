@@ -1,0 +1,65 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import { ExtendedPopover } from "./ExtendedPopover";
+import { SVGIcon } from "../svgicon";
+import * as ExtendedPopoverStories from './ExtendedPopover.stories';
+
+<Meta of={ExtendedPopoverStories} />
+
+# Extended Popover
+
+## properties
+
+> *   `content`: `ReactNode` {required} popover content
+> *   `trigger`: `ReactNode` {optional} popover trigger element, defaults to `<Button><SVGIcon name="burgerMenu" /></Button>`)
+> *   `placement`: `top | bottom | right | left` {optional} relative placement of popover compared to parent element, defaults to `right`
+> *   `position`: `start | end | center` {optional} relative shift of popover placement compared to parent element, defaults to `start`
+> *   `margin`: `{ top?: number, bottom?: number, left?: number, right?: number }` {optional} margin around popover, defaults to `5px` for all properties
+> *   `clickOutsideToClose`: `boolean` {optional} should popover be closed when clicked outside, defaults to `true`
+
+## default Hamburger trigger
+
+<Canvas>
+  <Story of={ExtendedPopoverStories.Default} />
+</Canvas>
+
+## top
+
+<Canvas>
+  <Story of={ExtendedPopoverStories.Top} />
+</Canvas>
+
+## bottom
+
+<Canvas>
+  <Story of={ExtendedPopoverStories.Bottom} />
+</Canvas>
+
+## left
+
+<Canvas>
+  <Story of={ExtendedPopoverStories.Left} />
+</Canvas>
+
+## right
+
+<Canvas>
+  <Story of={ExtendedPopoverStories.Right} />
+</Canvas>
+
+## complex content
+
+<Canvas>
+  <Story of={ExtendedPopoverStories.Complex} />
+</Canvas>
+
+## do not close when clicked outside
+
+<Canvas>
+  <Story of={ExtendedPopoverStories.Keep} />
+</Canvas>
+
+## trigger on hover
+
+<Canvas>
+  <Story of={ExtendedPopoverStories.Hover} />
+</Canvas>

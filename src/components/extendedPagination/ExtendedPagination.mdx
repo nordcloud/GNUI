@@ -1,0 +1,69 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import { ExtendedPaginationBox } from ".";
+import * as ExtendedPaginationStories from './ExtendedPagination.stories';
+
+<Meta of={ExtendedPaginationStories} />
+
+# Extended Pagination
+
+## properties
+
+| properties | required | type    | description                  |
+| ---------: | :------: | :------ | :--------------------------- |
+|       size |   true   | number  | number of item per page      |
+|      count |   true   | number  | number of all items          |
+|       from |   true   | number  | index of first item on page  |
+|    setPage |   true   | number  | set current page             |
+|    setSize |   true   | number  | set number of items per page |
+|      small |  false   | boolean | small size styles            |
+|  firstPage |  false   | number  | index of first page          |
+
+## default
+
+### first page
+
+<Canvas>
+  <Story of={ExtendedPaginationStories.FirstPage} />
+</Canvas>
+
+### second page
+
+<Canvas>
+  <Story of={ExtendedPaginationStories.SecondPage} />
+</Canvas>
+
+### middle
+
+<Canvas>
+  <Story of={ExtendedPaginationStories.Middle} />
+</Canvas>
+
+### second to last page
+
+<Canvas>
+  <Story of={ExtendedPaginationStories.SecondToLastPage} />
+</Canvas>
+
+### last page
+
+<Canvas>
+  <Story of={ExtendedPaginationStories.LastPage} />
+</Canvas>
+
+### different edge cases in the middle of the pagination
+
+<Canvas>
+  <Story of={ExtendedPaginationStories.EdgeCases} />
+</Canvas>
+
+### short pagination
+
+<Canvas>
+  <Story of={ExtendedPaginationStories.Short} />
+</Canvas>
+
+## small
+
+<Canvas>
+  <Story of={ExtendedPaginationStories.Small} />
+</Canvas>

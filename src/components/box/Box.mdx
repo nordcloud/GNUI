@@ -1,0 +1,110 @@
+import {
+  Meta,
+  Title,
+  Story,
+  Canvas,
+  Description,
+} from "@storybook/blocks";
+import { Box } from ".";
+import { Spacer } from "../spacer";
+import { GnuiContainer, FlexContainer } from "../container";
+import theme from "../../theme";
+import * as BoxStories from './Box.stories';
+
+<Meta of={BoxStories} />
+
+<Title>Box</Title>
+
+<Description>
+  By default `Box` has no borders, margins, paddings nor width and height, but
+  all of it (and even more) can be easily styled with `props`. Most of props
+  takes values only from `theme`, but not all of them: i.e. `colors` can be
+  styled in many ways.
+</Description>
+
+## Box properties
+
+|      properties | required | type                                                                                                                                                                                                                                                                                | description                                                                                                     |
+| --------------: | :------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------- |
+|            dark |  false   | boolean                                                                                                                                                                                                                                                                             |                                                                                                                 |
+|       minHeight |  false   | string                                                                                                                                                                                                                                                                              |                                                                                                                 |
+|        minWidth |  false   | string                                                                                                                                                                                                                                                                              |                                                                                                                 |
+|          border |  false   | string, or <code>default</code>, <code>medium</code>, <code>bold</code>, <code>grey</code>, <code>disabled</code>, <code>darkenGrey</code>, <code>dark</code>, <code>success</code>, <code>danger</code>, <code>warning</code>, <code>notification</code>, <code>transparent</code> | GNUI as first looks for the value in `theme.colors` and if color doesn't exist there `color` will be used as is |
+|           color |  false   | string                                                                                                                                                                                                                                                                              | GNUI as first looks for the value in `theme.colors` and if color doesn't exist there `color` will be used as is |
+| backgroundColor |  false   | string                                                                                                                                                                                                                                                                              |                                                                                                                 |
+|          radius |  false   | string, or <code>small</code>, <code>default</code>, <code>large</code>                                                                                                                                                                                                             |                                                                                                                 |
+|    innerSpacing |  false   | string, or <code>spacing01</code>, <code>spacing02</code>, <code>spacing03</code>, <code>spacing04</code>, <code>spacing05</code>, <code>spacing06</code>, <code>spacing07</code>                                                                                                   |                                                                                                                 |
+|         spacing |  false   | string                                                                                                                                                                                                                                                                              |                                                                                                                 |
+|          shadow |  false   | string, or <code>shadow01</code>, <code>shadow02</code>, <code>shadow03</code>, <code>shadow04</code>                                                                                                                                                                               |                                                                                                                 |
+|        children |  false   | React.ReactNode                                                                                                                                                                                                                                                                     |                                                                                                                 |
+|        boxStyle |  false   | <code>lightGrey</code>, <code>grey</code>                                                                                                                                                                                                                                           |                                                                                                                 |
+
+### default
+
+<Canvas>
+  <Story of={BoxStories.BoxDefault} />
+</Canvas>
+
+### boxStyle
+
+> boxStyle: `lightGrey` | `grey`
+
+<Canvas>
+  <Story of={BoxStories.BoxStyle} />
+</Canvas>
+
+### dark
+
+> dark: `boolean`
+
+<Canvas>
+  <Story of={BoxStories.Dark} />
+</Canvas>
+
+### border
+
+> `border`: `string` - \[`default`, `medium`, `bold`, `grey`, `disabled`, `darkenGrey`, `dark`, `success`, `danger`, `warning`, `notification`, `transparent`] or a custom border
+
+<Canvas>
+  <Story of={BoxStories.Border} />
+</Canvas>
+
+### radius
+
+> `radius`: `string` — \[`small`, `default`, `large`]
+
+<Canvas>
+  <Story of={BoxStories.Radius} />
+</Canvas>
+
+### innerSpacing
+
+> `innerSpacing`: `string` — \[`spacing01`, `spacing02`, `spacing03`, `spacing04`, `spacing05`, `spacing06`, `spacing07`]
+
+<Canvas>
+  <Story of={BoxStories.InnerSpacing} />
+</Canvas>
+
+### shadow
+
+> `shadow`: `string` — \[`shadow01`, `shadow02`, `shadow03`, `shadow04`]
+
+<Canvas>
+  <Story of={BoxStories.Shadow} />
+</Canvas>
+
+### color
+
+> `color`: `string` — GNUI as first looks for the value in `theme.colors` and if color doesn't exist there `color` will be used as is.
+
+<Canvas>
+  <Story of={BoxStories.Color} />
+</Canvas>
+
+### backgroundColor
+
+> `backgroundColor`: `string` — GNUI as first looks for the value in `theme.colors` and if color doesn't exist there `color` will be used as is.
+
+<Canvas>
+  <Story of={BoxStories.Background} />
+</Canvas>

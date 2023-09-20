@@ -1,0 +1,82 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Tabs, Tab } from ".";
+import { Button } from "../button";
+import { Text } from "../text";
+import { SVGIcon } from "../svgicon";
+import { FlexContainer } from "../container";
+import * as TabsStories from './Tabs.stories';
+
+<Meta of={TabsStories} />
+
+# Tabs
+
+## Tabs properties
+
+| properties | required | type                                 | description        |
+| ---------: | :------: | :----------------------------------- | :----------------- |
+|     wizard |  false   | boolean                              | enable wizard mode |
+|       name |  false   | string                               |                    |
+|   children |   true   | <code>`Array<Tab>`</code>            | array of tabs      |
+|  handleTab |   true   | <code>`(key: number) => void`</code> |                    |
+|       step |   true   | number                               |                    |
+
+## Tab properties
+
+|     properties | required | type                            | description                               |
+| -------------: | :------: | :------------------------------ | :---------------------------------------- |
+|           step |  false   | number                          |                                           |
+|        heading |  false   | string                          | tab heading                               |
+|        caption |  false   | string                          | tab caption                               |
+|       children |  false   | <code>`React.ReactNode`</code>  | tab content                               |
+|        onClick |  false   | <code>`(e: any) => void`</code> |                                           |
+|       onChange |  false   | <code>`(e: any) => void`</code> |                                           |
+|    styleActive |  false   | boolean                         |                                           |
+|       disabled |  false   | boolean                         |                                           |
+|        buttons |  false   | <code>`React.ReactNode`</code>  | custom buttons for tab                    |
+| buttonsJustify |  false   | string                          | buttons justify, default: "space-between" |
+|          label |  false   | <code>`React.ReactNode`</code>  | custom label element                      |
+|          width |  false   | <code>`string`</code>           | custom width value, default: 17rem        |
+
+## Default
+
+<Canvas>
+  <Story of={TabsStories.Default} />
+</Canvas>
+
+## No Caption
+
+<Canvas>
+  <Story of={TabsStories.Nocaption} />
+</Canvas>
+
+## Custom Label
+
+<Canvas>
+  <Story of={TabsStories.CustomLabel} />
+</Canvas>
+
+## Wizard With Buttons
+
+> `wizard?: boolean;` - Enable wizard mode
+
+> `buttons?: React.ReactNode;` - Custom buttons on tab
+
+> `buttonsJustify?: string;` - Buttons justify, default: "space-between"
+
+<Canvas>
+  <Story of={TabsStories.WithButtons} />
+</Canvas>
+
+## Disabled tab
+
+> `disabled`: `boolean` — Disables switching to a tab by clicking on it
+
+<Canvas>
+  <Story of={TabsStories.DisabledTab} />
+</Canvas>
+
+## Tab width
+
+<Canvas>
+  <Story of={TabsStories.Width} />
+</Canvas>

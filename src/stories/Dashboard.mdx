@@ -1,0 +1,15 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Col, Row, Visible } from "react-awesome-styled-grid";
+import theme from "../theme";
+import { FlexContainer } from "../components/container";
+import { Box } from "../components/box";
+import { PieChart } from "../components/piechart";
+import { Text } from "../components/text";
+import { Spacer } from "../components/spacer";
+import * as DashboardStories from './Dashboard.stories';
+
+<Meta of={DashboardStories} />
+
+<Canvas>
+  <Story of={DashboardStories.Default} />
+</Canvas>

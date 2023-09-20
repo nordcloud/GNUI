@@ -1,0 +1,33 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Radio, RadioGroup } from ".";
+import * as RadiobuttonStories from './Radiobutton.stories';
+
+<Meta of={RadiobuttonStories} />
+
+# Radio Button
+
+> Default input type `radio`.
+
+## Radio Button properties
+
+| properties | required | type   | description                |
+| ---------: | :------: | :----- | :------------------------- |
+|  labelText |   true   | string | label for the radio button |
+
+<Canvas>
+  <Story of={RadiobuttonStories.Simple} />
+</Canvas>
+
+## RadioGroup
+
+> Group of radio buttons. First radio button is checked by default
+
+## RadioGroup properties
+
+| properties | required | type   | description |
+| ---------: | :------: | :----- | :---------- |
+|       name |   true   | string |             |
+
+<Canvas>
+  <Story of={RadiobuttonStories.Group} />
+</Canvas>

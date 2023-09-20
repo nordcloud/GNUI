@@ -1,0 +1,13 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Form, FormButtons, SubmitButton, CancelButton } from ".";
+import { Input, Label, Description } from "../input";
+import { Heading } from "../heading";
+import * as FormStories from './Form.stories';
+
+<Meta of={FormStories} />
+
+# Form
+
+<Canvas>
+  <Story of={FormStories.FormDefault} />
+</Canvas>

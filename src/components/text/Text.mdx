@@ -1,0 +1,86 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Text } from ".";
+import { GnuiContainer } from "../container";
+import * as TextStories from './Text.stories';
+
+<Meta of={TextStories} />
+
+# Text
+
+> Simple `Text` is styled `p` paragraph.
+
+## Text properties
+
+| properties | required | type                                                                                                  | description                                                                                                                                                 |
+| ---------: | :------: | :---------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|       size |  false   | <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>xxl</code> | Text size                                                                                                                                                   |
+|        tag |  false   | string                                                                                                | <code>Text</code> can can be rendered as any other HTML tag instead of p (i.e. <code>Text</code> with <code>tag="span"</code>, will be rendered as a span). |
+|    display |  false   | string                                                                                                | used as css <code>display</code> prop                                                                                                                       |
+| lineHeight |  false   | string                                                                                                | used as css <code>line-height</code> prop                                                                                                                   |
+|      color |  false   | string                                                                                                | used as css <code>color</code> prop                                                                                                                         |
+|     weight |  false   | <code>regular</code>, <code>medium</code>, <code>bold</code>                                          | Text weight                                                                                                                                                 |
+|  textStyle |  false   | <code>normal</code>, <code>italic</code>                                                              | Text style - italic or normal                                                                                                                               |
+|      align |  false   | <code>left</code>, <code>center</code>, <code>right</code>                                            | Text align                                                                                                                                                  |
+|      width |  false   | string                                                                                                | used as css <code>width</code> prop                                                                                                                         |
+|     nowrap |  false   | boolean                                                                                               |                                                                                                                                                             |
+|    isTitle |  false   | boolean                                                                                               |                                                                                                                                                             |
+
+<Canvas>
+  <Story of={TextStories.Simple} />
+</Canvas>
+
+### size
+
+> `size`: `string` — \["xs" | "sm" | "md" | "lg" | "xl" | "xxl"]
+
+<Canvas>
+  <Story of={TextStories.Size} />
+</Canvas>
+
+### tag
+
+> `tag`: `string` — `Text` can can be rendered as any other HTML tag instead of `p` (i.e. can be rendered as a `span`). Check this in your dev-tools (<kbd>CTRL</kbd> + <kbd>C</kbd> in Chrome). Uses `as` prop from `styled-components` under the hood.
+
+<Canvas>
+  <Story of={TextStories.Tag} />
+</Canvas>
+
+### weight
+
+> `weight`: `string` - \["regular" | "medium" | "bold"]
+
+<Canvas>
+  <Story of={TextStories.Weight} />
+</Canvas>
+
+### color
+
+> `color`: `string` - GNUI as first looks for the value in `theme.colors` and if color doesn't exist there `color` will be used as is.
+
+<Canvas>
+  <Story of={TextStories.Color} />
+</Canvas>
+
+### textStyle
+
+> `textStyle`: `string` - \["normal" | "italic"]
+
+<Canvas>
+  <Story of={TextStories.TextStyle} />
+</Canvas>
+
+### align
+
+> `align`: `boolean`
+
+<Canvas>
+  <Story of={TextStories.Align} />
+</Canvas>
+
+### isTitle
+
+> `isTitle`: `boolean`
+
+<Canvas>
+  <Story of={TextStories.IsTitle} />
+</Canvas>

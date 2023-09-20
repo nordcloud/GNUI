@@ -1,0 +1,102 @@
+import { Col, Row, Visible } from "react-awesome-styled-grid";
+import theme from "../theme";
+import { FlexContainer } from "../components/container";
+import { Box } from "../components/box";
+import { PieChart } from "../components/piechart";
+import { Text } from "../components/text";
+import { Spacer } from "../components/spacer";
+
+export default {
+  title: "Pages/Dashboard",
+};
+
+export const Default = {
+  render: () => (
+    <Box
+      style={{
+        maxWidth: "1440px",
+      }}
+    >
+      <Row>
+        <Col lg={4} md={4} xs={4}>
+          <FlexContainer>
+            <PieChart
+              progress={88}
+              size={96}
+              strokeWidth={15}
+              color="success"
+              mr="1rem"
+            >
+              <Text className="chartValue" size="lg" tag="span" weight="medium">
+                12%
+              </Text>
+              <Text className="chartCaption" size="xs" tag="span">
+                less
+              </Text>
+            </PieChart>
+            <Box shadow="shadow00" p={0}>
+              <Text size="sm" tag="div" color={theme.color.text.text02}>
+                SEP 1 - SEP 7, 2020
+              </Text>
+              <Text size="xxl" tag="div" weight="medium">
+                $ 3,034.68
+              </Text>
+              <Text tag="div">
+                $ 500.00
+                <Text size="sm" tag="span" px=".5rem">
+                  less than
+                </Text>
+                <Text size="sm" tag="span">
+                  AUG 1 - AUG 7, 2020
+                </Text>
+              </Text>
+            </Box>
+          </FlexContainer>
+        </Col>
+        <Col lg={4} md={4} xs={4}>
+          <FlexContainer>
+            <PieChart
+              progress={20}
+              size={96}
+              strokeWidth={15}
+              color="danger"
+              mr="1rem"
+            >
+              <Text className="chartValue" size="lg" tag="span" weight="medium">
+                20%
+              </Text>
+              <Text className="chartCaption" size="xs" tag="span">
+                over
+              </Text>
+            </PieChart>
+            <Box shadow="shadow00" p={0}>
+              <Text size="sm" tag="div" color={theme.color.text.text02}>
+                SEP, 2020 Forecasted Total Cost
+              </Text>
+              <Text size="xxl" tag="div" weight="medium">
+                $16,446.51
+              </Text>
+              <Text tag="div">
+                $ 3456.00
+                <Text size="sm" tag="span" px=".5rem">
+                  over than
+                </Text>
+                <Text size="sm" tag="span">
+                  AUG, 2020
+                </Text>
+              </Text>
+            </Box>
+          </FlexContainer>
+        </Col>
+        <Col lg={4} md={8} xs={4}>
+          <Visible md>
+            <Spacer height="2rem" />
+          </Visible>
+          3
+        </Col>
+      </Row>
+    </Box>
+  ),
+
+  name: "default",
+};
