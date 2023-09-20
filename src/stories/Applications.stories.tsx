@@ -1,25 +1,24 @@
+import type { Meta, StoryObj } from "@storybook/react";
 import { Col, Row, Hidden } from "react-awesome-styled-grid";
-import theme from "../theme";
-import { FlexContainer } from "../components/container";
 import { Box } from "../components/box";
-import { Text } from "../components/text";
+import { FlexContainer } from "../components/container";
 import { PieChart } from "../components/piechart";
 import { SVGIcon } from "../components/svgicon";
+import { Text } from "../components/text";
 import { Tooltip } from "../components/tooltip";
-import { Button } from "../components/button";
-import { Table } from "../components/table";
-import { Spacer } from "../components/spacer";
-import { Popover } from "../components/popover";
-import { Navigation } from "../components/navigation";
+import theme from "../theme";
 
-export default {
+const meta: Meta = {
   title: "Pages/Applications",
 };
+export default meta;
 
-export const Default = {
+type Story = StoryObj;
+
+export const AppDetails: Story = {
   render: () => (
     <Box
-      spacing={"spacing04"}
+      spacing="spacing04"
       style={{
         maxWidth: "1440px",
       }}
@@ -149,6 +148,4 @@ export const Default = {
       </Box>
     </Box>
   ),
-
-  name: "default",
 };

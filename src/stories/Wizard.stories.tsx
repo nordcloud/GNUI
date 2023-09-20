@@ -1,16 +1,18 @@
-import styled from "styled-components";
+import { Fragment, useState } from "react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { Tabs, Tab, ButtonPrevious, ButtonNext } from "../components/tabs";
 import { Text } from "../components/text";
-import { Button } from "../components/button";
 
-export default {
+const meta: Meta = {
   title: "Components/Wizard",
   component: Tabs,
 };
 
-export const Default = {
+export default meta;
+
+export const Default: StoryObj = {
   render: () => {
-    const [isCurrentStep, setCurrentStep] = React.useState(0);
+    const [isCurrentStep, setCurrentStep] = useState(0);
 
     const nextStep = () => {
       setCurrentStep(isCurrentStep + 1);
@@ -25,31 +27,31 @@ export const Default = {
     };
 
     const buttonsStep1 = (
-      <React.Fragment>
+      <Fragment>
         <ButtonNext onClick={() => nextStep()}>Next Step</ButtonNext>
-      </React.Fragment>
+      </Fragment>
     );
 
     const buttonsStep2 = (
-      <React.Fragment>
+      <Fragment>
         <ButtonPrevious onClick={() => previousStep()}>
           Previous Step
         </ButtonPrevious>
         <ButtonNext onClick={() => nextStep()}>Next Step</ButtonNext>
-      </React.Fragment>
+      </Fragment>
     );
 
     const buttonsStep3 = (
-      <React.Fragment>
+      <Fragment>
         <ButtonPrevious onClick={() => previousStep()}>
           Previous Step
         </ButtonPrevious>
         <ButtonNext onClick={() => {}}>Submit</ButtonNext>
-      </React.Fragment>
+      </Fragment>
     );
 
     return (
-      <Tabs step={isCurrentStep} wizard handleTab={handleSteps}>
+      <Tabs wizard step={isCurrentStep} handleTab={handleSteps}>
         <Tab
           heading="Tab 1"
           caption="Small caption for Tab 1"
@@ -111,9 +113,9 @@ export const Default = {
   name: "default",
 };
 
-export const Disabled = {
+export const Disabled: StoryObj = {
   render: () => {
-    const [isCurrentStep, setCurrentStep] = React.useState(0);
+    const [isCurrentStep, setCurrentStep] = useState(0);
 
     const nextStep = () => {
       setCurrentStep(isCurrentStep + 1);
@@ -128,31 +130,31 @@ export const Disabled = {
     };
 
     const buttonsStep1 = (
-      <React.Fragment>
+      <Fragment>
         <ButtonNext onClick={() => nextStep()}>Next Step</ButtonNext>
-      </React.Fragment>
+      </Fragment>
     );
 
     const buttonsStep2 = (
-      <React.Fragment>
+      <Fragment>
         <ButtonPrevious onClick={() => previousStep()}>
           Previous Step
         </ButtonPrevious>
         <ButtonNext onClick={() => nextStep()}>Next Step</ButtonNext>
-      </React.Fragment>
+      </Fragment>
     );
 
     const buttonsStep3 = (
-      <React.Fragment>
+      <Fragment>
         <ButtonPrevious onClick={() => previousStep()}>
           Previous Step
         </ButtonPrevious>
         <ButtonNext onClick={() => {}}>Submit</ButtonNext>
-      </React.Fragment>
+      </Fragment>
     );
 
     return (
-      <Tabs step={isCurrentStep} wizard handleTab={handleSteps}>
+      <Tabs wizard step={isCurrentStep} handleTab={handleSteps}>
         <Tab
           heading="Tab 1"
           caption="Small caption for Tab 1"

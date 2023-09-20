@@ -4,7 +4,6 @@ import { Tabs, Tab, ButtonPrevious, ButtonNext } from "../components/tabs";
 import { Text } from "../components/text";
 import { Button } from "../components/button";
 import * as WizardStories from './Wizard.stories';
-import * as WizardStories from './Wizard_.stories';
 
 <Meta of={WizardStories} />
 
@@ -45,8 +44,8 @@ type TabsProps = {
 > `nextButton?: string;` - label for Next button
 > `submitButton?: string;` - label for Submit button
 
-<Canvas />
+<Canvas of={WizardStories.Default} />
 
 > `disabled?: boolean;` - makes the step non-clickable
 
-<Canvas />
+<Canvas of={WizardStories.Disabled} />

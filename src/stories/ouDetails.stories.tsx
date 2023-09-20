@@ -1,20 +1,24 @@
+import type { Meta, StoryObj } from "@storybook/react";
 import { Col, Row } from "react-awesome-styled-grid";
-import theme from "../theme";
-import { FlexContainer } from "../components/container";
+
 import { Box } from "../components/box";
-import { Text } from "../components/text";
+import { FlexContainer } from "../components/container";
+import { Spacer } from "../components/spacer";
 import { SVGIcon } from "../components/svgicon";
 import { Table } from "../components/table";
-import { Spacer } from "../components/spacer";
+import { Text } from "../components/text";
+import theme from "../theme";
 
-export default {
+const meta: Meta = {
   title: "Pages/OU Details",
 };
 
-export const Default = {
+export default meta;
+
+export const Default: StoryObj = {
   render: () => (
     <Box
-      spacing={"spacing02"}
+      spacing="spacing02"
       style={{
         maxWidth: "1440px",
       }}
