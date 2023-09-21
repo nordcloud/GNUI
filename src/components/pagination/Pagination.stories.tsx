@@ -1,11 +1,14 @@
-import { PaginationBox } from ".";
+import { Meta, StoryObj } from "@storybook/react";
+import { PaginationBox } from "./Pagination";
 
-export default {
+const meta: Meta = {
   title: "Components/Pagination",
   component: PaginationBox,
 };
 
-export const Default = {
+export default meta;
+
+export const Default: StoryObj = {
   render: () => (
     <PaginationBox count={400} from={0} size={20} setPage={0} setSize={20} />
   ),

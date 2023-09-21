@@ -1,27 +1,30 @@
-import { Textarea } from ".";
+import { useState } from "react";
+import { Meta, StoryObj } from "@storybook/react";
+import { Button } from "../button";
 import { GnuiContainer } from "../container";
 import { Spacer } from "../spacer";
-import { Button } from "../button";
-import theme from "../../theme";
+import { Textarea } from "./Textarea";
 
-export default {
+const meta: Meta = {
   title: "Forms/Textarea",
   component: Textarea,
 };
 
-export const Default = {
+export default meta;
+
+export const Default: StoryObj = {
   render: () => <Textarea />,
   name: "default",
 };
 
-export const Small = {
+export const Small: StoryObj = {
   render: () => <Textarea small />,
   name: "small",
 };
 
-export const Status = {
+export const Status: StoryObj = {
   render: () => {
-    const [status, setStatus] = React.useState("success");
+    const [status, setStatus] = useState("success");
 
     return (
       <GnuiContainer>
@@ -47,9 +50,9 @@ export const Status = {
   name: "status",
 };
 
-export const MaxCharCount = {
+export const MaxCharCount: StoryObj = {
   render: () => {
-    const [status, setStatus] = React.useState("success");
+    const [status, setStatus] = useState("success");
 
     return (
       <GnuiContainer>

@@ -1,21 +1,27 @@
-import styled from "styled-components";
-import { Loader } from ".";
-import { Spacer } from "../spacer";
-import { GnuiContainer, Flex } from "../container";
-import theme from "../../theme";
+import { Meta, StoryObj } from "@storybook/react";
+import { GnuiContainer } from "../container";
+import { Loader } from "./Loader";
 
-export default {
+const meta: Meta = {
   title: "Components/Loader",
   component: Loader,
 };
 
-export const Default = {
+export default meta;
+
+export const Default: StoryObj = {
   render: () => <Loader />,
   name: "default",
-  height: "300px",
+  parameters: {
+    docs: {
+      story: {
+        height: "300px",
+      },
+    },
+  },
 };
 
-export const Position = {
+export const Position: StoryObj = {
   render: () => (
     <GnuiContainer>
       <Loader position="top-left" />
@@ -28,10 +34,16 @@ export const Position = {
   ),
 
   name: "position",
-  height: "300px",
+  parameters: {
+    docs: {
+      story: {
+        height: "300px",
+      },
+    },
+  },
 };
 
-export const InContent = {
+export const InContent: StoryObj = {
   render: () => (
     <GnuiContainer>
       <Loader inContent />
@@ -41,7 +53,7 @@ export const InContent = {
   name: "inContent",
 };
 
-export const IsBackground = {
+export const IsBackground: StoryObj = {
   render: () => (
     <GnuiContainer>
       <Loader isBackground />
@@ -49,5 +61,11 @@ export const IsBackground = {
   ),
 
   name: "isBackground",
-  height: "300px",
+  parameters: {
+    docs: {
+      story: {
+        height: "300px",
+      },
+    },
+  },
 };

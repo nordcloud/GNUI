@@ -1,24 +1,27 @@
+import { Meta, StoryObj } from "@storybook/react";
 import { Col, Row, Hidden } from "react-awesome-styled-grid";
-import theme from "../theme";
-import { FlexContainer } from "../components/container";
 import { Box } from "../components/box";
-import { Text } from "../components/text";
-import { PieChart } from "../components/piechart";
-import { SVGIcon } from "../components/svgicon";
-import { Tooltip } from "../components/tooltip";
 import { Button } from "../components/button";
-import { Tag } from "../components/tag";
-import { Popover } from "../components/popover";
+import { FlexContainer } from "../components/container";
 import { Navigation } from "../components/navigation";
+import { PieChart } from "../components/piechart";
+import { Popover } from "../components/popover";
+import { SVGIcon } from "../components/svgicon";
+import { Tag } from "../components/tag";
+import { Text } from "../components/text";
+import { Tooltip } from "../components/tooltip";
+import theme from "../theme";
 
-export default {
+const meta: Meta = {
   title: "Pages/appDetails",
 };
 
-export const Default = {
+export default meta;
+
+export const Default: StoryObj = {
   render: () => (
     <Box
-      spacing={"spacing04"}
+      spacing="spacing04"
       style={{
         maxWidth: "1440px",
       }}
@@ -148,8 +151,8 @@ export const Default = {
                 </div>
               </Hidden>
               <Popover
-                trigger={<Button severity="low" icon="menu" size="md" />}
                 alignRight
+                trigger={<Button severity="low" icon="menu" size="md" />}
               >
                 <Navigation.Container popoverMenu>
                   <Navigation.Item
@@ -307,8 +310,8 @@ export const Default = {
                 </div>
               </Hidden>
               <Popover
-                trigger={<Button severity="low" icon="menu" size="md" />}
                 alignRight
+                trigger={<Button severity="low" icon="menu" size="md" />}
               >
                 <Navigation.Container popoverMenu>
                   <Navigation.Item

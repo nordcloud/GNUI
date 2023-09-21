@@ -1,13 +1,17 @@
+import { Meta, StoryObj } from "@storybook/react";
 import { useDisclosure } from "../../hooks";
-import { Modal, ModalConfirm } from ".";
 import { Button } from "../button";
+import { Modal } from "./Modal";
+import { ModalConfirm } from "./ModalConfirm";
 
-export default {
+const meta: Meta = {
   title: "Components/Modal",
   component: Modal,
 };
 
-export const BasicModal = {
+export default meta;
+
+export const BasicModal: StoryObj = {
   render: () => {
     const { isOpen, open, close } = useDisclosure();
 
@@ -16,10 +20,10 @@ export const BasicModal = {
         <Button onClick={open}>Open modal</Button>
         <Modal
           isOpen={isOpen}
-          onClose={close}
-          contentLabel={"Modal title"}
+          contentLabel="Modal title"
           appId="#root"
           alignText="center"
+          onClose={close}
         >
           This is modal content
           <br />
@@ -30,9 +34,16 @@ export const BasicModal = {
   },
 
   name: "basic modal",
+  parameters: {
+    docs: {
+      story: {
+        height: "300px",
+      },
+    },
+  },
 };
 
-export const ModalWithActions = {
+export const ModalWithActions: StoryObj = {
   render: () => {
     const { isOpen, open, close } = useDisclosure();
 
@@ -41,8 +52,7 @@ export const ModalWithActions = {
         <Button onClick={open}>Open modal</Button>
         <Modal
           isOpen={isOpen}
-          onClose={close}
-          contentLabel={"Modal title"}
+          contentLabel="Modal title"
           appId="#root"
           actions={[
             {
@@ -58,6 +68,7 @@ export const ModalWithActions = {
               severity: "high",
             },
           ]}
+          onClose={close}
         >
           This is modal content
           <br />
@@ -68,9 +79,16 @@ export const ModalWithActions = {
   },
 
   name: "modal with actions",
+  parameters: {
+    docs: {
+      story: {
+        height: "300px",
+      },
+    },
+  },
 };
 
-export const ConfirmModal = {
+export const ConfirmModal: StoryObj = {
   render: () => {
     const { isOpen, open, close } = useDisclosure();
 
@@ -83,8 +101,8 @@ export const ConfirmModal = {
           contentLabel="Account"
           isOpen={isOpen}
           confirm={action}
-          onClose={close}
           actionLabel="Delete"
+          onClose={close}
         >
           Do you really want to delete account?
         </ModalConfirm>
@@ -93,9 +111,16 @@ export const ConfirmModal = {
   },
 
   name: "confirm modal",
+  parameters: {
+    docs: {
+      story: {
+        height: "300px",
+      },
+    },
+  },
 };
 
-export const ConfirmModalLongBodyText = {
+export const ConfirmModalLongBodyText: StoryObj = {
   render: () => {
     const { isOpen, open, close } = useDisclosure();
 
@@ -108,8 +133,8 @@ export const ConfirmModalLongBodyText = {
           contentLabel="Account"
           isOpen={isOpen}
           confirm={action}
-          onClose={close}
           actionLabel="Confirm"
+          onClose={close}
         >
           Do you really want to delete account{" "}
           <em>
@@ -122,4 +147,11 @@ export const ConfirmModalLongBodyText = {
   },
 
   name: "confirm modal long body text",
+  parameters: {
+    docs: {
+      story: {
+        height: "300px",
+      },
+    },
+  },
 };

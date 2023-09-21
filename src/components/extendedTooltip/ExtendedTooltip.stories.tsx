@@ -1,12 +1,15 @@
-import { ExtendedTooltip } from "./ExtendedTooltip";
+import { Meta, StoryObj } from "@storybook/react";
 import { SVGIcon } from "../svgicon";
+import { ExtendedTooltip } from "./ExtendedTooltip";
 
-export default {
+const meta: Meta = {
   title: "Components/ExtendedTooltip",
   component: ExtendedTooltip,
 };
 
-export const Top = {
+export default meta;
+
+export const Top: StoryObj = {
   render: () => (
     <div
       style={{
@@ -87,7 +90,7 @@ export const Top = {
   name: "top",
 };
 
-export const Bottom = {
+export const Bottom: StoryObj = {
   render: () => (
     <div
       style={{
@@ -171,7 +174,7 @@ export const Bottom = {
   name: "bottom",
 };
 
-export const Left = {
+export const Left: StoryObj = {
   render: () => (
     <div
       style={{
@@ -201,10 +204,10 @@ export const Left = {
           placement="left"
         >
           <button
+            type="button"
             style={{
               height: "5rem",
             }}
-            type="button"
           >
             Hover Me!
           </button>
@@ -231,10 +234,10 @@ export const Left = {
           placement="left"
         >
           <button
+            type="button"
             style={{
               height: "5rem",
             }}
-            type="button"
           >
             Hover Me!
           </button>
@@ -261,10 +264,10 @@ export const Left = {
           placement="left"
         >
           <button
+            type="button"
             style={{
               height: "5rem",
             }}
-            type="button"
           >
             Hover Me!
           </button>
@@ -276,7 +279,7 @@ export const Left = {
   name: "left",
 };
 
-export const Right = {
+export const Right: StoryObj = {
   render: () => (
     <div
       style={{
@@ -306,10 +309,10 @@ export const Right = {
           placement="right"
         >
           <button
+            type="button"
             style={{
               height: "5rem",
             }}
-            type="button"
           >
             Hover Me!
           </button>
@@ -336,10 +339,10 @@ export const Right = {
           placement="right"
         >
           <button
+            type="button"
             style={{
               height: "5rem",
             }}
-            type="button"
           >
             Hover Me!
           </button>
@@ -366,10 +369,10 @@ export const Right = {
           placement="right"
         >
           <button
+            type="button"
             style={{
               height: "5rem",
             }}
-            type="button"
           >
             Hover Me!
           </button>
@@ -381,7 +384,7 @@ export const Right = {
   name: "right",
 };
 
-export const Status = {
+export const Status: StoryObj = {
   render: () => (
     <div
       style={{
@@ -506,7 +509,7 @@ export const Status = {
   name: "status",
 };
 
-export const OtherComponents = {
+export const OtherComponents: StoryObj = {
   render: () => (
     <div
       style={{

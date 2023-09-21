@@ -1,13 +1,14 @@
+import { Meta, StoryObj } from "@storybook/react";
 import { Container, Row, Col } from "react-awesome-styled-grid";
-import { Text } from "../components/text";
-import theme from "../theme";
 
-export default {
+const meta: Meta = {
   title: "Foundation/Grid",
   component: Container,
 };
 
-export const JustifyContent = {
+export default meta;
+
+export const JustifyContent: StoryObj = {
   render: () => {
     return (
       <Container>

@@ -1,13 +1,16 @@
+import { Meta, StoryObj } from "@storybook/react";
 import { Heading } from "../heading";
 import { Input, Label, Description } from "../input";
 import { Form, FormButtons, SubmitButton, CancelButton } from "./Form";
 
-export default {
+const meta: Meta = {
   title: "Forms/Form",
   component: Form,
 };
 
-export const FormDefault = {
+export default meta;
+
+export const FormDefault: StoryObj = {
   render: () => (
     <Form>
       <Heading level={3} marginBottom="spacing04">

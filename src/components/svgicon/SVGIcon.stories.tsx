@@ -1,15 +1,18 @@
-import { SVGIcon } from ".";
-import { FlexContainer } from "../container";
+import { Meta, StoryObj } from "@storybook/react";
 import CopyToClipboard from "react-copy-to-clipboard";
+import { theme } from "../..";
+import { FlexContainer } from "../container";
 import { Text } from "../text";
-import { theme } from "../../index";
+import { SVGIcon } from "./SVGIcon";
 
-export default {
+const meta: Meta = {
   title: "Components/SVGIcon",
   component: SVGIcon,
 };
 
-export const Size = {
+export default meta;
+
+export const Size: StoryObj = {
   render: () => (
     <FlexContainer justifyContent="space-evenly">
       <SVGIcon name="dashboard" size="sm" />
@@ -23,7 +26,7 @@ export const Size = {
   name: "size",
 };
 
-export const Colors = {
+export const Colors: StoryObj = {
   render: () => (
     <FlexContainer justifyContent="space-evenly">
       <SVGIcon name="dashboard" />
@@ -38,7 +41,7 @@ export const Colors = {
   name: "colors",
 };
 
-export const Data = {
+export const Data: StoryObj = {
   render: () => (
     <FlexContainer justifyContent="space-evenly">
       <CopyToClipboard text="archive">
@@ -135,7 +138,7 @@ export const Data = {
   name: "data",
 };
 
-export const Formatting = {
+export const Formatting: StoryObj = {
   render: () => (
     <FlexContainer justifyContent="space-evenly">
       <CopyToClipboard text="adjustments">
@@ -224,7 +227,7 @@ export const Formatting = {
   name: "formatting",
 };
 
-export const Navigation = {
+export const Navigation: StoryObj = {
   render: () => (
     <FlexContainer justifyContent="space-evenly">
       <CopyToClipboard text="arrowDown">
@@ -313,7 +316,7 @@ export const Navigation = {
   name: "navigation",
 };
 
-export const User = {
+export const User: StoryObj = {
   render: () => (
     <FlexContainer justifyContent="space-evenly">
       <CopyToClipboard text="contactPersons">
@@ -402,7 +405,7 @@ export const User = {
   name: "user",
 };
 
-export const Status = {
+export const Status: StoryObj = {
   render: () => (
     <FlexContainer justifyContent="space-evenly">
       <CopyToClipboard text="inProgressFilled">
@@ -507,7 +510,7 @@ export const Status = {
   name: "status",
 };
 
-export const ResourceCategories = {
+export const ResourceCategories: StoryObj = {
   render: () => (
     <FlexContainer justifyContent="space-evenly">
       <CopyToClipboard text="analytics">
@@ -596,7 +599,7 @@ export const ResourceCategories = {
   name: "resourceCategories",
 };
 
-export const CloudProvider = {
+export const CloudProvider: StoryObj = {
   render: () => (
     <FlexContainer justifyContent="space-evenly">
       <CopyToClipboard text="aws">
@@ -717,7 +720,7 @@ export const CloudProvider = {
   name: "cloudProvider",
 };
 
-export const OsProvider = {
+export const OsProvider: StoryObj = {
   render: () => (
     <FlexContainer justifyContent="space-evenly">
       <CopyToClipboard text="linux">
@@ -790,7 +793,7 @@ export const OsProvider = {
   name: "osProvider",
 };
 
-export const OsComponents = {
+export const OsComponents: StoryObj = {
   render: () => (
     <FlexContainer justifyContent="space-evenly">
       <CopyToClipboard text="customCodeBuild">
@@ -887,7 +890,7 @@ export const OsComponents = {
   name: "osComponents",
 };
 
-export const ExternalServices = {
+export const ExternalServices: StoryObj = {
   render: () => (
     <FlexContainer justifyContent="space-evenly">
       <CopyToClipboard text="serviceNow">
@@ -960,7 +963,7 @@ export const ExternalServices = {
   name: "externalServices",
 };
 
-export const NcIcons = {
+export const NcIcons: StoryObj = {
   render: () => (
     <FlexContainer justifyContent="space-evenly">
       <CopyToClipboard text="bulb">
@@ -1001,7 +1004,7 @@ export const NcIcons = {
   name: "ncIcons",
 };
 
-export const KlarityResources = {
+export const KlarityResources: StoryObj = {
   render: () => (
     <FlexContainer justifyContent="space-evenly">
       <CopyToClipboard text="externalIntegration">
@@ -1016,7 +1019,7 @@ export const KlarityResources = {
   name: "klarityResources",
 };
 
-export const AwsResource = {
+export const AwsResource: StoryObj = {
   render: () => (
     <FlexContainer justifyContent="space-evenly">
       <CopyToClipboard text="ec2">
@@ -1133,7 +1136,7 @@ export const AwsResource = {
   name: "awsResource",
 };
 
-export const Menu = {
+export const Menu: StoryObj = {
   render: () => (
     <FlexContainer justifyContent="space-evenly">
       <CopyToClipboard text="dashboard">
@@ -1175,7 +1178,7 @@ export const Menu = {
   name: "menu",
 };
 
-export const Ui = {
+export const Ui: StoryObj = {
   render: () => (
     <FlexContainer
       justifyContent="space-evenly"

@@ -1,14 +1,17 @@
-import { Text } from "../text";
+import { Meta, StoryObj } from "@storybook/react";
 import { FlexContainer } from "../container";
-import { PieChart } from ".";
 import { SVGIcon } from "../svgicon";
+import { Text } from "../text";
+import { PieChart } from "./PieChart";
 
-export default {
+const meta: Meta = {
   title: "Components/PieChart",
   component: PieChart,
 };
 
-export const Default = {
+export default meta;
+
+export const Default: StoryObj = {
   render: () => (
     <PieChart progress={33} size={96} strokeWidth={15}>
       <Text className="chartValue" size="lg" tag="span" weight="medium">
@@ -23,7 +26,7 @@ export const Default = {
   name: "default",
 };
 
-export const StrokeWidth = {
+export const StrokeWidth: StoryObj = {
   render: () => (
     <FlexContainer justifyContent="space-evenly">
       <PieChart progress={33} size={96} strokeWidth={5}>
@@ -48,7 +51,7 @@ export const StrokeWidth = {
   name: "strokeWidth",
 };
 
-export const Color = {
+export const Color: StoryObj = {
   render: () => (
     <FlexContainer justifyContent="space-evenly">
       <PieChart progress={13} size={96} strokeWidth={15} color="danger">

@@ -1,28 +1,33 @@
+import { useState } from "react";
+import { Meta, StoryObj } from "@storybook/react";
 import { Button } from "../button";
 import { GnuiContainer } from "../container";
 import { Spacer } from "../spacer";
 import { Description } from "./Description";
+import { Input } from "./Input";
 import { InputPassword } from "./InputPassword";
 import { InputSearch } from "./InputSearch";
 import { Upload } from "./InputUpload";
-import { Input, Label } from ".";
+import { Label } from "./Label";
 
-export default {
+const meta: Meta = {
   title: "Forms/Input",
   component: Input,
 };
 
-export const InputDefault = {
+export default meta;
+
+export const InputDefault: StoryObj = {
   render: () => <Input name="input" placeholder="Placeholder" title="Title" />,
   name: "input",
 };
 
-export const Name = {
+export const Name: StoryObj = {
   render: () => <Input name="Thats my name" title="That's my title" />,
   name: "name",
 };
 
-export const Type = {
+export const Type: StoryObj = {
   render: () => (
     <Input
       name="search-input"
@@ -35,14 +40,14 @@ export const Type = {
   name: "type",
 };
 
-export const Disabled = {
+export const Disabled: StoryObj = {
   render: () => (
     <Input disabled name="disabled-input" placeholder="Disabled input" />
   ),
   name: "disabled",
 };
 
-export const Required = {
+export const Required: StoryObj = {
   render: () => (
     <>
       <Label required name="Label" htmlFor="required-id" />
@@ -57,7 +62,7 @@ export const Required = {
   name: "required",
 };
 
-export const Small = {
+export const Small: StoryObj = {
   render: () => (
     <>
       <Label required name="Label" htmlFor="small-id" />
@@ -68,7 +73,7 @@ export const Small = {
   name: "small",
 };
 
-export const UploadDefault = {
+export const UploadDefault: StoryObj = {
   render: () => (
     <>
       <Upload name="upload" placeholder="Select a file to upload" />
@@ -78,7 +83,7 @@ export const UploadDefault = {
   name: "upload",
 };
 
-export const Icon = {
+export const Icon: StoryObj = {
   render: () => (
     <>
       <Label required name="Label" htmlFor="icon-id" />
@@ -89,9 +94,9 @@ export const Icon = {
   name: "icon",
 };
 
-export const Status = {
+export const Status: StoryObj = {
   render: () => {
-    const [status, setStatus] = React.useState("success");
+    const [status, setStatus] = useState("success");
 
     return (
       <GnuiContainer>
@@ -122,7 +127,7 @@ export const Status = {
   name: "status",
 };
 
-export const LabelDescription = {
+export const LabelDescription: StoryObj = {
   render: () => (
     <GnuiContainer>
       <Label name="Label" htmlFor="description-id" />
@@ -138,7 +143,7 @@ export const LabelDescription = {
   name: "label & description",
 };
 
-export const Clear = {
+export const Clear: StoryObj = {
   render: () => (
     <>
       <Label required name="Label" htmlFor="clear-id" />
@@ -158,7 +163,7 @@ export const Clear = {
   name: "clear",
 };
 
-export const Password = {
+export const Password: StoryObj = {
   render: () => (
     <>
       <InputPassword
@@ -173,7 +178,7 @@ export const Password = {
   name: "password",
 };
 
-export const Search = {
+export const Search: StoryObj = {
   render: () => (
     <>
       <InputSearch
@@ -187,7 +192,7 @@ export const Search = {
   name: "search",
 };
 
-export const Date = {
+export const Date: StoryObj = {
   render: () => (
     <>
       <Label required name="Date" htmlFor="date-id" />

@@ -1,16 +1,19 @@
-import { PageTitle, PageTitleBreadcrumbs } from ".";
+import { Meta, StoryObj } from "@storybook/react";
+import { PageTitle, PageTitleBreadcrumbs } from "./Pagetitle";
 
-export default {
+const meta: Meta = {
   title: "Patterns/PageTitleBreadcrumbs",
   component: PageTitleBreadcrumbs,
 };
 
-export const Pagetitle = {
+export default meta;
+
+export const Pagetitle: StoryObj = {
   render: () => <PageTitle title="Page Heading" />,
   name: "pagetitle",
 };
 
-export const Breadcrumbs = {
+export const Breadcrumbs: StoryObj = {
   render: () => (
     <PageTitleBreadcrumbs
       title="Page Heading"

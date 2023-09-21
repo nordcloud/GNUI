@@ -1,17 +1,21 @@
-import { Tabs, Tab } from ".";
+import { useState } from "react";
+import { Meta, StoryObj } from "@storybook/react";
 import { Button } from "../button";
-import { Text } from "../text";
-import { SVGIcon } from "../svgicon";
 import { FlexContainer } from "../container";
+import { SVGIcon } from "../svgicon";
+import { Text } from "../text";
+import { Tabs, Tab } from "./Tabs";
 
-export default {
+const meta: Meta = {
   title: "Components/Tabs",
   component: Tabs,
 };
 
-export const Default = {
+export default meta;
+
+export const Default: StoryObj = {
   render: () => {
-    const [currentStep, setCurrentStep] = React.useState(0);
+    const [currentStep, setCurrentStep] = useState(0);
 
     return (
       <Tabs step={currentStep} handleTab={setCurrentStep}>
@@ -40,9 +44,9 @@ export const Default = {
   name: "default",
 };
 
-export const Nocaption = {
+export const Nocaption: StoryObj = {
   render: () => {
-    const [currentStep, setCurrentStep] = React.useState(0);
+    const [currentStep, setCurrentStep] = useState(0);
 
     return (
       <Tabs step={currentStep} handleTab={setCurrentStep}>
@@ -62,9 +66,9 @@ export const Nocaption = {
   name: "nocaption",
 };
 
-export const CustomLabel = {
+export const CustomLabel: StoryObj = {
   render: () => {
-    const [currentStep, setCurrentStep] = React.useState(0);
+    const [currentStep, setCurrentStep] = useState(0);
 
     return (
       <Tabs step={currentStep} handleTab={setCurrentStep}>
@@ -93,9 +97,9 @@ export const CustomLabel = {
   name: "Custom Label",
 };
 
-export const WithButtons = {
+export const WithButtons: StoryObj = {
   render: () => {
-    const [currentStep, setCurrentStep] = React.useState(0);
+    const [currentStep, setCurrentStep] = useState(0);
 
     const nextStep = () => {
       setCurrentStep((prevStep) => prevStep + 1);
@@ -106,7 +110,7 @@ export const WithButtons = {
     };
 
     return (
-      <Tabs step={currentStep} handleTab={setCurrentStep} wizard>
+      <Tabs wizard step={currentStep} handleTab={setCurrentStep}>
         <Tab
           heading="Application Details"
           caption="give some general information about your application"
@@ -152,9 +156,9 @@ export const WithButtons = {
   name: "With Buttons",
 };
 
-export const DisabledTab = {
+export const DisabledTab: StoryObj = {
   render: () => {
-    const [currentStep, setCurrentStep] = React.useState(0);
+    const [currentStep, setCurrentStep] = useState(0);
 
     const nextStep = () => {
       setCurrentStep((prevStep) => prevStep + 1);
@@ -165,11 +169,11 @@ export const DisabledTab = {
     };
 
     return (
-      <Tabs step={currentStep} handleTab={setCurrentStep} wizard>
+      <Tabs wizard step={currentStep} handleTab={setCurrentStep}>
         <Tab
+          disabled
           heading="Tab 1"
           caption="Lorem ipsum for Tab 1. Lorem Ipsum is simply dummy text"
-          disabled
           buttons={
             <>
               <Button onClick={previousStep}>Previous</Button>
@@ -180,9 +184,9 @@ export const DisabledTab = {
           <Text>Tab 1 Content.</Text>
         </Tab>
         <Tab
+          disabled
           heading="Tab 2"
           caption="Lorem ipsum for Tab 2. Lorem Ipsum is simply dummy text"
-          disabled
           buttons={
             <>
               <Button onClick={previousStep}>Previous</Button>
@@ -199,9 +203,9 @@ export const DisabledTab = {
   name: "disabled tab",
 };
 
-export const Width = {
+export const Width: StoryObj = {
   render: () => {
-    const [currentStep, setCurrentStep] = React.useState(0);
+    const [currentStep, setCurrentStep] = useState(0);
 
     return (
       <Tabs step={currentStep} handleTab={setCurrentStep}>

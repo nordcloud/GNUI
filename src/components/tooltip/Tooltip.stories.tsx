@@ -1,16 +1,19 @@
-import { Tooltip } from ".";
-import { Text } from "../text";
-import { FlexContainer, Flex } from "../container";
+import { Meta, StoryObj } from "@storybook/react";
 import { Button } from "../button";
-import { SVGIcon } from "../svgicon";
+import { FlexContainer } from "../container";
 import { Input } from "../input";
+import { SVGIcon } from "../svgicon";
+import { Text } from "../text";
+import { Tooltip } from ".";
 
-export default {
+const meta: Meta = {
   title: "Components/Tooltip",
   component: Tooltip,
 };
 
-export const Default = {
+export default meta;
+
+export const Default: StoryObj = {
   render: () => (
     <FlexContainer
       justifyContent="space-evenly"
@@ -28,7 +31,7 @@ export const Default = {
   name: "default",
 };
 
-export const Bottom = {
+export const Bottom: StoryObj = {
   render: () => (
     <FlexContainer
       justifyContent="space-evenly"
@@ -49,7 +52,7 @@ export const Bottom = {
   name: "bottom",
 };
 
-export const Position = {
+export const Position: StoryObj = {
   render: () => (
     <FlexContainer
       justifyContent="space-evenly"
@@ -80,7 +83,7 @@ export const Position = {
   name: "position",
 };
 
-export const Status = {
+export const Status: StoryObj = {
   render: () => (
     <FlexContainer
       justifyContent="space-evenly"
@@ -115,7 +118,7 @@ export const Status = {
   name: "status",
 };
 
-export const Components = {
+export const Components: StoryObj = {
   render: () => (
     <FlexContainer
       justifyContent="space-evenly"

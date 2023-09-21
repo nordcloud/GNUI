@@ -1,14 +1,18 @@
-import { MultipleSelect, SelectButton } from ".";
+import { useState } from "react";
+import { Meta, StoryObj } from "@storybook/react";
 import { Text } from "../text";
+import { MultipleSelect, SelectButton } from "./SelectButton";
 
-export default {
+const meta: Meta = {
   title: "Forms/SelectButton",
   component: MultipleSelect,
 };
 
-export const Default = {
+export default meta;
+
+export const Default: StoryObj = {
   render: () => {
-    const [value, setValue] = React.useState();
+    const [value, setValue] = useState();
 
     return (
       <MultipleSelect>
@@ -16,22 +20,22 @@ export const Default = {
           name="button1"
           value="button1"
           labelText="Button 1"
-          onClick={setValue}
           isActive={value === "button1"}
+          onClick={setValue}
         />
         <SelectButton
           name="button2"
           value="button2"
           labelText="Button 2"
-          onClick={setValue}
           isActive={value === "button2"}
+          onClick={setValue}
         />
         <SelectButton
           name="button3"
           value="button3"
           labelText="Button 3"
-          onClick={setValue}
           isActive={value === "button3"}
+          onClick={setValue}
         />
       </MultipleSelect>
     );
@@ -40,33 +44,33 @@ export const Default = {
   name: "default",
 };
 
-export const Disabled = {
+export const Disabled: StoryObj = {
   render: () => {
-    const [value, setValue] = React.useState();
+    const [value, setValue] = useState();
 
     return (
       <MultipleSelect>
         <SelectButton
+          disabled
           name="button1"
           value="button1"
           labelText="Disabled"
-          onClick={setValue}
           isActive={value === "button1"}
-          disabled
+          onClick={setValue}
         />
         <SelectButton
           name="button2"
           value="button2"
           labelText="Button 2"
-          onClick={setValue}
           isActive={value === "button2"}
+          onClick={setValue}
         />
         <SelectButton
           name="button3"
           value="button3"
           labelText="Button 3"
-          onClick={setValue}
           isActive={value === "button3"}
+          onClick={setValue}
         />
       </MultipleSelect>
     );
@@ -75,9 +79,9 @@ export const Disabled = {
   name: "disabled",
 };
 
-export const Small = {
+export const Small: StoryObj = {
   render: () => {
-    const [value, setValue] = React.useState();
+    const [value, setValue] = useState();
 
     return (
       <MultipleSelect size="small">
@@ -85,22 +89,22 @@ export const Small = {
           name="button1"
           value="button1"
           labelText="Button 1"
-          onClick={setValue}
           isActive={value === "button1"}
+          onClick={setValue}
         />
         <SelectButton
           name="button2"
           value="button2"
           labelText="Button 2"
-          onClick={setValue}
           isActive={value === "button2"}
+          onClick={setValue}
         />
         <SelectButton
           name="button3"
           value="button3"
           labelText="Button 3"
-          onClick={setValue}
           isActive={value === "button3"}
+          onClick={setValue}
         />
       </MultipleSelect>
     );
@@ -109,9 +113,9 @@ export const Small = {
   name: "small",
 };
 
-export const Status = {
+export const Status: StoryObj = {
   render: () => {
-    const [value, setValue] = React.useState();
+    const [value, setValue] = useState();
 
     return (
       <div>
@@ -121,22 +125,22 @@ export const Status = {
             name="button1"
             value="button1"
             labelText="Button 1"
-            onClick={setValue}
             isActive={value === "button1"}
+            onClick={setValue}
           />
           <SelectButton
             name="button2"
             value="button2"
             labelText="Button 2"
-            onClick={setValue}
             isActive={value === "button2"}
+            onClick={setValue}
           />
           <SelectButton
             name="button3"
             value="button3"
             labelText="Button 3"
-            onClick={setValue}
             isActive={value === "button3"}
+            onClick={setValue}
           />
         </MultipleSelect>
         <Text marginTop="1rem">Danger</Text>
@@ -145,22 +149,22 @@ export const Status = {
             name="danger-button1"
             value="danger-button1"
             labelText="Button 1"
-            onClick={setValue}
             isActive={value === "danger-button1"}
+            onClick={setValue}
           />
           <SelectButton
             name="danger-button2"
             value="danger-button2"
             labelText="Button 2"
-            onClick={setValue}
             isActive={value === "danger-button2"}
+            onClick={setValue}
           />
           <SelectButton
             name="danger-button3"
             value="danger-button3"
             labelText="Button 3"
-            onClick={setValue}
             isActive={value === "danger-button3"}
+            onClick={setValue}
           />
         </MultipleSelect>
         <Text marginTop="1rem">Warning</Text>
@@ -169,22 +173,22 @@ export const Status = {
             name="warning-button1"
             value="warning-button1"
             labelText="Button 1"
-            onClick={setValue}
             isActive={value === "warning-button1"}
+            onClick={setValue}
           />
           <SelectButton
             name="warning-button2"
             value="warning-button2"
             labelText="Button 2"
-            onClick={setValue}
             isActive={value === "warning-button2"}
+            onClick={setValue}
           />
           <SelectButton
             name="warning-button3"
             value="warning-button3"
             labelText="Button 3"
-            onClick={setValue}
             isActive={value === "warning-button3"}
+            onClick={setValue}
           />
         </MultipleSelect>
         <Text marginTop="1rem">Notification</Text>
@@ -193,22 +197,22 @@ export const Status = {
             name="notification-button1"
             value="notification-button1"
             labelText="Button 1"
-            onClick={setValue}
             isActive={value === "notification-button1"}
+            onClick={setValue}
           />
           <SelectButton
             name="notification-button2"
             value="notification-button2"
             labelText="Button 2"
-            onClick={setValue}
             isActive={value === "notification-button2"}
+            onClick={setValue}
           />
           <SelectButton
             name="notification-button3"
             value="notification-button3"
             labelText="Button 3"
-            onClick={setValue}
             isActive={value === "notification-button3"}
+            onClick={setValue}
           />
         </MultipleSelect>
       </div>

@@ -1,14 +1,17 @@
-import { Spacer } from ".";
+import { Meta, StoryObj } from "@storybook/react";
+import theme from "../../theme";
 import { GnuiContainer, FlexContainer } from "../container";
 import { Text } from "../text";
-import theme from "../../theme";
+import { Spacer } from "./Spacer";
 
-export default {
+const meta: Meta = {
   title: "Foundation/Spacing",
   component: Spacer,
 };
 
-export const Default = {
+export default meta;
+
+export const Default: StoryObj = {
   render: () => (
     <FlexContainer>
       <GnuiContainer
@@ -38,7 +41,7 @@ export const Default = {
   name: "default",
 };
 
-export const Margin = {
+export const Margin: StoryObj = {
   render: () => (
     <GnuiContainer>
       <GnuiContainer

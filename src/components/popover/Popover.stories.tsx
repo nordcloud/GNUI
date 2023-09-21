@@ -1,14 +1,16 @@
-import { Popover } from ".";
+import { Meta, StoryObj } from "@storybook/react";
 import { Button } from "../button";
-import { Spacer } from "../spacer";
 import { FlexContainer } from "../container";
+import { Popover } from "./Popover";
 
-export default {
+const meta: Meta = {
   title: "Components/Popover",
   component: Popover,
 };
 
-export const Default = {
+export default meta;
+
+export const Default: StoryObj = {
   render: () => (
     <Popover trigger={<Button severity="low" icon="menu" size="md" />}>
       <Button mb="0.25rem" severity="low" icon="plus" size="md">
@@ -21,9 +23,16 @@ export const Default = {
   ),
 
   name: "default",
+  parameters: {
+    docs: {
+      story: {
+        height: "300px",
+      },
+    },
+  },
 };
 
-export const AlignRight = {
+export const AlignRight: StoryObj = {
   render: () => (
     <FlexContainer justifyContent="flex-end">
       <Popover
@@ -41,4 +50,11 @@ export const AlignRight = {
   ),
 
   name: "alignRight",
+  parameters: {
+    docs: {
+      story: {
+        height: "300px",
+      },
+    },
+  },
 };

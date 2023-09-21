@@ -1,25 +1,25 @@
-import styled from "styled-components";
-import { Spinner } from ".";
-import { Spacer } from "../spacer";
+import { Meta, StoryObj } from "@storybook/react";
 import { FlexContainer } from "../container";
-import theme from "../../theme";
+import { Spinner } from "./Spinner";
 
-export default {
+const meta: Meta = {
   title: "Components/Spinner",
   component: Spinner,
 };
 
-export const Default = {
+export default meta;
+
+export const Default: StoryObj = {
   render: () => <Spinner />,
   name: "default",
 };
 
-export const Ninja = {
+export const Ninja: StoryObj = {
   render: () => <Spinner ninja />,
   name: "ninja",
 };
 
-export const Color = {
+export const Color: StoryObj = {
   render: () => (
     <FlexContainer justifyContent="space-evenly">
       <Spinner color="success" />
@@ -32,7 +32,7 @@ export const Color = {
   name: "color",
 };
 
-export const Size = {
+export const Size: StoryObj = {
   render: () => (
     <FlexContainer justifyContent="space-evenly">
       <Spinner size="sm" />
@@ -46,7 +46,7 @@ export const Size = {
   name: "size",
 };
 
-export const SizeNinja = {
+export const SizeNinja: StoryObj = {
   render: () => (
     <FlexContainer justifyContent="space-evenly">
       <Spinner ninja size="sm" />

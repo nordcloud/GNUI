@@ -1,11 +1,14 @@
-import { ExtendedPaginationBox } from ".";
+import { Meta, StoryObj } from "@storybook/react";
+import { ExtendedPaginationBox } from "./ExtendedPagination";
 
-export default {
+const meta: Meta = {
   title: "Components/ExtendedPagination",
   component: ExtendedPaginationBox,
 };
 
-export const FirstPage = {
+export default meta;
+
+export const FirstPage: StoryObj = {
   render: () => (
     <ExtendedPaginationBox
       count={400}
@@ -19,7 +22,7 @@ export const FirstPage = {
   name: "first-page",
 };
 
-export const SecondPage = {
+export const SecondPage: StoryObj = {
   render: () => (
     <ExtendedPaginationBox
       count={400}
@@ -33,7 +36,7 @@ export const SecondPage = {
   name: "second-page",
 };
 
-export const Middle = {
+export const Middle: StoryObj = {
   render: () => (
     <ExtendedPaginationBox
       count={400}
@@ -47,7 +50,7 @@ export const Middle = {
   name: "middle",
 };
 
-export const SecondToLastPage = {
+export const SecondToLastPage: StoryObj = {
   render: () => (
     <ExtendedPaginationBox
       count={400}
@@ -61,7 +64,7 @@ export const SecondToLastPage = {
   name: "second-to-last-page",
 };
 
-export const LastPage = {
+export const LastPage: StoryObj = {
   render: () => (
     <ExtendedPaginationBox
       count={400}
@@ -75,7 +78,7 @@ export const LastPage = {
   name: "last-page",
 };
 
-export const EdgeCases = {
+export const EdgeCases: StoryObj = {
   render: () => (
     <ExtendedPaginationBox
       count={400}
@@ -89,7 +92,7 @@ export const EdgeCases = {
   name: "edge-cases",
 };
 
-export const Short = {
+export const Short: StoryObj = {
   render: () => (
     <ExtendedPaginationBox
       count={60}
@@ -103,7 +106,7 @@ export const Short = {
   name: "short",
 };
 
-export const Small = {
+export const Small: StoryObj = {
   render: () => (
     <ExtendedPaginationBox
       small

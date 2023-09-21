@@ -1,11 +1,14 @@
-import { Breadcrumbs } from ".";
+import { Meta, StoryObj } from "@storybook/react";
+import { Breadcrumbs } from "./Breadcrumbs";
 
-export default {
+const meta: Meta = {
   title: "Components/Breadcrumbs",
   component: Breadcrumbs,
 };
 
-export const Default = {
+export default meta;
+
+export const Default: StoryObj = {
   render: () => (
     <Breadcrumbs
       list={[

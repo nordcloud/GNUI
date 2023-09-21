@@ -1,15 +1,16 @@
-import styled from "styled-components";
-import { StickyBar } from ".";
-import { Spacer } from "../spacer";
+import { Meta, StoryObj } from "@storybook/react";
 import { Box } from "../box";
-import theme from "../../theme";
+import { Spacer } from "../spacer";
+import { StickyBar } from ".";
 
-export default {
+const meta: Meta = {
   title: "Components/StickyBar",
   component: StickyBar,
 };
 
-export const Default = {
+export default meta;
+
+export const Default: StoryObj = {
   render: () => (
     <div
       style={{

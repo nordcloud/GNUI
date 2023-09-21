@@ -1,16 +1,19 @@
-import { Message } from ".";
-import { Text } from "../text";
-import { Spacer } from "../spacer";
-import { FlexContainer } from "../container";
+import { Meta, StoryObj } from "@storybook/react";
 import theme from "../../theme";
 import { Button } from "../button";
+import { FlexContainer } from "../container";
+import { Spacer } from "../spacer";
+import { Text } from "../text";
+import { Message } from "./Message";
 
-export default {
+const meta: Meta = {
   title: "Components/Message",
   component: Message,
 };
 
-export const Default = {
+export default meta;
+
+export const Default: StoryObj = {
   render: () => (
     <Message>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -24,7 +27,7 @@ export const Default = {
   name: "default",
 };
 
-export const Status = {
+export const Status: StoryObj = {
   render: () => (
     <>
       <Message status="discovery" image="help">
@@ -52,7 +55,7 @@ export const Status = {
   name: "status",
 };
 
-export const Custom = {
+export const Custom: StoryObj = {
   render: () => (
     <>
       <Message
@@ -68,13 +71,13 @@ export const Custom = {
   name: "custom",
 };
 
-export const Discovery = {
+export const Discovery: StoryObj = {
   render: () => (
     <>
       <Message status="discovery" image="help">
-        <FlexContainer direction={"column"} alignItems={"start"}>
+        <FlexContainer direction="column" alignItems="start">
           <Text
-            weight={"medium"}
+            weight="medium"
             color={theme.color.text.text01}
             mb={theme.spacing.spacing00}
           >
@@ -91,11 +94,11 @@ export const Discovery = {
             and scrambled it to make a type specimen book.
           </Text>
           <FlexContainer>
-            <Button size={"md"} mt={theme.spacing.spacing04}>
+            <Button size="md" mt={theme.spacing.spacing04}>
               Action Button
             </Button>
             <Button
-              size={"md"}
+              size="md"
               mt={theme.spacing.spacing04}
               ml={theme.spacing.spacing04}
             >
@@ -103,7 +106,7 @@ export const Discovery = {
             </Button>
           </FlexContainer>
         </FlexContainer>
-        <Button size={"sm"} severity={"low"} icon="close" />
+        <Button size="sm" severity="low" icon="close" />
       </Message>
     </>
   ),
@@ -111,13 +114,13 @@ export const Discovery = {
   name: "Discovery",
 };
 
-export const Notification = {
+export const Notification: StoryObj = {
   render: () => (
     <>
       <Message status="notification" image="info">
-        <FlexContainer direction={"column"} alignItems={"start"}>
+        <FlexContainer direction="column" alignItems="start">
           <Text
-            weight={"medium"}
+            weight="medium"
             color={theme.color.text.info}
             mb={theme.spacing.spacing00}
           >
@@ -135,14 +138,14 @@ export const Notification = {
           </Text>
           <FlexContainer>
             <Button
-              size={"md"}
+              size="md"
               mt={theme.spacing.spacing04}
               status="notification"
             >
               Action Button
             </Button>
             <Button
-              size={"md"}
+              size="md"
               mt={theme.spacing.spacing04}
               ml={theme.spacing.spacing04}
               status="notification"
@@ -151,7 +154,7 @@ export const Notification = {
             </Button>
           </FlexContainer>
         </FlexContainer>
-        <Button size={"sm"} severity={"low"} icon="close" />
+        <Button size="sm" severity="low" icon="close" />
       </Message>
     </>
   ),
@@ -159,13 +162,13 @@ export const Notification = {
   name: "Notification",
 };
 
-export const Warning = {
+export const Warning: StoryObj = {
   render: () => (
     <>
       <Message status="warning" image="warning">
-        <FlexContainer direction={"column"} alignItems={"start"}>
+        <FlexContainer direction="column" alignItems="start">
           <Text
-            weight={"medium"}
+            weight="medium"
             color={theme.color.text.warning}
             mb={theme.spacing.spacing00}
           >
@@ -182,11 +185,11 @@ export const Warning = {
             and scrambled it to make a type specimen book.
           </Text>
           <FlexContainer>
-            <Button size={"md"} mt={theme.spacing.spacing04} status="warning">
+            <Button size="md" mt={theme.spacing.spacing04} status="warning">
               Action Button
             </Button>
             <Button
-              size={"md"}
+              size="md"
               mt={theme.spacing.spacing04}
               ml={theme.spacing.spacing04}
               status="warning"
@@ -195,7 +198,7 @@ export const Warning = {
             </Button>
           </FlexContainer>
         </FlexContainer>
-        <Button size={"sm"} severity={"low"} icon="close" />
+        <Button size="sm" severity="low" icon="close" />
       </Message>
     </>
   ),
@@ -203,13 +206,13 @@ export const Warning = {
   name: "Warning",
 };
 
-export const Success = {
+export const Success: StoryObj = {
   render: () => (
     <>
       <Message status="success" image="success">
-        <FlexContainer direction={"column"} alignItems={"start"}>
+        <FlexContainer direction="column" alignItems="start">
           <Text
-            weight={"medium"}
+            weight="medium"
             color={theme.color.text.success}
             mb={theme.spacing.spacing00}
           >
@@ -226,11 +229,11 @@ export const Success = {
             and scrambled it to make a type specimen book.
           </Text>
           <FlexContainer>
-            <Button size={"md"} mt={theme.spacing.spacing04} status="success">
+            <Button size="md" mt={theme.spacing.spacing04} status="success">
               Action Button
             </Button>
             <Button
-              size={"md"}
+              size="md"
               mt={theme.spacing.spacing04}
               ml={theme.spacing.spacing04}
               status="success"
@@ -239,7 +242,7 @@ export const Success = {
             </Button>
           </FlexContainer>
         </FlexContainer>
-        <Button size={"sm"} severity={"low"} icon="close" />
+        <Button size="sm" severity="low" icon="close" />
       </Message>
     </>
   ),
@@ -247,13 +250,13 @@ export const Success = {
   name: "Success",
 };
 
-export const Danger = {
+export const Danger: StoryObj = {
   render: () => (
     <>
       <Message status="danger" image="danger">
-        <FlexContainer direction={"column"} alignItems={"start"}>
+        <FlexContainer direction="column" alignItems="start">
           <Text
-            weight={"medium"}
+            weight="medium"
             color={theme.color.text.error}
             mb={theme.spacing.spacing00}
           >
@@ -270,11 +273,11 @@ export const Danger = {
             and scrambled it to make a type specimen book.
           </Text>
           <FlexContainer>
-            <Button size={"md"} mt={theme.spacing.spacing04} status="danger">
+            <Button size="md" mt={theme.spacing.spacing04} status="danger">
               Action Button
             </Button>
             <Button
-              size={"md"}
+              size="md"
               mt={theme.spacing.spacing04}
               ml={theme.spacing.spacing04}
               status="danger"
@@ -283,7 +286,7 @@ export const Danger = {
             </Button>
           </FlexContainer>
         </FlexContainer>
-        <Button size={"sm"} severity={"low"} icon="close" />
+        <Button size="sm" severity="low" icon="close" />
       </Message>
     </>
   ),

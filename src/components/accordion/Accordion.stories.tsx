@@ -1,30 +1,29 @@
-import { Accordion, AccordionHeader, AccordionItem } from ".";
+import { Meta, StoryObj } from "@storybook/react";
+import { Accordion, AccordionHeader, AccordionItem } from "./Accordion";
 
-export default {
+const meta: Meta = {
   title: "Components/Accordion",
   component: Accordion,
 };
 
-export const AccordionDefault = {
+export default meta;
+
+export const AccordionDefault: StoryObj = {
   render: () => (
     <Accordion>
-      <AccordionHeader
-        children={null}
-        title="Header 1"
-        description="description..."
-      />
-      <AccordionHeader
-        children={null}
-        title="Header 2"
-        description="description..."
-      />
+      <AccordionHeader title="Header 1" description="description...">
+        {null}
+      </AccordionHeader>
+      <AccordionHeader title="Header 2" description="description...">
+        {null}
+      </AccordionHeader>
     </Accordion>
   ),
 
   name: "accordion",
 };
 
-export const AccordionHeaderDefault = {
+export const AccordionHeaderDefault: StoryObj = {
   render: () => (
     <Accordion>
       <AccordionHeader title="Header 1" description="description...">

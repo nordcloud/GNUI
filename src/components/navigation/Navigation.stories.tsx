@@ -1,18 +1,21 @@
-import { Navigation } from ".";
-import { Decos } from "./decos";
-import { SVGIcon } from "../svgicon";
-import { Box } from "../box";
-import { Text } from "../text";
+import { Meta, StoryObj } from "@storybook/react";
 import theme from "../../theme";
+import { Box } from "../box";
 import { Button } from "../button";
 import { FlexContainer } from "../container";
+import { SVGIcon } from "../svgicon";
+import { Text } from "../text";
+import { Decos } from "./decos";
+import { Navigation } from "./Navigation";
 
-export default {
+const meta: Meta = {
   title: "Components/Navigation",
   component: Navigation.Item,
 };
 
-export const Primary = {
+export default meta;
+
+export const Primary: StoryObj = {
   render: () => {
     return (
       <Navigation.Container>
@@ -32,7 +35,7 @@ export const Primary = {
   name: "primary",
 };
 
-export const Secondary = {
+export const Secondary: StoryObj = {
   render: () => {
     return (
       <Box boxStyle="lightGrey">
@@ -79,7 +82,7 @@ export const Secondary = {
   name: "secondary",
 };
 
-export const BusinessContext = {
+export const BusinessContext: StoryObj = {
   render: () => {
     return (
       <Box boxStyle="lightGrey">
@@ -104,7 +107,7 @@ export const BusinessContext = {
                 backgroundColor: `${theme.color.support.purple}`,
                 borderRadius: "2px",
               }}
-            ></div>
+            />
             Cost Center
             <SVGIcon name="arrowRight" />
           </Navigation.Item>
@@ -121,7 +124,7 @@ export const BusinessContext = {
                 backgroundColor: `${theme.color.support.indigo}`,
                 borderRadius: "2px",
               }}
-            ></div>
+            />
             Charging Units
             <SVGIcon name="arrowRight" />
           </Navigation.Item>
@@ -138,7 +141,7 @@ export const BusinessContext = {
   name: "business context",
 };
 
-export const Popover = {
+export const Popover: StoryObj = {
   render: () => {
     return (
       <Navigation.Container popoverMenu>
@@ -161,7 +164,7 @@ export const Popover = {
   name: "popover",
 };
 
-export const Sidebar = {
+export const Sidebar: StoryObj = {
   render: () => {
     return (
       <Navigation.Container secondary>

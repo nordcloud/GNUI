@@ -1,12 +1,17 @@
-import { CheckmarkCheckbox, CheckmarkCheckboxGroup } from ".";
+import { useState } from "react";
+import { Meta, StoryObj } from "@storybook/react";
+import { CheckboxGroup } from "../checkbox/Checkbox";
 import { FlexContainer } from "../container";
+import { CheckmarkCheckbox } from "./CheckmarkCheckbox";
 
-export default {
+const meta: Meta = {
   title: "Forms/CheckmarkCheckbox",
   component: CheckmarkCheckbox,
 };
 
-export const Simple = {
+export default meta;
+
+export const Simple: StoryObj = {
   render: () => (
     <FlexContainer
       style={{
@@ -26,7 +31,7 @@ export const Simple = {
   name: "simple",
 };
 
-export const Double = {
+export const Double: StoryObj = {
   render: () => (
     <FlexContainer
       style={{
@@ -34,9 +39,9 @@ export const Double = {
       }}
     >
       <CheckmarkCheckbox
+        double
         id="checkbox-2"
         labelText="GNUI Checkbox"
-        double
         tooltipProps={{
           showTimeout: 400,
         }}
@@ -47,7 +52,7 @@ export const Double = {
   name: "double",
 };
 
-export const WithoutLabel = {
+export const WithoutLabel: StoryObj = {
   render: () => (
     <FlexContainer
       style={{
@@ -67,9 +72,9 @@ export const WithoutLabel = {
   name: "withoutLabel",
 };
 
-export const Group = {
+export const Group: StoryObj = {
   render: () => {
-    const [value, setValue] = React.useState({
+    const [value, setValue] = useState({
       0: false,
       1: false,
       2: false,
@@ -95,8 +100,8 @@ export const Group = {
           {names.map((names, index) => (
             <CheckmarkCheckbox
               id={names[index]}
-              onChange={() => handleCheckbox(index)}
               labelText={labels[index]}
+              onChange={() => handleCheckbox(index)}
             />
           ))}
         </CheckboxGroup>

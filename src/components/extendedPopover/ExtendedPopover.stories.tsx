@@ -1,12 +1,15 @@
-import { ExtendedPopover } from "./ExtendedPopover";
+import { Meta, StoryObj } from "@storybook/react";
 import { SVGIcon } from "../svgicon";
+import { ExtendedPopover } from "./ExtendedPopover";
 
-export default {
+const meta: Meta = {
   title: "Components/ExtendedPopover",
   component: ExtendedPopover,
 };
 
-export const Default = {
+export default meta;
+
+export const Default: StoryObj = {
   render: () => (
     <p
       style={{
@@ -30,7 +33,7 @@ export const Default = {
   name: "default",
 };
 
-export const Top = {
+export const Top: StoryObj = {
   render: () => (
     <div
       style={{
@@ -144,7 +147,7 @@ export const Top = {
   name: "top",
 };
 
-export const Bottom = {
+export const Bottom: StoryObj = {
   render: () => (
     <div
       style={{
@@ -258,7 +261,7 @@ export const Bottom = {
   name: "bottom",
 };
 
-export const Left = {
+export const Left: StoryObj = {
   render: () => (
     <div
       style={{
@@ -399,7 +402,7 @@ export const Left = {
   name: "left",
 };
 
-export const Right = {
+export const Right: StoryObj = {
   render: () => (
     <div
       style={{
@@ -540,7 +543,7 @@ export const Right = {
   name: "right",
 };
 
-export const Complex = {
+export const Complex: StoryObj = {
   render: () => (
     <ExtendedPopover
       placement="top"
@@ -590,7 +593,7 @@ export const Complex = {
   name: "complex",
 };
 
-export const Keep = {
+export const Keep: StoryObj = {
   render: () => (
     <p
       style={{
@@ -623,7 +626,7 @@ export const Keep = {
   name: "keep",
 };
 
-export const Hover = {
+export const Hover: StoryObj = {
   render: () => (
     <p
       style={{

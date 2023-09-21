@@ -1,17 +1,20 @@
+import { Meta, StoryObj } from "@storybook/react";
+import { Container, Row, Col } from "react-awesome-styled-grid";
 import { useDisclosure } from "../../hooks";
 import { Button } from "../button";
-import { Sidebar } from ".";
-import { Container, Row, Col } from "react-awesome-styled-grid";
-import { Text } from "../text";
 import { PaginationBox } from "../pagination/Pagination";
+import { Text } from "../text";
+import { Sidebar } from "./Sidebar";
 
-export default {
+const meta: Meta = {
   title: "Components/Sidebar",
   component: Sidebar,
   id: "sidebar",
 };
 
-export const Default = {
+export default meta;
+
+export const Default: StoryObj = {
   render: () => {
     const { isOpen, open, close } = useDisclosure();
 
@@ -33,18 +36,27 @@ export const Default = {
   },
 
   name: "default",
+  parameters: {
+    docs: {
+      story: {
+        height: "450px",
+      },
+    },
+  },
 };
 
-export const Footer = {
+export const Footer: StoryObj = {
   render: () => {
     const { isOpen, open, close } = useDisclosure();
 
-    const Footer = () => (
-      <>
-        <Button onClick={close}>Cancel</Button>
-        <Button>Update</Button>
-      </>
-    );
+    function Footer() {
+      return (
+        <>
+          <Button onClick={close}>Cancel</Button>
+          <Button>Update</Button>
+        </>
+      );
+    }
 
     return (
       <Container>
@@ -54,8 +66,8 @@ export const Footer = {
         <Sidebar
           title="Default sidebar"
           isOpen={isOpen}
-          onClick={close}
           footer={<Footer />}
+          onClick={close}
         >
           Sidebar Content
         </Sidebar>
@@ -64,9 +76,16 @@ export const Footer = {
   },
 
   name: "footer",
+  parameters: {
+    docs: {
+      story: {
+        height: "450px",
+      },
+    },
+  },
 };
 
-export const FooterPagination = {
+export const FooterPagination: StoryObj = {
   render: () => {
     const { isOpen, open, close } = useDisclosure();
 
@@ -78,7 +97,6 @@ export const FooterPagination = {
         <Sidebar
           title="Default sidebar"
           isOpen={isOpen}
-          onClick={close}
           footer={
             <PaginationBox
               sidebar
@@ -90,6 +108,7 @@ export const FooterPagination = {
               setSize={20}
             />
           }
+          onClick={close}
         >
           Sidebar Content
         </Sidebar>
@@ -98,9 +117,16 @@ export const FooterPagination = {
   },
 
   name: "footer pagination",
+  parameters: {
+    docs: {
+      story: {
+        height: "450px",
+      },
+    },
+  },
 };
 
-export const Side = {
+export const Side: StoryObj = {
   render: () => {
     const {
       isOpen: isOpenLeft,
@@ -147,9 +173,16 @@ export const Side = {
   },
 
   name: "side",
+  parameters: {
+    docs: {
+      story: {
+        height: "450px",
+      },
+    },
+  },
 };
 
-export const CustomWidth = {
+export const CustomWidth: StoryObj = {
   render: () => {
     const {
       isOpen: isOpenPercent,
@@ -208,4 +241,11 @@ export const CustomWidth = {
   },
 
   name: "custom width",
+  parameters: {
+    docs: {
+      story: {
+        height: "450px",
+      },
+    },
+  },
 };

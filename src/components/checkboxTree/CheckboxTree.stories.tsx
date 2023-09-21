@@ -1,11 +1,14 @@
+import { Meta, StoryObj } from "@storybook/react";
 import { CheckboxTree } from "./CheckboxTree.js";
 
-export default {
+const meta: Meta = {
   title: "Forms/CheckboxTree",
   component: CheckboxTree,
 };
 
-export const Simple = {
+export default meta;
+
+export const Simple: StoryObj = {
   render: () => (
     <CheckboxTree
       expanded={["meat", "meat->pork"]}

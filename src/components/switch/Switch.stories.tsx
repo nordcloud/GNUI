@@ -1,15 +1,17 @@
+import { Meta, StoryObj } from "@storybook/react";
 import { useDisclosure } from "../../hooks";
-import { Switch } from ".";
 import { GnuiContainer } from "../container";
 import { Spacer } from "../spacer";
-import theme from "../../theme";
+import { Switch } from "./Switch";
 
-export default {
+const meta: Meta = {
   title: "Forms/Switch",
   component: Switch,
 };
 
-export const Default = {
+export default meta;
+
+export const Default: StoryObj = {
   render: () => <Switch labelText="My Switch Button" />,
   name: "default",
 };
@@ -30,55 +32,55 @@ export const Position = {
   name: "position",
 };
 
-export const Severity = {
+export const Severity: StoryObj = {
   render: () => {
     const { isOpen: checked, toggle } = useDisclosure(true);
 
     return (
       <GnuiContainer>
         <Switch
+          readOnly
           name="label1"
           severity="warning"
           labelText="My Switch Button Warning"
-          onClick={toggle}
           checked={checked}
-          readOnly
+          onClick={toggle}
         />
         <Spacer height="1rem" />
         <Switch
+          readOnly
           name="label2"
           severity="danger"
           labelText="My Switch Button Danger"
-          onClick={toggle}
           checked={checked}
-          readOnly
+          onClick={toggle}
         />
         <Spacer height="1rem" />
         <Switch
+          readOnly
           name="label3"
           severity="success"
           labelText="My Switch Button Success"
-          onClick={toggle}
           checked={checked}
-          readOnly
+          onClick={toggle}
         />
         <Spacer height="1rem" />
         <Switch
+          readOnly
           name="label4"
           severity="notification"
           labelText="My Switch Button Notification"
-          onClick={toggle}
           checked={checked}
-          readOnly
+          onClick={toggle}
         />
         <Spacer height="1rem" />
         <Switch
+          readOnly
           name="label4"
           severity="primary"
           labelText="My Switch Button Notification"
-          onClick={toggle}
           checked={checked}
-          readOnly
+          onClick={toggle}
         />
       </GnuiContainer>
     );

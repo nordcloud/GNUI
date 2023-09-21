@@ -1,12 +1,15 @@
-import { BarChart } from ".";
+import { Meta, StoryObj } from "@storybook/react";
 import theme from "../../theme";
+import { BarChart } from "./BarChart";
 
-export default {
+const meta: Meta = {
   title: "Components/BarChart",
   component: BarChart,
 };
 
-export const Default = {
+export default meta;
+
+export const Default: StoryObj = {
   render: () => {
     const values = [
       {

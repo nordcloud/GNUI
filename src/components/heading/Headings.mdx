@@ -1,7 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
-import { Heading } from ".";
-import { GnuiContainer } from "../container";
-import theme from "../../theme";
+import { Meta, Story, Canvas, Source } from "@storybook/blocks";
 import * as HeadingsStories from './Headings.stories';
 
 <Meta of={HeadingsStories} />
@@ -43,12 +40,5 @@ import * as HeadingsStories from './Headings.stories';
 `color`: `string` — can be in HEX/named colors formats according to [X11 Colors](https://en.wikipedia.org/wiki/X11_color_names)
 
 <Canvas>
-  <GnuiContainer>
-    <Heading color="palevioletred">Named color</Heading>
-    <Heading color="#6495ED">HEX color</Heading>
-    <Heading color={theme.color.text.error}>Danger color</Heading>
-    <Heading color={theme.color.text.success}>Success color</Heading>
-    <Heading color={theme.color.text.warning}>Warning color</Heading>
-    <Heading color={theme.color.text.info}>Notification color</Heading>
-  </GnuiContainer>
+  <Story of={HeadingsStories.Colors} />
 </Canvas>

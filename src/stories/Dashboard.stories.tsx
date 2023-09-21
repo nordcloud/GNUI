@@ -1,16 +1,19 @@
+import { Meta, StoryObj } from "@storybook/react";
 import { Col, Row, Visible } from "react-awesome-styled-grid";
-import theme from "../theme";
-import { FlexContainer } from "../components/container";
 import { Box } from "../components/box";
+import { FlexContainer } from "../components/container";
 import { PieChart } from "../components/piechart";
-import { Text } from "../components/text";
 import { Spacer } from "../components/spacer";
+import { Text } from "../components/text";
+import theme from "../theme";
 
-export default {
+const meta: Meta = {
   title: "Pages/Dashboard",
 };
 
-export const Default = {
+export default meta;
+
+export const Default: StoryObj = {
   render: () => (
     <Box
       style={{

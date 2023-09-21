@@ -1,4 +1,4 @@
-import { Meta } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react";
 import theme from "../../theme";
 import { GnuiContainer, FlexContainer } from "../container";
 import { Spacer } from "../spacer";
@@ -10,12 +10,12 @@ const meta: Meta = {
 };
 export default meta;
 
-export const BoxDefault = {
+export const BoxDefault: StoryObj = {
   render: () => <Box>Default box</Box>,
   name: "box",
 };
 
-export const BoxStyle = {
+export const BoxStyle: StoryObj = {
   render: () => (
     <FlexContainer justifyContent="space-evenly">
       <Box boxStyle="lightGrey">Light grey box</Box>
@@ -25,12 +25,12 @@ export const BoxStyle = {
   name: "boxStyle",
 };
 
-export const Dark = {
+export const Dark: StoryObj = {
   render: () => <Box dark>Dark box</Box>,
   name: "dark",
 };
 
-export const Border = {
+export const Border: StoryObj = {
   render: () => (
     <GnuiContainer>
       <Box border="default">Default border</Box>
@@ -48,7 +48,7 @@ export const Border = {
   name: "border",
 };
 
-export const Radius = {
+export const Radius: StoryObj = {
   render: () => (
     <GnuiContainer>
       <Box radius="small" border="disabled">
@@ -68,7 +68,7 @@ export const Radius = {
   name: "radius",
 };
 
-export const InnerSpacing = {
+export const InnerSpacing: StoryObj = {
   render: () => (
     <GnuiContainer>
       <Box innerSpacing="spacing04">Box with spacing04 innerSpacing prop</Box>
@@ -80,7 +80,7 @@ export const InnerSpacing = {
   name: "innerSpacing",
 };
 
-export const Shadow = {
+export const Shadow: StoryObj = {
   render: () => (
     <GnuiContainer>
       <Box shadow="shadow01">Box with shadow01 shadow prop</Box>
@@ -96,7 +96,7 @@ export const Shadow = {
   name: "shadow",
 };
 
-export const Color = {
+export const Color: StoryObj = {
   render: () => (
     <GnuiContainer>
       <Box color={theme.color.text.error}>Danger color (from theme)</Box>
@@ -114,7 +114,7 @@ export const Color = {
   name: "color",
 };
 
-export const Background = {
+export const Background: StoryObj = {
   render: () => (
     <GnuiContainer>
       <Box backgroundColor={theme.color.background.error} color="white">

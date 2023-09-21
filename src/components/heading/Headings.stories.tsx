@@ -1,18 +1,21 @@
-import { Heading } from ".";
-import { GnuiContainer } from "../container";
+import { Meta, StoryObj } from "@storybook/react";
 import theme from "../../theme";
+import { GnuiContainer } from "../container";
+import { Heading } from "./Heading";
 
-export default {
+const meta: Meta = {
   title: "Typography/Heading",
   component: Heading,
 };
 
-export const Simple = {
-  render: () => <Heading>Simple heading</Heading>,
+export default meta;
+
+export const Simple: StoryObj = {
+  render: () => <Heading level={1}>Simple heading</Heading>,
   name: "simple",
 };
 
-export const Levels = {
+export const Levels: StoryObj = {
   render: () => (
     <GnuiContainer>
       <Heading level={1}>Heading with level prop</Heading>
@@ -27,7 +30,7 @@ export const Levels = {
   name: "levels",
 };
 
-export const Margins = {
+export const Margins: StoryObj = {
   render: () => (
     <GnuiContainer>
       <Heading level={4} marginBottom="spacing08">
@@ -61,4 +64,31 @@ export const Margins = {
   ),
 
   name: "margins",
+};
+
+export const Colors: StoryObj = {
+  render: () => (
+    <GnuiContainer>
+      <Heading level={4} color="palevioletred">
+        Named color
+      </Heading>
+      <Heading level={4} color="#6495ED">
+        HEX color
+      </Heading>
+      <Heading level={4} color={theme.color.text.error}>
+        Danger color
+      </Heading>
+      <Heading level={4} color={theme.color.text.success}>
+        Success color
+      </Heading>
+      <Heading level={4} color={theme.color.text.warning}>
+        Warning color
+      </Heading>
+      <Heading level={4} color={theme.color.text.info}>
+        Notification color
+      </Heading>
+    </GnuiContainer>
+  ),
+
+  name: "colors",
 };

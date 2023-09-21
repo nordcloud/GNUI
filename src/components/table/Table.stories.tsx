@@ -1,16 +1,19 @@
-import { Table } from ".";
+import { Meta, StoryObj } from "@storybook/react";
 import { Box } from "../box";
-import { Input } from "../input";
 import { Button } from "../button";
-import { SVGIcon } from "../svgicon";
 import { FlexContainer } from "../container";
+import { Input } from "../input";
+import { SVGIcon } from "../svgicon";
+import Table from "./Table";
 
-export default {
+const meta: Meta = {
   title: "Components/Table",
   component: Table,
 };
 
-export const Simple = {
+export default meta;
+
+export const Simple: StoryObj = {
   render: () => (
     <Table>
       <Table.thead>
@@ -53,7 +56,7 @@ export const Simple = {
   name: "Simple",
 };
 
-export const Striped = {
+export const Striped: StoryObj = {
   render: () => (
     <Table striped>
       <Table.thead>
@@ -86,7 +89,7 @@ export const Striped = {
   name: "Striped",
 };
 
-export const Small = {
+export const Small: StoryObj = {
   render: () => (
     <Table small>
       <Table.thead>
@@ -119,7 +122,7 @@ export const Small = {
   name: "Small",
 };
 
-export const SmallFontTiny = {
+export const SmallFontTiny: StoryObj = {
   render: () => (
     <Table tiny>
       <Table.thead>
@@ -152,7 +155,7 @@ export const SmallFontTiny = {
   name: "Small font (tiny)",
 };
 
-export const Hoverline = {
+export const Hoverline: StoryObj = {
   render: () => (
     <Table hoverline>
       <Table.thead>
@@ -185,7 +188,7 @@ export const Hoverline = {
   name: "Hoverline",
 };
 
-export const TableWithHeader = {
+export const TableWithHeader: StoryObj = {
   render: () => (
     <Box boxStyle="lightGrey" innerSpacing="spacing03" spacing="spacing04">
       <FlexContainer>
@@ -196,7 +199,7 @@ export const TableWithHeader = {
           size="md"
         />
         <FlexContainer justifyContent="flex-end">
-          <Button severity="low" size="md" icon="filter" mr={"1rem"}>
+          <Button severity="low" size="md" icon="filter" mr="1rem">
             Show Filters
           </Button>
           <Button severity="low" size="md" icon="download">

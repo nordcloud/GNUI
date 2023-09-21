@@ -1,15 +1,15 @@
-import styled from "styled-components";
-import { BrickLoader } from ".";
-import { Spacer } from "../spacer";
-import { GnuiContainer, Flex } from "../container";
-import theme from "../../theme";
+import { Meta, StoryObj } from "@storybook/react";
+import { GnuiContainer } from "../container";
+import { BrickLoader } from "./BrickLoader";
 
-export default {
+const meta: Meta = {
   title: "Components/BrickLoader",
   component: BrickLoader,
 };
 
-export const Default = {
+export default meta;
+
+export const Default: StoryObj = {
   render: () => (
     <GnuiContainer>
       <BrickLoader />
@@ -19,7 +19,7 @@ export const Default = {
   name: "default",
 };
 
-export const Height = {
+export const Height: StoryObj = {
   render: () => (
     <GnuiContainer>
       <BrickLoader height="30rem" />
@@ -29,7 +29,7 @@ export const Height = {
   name: "height",
 };
 
-export const ViewBox = {
+export const ViewBox: StoryObj = {
   render: () => (
     <GnuiContainer>
       <BrickLoader viewBox="0 0 10 1" />

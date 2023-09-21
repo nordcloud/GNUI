@@ -1,13 +1,16 @@
+import { Meta, StoryObj } from "@storybook/react";
 import { useDisclosure } from "../../hooks";
-import { Toggle } from ".";
 import { Spacer } from "../spacer";
+import { Toggle } from "./Toggle";
 
-export default {
+const meta: Meta = {
   title: "Forms/Toggle",
   component: Toggle,
 };
 
-export const Default = {
+export default meta;
+
+export const Default: StoryObj = {
   render: () => {
     const { isOpen: value, toggle } = useDisclosure();
 
@@ -17,7 +20,7 @@ export const Default = {
   name: "default",
 };
 
-export const Small = {
+export const Small: StoryObj = {
   render: () => {
     const { isOpen: value, toggle } = useDisclosure();
 
@@ -35,7 +38,7 @@ export const Small = {
   name: "small",
 };
 
-export const Status = {
+export const Status: StoryObj = {
   render: () => {
     const { isOpen: value, toggle } = useDisclosure();
 

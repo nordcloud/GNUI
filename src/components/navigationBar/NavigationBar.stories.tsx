@@ -1,13 +1,16 @@
-import { NavigationBar } from "./NavigationBar";
+import { Meta, StoryObj } from "@storybook/react";
 import { MenuItem } from "./MenuItem";
+import { NavigationBar } from "./NavigationBar";
 import { ItemsContainer, ItemsSection } from "./styles";
 
-export default {
+const meta: Meta = {
   title: "Components/NavigationBar",
   component: NavigationBar,
 };
 
-export const Default = {
+export default meta;
+
+export const Default: StoryObj = {
   render: () => {
     return (
       <div
@@ -19,7 +22,11 @@ export const Default = {
         <NavigationBar position="absolute" height="100%">
           <ItemsContainer>
             <ItemsSection>
-              <a href="https://www.nordcloud.com" target="_blank">
+              <a
+                href="https://www.nordcloud.com"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <MenuItem caption="Go to Nordcloud.com" icon="externalLink" />
               </a>
               <MenuItem caption="Dashboard" icon="dashboard" />
@@ -45,10 +52,16 @@ export const Default = {
   },
 
   name: "default",
-  height: "450px",
+  parameters: {
+    docs: {
+      story: {
+        height: "450px",
+      },
+    },
+  },
 };
 
-export const NonExpandable = {
+export const NonExpandable: StoryObj = {
   render: () => {
     return (
       <div
@@ -83,10 +96,16 @@ export const NonExpandable = {
   },
 
   name: "non-expandable",
-  height: "450px",
+  parameters: {
+    docs: {
+      story: {
+        height: "450px",
+      },
+    },
+  },
 };
 
-export const MultipleSectionsWithStickToBottom = {
+export const MultipleSectionsWithStickToBottom: StoryObj = {
   render: () => {
     return (
       <div
@@ -128,10 +147,16 @@ export const MultipleSectionsWithStickToBottom = {
   },
 
   name: "multiple-sections-with-stick-to-bottom",
-  height: "55px",
+  parameters: {
+    docs: {
+      story: {
+        height: "55px",
+      },
+    },
+  },
 };
 
-export const Scrollable = {
+export const Scrollable: StoryObj = {
   render: () => {
     return (
       <div
@@ -172,5 +197,11 @@ export const Scrollable = {
   },
 
   name: "scrollable",
-  height: "450px",
+  parameters: {
+    docs: {
+      story: {
+        height: "450px",
+      },
+    },
+  },
 };

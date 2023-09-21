@@ -1,29 +1,33 @@
-import { Checkbox, CheckboxGroup } from ".";
-import { IndeterminateCheckbox } from ".";
+import { useState } from "react";
+import { Meta, StoryObj } from "@storybook/react";
+import { Checkbox, CheckboxGroup } from "./Checkbox";
+import { IndeterminateCheckbox } from "./IndeterminateCheckbox";
 
-export default {
+const meta: Meta = {
   title: "Forms/Checkbox",
   component: Checkbox,
 };
 
-export const Simple = {
+export default meta;
+
+export const Simple: StoryObj = {
   render: () => <Checkbox id="checkbox-1" labelText="GNUI Checkbox" />,
   name: "simple",
 };
 
-export const WithoutLabel = {
+export const WithoutLabel: StoryObj = {
   render: () => <Checkbox withoutLabel id="checkbox-5" />,
   name: "withoutLabel",
 };
 
-export const IsIndeterminate = {
-  render: () => <IndeterminateCheckbox id="321312" indeterminate={true} />,
+export const IsIndeterminate: StoryObj = {
+  render: () => <IndeterminateCheckbox indeterminate id="321312" />,
   name: "isIndeterminate",
 };
 
-export const Group = {
+export const Group: StoryObj = {
   render: () => {
-    const [value, setValue] = React.useState({
+    const [value, setValue] = useState({
       0: false,
       1: false,
       2: false,
@@ -43,8 +47,8 @@ export const Group = {
         {names.map((names, index) => (
           <Checkbox
             id={names[index]}
-            onChange={() => handleCheckbox(index)}
             labelText={labels[index]}
+            onChange={() => handleCheckbox(index)}
           />
         ))}
       </CheckboxGroup>

@@ -1,15 +1,18 @@
 import { useState } from "react";
+import { Meta, StoryObj } from "@storybook/react";
 import { GnuiContainer } from "../container";
 import { Spacer } from "../spacer";
 import { Text } from "../text";
 import { Dropdown } from "./Dropdown";
 
-export default {
+const meta: Meta = {
   title: "Forms/Dropdown",
   component: Dropdown,
 };
 
-export const DropdownDefault = {
+export default meta;
+
+export const DropdownDefault: StoryObj = {
   render: () => {
     const options = [
       {
@@ -51,7 +54,7 @@ export const DropdownDefault = {
   name: "dropdown",
 };
 
-export const DropdownWithoutSearch = {
+export const DropdownWithoutSearch: StoryObj = {
   render: () => {
     const options = [
       {
@@ -94,7 +97,7 @@ export const DropdownWithoutSearch = {
   name: "dropdown without search",
 };
 
-export const DropdownOtherSizes = {
+export const DropdownOtherSizes: StoryObj = {
   render: () => {
     const options = [
       {

@@ -1,28 +1,31 @@
-import { List } from ".";
+import { Meta, StoryObj } from "@storybook/react";
+import { List } from "./List";
 
-export default {
+const meta: Meta = {
   title: "Components/List",
   component: List,
 };
 
-export const Default = {
+export default meta;
+
+export const Default: StoryObj = {
   render: () => <List items={["List item", "Second list item"]} />,
   name: "default",
 };
 
-export const Spacing = {
+export const Spacing: StoryObj = {
   render: () => (
     <List spacing="0 0 1.15rem 0" items={["List item", "Second list item"]} />
   ),
   name: "spacing",
 };
 
-export const Horizontal = {
+export const Horizontal: StoryObj = {
   render: () => <List horizontal items={["List item", "Second list item"]} />,
   name: "horizontal",
 };
 
-export const Unordered = {
+export const Unordered: StoryObj = {
   render: () => (
     <List
       unordered
@@ -46,7 +49,7 @@ export const Unordered = {
   name: "unordered",
 };
 
-export const HasDescription = {
+export const HasDescription: StoryObj = {
   render: () => (
     <List
       hasDescription

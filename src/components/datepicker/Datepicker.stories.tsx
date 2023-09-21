@@ -1,12 +1,15 @@
+import { Meta, StoryObj } from "@storybook/react";
 import { DayPicker } from "react-day-picker";
 import { Datepicker } from "./Datepicker";
 
-export default {
+const meta: Meta = {
   title: "Forms/Datepicker",
   component: Datepicker,
 };
 
-export const DatepickerDefault = {
+export default meta;
+
+export const DatepickerDefault: StoryObj = {
   render: () => {
     const handleSelect = (date) => {
       console.log(date);

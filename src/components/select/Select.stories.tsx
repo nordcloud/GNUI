@@ -1,17 +1,15 @@
-import {
-  Select,
-  customMultiColorStyles,
-  SelectColoredOption,
-  SelectInstance,
-} from ".";
-import theme from "../../theme";
+import { useRef } from "react";
+import { Meta, StoryObj } from "@storybook/react";
+import { Select, customMultiColorStyles } from "./Select";
 
-export default {
+const meta: Meta = {
   title: "Forms/Select",
   component: Select,
 };
 
-export const Basic = {
+export default meta;
+
+export const Basic: StoryObj = {
   render: () => {
     const options = [
       {
@@ -34,7 +32,7 @@ export const Basic = {
           height: "150px",
         }}
       >
-        <Select options={options}></Select>
+        <Select options={options} />
       </div>
     );
   },
@@ -42,7 +40,7 @@ export const Basic = {
   name: "basic",
 };
 
-export const Multiselect = {
+export const Multiselect: StoryObj = {
   render: () => {
     const options = [
       {
@@ -69,7 +67,7 @@ export const Multiselect = {
           isMulti
           defaultValue={[options[1], options[2]]}
           options={options}
-        ></Select>
+        />
       </div>
     );
   },
@@ -77,7 +75,7 @@ export const Multiselect = {
   name: "multiselect",
 };
 
-export const MultiselectColors = {
+export const MultiselectColors: StoryObj = {
   render: () => {
     const colorOptions = [
       {
@@ -146,7 +144,7 @@ export const MultiselectColors = {
           defaultValue={[colorOptions[1], colorOptions[2]]}
           options={colorOptions}
           styles={customMultiColorStyles}
-        ></Select>
+        />
       </div>
     );
   },
@@ -154,7 +152,7 @@ export const MultiselectColors = {
   name: "multiselect-colors",
 };
 
-export const Ref = {
+export const Ref: StoryObj = {
   render: () => {
     const options = [
       {
@@ -171,7 +169,7 @@ export const Ref = {
       },
     ];
 
-    const selectRef = React.useRef(null);
+    const selectRef = useRef(null);
 
     return (
       <div
@@ -180,11 +178,11 @@ export const Ref = {
         }}
       >
         <Select
+          ref={selectRef}
           isMulti
           defaultValue={[options[1], options[2]]}
           options={options}
-          ref={selectRef}
-        ></Select>
+        />
         <button onClick={() => selectRef.current.focus()}>Focus</button>
       </div>
     );

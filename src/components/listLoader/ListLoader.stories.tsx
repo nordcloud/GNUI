@@ -1,15 +1,15 @@
-import styled from "styled-components";
-import { ListLoader } from ".";
-import { Spacer } from "../spacer";
-import { GnuiContainer, Flex } from "../container";
-import theme from "../../theme";
+import { Meta, StoryObj } from "@storybook/react";
+import { GnuiContainer } from "../container";
+import { ListLoader } from "./ListLoader";
 
-export default {
+const meta: Meta = {
   title: "Components/ListLoader",
   component: ListLoader,
 };
 
-export const Default = {
+export default meta;
+
+export const Default: StoryObj = {
   render: () => (
     <GnuiContainer>
       <ListLoader />
@@ -17,10 +17,16 @@ export const Default = {
   ),
 
   name: "default",
-  height: "300px",
+  parameters: {
+    docs: {
+      story: {
+        height: "300px",
+      },
+    },
+  },
 };
 
-export const ItemsNumber = {
+export const ItemsNumber: StoryObj = {
   render: () => (
     <GnuiContainer>
       1 row:
@@ -30,10 +36,16 @@ export const ItemsNumber = {
   ),
 
   name: "itemsNumber",
-  height: "300px",
+  parameters: {
+    docs: {
+      story: {
+        height: "300px",
+      },
+    },
+  },
 };
 
-export const Children = {
+export const Children: StoryObj = {
   render: () => (
     <GnuiContainer>
       <ListLoader>

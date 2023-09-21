@@ -1,20 +1,24 @@
+import { useState } from "react";
+import { Meta, StoryObj } from "@storybook/react";
 import { previousMonday, addDays } from "date-fns";
 import { Spacer } from "../spacer";
-import { TimeRangePicker } from ".";
+import { TimeRangePicker } from "./TimeRangePicker";
 
-export default {
+const meta: Meta = {
   title: "Forms/TimeRangePicker",
   component: TimeRangePicker,
 };
 
-export const TimerangepickerOfDays = {
+export default meta;
+
+export const TimerangepickerOfDays: StoryObj = {
   render: () => {
     const initValue = {
       start: new Date(),
       end: new Date(),
     };
 
-    const [value, setValue] = React.useState(initValue);
+    const [value, setValue] = useState(initValue);
 
     return (
       <>
@@ -32,9 +36,9 @@ export const TimerangepickerOfDays = {
   name: "timerangepicker of days",
 };
 
-export const TimerangepickerOfHours = {
+export const TimerangepickerOfHours: StoryObj = {
   render: () => {
-    const [value, setValue] = React.useState();
+    const [value, setValue] = useState();
 
     return (
       <>
@@ -48,9 +52,9 @@ export const TimerangepickerOfHours = {
   name: "timerangepicker of hours ",
 };
 
-export const TimerangepickerOfHoursWithHistogram = {
+export const TimerangepickerOfHoursWithHistogram: StoryObj = {
   render: () => {
-    const [value, setValue] = React.useState();
+    const [value, setValue] = useState();
     const monday = previousMonday(new Date());
 
     return (

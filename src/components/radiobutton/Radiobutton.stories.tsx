@@ -1,16 +1,19 @@
-import { Radio, RadioGroup } from ".";
+import { Meta, StoryObj } from "@storybook/react";
+import { Radio, RadioGroup } from "./Radiobutton";
 
-export default {
+const meta: Meta = {
   title: "Forms/Radiobutton",
   component: Radio,
 };
 
-export const Simple = {
+export default meta;
+
+export const Simple: StoryObj = {
   render: () => <Radio id="radiobutton" labelText="GNUI Radio button" />,
   name: "simple",
 };
 
-export const Group = {
+export const Group: StoryObj = {
   render: () => (
     <RadioGroup name="radiogroup">
       <Radio id="button1" labelText="New York" value="ny" />

@@ -1,17 +1,20 @@
+import { Meta, StoryObj } from "@storybook/react";
 import { GnuiContainer, FlexContainer } from "../container";
-import { Button } from ".";
+import { Button } from "./Button";
 
-export default {
+const meta: Meta = {
   title: "Components/Button",
   component: Button,
 };
 
-export const Default = {
+export default meta;
+
+export const Default: StoryObj = {
   render: () => <Button>Default button</Button>,
   name: "default",
 };
 
-export const ButtonSeverity = {
+export const ButtonSeverity: StoryObj = {
   render: () => (
     <FlexContainer justifyContent="space-evenly">
       <Button severity="medium">Secondary button</Button>
@@ -22,7 +25,7 @@ export const ButtonSeverity = {
   name: "button/severity",
 };
 
-export const Size = {
+export const Size: StoryObj = {
   render: () => (
     <FlexContainer justifyContent="space-evenly">
       <Button size="sm">Size SM</Button>
@@ -34,7 +37,7 @@ export const Size = {
   name: "size",
 };
 
-export const Icons = {
+export const Icons: StoryObj = {
   render: () => (
     <FlexContainer justifyContent="space-evenly">
       <Button icon="plus" severity="low">
@@ -47,7 +50,7 @@ export const Icons = {
   name: "icons",
 };
 
-export const IconRight = {
+export const IconRight: StoryObj = {
   render: () => (
     <FlexContainer justifyContent="space-evenly">
       <Button iconRight severity="low" icon="trash">
@@ -74,7 +77,7 @@ export const InitialState = {
   name: "initialState",
 };
 
-export const Status = {
+export const Status: StoryObj = {
   render: () => (
     <FlexContainer justifyContent="space-evenly">
       <Button status="danger">danger</Button>
@@ -89,7 +92,7 @@ export const Status = {
   name: "status",
 };
 
-export const Disabled = {
+export const Disabled: StoryObj = {
   render: () => (
     <Button disabled icon="save">
       Disabled button
@@ -98,7 +101,7 @@ export const Disabled = {
   name: "disabled",
 };
 
-export const CustomSpacing = {
+export const CustomSpacing: StoryObj = {
   render: () => (
     <GnuiContainer>
       <p>
@@ -112,7 +115,7 @@ export const CustomSpacing = {
   name: "custom-spacing",
 };
 
-export const ButtonLink = {
+export const ButtonLink: StoryObj = {
   render: () => (
     <Button linkTo="http://google.com" target="_blank">
       Link to
@@ -121,7 +124,7 @@ export const ButtonLink = {
   name: "button link",
 };
 
-export const ButtonLinkFlex = {
+export const ButtonLinkFlex: StoryObj = {
   render: () => (
     <>
       <Button display="flex" linkTo="http://google.com" target="_blank">
@@ -140,7 +143,7 @@ export const ButtonLinkFlex = {
   name: "button link flex",
 };
 
-export const As = {
+export const As: StoryObj = {
   render: () => (
     <Button as="a" href="http://google.com" target="_blank">
       Link to
@@ -149,7 +152,7 @@ export const As = {
   name: "as",
 };
 
-export const Color = {
+export const Color: StoryObj = {
   render: () => (
     <FlexContainer justifyContent="space-evenly">
       <Button color="danger" icon="danger">

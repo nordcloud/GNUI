@@ -1,14 +1,17 @@
+import { Meta, StoryObj } from "@storybook/react";
 import { Col, Row } from "react-awesome-styled-grid";
 import { Box } from "../components/box";
 import { Table } from "../components/table";
 import { Text } from "../components/text";
 import theme from "../theme";
 
-export default {
+const meta: Meta = {
   title: "Foundation/Colors",
 };
 
-export const Backgrounds = {
+export default meta;
+
+export const Backgrounds: StoryObj = {
   render: () => (
     <>
       <Text weight="medium">Default page background</Text>
@@ -324,7 +327,7 @@ export const Backgrounds = {
   name: "Backgrounds",
 };
 
-export const TextColors = {
+export const TextColors: StoryObj = {
   render: () => (
     <>
       <Text weight="medium">Text copy colors</Text>
@@ -579,7 +582,7 @@ export const TextColors = {
   name: "Text colors",
 };
 
-export const FieldBackgrounds = {
+export const FieldBackgrounds: StoryObj = {
   render: () => (
     <>
       <Text weight="medium">Fields background colors</Text>
@@ -653,7 +656,7 @@ export const FieldBackgrounds = {
   name: "Field backgrounds",
 };
 
-export const BorderColors = {
+export const BorderColors: StoryObj = {
   render: () => (
     <>
       <Text weight="medium">Border colors</Text>
@@ -821,7 +824,7 @@ export const BorderColors = {
   name: "Border colors",
 };
 
-export const InteractiveColors = {
+export const InteractiveColors: StoryObj = {
   render: () => (
     <>
       <Text weight="medium">Primary interactive (primary buttons)</Text>
@@ -1407,7 +1410,7 @@ export const InteractiveColors = {
   name: "Interactive colors",
 };
 
-export const SupportColors = {
+export const SupportColors: StoryObj = {
   render: () => (
     <>
       <Text weight="medium">Colors for using on charts with some status</Text>
