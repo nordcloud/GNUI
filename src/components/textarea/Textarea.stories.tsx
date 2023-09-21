@@ -22,9 +22,11 @@ export const Small: StoryObj = {
   name: "small",
 };
 
+type Status = "danger" | "success";
+
 export const Status: StoryObj = {
   render: () => {
-    const [status, setStatus] = useState("success");
+    const [status, setStatus] = useState<Status>("success");
 
     return (
       <GnuiContainer>
@@ -34,8 +36,8 @@ export const Status: StoryObj = {
         <Spacer height="1rem" />
         <GnuiContainer>
           <Button
-            size="small"
-            color={status === "error" ? "danger" : "success"}
+            size="sm"
+            color={status === "danger" ? "danger" : "success"}
             onClick={() =>
               setStatus(status === "danger" ? "success" : "danger")
             }
@@ -52,7 +54,7 @@ export const Status: StoryObj = {
 
 export const MaxCharCount: StoryObj = {
   render: () => {
-    const [status, setStatus] = useState("success");
+    const [status, setStatus] = useState<Status>("success");
 
     return (
       <GnuiContainer>
@@ -62,8 +64,8 @@ export const MaxCharCount: StoryObj = {
         <Spacer height="1rem" />
         <GnuiContainer>
           <Button
-            size="small"
-            color={status === "error" ? "danger" : "success"}
+            size="sm"
+            color={status === "danger" ? "danger" : "success"}
             onClick={() =>
               setStatus(status === "danger" ? "success" : "danger")
             }

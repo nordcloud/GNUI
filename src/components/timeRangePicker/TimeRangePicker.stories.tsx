@@ -18,14 +18,17 @@ export const TimerangepickerOfDays: StoryObj = {
       end: new Date(),
     };
 
-    const [value, setValue] = useState(initValue);
+    const [value, setValue] = useState<{
+      start: Date | number;
+      end: Date | number;
+    }>(initValue);
 
     return (
       <>
         <TimeRangePicker
           type="Days"
           initTimeRange={initValue}
-          onChange={setValue}
+          onChange={(value) => setValue(value)}
         />
         <Spacer height="20rem" />
         <div id="result-days">Current Value:{JSON.stringify(value)}</div>
@@ -38,7 +41,10 @@ export const TimerangepickerOfDays: StoryObj = {
 
 export const TimerangepickerOfHours: StoryObj = {
   render: () => {
-    const [value, setValue] = useState();
+    const [value, setValue] = useState<{
+      start: Date | number;
+      end: Date | number;
+    }>();
 
     return (
       <>
@@ -54,7 +60,10 @@ export const TimerangepickerOfHours: StoryObj = {
 
 export const TimerangepickerOfHoursWithHistogram: StoryObj = {
   render: () => {
-    const [value, setValue] = useState();
+    const [value, setValue] = useState<{
+      start: Date | number;
+      end: Date | number;
+    }>();
     const monday = previousMonday(new Date());
 
     return (

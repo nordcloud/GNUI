@@ -2,7 +2,7 @@ import theme from "../../theme";
 import { SingleColors, ThemeColors } from "../../theme/config";
 
 function isSingleColor(
-  value: SingleColors | ThemeColors
+  value: SingleColors | ThemeColors | (string & {})
 ): value is SingleColors {
   return [
     "primary",
@@ -17,7 +17,7 @@ function isSingleColor(
   ].includes(value);
 }
 function isThemeSupportColor(
-  value: SingleColors | ThemeColors
+  value: SingleColors | ThemeColors | (string & {})
 ): value is ThemeColors {
   return [
     "red",
@@ -40,7 +40,9 @@ function isThemeSupportColor(
   ].includes(value);
 }
 
-export const checkColor = (color: SingleColors | ThemeColors) => {
+export const checkColor = (
+  color: SingleColors | ThemeColors | (string & {})
+) => {
   if (color && isSingleColor(color)) {
     return theme.colors[color];
   }

@@ -44,7 +44,7 @@ export const Severity: StoryObj = {
           severity="warning"
           labelText="My Switch Button Warning"
           checked={checked}
-          onClick={toggle}
+          onClick={() => toggle()}
         />
         <Spacer height="1rem" />
         <Switch
@@ -53,7 +53,7 @@ export const Severity: StoryObj = {
           severity="danger"
           labelText="My Switch Button Danger"
           checked={checked}
-          onClick={toggle}
+          onClick={() => toggle()}
         />
         <Spacer height="1rem" />
         <Switch
@@ -62,7 +62,7 @@ export const Severity: StoryObj = {
           severity="success"
           labelText="My Switch Button Success"
           checked={checked}
-          onClick={toggle}
+          onClick={() => toggle()}
         />
         <Spacer height="1rem" />
         <Switch
@@ -71,7 +71,7 @@ export const Severity: StoryObj = {
           severity="notification"
           labelText="My Switch Button Notification"
           checked={checked}
-          onClick={toggle}
+          onClick={() => toggle()}
         />
         <Spacer height="1rem" />
         <Switch
@@ -80,7 +80,7 @@ export const Severity: StoryObj = {
           severity="primary"
           labelText="My Switch Button Notification"
           checked={checked}
-          onClick={toggle}
+          onClick={() => toggle()}
         />
       </GnuiContainer>
     );

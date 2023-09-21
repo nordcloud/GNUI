@@ -93,7 +93,7 @@ export const Align: StoryObj = {
 export const IsTitle: StoryObj = {
   render: () => (
     <GnuiContainer>
-      <Text isTitle="true">Lorem ipsum solor domet.</Text>
+      <Text isTitle>Lorem ipsum solor domet.</Text>
     </GnuiContainer>
   ),
 
