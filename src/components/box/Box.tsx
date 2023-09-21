@@ -15,8 +15,8 @@ type BoxProps = {
   spacing?: keyof typeof theme.spacing;
   innerSpacing?: keyof typeof theme.spacing;
   shadow?: keyof typeof theme.shadow;
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onChange?: (event: React.FormEvent<HTMLInputElement>) => void;
   children?: React.ReactNode;
   boxStyle?: "grey" | "lightGrey";
 };
@@ -113,6 +113,9 @@ const StyledBox = styled(GnuiContainer)<BoxProps & SpaceProps>`
      ${space}
 `;
 
-export function Box({ children, ...props }: BoxProps & SpaceProps) {
+export function Box({
+  children,
+  ...props
+}: React.ComponentProps<typeof StyledBox>) {
   return <StyledBox {...props}>{children}</StyledBox>;
 }

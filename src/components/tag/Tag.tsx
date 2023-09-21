@@ -7,7 +7,7 @@ import { SVGIcon, SVGIconProps } from "../svgicon";
 import { checkColor } from "./utils";
 
 type TagProps = {
-  color?: SingleColors | ThemeColors;
+  color?: SingleColors | ThemeColors | (string & {});
   colorText?: SingleColors;
   text?: string;
   icon?: SVGIconProps["name"];

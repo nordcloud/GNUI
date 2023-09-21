@@ -14,7 +14,9 @@ export const Default: StoryObj = {
   render: () => {
     const { isOpen: value, toggle } = useDisclosure();
 
-    return <Toggle labelText="Default" value={value} onChange={toggle} />;
+    return (
+      <Toggle labelText="Default" value={value} onChange={() => toggle()} />
+    );
   },
 
   name: "default",

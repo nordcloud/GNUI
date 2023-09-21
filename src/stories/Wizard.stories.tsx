@@ -12,17 +12,17 @@ export default meta;
 
 export const Default: StoryObj = {
   render: () => {
-    const [isCurrentStep, setCurrentStep] = useState(0);
+    const [currentStep, setCurrentStep] = useState(0);
 
     const nextStep = () => {
-      setCurrentStep(isCurrentStep + 1);
+      setCurrentStep((prevStep) => prevStep + 1);
     };
 
     const previousStep = () => {
-      setCurrentStep(isCurrentStep - 1);
+      setCurrentStep((prevStep) => prevStep - 1);
     };
 
-    const handleSteps = (key) => {
+    const handleSteps = (key: number) => {
       setCurrentStep(key);
     };
 
@@ -51,7 +51,7 @@ export const Default: StoryObj = {
     );
 
     return (
-      <Tabs wizard step={isCurrentStep} handleTab={handleSteps}>
+      <Tabs wizard step={currentStep} handleTab={handleSteps}>
         <Tab
           heading="Tab 1"
           caption="Small caption for Tab 1"
@@ -115,17 +115,17 @@ export const Default: StoryObj = {
 
 export const Disabled: StoryObj = {
   render: () => {
-    const [isCurrentStep, setCurrentStep] = useState(0);
+    const [currentStep, setCurrentStep] = useState(0);
 
     const nextStep = () => {
-      setCurrentStep(isCurrentStep + 1);
+      setCurrentStep((prevStep) => prevStep + 1);
     };
 
     const previousStep = () => {
-      setCurrentStep(isCurrentStep - 1);
+      setCurrentStep((prevStep) => prevStep - 1);
     };
 
-    const handleSteps = (key) => {
+    const handleSteps = (key: number) => {
       setCurrentStep(key);
     };
 
@@ -154,7 +154,7 @@ export const Disabled: StoryObj = {
     );
 
     return (
-      <Tabs wizard step={isCurrentStep} handleTab={handleSteps}>
+      <Tabs wizard step={currentStep} handleTab={handleSteps}>
         <Tab
           heading="Tab 1"
           caption="Small caption for Tab 1"

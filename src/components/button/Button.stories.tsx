@@ -105,7 +105,7 @@ export const CustomSpacing: StoryObj = {
   render: () => (
     <GnuiContainer>
       <p>
-        <Button ml="3rem" mb="10rem" innerSpacing="0">
+        <Button ml="3rem" mb="10rem">
           Button with custom spacing
         </Button>
       </p>
@@ -117,7 +117,7 @@ export const CustomSpacing: StoryObj = {
 
 export const ButtonLink: StoryObj = {
   render: () => (
-    <Button linkTo="http://google.com" target="_blank">
+    <Button as="a" linkTo="http://google.com" target="_blank">
       Link to
     </Button>
   ),
@@ -127,11 +127,12 @@ export const ButtonLink: StoryObj = {
 export const ButtonLinkFlex: StoryObj = {
   render: () => (
     <>
-      <Button display="flex" linkTo="http://google.com" target="_blank">
+      <Button display="flex" as="a" linkTo="http://google.com" target="_blank">
         Button
       </Button>
       <Button
         mt="1rem"
+        as="a"
         display="inline-flex"
         linkTo="http://google.com"
         target="_blank"
