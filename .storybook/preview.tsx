@@ -1,10 +1,9 @@
 import React from "react";
 import { DocsPage, DocsContainer } from "@storybook/addon-docs";
+import { Preview } from "@storybook/react";
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 import { GnuiContainer } from "../src/components/container";
 import { SetGlobalStyle } from "../src/theme/globals";
-
-import { Preview } from "@storybook/react";
 
 const preview: Preview = {
   parameters: {
@@ -34,6 +33,9 @@ const preview: Preview = {
     docs: {
       container: DocsContainer,
       page: DocsPage,
+      canvas: {
+        layout: "padded",
+      },
     },
   },
 

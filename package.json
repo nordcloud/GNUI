@@ -18,8 +18,8 @@
     "dist/**"
   ],
   "scripts": {
-    "storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider storybook dev -p 9009",
-    "build-storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider storybook build",
+    "storybook": "storybook dev -p 9009",
+    "build-storybook": "storybook build",
     "build": "rollup -c --bundleConfigAsCjs",
     "test": "jest",
     "test:watch": "npm run test -- --watch",
@@ -81,7 +81,6 @@
     "@storybook/addon-mdx-gfm": "^7.4.2",
     "@storybook/addons": "^7.4.2",
     "@storybook/blocks": "^7.4.2",
-    "@storybook/builder-vite": "^7.4.2",
     "@storybook/react": "^7.4.2",
     "@storybook/react-vite": "^7.4.2",
     "@storybook/theming": "^7.4.2",
