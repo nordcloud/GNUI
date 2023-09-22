@@ -1,7 +1,6 @@
-import React from "react";
 import { DocsPage, DocsContainer } from "@storybook/addon-docs";
-import { Preview } from "@storybook/react";
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
+import { Preview } from "@storybook/react";
 import { GnuiContainer } from "../src/components/container";
 import { SetGlobalStyle } from "../src/theme/globals";
 

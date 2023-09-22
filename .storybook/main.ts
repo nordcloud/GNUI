@@ -1,9 +1,7 @@
-import { mergeConfig } from "vite";
 import type { StorybookConfig } from "@storybook/react-vite";
 
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.@(story|stories).@(ts|tsx)"],
-  // stories: ["../src/stories/**.@(mdx|stories.@(tsx))"],
   addons: [
     {
       name: "@storybook/addon-essentials",
@@ -30,18 +28,6 @@ const config: StorybookConfig = {
   docs: {
     autodocs: "tag",
     defaultName: "Docs",
-  },
-
-  async viteFinal(config, { configType }) {
-    if (configType === "DEVELOPMENT") {
-      // Your development configuration goes here
-    }
-    if (configType === "PRODUCTION") {
-      // Your production configuration goes here.
-    }
-    return mergeConfig(config, {
-      // Your environment configuration here
-    });
   },
 };
 

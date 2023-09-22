@@ -11,7 +11,7 @@ module.exports = {
 
   parserOptions: { tsconfigRootDir: __dirname },
 
-  ignorePatterns: ["./*.js", "./.storybook/**/*.ts"],
+  ignorePatterns: ["./*.js"],
 
   settings: {
     react: {
@@ -117,6 +117,24 @@ module.exports = {
             extendDefaults: true,
           },
         ],
+      },
+    },
+    {
+      // Declare an override that applies to TypeScript files only
+      files: [".storybook/**/*.{ts,tsx}"],
+      parser: "@typescript-eslint/parser",
+      parserOptions: {
+        // The "project" path is resolved relative to parserOptions.tsconfigRootDir.
+        // Your local .eslintrc.js must specify that parserOptions.tsconfigRootDir=__dirname.
+        tsconfigRootDir: __dirname + "/.storybook",
+        project: ["./tsconfig.json"],
+
+        // Allow parsing of newer ECMAScript constructs used in TypeScript source code.  Although tsconfig.json
+        // may allow only a small subset of ES2018 features, this liberal setting ensures that ESLint will correctly
+        // parse whatever is encountered.
+        ecmaVersion: "latest",
+
+        sourceType: "module",
       },
     },
     {
