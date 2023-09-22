@@ -108,7 +108,6 @@
       "groupName": "Non-critical tooling packages",
       "matchPackageNames": [
         "prettier",
-        "cross-env",
         "npm-run-all",
         "patch-package",
         "lockfile-lint",

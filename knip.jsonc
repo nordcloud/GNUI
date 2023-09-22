@@ -4,11 +4,13 @@
   "project": ["src/**/*.{ts,tsx,mdx}!", ".storybook/**/*.js"],
   "ignoreDependencies": [
     // False-positives
-    "react-copy-to-clipboard",
+    "@typescript-eslint/parser",
+    "@storybook/addon-docs",
+    "@storybook/addon-viewport",
+    "@storybook/blocks",
     "lodash",
     "lodash.clonedeep",
     "@types/lodash.clonedeep",
-    "storybook",
     "webpack",
     // Can be listed explicitly in the future
     "@jest/types",

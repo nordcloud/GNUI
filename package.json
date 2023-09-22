@@ -95,7 +95,6 @@
     "@types/react-dom": "^17.0.20",
     "@types/react-helmet": "^6.1.6",
     "@types/styled-components": "^5.1.27",
-    "cross-env": "^7.0.3",
     "eslint": "^8.49.0",
     "husky": "^8.0.3",
     "identity-obj-proxy": "^3.0.0",
