@@ -650,7 +650,7 @@ export const Hover: StoryObj = {
           fontFamily: "monospace",
         }}
       >
-        "hover"
+        &quot;hover&quot;
       </code>{" "}
       popover is being triggered on hover action.
     </p>

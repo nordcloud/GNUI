@@ -27,7 +27,6 @@ export const DropdownDefault: StoryObj = {
     ];
 
     const [value, setValue] = useState("");
-    const [value2, setValue2] = useState("");
 
     return (
       <GnuiContainer>
@@ -38,7 +37,7 @@ export const DropdownDefault: StoryObj = {
           width="15rem"
           minNumOfOptionsToShowSearchBox={4}
           title="Example title"
-          onChange={(value_) => setValue(value_)}
+          onChange={(newValue) => setValue(newValue)}
         />
         <Text>
           Your choice:{" "}
@@ -69,24 +68,23 @@ export const DropdownWithoutSearch: StoryObj = {
     ];
 
     const [value, setValue] = useState("");
-    const [value2, setValue2] = useState("");
 
     return (
       <GnuiContainer>
         <Dropdown
           name="Select an option"
           options={options}
-          value={value2}
+          value={value}
           minNumOfOptionsToShowSearchBox={10}
           width="15rem"
           title="Example title clear option"
-          onChange={(value_) => setValue2(value_)}
-          onClear={() => setValue2("")}
+          onChange={(newValue) => setValue(newValue)}
+          onClear={() => setValue("")}
         />
         <Text>
           Your choice:{" "}
           <Text tag="span" weight="medium">
-            {!value2 ? "nothing" : value2}
+            {!value ? "nothing" : value}
           </Text>
         </Text>
         <Spacer height="8rem" />
@@ -125,7 +123,7 @@ export const DropdownOtherSizes: StoryObj = {
           width="15rem"
           title="Example title clear option"
           size="sm"
-          onChange={(value_) => setValue2(value_)}
+          onChange={(newValue) => setValue2(newValue)}
           onClear={() => setValue2("")}
         />
         <Text mb="0.25rem" mt="1rem">
@@ -139,7 +137,7 @@ export const DropdownOtherSizes: StoryObj = {
           width="15rem"
           title="Example title clear option"
           size="xs"
-          onChange={(value_) => setValue(value_)}
+          onChange={(newValue) => setValue(newValue)}
           onClear={() => setValue("")}
         />
         <Spacer height="8rem" />

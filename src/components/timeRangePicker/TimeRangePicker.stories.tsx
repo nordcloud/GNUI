@@ -28,7 +28,7 @@ export const TimerangepickerOfDays: StoryObj = {
         <TimeRangePicker
           type="Days"
           initTimeRange={initValue}
-          onChange={(value) => setValue(value)}
+          onChange={(newValue) => setValue(newValue)}
         />
         <Spacer height="20rem" />
         <div id="result-days">Current Value:{JSON.stringify(value)}</div>

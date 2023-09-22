@@ -22,11 +22,9 @@ export const Small: StoryObj = {
   name: "small",
 };
 
-type Status = "danger" | "success";
-
 export const Status: StoryObj = {
   render: () => {
-    const [status, setStatus] = useState<Status>("success");
+    const [status, setStatus] = useState<"danger" | "success">("success");
 
     return (
       <GnuiContainer>
@@ -54,7 +52,7 @@ export const Status: StoryObj = {
 
 export const MaxCharCount: StoryObj = {
   render: () => {
-    const [status, setStatus] = useState<Status>("success");
+    const [status, setStatus] = useState<"danger" | "success">("success");
 
     return (
       <GnuiContainer>

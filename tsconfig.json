@@ -19,6 +19,6 @@
     "noEmit": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", ".storybook"],
   "exclude": ["node_modules", "dist", "storybook-static"]
 }

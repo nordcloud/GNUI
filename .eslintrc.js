@@ -11,7 +11,7 @@ module.exports = {
 
   parserOptions: { tsconfigRootDir: __dirname },
 
-  ignorePatterns: ["./*.js", "./.storybook/**"],
+  ignorePatterns: ["./*.js", "./.storybook/**/*.ts"],
 
   settings: {
     react: {
@@ -106,6 +106,15 @@ module.exports = {
           {
             selector: "enum",
             format: ["PascalCase", "UPPER_CASE"],
+          },
+        ],
+        "@typescript-eslint/ban-types": [
+          "error",
+          {
+            types: {
+              "{}": false,
+            },
+            extendDefaults: true,
           },
         ],
       },
