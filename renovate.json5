@@ -111,7 +111,11 @@
         "npm-run-all",
         "patch-package",
         "lockfile-lint",
-        "knip"
+        "knip",
+        "remark-cli",
+        "remark-mdx",
+        "remark-preset-lint-consistent",
+        "remark-preset-lint-recommended"
       ],
       "automerge": true
     },
