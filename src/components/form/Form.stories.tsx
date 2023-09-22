@@ -37,15 +37,15 @@ export const FormDefault: StoryObj = {
       <Description>Enter your password.</Description>
       <FormButtons>
         <CancelButton
-          onClick={(e) => {
-            e.preventDefault();
-            window.history.back();
+          name="cancel"
+          onClick={() => {
+            alert("Cancel!");
           }}
         />
         <SubmitButton
-          onClick={(e) => {
-            e.preventDefault();
-            window.alert("Clicked!");
+          onClick={(event) => {
+            event.preventDefault();
+            alert("Clicked!");
           }}
         />
       </FormButtons>

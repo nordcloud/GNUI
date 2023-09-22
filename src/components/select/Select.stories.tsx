@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, ElementRef } from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import { Select, customMultiColorStyles } from "./Select";
 
@@ -169,7 +169,7 @@ export const Ref: StoryObj = {
       },
     ];
 
-    const selectRef = useRef(null);
+    const selectRef = useRef<ElementRef<typeof Select>>(null);
 
     return (
       <div
@@ -183,7 +183,9 @@ export const Ref: StoryObj = {
           defaultValue={[options[1], options[2]]}
           options={options}
         />
-        <button onClick={() => selectRef.current.focus()}>Focus</button>
+        <button type="button" onClick={() => selectRef.current?.focus()}>
+          Focus
+        </button>
       </div>
     );
   },

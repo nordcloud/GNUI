@@ -12,7 +12,7 @@ export default meta;
 
 export const Default: StoryObj = {
   render: () => {
-    const [value, setValue] = useState();
+    const [value, setValue] = useState<string>();
 
     return (
       <MultipleSelect>
@@ -46,7 +46,7 @@ export const Default: StoryObj = {
 
 export const Disabled: StoryObj = {
   render: () => {
-    const [value, setValue] = useState();
+    const [value, setValue] = useState<string>();
 
     return (
       <MultipleSelect>
@@ -81,7 +81,7 @@ export const Disabled: StoryObj = {
 
 export const Small: StoryObj = {
   render: () => {
-    const [value, setValue] = useState();
+    const [value, setValue] = useState<string>();
 
     return (
       <MultipleSelect size="small">
@@ -115,7 +115,7 @@ export const Small: StoryObj = {
 
 export const Status: StoryObj = {
   render: () => {
-    const [value, setValue] = useState();
+    const [value, setValue] = useState<string>();
 
     return (
       <div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, ComponentProps } from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import { Button } from "../button";
 import { GnuiContainer } from "../container";
@@ -96,7 +96,8 @@ export const Icon: StoryObj = {
 
 export const Status: StoryObj = {
   render: () => {
-    const [status, setStatus] = useState("success");
+    const [status, setStatus] =
+      useState<ComponentProps<typeof Input>["status"]>("success");
 
     return (
       <GnuiContainer>
@@ -111,8 +112,8 @@ export const Status: StoryObj = {
         <Spacer height="2rem" />
         <GnuiContainer>
           <Button
-            size="small"
-            color={status === "error" ? "danger" : "success"}
+            size="sm"
+            color={status === "danger" ? "danger" : "success"}
             onClick={() =>
               setStatus(status === "danger" ? "success" : "danger")
             }
@@ -149,7 +150,6 @@ export const Clear: StoryObj = {
       <Label required name="Label" htmlFor="clear-id" />
       <Input
         showClearButton
-        name="required-input"
         id="clear-id"
         placeholder=""
         icon="sidebar"
@@ -166,12 +166,7 @@ export const Clear: StoryObj = {
 export const Password: StoryObj = {
   render: () => (
     <>
-      <InputPassword
-        name="required-input"
-        id="password"
-        name="password"
-        value="password123"
-      />
+      <InputPassword id="password" name="password" value="password123" />
     </>
   ),
 

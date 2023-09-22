@@ -19,7 +19,7 @@ export const Default: StoryObj = {
           background: theme.color.background.ui05,
           textAlign: "center",
           width: "100%",
-          borderRadius: theme.radius.default,
+          borderRadius: theme.radius.md,
         }}
       >
         <Text color="white">GnuiContainer</Text>
@@ -30,7 +30,7 @@ export const Default: StoryObj = {
           background: theme.color.background.ui05,
           textAlign: "center",
           width: "100%",
-          borderRadius: theme.radius.default,
+          borderRadius: theme.radius.md,
         }}
       >
         <Text color="white">GnuiContainer</Text>
@@ -49,7 +49,7 @@ export const Margin: StoryObj = {
           background: theme.color.background.ui05,
           textAlign: "center",
           width: "100%",
-          borderRadius: theme.radius.default,
+          borderRadius: theme.radius.md,
           padding: "0.25rem",
         }}
       >
@@ -61,7 +61,7 @@ export const Margin: StoryObj = {
           background: theme.color.background.ui05,
           textAlign: "center",
           width: "100%",
-          borderRadius: theme.radius.default,
+          borderRadius: theme.radius.md,
           padding: "0.25rem",
         }}
       >

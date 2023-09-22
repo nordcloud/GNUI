@@ -18,13 +18,7 @@ export const Simple: StoryObj = {
         padding: "3rem",
       }}
     >
-      <CheckmarkCheckbox
-        id="checkbox-1"
-        labelText="GNUI Checkbox"
-        tooltipProps={{
-          showTimeout: 400,
-        }}
-      />
+      <CheckmarkCheckbox id="checkbox-1" labelText="GNUI Checkbox" />
     </FlexContainer>
   ),
 
@@ -38,14 +32,7 @@ export const Double: StoryObj = {
         padding: "3rem",
       }}
     >
-      <CheckmarkCheckbox
-        double
-        id="checkbox-2"
-        labelText="GNUI Checkbox"
-        tooltipProps={{
-          showTimeout: 400,
-        }}
-      />
+      <CheckmarkCheckbox double id="checkbox-2" labelText="GNUI Checkbox" />
     </FlexContainer>
   ),
 
@@ -59,13 +46,7 @@ export const WithoutLabel: StoryObj = {
         padding: "3rem",
       }}
     >
-      <CheckmarkCheckbox
-        withoutLabel
-        id="checkbox-5"
-        tooltipProps={{
-          showTimeout: 400,
-        }}
-      />
+      <CheckmarkCheckbox withoutLabel id="checkbox-5" />
     </FlexContainer>
   ),
 
@@ -74,13 +55,15 @@ export const WithoutLabel: StoryObj = {
 
 export const Group: StoryObj = {
   render: () => {
-    const [value, setValue] = useState({
+    const [value, setValue] = useState<{
+      [key: number]: boolean;
+    }>({
       0: false,
       1: false,
       2: false,
     });
 
-    const handleCheckbox = (index) =>
+    const handleCheckbox = (index: number) =>
       setValue({
         ...value,
         [index]: !value[index],
@@ -91,15 +74,15 @@ export const Group: StoryObj = {
 
     return (
       <FlexContainer
-        just
         style={{
           padding: "3rem",
         }}
       >
         <CheckboxGroup name="gnui-checkbox-group">
-          {names.map((names, index) => (
+          {names.map((item, index) => (
             <CheckmarkCheckbox
-              id={names[index]}
+              key={item[index]}
+              id={item[index]}
               labelText={labels[index]}
               onChange={() => handleCheckbox(index)}
             />

@@ -80,8 +80,8 @@ export function List(props: IListProps & SpaceProps) {
         // Nested object
         if (isNested(item)) {
           return (
-            <React.Fragment key={`id-${index}`}>
-              <ListItem {...props} {...item} key={index} />
+            <React.Fragment key={`id-${item.title}`}>
+              <ListItem {...props} {...item} />
               <List
                 horizontal={props.horizontal}
                 unordered={props.unordered}

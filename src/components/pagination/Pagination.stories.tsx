@@ -10,7 +10,13 @@ export default meta;
 
 export const Default: StoryObj = {
   render: () => (
-    <PaginationBox count={400} from={0} size={20} setPage={0} setSize={20} />
+    <PaginationBox
+      count={400}
+      from={0}
+      size={20}
+      setPage={() => ({})}
+      setSize={() => ({})}
+    />
   ),
   name: "default",
 };
@@ -22,8 +28,8 @@ export const Small = {
       count={400}
       from={0}
       size={20}
-      setPage={0}
-      setSize={20}
+      setPage={() => ({})}
+      setSize={() => ({})}
     />
   ),
   name: "small",

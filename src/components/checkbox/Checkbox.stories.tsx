@@ -27,13 +27,15 @@ export const IsIndeterminate: StoryObj = {
 
 export const Group: StoryObj = {
   render: () => {
-    const [value, setValue] = useState({
+    const [value, setValue] = useState<{
+      [key: number]: boolean;
+    }>({
       0: false,
       1: false,
       2: false,
     });
 
-    const handleCheckbox = (index) =>
+    const handleCheckbox = (index: number) =>
       setValue({
         ...value,
         [index]: !value[index],
@@ -44,9 +46,10 @@ export const Group: StoryObj = {
 
     return (
       <CheckboxGroup name="gnui-checkbox-group">
-        {names.map((names, index) => (
+        {names.map((item, index) => (
           <Checkbox
-            id={names[index]}
+            key={item[index]}
+            id={item[index]}
             labelText={labels[index]}
             onChange={() => handleCheckbox(index)}
           />

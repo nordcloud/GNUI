@@ -49,7 +49,7 @@ export const Footer: StoryObj = {
   render: () => {
     const { isOpen, open, close } = useDisclosure();
 
-    function Footer() {
+    function SidebarFooter() {
       return (
         <>
           <Button onClick={close}>Cancel</Button>
@@ -66,7 +66,7 @@ export const Footer: StoryObj = {
         <Sidebar
           title="Default sidebar"
           isOpen={isOpen}
-          footer={<Footer />}
+          footer={<SidebarFooter />}
           onClick={close}
         >
           Sidebar Content
@@ -104,8 +104,8 @@ export const FooterPagination: StoryObj = {
               count={400}
               from={0}
               size={20}
-              setPage={0}
-              setSize={20}
+              setPage={() => ({})}
+              setSize={() => ({})}
             />
           }
           onClick={close}

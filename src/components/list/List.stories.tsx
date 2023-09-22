@@ -9,19 +9,29 @@ const meta: Meta = {
 export default meta;
 
 export const Default: StoryObj = {
-  render: () => <List items={["List item", "Second list item"]} />,
+  render: () => (
+    <List items={[{ title: "List item" }, { title: "Second list item" }]} />
+  ),
   name: "default",
 };
 
 export const Spacing: StoryObj = {
   render: () => (
-    <List spacing="0 0 1.15rem 0" items={["List item", "Second list item"]} />
+    <List
+      spacing="0 0 1.15rem 0"
+      items={[{ title: "List item" }, { title: "Second list item" }]}
+    />
   ),
   name: "spacing",
 };
 
 export const Horizontal: StoryObj = {
-  render: () => <List horizontal items={["List item", "Second list item"]} />,
+  render: () => (
+    <List
+      horizontal
+      items={[{ title: "List item" }, { title: "Second list item" }]}
+    />
+  ),
   name: "horizontal",
 };
 

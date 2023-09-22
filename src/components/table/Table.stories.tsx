@@ -196,7 +196,6 @@ export const TableWithHeader: StoryObj = {
           name="input"
           placeholder="Tag, application name, environment name, description etc"
           title="Title"
-          size="md"
         />
         <FlexContainer justifyContent="flex-end">
           <Button severity="low" size="md" icon="filter" mr="1rem">

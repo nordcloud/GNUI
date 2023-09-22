@@ -111,6 +111,14 @@ module.exports = {
       },
     },
     {
+      files: ["**/*.stories.tsx"],
+      rules: {
+        "react-hooks/rules-of-hooks": "off",
+        "no-alert": "off",
+        "unicorn/consistent-function-scoping": "off",
+      },
+    },
+    {
       files: ["src/**/*.spec.{ts,tsx}"],
       rules: {
         "testing-library/no-node-access": "warn",
