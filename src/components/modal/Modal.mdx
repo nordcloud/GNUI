@@ -1,5 +1,5 @@
 import { Meta, Story, Canvas } from "@storybook/blocks";
-import * as ModalStories from './Modal.stories';
+import * as ModalStories from "./Modal.stories";
 
 <Meta of={ModalStories} />
 
@@ -7,25 +7,25 @@ import * as ModalStories from './Modal.stories';
 
 ### Modal properties
 
-|       properties | required | type                                                                | description            |
-| ---------------: | :------: | :------------------------------------------------------------------ | :--------------------- |
+|       properties | required | type                                                                  | description            |
+| ---------------: | :------: | :-------------------------------------------------------------------- | :--------------------- |
 |          onClose |   true   | <code>`(event: React.MouseEvent<Element, MouseEvent>) => void`</code> |                        |
-|     contentLabel |   true   | string                                                              | modal title            |
-|         children |   true   | any                                                                 | modal content          |
-|          actions |  false   | <code>`Array<Action>`</code>                                        | list of action buttons |
-|            appId |  false   | string                                                              |                        |
-| contentMaxHeight |  false   | string                                                              | default: `25rem`       |
-|    modalMinWidth |  false   | string                                                              | default: `18.75rem`    |
-|        alignText |  false   | <code>left</code>, <code>right</code>, <code>center</code>          | default: `left`        |
+|     contentLabel |   true   | string                                                                | modal title            |
+|         children |   true   | any                                                                   | modal content          |
+|          actions |  false   | <code>`Array<Action>`</code>                                          | list of action buttons |
+|            appId |  false   | string                                                                |                        |
+| contentMaxHeight |  false   | string                                                                | default: `25rem`       |
+|    modalMinWidth |  false   | string                                                                | default: `18.75rem`    |
+|        alignText |  false   | <code>left</code>, <code>right</code>, <code>center</code>            | default: `left`        |
 
 ### Action properties
 
-| properties | required | type                                                                | description        |
-| ---------: | :------: | :------------------------------------------------------------------ | :----------------- |
-|      order |   true   | number                                                              | from left to right |
+| properties | required | type                                                                  | description        |
+| ---------: | :------: | :-------------------------------------------------------------------- | :----------------- |
+|      order |   true   | number                                                                | from left to right |
 |   onAction |   true   | <code>`(event: React.MouseEvent<Element, MouseEvent>) => void`</code> |                    |
-|   severity |   true   | <code>low</code>, <code>medium</code>, <code>high</code>            |                    |
-|   disabled |  false   | boolean                                                             |                    |
+|   severity |   true   | <code>low</code>, <code>medium</code>, <code>high</code>              |                    |
+|   disabled |  false   | boolean                                                               |                    |
 
 ### Basic modal
 

@@ -1,5 +1,5 @@
 import { Meta, Story, Canvas } from "@storybook/blocks";
-import * as CheckboxTreeStories from './CheckboxTree.stories';
+import * as CheckboxTreeStories from "./CheckboxTree.stories";
 
 <Meta of={CheckboxTreeStories} />
 
@@ -9,15 +9,15 @@ import * as CheckboxTreeStories from './CheckboxTree.stories';
 
 ### CheckboxTree properties
 
-|         properties | required |     type      | description                                                                                                                                         |
-| -----------------: | :------: | :-----------: | :-------------------------------------------------------------------------------------------------------------------------------------------------- |
+|         properties | required |      type      | description                                                                                                                                         |
+| -----------------: | :------: | :------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------- |
 |        composition |   true   | Composition\[] | Composition of how Checkboxes and its childrens should be displayed                                                                                 |
-|           onChange |  false   |  () => void   | Returns array with all selected `uid` values.                                                                                                       |
+|           onChange |  false   |   () => void   | Returns array with all selected `uid` values.                                                                                                       |
 |           selected |  false   |   string\[]    | Array of `uid` values that should be pre selected. Values should be passed with relations to parents: meat->chicken for chicken to be pre-selected. |
-|           onExpand |  false   |  () => void   | Returns array with all expanded `uid` values.                                                                                                       |
+|           onExpand |  false   |   () => void   | Returns array with all expanded `uid` values.                                                                                                       |
 |           expanded |  false   |   string\[]    | Array of `uid` values that should be pre expanded. Values should be passed with relations to parents: meat->chicken for chicken to be pre-expanded. |
-| preferredSeparator |  false   |    string     | Sets separator for checkbox relationships on onChange ids retrieval. Default: "->"                                                                  |
-|           disabled |  false   |    boolean    | Sets CheckboxTree disabled (tree becomes unusable and gray)                                                                                         |
+| preferredSeparator |  false   |     string     | Sets separator for checkbox relationships on onChange ids retrieval. Default: "->"                                                                  |
+|           disabled |  false   |    boolean     | Sets CheckboxTree disabled (tree becomes unusable and gray)                                                                                         |
 
 ### Default
 

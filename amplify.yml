@@ -12,7 +12,7 @@ frontend:
   artifacts:
     baseDirectory: storybook-static
     files:
-      - '**/*'
+      - "**/*"
   cache:
     paths:
       - node_modules/**/*

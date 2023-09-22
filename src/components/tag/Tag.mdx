@@ -1,17 +1,17 @@
 import { Meta, Story, Canvas } from "@storybook/blocks";
-import * as TagStories from './Tag.stories';
+import * as TagStories from "./Tag.stories";
 
 <Meta of={TagStories} />
 
 # Tag
 
-*   `color`: `string` – *optional*, Default Tag background color is `theme.colors.lights[2]` [list of available colors](?path=/docs/foundation-styleguide--colors)
-*   `colorText`: `string` – *optional*, Default Tag text color is `theme.colors.primary` [list of available colors](?path=/docs/foundation-styleguide--colors)
-*   `text`: `string` — *optional*, Tag content
-*   `icon`: `string` — optional, icon to be placed inside the tag [list of available icons](?path=/docs/components-svgicon--ui)
-*   `onClick`: `function` — *optional*
-*   `showClose`: `boolean` — *optional*, show close button
-*   `isTransparent`: `boolean` — *optional*, this prop makes the tag background transparent
+- `color`: `string` – _optional_, Default Tag background color is `theme.colors.lights[2]` [list of available colors](?path=/docs/foundation-styleguide--colors)
+- `colorText`: `string` – _optional_, Default Tag text color is `theme.colors.primary` [list of available colors](?path=/docs/foundation-styleguide--colors)
+- `text`: `string` — _optional_, Tag content
+- `icon`: `string` — optional, icon to be placed inside the tag [list of available icons](?path=/docs/components-svgicon--ui)
+- `onClick`: `function` — _optional_
+- `showClose`: `boolean` — _optional_, show close button
+- `isTransparent`: `boolean` — _optional_, this prop makes the tag background transparent
 
 <Canvas>
   <Story of={TagStories.TagDefault} />

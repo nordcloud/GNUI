@@ -1,3 +1,4 @@
+/* prettier-ignore */
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
@@ -111,11 +112,7 @@
         "npm-run-all",
         "patch-package",
         "lockfile-lint",
-        "knip",
-        "remark-cli",
-        "remark-mdx",
-        "remark-preset-lint-consistent",
-        "remark-preset-lint-recommended"
+        "knip"
       ],
       "automerge": true
     },

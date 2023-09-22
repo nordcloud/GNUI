@@ -1,5 +1,5 @@
 import { Meta, Story, Canvas } from "@storybook/blocks";
-import * as TimeRangePickerStories from './TimeRangePicker.stories';
+import * as TimeRangePickerStories from "./TimeRangePicker.stories";
 
 <Meta of={TimeRangePickerStories} />
 
@@ -13,9 +13,9 @@ import * as TimeRangePickerStories from './TimeRangePicker.stories';
 | ------------: | :------: | :-------------------------------------------- | :-------------------------------------------------------------------------------------------------------- |
 | initTimeRange |  false   | Interval                                      | Start date and end date should be within the same day, current date will be used otherwise and by default |
 |          type |  false   | <code>Days</code>, <code>Hours</code>         | Type of time selected in component                                                                        |
-|    weekCounts |  false   | DailyCount\[]                                  | Item counts in each time range (Type "Hours" only)                                                        |
+|    weekCounts |  false   | DailyCount\[]                                 | Item counts in each time range (Type "Hours" only)                                                        |
 | countsLoading |  false   | boolean                                       | Loading state of week counts (Type "Hours" only)                                                          |
-|  disabledDays |  false   | Matcher\[]                                     | Dates not allowed to select                                                                               |
+|  disabledDays |  false   | Matcher\[]                                    | Dates not allowed to select                                                                               |
 |      onChange |   true   | <code>(newTimeRange: Interval) => void</code> | Function to handle timeRange change                                                                       |
 |  onWeekChange |  false   | <code>(monday: Date) => void</code>           | Function to submit when showing week updates (Type "Hours" only)                                          |
 

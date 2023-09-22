@@ -1,18 +1,12 @@
-import {
-  Meta,
-  Title,
-  Story,
-  Canvas,
-  Markdown,
-} from "@storybook/blocks";
-import * as BoxStories from './Box.stories';
+import { Meta, Title, Story, Canvas, Markdown } from "@storybook/blocks";
+import * as BoxStories from "./Box.stories";
 
 <Meta of={BoxStories} />
 
 <Title>Box</Title>
 
 <Markdown>
-{`
+  {`
   By default **Box** has no borders, margins, paddings nor width and height, but
   all of it (and even more) can be easily styled with **props**. Most of props
   takes values only from **theme**, but not all of them: i.e. **colors** can be

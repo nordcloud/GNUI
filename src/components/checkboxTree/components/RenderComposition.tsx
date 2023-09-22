@@ -10,7 +10,6 @@ import * as Styled from "../styled";
 import { Composition, RenderCompositionProps } from "../types";
 import { getChildrenUids, getParentsUids } from "../utils";
 
-
 export function RenderComposition({
   uid,
   label,
