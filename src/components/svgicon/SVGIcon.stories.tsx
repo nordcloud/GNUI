@@ -43,96 +43,598 @@ export const Colors: StoryObj = {
 
 export const Data: StoryObj = {
   render: () => (
-    <FlexContainer justifyContent="space-evenly">
-      <CopyToClipboard text="archive">
-        <FlexContainer direction="column">
-          <SVGIcon name="archive" />
-          <Text size="xs" mt=".25rem">
-            archive
-          </Text>
-        </FlexContainer>
-      </CopyToClipboard>
-      <CopyToClipboard text="cloud">
-        <FlexContainer direction="column">
-          <SVGIcon name="cloud" />
-          <Text size="xs" mt=".25rem">
-            cloud
-          </Text>
-        </FlexContainer>
-      </CopyToClipboard>
-      <CopyToClipboard text="cloudOffline">
-        <FlexContainer direction="column">
-          <SVGIcon name="cloudOffline" />
-          <Text size="xs" mt=".25rem">
-            cloudOffline
-          </Text>
-        </FlexContainer>
-      </CopyToClipboard>
-      <CopyToClipboard text="cloudOnline">
-        <FlexContainer direction="column">
-          <SVGIcon name="cloudOnline" />
-          <Text size="xs" mt=".25rem">
-            cloudOnline
-          </Text>
-        </FlexContainer>
-      </CopyToClipboard>
-      <CopyToClipboard text="cloudWithDollar">
-        <FlexContainer direction="column">
-          <SVGIcon name="cloudWithDollar" />
-          <Text size="xs" mt=".25rem">
-            cloudWithDollar
-          </Text>
-        </FlexContainer>
-      </CopyToClipboard>
-      <CopyToClipboard text="cloudDataOnly">
-        <FlexContainer direction="column">
-          <SVGIcon name="cloudDataOnly" />
-          <Text size="xs" mt=".25rem">
-            cloudDataOnly
-          </Text>
-        </FlexContainer>
-      </CopyToClipboard>
-      <CopyToClipboard text="cloudQuestionMark">
-        <FlexContainer direction="column">
-          <SVGIcon name="cloudQuestionMark" />
-          <Text size="xs" mt=".25rem">
-            cloudQuestionMark
-          </Text>
-        </FlexContainer>
-      </CopyToClipboard>
-      <CopyToClipboard text="costs">
-        <FlexContainer direction="column">
-          <SVGIcon name="costs" />
-          <Text size="xs" mt=".25rem">
-            costs
-          </Text>
-        </FlexContainer>
-      </CopyToClipboard>
-      <CopyToClipboard text="equal">
-        <FlexContainer direction="column">
-          <SVGIcon name="equal" />
-          <Text size="xs" mt=".25rem">
-            equal
-          </Text>
-        </FlexContainer>
-      </CopyToClipboard>
-      <CopyToClipboard text="proportional">
-        <FlexContainer direction="column">
-          <SVGIcon name="proportional" />
-          <Text size="xs" mt=".25rem">
-            proportional
-          </Text>
-        </FlexContainer>
-      </CopyToClipboard>
-      <CopyToClipboard text="report">
-        <FlexContainer direction="column">
-          <SVGIcon name="report" />
-          <Text size="xs" mt=".25rem">
-            report
-          </Text>
-        </FlexContainer>
-      </CopyToClipboard>
-    </FlexContainer>
+    <>
+      <FlexContainer justifyContent="space-evenly">
+        <CopyToClipboard text="archive">
+          <FlexContainer direction="column">
+            <SVGIcon name="archive" />
+            <Text size="xs" mt=".25rem">
+              archive
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="cloud">
+          <FlexContainer direction="column">
+            <SVGIcon name="cloud" />
+            <Text size="xs" mt=".25rem">
+              cloud
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="cloudOffline">
+          <FlexContainer direction="column">
+            <SVGIcon name="cloudOffline" />
+            <Text size="xs" mt=".25rem">
+              cloudOffline
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="cloudOnline">
+          <FlexContainer direction="column">
+            <SVGIcon name="cloudOnline" />
+            <Text size="xs" mt=".25rem">
+              cloudOnline
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="cloudWithDollar">
+          <FlexContainer direction="column">
+            <SVGIcon name="cloudWithDollar" />
+            <Text size="xs" mt=".25rem">
+              cloudWithDollar
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="cloudDataOnly">
+          <FlexContainer direction="column">
+            <SVGIcon name="cloudDataOnly" />
+            <Text size="xs" mt=".25rem">
+              cloudDataOnly
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="cloudQuestionMark">
+          <FlexContainer direction="column">
+            <SVGIcon name="cloudQuestionMark" />
+            <Text size="xs" mt=".25rem">
+              cloudQuestionMark
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="costs">
+          <FlexContainer direction="column">
+            <SVGIcon name="costs" />
+            <Text size="xs" mt=".25rem">
+              costs
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="equal">
+          <FlexContainer direction="column">
+            <SVGIcon name="equal" />
+            <Text size="xs" mt=".25rem">
+              equal
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="proportional">
+          <FlexContainer direction="column">
+            <SVGIcon name="proportional" />
+            <Text size="xs" mt=".25rem">
+              proportional
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="report">
+          <FlexContainer direction="column">
+            <SVGIcon name="report" />
+            <Text size="xs" mt=".25rem">
+              report
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+      </FlexContainer>
+      <FlexContainer justifyContent="space-evenly">
+        <CopyToClipboard text="chartDescending">
+          <FlexContainer direction="column">
+            <SVGIcon name="chartDescending" />
+            <Text size="xs" mt=".25rem">
+              chartDescending
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="cloudWaste">
+          <FlexContainer direction="column">
+            <SVGIcon name="cloudWaste" />
+            <Text size="xs" mt=".25rem">
+              cloudWaste
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="co2">
+          <FlexContainer direction="column">
+            <SVGIcon name="co2" />
+            <Text size="xs" mt=".25rem">
+              co2
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="co2Down">
+          <FlexContainer direction="column">
+            <SVGIcon name="co2Down" />
+            <Text size="xs" mt=".25rem">
+              co2Down
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="co2Up">
+          <FlexContainer direction="column">
+            <SVGIcon name="co2Up" />
+            <Text size="xs" mt=".25rem">
+              co2Up
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="smartphone">
+          <FlexContainer direction="column">
+            <SVGIcon name="smartphone" />
+            <Text size="xs" mt=".25rem">
+              smartphone
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="cars">
+          <FlexContainer direction="column">
+            <SVGIcon name="cars" />
+            <Text size="xs" mt=".25rem">
+              cars
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="change">
+          <FlexContainer direction="column">
+            <SVGIcon name="change" />
+            <Text size="xs" mt=".25rem">
+              change
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="virtualHost">
+          <FlexContainer direction="column">
+            <SVGIcon name="virtualHost" />
+            <Text size="xs" mt=".25rem">
+              virtualHost
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="database">
+          <FlexContainer direction="column">
+            <SVGIcon name="database" />
+            <Text size="xs" mt=".25rem">
+              database
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+      </FlexContainer>
+      <FlexContainer justifyContent="space-evenly">
+        <CopyToClipboard text="detailsView">
+          <FlexContainer direction="column">
+            <SVGIcon name="detailsView" />
+            <Text size="xs" mt=".25rem">
+              detailsView
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="listView">
+          <FlexContainer direction="column">
+            <SVGIcon name="listView" />
+            <Text size="xs" mt=".25rem">
+              listView
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="wizardView">
+          <FlexContainer direction="column">
+            <SVGIcon name="wizardView" />
+            <Text size="xs" mt=".25rem">
+              wizardView
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="application">
+          <FlexContainer direction="column">
+            <SVGIcon name="application" />
+            <Text size="xs" mt=".25rem">
+              application
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="dashboard">
+          <FlexContainer direction="column">
+            <SVGIcon name="dashboard" />
+            <Text size="xs" mt=".25rem">
+              dashboard
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="briefcase">
+          <FlexContainer direction="column">
+            <SVGIcon name="briefcase" />
+            <Text size="xs" mt=".25rem">
+              briefcase
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="checkList">
+          <FlexContainer direction="column">
+            <SVGIcon name="checkList" />
+            <Text size="xs" mt=".25rem">
+              checkList
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="api">
+          <FlexContainer direction="column">
+            <SVGIcon name="api" />
+            <Text size="xs" mt=".25rem">
+              api
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="dollar">
+          <FlexContainer direction="column">
+            <SVGIcon name="dollar" />
+            <Text size="xs" mt=".25rem">
+              dollar
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="euro">
+          <FlexContainer direction="column">
+            <SVGIcon name="euro" />
+            <Text size="xs" mt=".25rem">
+              euro
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+      </FlexContainer>
+      <FlexContainer justifyContent="space-evenly">
+        <CopyToClipboard text="mailInformation">
+          <FlexContainer direction="column">
+            <SVGIcon name="mailInformation" />
+            <Text size="xs" mt=".25rem">
+              mailInformation
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="mappingRules">
+          <FlexContainer direction="column">
+            <SVGIcon name="mappingRules" />
+            <Text size="xs" mt=".25rem">
+              mappingRules
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="otherType">
+          <FlexContainer direction="column">
+            <SVGIcon name="otherType" />
+            <Text size="xs" mt=".25rem">
+              otherType
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="resource">
+          <FlexContainer direction="column">
+            <SVGIcon name="resource" />
+            <Text size="xs" mt=".25rem">
+              resource
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="integration">
+          <FlexContainer direction="column">
+            <SVGIcon name="integration" />
+            <Text size="xs" mt=".25rem">
+              integration
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="reservedInstances">
+          <FlexContainer direction="column">
+            <SVGIcon name="reservedInstances" />
+            <Text size="xs" mt=".25rem">
+              reservedInstances
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="storage">
+          <FlexContainer direction="column">
+            <SVGIcon name="storage" />
+            <Text size="xs" mt=".25rem">
+              storage
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="budget">
+          <FlexContainer direction="column">
+            <SVGIcon name="budget" />
+            <Text size="xs" mt=".25rem">
+              budget
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="budgetEuro">
+          <FlexContainer direction="column">
+            <SVGIcon name="budgetEuro" />
+            <Text size="xs" mt=".25rem">
+              budgetEuro
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="production">
+          <FlexContainer direction="column">
+            <SVGIcon name="production" />
+            <Text size="xs" mt=".25rem">
+              production
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+      </FlexContainer>
+      <FlexContainer justifyContent="space-evenly">
+        <CopyToClipboard text="qa">
+          <FlexContainer direction="column">
+            <SVGIcon name="qa" />
+            <Text size="xs" mt=".25rem">
+              qa
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="test">
+          <FlexContainer direction="column">
+            <SVGIcon name="test" />
+            <Text size="xs" mt=".25rem">
+              test
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="flowchart">
+          <FlexContainer direction="column">
+            <SVGIcon name="flowchart" />
+            <Text size="xs" mt=".25rem">
+              flowchart
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="eventSchedule">
+          <FlexContainer direction="column">
+            <SVGIcon name="eventSchedule" />
+            <Text size="xs" mt=".25rem">
+              eventSchedule
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="eventList">
+          <FlexContainer direction="column">
+            <SVGIcon name="eventList" />
+            <Text size="xs" mt=".25rem">
+              eventList
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="eventSettings">
+          <FlexContainer direction="column">
+            <SVGIcon name="eventSettings" />
+            <Text size="xs" mt=".25rem">
+              eventSettings
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="virtualColumn">
+          <FlexContainer direction="column">
+            <SVGIcon name="virtualColumn" />
+            <Text size="xs" mt=".25rem">
+              virtualColumn
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="zoomArea">
+          <FlexContainer direction="column">
+            <SVGIcon name="zoomArea" />
+            <Text size="xs" mt=".25rem">
+              zoomArea
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="mail">
+          <FlexContainer direction="column">
+            <SVGIcon name="mail" />
+            <Text size="xs" mt=".25rem">
+              mail
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="machineSettings">
+          <FlexContainer direction="column">
+            <SVGIcon name="machineSettings" />
+            <Text size="xs" mt=".25rem">
+              machineSettings
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+      </FlexContainer>
+      <FlexContainer justifyContent="space-evenly">
+        <CopyToClipboard text="chipWithDollar">
+          <FlexContainer direction="column">
+            <SVGIcon name="chipWithDollar" />
+            <Text size="xs" mt=".25rem">
+              chipWithDollar
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="changeStatus">
+          <FlexContainer direction="column">
+            <SVGIcon name="changeStatus" />
+            <Text size="xs" mt=".25rem">
+              changeStatus
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="trendUp">
+          <FlexContainer direction="column">
+            <SVGIcon name="trendUp" />
+            <Text size="xs" mt=".25rem">
+              trendUp
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="trendDown">
+          <FlexContainer direction="column">
+            <SVGIcon name="trendDown" />
+            <Text size="xs" mt=".25rem">
+              trendDown
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="costRefresh">
+          <FlexContainer direction="column">
+            <SVGIcon name="costRefresh" />
+            <Text size="xs" mt=".25rem">
+              costRefresh
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="calendar">
+          <FlexContainer direction="column">
+            <SVGIcon name="calendar" />
+            <Text size="xs" mt=".25rem">
+              calendar
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="trendLineUp">
+          <FlexContainer direction="column">
+            <SVGIcon name="trendLineUp" />
+            <Text size="xs" mt=".25rem">
+              trendLineUp
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="trendLineDown">
+          <FlexContainer direction="column">
+            <SVGIcon name="trendLineDown" />
+            <Text size="xs" mt=".25rem">
+              trendLineDown
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="target">
+          <FlexContainer direction="column">
+            <SVGIcon name="target" />
+            <Text size="xs" mt=".25rem">
+              target
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="chartAscending">
+          <FlexContainer direction="column">
+            <SVGIcon name="chartAscending" />
+            <Text size="xs" mt=".25rem">
+              chartAscending
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+      </FlexContainer>
+      <FlexContainer justifyContent="space-evenly">
+        <CopyToClipboard text="costSetup">
+          <FlexContainer direction="column">
+            <SVGIcon name="costSetup" />
+            <Text size="xs" mt=".25rem">
+              costSetup
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="organization">
+          <FlexContainer direction="column">
+            <SVGIcon name="organization" />
+            <Text size="xs" mt=".25rem">
+              organization
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="desktop">
+          <FlexContainer direction="column">
+            <SVGIcon name="desktop" />
+            <Text size="xs" mt=".25rem">
+              desktop
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="desktopChart">
+          <FlexContainer direction="column">
+            <SVGIcon name="desktopChart" />
+            <Text size="xs" mt=".25rem">
+              desktopChart
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="discount">
+          <FlexContainer direction="column">
+            <SVGIcon name="discount" />
+            <Text size="xs" mt=".25rem">
+              discount
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="clock">
+          <FlexContainer direction="column">
+            <SVGIcon name="clock" />
+            <Text size="xs" mt=".25rem">
+              clock
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="tag">
+          <FlexContainer direction="column">
+            <SVGIcon name="tag" />
+            <Text size="xs" mt=".25rem">
+              tag
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="layers">
+          <FlexContainer direction="column">
+            <SVGIcon name="layers" />
+            <Text size="xs" mt=".25rem">
+              layers
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="chart">
+          <FlexContainer direction="column">
+            <SVGIcon name="chart" />
+            <Text size="xs" mt=".25rem">
+              chart
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="feedback">
+          <FlexContainer direction="column">
+            <SVGIcon name="feedback" />
+            <Text size="xs" mt=".25rem">
+              feedback
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+        <CopyToClipboard text="file">
+          <FlexContainer direction="column">
+            <SVGIcon name="file" />
+            <Text size="xs" mt=".25rem">
+              file
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
+      </FlexContainer>
+    </>
   ),
 
   name: "data",
