@@ -8,10 +8,10 @@ import {
   InputPasswordProps,
 } from "./types";
 
-type Props = StyledInputGroupProps &
-  StyledInputProps &
+type Props = InputPasswordProps &
   SpaceProps &
-  InputPasswordProps;
+  StyledInputGroupProps &
+  StyledInputProps;
 
 export const InputPassword = React.forwardRef<HTMLInputElement, Props>(
   (
@@ -31,17 +31,17 @@ export const InputPassword = React.forwardRef<HTMLInputElement, Props>(
     return (
       <InputGroup status={status} noBorder={noBorder} popup={popup}>
         <StyledInput
+          ref={ref}
           type={showPassword ? "text" : "password"}
-          onClick={onClick}
           popup={popup}
           small={small}
-          ref={ref}
+          onClick={onClick}
           {...props}
         />
         <Clear
-          onClick={() => setShowPassword((prev) => !prev)}
           title={showPassword ? "Hide password" : "Show password"}
           type="button"
+          onClick={() => setShowPassword((prev) => !prev)}
         >
           <SVGIcon size="md" name={showPassword ? "eye" : "eyeClose"} />
         </Clear>

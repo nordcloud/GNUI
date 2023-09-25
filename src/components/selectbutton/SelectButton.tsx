@@ -5,7 +5,10 @@ import theme from "../../theme";
 import { SingleColors } from "../../theme/config";
 import { setColor } from "../../utils/setcolor";
 
-export type SelectButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
+export type SelectButtonProps = Omit<
+  React.ComponentProps<"button">,
+  "onClick"
+> & {
   name: string;
   value: string;
   labelText: React.ReactNode;
@@ -16,7 +19,7 @@ export type SelectButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
 
 // Extend props with intrinsic attributes of ul as containerProps
 // ref: https://github.com/kristerkari/react-native-css-modules-with-typescript-example/issues/3#issuecomment-852947240
-export type SelectButtonListProps = React.HTMLAttributes<HTMLUListElement> & {
+export type SelectButtonListProps = React.ComponentPropsWithRef<"ul"> & {
   children: React.ReactNode;
   status?: SingleColors;
   size?: string;

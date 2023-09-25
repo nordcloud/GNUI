@@ -5,7 +5,7 @@ import theme from "../../theme";
 import { SingleColors } from "../../theme/config";
 import { setColor } from "../../utils/setcolor";
 
-export type ToggleProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+export type ToggleProps = React.ComponentProps<"button"> & {
   value: boolean;
   labelText?: string;
   status?: SingleColors;
@@ -66,7 +66,7 @@ export function Toggle({
   labelText = "",
   onChange,
   ...props
-}: ToggleProps) {
+}: React.ComponentProps<typeof StyledToggle>) {
   return (
     <StyledToggle
       className={value ? "active" : ""}

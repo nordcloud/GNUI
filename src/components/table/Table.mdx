@@ -1,0 +1,51 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import * as TableStories from "./Table.stories";
+
+<Meta of={TableStories} />
+
+# Table
+
+#### Table properties
+
+| properties | required | type    | description                             |
+| ---------: | :------: | :------ | :-------------------------------------- |
+|    striped |  false   | boolean | table rows will be striped              |
+|  hoverline |  false   | boolean | table rows will be highlighted on hover |
+|      small |  false   | boolean | table rows will have smaller paddings   |
+|       tiny |  false   | boolean | font is smaller                         |
+
+### Simple Table
+
+<Canvas>
+  <Story of={TableStories.Simple} />
+</Canvas>
+
+### Striped Table
+
+<Canvas>
+  <Story of={TableStories.Striped} />
+</Canvas>
+
+### Small Table
+
+<Canvas>
+  <Story of={TableStories.Small} />
+</Canvas>
+
+### Small Table with small font (tiny)
+
+<Canvas>
+  <Story of={TableStories.SmallFontTiny} />
+</Canvas>
+
+### Hoverline Table
+
+<Canvas>
+  <Story of={TableStories.Hoverline} />
+</Canvas>
+
+### Table with Header box and Pagination
+
+<Canvas>
+  <Story of={TableStories.TableWithHeader} />
+</Canvas>

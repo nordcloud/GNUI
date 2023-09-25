@@ -1,0 +1,51 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import * as TooltipStories from "./Tooltip.stories";
+
+<Meta of={TooltipStories} />
+
+# Tooltip
+
+#### Props
+
+> - `caption`: `ReactNode` — **required** (tooltip content)
+> - `position`: `left` | `right` — **optional** (default position is center)
+> - `bottom`: `boolean` - **optional** (default is false)
+> - `status`: `danger` | `warning` | `success` | `notification` — **optional** (background color of tooltip)
+
+## Default Tooltip
+
+> `caption: string;` - caption for the tooltip
+
+<Canvas>
+  <Story of={TooltipStories.Default} />
+</Canvas>
+
+## Bottom Tooltip
+
+> `bottom: boolean;` - positioning tooltip at the bottom
+
+<Canvas>
+  <Story of={TooltipStories.Bottom} />
+</Canvas>
+
+## Tooltip Position
+
+> - `position`: `left` | `right` - you can align the tooltip to the right side or to the left side of your child element
+
+<Canvas>
+  <Story of={TooltipStories.Position} />
+</Canvas>
+
+## Tooltip Status
+
+> - `status`: `danger` | `warning` | `success` | `notification`
+
+<Canvas>
+  <Story of={TooltipStories.Status} />
+</Canvas>
+
+## Tooltip with other Components
+
+<Canvas>
+  <Story of={TooltipStories.Components} />
+</Canvas>

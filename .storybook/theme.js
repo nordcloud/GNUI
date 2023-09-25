@@ -3,6 +3,10 @@ import logo from "../assets/nclogo.png";
 
 export default create({
   base: "light",
+  brandTitle: "Storybook of General Nordcloud UI library",
+  brandUrl: "https://nordcloud.com/",
+  brandImage: logo,
+  brandTarget: "_self",
 
   colorPrimary: "#161632",
   colorSecondary: "#ff2837",
@@ -31,8 +35,4 @@ export default create({
   inputBorder: "silver",
   inputTextColor: "black",
   inputBorderRadius: 4,
-
-  brandTitle: "GNUI",
-
-  brandImage: logo,
 });

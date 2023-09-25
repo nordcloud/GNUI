@@ -1,0 +1,46 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import * as LoaderStories from "./Loader.stories";
+
+<Meta of={LoaderStories} />
+
+# Loader
+
+## Loader properties
+
+|   properties | required | type                                                                                                                               | description                                                                                                        |
+| -----------: | :------: | :--------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------- |
+|    inContent |  false   | boolean                                                                                                                            | loader becomes inline instead of fixed, useful for handling loading state inside single components, default: false |
+| isBackground |  false   | boolean                                                                                                                            | adds background to fixed loader that handles global loading states, default: false                                 |
+|     position |  false   | <code>top-left</code> , <code>top-right</code> , <code>bottom-right</code> , <code>bottom-center</code> , <code>bottom-left</code> |                                                                                                                    |
+
+## Default
+
+> By default Loader position is: top, center
+
+<Canvas>
+  <Story of={LoaderStories.Default} />
+</Canvas>
+
+## position
+
+> `position`: `top-left` | `top-right` | `bottom-right` | `bottom-center` | `bottom-left` — **optional**
+
+<Canvas>
+  <Story of={LoaderStories.Position} />
+</Canvas>
+
+## inContent
+
+> `inContent`: `boolean` — **optional**
+
+<Canvas>
+  <Story of={LoaderStories.InContent} />
+</Canvas>
+
+## isBackground
+
+> `isBackground`: `boolean` — **optional**
+
+<Canvas>
+  <Story of={LoaderStories.IsBackground} />
+</Canvas>

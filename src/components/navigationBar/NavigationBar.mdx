@@ -1,0 +1,134 @@
+import { Meta, Story, Canvas, Markdown } from "@storybook/blocks";
+import * as NavigationBarStories from "./NavigationBar.stories";
+import Props from "./Props.md?raw";
+
+<Meta of={NavigationBarStories} />
+
+# NavigationBar
+
+## properties
+
+<Markdown>{Props}</Markdown>
+
+<details>
+  <summary style={{ color: "black" }}>Expandable Config definition and defaults</summary>
+  <strong style={{ color: "black" }}>definition</strong>
+
+```js
+type ExpandableConfig = {
+  timingFunction?: "linear" | "ease" | "ease-in" | "ease-out" | "ease-in-out",
+  duration?: string,
+};
+```
+
+{" "}
+
+<strong style={{ color: "black" }}>defaults</strong>
+
+```js
+expandableConfig = {
+  timingFunction: "linear",
+  duration: "0.2s",
+},
+```
+
+</details>
+
+<details>
+  <summary style={{ color: "black" }}>Popover Config definition and defaults</summary>
+  <strong style={{ color: "black" }}>definition</strong>
+
+```js
+type PopoverConfig = {
+  triggerOn: ExtendedPopoverAction,
+  closeOn: ExtendedPopoverAction,
+  position: Position,
+};
+```
+
+{" "}
+
+<strong style={{ color: "black" }}>defaults</strong>
+
+```js
+popoverConfig = {
+  triggerOn: "hover",
+  closeOn: "hover",
+  position: "start",
+};
+```
+
+</details>
+
+<details>
+  <summary style={{ color: "black" }}>Additional helper elements</summary>
+  <span style={{ color: "black" }}>For easier style management of the navigation bar we have shared the styling elements used in the demo</span>
+
+{" "}
+
+<p style={{ color: "black" }}>Used to style whole layout of the nav bar</p>
+
+```js
+const ItemsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+`;
+```
+
+{" "}
+
+<p style={{ color: "black", marginBottom: 0 }}>
+  Used to style single section that can group buttons in some logical manner
+</p>
+
+{" "}
+
+<p style={{ opacity: 0.75, marginTop: 0 }}>
+  It enables user to push section to the bottom of the navigation bar (it is advised to have single
+  container with `stickToBottom` set to `true`)
+</p>
+
+```js
+const ItemsSection = styled.div<{ stickToBottom?: boolean }>`
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  row-gap: ${theme.spacing.spacing04};
+  width: 100%;
+  border-top: ${({ stickToBottom }) =>
+    stickToBottom ? `solid 1px ${theme.color.border.border01}` : "inherit"};
+  padding-top: ${({ stickToBottom }) =>
+    stickToBottom ? theme.spacing.spacing03 : "0"};
+  margin-top: ${({ stickToBottom }) =>
+    stickToBottom ? theme.spacing.spacing06 : "0"};
+`;
+```
+
+</details>
+
+## default
+
+<Canvas>
+  <Story of={NavigationBarStories.Default} />
+</Canvas>
+
+## non-expandable
+
+<Canvas>
+  <Story of={NavigationBarStories.NonExpandable} />
+</Canvas>
+
+## multiple sections with stick to bottom
+
+<Canvas>
+  <Story of={NavigationBarStories.MultipleSectionsWithStickToBottom} />
+</Canvas>
+
+## scrollable
+
+<Canvas>
+  <Story of={NavigationBarStories.Scrollable} />
+</Canvas>

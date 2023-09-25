@@ -112,8 +112,8 @@ export const CheckmarkCheckbox = React.forwardRef<
   HTMLInputElement,
   CheckmarkCheckboxProps
 >(({ id, labelText, withoutLabel, double, ...props }, ref) => {
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    props.onChange?.(e);
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    props.onChange?.(event);
   };
 
   return (

@@ -28,7 +28,7 @@ type ButtonPropsInner<C extends React.ElementType> =
       /**
        * @deprecated The property should not be used
        */
-      color?: SingleColors;
+      color?: SingleColors | (string & {});
       form?: string;
       select?: boolean;
       className?: string;

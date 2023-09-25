@@ -1,0 +1,54 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import * as SelectButtonStories from "./SelectButton.stories";
+
+<Meta of={SelectButtonStories} />
+
+# SelectButton
+
+#### MultipleSelect properties
+
+| properties | required | type                                                                                       | description                             |
+| ---------: | :------: | :----------------------------------------------------------------------------------------- | :-------------------------------------- |
+|   children |   true   | <code>`Array<SelectButton>`</code>                                                         |                                         |
+|       size |  false   | `small`                                                                                    | small-sized SelectButton                |
+|     status |  false   | <code>success</code>, <code>danger</code>, <code>warning</code>, <code>notification</code> | color indicator status for SelectButton |
+
+#### SelectButton properties
+
+| properties | required | type                                                       | description                                    |
+| ---------: | :------: | :--------------------------------------------------------- | :--------------------------------------------- |
+|       name |   true   | string                                                     |                                                |
+|    onClick |   true   | <code>`(value: SelectButtonProps["value"]) => void`</code> | React `setState` to handle select value change |
+|      value |   true   | string                                                     |                                                |
+|  labelText |   true   | React.ReactNode                                            |                                                |
+|   isActive |  false   | boolean                                                    |                                                |
+
+### Default
+
+<Canvas>
+  <Story of={SelectButtonStories.Default} />
+</Canvas>
+
+### Disabled
+
+> `disabled`: `boolean`
+
+<Canvas>
+  <Story of={SelectButtonStories.Disabled} />
+</Canvas>
+
+### Small
+
+> - `size`: `string` — \[`small`]
+
+<Canvas>
+  <Story of={SelectButtonStories.Small} />
+</Canvas>
+
+### Color Status
+
+> - `status`: `string` — \[`success`, `danger`, `warning`, `notification`]
+
+<Canvas>
+  <Story of={SelectButtonStories.Status} />
+</Canvas>
