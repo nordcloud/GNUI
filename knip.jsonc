@@ -13,7 +13,6 @@
     "@types/lodash.clonedeep",
     "webpack",
     // Can be listed explicitly in the future
-    "@jest/types",
     "@types/eslint"
   ],
   "rules": {

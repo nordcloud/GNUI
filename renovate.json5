@@ -83,14 +83,11 @@
     {
       "groupName": "Testing packages",
       "matchPackageNames": [
-        "@types/jest",
-        "jest",
-        "jest-environment-jsdom",
-        "ts-jest",
         "@testing-library/jest-dom",
-        "@testing-library/react-hooks",
+        "@testing-library/react",
         "@testing-library/user-event",
-        "identity-obj-proxy"
+        "vitest",
+        "jsdom"
       ],
       "automerge": true
     },
