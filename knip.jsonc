@@ -11,12 +11,18 @@
     "lodash",
     "lodash.clonedeep",
     "@types/lodash.clonedeep",
-    "webpack",
     // Can be listed explicitly in the future
-    "@types/eslint"
+    "@types/eslint",
+    // Used in `src/setupTests.ts`
+    "@testing-library/jest-dom"
   ],
   "rules": {
     "enumMembers": "warn"
   },
-  "ignore": ["**/*.d.ts", "**/__mockups__"]
+  "ignore": [
+    "**/*.d.ts",
+    "**/__mockups__",
+    "src/setupTests.ts",
+    "vitest.config.ts"
+  ]
 }
