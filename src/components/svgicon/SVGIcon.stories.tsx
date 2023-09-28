@@ -1289,6 +1289,14 @@ export const OsProvider: StoryObj = {
           </Text>
         </FlexContainer>
       </CopyToClipboard>
+      <CopyToClipboard text="rocky">
+        <FlexContainer direction="column">
+          <SVGIcon name="rocky" />
+          <Text size="xs" mt=".25rem">
+            rocky
+          </Text>
+        </FlexContainer>
+      </CopyToClipboard>
     </FlexContainer>
   ),
 
