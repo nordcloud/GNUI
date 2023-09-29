@@ -1,6 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { vi } from "vitest";
 import { Button } from "../../button";
 import { Tab, Tabs } from "../Tabs";
 import {
@@ -107,8 +108,8 @@ test("disabled tabs are not interactive", () => {
 });
 
 test("button actions are executed on click", () => {
-  const nextStep = jest.fn();
-  const previousStep = jest.fn();
+  const nextStep = vi.fn();
+  const previousStep = vi.fn();
 
   render(
     <Tabs step={1} handleTab={() => {}}>

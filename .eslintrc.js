@@ -11,7 +11,7 @@ module.exports = {
 
   parserOptions: { tsconfigRootDir: __dirname },
 
-  ignorePatterns: ["./*.js"],
+  ignorePatterns: ["./*.js", "vitest.config.ts"],
 
   settings: {
     react: {
