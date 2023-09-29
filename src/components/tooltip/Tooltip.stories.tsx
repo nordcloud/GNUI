@@ -18,8 +18,8 @@ export const Default: StoryObj = {
     <FlexContainer
       justifyContent="space-evenly"
       css={{
-        paddingTop: "3rem",
-        paddingBottom: "3rem",
+        paddingTop: "5rem",
+        paddingBottom: "5rem",
       }}
     >
       <Tooltip caption="Lorem Ipsum is simply dummy text of the printing and typesetting industry.">
@@ -32,7 +32,7 @@ export const Default: StoryObj = {
   parameters: {
     docs: {
       story: {
-        height: "200px",
+        height: "100px",
       },
     },
   },
@@ -43,8 +43,8 @@ export const Bottom: StoryObj = {
     <FlexContainer
       justifyContent="space-evenly"
       css={{
-        paddingTop: "3rem",
-        paddingBottom: "3rem",
+        paddingTop: "5rem",
+        paddingBottom: "5rem",
       }}
     >
       <Tooltip
@@ -71,8 +71,8 @@ export const Position: StoryObj = {
     <FlexContainer
       justifyContent="space-evenly"
       css={{
-        paddingTop: "3rem",
-        paddingBottom: "3rem",
+        paddingTop: "5rem",
+        paddingBottom: "5rem",
       }}
     >
       <div>
@@ -109,8 +109,8 @@ export const Status: StoryObj = {
     <FlexContainer
       justifyContent="space-evenly"
       css={{
-        paddingTop: "3rem",
-        paddingBottom: "3rem",
+        paddingTop: "5rem",
+        paddingBottom: "5rem",
       }}
     >
       <div>
@@ -151,8 +151,8 @@ export const Components: StoryObj = {
     <FlexContainer
       justifyContent="space-evenly"
       css={{
-        paddingTop: "3rem",
-        paddingBottom: "3rem",
+        paddingTop: "5rem",
+        paddingBottom: "5rem",
       }}
     >
       <div>
