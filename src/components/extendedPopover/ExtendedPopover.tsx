@@ -61,13 +61,13 @@ export function ExtendedPopover({
   }, [isOpen]);
 
   const handleClickOutside = React.useCallback(
-    (event) => {
+    (event: Event) => {
       if (
         clickOutsideToClose &&
         contentRef.current &&
         triggerRef.current &&
-        !contentRef.current.contains(event.target) &&
-        !triggerRef.current.contains(event.target)
+        !contentRef.current.contains(event.target as Node) &&
+        !triggerRef.current.contains(event.target as Node)
       ) {
         close();
       }

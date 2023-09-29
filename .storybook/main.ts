@@ -6,7 +6,7 @@ const config: StorybookConfig = {
     {
       name: "@storybook/addon-essentials",
       options: {
-        backgrounds: false,
+        // backgrounds: false,
       },
     },
     "@storybook/addon-mdx-gfm",
@@ -17,7 +17,7 @@ const config: StorybookConfig = {
   framework: {
     name: "@storybook/react-vite",
     options: {
-      legacyRootApi: true,
+      // legacyRootApi: true,
     },
   },
 

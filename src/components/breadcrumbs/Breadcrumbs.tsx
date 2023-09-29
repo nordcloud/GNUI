@@ -10,7 +10,9 @@ export type BreadcrumbsList = {
 
 export type BreadcrumbsListProps = {
   list: BreadcrumbsList[];
-  Component?: React.FC<{ to: string; isDisabled?: boolean }>;
+  Component?: React.FC<
+    React.PropsWithChildren<{ to: string; isDisabled?: boolean }>
+  >;
 };
 
 export function Breadcrumbs({ list, Component }: BreadcrumbsListProps) {
