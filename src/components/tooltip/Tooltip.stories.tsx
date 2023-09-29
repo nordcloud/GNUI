@@ -17,7 +17,7 @@ export const Default: StoryObj = {
   render: () => (
     <FlexContainer
       justifyContent="space-evenly"
-      style={{
+      css={{
         paddingTop: "3rem",
         paddingBottom: "3rem",
       }}
@@ -29,6 +29,13 @@ export const Default: StoryObj = {
   ),
 
   name: "default",
+  parameters: {
+    docs: {
+      story: {
+        height: "200px",
+      },
+    },
+  },
 };
 
 export const Bottom: StoryObj = {
@@ -50,6 +57,13 @@ export const Bottom: StoryObj = {
   ),
 
   name: "bottom",
+  parameters: {
+    docs: {
+      story: {
+        height: "200px",
+      },
+    },
+  },
 };
 
 export const Position: StoryObj = {
@@ -81,6 +95,13 @@ export const Position: StoryObj = {
   ),
 
   name: "position",
+  parameters: {
+    docs: {
+      story: {
+        height: "200px",
+      },
+    },
+  },
 };
 
 export const Status: StoryObj = {
@@ -116,6 +137,13 @@ export const Status: StoryObj = {
   ),
 
   name: "status",
+  parameters: {
+    docs: {
+      story: {
+        height: "200px",
+      },
+    },
+  },
 };
 
 export const Components: StoryObj = {
@@ -152,4 +180,11 @@ export const Components: StoryObj = {
   ),
 
   name: "components",
+  parameters: {
+    docs: {
+      story: {
+        height: "200px",
+      },
+    },
+  },
 };
