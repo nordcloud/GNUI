@@ -74,7 +74,7 @@
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
-    "@nordcloud/eslint-config-pat": "^8.0.0",
+    "@nordcloud/eslint-config-pat": "^8.1.0",
     "@rollup/plugin-commonjs": "^24.1.0",
     "@rollup/plugin-node-resolve": "^15.2.1",
     "@storybook/addon-essentials": "^7.4.2",
@@ -94,7 +94,7 @@
     "@types/react-dom": "^17.0.20",
     "@types/react-helmet": "^6.1.6",
     "@types/styled-components": "^5.1.27",
-    "eslint": "^8.49.0",
+    "eslint": "^8.50.0",
     "husky": "^8.0.3",
     "jsdom": "^22.1.0",
     "knip": "^2.14.3",
