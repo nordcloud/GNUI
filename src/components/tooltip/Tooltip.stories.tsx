@@ -17,9 +17,9 @@ export const Default: StoryObj = {
   render: () => (
     <FlexContainer
       justifyContent="space-evenly"
-      style={{
-        paddingTop: "3rem",
-        paddingBottom: "3rem",
+      css={{
+        paddingTop: "5rem",
+        paddingBottom: "5rem",
       }}
     >
       <Tooltip caption="Lorem Ipsum is simply dummy text of the printing and typesetting industry.">
@@ -29,6 +29,13 @@ export const Default: StoryObj = {
   ),
 
   name: "default",
+  parameters: {
+    docs: {
+      story: {
+        height: "100px",
+      },
+    },
+  },
 };
 
 export const Bottom: StoryObj = {
@@ -36,8 +43,8 @@ export const Bottom: StoryObj = {
     <FlexContainer
       justifyContent="space-evenly"
       css={{
-        paddingTop: "3rem",
-        paddingBottom: "3rem",
+        paddingTop: "5rem",
+        paddingBottom: "5rem",
       }}
     >
       <Tooltip
@@ -50,6 +57,13 @@ export const Bottom: StoryObj = {
   ),
 
   name: "bottom",
+  parameters: {
+    docs: {
+      story: {
+        height: "200px",
+      },
+    },
+  },
 };
 
 export const Position: StoryObj = {
@@ -57,8 +71,8 @@ export const Position: StoryObj = {
     <FlexContainer
       justifyContent="space-evenly"
       css={{
-        paddingTop: "3rem",
-        paddingBottom: "3rem",
+        paddingTop: "5rem",
+        paddingBottom: "5rem",
       }}
     >
       <div>
@@ -81,6 +95,13 @@ export const Position: StoryObj = {
   ),
 
   name: "position",
+  parameters: {
+    docs: {
+      story: {
+        height: "200px",
+      },
+    },
+  },
 };
 
 export const Status: StoryObj = {
@@ -88,8 +109,8 @@ export const Status: StoryObj = {
     <FlexContainer
       justifyContent="space-evenly"
       css={{
-        paddingTop: "3rem",
-        paddingBottom: "3rem",
+        paddingTop: "5rem",
+        paddingBottom: "5rem",
       }}
     >
       <div>
@@ -116,6 +137,13 @@ export const Status: StoryObj = {
   ),
 
   name: "status",
+  parameters: {
+    docs: {
+      story: {
+        height: "200px",
+      },
+    },
+  },
 };
 
 export const Components: StoryObj = {
@@ -123,8 +151,8 @@ export const Components: StoryObj = {
     <FlexContainer
       justifyContent="space-evenly"
       css={{
-        paddingTop: "3rem",
-        paddingBottom: "3rem",
+        paddingTop: "5rem",
+        paddingBottom: "5rem",
       }}
     >
       <div>
@@ -152,4 +180,11 @@ export const Components: StoryObj = {
   ),
 
   name: "components",
+  parameters: {
+    docs: {
+      story: {
+        height: "200px",
+      },
+    },
+  },
 };

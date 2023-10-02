@@ -1,7 +1,7 @@
 {
   "$schema": "https://unpkg.com/knip@next/schema.json",
   "entry": ["src/index.ts!"],
-  "project": ["src/**/*.{ts,tsx,mdx}!", ".storybook/**/*.js"],
+  "project": ["src/**/*.{ts,tsx,mdx}!", ".storybook/**/*.{js,ts}"],
   "ignoreDependencies": [
     // False-positives
     "@typescript-eslint/parser",
@@ -14,7 +14,9 @@
     // Can be listed explicitly in the future
     "@types/eslint",
     // Used in `src/setupTests.ts`
-    "@testing-library/jest-dom"
+    "@testing-library/jest-dom",
+    "@vitejs/plugin-react",
+    "babel-plugin-styled-components"
   ],
   "rules": {
     "enumMembers": "warn"
