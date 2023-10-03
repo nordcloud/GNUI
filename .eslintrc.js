@@ -15,7 +15,7 @@ module.exports = {
 
   settings: {
     react: {
-      version: "17.0.2", // React version. "detect" automatically picks the version you have installed.
+      version: "detect", // React version. "detect" automatically picks the version you have installed.
     },
     jest: {
       version: "29",
@@ -32,10 +32,6 @@ module.exports = {
     {
       files: ["src/**/*.{ts,tsx}"],
       rules: {
-        "@typescript-eslint/no-unsafe-return": "warn",
-        "@typescript-eslint/no-unsafe-argument": "warn",
-        "@typescript-eslint/no-unsafe-assignment": "warn",
-        "@typescript-eslint/no-unsafe-member-access": "warn",
         // Should be in sync with https://github.com/nordcloud/eslint-config-pat/blob/master/profile/_common.js#L463
         "@typescript-eslint/naming-convention": [
           "warn",
@@ -106,15 +102,6 @@ module.exports = {
           {
             selector: "enum",
             format: ["PascalCase", "UPPER_CASE"],
-          },
-        ],
-        "@typescript-eslint/ban-types": [
-          "error",
-          {
-            types: {
-              "{}": false,
-            },
-            extendDefaults: true,
           },
         ],
       },
