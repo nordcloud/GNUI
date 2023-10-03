@@ -33,8 +33,10 @@ type Children = (
   | undefined
 )[];
 
-const getChildren = (element: React.ReactElement): React.ReactNode =>
-  element.props.children;
+const getChildren = (
+  element: React.ReactElement<{ children: React.ReactNode }>
+): React.ReactNode => element.props.children;
+
 const getTypes = (children: Children) =>
   React.Children.map(children, (child) => (child as React.ReactElement).type);
 

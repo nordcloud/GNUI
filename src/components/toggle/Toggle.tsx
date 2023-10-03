@@ -61,12 +61,14 @@ const StyledToggle = styled.button<Pick<ToggleProps, "size" | "status">>`
     `}
 `;
 
+type StyledToggleProps = React.ComponentProps<typeof StyledToggle>;
+
 export function Toggle({
   value,
   labelText = "",
   onChange,
   ...props
-}: React.ComponentProps<typeof StyledToggle>) {
+}: StyledToggleProps & ToggleProps) {
   return (
     <StyledToggle
       className={value ? "active" : ""}
