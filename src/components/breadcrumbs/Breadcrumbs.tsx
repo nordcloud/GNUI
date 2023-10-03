@@ -11,7 +11,7 @@ export type BreadcrumbsList = {
 export type BreadcrumbsListProps = {
   list: BreadcrumbsList[];
   /**
-   * @deprecated Might cause problemswith React 18, use `renderCustom` instead
+   * @deprecated Might cause problems with React 18, use `renderCustom` instead
    */
   Component?: React.FC<
     React.PropsWithChildren<{ to: string; isDisabled?: boolean }>
