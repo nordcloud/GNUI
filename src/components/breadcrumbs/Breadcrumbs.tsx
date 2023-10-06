@@ -18,9 +18,8 @@ export type BreadcrumbsListProps = {
   >;
   renderCustom?: (
     props: React.PropsWithChildren<{
-      to: string;
-      isDisabled?: boolean;
       css: FlattenSimpleInterpolation;
+      breadcrumb: BreadcrumbsList;
     }>
   ) => React.ReactNode;
 };
@@ -33,9 +32,8 @@ export function Breadcrumbs({ list, renderCustom }: BreadcrumbsListProps) {
           <li key={breadcrumb.label}>
             {renderCustom ? (
               renderCustom({
-                isDisabled: breadcrumb.isDisabled,
                 css: aStyles,
-                to: breadcrumb.uri,
+                breadcrumb,
               })
             ) : (
               <StyledLink
