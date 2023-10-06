@@ -44,8 +44,8 @@ export const Default: StoryObj = {
 export const CustomComponent: StoryObj = {
   render: () => (
     <Breadcrumbs
-      renderCustom={({ to }) => (
-        <Button as="a" linkTo={to}>
+      renderCustom={({ breadcrumb }) => (
+        <Button as="a" linkTo={breadcrumb.uri}>
           test123
         </Button>
       )}
