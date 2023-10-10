@@ -1,0 +1,33 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import * as BreadcrumbsStories from "./Breadcrumbs.stories";
+
+<Meta of={BreadcrumbsStories} />
+
+# Breadcrumbs
+
+> The `Breadcrumbs` component accepts a list of `BreadcrumbsList` component and is responsible for displaying the page links in the hierarchy.
+
+## Breadcrumbs properties
+
+| properties | required | type                       | description |
+| ---------: | :------: | :------------------------- | :---------- |
+|       list |   true   | `Array<BreadcrumbsList>`   |             |
+|  Component |  false   | `React.FC<{ to: string }>` |             |
+
+## BreadcrumbsList properties
+
+| properties | required | type    | description |
+| ---------: | :------: | :------ | :---------- |
+|      label |   true   | string  |             |
+|        uri |   true   | string  |             |
+| isDisabled |  false   | boolean |             |
+
+<Canvas>
+  <Story of={BreadcrumbsStories.Default} />
+</Canvas>
+
+## Custom component
+
+<Canvas>
+  <Story of={BreadcrumbsStories.CustomComponent} />
+</Canvas>

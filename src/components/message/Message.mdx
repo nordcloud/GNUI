@@ -1,0 +1,64 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import * as MessageStories from "./Message.stories";
+
+<Meta of={MessageStories} />
+
+# Message
+
+#### Message properties
+
+|  properties | required | type                                                                                                               | description                                                                                       |
+| ----------: | :------: | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------ |
+|      status |  false   | <code>success</code>, <code>notification</code>, <code>danger</code>, <code>warning</code>, <code>discovery</code> |                                                                                                   |
+|       image |  false   | string                                                                                                             | to get icon names look into <a href="?path=/docs/components-svgicon--size">SVG icon component</a> |
+| borderColor |  false   | string                                                                                                             | border color                                                                                      |
+|  background |  false   | string                                                                                                             | background color                                                                                  |
+|       color |  false   | string                                                                                                             | text color                                                                                        |
+
+## default
+
+<Canvas>
+  <Story of={MessageStories.Default} />
+</Canvas>
+
+## Status
+
+<Canvas>
+  <Story of={MessageStories.Status} />
+</Canvas>
+
+## Custom Style
+
+<Canvas>
+  <Story of={MessageStories.Custom} />
+</Canvas>
+
+## Discovery
+
+<Canvas>
+  <Story of={MessageStories.Discovery} />
+</Canvas>
+
+## Info
+
+<Canvas>
+  <Story of={MessageStories.Notification} />
+</Canvas>
+
+## Warning
+
+<Canvas>
+  <Story of={MessageStories.Warning} />
+</Canvas>
+
+## Success
+
+<Canvas>
+  <Story of={MessageStories.Success} />
+</Canvas>
+
+## Danger
+
+<Canvas>
+  <Story of={MessageStories.Danger} />
+</Canvas>

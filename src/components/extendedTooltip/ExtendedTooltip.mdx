@@ -1,0 +1,47 @@
+import { Meta, Story, Canvas, Markdown } from "@storybook/blocks";
+import * as ExtendedTooltipStories from "./ExtendedTooltip.stories";
+import Props from "./Props.md?raw";
+
+<Meta of={ExtendedTooltipStories} />
+
+# Extended Tooltip
+
+## properties
+
+<Markdown>{Props}</Markdown>
+
+## top
+
+<Canvas>
+  <Story of={ExtendedTooltipStories.Top} />
+</Canvas>
+
+## bottom
+
+<Canvas>
+  <Story of={ExtendedTooltipStories.Bottom} />
+</Canvas>
+
+## left
+
+<Canvas>
+  <Story of={ExtendedTooltipStories.Left} />
+</Canvas>
+
+## right
+
+<Canvas>
+  <Story of={ExtendedTooltipStories.Right} />
+</Canvas>
+
+## status
+
+<Canvas>
+  <Story of={ExtendedTooltipStories.Status} />
+</Canvas>
+
+## tooltip with other components
+
+<Canvas>
+  <Story of={ExtendedTooltipStories.OtherComponents} />
+</Canvas>

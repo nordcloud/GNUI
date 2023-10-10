@@ -1,0 +1,48 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import * as SpinnerStories from "./Spinner.stories";
+
+<Meta of={SpinnerStories} />
+
+# Spinner
+
+> Used only in source code of Loader, Button and Input
+
+## Spinner properties
+
+| properties | required | type                                                                                                           | description                           |
+| ---------: | :------: | :------------------------------------------------------------------------------------------------------------- | :------------------------------------ |
+|       size |  false   | <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>xxl</code>                           |                                       |
+|      color |  false   | <code>success</code>, <code>danger</code>, <code>warning</code>, <code>notification</code>, <code>white</code> |                                       |
+|      ninja |  false   | boolean                                                                                                        | displays spinner as a ninja animation |
+
+## Default
+
+<Canvas>
+  <Story of={SpinnerStories.Default} />
+</Canvas>
+
+## Ninja
+
+<Canvas>
+  <Story of={SpinnerStories.Ninja} />
+</Canvas>
+
+## Color
+
+> `color`: `string` — **optional**: `success` | `danger` | `warning` | `notification` | `white`
+
+<Canvas>
+  <Story of={SpinnerStories.Color} />
+</Canvas>
+
+## Size
+
+> `size`: `string` — **optional**: `sm` | `md` | `lg` | `xl` | `xxl`
+
+<Canvas>
+  <Story of={SpinnerStories.Size} />
+</Canvas>
+
+<Canvas>
+  <Story of={SpinnerStories.SizeNinja} />
+</Canvas>

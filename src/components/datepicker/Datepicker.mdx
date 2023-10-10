@@ -1,0 +1,20 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import * as DatepickerStories from "./Datepicker.stories";
+
+<Meta of={DatepickerStories} />
+
+# Datepicker
+
+Datepicker uses `React DayPicker` component. For more information please look at the official docs [https://react-day-picker.js.org/](https://react-day-picker.js.org/)
+
+## Props
+
+```typescript
+type DatepickerProps = {
+  children?: React.ReactNode;
+};
+```
+
+<Canvas>
+  <Story of={DatepickerStories.DatepickerDefault} />
+</Canvas>

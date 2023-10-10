@@ -1,0 +1,36 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import * as PieChartStories from "./PieChart.stories";
+
+<Meta of={PieChartStories} />
+
+# PieChart
+
+## PieChart properties
+
+|  properties | required | type                                                                                       | description              |
+| ----------: | :------: | :----------------------------------------------------------------------------------------- | :----------------------- |
+|        size |   true   | number                                                                                     | width and height in `px` |
+|    progress |   true   | number                                                                                     |                          |
+| strokeWidth |   true   | number                                                                                     | chart stroke width       |
+|       color |  false   | <code>danger</code>, <code>warning</code>, <code>success</code>, <code>notification</code> |                          |
+|    children |  false   | <code>`ReactNode`</code>                                                                   | elements inside chart    |
+
+## Default
+
+<Canvas>
+  <Story of={PieChartStories.Default} />
+</Canvas>
+
+## Stroke Width
+
+<Canvas>
+  <Story of={PieChartStories.StrokeWidth} />
+</Canvas>
+
+## Color
+
+- You can change color using `color` props: `danger` | `warning` | `success` | `notification`;
+
+<Canvas>
+  <Story of={PieChartStories.Color} />
+</Canvas>

@@ -85,15 +85,16 @@ const SelectContainer = styled.div`
       }
       &--is-focused {
         cursor: pointer;
-        background: ${theme.color.interactive.secondaryHover};
+        background: ${theme.color.interactive.secondary};
         color: ${theme.color.text.text01};
       }
       &--is-selected {
         cursor: not-allowed;
-        background: ${theme.color.interactive.secondaryHover};
+        background: ${theme.color.interactive.secondaryActive};
         color: ${theme.color.text.text01};
+        font-weight: 500;
         &:active {
-          background: ${theme.color.interactive.secondaryHover};
+          background: ${theme.color.interactive.secondaryActive};
           color: ${theme.color.text.text01};
         }
       }
@@ -115,7 +116,7 @@ export type SelectColoredOption = SelectOption & {
 function getDefaultStyles<
   Option = unknown,
   IsMulti extends boolean = false,
-  Group extends GroupBase<Option> = GroupBase<Option>
+  Group extends GroupBase<Option> = GroupBase<Option>,
 >(): StylesConfig<Option, IsMulti, Group> {
   return {
     multiValue: (styles) => {
@@ -230,7 +231,7 @@ declare module "react" {
 function SelectInner<
   Option = unknown,
   IsMulti extends boolean = false,
-  Group extends GroupBase<Option> = GroupBase<Option>
+  Group extends GroupBase<Option> = GroupBase<Option>,
 >(
   {
     styles = getDefaultStyles(),

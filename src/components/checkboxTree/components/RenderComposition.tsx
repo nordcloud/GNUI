@@ -6,10 +6,9 @@ import { Checkbox } from "../../checkbox";
 import { FlexContainer } from "../../container";
 import { SVGIcon } from "../../svgicon";
 
+import * as Styled from "../styled";
 import { Composition, RenderCompositionProps } from "../types";
 import { getChildrenUids, getParentsUids } from "../utils";
-
-import * as Styled from "./../styled";
 
 export function RenderComposition({
   uid,
@@ -77,8 +76,8 @@ export function RenderComposition({
             {children && children.length > 0 ? (
               <ToggleIcon
                 animate={expandedList.includes(uid)}
-                onClick={() => handleExpand(uid)}
                 cursor="pointer"
+                onClick={() => handleExpand(uid)}
               >
                 <SVGIcon name="down" />
               </ToggleIcon>
@@ -106,6 +105,7 @@ export function RenderComposition({
         children.length > 0 &&
         children.map((child) => (
           <RenderComposition
+            key={child.uid}
             parent={{ uid, label, children }}
             setSelectedList={setSelectedList}
             setExpandedList={setExpandedList}
@@ -113,7 +113,6 @@ export function RenderComposition({
             expandedList={expandedList}
             preferredSeparator={preferredSeparator}
             indeterminate={indeterminate}
-            key={child.uid}
             {...child}
           />
         ))}

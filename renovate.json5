@@ -1,3 +1,4 @@
+/* prettier-ignore */
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
@@ -19,6 +20,10 @@
   "rebaseWhen": "conflicted",
   "reviewers": ["@nordcloud/core-frontend-reviewers"],
   "packageRules": [
+    {
+      "matchDatasources": ["npm"],
+      "minimumReleaseAge": "3 days"
+    },
     /********** Add labels **********/
     {
       "matchUpdateTypes": ["major"],
@@ -78,14 +83,11 @@
     {
       "groupName": "Testing packages",
       "matchPackageNames": [
-        "@types/jest",
-        "jest",
-        "jest-environment-jsdom",
-        "ts-jest",
         "@testing-library/jest-dom",
-        "@testing-library/react-hooks",
+        "@testing-library/react",
         "@testing-library/user-event",
-        "identity-obj-proxy"
+        "vitest",
+        "jsdom"
       ],
       "automerge": true
     },
@@ -103,9 +105,10 @@
       "groupName": "Non-critical tooling packages",
       "matchPackageNames": [
         "prettier",
-        "cross-env",
         "npm-run-all",
-        "patch-package"
+        "patch-package",
+        "lockfile-lint",
+        "knip"
       ],
       "automerge": true
     },

@@ -1,20 +1,30 @@
 {
   "$schema": "https://unpkg.com/knip@next/schema.json",
   "entry": ["src/index.ts!"],
-  "project": ["src/**/*.{ts,tsx,mdx}!", ".storybook/**/*.js"],
+  "project": ["src/**/*.{ts,tsx,mdx}!", ".storybook/**/*.{js,ts}"],
   "ignoreDependencies": [
     // False-positives
-    "react-copy-to-clipboard",
+    "@typescript-eslint/parser",
+    "@storybook/addon-docs",
+    "@storybook/addon-viewport",
+    "@storybook/blocks",
     "lodash",
     "lodash.clonedeep",
     "@types/lodash.clonedeep",
-    "storybook",
     // Can be listed explicitly in the future
-    "@jest/types",
-    "@types/eslint"
+    "@types/eslint",
+    // Used in `src/setupTests.ts`
+    "@testing-library/jest-dom",
+    "@vitejs/plugin-react",
+    "babel-plugin-styled-components"
   ],
   "rules": {
     "enumMembers": "warn"
   },
-  "ignore": ["**/*.d.ts", "**/__mockups__"]
+  "ignore": [
+    "**/*.d.ts",
+    "**/__mockups__",
+    "src/setupTests.ts",
+    "vitest.config.ts"
+  ]
 }

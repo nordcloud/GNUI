@@ -72,7 +72,9 @@ const Fill = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  transition: width 0.2s ease-in, height 0.2s ease-in;
+  transition:
+    width 0.2s ease-in,
+    height 0.2s ease-in;
   pointer-events: none;
   z-index: ${theme.zindex.masked};
 
@@ -108,7 +110,9 @@ const RadioInput = styled.input`
     & ~ ${Fill} {
       width: 0.75rem;
       height: 0.75rem;
-      transition: width 0.2s ease-out, height 0.2s ease-out;
+      transition:
+        width 0.2s ease-out,
+        height 0.2s ease-out;
 
       &::before {
         opacity: 1;

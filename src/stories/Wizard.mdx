@@ -1,0 +1,51 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import * as WizardStories from "./Wizard.stories";
+
+<Meta of={WizardStories} />
+
+# Wizard
+
+```typescript
+type TabProps = {
+  className?: string;
+  wizard?: boolean;
+  step?: number;
+  heading?: string;
+  caption?: string;
+  activeTab: number;
+  children?: React.ReactNode;
+  onClick?: (e: any) => void;
+  onChange?: (e: any) => void;
+  props?: any;
+  styleActive?: boolean;
+  index: number;
+  disabled?: boolean;
+};
+
+type TabsProps = {
+  wizard?: boolean;
+  name?: string;
+  caption?: string;
+  children: Array<TabProps>;
+  handleTab: () => void;
+  step: number;
+  buttons?: React.ReactNode;
+};
+```
+
+## Default
+
+> `caption?: string;` - caption for the tab
+> `previousButton?: string;` - label for Previous button
+> `nextButton?: string;` - label for Next button
+> `submitButton?: string;` - label for Submit button
+
+<Canvas>
+  <Story of={WizardStories.Default} />
+</Canvas>
+
+> `disabled?: boolean;` - makes the step non-clickable
+
+<Canvas>
+  <Story of={WizardStories.Disabled} />
+</Canvas>

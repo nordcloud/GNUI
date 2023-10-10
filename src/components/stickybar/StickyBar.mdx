@@ -1,0 +1,24 @@
+import { Meta, Story, Canvas, Title, Markdown } from "@storybook/blocks";
+import * as StickyBarStories from "./StickyBar.stories";
+
+<Meta of={StickyBarStories} />
+
+<Title>Sticky Bar</Title>
+
+<Markdown>
+  {`
+  Element acts like it is relatively positioned until it is scrolled to a
+  certain threshold point (0px from the top of the viewport), after which it
+  becomes fixed.
+`}
+</Markdown>
+
+## Props
+
+> - `children`: `React Node`
+
+## Default
+
+<Canvas>
+  <Story of={StickyBarStories.Default} />
+</Canvas>

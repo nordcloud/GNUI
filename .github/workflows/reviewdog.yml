@@ -26,7 +26,7 @@ jobs:
           reporter: github-pr-review
           level: warning
           fail_on_error: false
-          prettier_flags: '**/*.+(js|json|ts|tsx|md|mdx|yml)'
+          prettier_flags: "**/*.+(js|json|ts|tsx|md|mdx|yml)"
 
       - name: ESLint
         uses: reviewdog/action-eslint@v1
@@ -46,7 +46,7 @@ jobs:
           filter_mode: file
           level: warning
           fail_on_error: false
-          stylelint_input: '**/*.+(ts|tsx)'
+          stylelint_input: "**/*.+(ts|tsx)"
 
       - name: TypeScript
         uses: EPMatt/reviewdog-action-tsc@v1

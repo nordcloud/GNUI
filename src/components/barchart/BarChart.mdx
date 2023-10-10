@@ -1,0 +1,28 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import * as BarChartStories from "./BarChart.stories";
+
+<Meta of={BarChartStories} />
+
+# BarChart
+
+> BarChart is used to compare at least two values.
+
+## BarChart properties
+
+| properties | required | type             | description              |
+| ---------: | :------: | :--------------- | :----------------------- |
+|     values |   true   | `Array<BarItem>` |                          |
+|     height |  false   | string           | default is 1.5rem (24px) |
+
+## BarItem properties
+
+| properties | required | type   | description |
+| ---------: | :------: | :----- | :---------- |
+|      value |   true   | number |             |
+|      color |   true   | string |             |
+
+## Default
+
+<Canvas>
+  <Story of={BarChartStories.Default} />
+</Canvas>

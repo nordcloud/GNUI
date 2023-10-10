@@ -1,0 +1,129 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import * as InputStories from "./Input.stories";
+
+<Meta of={InputStories} />
+
+# Input
+
+> Inputs type defaults to `text`.
+
+<Canvas>
+  <Story of={InputStories.InputDefault} />
+</Canvas>
+
+## Input properties
+
+|      properties | required | type                                         | description                           |
+| --------------: | :------: | :------------------------------------------- | :------------------------------------ |
+|            name |   true   | string                                       |                                       |
+|            type |  false   | string                                       | default: `text`                       |
+|     placeholder |  false   | string                                       | Placeholder text inside input element |
+|           title |  false   | string                                       |                                       |
+|        disabled |  false   | boolean                                      |                                       |
+|          status |  false   | <code>`success`</code>, <code>`error`</code> |                                       |
+| showClearButton |  false   | boolean                                      |                                       |
+|         onClear |  false   | <code>`() => void`</code>                    |                                       |
+
+## Label properties
+
+| properties | required | type   | description |
+| ---------: | :------: | :----- | :---------- |
+|       name |   true   | string |             |
+
+### name
+
+> `name`: `string`
+
+<Canvas>
+  <Story of={InputStories.Name} />
+</Canvas>
+
+### type
+
+> `type`: `string`
+
+For now it works good for two types: default `text` and `search`. The second one displays an icon before text. **TBC**
+
+<Canvas>
+  <Story of={InputStories.Type} />
+</Canvas>
+
+### placeholder
+
+> `placeholder`: `string`
+
+Placeholder text inside input element
+
+### disabled
+
+> `disabled`: `boolean`
+
+<Canvas>
+  <Story of={InputStories.Disabled} />
+</Canvas>
+
+### required
+
+> `required`: `boolean`
+
+<Canvas>
+  <Story of={InputStories.Required} />
+</Canvas>
+
+### small
+
+<Canvas>
+  <Story of={InputStories.Small} />
+</Canvas>
+
+### upload
+
+<Canvas>
+  <Story of={InputStories.UploadDefault} />
+</Canvas>
+
+### icon
+
+<Canvas>
+  <Story of={InputStories.Icon} />
+</Canvas>
+
+### status
+
+> `status`: `success | error`
+
+<Canvas>
+  <Story of={InputStories.Status} />
+</Canvas>
+
+## Label and description
+
+> You can add `Label` before `Input` and `Description` after it. Labels name is what exactly will be displayed as a text above `Input`.
+
+<Canvas>
+  <Story of={InputStories.LabelDescription} />
+</Canvas>
+
+### clear
+
+<Canvas>
+  <Story of={InputStories.Clear} />
+</Canvas>
+
+### password
+
+<Canvas>
+  <Story of={InputStories.Password} />
+</Canvas>
+
+### search
+
+<Canvas>
+  <Story of={InputStories.Search} />
+</Canvas>
+
+### date
+
+<Canvas>
+  <Story of={InputStories.Date} />
+</Canvas>

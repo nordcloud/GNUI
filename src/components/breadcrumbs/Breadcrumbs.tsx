@@ -1,5 +1,5 @@
 import * as React from "react";
-import styled, { css } from "styled-components";
+import styled, { css, FlattenSimpleInterpolation } from "styled-components";
 import theme from "../../theme";
 
 export type BreadcrumbsList = {
@@ -10,23 +10,31 @@ export type BreadcrumbsList = {
 
 export type BreadcrumbsListProps = {
   list: BreadcrumbsList[];
-  Component?: React.FC<{ to: string; isDisabled?: boolean }>;
+  /**
+   * @deprecated Might cause problems with React 18, use `renderCustom` instead
+   */
+  Component?: React.FC<
+    React.PropsWithChildren<{ to: string; isDisabled?: boolean }>
+  >;
+  renderCustom?: (
+    props: React.PropsWithChildren<{
+      css: FlattenSimpleInterpolation;
+      breadcrumb: BreadcrumbsList;
+    }>
+  ) => React.ReactNode;
 };
 
-export function Breadcrumbs({ list, Component }: BreadcrumbsListProps) {
+export function Breadcrumbs({ list, renderCustom }: BreadcrumbsListProps) {
   return (
     <StyledBreadcrumbs>
       <ul>
         {list.map((breadcrumb) => (
           <li key={breadcrumb.label}>
-            {Component ? (
-              <Component
-                isDisabled={breadcrumb.isDisabled}
-                css={aStyles}
-                to={breadcrumb.uri}
-              >
-                {breadcrumb.label}
-              </Component>
+            {renderCustom ? (
+              renderCustom({
+                css: aStyles,
+                breadcrumb,
+              })
             ) : (
               <StyledLink
                 isDisabled={breadcrumb.isDisabled}

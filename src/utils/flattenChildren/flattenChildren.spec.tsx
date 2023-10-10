@@ -26,8 +26,18 @@ declare global {
   }
 }
 
-const getChildren = (element: React.ReactElement) => element.props.children;
-const getTypes = (children: ReturnType<typeof React.Children.toArray>) =>
+type Children = (
+  | ReturnType<typeof React.Children.toArray>[number]
+  | boolean
+  | null
+  | undefined
+)[];
+
+const getChildren = (
+  element: React.ReactElement<{ children: React.ReactNode }>
+): React.ReactNode => element.props.children;
+
+const getTypes = (children: Children) =>
   React.Children.map(children, (child) => (child as React.ReactElement).type);
 
 describe("flattenChildren", () => {

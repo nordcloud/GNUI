@@ -3,7 +3,9 @@ import * as React from "react";
 
 type ReactChildArray = ReturnType<typeof React.Children.toArray>;
 
-export function flattenChildren(children: React.ReactNode): ReactChildArray {
+export function flattenChildren(
+  children: React.ReactNode
+): (ReactChildArray[number] | boolean | null | undefined)[] {
   const childrenArray = React.Children.toArray(children);
   return childrenArray.flatMap((child) => {
     if (isReactFragment(child)) {
@@ -13,6 +15,7 @@ export function flattenChildren(children: React.ReactNode): ReactChildArray {
     return child;
   });
 }
+
 function isReactFragment(
   element: ReactChildArray[number]
 ): element is React.ReactElement<React.ComponentProps<typeof React.Fragment>> {

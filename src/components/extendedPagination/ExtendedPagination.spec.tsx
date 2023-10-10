@@ -1,9 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { vi } from "vitest";
 import { ExtendedPaginationBox } from "./ExtendedPagination";
 
-const setSize = jest.fn();
-const setPage = jest.fn();
+const setSize = vi.fn();
+const setPage = vi.fn();
 
 const getComponent = ({
   from,

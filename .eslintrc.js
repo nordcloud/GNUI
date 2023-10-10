@@ -11,11 +11,11 @@ module.exports = {
 
   parserOptions: { tsconfigRootDir: __dirname },
 
-  ignorePatterns: ["./*.js"],
+  ignorePatterns: ["./*.js", "vitest.config.ts"],
 
   settings: {
     react: {
-      version: "17.0.2", // React version. "detect" automatically picks the version you have installed.
+      version: "detect", // React version. "detect" automatically picks the version you have installed.
     },
     jest: {
       version: "29",
@@ -32,10 +32,6 @@ module.exports = {
     {
       files: ["src/**/*.{ts,tsx}"],
       rules: {
-        "@typescript-eslint/no-unsafe-return": "warn",
-        "@typescript-eslint/no-unsafe-argument": "warn",
-        "@typescript-eslint/no-unsafe-assignment": "warn",
-        "@typescript-eslint/no-unsafe-member-access": "warn",
         // Should be in sync with https://github.com/nordcloud/eslint-config-pat/blob/master/profile/_common.js#L463
         "@typescript-eslint/naming-convention": [
           "warn",
@@ -108,6 +104,32 @@ module.exports = {
             format: ["PascalCase", "UPPER_CASE"],
           },
         ],
+      },
+    },
+    {
+      // Declare an override that applies to TypeScript files only
+      files: [".storybook/**/*.{ts,tsx}"],
+      parser: "@typescript-eslint/parser",
+      parserOptions: {
+        // The "project" path is resolved relative to parserOptions.tsconfigRootDir.
+        // Your local .eslintrc.js must specify that parserOptions.tsconfigRootDir=__dirname.
+        tsconfigRootDir: __dirname + "/.storybook",
+        project: ["./tsconfig.json"],
+
+        // Allow parsing of newer ECMAScript constructs used in TypeScript source code.  Although tsconfig.json
+        // may allow only a small subset of ES2018 features, this liberal setting ensures that ESLint will correctly
+        // parse whatever is encountered.
+        ecmaVersion: "latest",
+
+        sourceType: "module",
+      },
+    },
+    {
+      files: ["**/*.stories.tsx"],
+      rules: {
+        "react-hooks/rules-of-hooks": "off",
+        "no-alert": "off",
+        "unicorn/consistent-function-scoping": "off",
       },
     },
     {

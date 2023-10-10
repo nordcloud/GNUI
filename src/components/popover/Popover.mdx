@@ -1,0 +1,26 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import * as PopoverStories from "./Popover.stories";
+
+<Meta of={PopoverStories} />
+
+# Popover
+
+## Popover Props
+
+| properties | required | type            | description                                                   |
+| ---------: | :------: | :-------------- | :------------------------------------------------------------ |
+|    trigger |   true   | React.ReactNode | trigger element                                               |
+|   children |   true   | React.ReactNode | content                                                       |
+| alignRight |  false   | boolean         | justifies the content to the right in relation to the trigger |
+
+## Default view
+
+<Canvas>
+  <Story of={PopoverStories.Default} />
+</Canvas>
+
+## alignRight
+
+<Canvas>
+  <Story of={PopoverStories.AlignRight} />
+</Canvas>

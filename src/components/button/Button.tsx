@@ -28,7 +28,7 @@ type ButtonPropsInner<C extends React.ElementType> =
       /**
        * @deprecated The property should not be used
        */
-      color?: SingleColors;
+      color?: SingleColors | (string & {});
       form?: string;
       select?: boolean;
       className?: string;
@@ -74,7 +74,7 @@ type ButtonIconProps = Pick<ButtonProps, "icon" | "initialState">;
 function ButtonIcon({ initialState, icon }: ButtonIconProps) {
   switch (initialState) {
     case "success":
-      return <SVGIcon name="success" />;
+      return <SVGIcon name="checkmark" />;
     case "error":
       return <SVGIcon name="danger" />;
     case "loading":

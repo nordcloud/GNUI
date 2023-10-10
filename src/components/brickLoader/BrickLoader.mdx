@@ -1,0 +1,38 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+import * as BrickLoaderStories from "./BrickLoader.stories";
+
+<Meta of={BrickLoaderStories} />
+
+# BrickLoader
+
+Basing on react-content-loader: https://github.com/danilowoz/react-content-loader
+
+## BrickLoader properties
+
+| properties | required | type   | description                 |
+| ---------: | :------: | :----- | :-------------------------- |
+|     height |  false   | string | css height value for loader |
+
+As this loader is based on react-content-loader it supports also SVGAttributes and react-content-loader props: https://github.com/danilowoz/react-content-loader#options
+
+## Default
+
+<Canvas>
+  <Story of={BrickLoaderStories.Default} />
+</Canvas>
+
+## Custom height
+
+> `height`: `string` — **optional**
+
+<Canvas>
+  <Story of={BrickLoaderStories.Height} />
+</Canvas>
+
+## Custom viewBox
+
+> `viewBox`: `string` — **optional**
+
+<Canvas>
+  <Story of={BrickLoaderStories.ViewBox} />
+</Canvas>

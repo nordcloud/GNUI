@@ -5,15 +5,7 @@ import theme from "../../theme";
 import { SingleColors } from "../../theme/config";
 import { setColor } from "../../utils/setcolor";
 
-export type ToggleProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  value: boolean;
-  labelText?: string;
-  status?: SingleColors;
-  size?: string;
-  onChange: (value: boolean) => void;
-};
-
-const StyledToggle = styled.button<Pick<ToggleProps, "size" | "status">>`
+const StyledToggle = styled.button<Pick<CustomProps, "size" | "status">>`
   border: 1px solid ${theme.color.interactive.primary};
   border-radius: ${theme.radiusDefault};
   line-height: ${theme.lineHeight};
@@ -60,6 +52,17 @@ const StyledToggle = styled.button<Pick<ToggleProps, "size" | "status">>`
       }
     `}
 `;
+
+type CustomProps = {
+  value: boolean;
+  labelText?: string;
+  status?: SingleColors;
+  size?: string;
+  onChange: (value: boolean) => void;
+};
+
+export type ToggleProps = CustomProps &
+  React.ComponentProps<typeof StyledToggle>;
 
 export function Toggle({
   value,

@@ -1,0 +1,44 @@
+import { Meta, Story, Canvas, Source } from "@storybook/blocks";
+import * as HeadingsStories from "./Headings.stories";
+
+<Meta of={HeadingsStories} />
+
+# Heading
+
+> Simple heading is styled `h1` tag and looks like below.
+
+<Canvas>
+  <Story of={HeadingsStories.Simple} />
+</Canvas>
+
+## Heading properties
+
+|   properties | required | type                                                                                                                                                                                                                           | description                                                                                                 |
+| -----------: | :------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------- |
+|        level |  false   | number                                                                                                                                                                                                                         | number from 1 to 6                                                                                          |
+| marginBottom |  false   | string, <code>spacing00</code>, <code>spacing01</code>, <code>spacing02</code> ,<code>spacing03</code> ,<code>spacing04</code> ,<code>spacing05</code> ,<code>spacing06</code> ,<code>spacing07</code> ,<code>spacing08</code> |                                                                                                             |
+|        color |  false   | string                                                                                                                                                                                                                         | can be in HEX/named colors formats according to [X11 Colors](https://en.wikipedia.org/wiki/X11_color_names) |
+
+### level
+
+`level`: `number` — from 1 to 6
+
+<Canvas>
+  <Story of={HeadingsStories.Levels} />
+</Canvas>
+
+### marginBottom
+
+`marginBottom`: `string` — spacing00 | spacing01 | spacing02 | spacing03 | spacing04 | spacing05 | spacing06 | spacing07 | spacing08
+
+<Canvas>
+  <Story of={HeadingsStories.Margins} />
+</Canvas>
+
+### color
+
+`color`: `string` — can be in HEX/named colors formats according to [X11 Colors](https://en.wikipedia.org/wiki/X11_color_names)
+
+<Canvas>
+  <Story of={HeadingsStories.Colors} />
+</Canvas>
