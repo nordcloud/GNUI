@@ -40,6 +40,37 @@ export const Basic: StoryObj = {
   name: "basic",
 };
 
+export const Disabled: StoryObj = {
+  render: () => {
+    const options = [
+      {
+        value: "chocolate",
+        label: "Chocolate",
+      },
+      {
+        value: "strawberry",
+        label: "Strawberry",
+      },
+      {
+        value: "vanilla",
+        label: "Vanilla",
+      },
+    ];
+
+    return (
+      <div
+        style={{
+          height: "150px",
+        }}
+      >
+        <Select isDisabled options={options} />
+      </div>
+    );
+  },
+
+  name: "disabled",
+};
+
 export const Multiselect: StoryObj = {
   render: () => {
     const options = [

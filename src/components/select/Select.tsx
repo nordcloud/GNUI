@@ -22,6 +22,9 @@ const SelectContainer = styled.div`
           border: 1px solid ${theme.color.border.focus};
           outline: none;
         }
+        &--is-disabled {
+          background: ${theme.color.interactive.disabled};
+        }
       }
     }
     &__value-container {
