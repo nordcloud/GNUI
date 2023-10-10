@@ -34,6 +34,25 @@ https://react-select.com/props
   </Story>
 </Canvas>
 
+## Disabled Select
+
+<Canvas>
+  <Story name="disabled">
+    {() => {
+      const options = [
+        { value: "chocolate", label: "Chocolate" },
+        { value: "strawberry", label: "Strawberry" },
+        { value: "vanilla", label: "Vanilla" },
+      ];
+      return (
+        <div style={{ height: "150px" }}>
+          <Select isDisabled options={options}></Select>
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
 ## Multiselect
 
 <Canvas>
