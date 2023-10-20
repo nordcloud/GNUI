@@ -723,6 +723,14 @@ export const Formatting: StoryObj = {
           </Text>
         </FlexContainer>
       </CopyToClipboard>
+      <CopyToClipboard text="filterMenu">
+        <FlexContainer direction="column">
+          <SVGIcon name="filterMenu" />
+          <Text size="xs" mt=".25rem">
+            filterMenu
+          </Text>
+        </FlexContainer>
+      </CopyToClipboard>
     </FlexContainer>
   ),
 
