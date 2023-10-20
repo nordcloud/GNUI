@@ -7,7 +7,7 @@ import { InputGroup, StyledInput } from "./styles";
 import { StyledInputProps, StyledInputGroupProps } from "./types";
 
 const ButtonWrapper = styled.div`
-  margin: -0.25rem -0.25rem -0.25rem 0;
+  margin: -0.25rem -0.25rem -0.25rem 0.5rem;
 `;
 
 type Props = SpaceProps &
@@ -20,7 +20,7 @@ export const InputSearch = React.forwardRef<HTMLInputElement, Props>(
   (
     {
       noBorder,
-      type,
+      type = "search",
       popup,
       status,
       loading,
