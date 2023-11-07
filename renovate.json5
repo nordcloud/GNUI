@@ -151,5 +151,9 @@
       "depTypeList": ["peerDependencies"],
       "enabled": false
     }
+  ],
+  "ignoreDeps": [
+    // Breaks compilation with bigger versions
+    "babel-plugin-styled-components"
   ]
 }
