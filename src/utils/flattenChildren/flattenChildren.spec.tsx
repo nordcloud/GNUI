@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/consistent-type-definitions, @typescript-eslint/no-namespace, jest/prefer-strict-equal, jsx-a11y/anchor-is-valid, jsx-a11y/anchor-has-content */
+/* eslint-disable @typescript-eslint/consistent-type-definitions, @typescript-eslint/no-namespace, jsx-a11y/anchor-is-valid, jsx-a11y/anchor-has-content */
 // Code from https://github.com/gregberge/react-flatten-children
 import * as React from "react";
 import { flattenChildren } from "./flattenChildren";
@@ -43,7 +43,9 @@ const getTypes = (children: Children) =>
 describe("flattenChildren", () => {
   it("should convert child to array", () => {
     const children = getChildren(<>Hello</>);
-    expect(flattenChildren(children)).toEqual(React.Children.toArray(children));
+    expect(flattenChildren(children)).toStrictEqual(
+      React.Children.toArray(children)
+    );
   });
 
   it("should convert children to array", () => {
@@ -53,7 +55,9 @@ describe("flattenChildren", () => {
         <b />
       </>
     );
-    expect(flattenChildren(children)).toEqual(React.Children.toArray(children));
+    expect(flattenChildren(children)).toStrictEqual(
+      React.Children.toArray(children)
+    );
   });
 
   it("should flatten fragments", () => {
@@ -69,7 +73,12 @@ describe("flattenChildren", () => {
         <d />
       </>
     );
-    expect(getTypes(flattenChildren(input))).toEqual(["a", "b", "c", "d"]);
+    expect(getTypes(flattenChildren(input))).toStrictEqual([
+      "a",
+      "b",
+      "c",
+      "d",
+    ]);
   });
 
   it("should flatten nested fragments", () => {
@@ -92,7 +101,7 @@ describe("flattenChildren", () => {
         <g />
       </>
     );
-    expect(getTypes(flattenChildren(input))).toEqual([
+    expect(getTypes(flattenChildren(input))).toStrictEqual([
       "a",
       "b",
       "c",
