@@ -5,8 +5,6 @@ module.exports = {
   extends: [
     "@nordcloud/eslint-config-pat/profile/web-app",
     "@nordcloud/eslint-config-pat/mixins/react",
-    "@nordcloud/eslint-config-pat/mixins/react-testing",
-    "@nordcloud/eslint-config-pat/mixins/jest",
   ],
 
   parserOptions: { tsconfigRootDir: __dirname },
@@ -16,9 +14,6 @@ module.exports = {
   settings: {
     react: {
       version: "detect", // React version. "detect" automatically picks the version you have installed.
-    },
-    jest: {
-      version: "29",
     },
   },
 
@@ -133,7 +128,11 @@ module.exports = {
       },
     },
     {
-      files: ["src/**/*.spec.{ts,tsx}"],
+      files: ["**/*.spec.{ts,tsx}"],
+      extends: [
+        "@nordcloud/eslint-config-pat/mixins/vitest",
+        "@nordcloud/eslint-config-pat/mixins/react-testing",
+      ],
       rules: {
         "testing-library/no-node-access": "warn",
         "testing-library/no-container": "warn",
