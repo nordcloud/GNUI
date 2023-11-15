@@ -5,7 +5,6 @@ import { Button } from "../button";
 import { FlexContainer } from "../container";
 import { SVGIcon } from "../svgicon";
 import { Text } from "../text";
-import { Decos } from "./decos";
 import { Navigation } from "./Navigation";
 
 const meta: Meta = {
@@ -169,7 +168,7 @@ export const Sidebar: StoryObj = {
     return (
       <Navigation.Container secondary>
         <Navigation.Item as="a" href="http://google.com" target="_blank">
-          <Decos.Dashboard />
+          <SVGIcon name="dashboard" />
           Dashboard
         </Navigation.Item>
         <Navigation.Item className="separator">
@@ -181,50 +180,34 @@ export const Sidebar: StoryObj = {
           target="_blank"
           className="active"
         >
-          <Decos.Applications />
+          <SVGIcon name="application" />
           Applications
         </Navigation.Item>
         <Navigation.Item as="a" href="http://google.com" target="_blank">
-          <Decos.Accounts />
+          <SVGIcon name="cloudAccounts" />
           Accounts
         </Navigation.Item>
-        <Navigation.Item as="a" href="http://google.com" target="_blank">
-          <Decos.Estate />
-          Estate Records
-        </Navigation.Item>
         <Navigation.Item className="separator">Organization</Navigation.Item>
-        <Navigation.Item as="a" href="http://google.com" target="_blank">
-          <Decos.Orgs />
-          Organizational Structures
-        </Navigation.Item>
         <Navigation.Item className="separator">Settings</Navigation.Item>
         <Navigation.Item as="a" href="http://google.com" target="_blank">
-          <Decos.Contacts />
+          <SVGIcon name="contactPersons" />
           Contact personas
         </Navigation.Item>
         <Navigation.Item as="a" href="http://google.com" target="_blank">
-          <Decos.Users />
+          <SVGIcon name="users" />
           Users
         </Navigation.Item>
         <Navigation.Item as="a" href="http://google.com" target="_blank">
-          <Decos.Orgs2 />
+          <SVGIcon name="organization" />
           Organization
         </Navigation.Item>
         <Navigation.Item as="a" href="http://google.com" target="_blank">
-          <Decos.Costs />
+          <SVGIcon name="costSplittingRules" />
           Cost split rules
-        </Navigation.Item>
-        <Navigation.Item as="a" href="http://google.com" target="_blank">
-          <Decos.Mappings />
-          Discovery rules
         </Navigation.Item>
         <Navigation.Item className="separator">Audit</Navigation.Item>
         <Navigation.Item as="a" href="http://google.com" target="_blank">
-          <Decos.ActionLog />
-          Action Log<Navigation.Info>2</Navigation.Info>
-        </Navigation.Item>
-        <Navigation.Item as="a" href="http://google.com" target="_blank">
-          <Decos.Reports />
+          <SVGIcon name="report" />
           Reports
         </Navigation.Item>
       </Navigation.Container>

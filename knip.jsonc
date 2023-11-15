@@ -13,8 +13,6 @@
     "@types/lodash.clonedeep",
     // Can be listed explicitly in the future
     "@types/eslint",
-    // Used in `src/setupTests.ts`
-    "@testing-library/jest-dom",
     "@vitejs/plugin-react",
     "babel-plugin-styled-components"
   ],
@@ -24,7 +22,6 @@
   "ignore": [
     "**/*.d.ts",
     "**/__mockups__",
-    "src/setupTests.ts",
-    "vitest.config.ts"
+    "src/components/svgicon/icons/index.t"
   ]
 }

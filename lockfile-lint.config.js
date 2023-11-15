@@ -10,5 +10,6 @@ module.exports = {
     "string-width-cjs:string-width",
     "strip-ansi-cjs: strip-ansi",
     "wrap-ansi-cjs:wrap-ansi",
+    "ramda:@pnpm/ramda",
   ],
 };
