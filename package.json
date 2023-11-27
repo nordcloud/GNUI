@@ -91,7 +91,7 @@
     "@types/react-copy-to-clipboard": "^5.0.7",
     "@types/react-dom": "^18.2.8",
     "@types/react-helmet": "^6.1.9",
-    "@types/styled-components": "^5.1.31",
+    "@types/styled-components": "^5.1.32",
     "babel-plugin-styled-components": "^1.12.1",
     "eslint": "^8.52.0",
     "husky": "^8.0.3",
