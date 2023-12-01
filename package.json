@@ -93,7 +93,7 @@
     "@types/react-helmet": "^6.1.9",
     "@types/styled-components": "^5.1.32",
     "babel-plugin-styled-components": "^1.12.1",
-    "eslint": "^8.52.0",
+    "eslint": "^8.54.0",
     "husky": "^8.0.3",
     "jsdom": "^22.1.0",
     "knip": "^2.41.3",
