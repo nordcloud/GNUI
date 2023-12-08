@@ -429,6 +429,14 @@ export const Data: StoryObj = {
             </Text>
           </FlexContainer>
         </CopyToClipboard>
+        <CopyToClipboard text="eventLog">
+          <FlexContainer direction="column">
+            <SVGIcon name="eventLog" />
+            <Text size="xs" mt=".25rem">
+              eventLog
+            </Text>
+          </FlexContainer>
+        </CopyToClipboard>
         <CopyToClipboard text="virtualColumn">
           <FlexContainer direction="column">
             <SVGIcon name="virtualColumn" />
