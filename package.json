@@ -82,7 +82,7 @@
     "@storybook/react": "^7.5.3",
     "@storybook/react-vite": "^7.5.3",
     "@storybook/theming": "^7.5.3",
-    "@testing-library/jest-dom": "^6.1.5",
+    "@testing-library/jest-dom": "^6.1.6",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/lodash.clonedeep": "^4.5.9",
