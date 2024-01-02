@@ -119,7 +119,7 @@
     "vitest": "^0.34.6"
   },
   "overrides": {
-    "@babel/traverse": "~7.23.2",
+    "@babel/traverse": "~7.23.7",
     "minimist": "~1.2.8",
     "shell-quote": "~1.7.3",
     "terser": "~4.8.1",
