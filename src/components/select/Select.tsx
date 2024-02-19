@@ -29,6 +29,12 @@ const SelectContainer = styled.div`
     }
     &__value-container {
       color: ${theme.color.text.text01};
+      & .react-select__input {
+        color: ${(props) =>
+          props.color === theme.color.background.ui05
+            ? theme.color.text.text04
+            : theme.color.text.text01} !important;
+      }
     }
     &__multi-value {
       padding: 0 0.125rem 0 ${theme.spacing.spacing02};
