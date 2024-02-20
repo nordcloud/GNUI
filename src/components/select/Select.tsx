@@ -27,6 +27,9 @@ const SelectContainer = styled.div`
         }
       }
     }
+    &__value-container {
+      color: ${theme.color.text.text01};
+    }
     &__multi-value {
       padding: 0 0.125rem 0 ${theme.spacing.spacing02};
       margin: ${theme.spacing.spacing01};
