@@ -11,6 +11,9 @@ jobs:
       pull-requests: write
     timeout-minutes: 30
     steps:
+      - uses: reviewdog/action-setup@v1
+        with:
+          reviewdog_version: v0.17.1
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v3
         with:
