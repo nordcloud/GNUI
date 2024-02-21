@@ -119,6 +119,12 @@ function getDefaultStyles<
   Group extends GroupBase<Option> = GroupBase<Option>,
 >(): StylesConfig<Option, IsMulti, Group> {
   return {
+    input: (styles) => {
+      return {
+        ...styles,
+        color: theme.color.text.text01,
+      };
+    },
     multiValue: (styles) => {
       return {
         ...styles,
