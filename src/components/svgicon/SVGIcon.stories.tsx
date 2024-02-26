@@ -1742,6 +1742,12 @@ export const Ui: StoryObj = {
       <CopyToClipboard text="spinningGear">
         <SVGIcon name="spinningGear" />
       </CopyToClipboard>
+      <CopyToClipboard text="statusSuccessDetailed">
+        <SVGIcon name="statusSuccessDetailed" />
+      </CopyToClipboard>
+      <CopyToClipboard text="statusErrorDetailed">
+        <SVGIcon name="statusErrorDetailed" />
+      </CopyToClipboard>
     </FlexContainer>
   ),
 
