@@ -1313,6 +1313,14 @@ export const OsProvider: StoryObj = {
           </Text>
         </FlexContainer>
       </CopyToClipboard>
+      <CopyToClipboard text="debian">
+        <FlexContainer direction="column">
+          <SVGIcon name="debian" />
+          <Text size="xs" mt=".25rem">
+            debian
+          </Text>
+        </FlexContainer>
+      </CopyToClipboard>
     </FlexContainer>
   ),
 
