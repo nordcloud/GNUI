@@ -70,7 +70,7 @@ export const Disabled: StoryObj = {
 
   name: "disabled",
 };
-export const Error: StoryObj = {
+export const isError: StoryObj = {
   render: () => {
     const options = [
       {
@@ -90,7 +90,7 @@ export const Error: StoryObj = {
     );
   },
 
-  name: "Error",
+  name: "isError",
 };
 
 export const Multiselect: StoryObj = {
