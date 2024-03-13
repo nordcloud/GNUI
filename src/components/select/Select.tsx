@@ -6,15 +6,20 @@ import ReactSelect, {
   type StylesConfig,
   type Props as ReactSelectProps,
 } from "react-select";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import theme from "../../theme";
 
-const SelectContainer = styled.div`
+const SelectContainer = styled.div<{ isError?: boolean }>`
   .react-select {
     &-container {
       & > .react-select__control {
         background: ${theme.color.field.default};
         border: 1px solid ${theme.color.border.input};
+        ${({ isError }) =>
+          isError &&
+          css`
+            border: 1px solid ${theme.color.border.error};
+          `}
         &:hover {
           border: 1px solid ${theme.color.border.border02};
         }
@@ -57,7 +62,7 @@ const SelectContainer = styled.div`
       }
     }
     &__placeholder {
-      color: ${theme.color.text.text03};
+      color: ${theme.color.text.text02};
     }
     &__single-value {
       color: ${theme.color.text.text01};
@@ -111,6 +116,7 @@ export type SelectOption = {
 
 export type SelectColoredOption = SelectOption & {
   color: string;
+  isError?: boolean;
 };
 
 function getDefaultStyles<
@@ -242,11 +248,13 @@ function SelectInner<
   {
     styles = getDefaultStyles(),
     ...props
-  }: ReactSelectProps<Option, IsMulti, Group>,
+  }: ReactSelectProps<Option, IsMulti, Group> & {
+    isError?: boolean;
+  },
   ref: React.ForwardedRef<SelectInstance<Option, IsMulti, Group>>
 ) {
   return (
-    <SelectContainer>
+    <SelectContainer isError={props.isError}>
       <ReactSelect
         ref={ref}
         className="react-select-container"
