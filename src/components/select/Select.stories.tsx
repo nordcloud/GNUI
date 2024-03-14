@@ -70,6 +70,28 @@ export const Disabled: StoryObj = {
 
   name: "disabled",
 };
+export const isError: StoryObj = {
+  render: () => {
+    const options = [
+      {
+        value: "chocolate",
+        label: "Chocolate",
+      },
+    ];
+
+    return (
+      <div
+        style={{
+          height: "150px",
+        }}
+      >
+        <Select isError options={options} />
+      </div>
+    );
+  },
+
+  name: "isError",
+};
 
 export const Multiselect: StoryObj = {
   render: () => {
