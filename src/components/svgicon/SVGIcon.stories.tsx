@@ -1022,6 +1022,14 @@ export const Status: StoryObj = {
           </Text>
         </FlexContainer>
       </CopyToClipboard>
+      <CopyToClipboard text="infoFilled">
+        <FlexContainer direction="column">
+          <SVGIcon name="infoFilled" />
+          <Text size="xs" mt=".25rem">
+            infoFilled
+          </Text>
+        </FlexContainer>
+      </CopyToClipboard>
     </FlexContainer>
   ),
 
