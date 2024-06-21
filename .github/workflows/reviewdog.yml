@@ -39,7 +39,7 @@ jobs:
           eslint_flags: . --report-unused-disable-directives
 
       - name: Stylelint
-        uses: reviewdog/action-stylelint@master
+        uses: reviewdog/action-stylelint@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
