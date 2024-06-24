@@ -40,6 +40,7 @@ export function SVGIcon({ name, ...props }: SVGIconProps) {
 
   return (
     <StyledSVGIcon
+      color="currentColor"
       {...props}
       viewBox={VIEW_BOX}
       xmlns="http://www.w3.org/2000/svg"

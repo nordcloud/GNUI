@@ -111,7 +111,7 @@ export function Text({
   ...props
 }: SpaceProps & TextProps) {
   return (
-    <StyledText as={tag} tag={tag} {...props}>
+    <StyledText as={tag} tag={tag} color="currentColor" {...props}>
       {children}
     </StyledText>
   );
