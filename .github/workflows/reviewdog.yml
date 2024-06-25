@@ -11,9 +11,6 @@ jobs:
       pull-requests: write
     timeout-minutes: 30
     steps:
-      - uses: reviewdog/action-setup@v1
-        with:
-          reviewdog_version: latest
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v3
         with:
@@ -50,6 +47,7 @@ jobs:
           level: warning
           fail_on_error: false
           stylelint_input: "**/*.+(ts|tsx)"
+          reviewdog_version: latest
 
       - name: TypeScript
         uses: EPMatt/reviewdog-action-tsc@v1
