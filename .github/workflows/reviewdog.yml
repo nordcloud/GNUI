@@ -47,7 +47,6 @@ jobs:
           level: warning
           fail_on_error: false
           stylelint_input: "**/*.+(ts|tsx)"
-          reviewdog_version: latest
 
       - name: TypeScript
         uses: EPMatt/reviewdog-action-tsc@v1
