@@ -990,6 +990,14 @@ export const Status: StoryObj = {
           </Text>
         </FlexContainer>
       </CopyToClipboard>
+      <CopyToClipboard text="statusSuccessDetailed">
+        <FlexContainer direction="column">
+          <SVGIcon name="statusSuccessDetailed" />
+          <Text size="xs" mt=".25rem">
+            statusSuccessDetailed
+          </Text>
+        </FlexContainer>
+      </CopyToClipboard>
       <CopyToClipboard text="waitingFilled">
         <FlexContainer direction="column">
           <SVGIcon name="waitingFilled" />
