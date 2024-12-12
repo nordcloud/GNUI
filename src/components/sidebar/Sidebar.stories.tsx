@@ -249,3 +249,36 @@ export const CustomWidth: StoryObj = {
     },
   },
 };
+
+export const Expandable: StoryObj = {
+  render: () => {
+    const { isOpen, open, close } = useDisclosure();
+
+    return (
+      <Container>
+        <Row justify="center">
+          <Button onClick={open}>Click button to open sidebar</Button>
+        </Row>
+        <Sidebar
+          showExpandButton
+          title="Default sidebar"
+          caption="Default sidebar caption"
+          isOpen={isOpen}
+          onClick={close}
+          onExpandClick={() => alert("clicked")}
+        >
+          Sidebar Content
+        </Sidebar>
+      </Container>
+    );
+  },
+
+  name: "expandable",
+  parameters: {
+    docs: {
+      story: {
+        height: "450px",
+      },
+    },
+  },
+};
