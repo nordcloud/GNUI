@@ -1,5 +1,7 @@
 import * as React from "react";
+import { When } from "react-if";
 import { Button } from "../button";
+import { FlexContainer } from "../container";
 import { Background } from "../modal/styles";
 import { SVGIcon } from "../svgicon";
 import {
@@ -34,6 +36,8 @@ export function Sidebar({
   headerStyles,
   contentStyles,
   onClick = () => undefined,
+  showExpandButton = false,
+  onExpandClick = () => undefined,
   ...props
 }: SidebarProps) {
   React.useEffect(() => {
@@ -69,14 +73,27 @@ export function Sidebar({
                   </Title>
                   {caption && <Caption>{caption}</Caption>}
                 </header>
-                <Button
-                  severity="low"
-                  size="md"
-                  icon="close"
-                  title="Close sidebar"
-                  type="button"
-                  onClick={onClick}
-                />
+                <FlexContainer justifyContent="space-evenly">
+                  <When condition={showExpandButton}>
+                    <Button
+                      severity="low"
+                      size="md"
+                      icon="externalLink"
+                      title="Expand"
+                      type="button"
+                      marginRight={1}
+                      onClick={onExpandClick}
+                    />
+                  </When>
+                  <Button
+                    severity="low"
+                    size="md"
+                    icon="close"
+                    title="Close sidebar"
+                    type="button"
+                    onClick={onClick}
+                  />
+                </FlexContainer>
               </Header>
               <Container style={contentStyles}>
                 <Content tag="div">{children}</Content>

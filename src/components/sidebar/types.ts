@@ -10,6 +10,8 @@ export type SidebarProps = {
   width?: number | string;
   reverse?: boolean;
   onClick?: () => void;
+  showExpandButton?: boolean;
+  onExpandClick?: () => void;
   footer?: React.ReactNode;
   headerStyles?: React.CSSProperties;
   contentStyles?: React.CSSProperties;
