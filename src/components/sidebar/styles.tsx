@@ -108,6 +108,7 @@ export const Inner = styled.div<InnerProps>`
           ${bp("xxl")`width: 30rem`};
         `}
   z-index: 2;
+  overscroll-behavior: contain;
 `;
 
 export const Container = styled.div`
