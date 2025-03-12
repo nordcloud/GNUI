@@ -16,6 +16,7 @@ export * from "./input";
 export * from "./list";
 export * from "./listLoader";
 export * from "./loader";
+export * from "./loadMore";
 export * from "./message";
 export * from "./modal";
 export * from "./select";
