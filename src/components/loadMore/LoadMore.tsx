@@ -20,11 +20,13 @@ export function LoadMore({
   currentCount,
   total,
   onLoadMore,
+  onLoadLess,
   isLoading = false,
   hideCount = false,
   className,
 }: LoadMoreProps) {
   const hasMoreItems = currentCount < total;
+  const showLessButton = onLoadLess && currentCount === total && total > 0;
 
   return (
     <Container className={className} small={false} hideCount={hideCount}>
@@ -42,6 +44,17 @@ export function LoadMore({
           onClick={onLoadMore}
         >
           {isLoading ? "Loading..." : "Show more"}
+        </Button>
+      )}
+
+      {showLessButton && (
+        <Button
+          severity="medium"
+          size="sm"
+          aria-label="Show less items"
+          onClick={onLoadLess}
+        >
+          Show Less
         </Button>
       )}
     </Container>

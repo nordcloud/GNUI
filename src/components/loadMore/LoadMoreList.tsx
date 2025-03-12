@@ -63,6 +63,10 @@ export function LoadMoreList({
     }, loadingDelay);
   };
 
+  const handleLoadLess = () => {
+    setItems(items.slice(0, batchSize));
+  };
+
   return (
     <Container>
       <ListContainer>
@@ -76,6 +80,7 @@ export function LoadMoreList({
         total={totalItems}
         isLoading={isLoading}
         onLoadMore={handleLoadMore}
+        onLoadLess={items.length > batchSize ? handleLoadLess : undefined}
       />
     </Container>
   );

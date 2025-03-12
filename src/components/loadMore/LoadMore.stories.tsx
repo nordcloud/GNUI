@@ -23,6 +23,7 @@ type Story = StoryObj<typeof LoadMore>;
 export const Basic: Story = {
   render: () => (
     <LoadMore
+      hideCount
       currentCount={5}
       total={15}
       onLoadMore={() => console.log("Load more clicked")}
@@ -31,16 +32,15 @@ export const Basic: Story = {
   name: "basic",
 };
 
-export const WithoutCount: Story = {
+export const WithCount: Story = {
   render: () => (
     <LoadMore
-      hideCount
       currentCount={5}
       total={15}
       onLoadMore={() => console.log("Load more clicked")}
     />
   ),
-  name: "without-count",
+  name: "with-count",
 };
 
 export const MidList: Story = {
@@ -80,4 +80,15 @@ export const Loading: Story = {
 export const WithList: Story = {
   render: () => <LoadMoreList />,
   name: "with-list",
+};
+
+export const WithShowLess: Story = {
+  render: () => (
+    <LoadMoreList
+      initialItems={Array.from({ length: 15 }, (_, index) => `Item ${index + 1}`)}
+      totalItems={15}
+      batchSize={5}
+    />
+  ),
+  name: "with-show-less",
 };

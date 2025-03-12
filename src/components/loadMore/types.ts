@@ -15,6 +15,11 @@ export type LoadMoreProps = {
   onLoadMore: () => void;
 
   /**
+   * Function called when Show Less button is clicked
+   */
+  onLoadLess?: () => void;
+
+  /**
    * Whether the component is in a loading state
    */
   isLoading?: boolean;
