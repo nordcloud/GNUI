@@ -33,12 +33,12 @@ const ListItem = styled.li`
 /**
  * Example component showing how to use LoadMore with a list
  */
-export const LoadMoreList: React.FC<LoadMoreListProps> = ({
+export function LoadMoreList({
   initialItems = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"],
   totalItems = 15,
   batchSize = 5,
   loadingDelay = 1000,
-}) => {
+}: LoadMoreListProps) {
   const [items, setItems] = React.useState<string[]>(initialItems);
   const [isLoading, setIsLoading] = React.useState(false);
 
@@ -69,8 +69,8 @@ export const LoadMoreList: React.FC<LoadMoreListProps> = ({
   return (
     <Container>
       <ListContainer>
-        {items.map((item, index) => (
-          <ListItem key={index}>{item}</ListItem>
+        {items.map((item) => (
+          <ListItem key={item}>{item}</ListItem>
         ))}
       </ListContainer>
 
@@ -82,4 +82,4 @@ export const LoadMoreList: React.FC<LoadMoreListProps> = ({
       />
     </Container>
   );
-};
+}

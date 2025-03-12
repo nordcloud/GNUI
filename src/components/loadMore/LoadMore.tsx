@@ -16,14 +16,14 @@ const Container = styled(StyledPaginationBox)<{ hideCount?: boolean }>`
  * LoadMore displays a "Show More" button to load additional items when clicked,
  * optionally with a count of loaded items.
  */
-export const LoadMore: React.FC<LoadMoreProps> = ({
+export function LoadMore({
   currentCount,
   total,
   onLoadMore,
   isLoading = false,
   hideCount = false,
   className,
-}) => {
+}: LoadMoreProps) {
   const hasMoreItems = currentCount < total;
 
   return (
@@ -46,4 +46,4 @@ export const LoadMore: React.FC<LoadMoreProps> = ({
       )}
     </Container>
   );
-};
+}
