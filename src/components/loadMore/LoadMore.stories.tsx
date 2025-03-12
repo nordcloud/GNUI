@@ -1,10 +1,9 @@
 import * as React from "react";
-import { Meta, Story } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react";
 import { LoadMore } from "./LoadMore";
 import { LoadMoreList } from "./LoadMoreList";
-import { LoadMoreProps } from "./types";
 
-export default {
+const meta: Meta<typeof LoadMore> = {
   title: "Components/LoadMore",
   component: LoadMore,
   parameters: {
@@ -15,59 +14,71 @@ export default {
       },
     },
   },
-} as Meta;
+};
 
-// Create a template
-const Template: Story<LoadMoreProps> = (args) => <LoadMore {...args} />;
+export default meta;
 
-// Basic example (with count)
-export const Basic = Template.bind({});
-Basic.args = {
-  currentCount: 5,
-  total: 15,
-  onLoadMore: () => console.log("Load more clicked"),
-  isLoading: false,
-  hideCount: false,
+type Story = StoryObj<typeof LoadMore>;
+
+export const Basic: Story = {
+  render: () => (
+    <LoadMore
+      currentCount={5}
+      total={15}
+      onLoadMore={() => console.log("Load more clicked")}
+    />
+  ),
+  name: "basic",
 };
 
 // Without count example
-export const WithoutCount = Template.bind({});
-WithoutCount.args = {
-  currentCount: 5,
-  total: 15,
-  onLoadMore: () => console.log("Load more clicked"),
-  isLoading: false,
-  hideCount: true,
+export const WithoutCount: Story = {
+  render: () => (
+    <LoadMore
+      hideCount
+      currentCount={5}
+      total={15}
+      onLoadMore={() => console.log("Load more clicked")}
+    />
+  ),
+  name: "without-count",
 };
 
-// Mid-list example
-export const MidList = Template.bind({});
-MidList.args = {
-  currentCount: 10,
-  total: 15,
-  onLoadMore: () => console.log("Load more clicked"),
-  isLoading: false,
+export const MidList: Story = {
+  render: () => (
+    <LoadMore
+      currentCount={10}
+      total={15}
+      onLoadMore={() => console.log("Load more clicked")}
+    />
+  ),
+  name: "mid-list",
 };
 
-// End of list example (no "Show More" button)
-export const EndOfList = Template.bind({});
-EndOfList.args = {
-  currentCount: 15,
-  total: 15,
-  onLoadMore: () => console.log("Load more clicked"),
-  isLoading: false,
+export const EndOfList: Story = {
+  render: () => (
+    <LoadMore
+      currentCount={15}
+      total={15}
+      onLoadMore={() => console.log("Load more clicked")}
+    />
+  ),
+  name: "end-of-list",
 };
 
-// Loading state example
-export const Loading = Template.bind({});
-Loading.args = {
-  currentCount: 5,
-  total: 15,
-  onLoadMore: () => console.log("Load more clicked"),
-  isLoading: true,
+export const Loading: Story = {
+  render: () => (
+    <LoadMore
+      isLoading
+      currentCount={5}
+      total={15}
+      onLoadMore={() => console.log("Load more clicked")}
+    />
+  ),
+  name: "loading",
 };
 
-// Example with list
-export function WithList() {
-  return <LoadMoreList />
-}
+export const WithList: Story = {
+  render: () => <LoadMoreList />,
+  name: "with-list",
+};
