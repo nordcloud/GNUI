@@ -85,7 +85,10 @@ export const WithList: Story = {
 export const WithShowLess: Story = {
   render: () => (
     <LoadMoreList
-      initialItems={Array.from({ length: 15 }, (_, index) => `Item ${index + 1}`)}
+      initialItems={Array.from(
+        { length: 15 },
+        (_, index) => `Item ${index + 1}`
+      )}
       totalItems={15}
       batchSize={5}
     />
