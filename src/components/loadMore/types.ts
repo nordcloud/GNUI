@@ -30,7 +30,7 @@ export type LoadMoreProps = {
    * Custom class name
    */
   className?: string;
-}
+};
 
 export type LoadMoreListProps = {
   /**
@@ -52,4 +52,4 @@ export type LoadMoreListProps = {
    * Optional loading delay in ms to simulate API calls
    */
   loadingDelay?: number;
-}
+};
