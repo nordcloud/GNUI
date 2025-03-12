@@ -202,6 +202,6 @@ test("renders without number of results and `per page` for small screens for sta
 
   expect(screen.queryByText(/show/i)).not.toBeInTheDocument();
   expect(
-    screen.queryByText(`1-${params.size} of ${params.count}`)
+    screen.queryByText(`1 -${params.size} of ${params.count}`)
   ).not.toBeInTheDocument();
 });
