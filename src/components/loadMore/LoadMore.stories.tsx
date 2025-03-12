@@ -31,7 +31,6 @@ export const Basic: Story = {
   name: "basic",
 };
 
-// Without count example
 export const WithoutCount: Story = {
   render: () => (
     <LoadMore

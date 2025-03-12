@@ -47,18 +47,15 @@ export function LoadMoreList({
 
     // Simulate API call delay
     setTimeout(() => {
-      // Calculate how many more items we can show (respecting total limit)
       const itemsLeft = totalItems - items.length;
       const itemsToAdd = Math.min(batchSize, itemsLeft);
 
       if (itemsToAdd > 0) {
-        // Generate new items
         const nextBatch = Array.from(
           { length: itemsToAdd },
           (_, index) => `Item ${items.length + index + 1}`
         );
 
-        // Add new items to the list
         setItems([...items, ...nextBatch]);
       }
 
