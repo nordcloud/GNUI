@@ -52,9 +52,11 @@ export function LoadMore({
           severity="medium"
           size="sm"
           aria-label="Show less items"
+          initialState={isLoading ? "loading" : undefined}
+          disabled={isLoading}
           onClick={onLoadLess}
         >
-          Show Less
+          {isLoading ? "Loading..." : "Show less"}
         </Button>
       )}
     </Container>
