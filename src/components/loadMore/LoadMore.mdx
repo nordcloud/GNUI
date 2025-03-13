@@ -1,0 +1,165 @@
+import { Meta, Story, Canvas, ArgsTable } from "@storybook/addon-docs";
+import { LoadMore } from "./LoadMore";
+import { LoadMoreList } from "./LoadMoreList";
+
+<Meta title="Components/LoadMore" component={LoadMore} />
+
+# Load More
+
+The `LoadMore` component provides a "Show More" button that allows users to load additional items into an existing list. It can optionally display a count indicator showing the number of loaded items.
+
+## Features
+
+- "Show More" button to load additional items when clicked
+- Optional count indicator showing current items and total (e.g., "1-5 of 15")
+- "Show Less" button appears when all items are loaded (if onLoadLess prop is provided)
+- Supports a loading state to disable the button during data fetching
+- Automatically hides the "Show More" button when all items are loaded
+- Option to hide the count indicator with centered button layout
+
+## Basic Usage
+
+```jsx
+import { LoadMore } from "@gnui/core";
+
+// Inside your component
+const MyList = () => {
+  const [items, setItems] = useState([
+    /* initial items */
+  ]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleLoadMore = () => {
+    setIsLoading(true);
+    // Fetch more items, then:
+    setItems([...items, ...newItems]);
+    setIsLoading(false);
+  };
+
+  const handleLoadLess = () => {
+    // Reduce items to initial batch size
+    setItems(items.slice(0, batchSize));
+  };
+
+  return (
+    <div>
+      <ul>
+        {items.map((item) => (
+          <li key={item.id}>{item.name}</li>
+        ))}
+      </ul>
+
+      <LoadMore
+        currentCount={items.length}
+        total={totalItems}
+        onLoadMore={handleLoadMore}
+        onLoadLess={handleLoadLess}
+        isLoading={isLoading}
+      />
+    </div>
+  );
+};
+```
+
+## Examples
+
+### Basic Example (without count)
+
+Shows only the centered "Show More" button:
+
+<Canvas>
+  <Story id="components-loadmore--basic" />
+</Canvas>
+
+### With Count
+
+Shows both the count indicator and "Show More" button:
+
+<Canvas>
+  <Story id="components-loadmore--with-count" />
+</Canvas>
+
+### Mid-List Example
+
+Shows the state when some items are loaded:
+
+<Canvas>
+  <Story id="components-loadmore--mid-list" />
+</Canvas>
+
+### End of List Example
+
+Shows how the button is hidden when all items are loaded:
+
+<Canvas>
+  <Story id="components-loadmore--end-of-list" />
+</Canvas>
+
+### Loading State
+
+Shows the button in a loading state:
+
+<Canvas>
+  <Story id="components-loadmore--loading" />
+</Canvas>
+
+### Working Example with List
+
+A complete example showing the component in use with a list:
+
+<Canvas>
+  <Story id="components-loadmore--with-list" />
+</Canvas>
+
+### With Show Less
+
+Shows how the "Show Less" button appears when all items are loaded and onLoadLess is provided:
+
+<Canvas>
+  <Story id="components-loadmore--with-show-less" />
+</Canvas>
+
+## Props
+
+<ArgsTable of={LoadMore} />
+
+## Accessibility
+
+The component follows accessibility best practices:
+
+- The "Show More" button is properly labeled for screen readers
+- The button is disabled during loading states to prevent multiple clicks
+- The count indicator (when shown) provides context about the loaded items
+
+## Usage Guidelines
+
+1. **Basic (Without Count)**
+
+   ```jsx
+   <LoadMore hideCount currentCount={5} total={15} onLoadMore={handleLoadMore} />
+   ```
+
+2. **With Count**
+
+   ```jsx
+   <LoadMore currentCount={5} total={15} onLoadMore={handleLoadMore} />
+   ```
+
+3. **With Show Less**
+
+   ```jsx
+   <LoadMore currentCount={15} total={15} onLoadMore={handleLoadMore} onLoadLess={handleLoadLess} />
+   ```
+
+4. **With Loading State**
+   ```jsx
+   <LoadMore currentCount={5} total={15} onLoadMore={handleLoadMore} isLoading={true} />
+   ```
+
+## Design Considerations
+
+- The count indicator uses the same styling as other pagination components for consistency
+- When `hideCount` is true, the button is automatically centered
+- The button uses the link color and underline hover effect for a lightweight appearance
+- Loading state is visually indicated while maintaining the button's position
+- "Show Less" button appears in place of "Show More" when all items are loaded and onLoadLess is provided
