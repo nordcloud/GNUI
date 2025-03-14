@@ -9,7 +9,7 @@ const Container = styled(StyledPaginationBox)<{ hideCount?: boolean }>`
   justify-content: ${({ hideCount }) =>
     hideCount ? "center" : "space-between"};
   padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
-  height: 36px;
+  min-height: 36px;
 `;
 
 /**
@@ -31,7 +31,12 @@ export function LoadMore({
   return (
     <Container className={className} small={false} hideCount={hideCount}>
       {!hideCount && (
-        <PaginationAmount from={0} size={currentCount} count={total} />
+        <PaginationAmount
+          from={0}
+          size={currentCount}
+          count={total}
+          style={{ width: "auto" }}
+        />
       )}
 
       {hasMoreItems && (
@@ -41,6 +46,8 @@ export function LoadMore({
           initialState={isLoading ? "loading" : undefined}
           aria-label="Show more items"
           disabled={isLoading}
+          style={{ margin: 0 }}
+          icon="chevronDown"
           onClick={onLoadMore}
         >
           {isLoading ? "Loading..." : "Show more"}
@@ -54,6 +61,8 @@ export function LoadMore({
           aria-label="Show less items"
           initialState={isLoading ? "loading" : undefined}
           disabled={isLoading}
+          style={{ margin: 0 }}
+          icon="chevronUp"
           onClick={onLoadLess}
         >
           {isLoading ? "Loading..." : "Show less"}
