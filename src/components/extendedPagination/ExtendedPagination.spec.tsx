@@ -38,13 +38,13 @@ const getParams = (firstPage = 0, from = 0, count = 200) => ({
 test("shows current number of results", async () => {
   const params = getParams();
   getComponent(params);
-  await screen.findByText(`1 -${params.size} of ${params.count}`);
+  await screen.findByText(`1 - ${params.size} of ${params.count}`);
 });
 
 test("shows current number of results for start index 1", async () => {
   const params = getParams(1);
   getComponent(params);
-  await screen.findByText(`1 -${params.size} of ${params.count}`);
+  await screen.findByText(`1 - ${params.size} of ${params.count}`);
 });
 
 test("shows `per page` component", async () => {
@@ -182,7 +182,7 @@ test("renders without number of results and `per page` for small screens", () =>
 
   expect(screen.queryByText(/show/i)).not.toBeInTheDocument();
   expect(
-    screen.queryByText(`1 -${params.size} of ${params.count}`)
+    screen.queryByText(`1 - ${params.size} of ${params.count}`)
   ).not.toBeInTheDocument();
 });
 
@@ -202,6 +202,6 @@ test("renders without number of results and `per page` for small screens for sta
 
   expect(screen.queryByText(/show/i)).not.toBeInTheDocument();
   expect(
-    screen.queryByText(`1 -${params.size} of ${params.count}`)
+    screen.queryByText(`1 - ${params.size} of ${params.count}`)
   ).not.toBeInTheDocument();
 });

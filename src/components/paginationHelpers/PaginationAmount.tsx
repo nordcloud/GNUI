@@ -5,9 +5,16 @@ type Props = {
   size: number;
   count: number;
   firstPage?: number;
+  style?: React.CSSProperties;
 };
 
-export function PaginationAmount({ from, size, count, firstPage = 0 }: Props) {
+export function PaginationAmount({
+  from,
+  size,
+  count,
+  firstPage = 0,
+  style,
+}: Props) {
   const isFirstPageZero = firstPage === 0;
 
   const s = Number(size);
@@ -21,8 +28,8 @@ export function PaginationAmount({ from, size, count, firstPage = 0 }: Props) {
   const max = maxCurrentPage < 1 ? size : maxCurrentPage;
 
   return (
-    <div className="pagination-result">
-      {min} -{max > count ? count : max} of {count}
+    <div className="pagination-result" style={style}>
+      {min} - {max > count ? count : max} of {count}
     </div>
   );
 }
