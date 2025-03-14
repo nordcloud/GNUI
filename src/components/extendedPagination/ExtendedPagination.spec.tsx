@@ -38,23 +38,31 @@ const getParams = (firstPage = 0, from = 0, count = 200) => ({
 test("shows current number of results", async () => {
   const params = getParams();
   getComponent(params);
-  await screen.findByText(`1 - ${params.size} of ${params.count}`);
+  const element = await screen.findByText(
+    `1 - ${params.size} of ${params.count}`
+  );
+  expect(element).toBeInTheDocument();
 });
 
 test("shows current number of results for start index 1", async () => {
   const params = getParams(1);
   getComponent(params);
-  await screen.findByText(`1 - ${params.size} of ${params.count}`);
+  const element = await screen.findByText(
+    `1 - ${params.size} of ${params.count}`
+  );
+  expect(element).toBeInTheDocument();
 });
 
 test("shows `per page` component", async () => {
   getComponent(getParams());
-  await screen.findByText(/show/i);
+  const element = await screen.findByText(/show/i);
+  expect(element).toBeInTheDocument();
 });
 
 test("shows `per page` component for start index 1", async () => {
   getComponent(getParams(1));
-  await screen.findByText(/show/i);
+  const element = await screen.findByText(/show/i);
+  expect(element).toBeInTheDocument();
 });
 
 test("shows last page button on 1st page", () => {
