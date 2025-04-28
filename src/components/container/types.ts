@@ -29,6 +29,7 @@ const lengthUnitSuffix = {
 export type LengthUnitSuffix =
   (typeof lengthUnitSuffix)[keyof typeof lengthUnitSuffix];
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const unitSuffix = {
   ...lengthUnitSuffix,
   ...multiplicationUnitSuffix,
