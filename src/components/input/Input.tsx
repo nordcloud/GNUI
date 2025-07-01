@@ -40,6 +40,7 @@ export const Input = React.forwardRef<HTMLInputElement, Props>(
           <Clear
             title={`Clear ${props.name ?? ""} value`}
             role="button"
+            type="button"
             onClick={onClear}
           >
             <SVGIcon size="sm" name="close" />
