@@ -234,6 +234,13 @@ function adjustLeftToViewportDimensions(
   return 0;
 }
 
+export function getViewportDimensions() {
+  return {
+    width: document.documentElement.clientWidth,
+    height: document.documentElement.clientHeight,
+  };
+}
+
 export const DEFAULT_MARGIN = {
   top: 5,
   bottom: 5,

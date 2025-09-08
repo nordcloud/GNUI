@@ -10,6 +10,7 @@ import {
   Margin,
   DEFAULT_MARGIN,
   PaddingWrapper,
+  getViewportDimensions,
 } from "../../utils/position";
 import { throttle } from "../../utils/throttle";
 import { Button } from "../button";
@@ -51,16 +52,13 @@ export function ExtendedPopover({
   const [triggerDimensions, setTriggerDimensions] =
     React.useState<DOMRect | null>(null);
 
-  const getViewportSize = () => ({
-    width: document.documentElement.clientWidth,
-    height: document.documentElement.clientHeight,
-  });
-
-  const [viewport, setViewport] = React.useState(getViewportSize);
+  const [viewportDimensions, setViewportDimensions] = React.useState(
+    getViewportDimensions
+  );
 
   React.useEffect(() => {
     function handleResize() {
-      setViewport(getViewportSize());
+      setViewportDimensions(getViewportDimensions());
     }
 
     window.addEventListener("resize", handleResize);
@@ -126,7 +124,7 @@ export function ExtendedPopover({
   const style = getStyle({
     wrapperDimensions: triggerDimensions,
     tooltipDimensions: contentDimensions,
-    viewportDimensions: viewport,
+    viewportDimensions,
     placement,
     position,
     adjustPositionToViewportSize,
