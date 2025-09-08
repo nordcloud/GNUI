@@ -11,12 +11,19 @@ export type Margin = {
   right?: number;
 };
 
+export type ViewportDimensions = {
+  width: number;
+  height: number;
+};
+
 type StyleProps = {
   wrapperDimensions: DOMRect | null;
   tooltipDimensions: DOMRect | null;
+  viewportDimensions: ViewportDimensions;
   placement: Placement;
   position: Position;
   margin?: Margin;
+  adjustPositionToViewportSize?: boolean;
 };
 
 type ReqiuredStyleProps = StyleProps & {
@@ -27,14 +34,17 @@ type ReqiuredStyleProps = StyleProps & {
 export function getStyle({
   wrapperDimensions,
   tooltipDimensions,
+  viewportDimensions,
   placement,
   position,
   margin,
+  adjustPositionToViewportSize,
 }: StyleProps) {
   if (wrapperDimensions != null && tooltipDimensions != null) {
     const top = getTop({
       wrapperDimensions,
       tooltipDimensions,
+      viewportDimensions,
       placement,
       position,
       margin,
@@ -42,10 +52,24 @@ export function getStyle({
     const left = getLeft({
       wrapperDimensions,
       tooltipDimensions,
+      viewportDimensions,
       placement,
       position,
       margin,
     });
+
+    if (adjustPositionToViewportSize) {
+      const adjustToViewport = adjustPositionToViewportDimensions(
+        { top, left },
+        tooltipDimensions,
+        viewportDimensions
+      );
+
+      const adjustedTop = top + adjustToViewport.top;
+      const adjustedLeft = left + adjustToViewport.left;
+
+      return { top: adjustedTop, left: adjustedLeft };
+    }
 
     return { top, left };
   }
@@ -153,6 +177,61 @@ function getVerticalAlignmentToEnd(
   return Math.abs(
     wrapperDimensions.top - tooltipDimensions.height + wrapperDimensions.height
   );
+}
+
+function adjustPositionToViewportDimensions(
+  style: { top: number; left: number },
+  tooltipDimensions: DOMRect,
+  viewportDimensions: ViewportDimensions
+) {
+  const adjustTop = adjustTopToViewportDimensions(
+    style,
+    tooltipDimensions,
+    viewportDimensions
+  );
+  const adjustLeft = adjustLeftToViewportDimensions(
+    style,
+    tooltipDimensions,
+    viewportDimensions
+  );
+
+  return { top: adjustTop, left: adjustLeft };
+}
+
+function adjustTopToViewportDimensions(
+  style: { top: number; left: number },
+  tooltipDimensions: DOMRect,
+  viewportDimensions: ViewportDimensions
+) {
+  if (style.top < 0) {
+    return 0 - style.top;
+  }
+
+  const tooltipBottom = style.top + tooltipDimensions.height;
+
+  if (tooltipBottom > viewportDimensions.height) {
+    return viewportDimensions.height - tooltipBottom;
+  }
+
+  return 0;
+}
+
+function adjustLeftToViewportDimensions(
+  style: { top: number; left: number },
+  tooltipDimensions: DOMRect,
+  viewportDimensions: ViewportDimensions
+) {
+  if (style.left < 0) {
+    return 0 - style.left;
+  }
+
+  const tooltipRight = style.left + tooltipDimensions.width;
+
+  if (tooltipRight > viewportDimensions.width) {
+    return viewportDimensions.width - tooltipRight;
+  }
+
+  return 0;
 }
 
 export const DEFAULT_MARGIN = {

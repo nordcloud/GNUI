@@ -24,6 +24,7 @@ type Props = {
   clickOutsideToClose?: boolean;
   triggerOn?: ExtendedPopoverAction;
   closeOn?: ExtendedPopoverAction;
+  adjustPositionToViewportSize?: boolean;
 };
 
 export function ExtendedPopover({
@@ -39,6 +40,7 @@ export function ExtendedPopover({
   margin = DEFAULT_MARGIN,
   triggerOn = "click",
   closeOn = "click",
+  adjustPositionToViewportSize = false,
 }: Props) {
   const triggerRef = React.useRef<HTMLDivElement>(null);
   const contentRef = React.useRef<HTMLDivElement>(null);
@@ -48,6 +50,23 @@ export function ExtendedPopover({
     React.useState<DOMRect | null>(null);
   const [triggerDimensions, setTriggerDimensions] =
     React.useState<DOMRect | null>(null);
+
+  const getViewportSize = () => ({
+    width: document.documentElement.clientWidth,
+    height: document.documentElement.clientHeight,
+  });
+
+  const [viewport, setViewport] = React.useState(getViewportSize);
+
+  React.useEffect(() => {
+    function handleResize() {
+      setViewport(getViewportSize());
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   React.useEffect(() => {
     if (
@@ -107,8 +126,10 @@ export function ExtendedPopover({
   const style = getStyle({
     wrapperDimensions: triggerDimensions,
     tooltipDimensions: contentDimensions,
+    viewportDimensions: viewport,
     placement,
     position,
+    adjustPositionToViewportSize,
   });
 
   return (
