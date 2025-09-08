@@ -11,7 +11,7 @@ export type Margin = {
   right?: number;
 };
 
-export type ViewportDimensions = {
+type ViewportDimensions = {
   width: number;
   height: number;
 };
