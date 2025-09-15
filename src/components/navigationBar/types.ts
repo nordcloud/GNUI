@@ -28,6 +28,7 @@ export type PopoverConfig = {
   triggerOn: ExtendedPopoverAction;
   closeOn: ExtendedPopoverAction;
   position: Position;
+  adjustPositionToViewportSize?: boolean;
 };
 
 export type ExpandableConfig = {
