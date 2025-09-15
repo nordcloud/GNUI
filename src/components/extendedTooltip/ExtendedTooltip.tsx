@@ -58,10 +58,14 @@ export function ExtendedTooltip({
       setViewportDimensions(getViewportDimensions());
     }
 
-    window.addEventListener("resize", handleResize);
+    if (adjustPositionToViewportSize) {
+      window.addEventListener("resize", handleResize);
 
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+      return () => window.removeEventListener("resize", handleResize);
+    }
+
+    return () => {};
+  }, [adjustPositionToViewportSize]);
 
   const { isHovered, updateIsHovered } = useTooltipHover();
 
