@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import styled, { css } from "styled-components";
-import { useEvent } from "../../hooks";
+import { useEvent, useViewportDimensions } from "../../hooks";
 import theme from "../../theme";
 import {
   DEFAULT_MARGIN,
@@ -29,6 +29,7 @@ export type ExtendedTooltipProps = Timeout & {
   status?: Status;
   zIndex?: number;
   display?: Display;
+  adjustPositionToViewportSize?: boolean;
 };
 
 export function ExtendedTooltip({
@@ -42,9 +43,14 @@ export function ExtendedTooltip({
   margin = DEFAULT_MARGIN,
   zIndex = theme.zindex.sticky,
   display,
+  adjustPositionToViewportSize = false,
 }: ExtendedTooltipProps) {
   const wrapperRef = React.useRef<HTMLDivElement>(null);
   const tooltipRef = React.useRef<HTMLDivElement>(null);
+
+  const viewportDimensions = useViewportDimensions(
+    adjustPositionToViewportSize
+  );
 
   const { isHovered, updateIsHovered } = useTooltipHover();
 
@@ -78,9 +84,11 @@ export function ExtendedTooltip({
     ...getStyle({
       wrapperDimensions,
       tooltipDimensions,
+      viewportDimensions,
       placement,
       position,
       margin,
+      adjustPositionToViewportSize,
     }),
     zIndex,
   };

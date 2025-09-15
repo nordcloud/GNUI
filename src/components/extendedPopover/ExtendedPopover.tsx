@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import styled from "styled-components";
-import { useDisclosure, useEvent } from "../../hooks";
+import { useDisclosure, useEvent, useViewportDimensions } from "../../hooks";
 import theme from "../../theme";
 import {
   Placement,
@@ -24,6 +24,7 @@ type Props = {
   clickOutsideToClose?: boolean;
   triggerOn?: ExtendedPopoverAction;
   closeOn?: ExtendedPopoverAction;
+  adjustPositionToViewportSize?: boolean;
 };
 
 export function ExtendedPopover({
@@ -39,6 +40,7 @@ export function ExtendedPopover({
   margin = DEFAULT_MARGIN,
   triggerOn = "click",
   closeOn = "click",
+  adjustPositionToViewportSize = false,
 }: Props) {
   const triggerRef = React.useRef<HTMLDivElement>(null);
   const contentRef = React.useRef<HTMLDivElement>(null);
@@ -48,6 +50,10 @@ export function ExtendedPopover({
     React.useState<DOMRect | null>(null);
   const [triggerDimensions, setTriggerDimensions] =
     React.useState<DOMRect | null>(null);
+
+  const viewportDimensions = useViewportDimensions(
+    adjustPositionToViewportSize
+  );
 
   React.useEffect(() => {
     if (
@@ -107,8 +113,10 @@ export function ExtendedPopover({
   const style = getStyle({
     wrapperDimensions: triggerDimensions,
     tooltipDimensions: contentDimensions,
+    viewportDimensions,
     placement,
     position,
+    adjustPositionToViewportSize,
   });
 
   return (
