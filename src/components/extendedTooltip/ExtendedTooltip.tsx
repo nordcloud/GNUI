@@ -44,7 +44,7 @@ export function ExtendedTooltip({
   margin = DEFAULT_MARGIN,
   zIndex = theme.zindex.sticky,
   display,
-  adjustPositionToViewportSize = true,
+  adjustPositionToViewportSize = false,
 }: ExtendedTooltipProps) {
   const wrapperRef = React.useRef<HTMLDivElement>(null);
   const tooltipRef = React.useRef<HTMLDivElement>(null);

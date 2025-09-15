@@ -6,3 +6,4 @@
 > - `showTimeout`: `number` {optional} delay time in miliseconds for opening of tooltip
 > - `hideTimeout`: `number` {optional} delay time in miliseconds for closing of tooltip
 > - `zIndex`: `number` {optional} z-index of the tooltip (default is whatever theme.zindex.sticky is set to)
+> - `adjustPositionToViewportSize`: `boolean` {optional} should popover position be adjusted to viewport size if calculated position is outside of viewport dimensions, defaults to `false`
