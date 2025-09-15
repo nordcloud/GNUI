@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import styled from "styled-components";
-import { useDisclosure, useEvent } from "../../hooks";
+import { useDisclosure, useEvent, useViewportDimensions } from "../../hooks";
 import theme from "../../theme";
 import {
   Placement,
@@ -10,7 +10,6 @@ import {
   Margin,
   DEFAULT_MARGIN,
   PaddingWrapper,
-  getViewportDimensions,
 } from "../../utils/position";
 import { throttle } from "../../utils/throttle";
 import { Button } from "../button";
@@ -52,23 +51,9 @@ export function ExtendedPopover({
   const [triggerDimensions, setTriggerDimensions] =
     React.useState<DOMRect | null>(null);
 
-  const [viewportDimensions, setViewportDimensions] = React.useState(
-    getViewportDimensions
+  const viewportDimensions = useViewportDimensions(
+    adjustPositionToViewportSize
   );
-
-  React.useEffect(() => {
-    function handleResize() {
-      setViewportDimensions(getViewportDimensions());
-    }
-
-    if (adjustPositionToViewportSize) {
-      window.addEventListener("resize", handleResize);
-
-      return () => window.removeEventListener("resize", handleResize);
-    }
-
-    return () => {};
-  }, [adjustPositionToViewportSize]);
 
   React.useEffect(() => {
     if (

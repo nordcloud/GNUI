@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import styled, { css } from "styled-components";
-import { useEvent } from "../../hooks";
+import { useEvent, useViewportDimensions } from "../../hooks";
 import theme from "../../theme";
 import {
   DEFAULT_MARGIN,
@@ -10,7 +10,6 @@ import {
   Margin,
   Placement,
   Position,
-  getViewportDimensions,
 } from "../../utils/position";
 import { useTooltipHover } from "../tooltip/hooks";
 
@@ -49,23 +48,9 @@ export function ExtendedTooltip({
   const wrapperRef = React.useRef<HTMLDivElement>(null);
   const tooltipRef = React.useRef<HTMLDivElement>(null);
 
-  const [viewportDimensions, setViewportDimensions] = React.useState(
-    getViewportDimensions
+  const viewportDimensions = useViewportDimensions(
+    adjustPositionToViewportSize
   );
-
-  React.useEffect(() => {
-    function handleResize() {
-      setViewportDimensions(getViewportDimensions());
-    }
-
-    if (adjustPositionToViewportSize) {
-      window.addEventListener("resize", handleResize);
-
-      return () => window.removeEventListener("resize", handleResize);
-    }
-
-    return () => {};
-  }, [adjustPositionToViewportSize]);
 
   const { isHovered, updateIsHovered } = useTooltipHover();
 

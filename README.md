@@ -105,8 +105,8 @@ When you create a PR against the `master` branch, Amplify creates a new deployme
 Below versions of Node & npm are required:
 
 ```bash
-  "node": ">=18.12.0",
-  "npm": ">=8.19.2"
+  "node": ">=22.14.0",
+  "npm": ">=10.9.2"
 ```
 
 Run `nvm use` to use supported version.
