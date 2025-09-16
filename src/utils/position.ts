@@ -274,3 +274,8 @@ function getPaddingValue({
       return "";
   }
 }
+
+export const OUTSIDE_VIEWPORT_STYLE = {
+  top: -5000,
+  left: -5000,
+};
