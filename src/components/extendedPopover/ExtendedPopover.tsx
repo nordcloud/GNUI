@@ -10,6 +10,7 @@ import {
   Margin,
   DEFAULT_MARGIN,
   PaddingWrapper,
+  OUTSIDE_VIEWPORT_STYLE,
 } from "../../utils/position";
 import { throttle } from "../../utils/throttle";
 import { Button } from "../button";
@@ -55,6 +56,12 @@ export function ExtendedPopover({
     adjustPositionToViewportSize
   );
 
+  function closePopover() {
+    close();
+    setTriggerDimensions(null);
+    setContentDimensions(null);
+  }
+
   React.useEffect(() => {
     if (
       isOpen &&
@@ -75,7 +82,7 @@ export function ExtendedPopover({
         !contentRef.current.contains(event.target as Node) &&
         !triggerRef.current.contains(event.target as Node)
       ) {
-        close();
+        closePopover();
       }
     },
     [contentRef, triggerRef, clickOutsideToClose]
@@ -85,7 +92,7 @@ export function ExtendedPopover({
 
   const handleScroll = throttle(
     React.useCallback(() => {
-      close();
+      closePopover();
     }, [])
   );
 
@@ -104,7 +111,7 @@ export function ExtendedPopover({
           onMouseEnter: () => open(),
           onMouseLeave: () => {
             if (closeOn === "hover") {
-              close();
+              closePopover();
             }
           },
         }),
@@ -151,9 +158,13 @@ function Popover({
   content,
   placement,
 }: PopoverProps) {
+  // on empty style render popover outside viewport to prevent blinking effect
   return visible
     ? ReactDOM.createPortal(
-        <ContentWrapper ref={contentRef} style={style}>
+        <ContentWrapper
+          ref={contentRef}
+          style={style.top && style.left ? style : OUTSIDE_VIEWPORT_STYLE}
+        >
           <PaddingWrapper {...margin} placement={placement}>
             {content}
           </PaddingWrapper>
