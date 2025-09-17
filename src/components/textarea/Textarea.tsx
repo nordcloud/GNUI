@@ -9,10 +9,11 @@ export type TextareaGroupProps = {
   maxCharCount?: number;
 };
 
-export type TextareaProps = React.InputHTMLAttributes<HTMLTextAreaElement> & {
-  small?: boolean;
-  ref?: React.Ref<HTMLTextAreaElement>;
-};
+export type TextareaProps =
+  React.TextareaHTMLAttributes<HTMLTextAreaElement> & {
+    small?: boolean;
+    ref?: React.Ref<HTMLTextAreaElement>;
+  };
 
 const TextareaGroup = styled.div<TextareaGroupProps>`
   position: relative;
