@@ -59,7 +59,12 @@ function Pagination({
     currentPage + baseNumberOfPages <= nPages && nPages > baseNumberOfPages;
 
   return (
-    <nav className="pagination" role="navigation" aria-label="pagination">
+    <nav
+      className="pagination"
+      role="navigation"
+      aria-label="pagination"
+      style={{ transform: "translate(-50%, 0)" }}
+    >
       <ul className="pagination-list">
         <When condition={currentPage > firstPage}>
           <li>
