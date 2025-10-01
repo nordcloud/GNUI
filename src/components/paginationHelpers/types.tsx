@@ -19,4 +19,5 @@ export type IPaginationProps = {
 
 export type IExtendedPaginationProps = Omit<IPaginationProps, "current"> & {
   from: number;
+  small?: boolean;
 };

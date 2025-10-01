@@ -16,6 +16,7 @@ function Pagination({
   set,
   size,
   firstPage = 0,
+  small,
 }: IExtendedPaginationProps) {
   const currentPage = Math.ceil(from / size);
   const nPages = Math.ceil(count / size);
@@ -60,10 +61,9 @@ function Pagination({
 
   return (
     <nav
-      className="pagination"
+      className={`pagination ${!small ? "center-absolutely" : ""}`}
       role="navigation"
       aria-label="pagination"
-      style={{ transform: "translate(-50%, 0)" }}
     >
       <ul className="pagination-list">
         <When condition={currentPage > firstPage}>
@@ -172,6 +172,7 @@ export function ExtendedPaginationBox({
         />
       )}
       <Pagination
+        small={small}
         from={from}
         set={setPage}
         size={size}
