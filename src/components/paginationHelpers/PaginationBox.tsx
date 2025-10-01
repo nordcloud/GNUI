@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import theme from "../../theme";
+import theme, { bp } from "../../theme";
 
 type Props = {
   sidebar?: boolean;
@@ -8,6 +8,7 @@ type Props = {
 
 export const StyledPaginationBox = styled.nav<Props>`
   display: flex;
+  position: relative;
   flex-wrap: wrap;
   flex: ${({ sidebar }) => (sidebar ? 1 : 0)};
   background-color: ${theme.color.background.ui03};
@@ -42,6 +43,14 @@ export const StyledPaginationBox = styled.nav<Props>`
     padding-left: 0;
     margin: 0;
   }
+
+  ${bp("lg")`
+    .center-absolutely {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+  `}
 
   button {
     display: flex;
