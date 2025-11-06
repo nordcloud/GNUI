@@ -80,7 +80,7 @@
     "@storybook/addons": "^7.6.7",
     "@storybook/blocks": "^7.6.7",
     "@storybook/react": "^7.6.7",
-    "@storybook/react-vite": "^7.6.7",
+    "@storybook/react-vite": "^10.0.5",
     "@storybook/theming": "^7.6.7",
     "@testing-library/jest-dom": "^6.3.0",
     "@testing-library/react": "^14.0.0",
@@ -115,7 +115,7 @@
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.10.0",
     "typescript": "^5.2.2",
-    "vite": "^4.4.9",
+    "vite": "^7.2.1",
     "vitest": "^0.34.6"
   },
   "overrides": {
