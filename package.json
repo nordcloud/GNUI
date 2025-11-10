@@ -73,8 +73,8 @@
   },
   "devDependencies": {
     "@nordcloud/eslint-config-pat": "^11.0.0",
-    "@rollup/plugin-commonjs": "^25.0.7",
-    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-commonjs": "^25.0.8",
+    "@rollup/plugin-node-resolve": "^15.3.1",
     "@storybook/addon-essentials": "^7.6.7",
     "@storybook/addon-mdx-gfm": "^7.6.7",
     "@storybook/addons": "^7.6.7",
