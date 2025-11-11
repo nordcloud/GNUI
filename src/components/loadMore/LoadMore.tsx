@@ -17,11 +17,22 @@ const ButtonsContainer = styled.div`
   gap: ${theme.spacing.spacing02};
 `;
 
-/**
- * LoadMore displays a "Show More" button to load additional items when clicked,
- * optionally with a count of loaded items.
- */
-/* eslint-disable complexity */
+function extractButtonProps<T extends Record<string, unknown>>(props?: T) {
+  if (!props) {
+    return { disabled: undefined, rest: {} as T };
+  }
+
+  const {
+    disabled,
+    children: ignoredChildren,
+    onClick: ignoredOnClick,
+    initialState: ignoredInitialState,
+    ...rest
+  } = props;
+
+  return { disabled, rest: rest as T };
+}
+
 export function LoadMore({
   currentCount,
   total,
@@ -41,29 +52,19 @@ export function LoadMore({
   const hasMoreItems = currentCount < total;
   const showLessButton = onLoadLess && currentCount === total && total > 0;
 
-  const {
-    children: moreChildren,
-    onClick: moreOnClick,
-    initialState: moreInitialState,
-    disabled: moreDisabled,
-    ...restShowMoreProps
-  } = showMoreButtonProps || {};
+  const { disabled: isMoreDisabled, rest: restShowMoreProps } =
+    extractButtonProps(showMoreButtonProps);
+  const { disabled: isAllDisabled, rest: restShowAllProps } =
+    extractButtonProps(showAllButtonProps);
+  const { disabled: isLessDisabled, rest: restShowLessProps } =
+    extractButtonProps(showLessButtonProps);
 
-  const {
-    children: allChildren,
-    onClick: allOnClick,
-    initialState: allInitialState,
-    disabled: allDisabled,
-    ...restShowAllProps
-  } = showAllButtonProps || {};
-
-  const {
-    children: lessChildren,
-    onClick: lessOnClick,
-    initialState: lessInitialState,
-    disabled: lessDisabled,
-    ...restShowLessProps
-  } = showLessButtonProps || {};
+  const baseButtonProps = {
+    severity: "medium" as const,
+    size: "sm" as const,
+    style: { margin: 0 },
+    initialState: isLoading ? "loading" : undefined,
+  };
 
   return (
     <Container className={className} small={false} hideCount={hideCount}>
@@ -80,14 +81,11 @@ export function LoadMore({
         <ButtonsContainer>
           {hasMoreItems && (
             <Button
-              severity="medium"
-              size="sm"
-              status={"warning"}
-              style={{ margin: 0 }}
+              {...baseButtonProps}
+              status="warning"
               icon="chevronDown"
               aria-label="Show more items"
-              initialState={isLoading ? "loading" : undefined}
-              disabled={isLoading || moreDisabled}
+              disabled={isLoading || isMoreDisabled}
               onClick={onLoadMore}
               {...restShowMoreProps}
             >
@@ -97,13 +95,10 @@ export function LoadMore({
 
           {hasMoreItems && onShowAll && (
             <Button
-              severity="medium"
-              size="sm"
-              style={{ margin: 0 }}
+              {...baseButtonProps}
               icon="chevronDown"
               aria-label="Show all items"
-              initialState={isLoading ? "loading" : undefined}
-              disabled={isLoading || allDisabled}
+              disabled={isLoading || isAllDisabled}
               onClick={onShowAll}
               {...restShowAllProps}
             >
@@ -113,13 +108,10 @@ export function LoadMore({
 
           {showLessButton && (
             <Button
-              severity="medium"
-              size="sm"
-              aria-label="Show less items"
-              initialState={isLoading ? "loading" : undefined}
-              disabled={isLoading || lessDisabled}
-              style={{ margin: 0 }}
+              {...baseButtonProps}
               icon="chevronUp"
+              aria-label="Show less items"
+              disabled={isLoading || isLessDisabled}
               onClick={onLoadLess}
               {...restShowLessProps}
             >
