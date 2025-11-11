@@ -179,12 +179,7 @@ The component follows accessibility best practices:
 3. **With Show All**
 
    ```jsx
-   <LoadMore
-     currentCount={5}
-     total={15}
-     onLoadMore={handleLoadMore}
-     onShowAll={handleShowAll}
-   />
+   <LoadMore currentCount={5} total={15} onLoadMore={handleLoadMore} onShowAll={handleShowAll} />
    ```
 
 4. **With Custom Buttons and Labels**
@@ -204,22 +199,12 @@ The component follows accessibility best practices:
 5. **With Show Less**
 
    ```jsx
-   <LoadMore
-     currentCount={15}
-     total={15}
-     onLoadMore={handleLoadMore}
-     onLoadLess={handleLoadLess}
-   />
+   <LoadMore currentCount={15} total={15} onLoadMore={handleLoadMore} onLoadLess={handleLoadLess} />
    ```
 
 6. **With Loading State**
    ```jsx
-   <LoadMore
-     currentCount={5}
-     total={15}
-     onLoadMore={handleLoadMore}
-     isLoading={true}
-   />
+   <LoadMore currentCount={5} total={15} onLoadMore={handleLoadMore} isLoading={true} />
    ```
 
 ## Design Considerations
