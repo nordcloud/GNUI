@@ -17,9 +17,9 @@ const ButtonsContainer = styled.div`
   gap: ${theme.spacing.spacing02};
 `;
 
-function extractButtonProps<T extends Record<string, unknown>>(props?: T) {
+function extractButtonProps(props?: React.ComponentProps<typeof Button>) {
   if (!props) {
-    return { disabled: undefined, rest: {} as T };
+    return { disabled: false, rest: {} };
   }
 
   const {
@@ -30,7 +30,7 @@ function extractButtonProps<T extends Record<string, unknown>>(props?: T) {
     ...rest
   } = props;
 
-  return { disabled, rest: rest as T };
+  return { disabled: !!disabled, rest };
 }
 
 export function LoadMore({
