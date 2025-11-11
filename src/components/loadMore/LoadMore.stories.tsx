@@ -77,9 +77,26 @@ export const Loading: Story = {
   name: "loading",
 };
 
+export const WithShowAll: Story = {
+  render: () => (
+    <LoadMore
+      currentCount={5}
+      total={15}
+      onLoadMore={() => console.log("Load more clicked")}
+      onShowAll={() => console.log("Show all clicked")}
+    />
+  ),
+  name: "with-show-all",
+};
+
 export const WithList: Story = {
   render: () => <LoadMoreList />,
   name: "with-list",
+};
+
+export const WithListAndShowAll: Story = {
+  render: () => <LoadMoreList withShowAll />,
+  name: "with-list-and-show-all",
 };
 
 export const WithShowLess: Story = {
