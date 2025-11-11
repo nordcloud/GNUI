@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import theme from "../../theme";
-import { Button, ButtonProps } from "../button";
+import { Button } from "../button";
 import { PaginationAmount, StyledPaginationBox } from "../paginationHelpers";
 import { LoadMoreProps } from "./types";
 
@@ -21,6 +21,7 @@ const ButtonsContainer = styled.div`
  * LoadMore displays a "Show More" button to load additional items when clicked,
  * optionally with a count of loaded items.
  */
+/* eslint-disable complexity */
 export function LoadMore({
   currentCount,
   total,
@@ -41,25 +42,25 @@ export function LoadMore({
   const showLessButton = onLoadLess && currentCount === total && total > 0;
 
   const {
-    children: _moreChildren,
-    onClick: _moreOnClick,
-    initialState: _moreInitialState,
+    children: moreChildren,
+    onClick: moreOnClick,
+    initialState: moreInitialState,
     disabled: moreDisabled,
     ...restShowMoreProps
   } = showMoreButtonProps || {};
 
   const {
-    children: _allChildren,
-    onClick: _allOnClick,
-    initialState: _allInitialState,
+    children: allChildren,
+    onClick: allOnClick,
+    initialState: allInitialState,
     disabled: allDisabled,
     ...restShowAllProps
   } = showAllButtonProps || {};
 
   const {
-    children: _lessChildren,
-    onClick: _lessOnClick,
-    initialState: _lessInitialState,
+    children: lessChildren,
+    onClick: lessOnClick,
+    initialState: lessInitialState,
     disabled: lessDisabled,
     ...restShowLessProps
   } = showLessButtonProps || {};
@@ -88,7 +89,7 @@ export function LoadMore({
               initialState={isLoading ? "loading" : undefined}
               disabled={isLoading || moreDisabled}
               onClick={onLoadMore}
-              //{...restShowMoreProps}
+              {...restShowMoreProps}
             >
               {showMoreLabel}
             </Button>
