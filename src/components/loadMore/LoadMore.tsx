@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import theme from "../../theme";
-import { Button } from "../button";
+import { Button, ButtonProps } from "../button";
 import { PaginationAmount, StyledPaginationBox } from "../paginationHelpers";
 import { LoadMoreProps } from "./types";
 
@@ -10,6 +10,11 @@ const Container = styled(StyledPaginationBox)<{ hideCount?: boolean }>`
     hideCount ? "center" : "space-between"};
   padding: ${theme.spacing.spacing02} ${theme.spacing.spacing03};
   min-height: 36px;
+`;
+
+const ButtonsContainer = styled.div`
+  display: flex;
+  gap: ${theme.spacing.spacing02};
 `;
 
 /**
@@ -21,12 +26,43 @@ export function LoadMore({
   total,
   onLoadMore,
   onLoadLess,
+  onShowAll,
   isLoading = false,
   hideCount = false,
   className,
+  showMoreLabel = "Show more",
+  showAllLabel = "Show all",
+  showLessLabel = "Show less",
+  showMoreButtonProps,
+  showAllButtonProps,
+  showLessButtonProps,
 }: LoadMoreProps) {
   const hasMoreItems = currentCount < total;
   const showLessButton = onLoadLess && currentCount === total && total > 0;
+
+  const {
+    children: _moreChildren,
+    onClick: _moreOnClick,
+    initialState: _moreInitialState,
+    disabled: moreDisabled,
+    ...restShowMoreProps
+  } = showMoreButtonProps || {};
+
+  const {
+    children: _allChildren,
+    onClick: _allOnClick,
+    initialState: _allInitialState,
+    disabled: allDisabled,
+    ...restShowAllProps
+  } = showAllButtonProps || {};
+
+  const {
+    children: _lessChildren,
+    onClick: _lessOnClick,
+    initialState: _lessInitialState,
+    disabled: lessDisabled,
+    ...restShowLessProps
+  } = showLessButtonProps || {};
 
   return (
     <Container className={className} small={false} hideCount={hideCount}>
@@ -39,34 +75,57 @@ export function LoadMore({
         />
       )}
 
-      {hasMoreItems && (
-        <Button
-          severity="medium"
-          size="sm"
-          initialState={isLoading ? "loading" : undefined}
-          aria-label="Show more items"
-          disabled={isLoading}
-          style={{ margin: 0 }}
-          icon="chevronDown"
-          onClick={onLoadMore}
-        >
-          {isLoading ? "Loading..." : "Show more"}
-        </Button>
-      )}
+      {(hasMoreItems || showLessButton) && (
+        <ButtonsContainer>
+          {hasMoreItems && (
+            <Button
+              severity="medium"
+              size="sm"
+              status={"warning"}
+              style={{ margin: 0 }}
+              icon="chevronDown"
+              aria-label="Show more items"
+              initialState={isLoading ? "loading" : undefined}
+              disabled={isLoading || moreDisabled}
+              onClick={onLoadMore}
+              //{...restShowMoreProps}
+            >
+              {showMoreLabel}
+            </Button>
+          )}
 
-      {showLessButton && (
-        <Button
-          severity="medium"
-          size="sm"
-          aria-label="Show less items"
-          initialState={isLoading ? "loading" : undefined}
-          disabled={isLoading}
-          style={{ margin: 0 }}
-          icon="chevronUp"
-          onClick={onLoadLess}
-        >
-          {isLoading ? "Loading..." : "Show less"}
-        </Button>
+          {hasMoreItems && onShowAll && (
+            <Button
+              severity="medium"
+              size="sm"
+              style={{ margin: 0 }}
+              icon="chevronDown"
+              aria-label="Show all items"
+              initialState={isLoading ? "loading" : undefined}
+              disabled={isLoading || allDisabled}
+              onClick={onShowAll}
+              {...restShowAllProps}
+            >
+              {showAllLabel}
+            </Button>
+          )}
+
+          {showLessButton && (
+            <Button
+              severity="medium"
+              size="sm"
+              aria-label="Show less items"
+              initialState={isLoading ? "loading" : undefined}
+              disabled={isLoading || lessDisabled}
+              style={{ margin: 0 }}
+              icon="chevronUp"
+              onClick={onLoadLess}
+              {...restShowLessProps}
+            >
+              {showLessLabel}
+            </Button>
+          )}
+        </ButtonsContainer>
       )}
     </Container>
   );
