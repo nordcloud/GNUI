@@ -38,6 +38,7 @@ export function LoadMoreList({
   totalItems = 15,
   batchSize = 5,
   loadingDelay = 1000,
+  withShowAll = false,
 }: LoadMoreListProps) {
   const [items, setItems] = React.useState<string[]>(initialItems);
   const [isLoading, setIsLoading] = React.useState(false);
@@ -63,6 +64,24 @@ export function LoadMoreList({
     }, loadingDelay);
   };
 
+  const handleShowAll = () => {
+    setIsLoading(true);
+
+    setTimeout(() => {
+      const itemsLeft = totalItems - items.length;
+
+      if (itemsLeft > 0) {
+        const allNextItems = Array.from(
+          { length: itemsLeft },
+          (_, index) => `Item ${items.length + index + 1}`
+        );
+        setItems([...items, ...allNextItems]);
+      }
+
+      setIsLoading(false);
+    }, loadingDelay);
+  };
+
   const handleLoadLess = () => {
     setItems(items.slice(0, batchSize));
   };
@@ -80,6 +99,7 @@ export function LoadMoreList({
         total={totalItems}
         isLoading={isLoading}
         onLoadMore={handleLoadMore}
+        onShowAll={withShowAll ? handleShowAll : undefined}
         onLoadLess={items.length > batchSize ? handleLoadLess : undefined}
       />
     </Container>

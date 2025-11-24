@@ -12,21 +12,59 @@ const Container = styled(StyledPaginationBox)<{ hideCount?: boolean }>`
   min-height: 36px;
 `;
 
-/**
- * LoadMore displays a "Show More" button to load additional items when clicked,
- * optionally with a count of loaded items.
- */
+const ButtonsContainer = styled.div`
+  display: flex;
+  gap: ${theme.spacing.spacing02};
+`;
+
+function extractButtonProps(props?: React.ComponentProps<typeof Button>) {
+  if (!props) {
+    return { disabled: false, rest: {} };
+  }
+
+  const {
+    disabled,
+    children: ignoredChildren,
+    onClick: ignoredOnClick,
+    initialState: ignoredInitialState,
+    ...rest
+  } = props;
+
+  return { disabled: !!disabled, rest };
+}
+
 export function LoadMore({
   currentCount,
   total,
   onLoadMore,
   onLoadLess,
+  onShowAll,
   isLoading = false,
   hideCount = false,
   className,
+  showMoreLabel = "Show more",
+  showAllLabel = "Show all",
+  showLessLabel = "Show less",
+  showMoreButtonProps,
+  showAllButtonProps,
+  showLessButtonProps,
 }: LoadMoreProps) {
   const hasMoreItems = currentCount < total;
   const showLessButton = onLoadLess && currentCount === total && total > 0;
+
+  const { disabled: isMoreDisabled, rest: restShowMoreProps } =
+    extractButtonProps(showMoreButtonProps);
+  const { disabled: isAllDisabled, rest: restShowAllProps } =
+    extractButtonProps(showAllButtonProps);
+  const { disabled: isLessDisabled, rest: restShowLessProps } =
+    extractButtonProps(showLessButtonProps);
+
+  const baseButtonProps = {
+    severity: "medium" as const,
+    size: "sm" as const,
+    style: { margin: 0 },
+    initialState: isLoading ? "loading" : undefined,
+  };
 
   return (
     <Container className={className} small={false} hideCount={hideCount}>
@@ -39,34 +77,48 @@ export function LoadMore({
         />
       )}
 
-      {hasMoreItems && (
-        <Button
-          severity="medium"
-          size="sm"
-          initialState={isLoading ? "loading" : undefined}
-          aria-label="Show more items"
-          disabled={isLoading}
-          style={{ margin: 0 }}
-          icon="chevronDown"
-          onClick={onLoadMore}
-        >
-          {isLoading ? "Loading..." : "Show more"}
-        </Button>
-      )}
+      {(hasMoreItems || showLessButton) && (
+        <ButtonsContainer>
+          {hasMoreItems && (
+            <Button
+              {...baseButtonProps}
+              status="warning"
+              icon="chevronDown"
+              aria-label="Show more items"
+              disabled={isLoading || isMoreDisabled}
+              onClick={onLoadMore}
+              {...restShowMoreProps}
+            >
+              {showMoreLabel}
+            </Button>
+          )}
 
-      {showLessButton && (
-        <Button
-          severity="medium"
-          size="sm"
-          aria-label="Show less items"
-          initialState={isLoading ? "loading" : undefined}
-          disabled={isLoading}
-          style={{ margin: 0 }}
-          icon="chevronUp"
-          onClick={onLoadLess}
-        >
-          {isLoading ? "Loading..." : "Show less"}
-        </Button>
+          {hasMoreItems && onShowAll && (
+            <Button
+              {...baseButtonProps}
+              icon="chevronDown"
+              aria-label="Show all items"
+              disabled={isLoading || isAllDisabled}
+              onClick={onShowAll}
+              {...restShowAllProps}
+            >
+              {showAllLabel}
+            </Button>
+          )}
+
+          {showLessButton && (
+            <Button
+              {...baseButtonProps}
+              icon="chevronUp"
+              aria-label="Show less items"
+              disabled={isLoading || isLessDisabled}
+              onClick={onLoadLess}
+              {...restShowLessProps}
+            >
+              {showLessLabel}
+            </Button>
+          )}
+        </ButtonsContainer>
       )}
     </Container>
   );
