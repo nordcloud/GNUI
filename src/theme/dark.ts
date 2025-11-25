@@ -39,7 +39,7 @@ const DARK_COLORS = [
   ["--interactive-secondaryHover", palette.darkGrey.darkGrey500],
   ["--interactive-secondaryActive", palette.darkGrey.darkGrey600],
   ["--interactive-link", palette.deepBlue.deepBlue200],
-  ["--interactive-linkInverse", palette.deepBlue.deepBlue500],
+  ["--interactive-linkInverse", palette.deepBlue.deepBlue200],
   ["--interactive-error", palette.red.red400],
   ["--interactive-errorHover", palette.red.red500],
   ["--interactive-errorActive", palette.red.red600],
