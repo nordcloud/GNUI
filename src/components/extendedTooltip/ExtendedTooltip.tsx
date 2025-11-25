@@ -20,17 +20,18 @@ type Timeout = {
 
 type Status = "accent" | "danger" | "notification" | "success" | "warning";
 
-export type ExtendedTooltipProps = Timeout & {
-  caption: React.ReactNode;
-  children: React.ReactNode;
-  placement?: Placement;
-  position?: Position;
-  margin?: Margin;
-  status?: Status;
-  zIndex?: number;
-  display?: Display;
-  adjustPositionToViewportSize?: boolean;
-};
+export type ExtendedTooltipProps = React.HTMLAttributes<HTMLDivElement> &
+  Timeout & {
+    caption: React.ReactNode;
+    children: React.ReactNode;
+    placement?: Placement;
+    position?: Position;
+    margin?: Margin;
+    status?: Status;
+    zIndex?: number;
+    display?: Display;
+    adjustPositionToViewportSize?: boolean;
+  };
 
 export function ExtendedTooltip({
   caption,
@@ -44,6 +45,7 @@ export function ExtendedTooltip({
   zIndex = theme.zindex.sticky,
   display,
   adjustPositionToViewportSize = false,
+  ...rest
 }: ExtendedTooltipProps) {
   const wrapperRef = React.useRef<HTMLDivElement>(null);
   const tooltipRef = React.useRef<HTMLDivElement>(null);
@@ -80,7 +82,7 @@ export function ExtendedTooltip({
     return <>{children}</>;
   }
 
-  const style = {
+  const positionStyle = {
     ...getStyle({
       wrapperDimensions,
       tooltipDimensions,
@@ -105,18 +107,19 @@ export function ExtendedTooltip({
         caption={caption}
         tooltipRef={tooltipRef}
         status={status}
-        style={style}
+        positionStyle={positionStyle}
+        {...rest}
       />
       {children}
     </TooltipWrapper>
   );
 }
 
-type TooltipProps = {
+type TooltipProps = React.HTMLAttributes<HTMLDivElement> & {
   caption: React.ReactNode;
   isHovered: boolean;
   tooltipRef: React.RefObject<HTMLDivElement>;
-  style: { top?: number; left?: number; zIndex?: number };
+  positionStyle: { top?: number; left?: number; zIndex?: number };
   status?: Status;
 };
 
@@ -125,16 +128,19 @@ function Tooltip({
   isHovered,
   tooltipRef,
   status,
+  positionStyle,
   style,
+  ...rest
 }: TooltipProps) {
-  const { zIndex = theme.zindex.sticky } = style;
+  const { zIndex = theme.zindex.sticky } = positionStyle;
   return isHovered
     ? ReactDOM.createPortal(
         <StyledTooltip
           ref={tooltipRef}
           status={status}
-          style={style}
+          style={{ ...positionStyle, ...style }}
           zIndex={zIndex}
+          {...rest}
         >
           {caption}
         </StyledTooltip>,
