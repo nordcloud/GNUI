@@ -26,6 +26,16 @@ type Props = {
   triggerOn?: ExtendedPopoverAction;
   closeOn?: ExtendedPopoverAction;
   adjustPositionToViewportSize?: boolean;
+  zIndex?: number;
+  /** Optional scroll container to listen on; defaults to window. Useful for modals with internal scroll. */
+  scrollTarget?:
+    | (EventTarget & {
+        addEventListener: EventTarget["addEventListener"];
+        removeEventListener: EventTarget["removeEventListener"];
+      })
+    | null;
+  /** Whether to close/reposition on scroll events. Defaults to true to preserve previous behavior. */
+  closeOnScroll?: boolean;
 };
 
 export function ExtendedPopover({
@@ -42,6 +52,9 @@ export function ExtendedPopover({
   triggerOn = "click",
   closeOn = "click",
   adjustPositionToViewportSize = false,
+  zIndex = theme.zindex.sticky,
+  scrollTarget,
+  closeOnScroll = true,
 }: Props) {
   const triggerRef = React.useRef<HTMLDivElement>(null);
   const contentRef = React.useRef<HTMLDivElement>(null);
@@ -96,7 +109,11 @@ export function ExtendedPopover({
     }, [])
   );
 
-  useEvent({ name: "scroll", handler: handleScroll });
+  useEvent({
+    name: "scroll",
+    handler: closeOnScroll ? handleScroll : null,
+    target: scrollTarget ?? window,
+  });
 
   if (content == null) {
     return null;
@@ -117,14 +134,17 @@ export function ExtendedPopover({
         }),
   };
 
-  const style = getStyle({
-    wrapperDimensions: triggerDimensions,
-    tooltipDimensions: contentDimensions,
-    viewportDimensions,
-    placement,
-    position,
-    adjustPositionToViewportSize,
-  });
+  const style = {
+    ...getStyle({
+      wrapperDimensions: triggerDimensions,
+      tooltipDimensions: contentDimensions,
+      viewportDimensions,
+      placement,
+      position,
+      adjustPositionToViewportSize,
+    }),
+    zIndex,
+  };
 
   return (
     <TriggerWrapper ref={triggerRef} {...triggerProps}>
@@ -136,6 +156,7 @@ export function ExtendedPopover({
         style={style}
         margin={margin}
         placement={placement}
+        zIndex={zIndex}
       />
     </TriggerWrapper>
   );
@@ -145,9 +166,10 @@ type PopoverProps = {
   content: React.ReactNode;
   contentRef: React.RefObject<HTMLDivElement>;
   visible: boolean;
-  style: { top?: number; left?: number };
+  style: { top?: number; left?: number; zIndex?: number };
   margin: Margin;
   placement: Placement;
+  zIndex: number;
 };
 
 function Popover({
@@ -157,14 +179,17 @@ function Popover({
   margin,
   content,
   placement,
+  zIndex,
 }: PopoverProps) {
   // on empty style render popover outside viewport to prevent blinking effect
+  const positionStyle =
+    style.top != null && style.left != null
+      ? style
+      : { ...OUTSIDE_VIEWPORT_STYLE, zIndex };
+
   return visible
     ? ReactDOM.createPortal(
-        <ContentWrapper
-          ref={contentRef}
-          style={style.top && style.left ? style : OUTSIDE_VIEWPORT_STYLE}
-        >
+        <ContentWrapper ref={contentRef} style={positionStyle} zIndex={zIndex}>
           <PaddingWrapper {...margin} placement={placement}>
             {content}
           </PaddingWrapper>
@@ -178,9 +203,9 @@ const TriggerWrapper = styled.div`
   display: inline-block;
 `;
 
-const ContentWrapper = styled.div`
+const ContentWrapper = styled.div<{ zIndex: number }>`
   position: fixed;
-  z-index: ${theme.zindex.sticky};
+  z-index: ${({ zIndex }) => zIndex};
 `;
 
 export type ExtendedPopoverAction = "click" | "hover";
