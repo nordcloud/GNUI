@@ -27,6 +27,15 @@ type Props = {
   closeOn?: ExtendedPopoverAction;
   adjustPositionToViewportSize?: boolean;
   zIndex?: number;
+  /** Optional scroll container to listen on; defaults to window. Useful for modals with internal scroll. */
+  scrollTarget?:
+    | (EventTarget & {
+        addEventListener: EventTarget["addEventListener"];
+        removeEventListener: EventTarget["removeEventListener"];
+      })
+    | null;
+  /** Whether to close/reposition on scroll events. Defaults to true to preserve previous behavior. */
+  closeOnScroll?: boolean;
 };
 
 export function ExtendedPopover({
@@ -44,6 +53,8 @@ export function ExtendedPopover({
   closeOn = "click",
   adjustPositionToViewportSize = false,
   zIndex = theme.zindex.sticky,
+  scrollTarget,
+  closeOnScroll = true,
 }: Props) {
   const triggerRef = React.useRef<HTMLDivElement>(null);
   const contentRef = React.useRef<HTMLDivElement>(null);
@@ -98,7 +109,11 @@ export function ExtendedPopover({
     }, [])
   );
 
-  useEvent({ name: "scroll", handler: handleScroll });
+  useEvent({
+    name: "scroll",
+    handler: closeOnScroll ? handleScroll : null,
+    target: scrollTarget ?? window,
+  });
 
   if (content == null) {
     return null;
