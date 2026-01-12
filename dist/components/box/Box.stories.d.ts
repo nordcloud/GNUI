@@ -1,0 +1,12 @@
+import { Meta, StoryObj } from "@storybook/react";
+declare const meta: Meta;
+export default meta;
+export declare const BoxDefault: StoryObj;
+export declare const BoxStyle: StoryObj;
+export declare const Dark: StoryObj;
+export declare const Border: StoryObj;
+export declare const Radius: StoryObj;
+export declare const InnerSpacing: StoryObj;
+export declare const Shadow: StoryObj;
+export declare const Color: StoryObj;
+export declare const Background: StoryObj;

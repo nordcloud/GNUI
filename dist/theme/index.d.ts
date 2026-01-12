@@ -1,0 +1,209 @@
+declare const theme: {
+    readonly fonts: {
+        readonly body: "IBM Plex Sans, sans-serif";
+        readonly heading: "IBM Plex Sans, sans-serif";
+    };
+    readonly lineHeight: "1.5em";
+    readonly fontWeights: {
+        readonly regular: 400;
+        readonly medium: 500;
+        readonly bold: 700;
+    };
+    readonly fontSizes: {
+        readonly xs: "0.625rem";
+        readonly sm: "0.75rem";
+        readonly md: "1rem";
+        readonly lg: "1.25rem";
+        readonly xl: "1.5rem";
+        readonly xxl: "2rem";
+    };
+    readonly typography: {
+        readonly fonts: {
+            readonly body: "IBM Plex Sans, sans-serif";
+            readonly heading: "IBM Plex Sans, sans-serif";
+        };
+        readonly fontSizes: readonly ["0.625rem", "0.75rem", "1rem", "1.25rem", "1.5rem", "2rem"];
+        readonly fontWeights: readonly [400, 500, 700];
+        readonly lineHeight: "1.5em";
+        readonly titleCase: "capitalize";
+    };
+    readonly borderDefault: "1px solid #161632";
+    readonly borderInput: "1px solid #D1D1D8";
+    readonly borders: {
+        readonly default: "1px solid #161632";
+        readonly medium: "2px solid #161632";
+        readonly bold: "4px solid #161632";
+        readonly grey: "1px solid #e7e7eb";
+        readonly disabled: "1px solid #d1d1da";
+        readonly darkenGrey: "1px solid #D1D1D8";
+        readonly dark: "1px solid #32323f";
+        readonly success: "1px solid #27ae60";
+        readonly danger: "1px solid #e74c3c";
+        readonly warning: "1px solid #f39c12";
+        readonly notification: "1px solid #3498db";
+        readonly transparent: "1px solid transparent";
+    };
+    readonly radiusDefault: "4px";
+    readonly radius: {
+        readonly sm: "2px";
+        readonly md: "4px";
+        readonly lg: "6px";
+        readonly xl: "16px";
+        readonly xxl: "22px";
+    };
+    readonly color: {
+        scheme: string;
+        background: {
+            body: string;
+            ui01: string;
+            ui02: string;
+            ui03: string;
+            ui04: string;
+            ui05: string;
+            error: string;
+            warning: string;
+            success: string;
+            info: string;
+            overlay: string;
+        };
+        field: {
+            default: string;
+            disabled: string;
+        };
+        text: {
+            text01: string;
+            text02: string;
+            text03: string;
+            text04: string;
+            error: string;
+            warning: string;
+            success: string;
+            info: string;
+        };
+        border: {
+            border01: string;
+            border02: string;
+            input: string;
+            focus: string;
+            error: string;
+            success: string;
+            info: string;
+            warning: string;
+            discovery: string;
+        };
+        interactive: {
+            primary: string;
+            primaryHover: string;
+            primaryActive: string;
+            secondary: string;
+            secondaryHover: string;
+            secondaryActive: string;
+            link: string;
+            linkInverse: string;
+            error: string;
+            errorHover: string;
+            errorActive: string;
+            success: string;
+            successHover: string;
+            successActive: string;
+            warning: string;
+            warningHover: string;
+            warningActive: string;
+            info: string;
+            infoHover: string;
+            infoActive: string;
+            accent: string;
+            accentHover: string;
+            accentActive: string;
+            disabled: string;
+        };
+        support: {
+            red: string;
+            redInverse: string;
+            pink: string;
+            purple: string;
+            indigo: string;
+            blue: string;
+            blueInverse: string;
+            grey: string;
+            greyInverse: string;
+            cyan: string;
+            teal: string;
+            green: string;
+            greenInverse: string;
+            lightGreen: string;
+            yellow: string;
+            orange: string;
+            orangeInverse: string;
+        };
+    };
+    readonly colors: {
+        readonly primary: "#161632";
+        readonly accent: "#FF2837";
+        readonly danger: "#e74c3c";
+        readonly success: "#27ae60";
+        readonly warning: "#f39c12";
+        readonly notification: "#3498db";
+        readonly black: "#212129";
+        readonly white: "#fcfcfd";
+        readonly snowWhite: "#ffffff";
+        readonly actions: readonly ["#FF2837", "#e74c3c", "#27ae60", "#f39c12", "#3498db"];
+        readonly darks: readonly ["#212129", "#32323f", "#444454", "#5e5e75", "#7a7a94"];
+        readonly lights: readonly ["#fcfcfd", "#f1f1f4", "#e7e7eb", "#d1d1da", "#bbbbc9"];
+        readonly statusDanger: readonly ["#F5B7B1", "#E74C3C", "#B03A2E", "#943126"];
+        readonly statusSuccess: readonly ["#A9DFBF", "#27AE60", "#1E8449", "#196F3D"];
+        readonly statusWarning: readonly ["#FAD7A0", "#F39C12", "#B9770E", "#9C640C"];
+        readonly statusNotification: readonly ["#AED6F1", "#3498DB", "#2874A6", "#21618C"];
+    };
+    readonly shadow: {
+        readonly shadow00: "none";
+        readonly shadow01: "0 1px 3px rgba(31, 30, 47, 0.1)";
+        readonly shadow02: "0 3px 6px rgba(31, 30, 47, 0.1)";
+        readonly shadow03: "0 8px 20px rgba(31, 30, 47, 0.12)";
+        readonly shadow04: "0 12px 22px rgba(31, 30, 47, 0.18)";
+    };
+    readonly transition: "all 0.26s ease-in-out";
+    readonly zindex: {
+        readonly topoftheworld: 9999;
+        readonly popup: 9000;
+        readonly modal: 8000;
+        readonly overlay: 7000;
+        readonly dropdown: 6000;
+        readonly sticky: 2000;
+        readonly masked: 1000;
+        readonly default: 1;
+        readonly zero: 0;
+        readonly deep: -9999;
+    };
+    readonly opacity: 0.7;
+    readonly iconSize: {
+        readonly sm: "0.875rem";
+        readonly smd: "1.2rem";
+        readonly md: "1.5rem";
+        readonly lg: "2rem";
+        readonly xl: "3rem";
+        readonly xxl: "5rem";
+    };
+    readonly breakpoints: {
+        readonly xs: 0;
+        readonly sm: 576;
+        readonly md: 768;
+        readonly lg: 992;
+        readonly xl: 1200;
+        readonly xxl: 1440;
+    };
+    readonly spacing: {
+        readonly spacing00: "0";
+        readonly spacing01: "0.25rem";
+        readonly spacing02: "0.5rem";
+        readonly spacing03: "0.75rem";
+        readonly spacing04: "1rem";
+        readonly spacing05: "1.25rem";
+        readonly spacing06: "1.5rem";
+        readonly spacing07: "2rem";
+        readonly spacing08: "2.5rem";
+    };
+};
+export declare const bp: import("styled-components-breakpoint").BreakpointFunction<"xs" | "sm" | "md" | "lg" | "xl" | "xxl">;
+export declare const map: import("styled-components-breakpoint").MapFunction<"xs" | "sm" | "md" | "lg" | "xl" | "xxl">;
+export default theme;

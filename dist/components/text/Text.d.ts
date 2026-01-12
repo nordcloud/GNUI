@@ -1,0 +1,21 @@
+import * as React from "react";
+import { SpaceProps } from "styled-system";
+import { SingleColors } from "../../theme/config";
+type TextProps = React.HTMLAttributes<HTMLElement> & {
+    size?: "lg" | "md" | "sm" | "xl" | "xs" | "xxl";
+    display?: string;
+    color?: SingleColors | string;
+    tag?: keyof JSX.IntrinsicElements;
+    as?: React.ElementType | keyof JSX.IntrinsicElements;
+    weight?: "bold" | "medium" | "regular";
+    textStyle?: "italic" | "normal";
+    align?: "center" | "left" | "right";
+    lineHeight?: string;
+    width?: string;
+    nowrap?: boolean;
+    isTitle?: boolean;
+};
+export declare function Text({ tag, children, ...props }: SpaceProps & TextProps): import("react/jsx-runtime").JSX.Element;
+type CodeProps = React.HTMLAttributes<HTMLSpanElement>;
+export declare function Code({ children, ...props }: CodeProps): import("react/jsx-runtime").JSX.Element;
+export {};

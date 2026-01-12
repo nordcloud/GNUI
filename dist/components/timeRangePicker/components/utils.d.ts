@@ -1,0 +1,12 @@
+import { Interval } from "date-fns";
+import { RANGE_TYPE, DateOption, TimeRangeOption } from "../types";
+import { DailyCount } from "./types";
+export declare const getMonday: (date: Date | number) => Date;
+export declare const getTimeRangeDate: (initRange: Interval) => Date;
+export declare const getDateString: (date: Date) => string;
+export declare const getDateWithTime: (date: Date, time: string) => Date;
+export declare const getDateWithDays: (date: Date, rangeType: RANGE_TYPE, dateFormat: string) => string | undefined;
+export declare const getDate: (selectedType: RANGE_TYPE, date: Date, number: number) => Date;
+export declare const getInitSelectedTimeRange: (initRange: Interval) => TimeRangeOption;
+export declare const getDateOptions: (monday: Date, weekCounts?: DailyCount[]) => DateOption[];
+export declare const isSameTimeRange: (interval: Interval, timeRangeOption: TimeRangeOption) => boolean;

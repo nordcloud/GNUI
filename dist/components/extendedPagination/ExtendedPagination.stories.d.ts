@@ -1,0 +1,11 @@
+import { Meta, StoryObj } from "@storybook/react";
+declare const meta: Meta;
+export default meta;
+export declare const FirstPage: StoryObj;
+export declare const SecondPage: StoryObj;
+export declare const Middle: StoryObj;
+export declare const SecondToLastPage: StoryObj;
+export declare const LastPage: StoryObj;
+export declare const EdgeCases: StoryObj;
+export declare const Short: StoryObj;
+export declare const Small: StoryObj;

@@ -1,0 +1,17 @@
+import { Meta, StoryObj } from "@storybook/react";
+declare const meta: Meta;
+export default meta;
+export declare const InputDefault: StoryObj;
+export declare const Name: StoryObj;
+export declare const Type: StoryObj;
+export declare const Disabled: StoryObj;
+export declare const Required: StoryObj;
+export declare const Small: StoryObj;
+export declare const UploadDefault: StoryObj;
+export declare const Icon: StoryObj;
+export declare const Status: StoryObj;
+export declare const LabelDescription: StoryObj;
+export declare const Clear: StoryObj;
+export declare const Password: StoryObj;
+export declare const Search: StoryObj;
+export declare const Date: StoryObj;
