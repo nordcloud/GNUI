@@ -34,8 +34,11 @@ const getBorderColor = (status?: MessageProps["status"]) => {
     case "success":
     case "warning":
       return theme.color.border[status];
-    default:
-      return theme.color.border.border01;
+    default: {
+      // Compile-time exhaustiveness check for future status additions.
+      const exhaustiveStatus: never = status;
+      return exhaustiveStatus;
+    }
   }
 };
 const getTextColor = (status?: MessageProps["status"]) => {
@@ -53,8 +56,11 @@ const getTextColor = (status?: MessageProps["status"]) => {
     case "success":
     case "warning":
       return theme.color.text[status];
-    default:
-      return theme.color.text.text01;
+    default: {
+      // Compile-time exhaustiveness check for future status additions.
+      const exhaustiveStatus: never = status;
+      return exhaustiveStatus;
+    }
   }
 };
 
