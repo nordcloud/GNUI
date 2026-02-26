@@ -14,6 +14,34 @@ const meta: Meta = {
 
 export default meta;
 
+function ExpandableControlledStory() {
+  const [isExpanded, setIsExpanded] = React.useState(false);
+  const controlledExpandedContent = (
+    <Text color={theme.color.text.text02}>
+      This message uses controlled expanded state.
+    </Text>
+  );
+
+  return (
+    <FlexContainer direction="column" alignItems="start">
+      <Button size="sm" onClick={() => setIsExpanded((current) => !current)}>
+        {isExpanded ? "Collapse from parent" : "Expand from parent"}
+      </Button>
+      <Spacer height="0.5rem" />
+      <Message
+        expandable
+        expanded={isExpanded}
+        status="discovery"
+        image="help"
+        expandedContent={controlledExpandedContent}
+        onExpandedChange={setIsExpanded}
+      >
+        Expandable message (controlled)
+      </Message>
+    </FlexContainer>
+  );
+}
+
 export const Default: StoryObj = {
   render: () => (
     <Message>
@@ -48,33 +76,7 @@ export const ExpandableUncontrolled: StoryObj = {
 };
 
 export const ExpandableControlled: StoryObj = {
-  render: () => {
-    const [isExpanded, setIsExpanded] = React.useState(false);
-    const controlledExpandedContent = (
-      <Text color={theme.color.text.text02}>
-        This message uses controlled expanded state.
-      </Text>
-    );
-
-    return (
-      <FlexContainer direction="column" alignItems="start">
-        <Button size="sm" onClick={() => setIsExpanded((current) => !current)}>
-          {isExpanded ? "Collapse from parent" : "Expand from parent"}
-        </Button>
-        <Spacer height="0.5rem" />
-        <Message
-          expandable
-          expanded={isExpanded}
-          status="discovery"
-          image="help"
-          expandedContent={controlledExpandedContent}
-          onExpandedChange={setIsExpanded}
-        >
-          Expandable message (controlled)
-        </Message>
-      </FlexContainer>
-    );
-  },
+  render: () => <ExpandableControlledStory />,
   name: "expandable controlled",
 };
 
