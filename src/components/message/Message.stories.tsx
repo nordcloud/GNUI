@@ -1,3 +1,4 @@
+import * as React from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import theme from "../../theme";
 import { Button } from "../button";
@@ -25,6 +26,97 @@ export const Default: StoryObj = {
   ),
 
   name: "default",
+};
+
+export const ExpandableUncontrolled: StoryObj = {
+  render: () => (
+    <Message
+      expandable
+      defaultExpanded
+      image="info"
+      status="notification"
+      expandedContent={
+        <Text color={theme.color.text.text02}>
+          This section is rendered from the dedicated expanded content slot.
+        </Text>
+      }
+    >
+      Expandable message (uncontrolled)
+    </Message>
+  ),
+  name: "expandable uncontrolled",
+};
+
+export const ExpandableControlled: StoryObj = {
+  render: () => {
+    const [isExpanded, setIsExpanded] = React.useState(false);
+    const controlledExpandedContent = (
+      <Text color={theme.color.text.text02}>
+        This message uses controlled expanded state.
+      </Text>
+    );
+
+    return (
+      <FlexContainer direction="column" alignItems="start">
+        <Button size="sm" onClick={() => setIsExpanded((current) => !current)}>
+          {isExpanded ? "Collapse from parent" : "Expand from parent"}
+        </Button>
+        <Spacer height="0.5rem" />
+        <Message
+          expandable
+          expanded={isExpanded}
+          status="discovery"
+          image="help"
+          expandedContent={controlledExpandedContent}
+          onExpandedChange={setIsExpanded}
+        >
+          Expandable message (controlled)
+        </Message>
+      </FlexContainer>
+    );
+  },
+  name: "expandable controlled",
+};
+
+export const ExpandableCustomContent: StoryObj = {
+  render: () => (
+    <Message
+      expandable
+      image="success"
+      status="success"
+      expandedContent={
+        <div>
+          <Text mb={theme.spacing.spacing02}>Arbitrary JSX content:</Text>
+          <a href="https://www.nordcloud.com" target="_blank" rel="noreferrer">
+            Open link
+          </a>
+          <table
+            style={{
+              marginTop: theme.spacing.spacing02,
+              width: "100%",
+              tableLayout: "fixed",
+            }}
+          >
+            <thead>
+              <tr>
+                <th align="left">Region</th>
+                <th align="left">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>eu-west-1</td>
+                <td>Healthy</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      }
+    >
+      Expandable message with custom content
+    </Message>
+  ),
+  name: "expandable custom content",
 };
 
 export const Status: StoryObj = {
