@@ -35,9 +35,7 @@
     "lint:css:quiet": "npm run lint:css -- --quiet",
     "lint:lockfile": "lockfile-lint",
     "validate:all": "npm-run-all --parallel check:types check:format check:knip lint:quiet lint:css:quiet lint:lockfile test:all",
-    "prepack": "npm run build",
-    "prepare": "if [ -d .git ]; then husky install; fi",
-    "postinstall": "if [ -d .git ]; then patch-package; fi"
+    "prepare": "patch-package && husky install"
   },
   "engines": {
     "node": "~22.14.0",
