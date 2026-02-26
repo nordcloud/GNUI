@@ -7337,16 +7337,26 @@ function LoadMoreList({ initialItems = ["Item 1", "Item 2", "Item 3", "Item 4", 
 }
 
 const getBorderColor = (status) => {
+    if (!status) {
+        return theme.color.border.border01;
+    }
     switch (status) {
         case "notification":
             return theme.color.border.info;
         case "danger":
             return theme.color.border.error;
+        case "discovery":
+        case "success":
+        case "warning":
+            return theme.color.border[status];
         default:
-            return status ? theme.color.border[status] : theme.color.border.border01;
+            return theme.color.border.border01;
     }
 };
 const getTextColor = (status) => {
+    if (!status) {
+        return theme.color.text.text01;
+    }
     switch (status) {
         case "notification":
             return theme.color.text.info;
@@ -7354,13 +7364,18 @@ const getTextColor = (status) => {
             return theme.color.text.error;
         case "discovery":
             return theme.color.text.text01;
+        case "success":
+        case "warning":
+            return theme.color.text[status];
         default:
-            return status ? theme.color.text[status] : theme.color.text.text01;
+            return theme.color.text.text01;
     }
 };
 const MessageWrapper = styled__default.default.div `
   display: flex;
   align-items: flex-start;
+  box-sizing: border-box;
+  max-width: 100%;
   border-radius: ${theme.radiusDefault};
   font-size: ${theme.fontSizes.md};
   padding: ${theme.spacing.spacing03};
@@ -7384,6 +7399,13 @@ const MessageWrapper = styled__default.default.div `
     styled.css `
       color: ${color};
     `}
+  ${({ $isExpandableHeader, $isExpandedWithContent }) => $isExpandableHeader &&
+    $isExpandedWithContent &&
+    styled.css `
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      border-bottom-width: 0;
+    `}
 `;
 const IconBox = styled__default.default.div `
   display: flex;
@@ -7397,8 +7419,115 @@ const IconBox = styled__default.default.div `
 const Align = styled__default.default.div `
   margin-bottom: auto;
 `;
-function Message({ children, image, ...props }) {
-    return (jsxRuntimeExports.jsxs(MessageWrapper, { ...props, children: [image && (jsxRuntimeExports.jsx(Align, { children: jsxRuntimeExports.jsx(IconBox, { children: jsxRuntimeExports.jsx(SVGIcon, { name: image }) }) })), children] }));
+const getResolvedBorderColor = (status, borderColor) => {
+    return borderColor ?? getBorderColor(status);
+};
+const ExpandableContainer = styled__default.default.div `
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+`;
+const ExpandableHeader = styled__default.default.div `
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+`;
+const SummaryContent = styled__default.default.div `
+  flex: 1 1 auto;
+  min-width: 0;
+`;
+const ToggleLeading = styled__default.default.div `
+  display: flex;
+  align-items: center;
+  margin-right: ${theme.spacing.spacing03};
+`;
+const ToggleButton = styled__default.default.button `
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  line-height: 1;
+  border-radius: ${theme.radius.sm};
+
+  &:focus-visible {
+    outline: 2px solid ${theme.color.border.focus};
+    outline-offset: 2px;
+  }
+
+  svg {
+    fill: currentColor;
+  }
+`;
+const ToggleIcon = styled__default.default.div `
+  display: flex;
+
+  svg {
+    transition: ${theme.transition};
+    transform-origin: center;
+  }
+
+  ${({ $rotate, $expanded }) => $rotate &&
+    styled.css `
+      svg {
+        transform: rotate(${$expanded ? "0deg" : "-90deg"});
+      }
+    `}
+`;
+const ExpandedContentWrapper = styled__default.default.div `
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  border: 1px solid
+    ${({ status, borderColor }) => getResolvedBorderColor(status, borderColor)};
+  border-radius: 0 0 ${theme.radiusDefault} ${theme.radiusDefault};
+  background: ${theme.color.background.ui03};
+  color: ${({ status }) => getTextColor(status)};
+  padding: ${theme.spacing.spacing03};
+
+  ${({ background }) => background &&
+    styled.css `
+      background: ${background};
+    `}
+  ${({ color }) => color &&
+    styled.css `
+      color: ${color};
+    `}
+`;
+function Message({ children, image, status, borderColor, background, color, as, expandable = false, defaultExpanded = false, expanded, onExpandedChange, expandedContent, expandIcon = "down", collapseIcon, onToggle, ...restProps }) {
+    const expandedContentId = React__namespace.useId();
+    const hasExpandedContent = expandedContent !== null && expandedContent !== undefined;
+    const isControlled = typeof expanded === "boolean";
+    const [isExpandedUncontrolled, setIsExpandedUncontrolled] = React__namespace.useState(defaultExpanded);
+    const isExpanded = isControlled ? expanded : isExpandedUncontrolled;
+    const handleExpandedChange = React__namespace.useCallback((nextExpanded) => {
+        if (!isControlled) {
+            setIsExpandedUncontrolled(nextExpanded);
+        }
+        onExpandedChange?.(nextExpanded);
+        onToggle?.(nextExpanded);
+    }, [isControlled, onExpandedChange, onToggle]);
+    const handleToggle = React__namespace.useCallback(() => {
+        handleExpandedChange(!isExpanded);
+    }, [handleExpandedChange, isExpanded]);
+    if (!expandable) {
+        return (jsxRuntimeExports.jsxs(MessageWrapper, { as: as, status: status, borderColor: borderColor, background: background, color: color, ...restProps, children: [image && (jsxRuntimeExports.jsx(Align, { children: jsxRuntimeExports.jsx(IconBox, { children: jsxRuntimeExports.jsx(SVGIcon, { name: image }) }) })), children] }));
+    }
+    const displayedToggleIcon = isExpanded && collapseIcon ? collapseIcon : expandIcon;
+    const shouldRotateIcon = !collapseIcon;
+    const isExpandedWithContent = isExpanded && hasExpandedContent;
+    return (jsxRuntimeExports.jsxs(ExpandableContainer, { as: as, ...restProps, children: [jsxRuntimeExports.jsx(MessageWrapper, { "$isExpandableHeader": true, "$isExpandedWithContent": isExpandedWithContent, status: status, borderColor: borderColor, background: background, color: color, children: jsxRuntimeExports.jsx(ExpandableContainer, { children: jsxRuntimeExports.jsxs(ExpandableHeader, { children: [jsxRuntimeExports.jsx(ToggleLeading, { children: jsxRuntimeExports.jsx(ToggleButton, { type: "button", "aria-expanded": isExpanded, "aria-controls": hasExpandedContent ? expandedContentId : undefined, "aria-label": isExpanded
+                                        ? "Collapse message content"
+                                        : "Expand message content", onClick: handleToggle, children: jsxRuntimeExports.jsx(ToggleIcon, { "$expanded": isExpanded, "$rotate": shouldRotateIcon, children: jsxRuntimeExports.jsx(SVGIcon, { name: displayedToggleIcon }) }) }) }), image && (jsxRuntimeExports.jsx(Align, { children: jsxRuntimeExports.jsx(IconBox, { children: jsxRuntimeExports.jsx(SVGIcon, { name: image }) }) })), jsxRuntimeExports.jsx(SummaryContent, { children: children })] }) }) }), hasExpandedContent && (jsxRuntimeExports.jsx(ExpandedContentWrapper, { id: expandedContentId, hidden: !isExpanded, status: status, borderColor: borderColor, background: background, color: color, children: expandedContent }))] }));
 }
 
 const StyledModal = styled__default.default.div `

@@ -7,10 +7,19 @@ export type MessageProps = React.HTMLProps<HTMLDivElement> & {
     background?: string;
     color?: string;
     as?: React.ElementType | keyof JSX.IntrinsicElements;
+    expandable?: boolean;
+    defaultExpanded?: boolean;
+    expanded?: boolean;
+    onExpandedChange?: (expanded: boolean) => void;
+    expandedContent?: React.ReactNode;
+    expandIcon?: SVGIconProps["name"];
+    collapseIcon?: SVGIconProps["name"];
+    onToggle?: (expanded: boolean) => void;
 };
-type MessageWrapperProps = Omit<MessageProps, "children" | "image">;
-export declare const MessageWrapper: import("styled-components").StyledComponent<"div", any, MessageWrapperProps, never>;
+export declare const MessageWrapper: import("styled-components").StyledComponent<"div", any, Pick<MessageProps, "status" | "background" | "borderColor" | "color"> & {
+    $isExpandableHeader?: boolean | undefined;
+    $isExpandedWithContent?: boolean | undefined;
+}, never>;
 export declare const IconBox: import("styled-components").StyledComponent<"div", any, {}, never>;
 export declare const Align: import("styled-components").StyledComponent<"div", any, {}, never>;
-export declare function Message({ children, image, ...props }: MessageProps): import("react/jsx-runtime").JSX.Element;
-export {};
+export declare function Message({ children, image, status, borderColor, background, color, as, expandable, defaultExpanded, expanded, onExpandedChange, expandedContent, expandIcon, collapseIcon, onToggle, ...restProps }: MessageProps): import("react/jsx-runtime").JSX.Element;
