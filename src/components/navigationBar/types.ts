@@ -8,6 +8,7 @@ export type Props = {
   position?: string;
   height?: string;
   expandable?: boolean;
+  onExpandClick?: () => void;
   backgroundColor?: string;
   closeOnLeave?: boolean;
   expandableConfig?: ExpandableConfig;
