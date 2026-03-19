@@ -43,6 +43,17 @@ test("renders MenutItems as icons with text when unfolded", async () => {
   expect(text).toBeInTheDocument();
 });
 
+test("calls onExpandClick when hamburger is clicked", () => {
+  const onExpandClick = vi.fn();
+  const { container } = renderNavBarWithExpandClick(onExpandClick);
+  const hamburger = container.querySelector("svg");
+  expect(hamburger).toBeInTheDocument();
+  if (hamburger) {
+    userEvent.click(hamburger);
+  }
+  expect(onExpandClick).toHaveBeenCalledTimes(1);
+});
+
 function renderDummyNavBar(showHamburger = true) {
   return render(
     <NavigationBar expandable={showHamburger}>
@@ -58,6 +69,16 @@ function renderNavBarWithItems(showHamburger = true) {
     <NavigationBar expandable={showHamburger}>
       <MenuItem caption="Dashboard" icon="dashboard" />
       <MenuItem caption="Cloud" icon="cloud" />
+    </NavigationBar>
+  );
+}
+
+function renderNavBarWithExpandClick(onExpandClick: () => void) {
+  return render(
+    <NavigationBar expandable onExpandClick={onExpandClick}>
+      <a href="https://www.nordcloud.com" target="_blank" rel="noreferrer">
+        Link
+      </a>
     </NavigationBar>
   );
 }
