@@ -161,6 +161,42 @@ test("shows `prev` and 'next' button for start index 1", () => {
   expect(screen.getByTestId("prev-page")).toBeInTheDocument();
 });
 
+test("shows trailing jump on page 3 when there are 6 pages and start index is 1", () => {
+  getComponent({
+    count: 119,
+    from: 60,
+    size: 20,
+    firstPage: 1,
+  });
+
+  expect(screen.getByTestId("last-page")).toBeInTheDocument();
+  expect(screen.getByTestId("last-page-dots")).toBeInTheDocument();
+});
+
+test("does not show trailing jump on page 4 when there are 6 pages and start index is 1", () => {
+  getComponent({
+    count: 119,
+    from: 80,
+    size: 20,
+    firstPage: 1,
+  });
+
+  expect(screen.queryByTestId("last-page")).not.toBeInTheDocument();
+  expect(screen.queryByTestId("last-page-dots")).not.toBeInTheDocument();
+});
+
+test("keeps trailing jump visible on page 3 when there are 7 pages and start index is 1", () => {
+  getComponent({
+    count: 139,
+    from: 60,
+    size: 20,
+    firstPage: 1,
+  });
+
+  expect(screen.getByTestId("last-page")).toBeInTheDocument();
+  expect(screen.getByTestId("last-page-dots")).toBeInTheDocument();
+});
+
 test("notifies about changing page", () => {
   getComponent(getParams());
   const button = screen.getByTestId("button-1");
