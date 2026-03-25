@@ -25,7 +25,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
           level: warning
-          fail_on_error: false
+          fail_level: none
           prettier_flags: "**/*.+(js|json|ts|tsx|md|mdx|yml)"
 
       - name: ESLint
@@ -35,7 +35,7 @@ jobs:
           reporter: github-pr-review
           filter_mode: added
           level: warning
-          fail_on_error: false
+          fail_level: none
           eslint_flags: . --report-unused-disable-directives
 
       - name: Stylelint
@@ -45,7 +45,7 @@ jobs:
           reporter: github-pr-review
           filter_mode: file
           level: warning
-          fail_on_error: false
+          fail_level: none
           stylelint_input: "**/*.+(ts|tsx)"
 
       - name: TypeScript
@@ -55,4 +55,4 @@ jobs:
           reporter: github-pr-check
           filter_mode: nofilter
           level: warning
-          fail_on_error: false
+          fail_level: none
