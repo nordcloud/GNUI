@@ -46,7 +46,9 @@ jobs:
           filter_mode: file
           level: warning
           fail_level: none
-          stylelint_input: "**/*.+(ts|tsx)"
+          # Avoid bash-only extglob syntax (+(...)) since action runs under /bin/sh.
+          # Also embed quotes so the shell won't expand globs before stylelint runs.
+          stylelint_input: '"src/**/*.{ts,tsx}"'
 
       - name: TypeScript
         uses: EPMatt/reviewdog-action-tsc@v1
