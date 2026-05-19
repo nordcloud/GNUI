@@ -6,6 +6,11 @@ jobs:
     if: github.event.pull_request.draft == false
     name: Reviewdog
     runs-on: ubuntu-latest
+    env:
+      CI: "true"
+      BROWSERSLIST_IGNORE_OLD_DATA: "true"
+      NO_UPDATE_NOTIFIER: "1"
+      npm_config_update_notifier: "false"
     permissions:
       contents: read
       pull-requests: write
@@ -28,7 +33,7 @@ jobs:
           reporter: github-pr-review
           level: warning
           fail_level: none
-          prettier_flags: "**/*.+(js|json|ts|tsx|md|mdx|yml)"
+          prettier_flags: "**/*.{js,json,ts,tsx,md,mdx,yml}"
 
       - name: ESLint
         uses: reviewdog/action-eslint@v1
