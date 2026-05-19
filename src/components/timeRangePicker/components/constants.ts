@@ -39,7 +39,7 @@ export const DEFAULT_TIME_RANGE_OPTIONS: TimeRangeOption[] = [
   {
     id: "3",
     start: "18:00",
-    end: "23:59",
+    end: "24:00",
     count: 0,
   },
 ];
