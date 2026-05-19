@@ -17,6 +17,8 @@ jobs:
           node-version-file: package.json
 
       - run: npm ci
+      - name: Add local binaries to PATH
+        run: echo "$GITHUB_WORKSPACE/node_modules/.bin" >> "$GITHUB_PATH"
       - run: npm audit signatures
 
       - name: Prettier
