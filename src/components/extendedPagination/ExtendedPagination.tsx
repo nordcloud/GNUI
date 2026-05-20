@@ -48,6 +48,8 @@ function Pagination({
     }
   };
 
+  const pages = [...getPages()].filter((index) => index < nPages);
+
   const setPage = (pageNumber: number) => {
     if (currentPage !== pageNumber) {
       set(pageNumber * size);
@@ -57,7 +59,7 @@ function Pagination({
   const showFirstPageJump =
     currentPage >= baseNumberOfPages && nPages > baseNumberOfPages;
   const showLastPageJump =
-    currentPage + baseNumberOfPages <= nPages && nPages > baseNumberOfPages;
+    nPages > baseNumberOfPages && !pages.includes(nPages - 1);
 
   return (
     <nav
@@ -96,26 +98,24 @@ function Pagination({
           </li>
         </When>
 
-        {[...getPages()]
-          .filter((index) => index < nPages)
-          .map((index) => {
-            return (
-              <li key={`p${index + firstPage}`}>
-                <button
-                  type="button"
-                  disabled={index < 0}
-                  data-testid={`button-${index + firstPage}`}
-                  className={`pagination-link ${
-                    index + firstPage === currentPage ? `current` : ""
-                  }`}
-                  onClick={() => setPage(index + firstPage)}
-                  onKeyDown={() => setPage(index + firstPage)}
-                >
-                  <span>{index + 1}</span>
-                </button>
-              </li>
-            );
-          })}
+        {pages.map((index) => {
+          return (
+            <li key={`p${index + firstPage}`}>
+              <button
+                type="button"
+                disabled={index < 0}
+                data-testid={`button-${index + firstPage}`}
+                className={`pagination-link ${
+                  index + firstPage === currentPage ? `current` : ""
+                }`}
+                onClick={() => setPage(index + firstPage)}
+                onKeyDown={() => setPage(index + firstPage)}
+              >
+                <span>{index + 1}</span>
+              </button>
+            </li>
+          );
+        })}
 
         <When condition={showLastPageJump}>
           <li className="dots" data-testid="last-page-dots">

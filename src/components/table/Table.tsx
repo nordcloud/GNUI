@@ -87,6 +87,7 @@ const Tr = styled.tr``;
 
 const Th = styled.th<{ width?: string }>`
   border-bottom: 2px solid ${theme.color.border.border01};
+  font-weight: ${theme.fontWeights.medium};
 `;
 
 function Table(props: React.ComponentProps<typeof StyledTable>) {

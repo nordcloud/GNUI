@@ -7,18 +7,44 @@ import * as MessageStories from "./Message.stories";
 
 #### Message properties
 
-|  properties | required | type                                                                                                               | description                                                                                       |
-| ----------: | :------: | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------ |
-|      status |  false   | <code>success</code>, <code>notification</code>, <code>danger</code>, <code>warning</code>, <code>discovery</code> |                                                                                                   |
-|       image |  false   | string                                                                                                             | to get icon names look into <a href="?path=/docs/components-svgicon--size">SVG icon component</a> |
-| borderColor |  false   | string                                                                                                             | border color                                                                                      |
-|  background |  false   | string                                                                                                             | background color                                                                                  |
-|       color |  false   | string                                                                                                             | text color                                                                                        |
+|       properties | required | type                                                                                                               | description                                                                                       |
+| ---------------: | :------: | :----------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------ |
+|           status |  false   | <code>success</code>, <code>notification</code>, <code>danger</code>, <code>warning</code>, <code>discovery</code> |                                                                                                   |
+|            image |  false   | string                                                                                                             | to get icon names look into <a href="?path=/docs/components-svgicon--size">SVG icon component</a> |
+|      borderColor |  false   | string                                                                                                             | border color                                                                                      |
+|       background |  false   | string                                                                                                             | background color                                                                                  |
+|            color |  false   | string                                                                                                             | text color                                                                                        |
+|       expandable |  false   | boolean                                                                                                            | enables expandable/collapsible message mode (default: <code>false</code>)                         |
+|  defaultExpanded |  false   | boolean                                                                                                            | initial expanded state for uncontrolled mode                                                      |
+|         expanded |  false   | boolean                                                                                                            | controlled expanded state                                                                         |
+| onExpandedChange |  false   | <code>(expanded: boolean) =&gt; void</code>                                                                        | called when expanded state changes                                                                |
+|         onToggle |  false   | <code>(expanded: boolean) =&gt; void</code>                                                                        | optional alias of <code>onExpandedChange</code>                                                   |
+|  expandedContent |  false   | ReactNode                                                                                                          | dedicated expanded content slot rendered below summary content                                    |
+|       expandIcon |  false   | string                                                                                                             | icon used for expand toggle (default: <code>down</code>)                                          |
+|     collapseIcon |  false   | string                                                                                                             | icon used when expanded; if omitted, <code>expandIcon</code> rotates like Accordion               |
 
 ## default
 
 <Canvas>
   <Story of={MessageStories.Default} />
+</Canvas>
+
+## Expandable Uncontrolled
+
+<Canvas>
+  <Story of={MessageStories.ExpandableUncontrolled} />
+</Canvas>
+
+## Expandable Controlled
+
+<Canvas>
+  <Story of={MessageStories.ExpandableControlled} />
+</Canvas>
+
+## Expandable Custom Content
+
+<Canvas>
+  <Story of={MessageStories.ExpandableCustomContent} />
 </Canvas>
 
 ## Status

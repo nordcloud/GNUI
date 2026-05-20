@@ -6,6 +6,11 @@ jobs:
     if: github.event.pull_request.draft == false
     name: Reviewdog
     runs-on: ubuntu-latest
+    env:
+      CI: "true"
+      BROWSERSLIST_IGNORE_OLD_DATA: "true"
+      NO_UPDATE_NOTIFIER: "1"
+      npm_config_update_notifier: "false"
     permissions:
       contents: read
       pull-requests: write
@@ -17,6 +22,8 @@ jobs:
           node-version-file: package.json
 
       - run: npm ci
+      - name: Add local binaries to PATH
+        run: echo "$GITHUB_WORKSPACE/node_modules/.bin" >> "$GITHUB_PATH"
       - run: npm audit signatures
 
       - name: Prettier
@@ -25,8 +32,8 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
           level: warning
-          fail_on_error: false
-          prettier_flags: "**/*.+(js|json|ts|tsx|md|mdx|yml)"
+          fail_level: none
+          prettier_flags: "**/*.{js,json,ts,tsx,md,mdx,yml}"
 
       - name: ESLint
         uses: reviewdog/action-eslint@v1
@@ -35,7 +42,7 @@ jobs:
           reporter: github-pr-review
           filter_mode: added
           level: warning
-          fail_on_error: false
+          fail_level: none
           eslint_flags: . --report-unused-disable-directives
 
       - name: Stylelint
@@ -45,8 +52,8 @@ jobs:
           reporter: github-pr-review
           filter_mode: file
           level: warning
-          fail_on_error: false
-          stylelint_input: "**/*.+(ts|tsx)"
+          fail_level: none
+          stylelint_input: "**/*.{ts,tsx}"
 
       - name: TypeScript
         uses: EPMatt/reviewdog-action-tsc@v1
@@ -55,4 +62,4 @@ jobs:
           reporter: github-pr-check
           filter_mode: nofilter
           level: warning
-          fail_on_error: false
+          fail_level: none

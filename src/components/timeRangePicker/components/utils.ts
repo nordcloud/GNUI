@@ -25,7 +25,7 @@ export const getMonday = (date: Date | number): Date => {
 
 export const getTimeRangeDate = (initRange: Interval): Date => {
   return isSameDay(initRange.start, initRange.end)
-    ? new Date(initRange.start)
+    ? new Date(new Date(initRange.start).setSeconds(0, 0))
     : new Date();
 };
 

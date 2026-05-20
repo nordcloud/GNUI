@@ -17,6 +17,7 @@ export function NavigationBar(props: Props) {
 function NavigationBarVisual({
   position = "fixed",
   expandable = true,
+  onExpandClick,
   height = "100vh",
   backgroundColor = theme.color.background.ui01,
   closeOnLeave = false,
@@ -40,6 +41,10 @@ function NavigationBarVisual({
   return (
     <NavigationBarWrapper
       expanded={expanded}
+      position={position}
+      backgroundColor={backgroundColor}
+      height={height}
+      expandableConfig={expandableConfig}
       onTransitionEnd={() => setExpandedDone(expanded)}
       onMouseLeave={() => {
         if (closeOnLeave) {
@@ -47,13 +52,15 @@ function NavigationBarVisual({
           setExpandedDone(false);
         }
       }}
-      position={position}
-      backgroundColor={backgroundColor}
-      height={height}
-      expandableConfig={expandableConfig}
     >
       {expandable ? (
-        <BurgerWrapper expanded={expanded} onClick={handleExpand}>
+        <BurgerWrapper
+          expanded={expanded}
+          onClick={() => {
+            handleExpand();
+            onExpandClick?.();
+          }}
+        >
           <SVGIcon
             name={icon}
             css={{ padding: theme.spacing.spacing01, cursor: "pointer" }}
