@@ -10,7 +10,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "24"
-      - run: npm install -g npm@11
       - run: echo "registry=https://registry.npmjs.org/" > .npmrc
       - run: echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" >> .npmrc
         env:
