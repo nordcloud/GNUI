@@ -58,6 +58,25 @@ export const TimerangepickerOfHours: StoryObj = {
   name: "timerangepicker of hours ",
 };
 
+export const TimerangepickerOfHoursWithPreservedDaySelection: StoryObj = {
+  render: () => {
+    const [value, setValue] = useState<{
+      start: Date | number;
+      end: Date | number;
+    }>();
+
+    return (
+      <>
+        <TimeRangePicker preserveDaySelection onChange={setValue} />
+        <Spacer height="20rem" />
+        <div id="result-hours">Current Value:{JSON.stringify(value)}</div>
+      </>
+    );
+  },
+
+  name: "timerangepicker of hours with preserved day selection",
+};
+
 export const TimerangepickerOfHoursWithHistogram: StoryObj = {
   render: () => {
     const [value, setValue] = useState<{
