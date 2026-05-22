@@ -58,7 +58,7 @@ export const TimerangepickerOfHours: StoryObj = {
   name: "timerangepicker of hours ",
 };
 
-export const TimerangepickerOfHoursWithPreservedDaySelection: StoryObj = {
+export const TimerangepickerOfHoursWithKeepSelectedWeekday: StoryObj = {
   render: () => {
     const [value, setValue] = useState<{
       start: Date | number;
@@ -67,14 +67,14 @@ export const TimerangepickerOfHoursWithPreservedDaySelection: StoryObj = {
 
     return (
       <>
-        <TimeRangePicker preserveDaySelection onChange={setValue} />
+        <TimeRangePicker keepSelectedWeekday onChange={setValue} />
         <Spacer height="20rem" />
         <div id="result-hours">Current Value:{JSON.stringify(value)}</div>
       </>
     );
   },
 
-  name: "timerangepicker of hours with preserved day selection",
+  name: "timerangepicker of hours with preserved day",
 };
 
 export const TimerangepickerOfHoursWithHistogram: StoryObj = {

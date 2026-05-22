@@ -22,8 +22,8 @@ import { DateSelector, HourSelector } from "./components";
 type Props = DatesPickerProps & {
   weekCounts?: DailyCount[];
   countsLoading?: boolean;
+  keepSelectedWeekday?: boolean;
   onWeekChange?: (monday: Date) => void;
-  preserveDaySelection?: boolean;
 };
 
 export function DateHourPicker({
@@ -31,9 +31,9 @@ export function DateHourPicker({
   weekCounts,
   countsLoading = false,
   disabledDays,
+  keepSelectedWeekday = false,
   onChange,
   onWeekChange,
-  preserveDaySelection = false,
 }: Props) {
   const [selectedDate, setSelectedDate] = useState<Date>(
     getTimeRangeDate(initTimeRange, "Hours")
@@ -96,7 +96,7 @@ export function DateHourPicker({
     if (onWeekChange) {
       onWeekChange(newMonday);
     }
-    if (preserveDaySelection) {
+    if (keepSelectedWeekday) {
       const newSeletedDate = getNewSelectedDate(
         selectedDate,
         currentMonday,
