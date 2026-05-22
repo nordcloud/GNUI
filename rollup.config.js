@@ -23,6 +23,7 @@ export default {
   ],
   plugins: [
     typescript({
+      include: ["src/**/*.{ts,tsx}"],
       useTsconfigDeclarationDir: true,
       tsconfigOverride: {
         exclude: [
