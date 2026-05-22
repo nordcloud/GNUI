@@ -4,6 +4,7 @@ import { DatesPicker, DateHourPicker } from "./components";
 type Props = Omit<ComponentProps<typeof DateHourPicker>, "initTimeRange"> & {
   initTimeRange?: Interval;
   type?: "Days" | "Hours";
+  keepSelectedWeekday?: boolean;
 };
 
 const DEFAULT_TIME_RANGE: Interval = {
@@ -17,6 +18,7 @@ export function TimeRangePicker({
   weekCounts,
   countsLoading = false,
   disabledDays,
+  keepSelectedWeekday = false,
   onChange,
   onWeekChange,
 }: Props) {
@@ -35,6 +37,7 @@ export function TimeRangePicker({
       weekCounts={weekCounts}
       countsLoading={countsLoading}
       disabledDays={disabledDays}
+      keepSelectedWeekday={keepSelectedWeekday}
       onChange={onChange}
       onWeekChange={onWeekChange}
     />

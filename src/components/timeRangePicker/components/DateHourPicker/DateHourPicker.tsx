@@ -15,12 +15,14 @@ import {
   getMonday,
   getTimeRangeDate,
   isSameTimeRange,
+  getNewSelectedDate,
 } from "../utils";
 import { DateSelector, HourSelector } from "./components";
 
 type Props = DatesPickerProps & {
   weekCounts?: DailyCount[];
   countsLoading?: boolean;
+  keepSelectedWeekday?: boolean;
   onWeekChange?: (monday: Date) => void;
 };
 
@@ -29,11 +31,12 @@ export function DateHourPicker({
   weekCounts,
   countsLoading = false,
   disabledDays,
+  keepSelectedWeekday = false,
   onChange,
   onWeekChange,
 }: Props) {
   const [selectedDate, setSelectedDate] = useState<Date>(
-    getTimeRangeDate(initTimeRange)
+    getTimeRangeDate(initTimeRange, "Hours")
   );
   const [dateOptions, setDateOptions] = useState<DateOption[]>(
     getDateOptions(getMonday(initTimeRange.start))
@@ -92,6 +95,15 @@ export function DateHourPicker({
     updateTimeRangeOptions(selectedDate);
     if (onWeekChange) {
       onWeekChange(newMonday);
+    }
+    if (keepSelectedWeekday) {
+      const newSeletedDate = getNewSelectedDate(
+        selectedDate,
+        currentMonday,
+        newMonday
+      );
+      setSelectedDate(newSeletedDate);
+      submitDateHour(newSeletedDate, selectedTimeRange);
     }
   };
 

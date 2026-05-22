@@ -9,6 +9,10 @@ import {
   addMonths,
   addYears,
   getHours,
+  differenceInCalendarDays,
+  startOfDay,
+  set,
+  subMilliseconds,
 } from "date-fns";
 import { RANGE_TYPE, DateOption, TimeRangeOption } from "../types";
 import {
@@ -23,8 +27,16 @@ export const getMonday = (date: Date | number): Date => {
   return isMonday(currentDate) ? currentDate : previousMonday(currentDate);
 };
 
-export const getTimeRangeDate = (initRange: Interval): Date => {
-  return isSameDay(initRange.start, initRange.end)
+export const getTimeRangeDate = (
+  initRange: Interval,
+  timePickerType?: "Days" | "Hours"
+): Date => {
+  // 18-24 time slot technically ends in different day
+  const end =
+    timePickerType === "Hours"
+      ? subMilliseconds(initRange.end, 1)
+      : initRange.end;
+  return isSameDay(initRange.start, end)
     ? new Date(new Date(initRange.start).setSeconds(0, 0))
     : new Date();
 };
@@ -138,4 +150,24 @@ export const isSameTimeRange = (
     getHours(interval.start) === optionStart &&
     getHours(interval.end) === optionEnd
   );
+};
+
+export const getNewSelectedDate = (
+  selectedDate: Date,
+  currentMonday: Date,
+  newMonday: Date
+) => {
+  const dayOffset = differenceInCalendarDays(
+    startOfDay(selectedDate),
+    startOfDay(currentMonday)
+  );
+
+  const baseDate = addDays(startOfDay(newMonday), dayOffset);
+
+  return set(baseDate, {
+    hours: selectedDate.getHours(),
+    minutes: selectedDate.getMinutes(),
+    seconds: selectedDate.getSeconds(),
+    milliseconds: selectedDate.getMilliseconds(),
+  });
 };
