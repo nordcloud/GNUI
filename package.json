@@ -116,7 +116,7 @@
     "stylelint-processor-styled-components": "^1.10.0",
     "typescript": "^5.2.2",
     "vite": "^4.4.9",
-    "vitest": "^0.34.6"
+    "vitest": "^3.0.0"
   },
   "overrides": {
     "@babel/traverse": "~7.23.7",
