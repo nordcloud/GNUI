@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/blocks";
 import * as SelectButtonStories from "./SelectButton.stories";
 
 <Meta of={SelectButtonStories} />
@@ -25,30 +25,22 @@ import * as SelectButtonStories from "./SelectButton.stories";
 
 ### Default
 
-<Canvas>
-  <Story of={SelectButtonStories.Default} />
-</Canvas>
+<Canvas of={SelectButtonStories.Default} />
 
 ### Disabled
 
 > `disabled`: `boolean`
 
-<Canvas>
-  <Story of={SelectButtonStories.Disabled} />
-</Canvas>
+<Canvas of={SelectButtonStories.Disabled} />
 
 ### Small
 
 > - `size`: `string` — \[`small`]
 
-<Canvas>
-  <Story of={SelectButtonStories.Small} />
-</Canvas>
+<Canvas of={SelectButtonStories.Small} />
 
 ### Color Status
 
 > - `status`: `string` — \[`success`, `danger`, `warning`, `notification`]
 
-<Canvas>
-  <Story of={SelectButtonStories.Status} />
-</Canvas>
+<Canvas of={SelectButtonStories.Status} />

@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/blocks";
 import * as AccordionStories from "./Accordion.stories";
 
 <Meta of={AccordionStories} />
@@ -13,9 +13,7 @@ import * as AccordionStories from "./Accordion.stories";
 | ---------: | :------: | :------------------------- | :---------- |
 |   children |   true   | AccordionHeader components |             |
 
-<Canvas>
-  <Story of={AccordionStories.AccordionDefault} />
-</Canvas>
+<Canvas of={AccordionStories.AccordionDefault} />
 
 # AccordionHeader
 
@@ -35,6 +33,4 @@ import * as AccordionStories from "./Accordion.stories";
 | ---------: | :------: | :--- | :---------- |
 |   children |   true   | any  |             |
 
-<Canvas>
-  <Story of={AccordionStories.AccordionHeaderDefault} />
-</Canvas>
+<Canvas of={AccordionStories.AccordionHeaderDefault} />

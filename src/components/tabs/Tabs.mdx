@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/blocks";
 import * as TabsStories from "./Tabs.stories";
 
 <Meta of={TabsStories} />
@@ -34,21 +34,15 @@ import * as TabsStories from "./Tabs.stories";
 
 ## Default
 
-<Canvas>
-  <Story of={TabsStories.Default} />
-</Canvas>
+<Canvas of={TabsStories.Default} />
 
 ## No Caption
 
-<Canvas>
-  <Story of={TabsStories.Nocaption} />
-</Canvas>
+<Canvas of={TabsStories.Nocaption} />
 
 ## Custom Label
 
-<Canvas>
-  <Story of={TabsStories.CustomLabel} />
-</Canvas>
+<Canvas of={TabsStories.CustomLabel} />
 
 ## Wizard With Buttons
 
@@ -58,20 +52,14 @@ import * as TabsStories from "./Tabs.stories";
 
 > `buttonsJustify?: string;` - Buttons justify, default: "space-between"
 
-<Canvas>
-  <Story of={TabsStories.WithButtons} />
-</Canvas>
+<Canvas of={TabsStories.WithButtons} />
 
 ## Disabled tab
 
 > `disabled`: `boolean` — Disables switching to a tab by clicking on it
 
-<Canvas>
-  <Story of={TabsStories.DisabledTab} />
-</Canvas>
+<Canvas of={TabsStories.DisabledTab} />
 
 ## Tab width
 
-<Canvas>
-  <Story of={TabsStories.Width} />
-</Canvas>
+<Canvas of={TabsStories.Width} />

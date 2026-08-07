@@ -1,8 +1,9 @@
-import { Meta, Story, Canvas, ArgsTable } from "@storybook/addon-docs";
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import * as LoadMoreStories from "./LoadMore.stories";
 import { LoadMore } from "./LoadMore";
 import { LoadMoreList } from "./LoadMoreList";
 
-<Meta title="Components/LoadMore" component={LoadMore} />
+<Meta of={LoadMoreStories} />
 
 # Load More
 
@@ -79,79 +80,74 @@ const MyList = () => {
 
 Shows only the centered "Show More" button:
 
-<Canvas>
-  <Story id="components-loadmore--basic" />
-</Canvas>
+<Canvas of={LoadMoreStories.Basic} />
 
 ### With Count
 
 Shows both the count indicator and "Show More" button:
 
-<Canvas>
-  <Story id="components-loadmore--with-count" />
-</Canvas>
+<Canvas of={LoadMoreStories.WithCount} />
 
 ### With Show All
 
 Shows the "Show All" button next to the "Show More" button.
 
-<Canvas>
-  <Story id="components-loadmore--with-show-all" />
-</Canvas>
+<Canvas of={LoadMoreStories.WithShowAll} />
 
 ### Mid-List Example
 
 Shows the state when some items are loaded:
 
-<Canvas>
-  <Story id="components-loadmore--mid-list" />
-</Canvas>
+<Canvas of={LoadMoreStories.MidList} />
 
 ### End of List Example
 
 Shows how the button is hidden when all items are loaded:
 
-<Canvas>
-  <Story id="components-loadmore--end-of-list" />
-</Canvas>
+<Canvas of={LoadMoreStories.EndOfList} />
 
 ### Loading State
 
 Shows the button in a loading state:
 
-<Canvas>
-  <Story id="components-loadmore--loading" />
-</Canvas>
+<Canvas of={LoadMoreStories.Loading} />
 
 ### Working Example with List
 
 A complete example showing the component in use with a list:
 
-<Canvas>
-  <Story id="components-loadmore--with-list" />
-</Canvas>
+<Canvas of={LoadMoreStories.WithList} />
 
 ### With Show Less
 
 Shows how the "Show Less" button appears when all items are loaded and
 onLoadLess is provided:
 
-<Canvas>
-  <Story id="components-loadmore--with-show-less" />
-</Canvas>
+<Canvas of={LoadMoreStories.WithShowLess} />
 
 ### With List and Show All
 
 A complete example showing the component in use with a list and the "Show All"
 button.
 
-<Canvas>
-  <Story id="components-loadmore--with-list-and-show-all" />
-</Canvas>
+<Canvas of={LoadMoreStories.WithListAndShowAll} />
 
 ## Props
 
-<ArgsTable of={LoadMore} />
+- `currentCount`: `number `— **required**
+- `total`: `number` — **required**
+- `onLoadMore`: `() => void` — **required**
+- `onShowAll`: `() => void` — **optional**: shows the "Show all" button when provided
+- `onLoadLess`: `() => void` — **optional**: shows the "Show less" button when provided and all items are visible
+- `isLoading`: `boolean` — **optional**: default false
+- `hideCount`: `boolean` — **optional**: default false
+- `className`: `string` — **optional**
+- `showMoreLabel`: `React.ReactNode` — **optional**: default "Show more"
+- `showAllLabel`: `React.ReactNode` — **optional**: default "Show all"
+- `showLessLabel`: `React.ReactNode` — **optional**: default "Show less"
+- `showMoreButtonProps`: `React.ComponentProps<typeof Button>` — **optional**
+- `showAllButtonProps`: `React.ComponentProps<typeof Button>` — **optional**
+- `showLessButtonProps`: `React.ComponentProps<typeof Button>` — **optional**
 
 ## Accessibility
 

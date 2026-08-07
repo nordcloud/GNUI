@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/blocks";
 import * as TimeRangePickerStories from "./TimeRangePicker.stories";
 
 <Meta of={TimeRangePickerStories} />
@@ -40,24 +40,16 @@ type Matcher = (boolean | (date: Date)) => boolean | Date | Date[] | DateRange |
 
 ### Type "Days"
 
-<Canvas>
-  <Story of={TimeRangePickerStories.TimerangepickerOfDays} />
-</Canvas>
+<Canvas of={TimeRangePickerStories.TimerangepickerOfDays} />
 
 ## Type "Hours"
 
-<Canvas>
-  <Story of={TimeRangePickerStories.TimerangepickerOfHours} />
-</Canvas>
+<Canvas of={TimeRangePickerStories.TimerangepickerOfHours} />
 
 ## Type "Hours" with preserved day selection
 
-<Canvas>
-  <Story of={TimeRangePickerStories.TimerangepickerOfHoursWithKeepSelectedWeekday} />
-</Canvas>
+<Canvas of={TimeRangePickerStories.TimerangepickerOfHoursWithKeepSelectedWeekday} />
 
 ## Type "Hours" with Histogram
 
-<Canvas>
-  <Story of={TimeRangePickerStories.TimerangepickerOfHoursWithHistogram} />
-</Canvas>
+<Canvas of={TimeRangePickerStories.TimerangepickerOfHoursWithHistogram} />

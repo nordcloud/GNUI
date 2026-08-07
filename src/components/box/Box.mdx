@@ -1,4 +1,4 @@
-import { Meta, Title, Story, Canvas, Markdown } from "@storybook/blocks";
+import { Meta, Title, Canvas, Markdown } from "@storybook/blocks";
 import * as BoxStories from "./Box.stories";
 
 <Meta of={BoxStories} />
@@ -33,70 +33,52 @@ import * as BoxStories from "./Box.stories";
 
 ### default
 
-<Canvas>
-  <Story of={BoxStories.BoxDefault} />
-</Canvas>
+<Canvas of={BoxStories.BoxDefault} />
 
 ### boxStyle
 
 > boxStyle: `lightGrey` | `grey`
 
-<Canvas>
-  <Story of={BoxStories.BoxStyle} />
-</Canvas>
+<Canvas of={BoxStories.BoxStyle} />
 
 ### dark
 
 > dark: `boolean`
 
-<Canvas>
-  <Story of={BoxStories.Dark} />
-</Canvas>
+<Canvas of={BoxStories.Dark} />
 
 ### border
 
 > `border`: `string` - \[`default`, `medium`, `bold`, `grey`, `disabled`, `darkenGrey`, `dark`, `success`, `danger`, `warning`, `notification`, `transparent`] or a custom border
 
-<Canvas>
-  <Story of={BoxStories.Border} />
-</Canvas>
+<Canvas of={BoxStories.Border} />
 
 ### radius
 
 > `radius`: `string` — \[`small`, `default`, `large`]
 
-<Canvas>
-  <Story of={BoxStories.Radius} />
-</Canvas>
+<Canvas of={BoxStories.Radius} />
 
 ### innerSpacing
 
 > `innerSpacing`: `string` — \[`spacing01`, `spacing02`, `spacing03`, `spacing04`, `spacing05`, `spacing06`, `spacing07`]
 
-<Canvas>
-  <Story of={BoxStories.InnerSpacing} />
-</Canvas>
+<Canvas of={BoxStories.InnerSpacing} />
 
 ### shadow
 
 > `shadow`: `string` — \[`shadow01`, `shadow02`, `shadow03`, `shadow04`]
 
-<Canvas>
-  <Story of={BoxStories.Shadow} />
-</Canvas>
+<Canvas of={BoxStories.Shadow} />
 
 ### color
 
 > `color`: `string` — GNUI as first looks for the value in `theme.colors` and if color doesn't exist there `color` will be used as is.
 
-<Canvas>
-  <Story of={BoxStories.Color} />
-</Canvas>
+<Canvas of={BoxStories.Color} />
 
 ### backgroundColor
 
 > `backgroundColor`: `string` — GNUI as first looks for the value in `theme.colors` and if color doesn't exist there `color` will be used as is.
 
-<Canvas>
-  <Story of={BoxStories.Background} />
-</Canvas>
+<Canvas of={BoxStories.Background} />

@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/blocks";
 import * as DatepickerStories from "./Datepicker.stories";
 
 <Meta of={DatepickerStories} />
@@ -15,6 +15,4 @@ type DatepickerProps = {
 };
 ```
 
-<Canvas>
-  <Story of={DatepickerStories.DatepickerDefault} />
-</Canvas>
+<Canvas of={DatepickerStories.DatepickerDefault} />

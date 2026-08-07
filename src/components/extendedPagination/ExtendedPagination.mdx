@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/blocks";
 import * as ExtendedPaginationStories from "./ExtendedPagination.stories";
 
 <Meta of={ExtendedPaginationStories} />
@@ -21,48 +21,32 @@ import * as ExtendedPaginationStories from "./ExtendedPagination.stories";
 
 ### first page
 
-<Canvas>
-  <Story of={ExtendedPaginationStories.FirstPage} />
-</Canvas>
+<Canvas of={ExtendedPaginationStories.FirstPage} />
 
 ### second page
 
-<Canvas>
-  <Story of={ExtendedPaginationStories.SecondPage} />
-</Canvas>
+<Canvas of={ExtendedPaginationStories.SecondPage} />
 
 ### middle
 
-<Canvas>
-  <Story of={ExtendedPaginationStories.Middle} />
-</Canvas>
+<Canvas of={ExtendedPaginationStories.Middle} />
 
 ### second to last page
 
-<Canvas>
-  <Story of={ExtendedPaginationStories.SecondToLastPage} />
-</Canvas>
+<Canvas of={ExtendedPaginationStories.SecondToLastPage} />
 
 ### last page
 
-<Canvas>
-  <Story of={ExtendedPaginationStories.LastPage} />
-</Canvas>
+<Canvas of={ExtendedPaginationStories.LastPage} />
 
 ### different edge cases in the middle of the pagination
 
-<Canvas>
-  <Story of={ExtendedPaginationStories.EdgeCases} />
-</Canvas>
+<Canvas of={ExtendedPaginationStories.EdgeCases} />
 
 ### short pagination
 
-<Canvas>
-  <Story of={ExtendedPaginationStories.Short} />
-</Canvas>
+<Canvas of={ExtendedPaginationStories.Short} />
 
 ## small
 
-<Canvas>
-  <Story of={ExtendedPaginationStories.Small} />
-</Canvas>
+<Canvas of={ExtendedPaginationStories.Small} />
