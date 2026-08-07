@@ -61,6 +61,7 @@
   "dependencies": {
     "@types/styled-system": "^5.1.22",
     "date-fns": "^2.30.0",
+    "form-data": "^4.0.4",
     "lodash.clonedeep": "^4.5.0",
     "polished": "^4.2.2",
     "react-content-loader": "^6.2.1",
