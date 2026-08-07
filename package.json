@@ -123,7 +123,6 @@
   "overrides": {
     "@babel/traverse": "~7.23.7",
     "minimist": "~1.2.8",
-    "shell-quote": "~1.7.3",
     "terser": "~4.8.1",
     "tmpl": "~1.0.5",
     "trim": "~0.0.3",
@@ -133,6 +132,9 @@
     "elliptic": "~6.5.4",
     "path-parse": "~1.0.7",
     "json5": "^1.0.2",
-    "decode-uri-component": "^0.2.1"
+    "decode-uri-component": "^0.2.1",
+    "npm-run-all": {
+      "shell-quote": "~1.10.0"
+    }
   }
 }
