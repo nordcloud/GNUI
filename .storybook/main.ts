@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react";
 
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.@(story|stories).@(ts|tsx)"],
+
   addons: [
     {
       name: "@storybook/addon-essentials",
@@ -11,6 +12,7 @@ const config: StorybookConfig = {
       },
     },
     "@storybook/addon-mdx-gfm",
+    "@chromatic-com/storybook",
   ],
 
   staticDirs: ["../public"],
@@ -25,7 +27,6 @@ const config: StorybookConfig = {
   },
 
   docs: {
-    autodocs: "tag",
     defaultName: "Docs",
   },
 
@@ -51,6 +52,10 @@ const config: StorybookConfig = {
     );
 
     return viteConfig;
+  },
+
+  typescript: {
+    reactDocgen: "react-docgen-typescript",
   },
 };
 
