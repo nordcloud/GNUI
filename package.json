@@ -61,7 +61,6 @@
   "dependencies": {
     "@types/styled-system": "^5.1.22",
     "date-fns": "^2.30.0",
-    "form-data": "^4.0.4",
     "lodash.clonedeep": "^4.5.0",
     "polished": "^4.2.2",
     "react-content-loader": "^6.2.1",
@@ -117,7 +116,7 @@
     "stylelint-processor-styled-components": "^1.10.0",
     "typescript": "^5.2.2",
     "vite": "^4.4.9",
-    "vitest": "^0.34.6"
+    "vitest": "^3.2.6"
   },
   "overrides": {
     "@babel/traverse": "~7.23.7",
