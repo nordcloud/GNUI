@@ -135,6 +135,7 @@
     "decode-uri-component": "^0.2.1",
     "npm-run-all": {
       "shell-quote": "~1.10.0"
-    }
+    },
+    "brace-expansion": "~2.1.4"
   }
 }
