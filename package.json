@@ -136,7 +136,6 @@
       "shell-quote": "~1.10.0"
     },
     "brace-expansion": "~2.1.4",
-    "postcss": "~8.5.23",
     "uuid": "~11.1.1"
   }
 }
