@@ -1,8 +1,6 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/blocks";
 import * as DashboardStories from "./Dashboard.stories";
 
 <Meta of={DashboardStories} />
 
-<Canvas>
-  <Story of={DashboardStories.Default} />
-</Canvas>
+<Canvas of={DashboardStories.Default} />

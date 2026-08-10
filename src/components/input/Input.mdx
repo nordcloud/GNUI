@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/blocks";
 import * as InputStories from "./Input.stories";
 
 <Meta of={InputStories} />
@@ -7,9 +7,7 @@ import * as InputStories from "./Input.stories";
 
 > Inputs type defaults to `text`.
 
-<Canvas>
-  <Story of={InputStories.InputDefault} />
-</Canvas>
+<Canvas of={InputStories.InputDefault} />
 
 ## Input properties
 
@@ -34,9 +32,7 @@ import * as InputStories from "./Input.stories";
 
 > `name`: `string`
 
-<Canvas>
-  <Story of={InputStories.Name} />
-</Canvas>
+<Canvas of={InputStories.Name} />
 
 ### type
 
@@ -44,9 +40,7 @@ import * as InputStories from "./Input.stories";
 
 For now it works good for two types: default `text` and `search`. The second one displays an icon before text. **TBC**
 
-<Canvas>
-  <Story of={InputStories.Type} />
-</Canvas>
+<Canvas of={InputStories.Type} />
 
 ### placeholder
 
@@ -58,72 +52,50 @@ Placeholder text inside input element
 
 > `disabled`: `boolean`
 
-<Canvas>
-  <Story of={InputStories.Disabled} />
-</Canvas>
+<Canvas of={InputStories.Disabled} />
 
 ### required
 
 > `required`: `boolean`
 
-<Canvas>
-  <Story of={InputStories.Required} />
-</Canvas>
+<Canvas of={InputStories.Required} />
 
 ### small
 
-<Canvas>
-  <Story of={InputStories.Small} />
-</Canvas>
+<Canvas of={InputStories.Small} />
 
 ### upload
 
-<Canvas>
-  <Story of={InputStories.UploadDefault} />
-</Canvas>
+<Canvas of={InputStories.UploadDefault} />
 
 ### icon
 
-<Canvas>
-  <Story of={InputStories.Icon} />
-</Canvas>
+<Canvas of={InputStories.Icon} />
 
 ### status
 
 > `status`: `success | error`
 
-<Canvas>
-  <Story of={InputStories.Status} />
-</Canvas>
+<Canvas of={InputStories.Status} />
 
 ## Label and description
 
 > You can add `Label` before `Input` and `Description` after it. Labels name is what exactly will be displayed as a text above `Input`.
 
-<Canvas>
-  <Story of={InputStories.LabelDescription} />
-</Canvas>
+<Canvas of={InputStories.LabelDescription} />
 
 ### clear
 
-<Canvas>
-  <Story of={InputStories.Clear} />
-</Canvas>
+<Canvas of={InputStories.Clear} />
 
 ### password
 
-<Canvas>
-  <Story of={InputStories.Password} />
-</Canvas>
+<Canvas of={InputStories.Password} />
 
 ### search
 
-<Canvas>
-  <Story of={InputStories.Search} />
-</Canvas>
+<Canvas of={InputStories.Search} />
 
 ### date
 
-<Canvas>
-  <Story of={InputStories.Date} />
-</Canvas>
+<Canvas of={InputStories.Date} />

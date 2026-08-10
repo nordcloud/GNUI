@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/blocks";
 import * as ListStories from "./List.stories";
 
 <Meta of={ListStories} />
@@ -21,36 +21,26 @@ import * as ListStories from "./List.stories";
 
 > Basic unstyled list. Takes a string or number array
 
-<Canvas>
-  <Story of={ListStories.Default} />
-</Canvas>
+<Canvas of={ListStories.Default} />
 
 ### spacing
 
 > Default list with custom spacing
 
-<Canvas>
-  <Story of={ListStories.Spacing} />
-</Canvas>
+<Canvas of={ListStories.Spacing} />
 
 ### horizontal
 
 > Horizontal list. Takes a string or number array
 
-<Canvas>
-  <Story of={ListStories.Horizontal} />
-</Canvas>
+<Canvas of={ListStories.Horizontal} />
 
 ### unordered
 
-<Canvas>
-  <Story of={ListStories.Unordered} />
-</Canvas>
+<Canvas of={ListStories.Unordered} />
 
 ### hasDescription
 
 > List with description.
 
-<Canvas>
-  <Story of={ListStories.HasDescription} />
-</Canvas>
+<Canvas of={ListStories.HasDescription} />

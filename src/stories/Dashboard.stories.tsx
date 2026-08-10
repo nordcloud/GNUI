@@ -95,7 +95,6 @@ export const Default: StoryObj = {
           <Visible md>
             <Spacer height="2rem" />
           </Visible>
-          3
         </Col>
       </Row>
     </Box>

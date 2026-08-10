@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/blocks";
 import * as SpinnerStories from "./Spinner.stories";
 
 <Meta of={SpinnerStories} />
@@ -17,32 +17,22 @@ import * as SpinnerStories from "./Spinner.stories";
 
 ## Default
 
-<Canvas>
-  <Story of={SpinnerStories.Default} />
-</Canvas>
+<Canvas of={SpinnerStories.Default} />
 
 ## Ninja
 
-<Canvas>
-  <Story of={SpinnerStories.Ninja} />
-</Canvas>
+<Canvas of={SpinnerStories.Ninja} />
 
 ## Color
 
 > `color`: `string` — **optional**: `success` | `danger` | `warning` | `notification` | `white`
 
-<Canvas>
-  <Story of={SpinnerStories.Color} />
-</Canvas>
+<Canvas of={SpinnerStories.Color} />
 
 ## Size
 
 > `size`: `string` — **optional**: `sm` | `md` | `lg` | `xl` | `xxl`
 
-<Canvas>
-  <Story of={SpinnerStories.Size} />
-</Canvas>
+<Canvas of={SpinnerStories.Size} />
 
-<Canvas>
-  <Story of={SpinnerStories.SizeNinja} />
-</Canvas>
+<Canvas of={SpinnerStories.SizeNinja} />

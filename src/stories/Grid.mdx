@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/blocks";
 import * as GridStories from "./Grid.stories";
 
 <Meta of={GridStories} />
@@ -48,9 +48,7 @@ Update `package.json`:
 
 ## Basic usage
 
-<Canvas>
-  <Story of={GridStories.JustifyContent} />
-</Canvas>
+<Canvas of={GridStories.JustifyContent} />
 
 We use [React Awesome Styled Grid](https://awesome-styled-grid.netlify.app/usage)
 

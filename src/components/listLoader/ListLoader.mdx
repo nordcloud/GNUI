@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/blocks";
 import * as ListLoaderStories from "./ListLoader.stories";
 
 <Meta of={ListLoaderStories} />
@@ -16,17 +16,13 @@ Basing on react-content-loader: https://github.com/danilowoz/react-content-loade
 
 ## Default
 
-<Canvas>
-  <Story of={ListLoaderStories.Default} />
-</Canvas>
+<Canvas of={ListLoaderStories.Default} />
 
 ## itemsNumber
 
 > `itemsNumber`: `number` — **optional**
 
-<Canvas>
-  <Story of={ListLoaderStories.ItemsNumber} />
-</Canvas>
+<Canvas of={ListLoaderStories.ItemsNumber} />
 
 ## Custom row format
 
@@ -34,6 +30,4 @@ Basing on react-content-loader: https://github.com/danilowoz/react-content-loade
 
 See other examples of row format definitions: https://github.com/danilowoz/react-content-loader
 
-<Canvas>
-  <Story of={ListLoaderStories.Children} />
-</Canvas>
+<Canvas of={ListLoaderStories.Children} />

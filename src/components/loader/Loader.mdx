@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/blocks";
 import * as LoaderStories from "./Loader.stories";
 
 <Meta of={LoaderStories} />
@@ -17,30 +17,22 @@ import * as LoaderStories from "./Loader.stories";
 
 > By default Loader position is: top, center
 
-<Canvas>
-  <Story of={LoaderStories.Default} />
-</Canvas>
+<Canvas of={LoaderStories.Default} />
 
 ## position
 
 > `position`: `top-left` | `top-right` | `bottom-right` | `bottom-center` | `bottom-left` — **optional**
 
-<Canvas>
-  <Story of={LoaderStories.Position} />
-</Canvas>
+<Canvas of={LoaderStories.Position} />
 
 ## inContent
 
 > `inContent`: `boolean` — **optional**
 
-<Canvas>
-  <Story of={LoaderStories.InContent} />
-</Canvas>
+<Canvas of={LoaderStories.InContent} />
 
 ## isBackground
 
 > `isBackground`: `boolean` — **optional**
 
-<Canvas>
-  <Story of={LoaderStories.IsBackground} />
-</Canvas>
+<Canvas of={LoaderStories.IsBackground} />

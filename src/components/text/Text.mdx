@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/blocks";
 import * as TextStories from "./Text.stories";
 
 <Meta of={TextStories} />
@@ -23,62 +23,46 @@ import * as TextStories from "./Text.stories";
 |     nowrap |  false   | boolean                                                                                               |                                                                                                                                                             |
 |    isTitle |  false   | boolean                                                                                               |                                                                                                                                                             |
 
-<Canvas>
-  <Story of={TextStories.Simple} />
-</Canvas>
+<Canvas of={TextStories.Simple} />
 
 ### size
 
 > `size`: `string` — \["xs" | "sm" | "md" | "lg" | "xl" | "xxl"]
 
-<Canvas>
-  <Story of={TextStories.Size} />
-</Canvas>
+<Canvas of={TextStories.Size} />
 
 ### tag
 
 > `tag`: `string` — `Text` can can be rendered as any other HTML tag instead of `p` (i.e. can be rendered as a `span`). Check this in your dev-tools (<kbd>CTRL</kbd> + <kbd>C</kbd> in Chrome). Uses `as` prop from `styled-components` under the hood.
 
-<Canvas>
-  <Story of={TextStories.Tag} />
-</Canvas>
+<Canvas of={TextStories.Tag} />
 
 ### weight
 
 > `weight`: `string` - \["regular" | "medium" | "bold"]
 
-<Canvas>
-  <Story of={TextStories.Weight} />
-</Canvas>
+<Canvas of={TextStories.Weight} />
 
 ### color
 
 > `color`: `string` - GNUI as first looks for the value in `theme.colors` and if color doesn't exist there `color` will be used as is.
 
-<Canvas>
-  <Story of={TextStories.Color} />
-</Canvas>
+<Canvas of={TextStories.Color} />
 
 ### textStyle
 
 > `textStyle`: `string` - \["normal" | "italic"]
 
-<Canvas>
-  <Story of={TextStories.TextStyle} />
-</Canvas>
+<Canvas of={TextStories.TextStyle} />
 
 ### align
 
 > `align`: `boolean`
 
-<Canvas>
-  <Story of={TextStories.Align} />
-</Canvas>
+<Canvas of={TextStories.Align} />
 
 ### isTitle
 
 > `isTitle`: `boolean`
 
-<Canvas>
-  <Story of={TextStories.IsTitle} />
-</Canvas>
+<Canvas of={TextStories.IsTitle} />

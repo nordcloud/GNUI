@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/blocks";
 import * as PageTitleStories from "./PageTitle.stories";
 
 <Meta of={PageTitleStories} />
@@ -11,9 +11,7 @@ import * as PageTitleStories from "./PageTitle.stories";
 | ---------: | :------: | :----- | :---------- |
 |      title |   true   | string |             |
 
-<Canvas>
-  <Story of={PageTitleStories.Pagetitle} />
-</Canvas>
+<Canvas of={PageTitleStories.Pagetitle} />
 
 # Page Title with Breadcrumbs
 
@@ -31,6 +29,4 @@ import * as PageTitleStories from "./PageTitle.stories";
 |      label |   true   | string |             |
 |        uri |   true   | string |             |
 
-<Canvas>
-  <Story of={PageTitleStories.Breadcrumbs} />
-</Canvas>
+<Canvas of={PageTitleStories.Breadcrumbs} />
