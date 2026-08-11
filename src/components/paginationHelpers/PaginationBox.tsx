@@ -44,7 +44,7 @@ export const StyledPaginationBox = styled.nav<Props>`
     margin: 0;
   }
 
-  ${bp("lg")`
+  ${bp.lg`
     .center-absolutely {
       position: absolute;
       left: 50%;

@@ -1,4 +1,3 @@
-import { createBreakpoint, createMap } from "styled-components-breakpoint";
 import {
   borders,
   breakpoints,
@@ -13,6 +12,7 @@ import {
   typography,
   zindex,
 } from "./config";
+
 
 const theme = {
   // Typograhpy
@@ -61,7 +61,8 @@ const theme = {
   spacing,
 } as const;
 
-export const bp = createBreakpoint(breakpoints);
-export const map = createMap(breakpoints);
+
 
 export default theme;
+
+export {bp} from "./media";
