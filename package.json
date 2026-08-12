@@ -72,7 +72,7 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.7",
-    "@nordcloud/eslint-config-pat": "^11.1.0",
+    "@nordcloud/eslint-config-pat": "^11.2.0",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@storybook/addon-essentials": "8.6.18",
@@ -82,6 +82,7 @@
     "@storybook/react": "8.6.18",
     "@storybook/react-vite": "8.6.18",
     "@storybook/theming": "8.6.18",
+    "@stylelint/postcss-css-in-js": "^0.38.0",
     "@testing-library/jest-dom": "^6.3.0",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^13.5.0",
