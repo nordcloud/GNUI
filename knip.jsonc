@@ -4,16 +4,11 @@
   "project": ["src/**/*.{ts,tsx,mdx}!", ".storybook/**/*.{js,ts}"],
   "ignoreDependencies": [
     // False-positives
-    "@typescript-eslint/parser",
-    "@storybook/addon-docs",
-    "@storybook/addon-viewport",
-    "@storybook/blocks",
     "lodash",
     "lodash.clonedeep",
     "@types/lodash.clonedeep",
+    "eslint-plugin-storybook",
     // Can be listed explicitly in the future
-    "@types/eslint",
-    "@vitejs/plugin-react",
     "babel-plugin-styled-components"
   ],
   "rules": {
