@@ -2,7 +2,9 @@ import { css } from "styled-components";
 import { breakpoints } from "./config";
 
 type BreakpointKey = keyof typeof breakpoints;
-type MediaFunction = (...argument: Parameters<typeof css>) => ReturnType<typeof css>;
+type MediaFunction = (
+  ...argument: Parameters<typeof css>
+) => ReturnType<typeof css>;
 
 export const bp = (Object.keys(breakpoints) as BreakpointKey[]).reduce(
   (acc, key) => {

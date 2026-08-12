@@ -13,7 +13,6 @@ import {
   zindex,
 } from "./config";
 
-
 const theme = {
   // Typograhpy
   fonts: typography.fonts,
@@ -61,8 +60,6 @@ const theme = {
   spacing,
 } as const;
 
-
-
 export default theme;
 
-export {bp} from "./media";
+export { bp } from "./media";
