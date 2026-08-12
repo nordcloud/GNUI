@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import { addDays, previousMonday } from "date-fns";
 import { Spacer } from "../spacer";
 import { TimeRangePicker } from "./TimeRangePicker";

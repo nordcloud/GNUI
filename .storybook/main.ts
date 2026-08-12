@@ -7,12 +7,6 @@ const config: StorybookConfig = {
 
   addons: [
     {
-      name: "@storybook/addon-essentials",
-      options: {
-        backgrounds: false,
-      },
-    },
-    {
       name: "@storybook/addon-docs",
       options: {
         mdxPluginOptions: { mdxCompileOptions: { remarkPlugins: [remarkGfm] } },
@@ -62,6 +56,10 @@ const config: StorybookConfig = {
 
   typescript: {
     reactDocgen: "react-docgen-typescript",
+  },
+
+  features: {
+    backgrounds: false,
   },
 };
 

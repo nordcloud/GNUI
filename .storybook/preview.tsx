@@ -1,13 +1,13 @@
-import { DocsPage, DocsContainer } from "@storybook/addon-docs";
-import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
-import { Preview } from "@storybook/react";
+import { DocsPage, DocsContainer } from "@storybook/addon-docs/blocks";
+import { INITIAL_VIEWPORTS } from "storybook/viewport";
+import { Preview } from "@storybook/react-vite";
 import { GnuiContainer } from "../src/components/container";
 import { SetGlobalStyle } from "../src/theme/globals";
 
 const preview: Preview = {
   parameters: {
     viewport: {
-      viewports: INITIAL_VIEWPORTS, // newViewports would be an ViewportMap. (see below for examples)
+      options: INITIAL_VIEWPORTS,
     },
 
     options: {
