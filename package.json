@@ -75,7 +75,6 @@
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@storybook/addon-essentials": "8.6.18",
-    "@storybook/addon-mdx-gfm": "8.6.18",
     "@storybook/blocks": "8.6.18",
     "@storybook/manager-api": "^8.6.18",
     "@storybook/react": "8.6.18",
@@ -108,6 +107,7 @@
     "react-awesome-styled-grid": "^3.1.4",
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18.2.0",
+    "remark-gfm": "^4.0.1",
     "rollup": "^3.29.4",
     "rollup-plugin-typescript2": "^0.36.0",
     "storybook": "8.6.18",
@@ -116,7 +116,7 @@
     "stylelint-config-recommended": "^6.0.0",
     "stylelint-config-styled-components": "^0.1.1",
     "typescript": "^5.2.2",
-    "vite": "^7.3.6",
+    "vite": "^6.4.3",
     "vitest": "^3.2.6"
   },
   "overrides": {
