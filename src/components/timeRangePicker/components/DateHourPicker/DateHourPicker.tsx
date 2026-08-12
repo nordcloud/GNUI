@@ -9,8 +9,8 @@ import { DEFAULT_TIME_RANGE_OPTIONS } from "../constants";
 import { Row, IconButton, DatepickerContainer } from "../styles";
 import { DatesPickerProps, DailyCount } from "../types";
 import {
-  getDateWithTime,
   getDateOptions,
+  getDateHourInterval,
   getInitSelectedTimeRange,
   getMonday,
   getTimeRangeDate,
@@ -59,6 +59,10 @@ export function DateHourPicker({
   }, []);
 
   const calendarWrapper = useRef<HTMLDivElement>(null);
+  const isInitialMount = useRef(true);
+  const lastSubmittedInterval = useRef<{ end: number; start: number } | null>(
+    null
+  );
 
   const {
     isOpen: isCalendarActive,
@@ -153,10 +157,38 @@ export function DateHourPicker({
   };
 
   const submitDateHour = (date: Date, timeRange: TimeRangeOption) => {
-    const timeStart = getDateWithTime(date, timeRange.start);
-    const timeEnd = getDateWithTime(date, timeRange.end);
-    onChange({ start: timeStart, end: timeEnd });
+    const interval = getDateHourInterval(date, timeRange);
+    lastSubmittedInterval.current = {
+      start: new Date(interval.start).getTime(),
+      end: new Date(interval.end).getTime(),
+    };
+    onChange(interval);
   };
+
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+
+    const initStart = new Date(initTimeRange.start).getTime();
+    const initEnd = new Date(initTimeRange.end).getTime();
+    const lastSubmitted = lastSubmittedInterval.current;
+
+    // Parent echoed our own Apply — keep the UI exactly as the user left it.
+    if (lastSubmitted?.start === initStart && lastSubmitted?.end === initEnd) {
+      return;
+    }
+
+    const nextDate = getTimeRangeDate(initTimeRange, "Hours");
+    const nextTimeRange = getInitSelectedTimeRange(initTimeRange);
+    const initMonday = getMonday(initTimeRange.start);
+
+    setSelectedDate(nextDate);
+    setSelectedTimeRange(nextTimeRange);
+    setDateOptions(getDateOptions(initMonday, weekCounts));
+    updateTimeRangeOptions(nextDate);
+  }, [initTimeRange.start, initTimeRange.end]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>

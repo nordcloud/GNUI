@@ -59,6 +59,31 @@ export const TimerangepickerOfHours: StoryObj<typeof TimeRangePicker> = {
   name: "timerangepicker of hours ",
 };
 
+function TimerangepickerOfHoursWithCustomInitComponent() {
+  const initValue = {
+    start: new Date(new Date().setHours(17, 0, 0, 0)),
+    end: new Date(new Date().setHours(18, 0, 0, 0)),
+  };
+  const [value, setValue] = useState<TimeRangeValue>(initValue);
+
+  return (
+    <>
+      <TimeRangePicker initTimeRange={initValue} onChange={setValue} />
+      <Spacer height="20rem" />
+      <div id="result-hours-custom-init">
+        Current Value:{JSON.stringify(value)}
+      </div>
+    </>
+  );
+}
+
+export const TimerangepickerOfHoursWithCustomInit: StoryObj<
+  typeof TimeRangePicker
+> = {
+  render: () => <TimerangepickerOfHoursWithCustomInitComponent />,
+  name: "timerangepicker of hours with custom init",
+};
+
 function TimerangepickerOfHoursWithKeepSelectedWeekdayComponent() {
   const [value, setValue] = useState<TimeRangeValue>();
 
