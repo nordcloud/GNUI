@@ -1,3 +1,4 @@
+import remarkGfm from "remark-gfm";
 import type { StorybookConfig } from "@storybook/react-vite";
 import react from "@vitejs/plugin-react";
 
@@ -6,12 +7,11 @@ const config: StorybookConfig = {
 
   addons: [
     {
-      name: "@storybook/addon-essentials",
+      name: "@storybook/addon-docs",
       options: {
-        backgrounds: false,
+        mdxPluginOptions: { mdxCompileOptions: { remarkPlugins: [remarkGfm] } },
       },
     },
-    "@storybook/addon-mdx-gfm",
     "@chromatic-com/storybook",
   ],
 
@@ -56,6 +56,10 @@ const config: StorybookConfig = {
 
   typescript: {
     reactDocgen: "react-docgen-typescript",
+  },
+
+  features: {
+    backgrounds: false,
   },
 };
 

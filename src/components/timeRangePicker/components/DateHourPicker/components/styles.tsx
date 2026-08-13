@@ -68,7 +68,8 @@ export const CountBar = styled.div<CountBarProps>`
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: ${({ height }) => `${height * 100}%`};
+  height: ${({ height }) =>
+    `${height * 100}%`}; /* stylelint-disable-line unit-no-unknown */
   background: ${theme.color.support.blue};
   border-radius: ${BORDER_RADIUS};
 `;

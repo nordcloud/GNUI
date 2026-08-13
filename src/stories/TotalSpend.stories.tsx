@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import { Box } from "../components/box";
 import { FlexContainer } from "../components/container";
 import { PieChart } from "../components/piechart";

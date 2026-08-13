@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { theme } from "../..";
 import { FlexContainer } from "../container";

@@ -1,5 +1,5 @@
 import { useState, ComponentProps } from "react";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import { Button } from "../button";
 import { GnuiContainer } from "../container";
 import { Spacer } from "../spacer";
