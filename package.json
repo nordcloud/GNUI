@@ -58,6 +58,9 @@
     "react-dom": ">=18.0.0",
     "styled-components": "^5.3.0"
   },
+  "comments": {
+    "dependencies": "@types/styled-system must stay in dependencies because it is part of our public exported types; moving it to devDependencies can make consumer-side props fall back to any."
+  },
   "dependencies": {
     "date-fns": "^2.30.0",
     "lodash.clonedeep": "^4.5.0",
