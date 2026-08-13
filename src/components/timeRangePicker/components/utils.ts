@@ -57,12 +57,7 @@ export const getDateHourInterval = (
   timeRange: Pick<TimeRangeOption, "end" | "start">
 ): Interval => {
   const timeStart = getDateWithTime(date, timeRange.start);
-  let timeEnd = getDateWithTime(date, timeRange.end);
-
-  // End clock time before start means the range crosses midnight.
-  if (timeRange.end < timeRange.start) {
-    timeEnd = addDays(timeEnd, 1);
-  }
+  const timeEnd = getDateWithTime(date, timeRange.end);
 
   return { start: timeStart, end: timeEnd };
 };

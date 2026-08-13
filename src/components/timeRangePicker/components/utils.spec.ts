@@ -25,15 +25,15 @@ describe("getTimeRangeDate", () => {
 });
 
 describe("getDateHourInterval", () => {
-  it("places end on the next day when end clock time is before start", () => {
+  it("keeps start and end on the selected date", () => {
     const date = new Date(2024, 0, 1);
     const interval = getDateHourInterval(date, {
       start: "12:00",
-      end: "02:14",
+      end: "18:00",
     });
 
     expect(interval.start).toStrictEqual(new Date(2024, 0, 1, 12, 0, 0));
-    expect(interval.end).toStrictEqual(new Date(2024, 0, 2, 2, 14, 0));
+    expect(interval.end).toStrictEqual(new Date(2024, 0, 1, 18, 0, 0));
   });
 });
 

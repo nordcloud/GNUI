@@ -23,10 +23,6 @@ export function HourSelector({
   onSelect,
 }: Props) {
   const isCustomTimeRange = selectedTimeRange.id === "custom";
-  const endMin =
-    selectedTimeRange.end >= selectedTimeRange.start
-      ? selectedTimeRange.start
-      : undefined;
 
   return (
     <>
@@ -65,10 +61,6 @@ export function HourSelector({
               onSelect({
                 ...selectedTimeRange,
                 id: "custom",
-                end:
-                  selectedTimeRange.end === "24:00"
-                    ? "00:00"
-                    : selectedTimeRange.end,
               })
             }
           />
@@ -82,9 +74,14 @@ export function HourSelector({
             value={selectedTimeRange.start}
             onChange={(event) => {
               event.persist();
+              const start = event.target.value;
+              const end =
+                selectedTimeRange.end < start ? start : selectedTimeRange.end;
+
               onSelect({
                 ...selectedTimeRange,
-                start: event.target.value,
+                start,
+                end,
               });
             }}
           />
@@ -94,12 +91,14 @@ export function HourSelector({
             type="time"
             name="time-range-end"
             value={selectedTimeRange.end}
-            min={endMin}
+            min={selectedTimeRange.start}
             onChange={(event) => {
               event.persist();
+              const end = event.target.value;
               onSelect({
                 ...selectedTimeRange,
-                end: event.target.value,
+                end:
+                  end < selectedTimeRange.start ? selectedTimeRange.start : end,
               });
             }}
           />
