@@ -114,8 +114,7 @@ export const getDate = (
   }
 };
 
-/** Converts an Interval to HH:mm strings used by the time picker UI. */
-export const intervalToTimeStrings = (
+export const convertIntervalToTimeStrings = (
   interval: Interval
 ): Pick<TimeRangeOption, "end" | "start"> => {
   let endDate = new Date(interval.end);
@@ -134,7 +133,7 @@ export const intervalToTimeStrings = (
 export const getInitSelectedTimeRange = (
   initRange: Interval
 ): TimeRangeOption => {
-  const { start, end } = intervalToTimeStrings(initRange);
+  const { start, end } = convertIntervalToTimeStrings(initRange);
   const matchingPreset = DEFAULT_TIME_RANGE_OPTIONS.find(
     (option) =>
       option.start === start &&

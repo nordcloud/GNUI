@@ -4,7 +4,7 @@ import {
   getInitSelectedTimeRange,
   getDateHourInterval,
   getTimeRangeDate,
-  intervalToTimeStrings,
+  convertIntervalToTimeStrings,
   isSameTimeRange,
 } from "./utils";
 
@@ -37,10 +37,10 @@ describe("getDateHourInterval", () => {
   });
 });
 
-describe("intervalToTimeStrings", () => {
+describe("convertIntervalToTimeStrings", () => {
   it("maps exclusive end timestamps to the inclusive minute", () => {
     expect(
-      intervalToTimeStrings({
+      convertIntervalToTimeStrings({
         start: new Date(2024, 0, 1, 10, 0, 0),
         end: new Date(2024, 0, 1, 22, 59, 59, 999),
       })
@@ -49,7 +49,7 @@ describe("intervalToTimeStrings", () => {
 
   it("keeps next-day midnight as editable 00:00", () => {
     expect(
-      intervalToTimeStrings({
+      convertIntervalToTimeStrings({
         start: new Date(2024, 0, 1, 18, 0, 0),
         end: new Date(2024, 0, 2, 0, 0, 0),
       })
