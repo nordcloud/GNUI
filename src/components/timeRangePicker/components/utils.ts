@@ -132,10 +132,7 @@ export const getInitSelectedTimeRange = (
   const matchingPreset = DEFAULT_TIME_RANGE_OPTIONS.find(
     (option) =>
       option.start === start &&
-      (option.end === end ||
-        (option.end === "24:00" &&
-          end === "00:00" &&
-          !isSameDay(initRange.start, initRange.end)))
+      (option.end === end || (option.end === "24:00" && end === "00:00"))
   );
 
   if (matchingPreset) {

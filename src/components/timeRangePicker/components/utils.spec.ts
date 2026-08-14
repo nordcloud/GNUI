@@ -83,13 +83,31 @@ describe("getInitSelectedTimeRange", () => {
     });
   });
 
-  it("keeps custom midnight editable when start does not match a preset", () => {
-    const initRange = {
-      start: new Date(2024, 0, 1, 12, 0, 0),
-      end: new Date(2024, 0, 2, 0, 0, 0),
-    };
+  it("recognizes the 18:00-24:00 preset when end is next-day midnight", () => {
+    expect(
+      getInitSelectedTimeRange({
+        start: new Date(2024, 0, 1, 18, 0, 0),
+        end: new Date(2024, 0, 2, 0, 0, 0),
+      })
+    ).toStrictEqual(DEFAULT_TIME_RANGE_OPTIONS[3]);
+  });
 
-    expect(getInitSelectedTimeRange(initRange)).toStrictEqual({
+  it("recognizes the 18:00-24:00 preset when end is same-day exclusive", () => {
+    expect(
+      getInitSelectedTimeRange({
+        start: new Date(2024, 0, 1, 18, 0, 0),
+        end: new Date(2024, 0, 1, 23, 59, 59, 999),
+      })
+    ).toStrictEqual(DEFAULT_TIME_RANGE_OPTIONS[3]);
+  });
+
+  it("keeps custom midnight when start does not match a preset", () => {
+    expect(
+      getInitSelectedTimeRange({
+        start: new Date(2024, 0, 1, 12, 0, 0),
+        end: new Date(2024, 0, 2, 0, 0, 0),
+      })
+    ).toStrictEqual({
       id: "custom",
       start: "12:00",
       end: "00:00",

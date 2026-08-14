@@ -4,6 +4,7 @@ import { FlexContainer } from "../../../../container";
 import { Label, Input } from "../../../../input";
 import { SelectButton } from "../../../../selectbutton";
 import { TimeRangeOption } from "../../../types";
+import { DEFAULT_TIME_RANGE_OPTIONS } from "../../constants";
 import { UnifiedMultipleSelect } from "../../styles";
 import { DailyCount } from "../../types";
 import { CustomTimeRangeSelector } from "./styles";
@@ -58,10 +59,7 @@ export function HourSelector({
             labelText="custom"
             isActive={isCustomTimeRange}
             onClick={() =>
-              onSelect({
-                ...selectedTimeRange,
-                id: "custom",
-              })
+              onSelect({ ...DEFAULT_TIME_RANGE_OPTIONS[1], id: "custom" })
             }
           />
         </UnifiedMultipleSelect>
