@@ -45,7 +45,7 @@ export const getDateString = (date: Date): string => {
   });
 };
 
-export const getDateWithTime = (date: Date, time: string): Date => {
+const getDateWithTime = (date: Date, time: string): Date => {
   const copiedDate = new Date(date);
   const timeNumbers = time.split(":").map((value) => parseInt(value, 10));
 
