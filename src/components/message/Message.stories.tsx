@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import theme from "../../theme";
 import { Button } from "../button";
 import { FlexContainer } from "../container";

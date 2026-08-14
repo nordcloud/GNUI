@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import { Col, Row, Hidden } from "react-awesome-styled-grid";
 import { Box } from "../components/box";
 import { Button } from "../components/button";

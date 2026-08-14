@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import { GnuiContainer, FlexContainer } from "../container";
 import { Button } from "./Button";
 

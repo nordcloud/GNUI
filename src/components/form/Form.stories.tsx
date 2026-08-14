@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import { Heading } from "../heading";
 import { Input, Label, Description } from "../input";
 import { Form, FormButtons, SubmitButton, CancelButton } from "./Form";

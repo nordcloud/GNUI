@@ -100,12 +100,12 @@ export const Inner = styled.div<InnerProps>`
           width: ${width};
         `
       : css`
-          ${bp("xs")`width: 100vw`};
-          ${bp("sm")`width: 50vw`};
-          ${bp("md")`width: 45vw`};
-          ${bp("lg")`width: 40vw`};
-          ${bp("xl")`width: 30rem`};
-          ${bp("xxl")`width: 30rem`};
+          ${bp.xs`width: 100vw`};
+          ${bp.sm`width: 50vw`};
+          ${bp.md`width: 45vw`};
+          ${bp.lg`width: 40vw`};
+          ${bp.xl`width: 30rem`};
+          ${bp.xxl`width: 30rem`};
         `}
   z-index: 2;
   overscroll-behavior: contain;

@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import theme, { bp } from "../../theme";
+import theme from "../../theme";
+import { breakpoints } from "../../theme/config";
 
 type Props = {
   sidebar?: boolean;
@@ -44,13 +45,13 @@ export const StyledPaginationBox = styled.nav<Props>`
     margin: 0;
   }
 
-  ${bp("lg")`
+  @media (min-width: ${breakpoints.lg}px) {
     .center-absolutely {
       position: absolute;
       left: 50%;
       transform: translate(-50%, 0);
     }
-  `}
+  }
 
   button {
     display: flex;
