@@ -62,6 +62,14 @@ export const getDateHourInterval = (
   return { start: timeStart, end: timeEnd };
 };
 
+const getPresetByHour = (date: Date): TimeRangeOption =>
+  DEFAULT_TIME_RANGE_OPTIONS[Math.floor(date.getHours() / 6)];
+
+export const getDefaultInitTimeRange = (): Interval => {
+  const now = new Date();
+  return getDateHourInterval(now, getPresetByHour(now));
+};
+
 export const getDateWithDays = (
   date: Date,
   rangeType: RANGE_TYPE,
@@ -128,6 +136,15 @@ export const convertIntervalToTimeStrings = (
 export const getInitSelectedTimeRange = (
   initRange: Interval
 ): TimeRangeOption => {
+  const startDate = new Date(initRange.start);
+  const endDate = new Date(initRange.end);
+
+  // Zero-duration init (legacy TimeRangePicker default) keeps the
+  // hour-bucket preset for backwards compatibility.
+  if (startDate.getTime() === endDate.getTime()) {
+    return getPresetByHour(startDate);
+  }
+
   const { start, end } = convertIntervalToTimeStrings(initRange);
   const matchingPreset = DEFAULT_TIME_RANGE_OPTIONS.find(
     (option) =>

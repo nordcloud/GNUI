@@ -3,6 +3,7 @@ import { DEFAULT_TIME_RANGE_OPTIONS } from "./constants";
 import {
   getInitSelectedTimeRange,
   getDateHourInterval,
+  getDefaultInitTimeRange,
   getTimeRangeDate,
   convertIntervalToTimeStrings,
   isSameTimeRange,
@@ -57,6 +58,16 @@ describe("convertIntervalToTimeStrings", () => {
   });
 });
 
+describe("getDefaultInitTimeRange", () => {
+  it("returns the hour-bucket preset interval for the current time", () => {
+    const initRange = getDefaultInitTimeRange();
+    const hours = new Date().getHours();
+    const expectedPreset = DEFAULT_TIME_RANGE_OPTIONS[Math.floor(hours / 6)];
+
+    expect(getInitSelectedTimeRange(initRange)).toStrictEqual(expectedPreset);
+  });
+});
+
 describe("getInitSelectedTimeRange", () => {
   it("returns the matching preset when init matches a default range", () => {
     const initRange = {
@@ -67,6 +78,17 @@ describe("getInitSelectedTimeRange", () => {
     expect(getInitSelectedTimeRange(initRange)).toStrictEqual(
       DEFAULT_TIME_RANGE_OPTIONS[2]
     );
+  });
+
+  it("falls back to the hour-bucket preset for zero-duration init", () => {
+    const now = new Date(2024, 0, 1, 10, 15, 0);
+
+    expect(
+      getInitSelectedTimeRange({
+        start: now,
+        end: now,
+      })
+    ).toStrictEqual(DEFAULT_TIME_RANGE_OPTIONS[1]);
   });
 
   it("returns a custom time range when init does not match a preset", () => {
