@@ -19,6 +19,15 @@ import {
 } from "../utils";
 import { DateSelector, HourSelector } from "./components";
 
+let lastAppliedCustomTimeRange: TimeRangeOption | null = null;
+
+const toCustomTimeRange = (timeRange: TimeRangeOption): TimeRangeOption => ({
+  ...timeRange,
+  id: "custom",
+  // HTML time inputs only accept 00:00-23:59.
+  end: timeRange.end === "24:00" ? "23:59" : timeRange.end,
+});
+
 type Props = DatesPickerProps & {
   weekCounts?: DailyCount[];
   countsLoading?: boolean;
@@ -44,9 +53,15 @@ export function DateHourPicker({
   const [timeRangeOptions, setTimeRangeOptions] = useState(
     DEFAULT_TIME_RANGE_OPTIONS
   );
-  const [selectedTimeRange, setSelectedTimeRange] = useState(
-    getInitSelectedTimeRange(initTimeRange)
-  );
+  const [selectedTimeRange, setSelectedTimeRange] = useState(() => {
+    const initialTimeRange = getInitSelectedTimeRange(initTimeRange);
+
+    if (initialTimeRange.id === "custom") {
+      lastAppliedCustomTimeRange = initialTimeRange;
+    }
+
+    return initialTimeRange;
+  });
 
   useEffect(() => {
     if (
@@ -146,10 +161,24 @@ export function DateHourPicker({
     timeRange: TimeRangeOption,
     shouldSubmit = false
   ) => {
+    if (timeRange.id === "custom" && shouldSubmit) {
+      lastAppliedCustomTimeRange = timeRange;
+    }
+
     setSelectedTimeRange(timeRange);
     if (shouldSubmit) {
       submitDateHour(selectedDate, timeRange);
     }
+  };
+
+  const handleCustomSelect = () => {
+    if (selectedTimeRange.id === "custom") {
+      return;
+    }
+
+    handleHourChange(
+      lastAppliedCustomTimeRange ?? toCustomTimeRange(selectedTimeRange)
+    );
   };
 
   const submitDateHour = (date: Date, timeRange: TimeRangeOption) => {
@@ -204,6 +233,7 @@ export function DateHourPicker({
           selectedTimeRange={selectedTimeRange}
           weekCounts={weekCounts}
           onSelect={handleHourChange}
+          onCustomSelect={handleCustomSelect}
         />
       </Row>
     </>

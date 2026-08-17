@@ -4,7 +4,6 @@ import { FlexContainer } from "../../../../container";
 import { Label, Input } from "../../../../input";
 import { SelectButton } from "../../../../selectbutton";
 import { TimeRangeOption } from "../../../types";
-import { DEFAULT_TIME_RANGE_OPTIONS } from "../../constants";
 import { UnifiedMultipleSelect } from "../../styles";
 import { DailyCount } from "../../types";
 import { CustomTimeRangeSelector } from "./styles";
@@ -15,6 +14,7 @@ type Props = {
   selectedTimeRange: TimeRangeOption;
   weekCounts: DailyCount[] | undefined;
   onSelect: (timeRange: TimeRangeOption, shouldSubmit?: boolean) => void;
+  onCustomSelect: () => void;
 };
 
 export function HourSelector({
@@ -22,6 +22,7 @@ export function HourSelector({
   selectedTimeRange,
   weekCounts,
   onSelect,
+  onCustomSelect,
 }: Props) {
   const isCustomTimeRange = selectedTimeRange.id === "custom";
 
@@ -58,9 +59,7 @@ export function HourSelector({
             value="custom"
             labelText="custom"
             isActive={isCustomTimeRange}
-            onClick={() =>
-              onSelect({ ...DEFAULT_TIME_RANGE_OPTIONS[1], id: "custom" })
-            }
+            onClick={onCustomSelect}
           />
         </UnifiedMultipleSelect>
         <CustomTimeRangeSelector isVisible={isCustomTimeRange}>
