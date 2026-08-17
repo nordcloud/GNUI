@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Meta, StoryObj } from "@storybook/react-vite";
 import { addDays, previousMonday } from "date-fns";
 import { Spacer } from "../spacer";
+import { getDefaultInitTimeRange } from "./components/utils";
 import { TimeRangePicker } from "./TimeRangePicker";
 
 const meta: Meta<typeof TimeRangePicker> = {
@@ -43,11 +44,12 @@ export const TimerangepickerOfDays: StoryObj<typeof TimeRangePicker> = {
 };
 
 function TimerangepickerOfHoursComponent() {
-  const [value, setValue] = useState<TimeRangeValue>();
+  const initValue = getDefaultInitTimeRange();
+  const [value, setValue] = useState<TimeRangeValue>(initValue);
 
   return (
     <>
-      <TimeRangePicker onChange={setValue} />
+      <TimeRangePicker initTimeRange={initValue} onChange={setValue} />
       <Spacer height="20rem" />
       <div id="result-hours">Current Value:{JSON.stringify(value)}</div>
     </>
@@ -85,11 +87,16 @@ export const TimerangepickerOfHoursWithCustomInit: StoryObj<
 };
 
 function TimerangepickerOfHoursWithKeepSelectedWeekdayComponent() {
-  const [value, setValue] = useState<TimeRangeValue>();
+  const initValue = getDefaultInitTimeRange();
+  const [value, setValue] = useState<TimeRangeValue>(initValue);
 
   return (
     <>
-      <TimeRangePicker keepSelectedWeekday onChange={setValue} />
+      <TimeRangePicker
+        keepSelectedWeekday
+        initTimeRange={initValue}
+        onChange={setValue}
+      />
       <Spacer height="20rem" />
       <div id="result-hours">Current Value:{JSON.stringify(value)}</div>
     </>
@@ -104,12 +111,14 @@ export const TimerangepickerOfHoursWithKeepSelectedWeekday: StoryObj<
 };
 
 function TimerangepickerOfHoursWithHistogramComponent() {
-  const [value, setValue] = useState<TimeRangeValue>();
+  const initValue = getDefaultInitTimeRange();
+  const [value, setValue] = useState<TimeRangeValue>(initValue);
   const monday = previousMonday(new Date());
 
   return (
     <>
       <TimeRangePicker
+        initTimeRange={initValue}
         weekCounts={[
           {
             date: monday,
