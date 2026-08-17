@@ -17,6 +17,43 @@ type Props = {
   onCustomSelect: () => void;
 };
 
+const END_BEFORE_START_MESSAGE = "End time must be at or after start time.";
+const START_AFTER_END_MESSAGE = "Start time must be at or before end time.";
+
+const isValidCustomTimeRange = (start: string, end: string): boolean =>
+  start !== "" && end !== "" && end >= start;
+
+const setTimeInputValidity = (
+  input: HTMLInputElement,
+  start: string,
+  end: string
+) => {
+  if (!input.value) {
+    input.setCustomValidity("Please enter a time.");
+    return;
+  }
+
+  if (start && end && end < start) {
+    input.setCustomValidity(
+      input.name === "time-range-start"
+        ? START_AFTER_END_MESSAGE
+        : END_BEFORE_START_MESSAGE
+    );
+    return;
+  }
+
+  input.setCustomValidity("");
+};
+
+const reportTimeInputValidity = (
+  input: HTMLInputElement,
+  start: string,
+  end: string
+) => {
+  setTimeInputValidity(input, start, end);
+  input.reportValidity();
+};
+
 export function HourSelector({
   timeRangeOptions,
   selectedTimeRange,
@@ -25,6 +62,10 @@ export function HourSelector({
   onCustomSelect,
 }: Props) {
   const isCustomTimeRange = selectedTimeRange.id === "custom";
+  const isCustomRangeValid = isValidCustomTimeRange(
+    selectedTimeRange.start,
+    selectedTimeRange.end
+  );
 
   return (
     <>
@@ -69,17 +110,30 @@ export function HourSelector({
             type="time"
             name="time-range-start"
             value={selectedTimeRange.start}
+            onBlur={(event) =>
+              reportTimeInputValidity(
+                event.currentTarget,
+                selectedTimeRange.start,
+                selectedTimeRange.end
+              )
+            }
             onChange={(event) => {
-              event.persist();
               const start = event.target.value;
-              const end =
-                selectedTimeRange.end < start ? start : selectedTimeRange.end;
 
               onSelect({
                 ...selectedTimeRange,
                 start,
-                end,
               });
+
+              if (!isValidCustomTimeRange(start, selectedTimeRange.end)) {
+                reportTimeInputValidity(
+                  event.currentTarget,
+                  start,
+                  selectedTimeRange.end
+                );
+              } else {
+                event.currentTarget.setCustomValidity("");
+              }
             }}
           />
           <Label name="To" htmlFor="time-range-end" />
@@ -88,20 +142,36 @@ export function HourSelector({
             type="time"
             name="time-range-end"
             value={selectedTimeRange.end}
-            min={selectedTimeRange.start}
+            onBlur={(event) =>
+              reportTimeInputValidity(
+                event.currentTarget,
+                selectedTimeRange.start,
+                selectedTimeRange.end
+              )
+            }
             onChange={(event) => {
-              event.persist();
               const end = event.target.value;
+
               onSelect({
                 ...selectedTimeRange,
-                end:
-                  end < selectedTimeRange.start ? selectedTimeRange.start : end,
+                end,
               });
+
+              if (!isValidCustomTimeRange(selectedTimeRange.start, end)) {
+                reportTimeInputValidity(
+                  event.currentTarget,
+                  selectedTimeRange.start,
+                  end
+                );
+              } else {
+                event.currentTarget.setCustomValidity("");
+              }
             }}
           />
           <Button
             severity="high"
             size="sm"
+            disabled={!isCustomRangeValid}
             onClick={() => onSelect(selectedTimeRange, true)}
           >
             Apply
