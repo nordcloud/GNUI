@@ -17,42 +17,8 @@ type Props = {
   onCustomSelect: () => void;
 };
 
-const END_BEFORE_START_MESSAGE = "End time must be at or after start time.";
-const START_AFTER_END_MESSAGE = "Start time must be at or before end time.";
-
 const isValidCustomTimeRange = (start: string, end: string): boolean =>
   start !== "" && end !== "" && end >= start;
-
-const setTimeInputValidity = (
-  input: HTMLInputElement,
-  start: string,
-  end: string
-) => {
-  if (!input.value) {
-    input.setCustomValidity("Please enter a time.");
-    return;
-  }
-
-  if (start && end && end < start) {
-    input.setCustomValidity(
-      input.name === "time-range-start"
-        ? START_AFTER_END_MESSAGE
-        : END_BEFORE_START_MESSAGE
-    );
-    return;
-  }
-
-  input.setCustomValidity("");
-};
-
-const reportTimeInputValidity = (
-  input: HTMLInputElement,
-  start: string,
-  end: string
-) => {
-  setTimeInputValidity(input, start, end);
-  input.reportValidity();
-};
 
 export function HourSelector({
   timeRangeOptions,
@@ -106,17 +72,12 @@ export function HourSelector({
         <CustomTimeRangeSelector isVisible={isCustomTimeRange}>
           <Label name="From" htmlFor="time-range-start" />
           <Input
+            required
             id="time-range-start"
             type="time"
             name="time-range-start"
             value={selectedTimeRange.start}
-            onBlur={(event) =>
-              reportTimeInputValidity(
-                event.currentTarget,
-                selectedTimeRange.start,
-                selectedTimeRange.end
-              )
-            }
+            max={selectedTimeRange.end || undefined}
             onChange={(event) => {
               const start = event.target.value;
 
@@ -124,31 +85,16 @@ export function HourSelector({
                 ...selectedTimeRange,
                 start,
               });
-
-              if (!isValidCustomTimeRange(start, selectedTimeRange.end)) {
-                reportTimeInputValidity(
-                  event.currentTarget,
-                  start,
-                  selectedTimeRange.end
-                );
-              } else {
-                event.currentTarget.setCustomValidity("");
-              }
             }}
           />
           <Label name="To" htmlFor="time-range-end" />
           <Input
+            required
             id="time-range-end"
             type="time"
             name="time-range-end"
             value={selectedTimeRange.end}
-            onBlur={(event) =>
-              reportTimeInputValidity(
-                event.currentTarget,
-                selectedTimeRange.start,
-                selectedTimeRange.end
-              )
-            }
+            min={selectedTimeRange.start || undefined}
             onChange={(event) => {
               const end = event.target.value;
 
@@ -156,16 +102,6 @@ export function HourSelector({
                 ...selectedTimeRange,
                 end,
               });
-
-              if (!isValidCustomTimeRange(selectedTimeRange.start, end)) {
-                reportTimeInputValidity(
-                  event.currentTarget,
-                  selectedTimeRange.start,
-                  end
-                );
-              } else {
-                event.currentTarget.setCustomValidity("");
-              }
             }}
           />
           <Button
