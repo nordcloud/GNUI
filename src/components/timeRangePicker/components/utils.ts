@@ -136,15 +136,6 @@ export const convertIntervalToTimeStrings = (
 export const getInitSelectedTimeRange = (
   initRange: Interval
 ): TimeRangeOption => {
-  const startDate = new Date(initRange.start);
-  const endDate = new Date(initRange.end);
-
-  // Zero-duration init (legacy TimeRangePicker default) keeps the
-  // hour-bucket preset for backwards compatibility.
-  if (startDate.getTime() === endDate.getTime()) {
-    return getPresetByHour(startDate);
-  }
-
   const { start, end } = convertIntervalToTimeStrings(initRange);
   const matchingPreset = DEFAULT_TIME_RANGE_OPTIONS.find(
     (option) =>

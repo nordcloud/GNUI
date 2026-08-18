@@ -80,17 +80,6 @@ describe("getInitSelectedTimeRange", () => {
     );
   });
 
-  it("falls back to the hour-bucket preset for zero-duration init", () => {
-    const now = new Date(2024, 0, 1, 10, 15, 0);
-
-    expect(
-      getInitSelectedTimeRange({
-        start: now,
-        end: now,
-      })
-    ).toStrictEqual(DEFAULT_TIME_RANGE_OPTIONS[1]);
-  });
-
   it("returns a custom time range when init does not match a preset", () => {
     const initRange = {
       start: new Date(2024, 0, 1, 17, 0, 0),
