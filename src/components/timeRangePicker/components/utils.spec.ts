@@ -94,6 +94,22 @@ describe("getInitSelectedTimeRange", () => {
     });
   });
 
+  it("returns a custom time range when start and end are the same", () => {
+    const now = new Date(2024, 0, 1, 10, 15, 0);
+
+    expect(
+      getInitSelectedTimeRange({
+        start: now,
+        end: now,
+      })
+    ).toStrictEqual({
+      id: "custom",
+      start: "10:15",
+      end: "10:15",
+      count: 0,
+    });
+  });
+
   it("recognizes the 18:00-24:00 preset when end is next-day midnight", () => {
     expect(
       getInitSelectedTimeRange({
