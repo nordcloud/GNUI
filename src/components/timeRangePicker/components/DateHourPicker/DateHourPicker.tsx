@@ -18,8 +18,6 @@ import {
 } from "../utils";
 import { DateSelector, HourSelector } from "./components";
 
-let lastAppliedCustomTimeRange: TimeRangeOption | null = null;
-
 const toCustomTimeRange = (timeRange: TimeRangeOption): TimeRangeOption => ({
   ...timeRange,
   id: "custom",
@@ -52,15 +50,14 @@ export function DateHourPicker({
   const [timeRangeOptions, setTimeRangeOptions] = useState(
     DEFAULT_TIME_RANGE_OPTIONS
   );
-  const [selectedTimeRange, setSelectedTimeRange] = useState(() => {
-    const initialTimeRange = getInitSelectedTimeRange(initTimeRange);
-
-    if (initialTimeRange.id === "custom") {
-      lastAppliedCustomTimeRange = initialTimeRange;
-    }
-
-    return initialTimeRange;
-  });
+  const initialSelectedTimeRange = getInitSelectedTimeRange(initTimeRange);
+  const [selectedTimeRange, setSelectedTimeRange] = useState(
+    initialSelectedTimeRange
+  );
+  const [lastAppliedCustomTimeRange, setLastAppliedCustomTimeRange] =
+    useState<TimeRangeOption | null>(() =>
+      initialSelectedTimeRange.id === "custom" ? initialSelectedTimeRange : null
+    );
 
   useEffect(() => {
     submitDateHour(selectedDate, selectedTimeRange);
@@ -156,7 +153,7 @@ export function DateHourPicker({
     shouldSubmit = false
   ) => {
     if (timeRange.id === "custom" && shouldSubmit) {
-      lastAppliedCustomTimeRange = timeRange;
+      setLastAppliedCustomTimeRange(timeRange);
     }
 
     setSelectedTimeRange(timeRange);
