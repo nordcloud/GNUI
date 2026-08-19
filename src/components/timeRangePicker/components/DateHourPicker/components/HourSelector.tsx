@@ -78,6 +78,7 @@ export function HourSelector({
             name="time-range-start"
             value={selectedTimeRange.start}
             max={selectedTimeRange.end || undefined}
+            onBlur={(event) => event.target.reportValidity()}
             onChange={(event) => {
               const start = event.target.value;
 
@@ -95,6 +96,7 @@ export function HourSelector({
             name="time-range-end"
             value={selectedTimeRange.end}
             min={selectedTimeRange.start || undefined}
+            onBlur={(event) => event.target.reportValidity()}
             onChange={(event) => {
               const end = event.target.value;
 
