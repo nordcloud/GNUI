@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Meta, StoryObj } from "@storybook/react-vite";
 import { addDays, previousMonday } from "date-fns";
 import { Spacer } from "../spacer";
+import { getDefaultInitTimeRange } from "./components/utils";
 import { TimeRangePicker } from "./TimeRangePicker";
 
 const meta: Meta<typeof TimeRangePicker> = {
@@ -43,11 +44,12 @@ export const TimerangepickerOfDays: StoryObj<typeof TimeRangePicker> = {
 };
 
 function TimerangepickerOfHoursComponent() {
-  const [value, setValue] = useState<TimeRangeValue>();
+  const initValue = getDefaultInitTimeRange();
+  const [value, setValue] = useState<TimeRangeValue>(initValue);
 
   return (
     <>
-      <TimeRangePicker onChange={setValue} />
+      <TimeRangePicker initTimeRange={initValue} onChange={setValue} />
       <Spacer height="20rem" />
       <div id="result-hours">Current Value:{JSON.stringify(value)}</div>
     </>
@@ -59,12 +61,42 @@ export const TimerangepickerOfHours: StoryObj<typeof TimeRangePicker> = {
   name: "timerangepicker of hours ",
 };
 
-function TimerangepickerOfHoursWithKeepSelectedWeekdayComponent() {
-  const [value, setValue] = useState<TimeRangeValue>();
+function TimerangepickerOfHoursWithCustomInitComponent() {
+  const initValue = {
+    start: new Date(new Date().setHours(17, 0, 0, 0)),
+    end: new Date(new Date().setHours(18, 0, 0, 0)),
+  };
+  const [value, setValue] = useState<TimeRangeValue>(initValue);
 
   return (
     <>
-      <TimeRangePicker keepSelectedWeekday onChange={setValue} />
+      <TimeRangePicker initTimeRange={initValue} onChange={setValue} />
+      <Spacer height="20rem" />
+      <div id="result-hours-custom-init">
+        Current Value:{JSON.stringify(value)}
+      </div>
+    </>
+  );
+}
+
+export const TimerangepickerOfHoursWithCustomInit: StoryObj<
+  typeof TimeRangePicker
+> = {
+  render: () => <TimerangepickerOfHoursWithCustomInitComponent />,
+  name: "timerangepicker of hours with custom init",
+};
+
+function TimerangepickerOfHoursWithKeepSelectedWeekdayComponent() {
+  const initValue = getDefaultInitTimeRange();
+  const [value, setValue] = useState<TimeRangeValue>(initValue);
+
+  return (
+    <>
+      <TimeRangePicker
+        keepSelectedWeekday
+        initTimeRange={initValue}
+        onChange={setValue}
+      />
       <Spacer height="20rem" />
       <div id="result-hours">Current Value:{JSON.stringify(value)}</div>
     </>
@@ -79,12 +111,14 @@ export const TimerangepickerOfHoursWithKeepSelectedWeekday: StoryObj<
 };
 
 function TimerangepickerOfHoursWithHistogramComponent() {
-  const [value, setValue] = useState<TimeRangeValue>();
+  const initValue = getDefaultInitTimeRange();
+  const [value, setValue] = useState<TimeRangeValue>(initValue);
   const monday = previousMonday(new Date());
 
   return (
     <>
       <TimeRangePicker
+        initTimeRange={initValue}
         weekCounts={[
           {
             date: monday,

@@ -14,15 +14,24 @@ type Props = {
   selectedTimeRange: TimeRangeOption;
   weekCounts: DailyCount[] | undefined;
   onSelect: (timeRange: TimeRangeOption, shouldSubmit?: boolean) => void;
+  onCustomSelect: () => void;
 };
+
+const isValidCustomTimeRange = (start: string, end: string): boolean =>
+  start !== "" && end !== "" && end >= start;
 
 export function HourSelector({
   timeRangeOptions,
   selectedTimeRange,
   weekCounts,
   onSelect,
+  onCustomSelect,
 }: Props) {
   const isCustomTimeRange = selectedTimeRange.id === "custom";
+  const isCustomRangeValid = isValidCustomTimeRange(
+    selectedTimeRange.start,
+    selectedTimeRange.end
+  );
 
   return (
     <>
@@ -57,47 +66,50 @@ export function HourSelector({
             value="custom"
             labelText="custom"
             isActive={isCustomTimeRange}
-            onClick={() =>
-              onSelect({
-                ...selectedTimeRange,
-                id: "custom",
-              })
-            }
+            onClick={onCustomSelect}
           />
         </UnifiedMultipleSelect>
         <CustomTimeRangeSelector isVisible={isCustomTimeRange}>
           <Label name="From" htmlFor="time-range-start" />
           <Input
+            required
             id="time-range-start"
             type="time"
             name="time-range-start"
             value={selectedTimeRange.start}
+            max={selectedTimeRange.end || undefined}
+            onBlur={(event) => event.target.reportValidity()}
             onChange={(event) => {
-              event.persist();
+              const start = event.target.value;
+
               onSelect({
                 ...selectedTimeRange,
-                start: event.target.value,
+                start,
               });
             }}
           />
           <Label name="To" htmlFor="time-range-end" />
           <Input
+            required
             id="time-range-end"
             type="time"
             name="time-range-end"
             value={selectedTimeRange.end}
-            min={selectedTimeRange.start}
+            min={selectedTimeRange.start || undefined}
+            onBlur={(event) => event.target.reportValidity()}
             onChange={(event) => {
-              event.persist();
+              const end = event.target.value;
+
               onSelect({
                 ...selectedTimeRange,
-                end: event.target.value,
+                end,
               });
             }}
           />
           <Button
             severity="high"
             size="sm"
+            disabled={!isCustomRangeValid}
             onClick={() => onSelect(selectedTimeRange, true)}
           >
             Apply

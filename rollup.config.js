@@ -30,6 +30,7 @@ export default {
           "**/__tests__",
           "**/*.spec.tsx",
           "**/*.spec.ts",
+          "**/*.stories.tsx",
           "./src/setupTests.ts",
         ],
       },

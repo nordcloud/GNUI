@@ -8,11 +8,9 @@ import {
   addWeeks,
   addMonths,
   addYears,
-  getHours,
   differenceInCalendarDays,
   startOfDay,
   set,
-  subMilliseconds,
 } from "date-fns";
 import { RANGE_TYPE, DateOption, TimeRangeOption } from "../types";
 import {
@@ -31,14 +29,13 @@ export const getTimeRangeDate = (
   initRange: Interval,
   timePickerType?: "Days" | "Hours"
 ): Date => {
-  // 18-24 time slot technically ends in different day
-  const end =
-    timePickerType === "Hours"
-      ? subMilliseconds(initRange.end, 1)
-      : initRange.end;
-  return isSameDay(initRange.start, end)
-    ? new Date(new Date(initRange.start).setSeconds(0, 0))
-    : new Date();
+  const startDate = new Date(initRange.start);
+
+  if (timePickerType === "Hours" || isSameDay(initRange.start, initRange.end)) {
+    return new Date(startDate.setSeconds(0, 0));
+  }
+
+  return new Date();
 };
 
 export const getDateString = (date: Date): string => {
@@ -48,11 +45,29 @@ export const getDateString = (date: Date): string => {
   });
 };
 
-export const getDateWithTime = (date: Date, time: string): Date => {
+const getDateWithTime = (date: Date, time: string): Date => {
   const copiedDate = new Date(date);
   const timeNumbers = time.split(":").map((value) => parseInt(value, 10));
 
   return new Date(copiedDate.setHours(timeNumbers[0], timeNumbers[1], 0));
+};
+
+export const getDateHourInterval = (
+  date: Date,
+  timeRange: Pick<TimeRangeOption, "end" | "start">
+): Interval => {
+  const timeStart = getDateWithTime(date, timeRange.start);
+  const timeEnd = getDateWithTime(date, timeRange.end);
+
+  return { start: timeStart, end: timeEnd };
+};
+
+const getPresetByHour = (date: Date): TimeRangeOption =>
+  DEFAULT_TIME_RANGE_OPTIONS[Math.floor(date.getHours() / 6)];
+
+export const getDefaultInitTimeRange = (): Interval => {
+  const now = new Date();
+  return getDateHourInterval(now, getPresetByHour(now));
 };
 
 export const getDateWithDays = (
@@ -102,11 +117,42 @@ export const getDate = (
   }
 };
 
+export const convertIntervalToTimeStrings = (
+  interval: Interval
+): Pick<TimeRangeOption, "end" | "start"> => {
+  let endDate = new Date(interval.end);
+
+  // An exclusive end at the final millisecond of a minute represents the next minute.
+  if (endDate.getSeconds() === 59 && endDate.getMilliseconds() === 999) {
+    endDate = new Date(endDate.getTime() + 1);
+  }
+
+  return {
+    start: format(new Date(interval.start), "HH:mm"),
+    end: format(endDate, "HH:mm"),
+  };
+};
+
 export const getInitSelectedTimeRange = (
   initRange: Interval
 ): TimeRangeOption => {
-  const rangeId = Math.floor(new Date(initRange.start).getHours() / 6); // Each default time range has 6 hours time span
-  return DEFAULT_TIME_RANGE_OPTIONS[rangeId];
+  const { start, end } = convertIntervalToTimeStrings(initRange);
+  const matchingPreset = DEFAULT_TIME_RANGE_OPTIONS.find(
+    (option) =>
+      option.start === start &&
+      (option.end === end || (option.end === "24:00" && end === "00:00"))
+  );
+
+  if (matchingPreset) {
+    return matchingPreset;
+  }
+
+  return {
+    id: "custom",
+    start,
+    end,
+    count: 0,
+  };
 };
 
 export const getDateOptions = (
@@ -143,12 +189,10 @@ export const isSameTimeRange = (
   interval: Interval,
   timeRangeOption: TimeRangeOption
 ) => {
-  const optionStart = parseInt(timeRangeOption.start.split(":")[0], 10);
-  const optionEnd = parseInt(timeRangeOption.start.split(":")[0], 10);
-
+  const normalizedTimeRange = getInitSelectedTimeRange(interval);
   return (
-    getHours(interval.start) === optionStart &&
-    getHours(interval.end) === optionEnd
+    timeRangeOption.start === normalizedTimeRange.start &&
+    timeRangeOption.end === normalizedTimeRange.end
   );
 };
 
