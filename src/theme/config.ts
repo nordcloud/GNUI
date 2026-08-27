@@ -30,6 +30,7 @@ export const color = {
   border: {
     border01: "var(--border-border01)",
     border02: "var(--border-border02)",
+    border03: "var(--border-border03)",
     input: "var(--border-input)",
     focus: "var(--border-focus)",
     error: "var(--border-error)",
