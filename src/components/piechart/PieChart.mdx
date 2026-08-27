@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import * as PieChartStories from "./PieChart.stories";
 
 <Meta of={PieChartStories} />
@@ -17,20 +17,14 @@ import * as PieChartStories from "./PieChart.stories";
 
 ## Default
 
-<Canvas>
-  <Story of={PieChartStories.Default} />
-</Canvas>
+<Canvas of={PieChartStories.Default} />
 
 ## Stroke Width
 
-<Canvas>
-  <Story of={PieChartStories.StrokeWidth} />
-</Canvas>
+<Canvas of={PieChartStories.StrokeWidth} />
 
 ## Color
 
 - You can change color using `color` props: `danger` | `warning` | `success` | `notification`;
 
-<Canvas>
-  <Story of={PieChartStories.Color} />
-</Canvas>
+<Canvas of={PieChartStories.Color} />

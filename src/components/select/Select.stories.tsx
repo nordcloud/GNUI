@@ -1,5 +1,5 @@
 import { useRef, ElementRef } from "react";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import { Select, customMultiColorStyles } from "./Select";
 
 const meta: Meta = {

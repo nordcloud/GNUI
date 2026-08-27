@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import * as ToggleStories from "./Toggle.stories";
 
 <Meta of={ToggleStories} />
@@ -18,22 +18,16 @@ import * as ToggleStories from "./Toggle.stories";
 
 ### Default
 
-<Canvas>
-  <Story of={ToggleStories.Default} />
-</Canvas>
+<Canvas of={ToggleStories.Default} />
 
 ### Small
 
 > - `size`: `small`
 
-<Canvas>
-  <Story of={ToggleStories.Small} />
-</Canvas>
+<Canvas of={ToggleStories.Small} />
 
 ### Color Status
 
 > - `status`: `success`, `danger`, `warning`, `notification`
 
-<Canvas>
-  <Story of={ToggleStories.Status} />
-</Canvas>
+<Canvas of={ToggleStories.Status} />

@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import * as BrickLoaderStories from "./BrickLoader.stories";
 
 <Meta of={BrickLoaderStories} />
@@ -17,22 +17,16 @@ As this loader is based on react-content-loader it supports also SVGAttributes a
 
 ## Default
 
-<Canvas>
-  <Story of={BrickLoaderStories.Default} />
-</Canvas>
+<Canvas of={BrickLoaderStories.Default} />
 
 ## Custom height
 
 > `height`: `string` — **optional**
 
-<Canvas>
-  <Story of={BrickLoaderStories.Height} />
-</Canvas>
+<Canvas of={BrickLoaderStories.Height} />
 
 ## Custom viewBox
 
 > `viewBox`: `string` — **optional**
 
-<Canvas>
-  <Story of={BrickLoaderStories.ViewBox} />
-</Canvas>
+<Canvas of={BrickLoaderStories.ViewBox} />

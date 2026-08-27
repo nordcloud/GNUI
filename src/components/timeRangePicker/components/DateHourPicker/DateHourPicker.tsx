@@ -9,18 +9,26 @@ import { DEFAULT_TIME_RANGE_OPTIONS } from "../constants";
 import { Row, IconButton, DatepickerContainer } from "../styles";
 import { DatesPickerProps, DailyCount } from "../types";
 import {
-  getDateWithTime,
   getDateOptions,
+  getDateHourInterval,
   getInitSelectedTimeRange,
   getMonday,
   getTimeRangeDate,
-  isSameTimeRange,
+  getNewSelectedDate,
 } from "../utils";
 import { DateSelector, HourSelector } from "./components";
+
+const toCustomTimeRange = (timeRange: TimeRangeOption): TimeRangeOption => ({
+  ...timeRange,
+  id: "custom",
+  // HTML time inputs only accept 00:00-23:59.
+  end: timeRange.end === "24:00" ? "23:59" : timeRange.end,
+});
 
 type Props = DatesPickerProps & {
   weekCounts?: DailyCount[];
   countsLoading?: boolean;
+  keepSelectedWeekday?: boolean;
   onWeekChange?: (monday: Date) => void;
 };
 
@@ -29,11 +37,12 @@ export function DateHourPicker({
   weekCounts,
   countsLoading = false,
   disabledDays,
+  keepSelectedWeekday = false,
   onChange,
   onWeekChange,
 }: Props) {
   const [selectedDate, setSelectedDate] = useState<Date>(
-    getTimeRangeDate(initTimeRange)
+    getTimeRangeDate(initTimeRange, "Hours")
   );
   const [dateOptions, setDateOptions] = useState<DateOption[]>(
     getDateOptions(getMonday(initTimeRange.start))
@@ -41,18 +50,18 @@ export function DateHourPicker({
   const [timeRangeOptions, setTimeRangeOptions] = useState(
     DEFAULT_TIME_RANGE_OPTIONS
   );
+  const initialSelectedTimeRange = getInitSelectedTimeRange(initTimeRange);
   const [selectedTimeRange, setSelectedTimeRange] = useState(
-    getInitSelectedTimeRange(initTimeRange)
+    initialSelectedTimeRange
   );
+  const [lastAppliedCustomTimeRange, setLastAppliedCustomTimeRange] =
+    useState<TimeRangeOption | null>(() =>
+      initialSelectedTimeRange.id === "custom" ? initialSelectedTimeRange : null
+    );
 
   useEffect(() => {
-    if (
-      !isSameDay(selectedDate, initTimeRange.start) ||
-      !isSameTimeRange(initTimeRange, selectedTimeRange)
-    ) {
-      submitDateHour(selectedDate, selectedTimeRange);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps  -- Submit when initTimeRange and initial selectedData and selectedTimeRange not match
+    submitDateHour(selectedDate, selectedTimeRange);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- Always emit the resolved initial range on mount
   }, []);
 
   const calendarWrapper = useRef<HTMLDivElement>(null);
@@ -92,6 +101,15 @@ export function DateHourPicker({
     updateTimeRangeOptions(selectedDate);
     if (onWeekChange) {
       onWeekChange(newMonday);
+    }
+    if (keepSelectedWeekday) {
+      const newSeletedDate = getNewSelectedDate(
+        selectedDate,
+        currentMonday,
+        newMonday
+      );
+      setSelectedDate(newSeletedDate);
+      submitDateHour(newSeletedDate, selectedTimeRange);
     }
   };
 
@@ -134,16 +152,28 @@ export function DateHourPicker({
     timeRange: TimeRangeOption,
     shouldSubmit = false
   ) => {
+    if (timeRange.id === "custom" && shouldSubmit) {
+      setLastAppliedCustomTimeRange(timeRange);
+    }
+
     setSelectedTimeRange(timeRange);
     if (shouldSubmit) {
       submitDateHour(selectedDate, timeRange);
     }
   };
 
+  const handleCustomSelect = () => {
+    if (selectedTimeRange.id === "custom") {
+      return;
+    }
+
+    handleHourChange(
+      lastAppliedCustomTimeRange ?? toCustomTimeRange(selectedTimeRange)
+    );
+  };
+
   const submitDateHour = (date: Date, timeRange: TimeRangeOption) => {
-    const timeStart = getDateWithTime(date, timeRange.start);
-    const timeEnd = getDateWithTime(date, timeRange.end);
-    onChange({ start: timeStart, end: timeEnd });
+    onChange(getDateHourInterval(date, timeRange));
   };
 
   return (
@@ -194,6 +224,7 @@ export function DateHourPicker({
           selectedTimeRange={selectedTimeRange}
           weekCounts={weekCounts}
           onSelect={handleHourChange}
+          onCustomSelect={handleCustomSelect}
         />
       </Row>
     </>

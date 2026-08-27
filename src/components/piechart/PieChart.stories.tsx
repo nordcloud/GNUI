@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import { FlexContainer } from "../container";
 import { SVGIcon } from "../svgicon";
 import { Text } from "../text";

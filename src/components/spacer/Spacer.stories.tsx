@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import theme from "../../theme";
 import { GnuiContainer, FlexContainer } from "../container";
 import { Text } from "../text";

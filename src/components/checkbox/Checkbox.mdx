@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import * as CheckboxStories from "./Checkbox.stories";
 
 <Meta of={CheckboxStories} />
@@ -15,23 +15,17 @@ import * as CheckboxStories from "./Checkbox.stories";
 
 ### Default
 
-<Canvas>
-  <Story of={CheckboxStories.Simple} />
-</Canvas>
+<Canvas of={CheckboxStories.Simple} />
 
 ### withoutLabel
 
 > Default input type `checkbox` without Label with larger clickable surface.
 
-<Canvas>
-  <Story of={CheckboxStories.WithoutLabel} />
-</Canvas>
+<Canvas of={CheckboxStories.WithoutLabel} />
 
 ### isIndeterminate
 
-<Canvas>
-  <Story of={CheckboxStories.IsIndeterminate} />
-</Canvas>
+<Canvas of={CheckboxStories.IsIndeterminate} />
 
 # CheckboxGroup
 
@@ -41,6 +35,4 @@ import * as CheckboxStories from "./Checkbox.stories";
 | ---------: | :------: | :------------------ | :---------- |
 |   children |  false   | `ReactElement<any>` |             |
 
-<Canvas>
-  <Story of={CheckboxStories.Group} />
-</Canvas>
+<Canvas of={CheckboxStories.Group} />

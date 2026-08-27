@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas, Title, Description } from "@storybook/blocks";
+import { Meta, Story, Canvas, Title, Description } from "@storybook/addon-docs/blocks";
 import * as SidebarStories from "./Sidebar.stories";
 
 <Meta of={SidebarStories} />
@@ -24,38 +24,28 @@ import * as SidebarStories from "./Sidebar.stories";
 
 ### default
 
-<Canvas>
-  <Story of={SidebarStories.Default} />
-</Canvas>
+<Canvas of={SidebarStories.Default} />
 
 ### footer
 
 You can pass Buttons to footer, and it will displayed at the bottom of the Sidebar.
 
-<Canvas>
-  <Story of={SidebarStories.Footer} />
-</Canvas>
+<Canvas of={SidebarStories.Footer} />
 
 ### footer with pagination
 
 You can pass PaginationBox, and it will displayed at the bottom of the Sidebar.
 
-<Canvas>
-  <Story of={SidebarStories.FooterPagination} />
-</Canvas>
+<Canvas of={SidebarStories.FooterPagination} />
 
 ### side
 
 Sidebar in default is displayed on the right side, but optionally you can change this behaviour with simple prop `side='onLeft'`.
 
-<Canvas>
-  <Story of={SidebarStories.Side} />
-</Canvas>
+<Canvas of={SidebarStories.Side} />
 
 ### width
 
 > If you don't need default breakpoints and needs just to hardcode `width` value you can provide it with `width` prop.
 
-<Canvas>
-  <Story of={SidebarStories.CustomWidth} />
-</Canvas>
+<Canvas of={SidebarStories.CustomWidth} />

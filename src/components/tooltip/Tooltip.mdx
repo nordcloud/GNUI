@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import * as TooltipStories from "./Tooltip.stories";
 
 <Meta of={TooltipStories} />
@@ -16,36 +16,26 @@ import * as TooltipStories from "./Tooltip.stories";
 
 > `caption: string;` - caption for the tooltip
 
-<Canvas>
-  <Story of={TooltipStories.Default} />
-</Canvas>
+<Canvas of={TooltipStories.Default} />
 
 ## Bottom Tooltip
 
 > `bottom: boolean;` - positioning tooltip at the bottom
 
-<Canvas>
-  <Story of={TooltipStories.Bottom} />
-</Canvas>
+<Canvas of={TooltipStories.Bottom} />
 
 ## Tooltip Position
 
 > - `position`: `left` | `right` - you can align the tooltip to the right side or to the left side of your child element
 
-<Canvas>
-  <Story of={TooltipStories.Position} />
-</Canvas>
+<Canvas of={TooltipStories.Position} />
 
 ## Tooltip Status
 
 > - `status`: `danger` | `warning` | `success` | `notification`
 
-<Canvas>
-  <Story of={TooltipStories.Status} />
-</Canvas>
+<Canvas of={TooltipStories.Status} />
 
 ## Tooltip with other Components
 
-<Canvas>
-  <Story of={TooltipStories.Components} />
-</Canvas>
+<Canvas of={TooltipStories.Components} />

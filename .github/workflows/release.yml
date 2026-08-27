@@ -5,11 +5,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v3
         with:
-          node-version-file: package.json
+          node-version: "24"
       - run: echo "registry=https://registry.npmjs.org/" > .npmrc
       - run: echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" >> .npmrc
         env:
@@ -18,4 +21,4 @@ jobs:
       - run: npm audit signatures
       - run: npm run build
       - run: cat .npmrc
-      - run: npm publish --access public
+      - run: npm publish --provenance --access public

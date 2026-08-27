@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import * as WizardStories from "./Wizard.stories";
 
 <Meta of={WizardStories} />
@@ -40,12 +40,8 @@ type TabsProps = {
 > `nextButton?: string;` - label for Next button
 > `submitButton?: string;` - label for Submit button
 
-<Canvas>
-  <Story of={WizardStories.Default} />
-</Canvas>
+<Canvas of={WizardStories.Default} />
 
 > `disabled?: boolean;` - makes the step non-clickable
 
-<Canvas>
-  <Story of={WizardStories.Disabled} />
-</Canvas>
+<Canvas of={WizardStories.Disabled} />

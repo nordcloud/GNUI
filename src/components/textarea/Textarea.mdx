@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import * as TextareaStories from "./Textarea.stories";
 
 <Meta of={TextareaStories} />
@@ -15,28 +15,20 @@ import * as TextareaStories from "./Textarea.stories";
 
 ## default
 
-<Canvas>
-  <Story of={TextareaStories.Default} />
-</Canvas>
+<Canvas of={TextareaStories.Default} />
 
 ## small
 
-<Canvas>
-  <Story of={TextareaStories.Small} />
-</Canvas>
+<Canvas of={TextareaStories.Small} />
 
 ## status
 
 > `status`: `success | error`
 
-<Canvas>
-  <Story of={TextareaStories.Status} />
-</Canvas>
+<Canvas of={TextareaStories.Status} />
 
 ## maxCharCount
 
 > `status`: `success | error` > `maxCharCount`: `100`
 
-<Canvas>
-  <Story of={TextareaStories.MaxCharCount} />
-</Canvas>
+<Canvas of={TextareaStories.MaxCharCount} />

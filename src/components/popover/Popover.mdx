@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import * as PopoverStories from "./Popover.stories";
 
 <Meta of={PopoverStories} />
@@ -15,12 +15,8 @@ import * as PopoverStories from "./Popover.stories";
 
 ## Default view
 
-<Canvas>
-  <Story of={PopoverStories.Default} />
-</Canvas>
+<Canvas of={PopoverStories.Default} />
 
 ## alignRight
 
-<Canvas>
-  <Story of={PopoverStories.AlignRight} />
-</Canvas>
+<Canvas of={PopoverStories.AlignRight} />

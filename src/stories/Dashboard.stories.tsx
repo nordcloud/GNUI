@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import { Col, Row, Visible } from "react-awesome-styled-grid";
 import { Box } from "../components/box";
 import { FlexContainer } from "../components/container";
@@ -95,7 +95,6 @@ export const Default: StoryObj = {
           <Visible md>
             <Spacer height="2rem" />
           </Visible>
-          3
         </Col>
       </Row>
     </Box>

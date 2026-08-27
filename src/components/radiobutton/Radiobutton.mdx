@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import * as RadiobuttonStories from "./Radiobutton.stories";
 
 <Meta of={RadiobuttonStories} />
@@ -13,9 +13,7 @@ import * as RadiobuttonStories from "./Radiobutton.stories";
 | ---------: | :------: | :----- | :------------------------- |
 |  labelText |   true   | string | label for the radio button |
 
-<Canvas>
-  <Story of={RadiobuttonStories.Simple} />
-</Canvas>
+<Canvas of={RadiobuttonStories.Simple} />
 
 ## RadioGroup
 
@@ -27,6 +25,4 @@ import * as RadiobuttonStories from "./Radiobutton.stories";
 | ---------: | :------: | :----- | :---------- |
 |       name |   true   | string |             |
 
-<Canvas>
-  <Story of={RadiobuttonStories.Group} />
-</Canvas>
+<Canvas of={RadiobuttonStories.Group} />

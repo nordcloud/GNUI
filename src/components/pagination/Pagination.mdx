@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import * as PaginationStories from "./Pagination.stories";
 
 <Meta of={PaginationStories} />
@@ -19,12 +19,8 @@ import * as PaginationStories from "./Pagination.stories";
 
 ## default
 
-<Canvas>
-  <Story of={PaginationStories.Default} />
-</Canvas>
+<Canvas of={PaginationStories.Default} />
 
 ## small
 
-<Canvas>
-  <Story of={PaginationStories.Small} />
-</Canvas>
+<Canvas of={PaginationStories.Small} />

@@ -23,12 +23,14 @@ export default {
   ],
   plugins: [
     typescript({
+      include: ["src/**/*.{ts,tsx}"],
       useTsconfigDeclarationDir: true,
       tsconfigOverride: {
         exclude: [
           "**/__tests__",
           "**/*.spec.tsx",
           "**/*.spec.ts",
+          "**/*.stories.tsx",
           "./src/setupTests.ts",
         ],
       },

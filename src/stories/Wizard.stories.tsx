@@ -1,5 +1,5 @@
 import { useState, Fragment } from "react";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import { Tabs, Tab, ButtonPrevious, ButtonNext } from "../components/tabs";
 import { Text } from "../components/text";
 

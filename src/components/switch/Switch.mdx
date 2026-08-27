@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import * as SwitchStories from "./Switch.stories";
 
 <Meta of={SwitchStories} />
@@ -17,15 +17,11 @@ import * as SwitchStories from "./Switch.stories";
 
 ## default
 
-<Canvas>
-  <Story of={SwitchStories.Default} />
-</Canvas>
+<Canvas of={SwitchStories.Default} />
 
 ## position
 
-<Canvas>
-  <Story of={SwitchStories.Position} />
-</Canvas>
+<Canvas of={SwitchStories.Position} />
 
 ## severity
 
@@ -33,6 +29,4 @@ import * as SwitchStories from "./Switch.stories";
 >
 > - `severity`: `string` — \[`success`, `danger`, `warning`, `notification`]
 
-<Canvas>
-  <Story of={SwitchStories.Severity} />
-</Canvas>
+<Canvas of={SwitchStories.Severity} />

@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import { DayPicker, SelectSingleEventHandler } from "react-day-picker";
 import { Datepicker } from "./Datepicker";
 

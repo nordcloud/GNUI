@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import * as SpacerStories from "./Spacer.stories";
 
 <Meta of={SpacerStories} />
@@ -18,10 +18,6 @@ import * as SpacerStories from "./Spacer.stories";
 |     border |  false   | string         | border styles                          |
 |     margin |  false   | number, string |                                        |
 
-<Canvas>
-  <Story of={SpacerStories.Default} />
-</Canvas>
+<Canvas of={SpacerStories.Default} />
 
-<Canvas>
-  <Story of={SpacerStories.Margin} />
-</Canvas>
+<Canvas of={SpacerStories.Margin} />

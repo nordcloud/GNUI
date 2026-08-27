@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import * as TableStories from "./Table.stories";
 
 <Meta of={TableStories} />
@@ -16,36 +16,24 @@ import * as TableStories from "./Table.stories";
 
 ### Simple Table
 
-<Canvas>
-  <Story of={TableStories.Simple} />
-</Canvas>
+<Canvas of={TableStories.Simple} />
 
 ### Striped Table
 
-<Canvas>
-  <Story of={TableStories.Striped} />
-</Canvas>
+<Canvas of={TableStories.Striped} />
 
 ### Small Table
 
-<Canvas>
-  <Story of={TableStories.Small} />
-</Canvas>
+<Canvas of={TableStories.Small} />
 
 ### Small Table with small font (tiny)
 
-<Canvas>
-  <Story of={TableStories.SmallFontTiny} />
-</Canvas>
+<Canvas of={TableStories.SmallFontTiny} />
 
 ### Hoverline Table
 
-<Canvas>
-  <Story of={TableStories.Hoverline} />
-</Canvas>
+<Canvas of={TableStories.Hoverline} />
 
 ### Table with Header box and Pagination
 
-<Canvas>
-  <Story of={TableStories.TableWithHeader} />
-</Canvas>
+<Canvas of={TableStories.TableWithHeader} />

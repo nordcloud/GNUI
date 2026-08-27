@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import * as BreadcrumbsStories from "./Breadcrumbs.stories";
 
 <Meta of={BreadcrumbsStories} />
@@ -22,12 +22,8 @@ import * as BreadcrumbsStories from "./Breadcrumbs.stories";
 |        uri |   true   | string  |             |
 | isDisabled |  false   | boolean |             |
 
-<Canvas>
-  <Story of={BreadcrumbsStories.Default} />
-</Canvas>
+<Canvas of={BreadcrumbsStories.Default} />
 
 ## Custom component
 
-<Canvas>
-  <Story of={BreadcrumbsStories.CustomComponent} />
-</Canvas>
+<Canvas of={BreadcrumbsStories.CustomComponent} />

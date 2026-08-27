@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import { Text } from "../text";
 import { MultipleSelect, SelectButton } from "./SelectButton";
 

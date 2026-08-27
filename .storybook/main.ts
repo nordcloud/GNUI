@@ -1,16 +1,18 @@
+import remarkGfm from "remark-gfm";
 import type { StorybookConfig } from "@storybook/react-vite";
 import react from "@vitejs/plugin-react";
 
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.@(story|stories).@(ts|tsx)"],
+
   addons: [
     {
-      name: "@storybook/addon-essentials",
+      name: "@storybook/addon-docs",
       options: {
-        backgrounds: false,
+        mdxPluginOptions: { mdxCompileOptions: { remarkPlugins: [remarkGfm] } },
       },
     },
-    "@storybook/addon-mdx-gfm",
+    "@chromatic-com/storybook",
   ],
 
   staticDirs: ["../public"],
@@ -25,7 +27,6 @@ const config: StorybookConfig = {
   },
 
   docs: {
-    autodocs: "tag",
     defaultName: "Docs",
   },
 
@@ -51,6 +52,14 @@ const config: StorybookConfig = {
     );
 
     return viteConfig;
+  },
+
+  typescript: {
+    reactDocgen: "react-docgen-typescript",
+  },
+
+  features: {
+    backgrounds: false,
   },
 };
 

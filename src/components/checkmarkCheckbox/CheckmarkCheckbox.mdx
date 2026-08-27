@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import * as CheckmarkCheckboxStories from "./CheckmarkCheckbox.stories";
 
 <Meta of={CheckmarkCheckboxStories} />
@@ -15,21 +15,15 @@ import * as CheckmarkCheckboxStories from "./CheckmarkCheckbox.stories";
 
 ### Default
 
-<Canvas>
-  <Story of={CheckmarkCheckboxStories.Simple} />
-</Canvas>
+<Canvas of={CheckmarkCheckboxStories.Simple} />
 
 ### With double checkmark
 
-<Canvas>
-  <Story of={CheckmarkCheckboxStories.Double} />
-</Canvas>
+<Canvas of={CheckmarkCheckboxStories.Double} />
 
 ### withoutLabel
 
-<Canvas>
-  <Story of={CheckmarkCheckboxStories.WithoutLabel} />
-</Canvas>
+<Canvas of={CheckmarkCheckboxStories.WithoutLabel} />
 
 # CheckboxGroup
 
@@ -39,6 +33,4 @@ import * as CheckmarkCheckboxStories from "./CheckmarkCheckbox.stories";
 | ---------: | :------: | :------------------ | :---------- |
 |   children |  false   | `ReactElement<any>` |             |
 
-<Canvas>
-  <Story of={CheckmarkCheckboxStories.Group} />
-</Canvas>
+<Canvas of={CheckmarkCheckboxStories.Group} />

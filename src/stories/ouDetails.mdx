@@ -1,8 +1,6 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import * as OuDetailsStories from "./ouDetails.stories";
 
 <Meta of={OuDetailsStories} />
 
-<Canvas>
-  <Story of={OuDetailsStories.Default} />
-</Canvas>
+<Canvas of={OuDetailsStories.Default} />

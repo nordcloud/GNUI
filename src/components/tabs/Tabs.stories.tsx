@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import { Button } from "../button";
 import { FlexContainer } from "../container";
 import { SVGIcon } from "../svgicon";

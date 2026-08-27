@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas, Title, Markdown } from "@storybook/blocks";
+import { Meta, Story, Canvas, Title, Markdown } from "@storybook/addon-docs/blocks";
 import * as StickyBarStories from "./StickyBar.stories";
 
 <Meta of={StickyBarStories} />
@@ -19,6 +19,4 @@ import * as StickyBarStories from "./StickyBar.stories";
 
 ## Default
 
-<Canvas>
-  <Story of={StickyBarStories.Default} />
-</Canvas>
+<Canvas of={StickyBarStories.Default} />

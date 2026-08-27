@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import * as DropdownStories from "./Dropdown.stories";
 
 <Meta of={DropdownStories} />
@@ -23,18 +23,12 @@ import * as DropdownStories from "./Dropdown.stories";
 
 ## dropdown with search
 
-<Canvas>
-  <Story of={DropdownStories.DropdownDefault} />
-</Canvas>
+<Canvas of={DropdownStories.DropdownDefault} />
 
 ## dropdown without search
 
-<Canvas>
-  <Story of={DropdownStories.DropdownWithoutSearch} />
-</Canvas>
+<Canvas of={DropdownStories.DropdownWithoutSearch} />
 
 ## dropdown other sizes
 
-<Canvas>
-  <Story of={DropdownStories.DropdownOtherSizes} />
-</Canvas>
+<Canvas of={DropdownStories.DropdownOtherSizes} />

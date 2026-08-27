@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import * as ButtonStories from "./Button.stories";
 
 <Meta of={ButtonStories} />
@@ -26,100 +26,74 @@ import * as ButtonStories from "./Button.stories";
 
 ## default button
 
-<Canvas>
-  <Story of={ButtonStories.Default} />
-</Canvas>
+<Canvas of={ButtonStories.Default} />
 
 ## severity
 
 > severity: `medium` | `low`
 
-<Canvas>
-  <Story of={ButtonStories.ButtonSeverity} />
-</Canvas>
+<Canvas of={ButtonStories.ButtonSeverity} />
 
 ## size
 
 > size: `sm` | `md`
 
-<Canvas>
-  <Story of={ButtonStories.Size} />
-</Canvas>
+<Canvas of={ButtonStories.Size} />
 
 ## icon
 
 > `icon`: `string`
 
-<Canvas>
-  <Story of={ButtonStories.Icons} />
-</Canvas>
+<Canvas of={ButtonStories.Icons} />
 
 ## iconRight
 
 > `iconRight`: `boolean`
 
-<Canvas>
-  <Story of={ButtonStories.IconRight} />
-</Canvas>
+<Canvas of={ButtonStories.IconRight} />
 
 ## initialState
 
 > `initialState`: `success` | `error` | `loading`
 
-<Canvas>
-  <Story of={ButtonStories.InitialState} />
-</Canvas>
+<Canvas of={ButtonStories.InitialState} />
 
 ## Status
 
 > status: `danger` | `warning` | `success` | `notification` | `discovery` | `accent`
 
-<Canvas>
-  <Story of={ButtonStories.Status} />
-</Canvas>
+<Canvas of={ButtonStories.Status} />
 
 ## disabled
 
 > `disabled`: `boolean`
 
-<Canvas>
-  <Story of={ButtonStories.Disabled} />
-</Canvas>
+<Canvas of={ButtonStories.Disabled} />
 
 ## Custom spacing
 
-<Canvas>
-  <Story of={ButtonStories.CustomSpacing} />
-</Canvas>
+<Canvas of={ButtonStories.CustomSpacing} />
 
 ## linkTo
 
 > linkTo: `string`
 
-<Canvas>
-  <Story of={ButtonStories.ButtonLink} />
-</Canvas>
+<Canvas of={ButtonStories.ButtonLink} />
 
 ## display
 
 > display: `flex` | `inline-flex`
 
-<Canvas>
-  <Story of={ButtonStories.ButtonLinkFlex} />
-</Canvas>
+<Canvas of={ButtonStories.ButtonLinkFlex} />
 
 ## as
 
 > as: `React.ElementType`
 
-<Canvas>
-  <Story of={ButtonStories.As} />
-</Canvas>
+<Canvas of={ButtonStories.As} />
 
 ## color - deprecated
 
 > `color`: `string`
 
-<Canvas>
-  <Story of={ButtonStories.Color} />
-</Canvas>
+<Canvas of={ButtonStories.Color} />

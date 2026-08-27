@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import * as NavigationStories from "./Navigation.stories";
 
 <Meta of={NavigationStories} />
@@ -21,30 +21,20 @@ import * as NavigationStories from "./Navigation.stories";
 
 ### Primary Navigation
 
-<Canvas>
-  <Story of={NavigationStories.Primary} />
-</Canvas>
+<Canvas of={NavigationStories.Primary} />
 
 ### Secondary Navigation
 
-<Canvas>
-  <Story of={NavigationStories.Secondary} />
-</Canvas>
+<Canvas of={NavigationStories.Secondary} />
 
 ### Business Context Navigation
 
-<Canvas>
-  <Story of={NavigationStories.BusinessContext} />
-</Canvas>
+<Canvas of={NavigationStories.BusinessContext} />
 
 ### Popover Navigation
 
-<Canvas>
-  <Story of={NavigationStories.Popover} />
-</Canvas>
+<Canvas of={NavigationStories.Popover} />
 
 ### Sidebar Navigation
 
-<Canvas>
-  <Story of={NavigationStories.Sidebar} />
-</Canvas>
+<Canvas of={NavigationStories.Sidebar} />

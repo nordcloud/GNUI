@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import { Checkbox, CheckboxGroup } from "./Checkbox";
 import { IndeterminateCheckbox } from "./IndeterminateCheckbox";
 

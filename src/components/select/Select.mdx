@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import * as SelectStories from "./Select.stories";
 
 <Meta of={SelectStories} />
@@ -11,27 +11,19 @@ https://react-select.com/props
 
 ## Basic Select
 
-<Canvas>
-  <Story of={SelectStories.Basic} />
-</Canvas>
+<Canvas of={SelectStories.Basic} />
 
 ## Disabled
 
-<Canvas>
-  <Story of={SelectStories.Disabled} />
-</Canvas>
+<Canvas of={SelectStories.Disabled} />
 
 ## Error
 
-<Canvas>
-  <Story of={SelectStories.isError} />
-</Canvas>
+<Canvas of={SelectStories.isError} />
 
 ## Multiselect
 
-<Canvas>
-  <Story of={SelectStories.Multiselect} />
-</Canvas>
+<Canvas of={SelectStories.Multiselect} />
 
 ### Multiselect: colors
 
@@ -68,9 +60,7 @@ return (
 );
 ```
 
-<Canvas>
-  <Story of={SelectStories.MultiselectColors} />
-</Canvas>
+<Canvas of={SelectStories.MultiselectColors} />
 
 ## Using ref
 
@@ -80,6 +70,4 @@ In TypeScript, Ref needs to be properly typed:
 const selectRef = React.useRef<SelectInstance<(typeof options)[number]> | null>(null);
 ```
 
-<Canvas>
-  <Story of={SelectStories.Ref} />
-</Canvas>
+<Canvas of={SelectStories.Ref} />

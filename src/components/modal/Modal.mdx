@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
 import * as ModalStories from "./Modal.stories";
 
 <Meta of={ModalStories} />
@@ -29,24 +29,16 @@ import * as ModalStories from "./Modal.stories";
 
 ### Basic modal
 
-<Canvas>
-  <Story of={ModalStories.BasicModal} />
-</Canvas>
+<Canvas of={ModalStories.BasicModal} />
 
 ### Modal with actions
 
-<Canvas>
-  <Story of={ModalStories.ModalWithActions} />
-</Canvas>
+<Canvas of={ModalStories.ModalWithActions} />
 
 ### Modal Confirm
 
-<Canvas>
-  <Story of={ModalStories.ConfirmModal} />
-</Canvas>
+<Canvas of={ModalStories.ConfirmModal} />
 
 ### Modal Confirm with long text and scroll
 
-<Canvas>
-  <Story of={ModalStories.ConfirmModalLongBodyText} />
-</Canvas>
+<Canvas of={ModalStories.ConfirmModalLongBodyText} />

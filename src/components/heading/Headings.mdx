@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas, Source } from "@storybook/blocks";
+import { Meta, Story, Canvas, Source } from "@storybook/addon-docs/blocks";
 import * as HeadingsStories from "./Headings.stories";
 
 <Meta of={HeadingsStories} />
@@ -7,9 +7,7 @@ import * as HeadingsStories from "./Headings.stories";
 
 > Simple heading is styled `h1` tag and looks like below.
 
-<Canvas>
-  <Story of={HeadingsStories.Simple} />
-</Canvas>
+<Canvas of={HeadingsStories.Simple} />
 
 ## Heading properties
 
@@ -23,22 +21,16 @@ import * as HeadingsStories from "./Headings.stories";
 
 `level`: `number` — from 1 to 6
 
-<Canvas>
-  <Story of={HeadingsStories.Levels} />
-</Canvas>
+<Canvas of={HeadingsStories.Levels} />
 
 ### marginBottom
 
 `marginBottom`: `string` — spacing00 | spacing01 | spacing02 | spacing03 | spacing04 | spacing05 | spacing06 | spacing07 | spacing08
 
-<Canvas>
-  <Story of={HeadingsStories.Margins} />
-</Canvas>
+<Canvas of={HeadingsStories.Margins} />
 
 ### color
 
 `color`: `string` — can be in HEX/named colors formats according to [X11 Colors](https://en.wikipedia.org/wiki/X11_color_names)
 
-<Canvas>
-  <Story of={HeadingsStories.Colors} />
-</Canvas>
+<Canvas of={HeadingsStories.Colors} />
