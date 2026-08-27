@@ -25,6 +25,7 @@ const DARK_COLORS = [
   ["--text-info", palette.blue.blue300],
   ["--border-border01", palette.darkGrey.darkGrey100],
   ["--border-border02", palette.grey.grey700],
+  ["--border-border03", palette.darkGrey.darkGrey75],
   ["--border-input", palette.darkGrey.darkGrey500],
   ["--border-focus", palette.grey.grey800],
   ["--border-error", palette.red.red300],

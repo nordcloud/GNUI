@@ -6,8 +6,7 @@
 .pnp.js
 .idea
 
-# TODO: uncomment when we have npmjs access back
-#/dist
+/dist
 
 # testing
 /coverage

@@ -25,6 +25,7 @@ const LIGHT_COLORS = [
   ["--text-info", palette.blue.blue700],
   ["--border-border01", palette.grey.grey300],
   ["--border-border02", palette.grey.grey800],
+  ["--border-border03", palette.grey.grey400],
   ["--border-input", palette.grey.grey500],
   ["--border-focus", palette.grey.grey800],
   ["--border-error", palette.red.red700],

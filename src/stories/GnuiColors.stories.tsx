@@ -752,6 +752,33 @@ export const BorderColors: StoryObj = {
             </Table.td>
           </Table.tr>
           <Table.tr>
+            <Table.td>theme.color.border.border03</Table.td>
+            <Table.td>
+              <ul>
+                <li>Container border</li>
+              </ul>
+            </Table.td>
+            <Table.td>
+              <Row>
+                <Col>
+                  <Text size="sm" tag="div" mb="0.25rem" width="10rem">
+                    palette.grey.grey400
+                  </Text>
+                  <Text tag="div">#E4E4EE</Text>
+                </Col>
+                <Col>
+                  <Box
+                    backgroundColor={theme.color.border.border03}
+                    width="100%"
+                    minHeight="50px"
+                    shadow="shadow00"
+                    border={theme.borders.grey}
+                  />
+                </Col>
+              </Row>
+            </Table.td>
+          </Table.tr>
+          <Table.tr>
             <Table.td>theme.color.border.focus</Table.td>
             <Table.td>
               <ul>
